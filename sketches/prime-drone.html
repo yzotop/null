@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>prime drone — null/sketches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">скетчи</a>
+    <a href="../man.html">man null</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null/sketches/prime-drone.rb</div>
+
+<main class="container">
+
+  <div class="obj-header">
+    <div class="obj-glyph">♪</div>
+    <div>
+      <div class="obj-title">prime drone</div>
+      <div class="obj-subtitle">скетч · №001 · простые числа как ноты</div>
+    </div>
+  </div>
+
+  <table class="meta">
+    <tr><td class="k">инструмент</td><td class="v">Sonic Pi</td></tr>
+    <tr><td class="k">длительность</td><td class="v mono">08:34</td></tr>
+    <tr><td class="k">дата</td><td class="v mono">2025.09</td></tr>
+    <tr><td class="k">алгоритм</td><td class="v">высота = номер простого (MIDI), длительность и амплитуда ∝ 1/log(p)</td></tr>
+    <tr><td class="k">описание</td><td class="v">каждое простое число — нота. высота определяется самим числом, длительность и амплитуда обратно пропорциональны логарифму. чем дальше — тем тише и быстрее.</td></tr>
+  </table>
+
+  <div class="track-links">
+    <a href="#" target="_blank" rel="noopener">→ suno</a>
+    <a href="#" target="_blank" rel="noopener">→ bandcamp</a>
+  </div>
+
+<pre class="code"><span class="cm"># prime drone · null · 2025.09</span>
+
+define :is_prime <span class="kw">do</span> |n|
+  <span class="kw">return</span> <span class="kw">false</span> <span class="kw">if</span> n &lt; 2
+  (2..Math.sqrt(n).to_i).none? { |i| n % i == 0 }
+<span class="kw">end</span>
+
+live_loop :primes <span class="kw">do</span>
+  primes = (2..64).select { |n| is_prime.(n) }
+  primes.each <span class="kw">do</span> |p|
+    play p + 36, amp: 1.0/Math.log(p), release: 4.0/p
+    sleep 1.0/Math.log(p)
+  <span class="kw">end</span>
+<span class="kw">end</span>
+</pre>
+
+  <div style="font-family: var(--font-serif); font-size: 17px; line-height: 1.75; max-width: 680px; margin-top: 28px;">
+    <p style="margin-bottom: 1.1em;">Идея скетча в том, чтобы услышать распределение простых чисел напрямую. Чем дальше идём по натуральному ряду, тем реже встречаются простые — и в том же темпе уменьшается громкость и длительность каждой ноты. Это создаёт ощущение «затухания», которое математически точно соответствует теореме о распределении простых чисел.</p>
+    <p>Высота берётся как сам номер простого числа плюс смещение в 36 полутонов — иначе первые ноты ушли бы за пределы слышимого диапазона. Несмотря на простоту правила, в результате слышен паттерн с пропусками, длинными паузами и неожиданными возвращениями.</p>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <span>/null/sketches/prime-drone.html</span>
+  <span>2026.04 · iss. 04</span>
+</footer>
+
+</body>
+</html>

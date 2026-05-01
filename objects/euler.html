@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>e — null/objects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="./" class="active">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="../sketches/">скетчи</a>
+    <a href="../man.html">man null</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null/objects/euler.md</div>
+
+<main class="container">
+
+  <div class="obj-header">
+    <div class="obj-glyph">e</div>
+    <div>
+      <div class="obj-title">число эйлера</div>
+      <div class="obj-subtitle">константа · №002 · основание натурального логарифма</div>
+    </div>
+  </div>
+
+  <table class="meta">
+    <tr><td class="k">тип</td><td class="v">иррациональное · трансцендентное</td></tr>
+    <tr><td class="k">значение</td><td class="v mono">2.71828 18284 59045 23536 02874…</td></tr>
+    <tr><td class="k">определение</td><td class="v mono">e = lim (1 + 1/n)^n при n → ∞</td></tr>
+    <tr><td class="k">альт. определение</td><td class="v mono">e = Σ 1/n!  (n = 0, 1, 2, …)</td></tr>
+    <tr><td class="k">впервые</td><td class="v">бернулли, 1683 — задача о сложных процентах</td></tr>
+    <tr><td class="k">обозначение</td><td class="v">e — введено эйлером, 1731</td></tr>
+    <tr><td class="k">применение</td><td class="v">натуральный логарифм · нормальное распределение · радиоактивный распад</td></tr>
+  </table>
+
+  <div class="essay">
+    <div class="essay-body">
+      <p class="first">Якоб Бернулли в 1683 году задал банкирский вопрос: что будет, если делить год на всё более мелкие интервалы и начислять процент чаще? Окажется, что выгода имеет предел. Этот предел — e.</p>
+
+      <p>e появляется там, где скорость изменения величины пропорциональна самой величине. Радиоактивность, рост популяции, остывание чашки кофе — все они описываются одним и тем же уравнением, и в его решении сидит e.</p>
+
+      <blockquote>e — это число, у которого производная самой себя равна себе. Оно — единственная неподвижная точка дифференцирования.</blockquote>
+
+      <p>В тождестве эйлера e<sup>iπ</sup> + 1 = 0 встречаются пять важнейших констант — 0, 1, π, e и i — и это, вероятно, самое неожиданное совпадение в истории математики<em class="fn">1</em>.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Доказано через ряд тейлора для exp(ix) = cos(x) + i·sin(x). Подставив x = π, получаем тождество.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Эрмит доказал трансцендентность e в 1873 — за девять лет до доказательства линдемана для π.</span>
+      </div>
+    </aside>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <span>/null/objects/euler.html</span>
+  <span>2026.04 · iss. 04</span>
+</footer>
+
+</body>
+</html>

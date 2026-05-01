@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>π — null/objects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="./" class="active">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="../sketches/">скетчи</a>
+    <a href="../man.html">man null</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null/objects/pi.md</div>
+
+<main class="container">
+
+  <div class="obj-header">
+    <div class="obj-glyph">π</div>
+    <div>
+      <div class="obj-title">пи</div>
+      <div class="obj-subtitle">константа · №001 · отношение длины окружности к диаметру</div>
+    </div>
+  </div>
+
+  <table class="meta">
+    <tr><td class="k">тип</td><td class="v">иррациональное · трансцендентное</td></tr>
+    <tr><td class="k">значение</td><td class="v mono">3.14159 26535 89793 23846 26433 83279…</td></tr>
+    <tr><td class="k">обнаружено</td><td class="v">~2000 BC, вавилон и египет</td></tr>
+    <tr><td class="k">обозначение</td><td class="v">π — введено уильямом джонсом, 1706</td></tr>
+    <tr><td class="k">рекорд знаков</td><td class="v">105 трлн · 2024</td></tr>
+    <tr><td class="k">нормальность</td><td class="v">не доказана</td></tr>
+    <tr><td class="k">категория</td><td class="v">трансцендентное (доказано линдеманом, 1882)</td></tr>
+  </table>
+
+  <div class="essay">
+    <div class="essay-body">
+      <p class="first">Окружность не существует. Существует множество точек, равноудалённых от одной — а это совсем другое: не вещь, а условие. И всё же из этого условия выпадает число, которое нельзя записать конечной строкой и нельзя получить ни из одного алгебраического уравнения. Число, которое мы знаем лучше большинства людей в нашей жизни, и о котором не знаем почти ничего.</p>
+
+      <p>π иррационально — это доказал ламберт в 1768 году<em class="fn">1</em>. π трансцендентно — это доказал линдеман через сто с лишним лет, и тем самым закрыл задачу о квадратуре круга, которой две тысячи лет пытались дать положительный ответ. Но самое интересное свойство π — нормальность — до сих пор остаётся гипотезой.</p>
+
+      <blockquote>Если π нормально, то в его десятичной записи рано или поздно встретится любая конечная последовательность цифр — включая все когда-либо написанные тексты в кодировке ASCII.</blockquote>
+
+      <p>Это не метафора. Это арифметическое следствие. И всё же мы не знаем, нормально ли π — никто не знает. Мы вычислили сто триллионов знаков и ни в одном статистическом тесте отклонений не нашли<em class="fn">2</em>. Но «не нашли» — это не доказательство. π ведёт себя как случайное число, оставаясь полностью детерминированным.</p>
+
+      <p>В этом — суть проекта. Объект, который выглядит как хаос, оказывается определением. Определение, которое выглядит как порядок, оказывается неисчерпаемым.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Ламберт показал, что tan(x) для рационального x≠0 не может быть рациональным. Из tan(π/4)=1 следует иррациональность π.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Bailey, Borwein и др. — статистические свойства первых триллионов знаков соответствуют равномерному распределению.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Алгоритм BBP (1995) позволяет вычислить n-ю шестнадцатеричную цифру π без вычисления предыдущих.</span>
+      </div>
+    </aside>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <span>/null/objects/pi.html</span>
+  <span>2026.04 · iss. 04</span>
+</footer>
+
+</body>
+</html>

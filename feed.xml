@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>null</title>
+    <link>https://example.com/null/</link>
+    <description>математические объекты, эссе, алгоритмические скетчи</description>
+    <language>ru</language>
+    <lastBuildDate>Sat, 18 Apr 2026 12:00:00 +0000</lastBuildDate>
+
+    <item>
+      <title>О случайности числа π</title>
+      <link>https://example.com/null/essays/pi-randomness.html</link>
+      <guid>https://example.com/null/essays/pi-randomness.html</guid>
+      <pubDate>Sat, 18 Apr 2026 12:00:00 +0000</pubDate>
+      <description>Если π нормально, оно содержит всё, что было и будет написано — ровно по одному разу.</description>
+    </item>
+
+    <item>
+      <title>π — каталог объектов</title>
+      <link>https://example.com/null/objects/pi.html</link>
+      <guid>https://example.com/null/objects/pi.html</guid>
+      <pubDate>Sat, 18 Apr 2026 12:00:00 +0000</pubDate>
+      <description>Иррациональное, трансцендентное, нормальность не доказана.</description>
+    </item>
+
+    <item>
+      <title>prime drone</title>
+      <link>https://example.com/null/sketches/prime-drone.html</link>
+      <guid>https://example.com/null/sketches/prime-drone.html</guid>
+      <pubDate>Tue, 30 Sep 2025 12:00:00 +0000</pubDate>
+      <description>Простые числа как ноты. Sonic Pi.</description>
+    </item>
+
+  </channel>
+</rss>
