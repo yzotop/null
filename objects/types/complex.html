@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ℂ — null/objects/types</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / types / ℂ</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;">ℂ</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">тип · №004</div>
+      <div class="obj-title">комплексные числа</div>
+      <div class="obj-subtitle">a + bi · где i² = −1</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">определение</td><td class="v mono">a + bi · где a, b ∈ ℝ, i² = −1</td></tr>
+    <tr><td class="k">изобретено</td><td class="v">Кардано, 1545 · для решения кубических уравнений</td></tr>
+    <tr><td class="k">геометрия</td><td class="v">комплексная плоскость · модуль и аргумент</td></tr>
+    <tr><td class="k">основная теорема</td><td class="v">любой многочлен степени n имеет n комплексных корней</td></tr>
+    <tr><td class="k">формула</td><td class="v mono">e<sup>iπ</sup> + 1 = 0 · формула Эйлера</td></tr>
+    <tr><td class="k">применение</td><td class="v">квантовая механика · электротехника · фракталы · обработка сигналов</td></tr>
+    <tr><td class="k">связано</td><td class="v">i · e · π · алгебраическая замкнутость</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · 380 слов · 4 мин</div>
+    <h2 class="essay-title">Числа, <em>которых нет</em> — но без которых не обойтись.</h2>
+    <p class="essay-lead">комплексные числа придумали, чтобы решить уравнение. оказалось, что они описывают реальность.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Кубические уравнения вида x³ + px + q = 0 имели формулу решения уже в XVI веке у Кардано. Но иногда формула требовала извлечь квадратный корень из отрицательного числа — и казалось, что в этом случае уравнение просто неразрешимо. Странность была в том, что у уравнения видимым образом было решение — например, при p = −15, q = −4 один из корней был x = 4. И всё же формула давала корень из отрицательного.</p>
+
+        <p>Бомбелли в 1572 году догадался формально продолжить вычисление, как если бы √−1 было чем-то определённым. После сокращения мнимые слагаемые исчезали, и оставался реальный ответ. Так родились комплексные числа — не как описание чего-то существующего, а как технический трюк, который работает<em class="fn">1</em>.</p>
+
+        <blockquote>Комплексные числа — язык природы, который мы случайно изобрели для решения задач.</blockquote>
+
+        <p>Геометрический смысл появился через двести лет — у Весселя, Аргана, Гаусса. Каждое комплексное число a + bi — это точка на плоскости с координатами (a, b). Умножение на i — это поворот на 90°. Возведение в степень — это спираль. Формула Эйлера e<sup>iπ</sup> + 1 = 0 связывает в одно равенство пять важнейших констант — и оказывается следствием того, что вращение и экспонента на комплексной плоскости — одно и то же<em class="fn">2</em>.</p>
+
+        <p>Самое неожиданное началось в XX веке. Уравнение Шрёдингера, описывающее квантовую механику, содержит i не как удобство, а как фундамент: волновая функция принимает комплексные значения, и без этого квантовая механика не работает<em class="fn">3</em>. То, что начиналось как трюк для кубических уравнений, оказалось языком, на котором говорят электроны.</p>
+
+        <p>«Мнимое» оказалось более реальным, чем многие настоящие числа.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">«L'Algebra», 1572. Бомбелли назвал i термином «più di meno» — «плюс из минуса».</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">e<sup>ix</sup> = cos x + i·sin x. При x = π правая часть равна −1, что и даёт тождество.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">Существуют формулировки квантовой механики без явных i (через действительные операторы), но они громоздки и не упрощают теорию.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../special/imaginary.html">i — мнимая единица →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../constants/euler.html">e — формула Эйлера →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../constants/pi.html">π — поворот на полу-оборот →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/types/complex.html</span>
+  <a href="/null/man.html">about →</a>
+</footer>
+
+</body>
+</html>
