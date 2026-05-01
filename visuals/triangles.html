@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>матрица треугольников — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .tm-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: #111;
+    border: 1px solid #111;
+    width: 100%;
+    max-width: 720px;
+  }
+  .tm-cell {
+    background: #060606;
+    aspect-ratio: 1 / 1;
+    position: relative;
+  }
+  .tm-cell canvas { display: block; width: 100%; height: 100%; }
+  .tm-cell .lbl {
+    position: absolute;
+    bottom: 6px;
+    left: 8px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: 0.04em;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / матрица треугольников</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №002</div>
+    <div class="ttl">матрица треугольников</div>
+    <div class="lead">один треугольник, 25 проекций — вращение, сдвиг, изометрия, гармонические смещения вершин.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <section class="visual-canvas">
+    <div class="tm-grid" id="grid"></div>
+  </section>
+
+  <div class="visual-controls">
+    <button id="toggle">● live</button>
+    <span>speed</span>
+    <input id="speed" type="range" min="0.2" max="4" step="0.1" value="1">
+    <span class="read" id="speedRead">1.0×</span>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="visual-meta">
+    <div class="visual-description">
+      <p>Один и тот же равносторонний треугольник, изображённый одновременно в 25 разных математических трансформациях. Каждая ячейка использует свою функцию времени для углов, осей и вершин.</p>
+      <p>Цветные оси — X (красный), Y (синий), Z (зелёный) — служат опорной системой. Они помогают увидеть, как именно треугольник деформируется в каждой проекции: вращается, скользит, осциллирует, переворачивается.</p>
+    </div>
+    <div class="visual-params">
+      <div class="row"><span>grid</span><span>5 × 5 = 25</span></div>
+      <div class="row"><span>shape</span><span>равносторонний</span></div>
+      <div class="row"><span>fps</span><span>~60</span></div>
+      <div class="row"><span>axes</span><span>X·Y·Z = R·B·G</span></div>
+      <div class="row"><span>time</span><span>t = ω·s</span></div>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/phi.html">φ — золотое сечение →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="progress.html">прогресс null →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/triangles.html</span>
+  <a href="../man.html">about →</a>
+</footer>
+
+<script>
+(() => {
+  const labels = [
+    'spin·xy','pulse·z','orbit','shear·x','mirror·f',
+    'scale·osc','ccw·scale','harmonic','isometric','fast·ω',
+    'axono·3d','pendulum','breathe','invert','figure·8',
+    'squish·y','shear·xy','strobe','elliptic','vtx·wave',
+    'accordion','nod·y','harm·hi','mirror·osc','ccw·slow'
+  ];
+  const speeds = [
+    1.0, 1.4, 0.6, 1.2, 0.9,
+    1.0, -0.8, 1.1, 0.5, 2.4,
+    0.7, 0.9, 0.6, 1.3, 1.0,
+    1.1, 1.0, 1.7, 0.9, 1.2,
+    0.8, 1.0, 1.6, 0.7, -0.4
+  ];
+
+  const grid = document.getElementById('grid');
+  const cells = [];
+  for (let i = 0; i < 25; i++) {
+    const wrap = document.createElement('div');
+    wrap.className = 'tm-cell';
+    const cv = document.createElement('canvas');
+    cv.width = 200; cv.height = 200;
+    const lbl = document.createElement('div');
+    lbl.className = 'lbl';
+    lbl.textContent = labels[i];
+    wrap.appendChild(cv);
+    wrap.appendChild(lbl);
+    grid.appendChild(wrap);
+    cells.push(cv);
+  }
+
+  const baseTri = [
+    [0, -0.65],
+    [0.56, 0.32],
+    [-0.56, 0.32]
+  ];
+
+  const drawAxes = (ctx, T, w, h) => {
+    const cx = w / 2, cy = h / 2, len = Math.min(w, h) * 0.36;
+    const drawA = (vec, color) => {
+      const [x, y] = T(vec[0], vec[1]);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + x * len, cy + y * len);
+      ctx.stroke();
+    };
+    drawA([1, 0], '#c44a32');   // X
+    drawA([0, 1], '#2c5fb6');   // Y
+    drawA([0.55, -0.55], '#3aa05a'); // Z (iso projection)
+  };
+
+  const drawTri = (ctx, T, w, h, vshift = (i, t) => [0, 0]) => {
+    const cx = w / 2, cy = h / 2, scale = Math.min(w, h) * 0.36;
+    ctx.strokeStyle = '#f7f6f2';
+    ctx.lineWidth = 2;
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    for (let i = 0; i < 3; i++) {
+      const [vx, vy] = baseTri[i];
+      const [tx, ty] = T(vx, vy);
+      const [sx, sy] = vshift(i);
+      const px = cx + (tx + sx) * scale;
+      const py = cy + (ty + sy) * scale;
+      if (i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.stroke();
+  };
+
+  const cos = Math.cos, sin = Math.sin;
+  const rot = (ang) => (x, y) => [x * cos(ang) - y * sin(ang), x * sin(ang) + y * cos(ang)];
+  const scl = (sx, sy) => (x, y) => [x * sx, y * sy];
+  const shr = (kx, ky) => (x, y) => [x + kx * y, y + ky * x];
+  const compose = (...fns) => (x, y) => fns.reduce((p, f) => f(p[0], p[1]), [x, y]);
+
+  // 25 transformer functions
+  const tx = [
+    // 0 spin·xy
+    (t) => ({ T: rot(t), V: null }),
+    // 1 pulse·z (scale uniform with time)
+    (t) => ({ T: compose(rot(t * 0.6), scl(1 + 0.3 * sin(t), 1 + 0.3 * sin(t))), V: null }),
+    // 2 orbit (translate around)
+    (t) => ({ T: (x, y) => [x + 0.3 * cos(t), y + 0.3 * sin(t)], V: null }),
+    // 3 shear·x
+    (t) => ({ T: shr(0.6 * sin(t), 0), V: null }),
+    // 4 mirror·f (flip Y oscillating)
+    (t) => ({ T: scl(1, sin(t)), V: null }),
+    // 5 scale·osc (non-uniform)
+    (t) => ({ T: scl(1 + 0.3 * sin(t), 1 + 0.3 * cos(t)), V: null }),
+    // 6 ccw·scale (reverse)
+    (t) => ({ T: compose(rot(-t), scl(0.7 + 0.3 * sin(t * 2), 0.7 + 0.3 * sin(t * 2))), V: null }),
+    // 7 harmonic — vertex wiggle
+    (t) => ({ T: rot(t * 0.4), V: (i) => [0.15 * sin(t + i * 2), 0.15 * cos(t * 1.3 + i)] }),
+    // 8 isometric
+    (t) => ({ T: compose(rot(t * 0.3), shr(0.3, 0)), V: null }),
+    // 9 fast·ω
+    (t) => ({ T: rot(t * 2.5), V: null }),
+    // 10 axono·3d (fake 3d via shear)
+    (t) => ({ T: compose(rot(t * 0.5), shr(0.4 * cos(t), 0.2 * sin(t))), V: null }),
+    // 11 pendulum
+    (t) => ({ T: rot(0.8 * sin(t)), V: null }),
+    // 12 breathe
+    (t) => ({ T: scl(1 + 0.2 * sin(t * 1.3), 1 + 0.2 * sin(t * 1.3)), V: null }),
+    // 13 invert
+    (t) => ({ T: scl(cos(t), cos(t)), V: null }),
+    // 14 figure·8
+    (t) => ({ T: (x, y) => [x + 0.35 * sin(t * 2), y + 0.35 * sin(t) * cos(t)], V: null }),
+    // 15 squish·y
+    (t) => ({ T: scl(1, 0.5 + 0.5 * Math.abs(sin(t))), V: null }),
+    // 16 shear·xy
+    (t) => ({ T: shr(0.4 * sin(t), 0.4 * cos(t)), V: null }),
+    // 17 strobe
+    (t) => ({ T: rot(Math.floor(t * 4) * Math.PI / 6), V: null }),
+    // 18 elliptic
+    (t) => ({ T: compose(rot(t), scl(1.2, 0.6)), V: null }),
+    // 19 vtx·wave
+    (t) => ({ T: rot(t * 0.5), V: (i) => [0.2 * sin(t * 2 + i * Math.PI * 2 / 3), 0] }),
+    // 20 accordion
+    (t) => ({ T: scl(0.6 + 0.4 * Math.abs(sin(t)), 1), V: null }),
+    // 21 nod·y
+    (t) => ({ T: (x, y) => [x, y + 0.2 * sin(t)], V: null }),
+    // 22 harm·hi (high freq vertex)
+    (t) => ({ T: rot(t * 0.3), V: (i) => [0.1 * sin(t * 4 + i), 0.1 * cos(t * 4 + i)] }),
+    // 23 mirror·osc
+    (t) => ({ T: scl(sin(t * 0.7), 1), V: null }),
+    // 24 ccw·slow
+    (t) => ({ T: rot(-t * 0.5), V: null })
+  ];
+
+  let running = true;
+  let speed = 1;
+  let lastT = performance.now();
+  let phase = 0;
+
+  const frame = (now) => {
+    const dt = (now - lastT) / 1000;
+    lastT = now;
+    if (running) phase += dt * speed;
+
+    cells.forEach((cv, i) => {
+      const ctx = cv.getContext('2d');
+      const w = cv.width, h = cv.height;
+      ctx.fillStyle = '#060606';
+      ctx.fillRect(0, 0, w, h);
+      const t = phase * speeds[i];
+      const { T, V } = tx[i](t);
+      drawAxes(ctx, T, w, h);
+      drawTri(ctx, T, w, h, V || (() => [0, 0]));
+    });
+
+    requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+
+  document.getElementById('toggle').onclick = (e) => {
+    running = !running;
+    e.target.textContent = running ? '● live' : '○ pause';
+  };
+  const sp = document.getElementById('speed');
+  const spr = document.getElementById('speedRead');
+  sp.addEventListener('input', () => {
+    speed = parseFloat(sp.value);
+    spr.textContent = speed.toFixed(1) + '×';
+  });
+})();
+</script>
+
+</body>
+</html>

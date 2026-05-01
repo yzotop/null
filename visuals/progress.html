@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>прогресс null — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .pg-list {
+    width: 100%;
+    max-width: 880px;
+  }
+  .pg-row {
+    display: grid;
+    grid-template-columns: 88px 1fr 64px;
+    align-items: center;
+    gap: 18px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pg-row:first-child { border-top: 1px solid var(--border); }
+  .pg-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #aaa;
+    letter-spacing: 0.06em;
+  }
+  .pg-bar {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    line-height: 1.05;
+    white-space: pre;
+    overflow: hidden;
+    letter-spacing: 0.01em;
+  }
+  .pg-pct {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 20px;
+    color: #111;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / прогресс null</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №003</div>
+    <div class="ttl">прогресс null</div>
+    <div class="lead">шесть стилей прогресс-баров. каждый — собственная математика заполнения.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <section class="visual-canvas light" style="padding:32px 40px;">
+    <div class="pg-list" id="list">
+      <div class="pg-row"><div class="pg-name">binary</div>  <div class="pg-bar" id="b0"></div><div class="pg-pct" id="p0">0%</div></div>
+      <div class="pg-row"><div class="pg-name">noise</div>   <div class="pg-bar" id="b1"></div><div class="pg-pct" id="p1">0%</div></div>
+      <div class="pg-row"><div class="pg-name">matrix</div>  <div class="pg-bar" id="b2"></div><div class="pg-pct" id="p2">0%</div></div>
+      <div class="pg-row"><div class="pg-name">π digits</div><div class="pg-bar" id="b3"></div><div class="pg-pct" id="p3">0%</div></div>
+      <div class="pg-row"><div class="pg-name">thermal</div> <div class="pg-bar" id="b4"></div><div class="pg-pct" id="p4">0%</div></div>
+      <div class="pg-row"><div class="pg-name">spectrum</div><div class="pg-bar" id="b5"></div><div class="pg-pct" id="p5">0%</div></div>
+    </div>
+  </section>
+
+  <div class="visual-controls">
+    <button id="toggle">● live</button>
+    <button id="reset">↺ restart</button>
+    <span>speed</span>
+    <input id="speed" type="range" min="0.2" max="4" step="0.1" value="1">
+    <span class="read" id="speedRead">1.0×</span>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="visual-meta">
+    <div class="visual-description">
+      <p>Прогресс-бар — это тоже число. Каждый символ кодирует состояние: заполнено, в процессе, пусто. Шесть вариантов выше показывают, насколько разной может быть эта кодировка при одной и той же шкале от 0 до 100%.</p>
+      <p>binary — основание 2. noise — стохастика по синусу. matrix — поток с яркой головой. π digits — цифры π напрямую, яркость пропорциональна значению. thermal — экспоненциальный градиент. spectrum — сдвиг hue по hsl.</p>
+    </div>
+    <div class="visual-params">
+      <div class="row"><span>bars</span><span>6</span></div>
+      <div class="row"><span>cells</span><span>56</span></div>
+      <div class="row"><span>cycle</span><span>~12 s @ 1×</span></div>
+      <div class="row"><span>phase</span><span>каждый со сдвигом</span></div>
+      <div class="row"><span>π digits</span><span>1024 знаков</span></div>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/pi.html">π — нормальность →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/euler.html">e — экспоненциальный рост →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/progress.html</span>
+  <a href="../man.html">about →</a>
+</footer>
+
+<script>
+(() => {
+  const W = 56;
+  const PI_DIGITS = '14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196442881097566593344612847564823378678316527120190914564856692346034861045432664821339360726024914127372458700660631558817488152092096282925409171536436789259036001133053054882046652138414695194151160943305727036575959195309218611738193261179310511854807446237996274956735188575272489122793818301194912983367336244065664308602139494639522473719070217986094370277053921717629317675238467481846766940513200056812714526356082778577134275778960917363717872146844090122495343014654958537105079227968925892354201995611212902196086403441815981362977477130996051870721134999999837297804995105973173281609631859502445945534690830264252230825334468503526193118817101000313783875288658753320838142061717766914730359825349042875546873115956286388235378759375195778185778053217122680661300192787661119590921642019';
+
+  const wave = (t, phase) => 0.5 - 0.5 * Math.cos((t + phase) * Math.PI * 2);
+
+  const el = (i) => ({ b: document.getElementById('b' + i), p: document.getElementById('p' + i) });
+  const bars = [0, 1, 2, 3, 4, 5].map(el);
+
+  // binary
+  const renderBinary = (b, p, k, t) => {
+    const filled = Math.round(k * W);
+    const out = new Array(W);
+    for (let i = 0; i < W; i++) {
+      if (i < filled) {
+        // flicker: occasionally show 0 instead of 1
+        const flick = ((Math.sin((t * 60 + i * 0.7) ) > 0.95) || (Math.sin(t * 17 + i) > 0.92));
+        out[i] = `<span style="color:${flick ? '#bbb' : '#000'};">${flick ? '0' : '1'}</span>`;
+      } else {
+        out[i] = `<span style="color:#ddd;">0</span>`;
+      }
+    }
+    b.innerHTML = out.join('');
+    p.textContent = Math.round(k * 100) + '%';
+  };
+
+  // noise — ░▒▓█ by sin brightness
+  const blocks = ['░','▒','▓','█'];
+  const renderNoise = (b, p, k, t) => {
+    const filled = Math.round(k * W);
+    const out = new Array(W);
+    for (let i = 0; i < W; i++) {
+      if (i < filled) {
+        const s = 0.5 + 0.5 * Math.sin(t * 3 + i * 0.8);
+        const idx = Math.min(3, Math.floor(s * 4));
+        out[i] = `<span style="color:#111;">${blocks[idx]}</span>`;
+      } else {
+        out[i] = `<span style="color:#e8e8e4;">░</span>`;
+      }
+    }
+    b.innerHTML = out.join('');
+    p.textContent = Math.round(k * 100) + '%';
+  };
+
+  // matrix — green stream with white head
+  const renderMatrix = (b, p, k, t) => {
+    const filled = Math.round(k * W);
+    const out = new Array(W);
+    for (let i = 0; i < W; i++) {
+      if (i < filled) {
+        const head = (i === filled - 1);
+        const ch = String.fromCharCode(48 + (Math.floor(t * 60 + i * 13) % 10));
+        out[i] = `<span style="color:${head ? '#fff' : '#1a6a1a'};background:${head ? '#1a6a1a' : 'transparent'};">${ch}</span>`;
+      } else {
+        out[i] = `<span style="color:#0c2a0c;">·</span>`;
+      }
+    }
+    b.innerHTML = out.join('');
+    p.textContent = Math.round(k * 100) + '%';
+  };
+
+  // π digits
+  const renderPi = (b, p, k, t) => {
+    const filled = Math.round(k * W);
+    const phase = Math.floor(t * 8) % (PI_DIGITS.length - W);
+    const out = new Array(W);
+    for (let i = 0; i < W; i++) {
+      const d = parseInt(PI_DIGITS[(phase + i) % PI_DIGITS.length], 10);
+      if (i < filled) {
+        const a = 0.2 + 0.08 * d;
+        out[i] = `<span style="color:rgba(17,17,17,${a.toFixed(2)});">${d}</span>`;
+      } else {
+        out[i] = `<span style="color:#e8e8e4;">${d}</span>`;
+      }
+    }
+    b.innerHTML = out.join('');
+    p.textContent = Math.round(k * 100) + '%';
+  };
+
+  // thermal — blue → red gradient
+  const renderThermal = (b, p, k) => {
+    const filled = Math.round(k * W);
+    const out = new Array(W);
+    for (let i = 0; i < W; i++) {
+      if (i < filled) {
+        const u = i / (W - 1);
+        const r = Math.round(44 + (196 - 44) * u);
+        const g = Math.round(95 + (74 - 95) * u);
+        const bl = Math.round(182 + (50 - 182) * u);
+        out[i] = `<span style="color:rgb(${r},${g},${bl});">█</span>`;
+      } else {
+        out[i] = `<span style="color:#e8e8e4;">█</span>`;
+      }
+    }
+    b.innerHTML = out.join('');
+    p.textContent = Math.round(k * 100) + '%';
+  };
+
+  // spectrum — hue shift
+  const renderSpectrum = (b, p, k) => {
+    const filled = Math.round(k * W);
+    const out = new Array(W);
+    for (let i = 0; i < W; i++) {
+      if (i < filled) {
+        const hue = Math.round(((i / W) * 280 + k * 80) % 360);
+        out[i] = `<span style="color:hsl(${hue} 60% 50%);">█</span>`;
+      } else {
+        out[i] = `<span style="color:#e8e8e4;">█</span>`;
+      }
+    }
+    b.innerHTML = out.join('');
+    p.textContent = Math.round(k * 100) + '%';
+  };
+
+  const renderers = [renderBinary, renderNoise, renderMatrix, renderPi, renderThermal, renderSpectrum];
+  const phases = [0, 0.16, 0.33, 0.5, 0.66, 0.83];
+
+  let running = true;
+  let speed = 1;
+  let phase = 0;
+  let lastT = performance.now();
+
+  const frame = (now) => {
+    const dt = (now - lastT) / 1000;
+    lastT = now;
+    if (running) phase += dt * 0.08 * speed;
+    for (let i = 0; i < 6; i++) {
+      const k = wave(phase, phases[i]);
+      renderers[i](bars[i].b, bars[i].p, k, phase * 12);
+    }
+    requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+
+  document.getElementById('toggle').onclick = (e) => {
+    running = !running;
+    e.target.textContent = running ? '● live' : '○ pause';
+  };
+  document.getElementById('reset').onclick = () => { phase = 0; };
+  const sp = document.getElementById('speed');
+  const spr = document.getElementById('speedRead');
+  sp.addEventListener('input', () => {
+    speed = parseFloat(sp.value);
+    spr.textContent = speed.toFixed(1) + '×';
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>спираль улама — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / спираль улама</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №004</div>
+    <div class="ttl">спираль улама</div>
+    <div class="lead">натуральные числа по спирали — простые неожиданно выстраиваются в диагонали.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <section class="visual-canvas">
+    <canvas id="cv" width="700" height="700" style="max-width:100%;height:auto;display:block;"></canvas>
+  </section>
+
+  <div class="visual-controls">
+    <button id="regen">перегенерировать</button>
+    <span>zoom</span>
+    <input id="zoom" type="range" min="3" max="10" step="1" value="6">
+    <span class="read" id="zoomRead">6 px</span>
+    <span style="margin-left:auto;" class="read"><span id="count">0</span> / <span id="total">0</span> чисел</span>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="visual-meta">
+    <div class="visual-description">
+      <p>Станислав Улам придумал это на скучном совещании в 1963 году. Он начал писать натуральные числа по спирали и обводить простые — и обнаружил, что они выстраиваются в чёткие диагонали.</p>
+      <p>Никто до сих пор не знает почему. Это связано с поведением многочленов вида 4n² + bn + c, которые задают диагонали спирали и неожиданно часто принимают простые значения. Один из нерешённых вопросов теории чисел.</p>
+    </div>
+    <div class="visual-params">
+      <div class="row"><span>direction</span><span>R · U · L · D</span></div>
+      <div class="row"><span>start</span><span>1 в центре</span></div>
+      <div class="row"><span>cells/frame</span><span>500</span></div>
+      <div class="row"><span>test</span><span>trial division</span></div>
+      <div class="row"><span>year</span><span>1963 · Ulam</span></div>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../objects/pi.html#essay">о случайности числа π →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="prime-field.html">поле простых →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/pi.html">π — формула Эйлера →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/ulam.html</span>
+  <a href="../man.html">about →</a>
+</footer>
+
+<script>
+(() => {
+  const cv = document.getElementById('cv');
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  let cell = 6;
+  let total = 0;
+  let drawn = 0;
+  let rafId = null;
+
+  const isPrime = (n) => {
+    if (n < 2) return false;
+    if (n < 4) return true;
+    if (n % 2 === 0) return false;
+    for (let i = 3, s = Math.floor(Math.sqrt(n)); i <= s; i += 2)
+      if (n % i === 0) return false;
+    return true;
+  };
+
+  // generator for ulam spiral coordinates (column, row) starting at (0,0)
+  function* spiral() {
+    let x = 0, y = 0;
+    yield [x, y]; // 1
+    let step = 1;
+    while (true) {
+      // right step
+      for (let i = 0; i < step; i++) { x++; yield [x, y]; }
+      // up step
+      for (let i = 0; i < step; i++) { y--; yield [x, y]; }
+      step++;
+      // left step
+      for (let i = 0; i < step; i++) { x--; yield [x, y]; }
+      // down step
+      for (let i = 0; i < step; i++) { y++; yield [x, y]; }
+      step++;
+    }
+  }
+
+  const start = () => {
+    if (rafId) cancelAnimationFrame(rafId);
+    ctx.fillStyle = '#0c0c0d';
+    ctx.fillRect(0, 0, W, H);
+
+    const gridW = Math.floor(W / cell);
+    const gridH = Math.floor(H / cell);
+    const maxN = gridW * gridH;
+    total = maxN;
+    document.getElementById('total').textContent = total;
+    drawn = 0;
+
+    const cx = Math.floor(gridW / 2);
+    const cy = Math.floor(gridH / 2);
+
+    const it = spiral();
+    let n = 0;
+
+    const step = () => {
+      const batchEnd = Math.min(maxN, n + 500);
+      for (; n < batchEnd; n++) {
+        const { value, done } = it.next();
+        if (done) break;
+        const [dx, dy] = value;
+        const gx = cx + dx;
+        const gy = cy + dy;
+        if (gx < 0 || gy < 0 || gx >= gridW || gy >= gridH) continue;
+        const num = n + 1;
+        const px = gx * cell;
+        const py = gy * cell;
+        if (isPrime(num)) {
+          ctx.fillStyle = '#f7f6f2';
+        } else {
+          ctx.fillStyle = '#1a1a1a';
+        }
+        ctx.fillRect(px, py, cell - 1, cell - 1);
+      }
+      drawn = n;
+      document.getElementById('count').textContent = drawn;
+      if (n < maxN) rafId = requestAnimationFrame(step);
+    };
+    rafId = requestAnimationFrame(step);
+  };
+
+  document.getElementById('regen').onclick = start;
+  const z = document.getElementById('zoom');
+  const zr = document.getElementById('zoomRead');
+  z.addEventListener('input', () => {
+    cell = parseInt(z.value, 10);
+    zr.textContent = cell + ' px';
+    start();
+  });
+
+  start();
+})();
+</script>
+
+</body>
+</html>
