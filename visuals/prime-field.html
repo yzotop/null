@@ -33,7 +33,7 @@
 
   <hr class="section-divider">
 
-  <section class="visual-canvas">
+  <section class="visual-canvas light">
     <canvas id="cv" width="720" height="720" style="max-width:100%;height:auto;display:block;"></canvas>
   </section>
 
@@ -55,7 +55,7 @@
       <div class="row"><span>grid</span><span>30 × 30</span></div>
       <div class="row"><span>page</span><span>900 чисел</span></div>
       <div class="row"><span>cycle</span><span>3.0 s</span></div>
-      <div class="row"><span>palette</span><span>#0c0c0d / #f7f6f2</span></div>
+      <div class="row"><span>palette</span><span>#f7f6f2 / #111</span></div>
       <div class="row"><span>test</span><span>trial division</span></div>
     </div>
   </section>
@@ -99,7 +99,7 @@
   };
 
   const draw = (a) => {
-    ctx.fillStyle = '#0c0c0d';
+    ctx.fillStyle = '#f7f6f2';
     ctx.fillRect(0, 0, cv.width, cv.height);
     ctx.font = '11px "JetBrains Mono", monospace';
     ctx.textAlign = 'center';
@@ -112,15 +112,15 @@
         const prime = isPrime(n);
         if (prime) {
           ctx.globalAlpha = a;
-          ctx.fillStyle = '#f7f6f2';
+          ctx.fillStyle = '#111';
           ctx.fillRect(x + 1, y + 1, cell - 2, cell - 2);
-          ctx.fillStyle = '#0c0c0d';
+          ctx.fillStyle = '#f7f6f2';
           ctx.fillText(String(n), x + cell / 2, y + cell / 2 + 0.5);
         } else {
           ctx.globalAlpha = 1;
-          ctx.fillStyle = '#1a1a1a';
+          ctx.fillStyle = '#f0ede8';
           ctx.fillRect(x + 1, y + 1, cell - 2, cell - 2);
-          ctx.fillStyle = '#333';
+          ctx.fillStyle = '#ccc';
           ctx.fillText(String(n), x + cell / 2, y + cell / 2 + 0.5);
         }
       }

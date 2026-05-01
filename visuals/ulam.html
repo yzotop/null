@@ -33,7 +33,7 @@
 
   <hr class="section-divider">
 
-  <section class="visual-canvas">
+  <section class="visual-canvas light">
     <canvas id="cv" width="700" height="700" style="max-width:100%;height:auto;display:block;"></canvas>
   </section>
 
@@ -120,7 +120,7 @@
 
   const start = () => {
     if (rafId) cancelAnimationFrame(rafId);
-    ctx.fillStyle = '#0c0c0d';
+    ctx.fillStyle = '#f7f6f2';
     ctx.fillRect(0, 0, W, H);
 
     const gridW = Math.floor(W / cell);
@@ -149,9 +149,9 @@
         const px = gx * cell;
         const py = gy * cell;
         if (isPrime(num)) {
-          ctx.fillStyle = '#f7f6f2';
+          ctx.fillStyle = '#111';
         } else {
-          ctx.fillStyle = '#1a1a1a';
+          ctx.fillStyle = '#e8e8e4';
         }
         ctx.fillRect(px, py, cell - 1, cell - 1);
       }

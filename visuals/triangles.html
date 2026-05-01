@@ -13,13 +13,13 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1px;
-    background: #111;
-    border: 1px solid #111;
+    background: #e8e8e4;
+    border: 1px solid #e8e8e4;
     width: 100%;
     max-width: 720px;
   }
   .tm-cell {
-    background: #060606;
+    background: #f7f6f2;
     aspect-ratio: 1 / 1;
     position: relative;
   }
@@ -60,7 +60,7 @@
 
   <hr class="section-divider">
 
-  <section class="visual-canvas">
+  <section class="visual-canvas light">
     <div class="tm-grid" id="grid"></div>
   </section>
 
@@ -83,6 +83,7 @@
       <div class="row"><span>shape</span><span>равносторонний</span></div>
       <div class="row"><span>fps</span><span>~60</span></div>
       <div class="row"><span>axes</span><span>X·Y·Z = R·B·G</span></div>
+      <div class="row"><span>palette</span><span>#f7f6f2 / #111</span></div>
       <div class="row"><span>time</span><span>t = ω·s</span></div>
     </div>
   </section>
@@ -157,12 +158,12 @@
     };
     drawA([1, 0], '#c44a32');   // X
     drawA([0, 1], '#2c5fb6');   // Y
-    drawA([0.55, -0.55], '#3aa05a'); // Z (iso projection)
+    drawA([0.55, -0.55], '#3a7a3a'); // Z (iso projection)
   };
 
   const drawTri = (ctx, T, w, h, vshift = (i, t) => [0, 0]) => {
     const cx = w / 2, cy = h / 2, scale = Math.min(w, h) * 0.36;
-    ctx.strokeStyle = '#f7f6f2';
+    ctx.strokeStyle = '#111';
     ctx.lineWidth = 2;
     ctx.lineJoin = 'round';
     ctx.beginPath();
@@ -252,7 +253,7 @@
     cells.forEach((cv, i) => {
       const ctx = cv.getContext('2d');
       const w = cv.width, h = cv.height;
-      ctx.fillStyle = '#060606';
+      ctx.fillStyle = '#f7f6f2';
       ctx.fillRect(0, 0, w, h);
       const t = phase * speeds[i];
       const { T, V } = tx[i](t);
