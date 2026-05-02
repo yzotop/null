@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mod — null/objects/operators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / operators / mod</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:60px;">mod</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">оператор · №001</div>
+      <div class="obj-title">остаток от деления</div>
+      <div class="obj-subtitle">a mod n — остаток от деления a на n</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">определение</td><td class="v mono">a mod n = r, где a = q·n + r, 0 ≤ r &lt; n</td></tr>
+    <tr><td class="k">примеры</td><td class="v mono">17 mod 5 = 2 · 100 mod 7 = 2 · 2<sup>256</sup> mod p</td></tr>
+    <tr><td class="k">применение</td><td class="v">RSA · хэш-функции · музыкальные гаммы · цикличность</td></tr>
+    <tr><td class="k">в Sonic Pi</td><td class="v mono">(ring 0,1,2,3,4).tick — это mod под капотом</td></tr>
+    <tr><td class="k">парадокс</td><td class="v mono">−1 mod 5 = 4 в математике, но −1 в C/Java</td></tr>
+    <tr><td class="k">связано</td><td class="v">простые числа · XOR · факториал</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · 350 слов · 3 мин</div>
+    <h2 class="essay-title">Оператор, который делает числа <em>круглыми</em>.</h2>
+    <p class="essay-lead">mod — это не просто остаток. это способ превратить бесконечную числовую прямую в окружность.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">17 mod 12 = 5. Именно так работают часы — 17:00 это 5 часов вечера. Mod превращает линейное время в циклическое: после 12 счёт начинается сначала. Та же операция превращает числовую прямую в окружность из n точек.</p>
+
+        <p>Эта простая идея лежит в основе криптографии RSA. Шифрование — это возведение в степень по модулю произведения двух больших простых: c = m<sup>e</sup> mod n. Расшифровка — m = c<sup>d</sup> mod n. Надёжность RSA опирается на то, что по c, e, n восстановить m вычислительно сложно — нужно факторизовать n, а это в общем случае никто не умеет делать быстро<em class="fn">1</em>.</p>
+
+        <blockquote>Mod — это не остаток. Это координата на окружности.</blockquote>
+
+        <p>Mod появляется везде, где есть цикличность: дни недели (mod 7), байты (mod 256), музыкальные гаммы (mod 12). В Sonic Pi каждый ring — это структура с mod под капотом: `(ring 60, 62, 64, 65).tick` возвращает элементы по кругу именно через mod от счётчика тиков.</p>
+
+        <p>Есть тонкость, на которой ломаются программисты: как трактовать отрицательные числа. В математике −1 mod 5 = 4 (остаток всегда неотрицателен, в диапазоне [0, n)). В C, Java, Python 2 знак остатка следует знаку делимого: −1 mod 5 = −1. В Python 3 — снова 4, по математическому соглашению. Один и тот же оператор, разные языки, разные ответы — источник тонких багов в сетевом коде<em class="fn">2</em>.</p>
+
+        <p>Малая теорема Ферма: для простого p и a, не кратного p, a<sup>p−1</sup> mod p = 1. Из этого вырастает вся модулярная арифметика — и RSA в том числе<em class="fn">3</em>. Один маленький оператор — и треть современной криптографии.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">RSA — Rivest, Shamir, Adleman, 1977. Основан на сложности факторизации больших чисел. Квантовый алгоритм Шора решает её за полиномиальное время — отсюда гонка постквантовой криптографии.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">В большинстве языков есть и truncated mod (как в C), и floored mod (как в Python 3). Выбор — соглашение, не математика.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">Китайская теорема об остатках: система сравнений по модулю всегда разрешима, если модули попарно взаимно просты.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../types/prime.html">простые числа →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="xor.html">XOR — оба в криптографии →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="factorial.html">факториал — теорема Вильсона →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/operators/mod.html</span>
+  <a href="/null/man.html">about →</a>
+</footer>
+
+</body>
+</html>

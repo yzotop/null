@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>∫ интеграл — null/objects/operators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / operators / ∫</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;">∫</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">оператор · №007</div>
+      <div class="obj-title">интеграл</div>
+      <div class="obj-subtitle">∫ — непрерывное суммирование · площадь под кривой</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">определение</td><td class="v mono">∫(a..b) f(x)dx = lim ∑ f(xᵢ)·Δx — интеграл Римана</td></tr>
+    <tr><td class="k">основная теорема</td><td class="v mono">∫(a..b) f = F(b) − F(a), где F′ = f</td></tr>
+    <tr><td class="k">обозначение</td><td class="v">Лейбниц · 1675 · ∫ от лат. summa</td></tr>
+    <tr><td class="k">гауссов</td><td class="v mono">∫(−∞..∞) e<sup>−x²</sup> dx = √π</td></tr>
+    <tr><td class="k">применение</td><td class="v">физика · вероятность · статистика · геометрия</td></tr>
+    <tr><td class="k">связано</td><td class="v">∑ · ∂ · ∇ · π · e</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · 360 слов · 3 мин</div>
+    <h2 class="essay-title">Площадь, которую нельзя <em>измерить</em> — но можно вычислить.</h2>
+    <p class="essay-lead">интеграл начался как способ найти площадь под кривой. оказалось — это половина всей математики.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Архимед в III веке до нашей эры вычислял площадь параболического сегмента методом исчерпания — вписывал во всё более мелкие треугольники, суммировал, и получал предельное значение. Это был интеграл, посчитанный за 1800 лет до Ньютона и Лейбница<em class="fn">1</em>. Идея существовала; не существовало нотации, языка и общего метода.</p>
+
+        <p>Лейбниц в 1675 году записал ∫ и dx — обозначения, которые мы используем сегодня. Символ ∫ — это вытянутая буква S от латинского summa. Интеграл — это сумма, только бесконечная и непрерывная, и Лейбниц это видел напрямую.</p>
+
+        <blockquote>Интеграл Лейбница и производная Ньютона — два лица одной монеты.</blockquote>
+
+        <p>Основная теорема анализа связывает дифференцирование и интегрирование: ∫(a..b) f(x) dx = F(b) − F(a), где F′ = f. Это совершенно неочевидно: почему площадь под кривой связана с обратной операцией к наклону? Ньютон и Лейбниц увидели эту связь независимо в 1660-70-х годах. Потом всю оставшуюся жизнь судились о приоритете. Доказательство связи стало одной из самых красивых конструкций в математике<em class="fn">2</em>.</p>
+
+        <p>Гауссов интеграл: ∫(−∞..∞) e<sup>−x²</sup> dx = √π. Снова π — в интеграле от показательной функции, без видимых окружностей. И снова e — основание натурального логарифма, появляющееся в физической формуле без явной причины. Из этого интеграла вырастает нормальное распределение — колокол Гаусса. Всё, что мы знаем о статистике, стоит на этом равенстве<em class="fn">3</em>.</p>
+
+        <p>Интеграл Лебега, появившийся в 1902 году, обобщил интеграл Римана на функции, для которых римановское определение не работает. Это позволило построить корректную теорию вероятностей и квантовую механику — буквально все разделы математики XX века так или иначе опираются на лебеговское определение.</p>
+
+        <p>Один значок S — и за ним половина анализа.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Архимед суммировал геометрическую прогрессию площадей вписанных треугольников. Сходимость он установил физическим рассуждением о равновесии.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Спор Ньютона и Лейбница — один из самых громких в истории науки. Английская и континентальная школы не сотрудничали почти столетие из-за этого конфликта.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">Интеграл Лебега — обобщение Римана через теорию меры. Без него невозможна современная теория вероятностей.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="sum.html">∑ — дискретный аналог →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="partial.html">∂ — основная теорема анализа →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../constants/euler.html">e — гауссов интеграл →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../constants/pi.html">π — гауссов интеграл = √π →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/operators/integral.html</span>
+  <a href="/null/man.html">about →</a>
+</footer>
+
+</body>
+</html>

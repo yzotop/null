@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>∑ сумма — null/objects/operators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / operators / ∑</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;">∑</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">оператор · №006</div>
+      <div class="obj-title">сумма</div>
+      <div class="obj-subtitle">∑ — оператор суммирования · дискретный аналог интеграла</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">определение</td><td class="v mono">∑(k = m..n) f(k) = f(m) + f(m+1) + … + f(n)</td></tr>
+    <tr><td class="k">бесконечные</td><td class="v mono">∑(k = 1..∞) 1/k² = π²/6 — формула Эйлера</td></tr>
+    <tr><td class="k">расходящиеся</td><td class="v">гармонический ряд ∑ 1/k → ∞ (очень медленно)</td></tr>
+    <tr><td class="k">связь с ∫</td><td class="v">∑ → ∫ при измельчении шага — идея интегрального исчисления</td></tr>
+    <tr><td class="k">обозначение</td><td class="v">Эйлер · 1755 · от греческой Σ (sigma → summa)</td></tr>
+    <tr><td class="k">связано</td><td class="v">∫ · ∂ · π · e · γ</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · 360 слов · 3 мин</div>
+    <h2 class="essay-title">Бесконечная сумма, равная <em>π²/6</em>.</h2>
+    <p class="essay-lead">сумма обратных квадратов всех натуральных чисел равна π²/6. почему — загадка для Эйлера и для нас.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Эйлер в 1734 году доказал: 1 + 1/4 + 1/9 + 1/16 + 1/25 + … = π²/6. Сумма обратных квадратов натуральных чисел — точно π²/6. Это знаменитая Базельская задача, над которой математики бились девяносто лет до Эйлера. Его доказательство было нестрогим — он приравнял разложение синуса в произведение и в ряд Тейлора. Строгое доказательство появилось позже. Ответ остался тем же<em class="fn">1</em>.</p>
+
+        <p>Почему π появляется в сумме, которая, кажется, не имеет никакого отношения к окружностям? Потому что в основе разложения синуса — а оно связывает целые числа (нули sin πx стоят в целых точках) с константой π. Связь между арифметикой и геометрией прорастает в самых неожиданных формулах.</p>
+
+        <blockquote>То, что 1 + 1/4 + 1/9 + … = π²/6 — одно из самых неожиданных равенств в математике.</blockquote>
+
+        <p>Гармонический ряд ∑ 1/k расходится — уходит в бесконечность. Но делает это невероятно медленно. Чтобы сумма превысила 10, нужно сложить около 12 367 слагаемых. Чтобы превысила 100 — больше слагаемых, чем атомов в наблюдаемой вселенной<em class="fn">2</em>. Это сходимость на грани: чуть быстрее убывания (например, 1/k<sup>1.001</sup>) — и ряд бы сошёлся.</p>
+
+        <p>Постоянная Эйлера-Маскерони γ описывает именно эту медленность: γ = lim<sub>n→∞</sub> (∑(k = 1..n) 1/k − ln n) ≈ 0.5772. Разность между гармоническим рядом и логарифмом стремится к константе — не к нулю, не к бесконечности.</p>
+
+        <p>∑ и ∫ — дискретное и непрерывное суммирование. Интеграл Римана определяется как предел суммы Римана при измельчении разбиения. ∑ → ∫ — это и есть идея математического анализа<em class="fn">3</em>. Один и тот же оператор, переводящий шаги в континуум.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Базельская задача поставлена Пьетро Менгoли в 1650, решена Эйлером в 1734. Строгое доказательство — через ряды Фурье, спустя ещё столетие.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">∑(k = 1..∞) 1/k<sup>s</sup> = ζ(s) — дзета-функция Римана. При s = 2 даёт π²/6. Для нечётных аргументов формул в замкнутом виде не известно.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">Тест Дирихле и тест Абеля — критерии сходимости знакочередующихся рядов. Без них работа с бесконечными суммами невозможна.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="integral.html">∫ — непрерывный аналог →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../constants/pi.html">π — ∑ 1/k² = π²/6 →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../constants/gamma.html">γ — постоянная Эйлера и гармонический ряд →</a></div>
+      <div class="related-link"><span class="related-link-type">гипотеза</span><a href="../hypotheses/riemann.html">гипотеза Римана — дзета-функция как сумма →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/operators/sum.html</span>
+  <a href="/null/man.html">about →</a>
+</footer>
+
+</body>
+</html>

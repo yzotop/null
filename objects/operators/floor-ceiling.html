@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>floor &amp; ceiling — null/objects/operators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / operators / ⌊⌋</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;">⌊⌋</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">оператор · №002</div>
+      <div class="obj-title">floor и ceiling</div>
+      <div class="obj-subtitle">⌊x⌋ — наибольшее целое ≤ x · ⌈x⌉ — наименьшее целое ≥ x</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">определение</td><td class="v mono">⌊x⌋ = max{n ∈ ℤ : n ≤ x} · ⌈x⌉ = min{n ∈ ℤ : n ≥ x}</td></tr>
+    <tr><td class="k">примеры</td><td class="v mono">⌊3.7⌋ = 3 · ⌈3.2⌉ = 4 · ⌊−1.5⌋ = −2 · ⌈−1.5⌉ = −1</td></tr>
+    <tr><td class="k">обозначение</td><td class="v">Кнут · «Искусство программирования», 1962</td></tr>
+    <tr><td class="k">тождество</td><td class="v mono">⌊a/n⌋ · n + (a mod n) = a</td></tr>
+    <tr><td class="k">парадокс</td><td class="v mono">⌊x⌋ + ⌊−x⌋ = −1, если x ∉ ℤ · = 0, если x ∈ ℤ</td></tr>
+    <tr><td class="k">связано</td><td class="v">натуральные числа · mod · ∑</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · 360 слов · 3 мин</div>
+    <h2 class="essay-title">Мост между <em>непрерывным</em> и дискретным.</h2>
+    <p class="essay-lead">вещественная прямая непрерывна. алгоритмы работают с целыми. floor и ceiling — переход между мирами.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Математика знает два мира: непрерывный и дискретный. Анализ живёт на вещественной прямой, где между любыми двумя числами бесконечно много других. Алгоритмы работают с целыми — индексами, счётчиками, адресами памяти. Floor и ceiling — операторы перехода между этими мирами.</p>
+
+        <p>⌊π⌋ = 3. ⌈π⌉ = 4. Простое округление? Нет — принципиальная операция. Бинарный поиск делит массив пополам: средний индекс = ⌊(left + right) / 2⌋. Если взять ceiling — алгоритм может зациклиться на крайних случаях. Выбор floor против ceiling в коде — не стилистика, а корректность<em class="fn">1</em>.</p>
+
+        <blockquote>Без floor нет алгоритма. Без алгоритма нет вычисления.</blockquote>
+
+        <p>Теория чисел полна floor-выражений. Формула Лежандра: показатель простого p в разложении n! равен ∑<sub>k≥1</sub> ⌊n/p<sup>k</sup>⌋. Сумма ⌊n/k⌋ по k от 1 до n даёт количество пар (a, b), где a делит b и b ≤ n. Решето Эратосфена скрытно считает floor на каждом шаге.</p>
+
+        <p>Тождества с floor и ceiling красивы и неочевидны. Для любого вещественного x: ⌊x⌋ + ⌊x + ½⌋ = ⌊2x⌋ — это формула Эрмита для удвоения. ⌊x⌋ + ⌊−x⌋ = 0, если x целое, и −1, если нет<em class="fn">2</em>. Пол и потолок несимметричны относительно нуля — потому что числовая прямая дискретизирована несимметрично.</p>
+
+        <p>Дробная часть: {x} = x − ⌊x⌋ — всегда в [0, 1). Это то, что остаётся, когда floor выбросил всё целое<em class="fn">3</em>. На функции {nα} строится теория равномерного распределения по модулю 1 — фундамент эргодической теории. Один оператор, и из него вырастает целый раздел математики.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">До Кнута использовали обозначение [x] — но оно конфликтует с обозначением целой части у разных авторов. ⌊⌋ убрало двусмысленность.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Это асимметрия определения: floor округляет в сторону −∞, а не в сторону нуля. Truncate (отбрасывание дробной части) — другая операция.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">Теорема Вейля о равномерном распределении: если α иррационально, то {nα} распределено в [0, 1) равномерно при n → ∞.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="mod.html">mod — тождество с floor →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="sum.html">∑ — суммы с floor в теории чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../types/natural.html">натуральные числа →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/operators/floor-ceiling.html</span>
+  <a href="/null/man.html">about →</a>
+</footer>
+
+</body>
+</html>

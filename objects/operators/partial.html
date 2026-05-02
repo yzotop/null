@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>∂ частная производная — null/objects/operators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / operators / ∂</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;">∂</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">оператор · №008</div>
+      <div class="obj-title">частная производная</div>
+      <div class="obj-subtitle">∂f/∂x — скорость изменения f по x при фиксированных остальных переменных</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">определение</td><td class="v mono">∂f/∂x = lim<sub>h→0</sub> [f(x+h, y, …) − f(x, y, …)] / h</td></tr>
+    <tr><td class="k">обозначение</td><td class="v">Лежандр · 1786 · курсивное d</td></tr>
+    <tr><td class="k">применение</td><td class="v">уравнения в частных производных · ML · термодинамика · квантмех</td></tr>
+    <tr><td class="k">уравнения</td><td class="v">теплопроводности · волновое · Шрёдингера — все через ∂</td></tr>
+    <tr><td class="k">связь с ∇</td><td class="v mono">∇f = (∂f/∂x, ∂f/∂y, ∂f/∂z)</td></tr>
+    <tr><td class="k">связано</td><td class="v">∇ · ∫ · комплексные числа</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · 360 слов · 3 мин</div>
+    <h2 class="essay-title">Как функция меняется по одной переменной — <em>пока остальные смотрят</em>.</h2>
+    <p class="essay-lead">мир многомерен. частная производная — способ изучать его по одному измерению за раз.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Обычная производная работает с функциями одной переменной: f(x), df/dx. Но большинство интересных функций зависят от многих. Температура в комнате — от x, y, z и времени t. Прибыль — от десятков параметров. Функция потерь нейросети — от миллиардов весов. Производная по одной переменной всех остальных не учитывает.</p>
+
+        <p>Частная производная ∂f/∂x — это обычная производная по x при условии, что все остальные переменные заморожены. Смотрим, как меняется f вдоль одной оси, остальные не трогаем. Простая идея, на которой держится почти вся современная физика.</p>
+
+        <blockquote>Уравнения в частных производных — это язык, на котором природа описывает себя.</blockquote>
+
+        <p>Уравнение теплопроводности: ∂u/∂t = α · ∂²u/∂x². Как температура меняется со временем — через то, как она меняется в пространстве. Одно уравнение с двумя частными производными описывает теплообмен в стержне, остывание планеты, диффузию запаха в воздухе. Решения этого уравнения, через ряды Фурье, открыли всю спектральную теорию<em class="fn">1</em>.</p>
+
+        <p>Уравнение Шрёдингера — фундамент квантовой механики — тоже написано через ∂: iℏ · ∂ψ/∂t = Ĥψ. Левая часть — как квантовое состояние меняется во времени; правая — гамильтониан, описывающий энергию системы. Без частной производной квантовой механики просто не существует.</p>
+
+        <p>В машинном обучении ∂L/∂wᵢ — частная производная функции потерь по i-му весу нейросети. Именно это вычисляет алгоритм обратного распространения ошибки. Современные модели обучаются, вычисляя миллиарды частных производных за каждый шаг<em class="fn">2</em>.</p>
+
+        <p>Условия Коши-Римана: ∂u/∂x = ∂v/∂y и ∂u/∂y = −∂v/∂x. Если функция комплексной переменной f = u + iv удовлетворяет этим условиям — она аналитична, и из неё вырастает вся теория функций комплексной переменной<em class="fn">3</em>. Опять одна операция — и за ней целая ветка математики.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Обозначение ∂ ввёл Лежандр в 1786, закрепил Якоби в 1840-х. До этого писали просто d, что путало с обычной производной.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Backpropagation (Rumelhart, Hinton, Williams, 1986) — это цепное правило для частных производных, применённое к графу вычислений нейросети.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">Теорема Клеро: ∂²f/∂x∂y = ∂²f/∂y∂x при непрерывности смешанных производных. Порядок дифференцирования не важен.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="nabla.html">∇ — набла как вектор из ∂ →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="integral.html">∫ — основная теорема анализа →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../types/complex.html">комплексные числа — условия Коши-Римана →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/operators/partial.html</span>
+  <a href="/null/man.html">about →</a>
+</footer>
+
+</body>
+</html>
