@@ -37,16 +37,37 @@
     margin-bottom: 18px;
   }
   .hero-title {
+    margin-bottom: 28px;
+    line-height: 1.1;
+  }
+  .hero-line-plain {
+    font-family: 'Inter', sans-serif;
+    font-size: 56px;
+    font-weight: 600;
+    color: #111;
+    letter-spacing: -0.02em;
+  }
+  .hero-line-mixed {
+    font-size: 56px;
+    line-height: 1.1;
+  }
+  .hero-plain {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #111;
+    letter-spacing: -0.02em;
+  }
+  .hero-accent {
     font-family: 'IM Fell English', serif;
     font-style: italic;
-    font-size: 64px; font-weight: 400;
-    line-height: 1.1; letter-spacing: -0.02em;
-    margin-bottom: 22px;
+    font-weight: 400;
+    color: #c44a32;
+    letter-spacing: -0.01em;
   }
   .hero-sub {
     font-family: 'IM Fell English', serif;
-    font-style: italic; font-size: 18px;
-    color: #666; line-height: 1.6;
+    font-style: italic; font-size: 17px;
+    color: #666; line-height: 1.7;
     max-width: 480px;
   }
 
@@ -185,7 +206,11 @@
 
   <header class="hero">
     <div class="hero-tag">математика как материя · since 2025</div>
-    <h1 class="hero-title">null.</h1>
+    <div class="hero-title">
+      <div class="hero-line-plain">Числа</div>
+      <div class="hero-line-mixed"><span class="hero-plain">не </span><span class="hero-accent">придумали.</span></div>
+      <div class="hero-line-mixed"><span class="hero-plain">Их </span><span class="hero-accent">нашли.</span></div>
+    </div>
     <p class="hero-sub">числа существовали до нас. простые числа, π, бесконечность — не изобретения, а открытия. этот сайт — картотека.</p>
   </header>
 
