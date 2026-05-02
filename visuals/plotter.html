@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>плоттер функций — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  #plotter { display: block; width: 100%; height: 480px; cursor: crosshair; }
+
+  .fn-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .fn-color {
+    width: 12px; height: 12px;
+    flex-shrink: 0;
+    border: none;
+  }
+  .fn-input {
+    flex: 1;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    background: var(--paper);
+    border: 1px solid #ddd;
+    padding: 6px 10px;
+    color: #111;
+    min-width: 0;
+  }
+  .fn-input:focus { outline: none; border-color: #111; }
+  .fn-input.error { border-color: var(--accent-red); }
+  .fn-remove {
+    background: transparent;
+    border: 1px solid #ddd;
+    color: #bbb;
+    width: 24px; height: 24px;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono);
+  }
+  .fn-remove:hover { border-color: var(--accent-red); color: var(--accent-red); }
+  #fn-add {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: transparent;
+    border: 1px solid #ddd;
+    color: #888;
+    padding: 5px 12px;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  #fn-add:hover { border-color: #111; color: #111; }
+
+  .range-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #888;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .range-input {
+    width: 64px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: var(--paper);
+    border: 1px solid #ddd;
+    padding: 4px 8px;
+    color: #111;
+    text-align: center;
+  }
+  .range-input:focus { outline: none; border-color: #111; }
+  .range-row button {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    background: transparent;
+    border: 1px solid #ddd;
+    color: #888;
+    padding: 4px 10px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+  }
+  .range-row button:hover { border-color: #111; color: #111; }
+
+  .preset-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .preset-btn {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    background: transparent;
+    border: 1px solid #ddd;
+    color: #888;
+    padding: 4px 10px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+  }
+  .preset-btn:hover { border-color: #111; color: #111; }
+
+  .panel {
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    margin-top: 16px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / plotter</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №006</div>
+    <div class="ttl">плоттер функций</div>
+    <div class="lead">введи формулу — увидишь график. несколько функций одновременно.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <section class="visual-canvas">
+    <canvas id="plotter"></canvas>
+  </section>
+
+  <div class="panel">
+    <div id="fn-list"></div>
+    <button id="fn-add">+ добавить функцию</button>
+  </div>
+
+  <div class="range-row">
+    <span>x от</span>
+    <input class="range-input" id="xMin" value="-10">
+    <span>до</span>
+    <input class="range-input" id="xMax" value="10">
+    <span style="margin-left:10px;">y от</span>
+    <input class="range-input" id="yMin" value="-3">
+    <span>до</span>
+    <input class="range-input" id="yMax" value="3">
+    <button id="resetView" style="margin-left:auto;">↺ сбросить вид</button>
+    <button id="exportPng">экспорт</button>
+  </div>
+
+  <div class="preset-row">
+    <button class="preset-btn" data-p="sin">sin(x)</button>
+    <button class="preset-btn" data-p="sq">x²</button>
+    <button class="preset-btn" data-p="inv">1/x</button>
+    <button class="preset-btn" data-p="sinc">sin(x)/x</button>
+    <button class="preset-btn" data-p="gauss">e^(-x²)</button>
+    <button class="preset-btn" data-p="sinx2">sin(x²)</button>
+    <button class="preset-btn" data-p="floor">floor(x)</button>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="visual-meta">
+    <div class="visual-description">
+      <p>Плоттер вычисляет f(x) для каждого пикселя по горизонтали. Формулы — стандартный JavaScript Math: sin, cos, tan, exp, log, sqrt, floor, abs, sinh, cosh, tanh, atan и так далее. Псевдонимы: ln(x) = log(x), pi = Math.PI, e = Math.E. Степень: используйте <code>x**2</code> или <code>pow(x, 2)</code>.</p>
+      <p>Колесо мыши — зум относительно курсора. Перетаскивание — панорамирование. Двойной клик — сброс вида. При наведении — координаты курсора и значения всех функций в этой точке.</p>
+    </div>
+    <div class="visual-params">
+      <div class="row"><span>шаг</span><span>1 px / pixel</span></div>
+      <div class="row"><span>точность</span><span>float64</span></div>
+      <div class="row"><span>функций</span><span>до 6 одновременно</span></div>
+      <div class="row"><span>зум</span><span>колесо · 2-кратный</span></div>
+      <div class="row"><span>сброс</span><span>двойной клик</span></div>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../objects/operators/sum.html">∑ — sin через ряд Тейлора →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../objects/operators/integral.html">∫ — площадь под графиком →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../objects/operators/partial.html">∂ — производная как наклон →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="ulam.html">спираль улама →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/plotter.html</span>
+  <a href="../man.html">about →</a>
+</footer>
+
+<script>
+(() => {
+  const cv = document.getElementById('plotter');
+  const ctx = cv.getContext('2d');
+
+  const COLORS = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c'];
+  const MAX_FN = 6;
+
+  // state
+  let fns = [];
+  let xMin = -10, xMax = 10, yMin = -3, yMax = 3;
+  let cursor = null; // {x, y} in canvas px
+  let dprScale = 1;
+
+  // fn entry: { formula, color, compiled, error }
+  const compile = (formula) => {
+    try {
+      const fn = new Function('x', `
+        const sin=Math.sin, cos=Math.cos, tan=Math.tan,
+              abs=Math.abs, sqrt=Math.sqrt, log=Math.log,
+              ln=Math.log, log2=Math.log2, log10=Math.log10,
+              exp=Math.exp, PI=Math.PI, pi=Math.PI, E=Math.E, e=Math.E,
+              floor=Math.floor, ceil=Math.ceil, round=Math.round,
+              pow=Math.pow, sign=Math.sign,
+              sinh=Math.sinh, cosh=Math.cosh, tanh=Math.tanh,
+              asin=Math.asin, acos=Math.acos, atan=Math.atan, atan2=Math.atan2,
+              min=Math.min, max=Math.max, hypot=Math.hypot;
+        return ${formula};
+      `);
+      // sanity check
+      const t = fn(1);
+      if (typeof t !== 'number') throw new Error('not number');
+      return { fn, error: null };
+    } catch (err) {
+      return { fn: null, error: err.message };
+    }
+  };
+
+  const sizeCanvas = () => {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = cv.getBoundingClientRect();
+    cv.width = Math.floor(rect.width * dpr);
+    cv.height = Math.floor(rect.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    dprScale = dpr;
+  };
+
+  // coord helpers
+  const dims = () => {
+    const rect = cv.getBoundingClientRect();
+    return { W: rect.width, H: rect.height };
+  };
+
+  const xToPx = (x, W) => ((x - xMin) / (xMax - xMin)) * W;
+  const yToPx = (y, H) => H - ((y - yMin) / (yMax - yMin)) * H;
+  const pxToX = (px, W) => xMin + (px / W) * (xMax - xMin);
+  const pxToY = (py, H) => yMin + ((H - py) / H) * (yMax - yMin);
+
+  // nice tick step
+  const niceStep = (range, target) => {
+    const raw = range / target;
+    const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    const norm = raw / mag;
+    let step;
+    if (norm < 1.5) step = 1;
+    else if (norm < 3) step = 2;
+    else if (norm < 7) step = 5;
+    else step = 10;
+    return step * mag;
+  };
+
+  const formatTick = (v) => {
+    if (Math.abs(v) < 1e-10) return '0';
+    if (Math.abs(v) >= 1000 || Math.abs(v) < 0.01) {
+      return v.toExponential(1);
+    }
+    const r = Math.round(v * 1000) / 1000;
+    return String(r);
+  };
+
+  const draw = () => {
+    const { W, H } = dims();
+    ctx.fillStyle = '#0c0c0d';
+    ctx.fillRect(0, 0, W, H);
+
+    // grid
+    const xStep = niceStep(xMax - xMin, 10);
+    const yStep = niceStep(yMax - yMin, 8);
+
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = '#1a1a1a';
+    ctx.beginPath();
+    for (let x = Math.ceil(xMin / xStep) * xStep; x <= xMax; x += xStep) {
+      const px = xToPx(x, W);
+      ctx.moveTo(px, 0); ctx.lineTo(px, H);
+    }
+    for (let y = Math.ceil(yMin / yStep) * yStep; y <= yMax; y += yStep) {
+      const py = yToPx(y, H);
+      ctx.moveTo(0, py); ctx.lineTo(W, py);
+    }
+    ctx.stroke();
+
+    // axes
+    ctx.strokeStyle = '#2a2a2a';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    if (yMin <= 0 && yMax >= 0) {
+      const py = yToPx(0, H);
+      ctx.moveTo(0, py); ctx.lineTo(W, py);
+    }
+    if (xMin <= 0 && xMax >= 0) {
+      const px = xToPx(0, W);
+      ctx.moveTo(px, 0); ctx.lineTo(px, H);
+    }
+    ctx.stroke();
+
+    // tick labels
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#444';
+    const yAxisX = (xMin <= 0 && xMax >= 0) ? xToPx(0, W) : 4;
+    const xAxisY = (yMin <= 0 && yMax >= 0) ? yToPx(0, H) : H - 4;
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    for (let x = Math.ceil(xMin / xStep) * xStep; x <= xMax; x += xStep) {
+      if (Math.abs(x) < 1e-10) continue;
+      const px = xToPx(x, W);
+      ctx.fillText(formatTick(x), px, Math.min(xAxisY + 4, H - 14));
+    }
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    for (let y = Math.ceil(yMin / yStep) * yStep; y <= yMax; y += yStep) {
+      if (Math.abs(y) < 1e-10) continue;
+      const py = yToPx(y, H);
+      ctx.fillText(formatTick(y), Math.min(yAxisX + 4, W - 40), py);
+    }
+
+    // origin label
+    if (xMin <= 0 && xMax >= 0 && yMin <= 0 && yMax >= 0) {
+      ctx.fillText('0', xToPx(0, W) + 4, yToPx(0, H) + 8);
+    }
+
+    // functions
+    ctx.lineWidth = 1.5;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    const PIX_STEP = 1;
+    const N = Math.floor(W / PIX_STEP);
+
+    for (const f of fns) {
+      if (!f.compiled || !f.compiled.fn) continue;
+      ctx.strokeStyle = f.color;
+      ctx.beginPath();
+      let prevValid = false;
+      let prevPy = 0;
+      for (let i = 0; i <= N; i++) {
+        const px = i * PIX_STEP;
+        const x = pxToX(px, W);
+        let y;
+        try { y = f.compiled.fn(x); } catch { y = NaN; }
+        const valid = Number.isFinite(y) && Math.abs(y) < 1e6;
+        if (!valid) { prevValid = false; continue; }
+        const py = yToPx(y, H);
+        // discontinuity check: huge vertical jumps off-screen
+        if (prevValid) {
+          if (Math.abs(py - prevPy) > H * 1.5) {
+            // probable asymptote; break the line
+            ctx.moveTo(px, py);
+          } else if ((prevPy < 0 && py > H) || (prevPy > H && py < 0)) {
+            ctx.moveTo(px, py);
+          } else {
+            ctx.lineTo(px, py);
+          }
+        } else {
+          ctx.moveTo(px, py);
+        }
+        prevValid = true;
+        prevPy = py;
+      }
+      ctx.stroke();
+    }
+
+    // cursor crosshair + readouts
+    if (cursor) {
+      const { px, py } = cursor;
+      const x = pxToX(px, W);
+      ctx.strokeStyle = '#222';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(px, 0); ctx.lineTo(px, H);
+      ctx.stroke();
+
+      // top-right readouts
+      ctx.font = '10px "JetBrains Mono", monospace';
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'top';
+      ctx.fillStyle = '#666';
+      ctx.fillText(`x = ${formatTick(x)}`, W - 8, 6);
+      let yOff = 22;
+      for (const f of fns) {
+        if (!f.compiled || !f.compiled.fn) continue;
+        let y;
+        try { y = f.compiled.fn(x); } catch { y = NaN; }
+        const txt = Number.isFinite(y) ? formatTick(y) : '—';
+        ctx.fillStyle = f.color;
+        ctx.fillText(`f = ${txt}`, W - 8, yOff);
+        // dot on curve
+        if (Number.isFinite(y) && Math.abs(y) < 1e6) {
+          const ypx = yToPx(y, H);
+          ctx.beginPath();
+          ctx.arc(px, ypx, 3, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        yOff += 14;
+      }
+    }
+  };
+
+  // fn list rendering
+  const fnList = document.getElementById('fn-list');
+  const renderFnList = () => {
+    fnList.innerHTML = '';
+    fns.forEach((f, i) => {
+      const row = document.createElement('div');
+      row.className = 'fn-row';
+      row.innerHTML = `
+        <span class="fn-color" style="background:${f.color}"></span>
+        <input class="fn-input" type="text" value="${f.formula.replace(/"/g, '&quot;')}" data-i="${i}">
+        <button class="fn-remove" data-i="${i}" title="удалить">×</button>
+      `;
+      fnList.appendChild(row);
+    });
+    fnList.querySelectorAll('.fn-input').forEach((inp) => {
+      const i = parseInt(inp.dataset.i, 10);
+      if (fns[i].compiled && fns[i].compiled.error) inp.classList.add('error');
+      inp.addEventListener('input', () => {
+        fns[i].formula = inp.value;
+        fns[i].compiled = compile(inp.value);
+        inp.classList.toggle('error', !!fns[i].compiled.error);
+        draw();
+      });
+    });
+    fnList.querySelectorAll('.fn-remove').forEach((b) => {
+      b.onclick = () => {
+        const i = parseInt(b.dataset.i, 10);
+        fns.splice(i, 1);
+        renderFnList();
+        draw();
+      };
+    });
+  };
+
+  const addFn = (formula) => {
+    if (fns.length >= MAX_FN) return;
+    const color = COLORS[fns.length % COLORS.length];
+    fns.push({ formula, color, compiled: compile(formula) });
+    renderFnList();
+  };
+
+  const setFns = (formulas) => {
+    fns = [];
+    formulas.forEach((f) => addFn(f));
+    renderFnList();
+  };
+
+  document.getElementById('fn-add').onclick = () => {
+    if (fns.length >= MAX_FN) return;
+    addFn('x');
+    draw();
+  };
+
+  // range inputs
+  const rangeInputs = ['xMin','xMax','yMin','yMax'];
+  const syncRangeFromUI = () => {
+    const a = parseFloat(document.getElementById('xMin').value);
+    const b = parseFloat(document.getElementById('xMax').value);
+    const c = parseFloat(document.getElementById('yMin').value);
+    const d = parseFloat(document.getElementById('yMax').value);
+    if (Number.isFinite(a) && Number.isFinite(b) && a < b) { xMin = a; xMax = b; }
+    if (Number.isFinite(c) && Number.isFinite(d) && c < d) { yMin = c; yMax = d; }
+    draw();
+  };
+  const syncUIFromRange = () => {
+    document.getElementById('xMin').value = formatTick(xMin);
+    document.getElementById('xMax').value = formatTick(xMax);
+    document.getElementById('yMin').value = formatTick(yMin);
+    document.getElementById('yMax').value = formatTick(yMax);
+  };
+  rangeInputs.forEach((id) => {
+    document.getElementById(id).addEventListener('change', syncRangeFromUI);
+  });
+
+  // reset / export
+  document.getElementById('resetView').onclick = () => {
+    xMin = -10; xMax = 10; yMin = -3; yMax = 3;
+    syncUIFromRange(); draw();
+  };
+  document.getElementById('exportPng').onclick = () => {
+    const link = document.createElement('a');
+    link.download = 'plotter.png';
+    link.href = cv.toDataURL('image/png');
+    link.click();
+  };
+
+  // presets
+  const PRESETS = {
+    sin:   { fns: ['sin(x)'], xr: [-2*Math.PI, 2*Math.PI], yr: [-1.5, 1.5] },
+    sq:    { fns: ['x*x', 'sqrt(abs(x))'], xr: [-5, 5], yr: [-1, 8] },
+    inv:   { fns: ['1/x'], xr: [-5, 5], yr: [-5, 5] },
+    sinc:  { fns: ['sin(x)/x'], xr: [-4*Math.PI, 4*Math.PI], yr: [-0.5, 1.2] },
+    gauss: { fns: ['exp(-x*x)'], xr: [-4, 4], yr: [-0.2, 1.2] },
+    sinx2: { fns: ['sin(x*x)'], xr: [-5, 5], yr: [-1.5, 1.5] },
+    floor: { fns: ['floor(x)', 'x'], xr: [-5, 5], yr: [-5, 5] }
+  };
+  document.querySelectorAll('.preset-btn').forEach((b) => {
+    b.onclick = () => {
+      const p = PRESETS[b.dataset.p];
+      if (!p) return;
+      setFns(p.fns);
+      xMin = p.xr[0]; xMax = p.xr[1];
+      yMin = p.yr[0]; yMax = p.yr[1];
+      syncUIFromRange();
+      draw();
+    };
+  });
+
+  // mouse: pan, zoom, hover, dblclick
+  let dragging = false, lastDrag = null;
+  cv.addEventListener('mousedown', (e) => {
+    dragging = true;
+    lastDrag = { x: e.clientX, y: e.clientY };
+    cv.style.cursor = 'grabbing';
+  });
+  window.addEventListener('mouseup', () => {
+    dragging = false;
+    cv.style.cursor = 'crosshair';
+  });
+  cv.addEventListener('mousemove', (e) => {
+    const rect = cv.getBoundingClientRect();
+    const px = e.clientX - rect.left;
+    const py = e.clientY - rect.top;
+    if (dragging) {
+      const { W, H } = dims();
+      const dx = (e.clientX - lastDrag.x) / W * (xMax - xMin);
+      const dy = (e.clientY - lastDrag.y) / H * (yMax - yMin);
+      xMin -= dx; xMax -= dx;
+      yMin += dy; yMax += dy;
+      lastDrag = { x: e.clientX, y: e.clientY };
+      syncUIFromRange();
+      cursor = null;
+      draw();
+    } else {
+      cursor = { px, py };
+      draw();
+    }
+  });
+  cv.addEventListener('mouseleave', () => { cursor = null; draw(); });
+  cv.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const rect = cv.getBoundingClientRect();
+    const px = e.clientX - rect.left;
+    const py = e.clientY - rect.top;
+    const { W, H } = dims();
+    const xc = pxToX(px, W);
+    const yc = pxToY(py, H);
+    const factor = e.deltaY > 0 ? 1.2 : 1/1.2;
+    xMin = xc + (xMin - xc) * factor;
+    xMax = xc + (xMax - xc) * factor;
+    yMin = yc + (yMin - yc) * factor;
+    yMax = yc + (yMax - yc) * factor;
+    syncUIFromRange();
+    draw();
+  }, { passive: false });
+  cv.addEventListener('dblclick', () => {
+    document.getElementById('resetView').click();
+  });
+
+  // boot
+  setFns(['sin(x)', 'cos(x)', 'x*x/10', 'tan(x)']);
+  sizeCanvas();
+  draw();
+
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => { sizeCanvas(); draw(); }, 120);
+  });
+})();
+</script>
+
+</body>
+</html>
