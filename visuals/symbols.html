@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>символы — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / symbols</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №008</div>
+    <div class="ttl">символы</div>
+    <div class="lead">все глифы проекта. размер — количество связей. цвет — тип.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="symbols-section-label">// символы проекта · <span id="activeCount">0</span> объектов</div>
+  <div class="symbols-wrap" id="active-symbols"></div>
+
+  <div class="symbols-legend" id="legend"></div>
+
+  <hr class="section-divider-soft">
+
+  <div class="symbols-section-label">// математический unicode · контекст</div>
+
+  <div class="unicode-row">
+    <div class="unicode-row-label">греческий алфавит</div>
+    <div class="unicode-chars" id="row-greek"></div>
+  </div>
+
+  <div class="unicode-row">
+    <div class="unicode-row-label">математические операторы</div>
+    <div class="unicode-chars" id="row-ops"></div>
+  </div>
+
+  <div class="unicode-row">
+    <div class="unicode-row-label">математические буквы и символы</div>
+    <div class="unicode-chars" id="row-letters"></div>
+  </div>
+
+  <div class="unicode-row">
+    <div class="unicode-row-label">геометрические фигуры и блоки</div>
+    <div class="unicode-chars" id="row-geom"></div>
+  </div>
+
+  <div class="unicode-row">
+    <div class="unicode-row-label">стрелки и прочее</div>
+    <div class="unicode-chars" id="row-arrows"></div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="visual-meta">
+    <div class="visual-description">
+      <p>Каждый символ на сайте — это объект с историей. Размер плитки отражает количество связей с другими объектами в графе. π и простые числа — самые связанные. Серые символы из тех же Unicode-блоков просто соседствуют с активными по диапазону, но в проекте не используются.</p>
+      <p>Нажмите на любой активный символ — откроется его страница. Наведите — увидите title, тип и количество связей.</p>
+    </div>
+    <div class="visual-params">
+      <div class="row"><span>активных символов</span><span id="metaActive">–</span></div>
+      <div class="row"><span>максимум связей</span><span><span id="metaMaxConn">–</span> у <span id="metaMaxSym">–</span></span></div>
+      <div class="row"><span>Unicode блоков</span><span>5</span></div>
+      <div class="row"><span>размер</span><span>24 → 96 px</span></div>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/map.html">граф объектов →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="prime-field.html">поле простых →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/pi.html">π — самый связанный →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/symbols.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<div class="symbol-tooltip" id="tip"></div>
+
+<script>
+(async () => {
+  const COLORS = {
+    constant:   '#111',
+    type:       '#2c5fb6',
+    special:    '#c44a32',
+    theorem:    '#1a7a4a',
+    hypothesis: '#e67e22',
+    operator:   '#8e44ad',
+    problem:    '#16a085',
+    curious:    '#b7950b',
+    essay:      '#777',
+    visual:     '#999'
+  };
+  const TYPE_RU = {
+    constant:'константа', type:'тип', special:'особенное',
+    theorem:'теорема', hypothesis:'гипотеза', operator:'оператор',
+    problem:'задача', curious:'любопытное', essay:'эссе', visual:'визуал'
+  };
+  const TYPE_RU_PLURAL = {
+    constant:'константы', type:'типы', special:'особенные',
+    theorem:'теоремы', hypothesis:'гипотезы', operator:'операторы',
+    problem:'задачи', curious:'любопытные', essay:'эссе', visual:'визуалы'
+  };
+
+  const data = await fetch('../data/links.json').then(r => r.json());
+
+  // count connections per node id
+  const conn = {};
+  data.nodes.forEach(n => conn[n.id] = 0);
+  data.edges.forEach(e => {
+    if (conn[e.from] !== undefined) conn[e.from]++;
+    if (conn[e.to]   !== undefined) conn[e.to]++;
+  });
+  const maxConn = Math.max(...Object.values(conn), 1);
+
+  // active glyph map: glyph string → first node with that glyph (most connected wins ties)
+  const glyphToNode = {};
+  data.nodes
+    .slice()
+    .sort((a, b) => conn[b.id] - conn[a.id])
+    .forEach(n => {
+      if (!glyphToNode[n.glyph]) glyphToNode[n.glyph] = n;
+    });
+
+  // ─── Active section: render every node as a tile ───
+  const wrap = document.getElementById('active-symbols');
+  const sortedNodes = data.nodes
+    .slice()
+    .sort((a, b) => conn[b.id] - conn[a.id]);
+
+  document.getElementById('activeCount').textContent = sortedNodes.length;
+  document.getElementById('metaActive').textContent = sortedNodes.length;
+  const top = sortedNodes[0];
+  document.getElementById('metaMaxConn').textContent = conn[top.id];
+  document.getElementById('metaMaxSym').textContent = top.title;
+
+  const minSize = 24, maxSize = 96;
+  for (const n of sortedNodes) {
+    const c = conn[n.id];
+    const size = minSize + (c / maxConn) * (maxSize - minSize);
+    const a = document.createElement('a');
+    a.className = 'symbol-tile';
+    a.href = n.url;
+    a.dataset.title = n.title;
+    a.dataset.type = TYPE_RU[n.type] || n.type;
+    a.dataset.conn = c;
+    a.style.setProperty('--type-color', COLORS[n.type] || '#888');
+    a.style.borderColor = '';
+    a.innerHTML = `
+      <span class="symbol-connections">${c}</span>
+      <span class="symbol-glyph" style="font-size:${size.toFixed(0)}px;color:${COLORS[n.type] || '#888'};">${n.glyph}</span>
+      <span class="symbol-type-label">${TYPE_RU[n.type] || n.type}</span>
+    `;
+    wrap.appendChild(a);
+  }
+
+  // tooltip + hover-coloring on tiles
+  const tip = document.getElementById('tip');
+  document.querySelectorAll('.symbol-tile').forEach(t => {
+    t.addEventListener('mouseenter', () => {
+      t.style.borderColor = t.style.getPropertyValue('--type-color');
+      tip.innerHTML = `${t.dataset.title} · ${t.dataset.type} · ${t.dataset.conn} связей`;
+      tip.style.display = 'block';
+    });
+    t.addEventListener('mousemove', (e) => {
+      tip.style.left = (e.clientX + 14) + 'px';
+      tip.style.top = (e.clientY + 14) + 'px';
+    });
+    t.addEventListener('mouseleave', () => {
+      t.style.borderColor = '';
+      tip.style.display = 'none';
+    });
+  });
+
+  // ─── Legend ───
+  const legend = document.getElementById('legend');
+  Object.entries(TYPE_RU_PLURAL).forEach(([t, label]) => {
+    const el = document.createElement('span');
+    el.className = 'lg';
+    el.innerHTML = `<span class="dot" style="background:${COLORS[t]}"></span>${label}`;
+    legend.appendChild(el);
+  });
+
+  // ─── Unicode rows ───
+  const rows = {
+    'row-greek': 'αβγδεζηθικλμνξοπρστυφχψω ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ',
+    'row-ops':   '∀∁∂∃∄∅∆∇∈∉∊∋∌∍∎∏∐∑−∓∔∕∖∗∘∙√∛∜∝∞∟∠∡∢∣∤∥∦∧∨∩∪∫∬∭∮∯∰∱∲∳∴∵∶∷∸∹∺∻∼∽∾∿≀≁≂≃≄≅≆≇≈≉≊≋≌≍≎≏≐≑≒≓≔≕≖≗≘≙≚≛≜≝≞≟≠≡≢≣≤≥≦≧≨≩≪≫≬≭≮≯≰≱≲≳≴≵⊂⊃⊄⊅⊆⊇⊈⊉⊊⊋⊌⊍⊎⊏⊐⊑⊒⊓⊔⊕⊖⊗⊘⊙⊚⊛⊜⊝⊞⊟⊠⊡⊢⊣⊤⊥⊦⊧⊨⊩⊪⊫⊬⊭⊮⊯',
+    'row-letters':'ℂ℃℄℅℆ℇ℈℉ℊℋℌℍℎℏℐℑℒℓ℔ℕ№℗℘ℙℚℛℜℝ℞℟℠℡™℣ℤ℥Ω℧ℨ℩KÅℬℭ℮ℯℰℱℲℳℴℵℶℷℸℹ℺℻ℼℽℾℿ𝕋𝔠',
+    'row-geom':  '■□▢▣▤▥▦▧▨▩▪▫▬▭▮▯▰▱△▲▴▵▶▷▸▹►▻▼▽▾▿◀◁◂◃◄◅◆◇◈◉◊○◌◍◎●◐◑◒◓◔◕◖◗◘◙◚◛◜◝◞◟◠◡◢◣◤◥◦◧◨◩◪◫◬◭◮◯░▒▓█▔▕',
+    'row-arrows':'←↑→↓↔↕↖↗↘↙↚↛↜↝↞↟↠↡↢↣↤↥↦↧↨↩↪↫↬↭↮↯↰↱↲↳↴↵↶↷↸↹↺↻⇒⇔⟶⟷⟹⌊⌋⌈⌉⌀⌂⌘⌛⌜⌝⌞⌟'
+  };
+
+  // helper: lookup node by single-character glyph
+  const findNodeByChar = (ch) => {
+    return glyphToNode[ch] || null;
+  };
+
+  for (const [rowId, chars] of Object.entries(rows)) {
+    const row = document.getElementById(rowId);
+    for (const ch of chars) {
+      if (ch === ' ') {
+        const sp = document.createElement('span');
+        sp.style.width = '12px';
+        sp.style.display = 'inline-block';
+        row.appendChild(sp);
+        continue;
+      }
+      const node = findNodeByChar(ch);
+      if (node) {
+        const a = document.createElement('a');
+        a.className = 'uc active';
+        a.href = node.url;
+        a.style.color = COLORS[node.type] || '#888';
+        a.style.setProperty('--type-color', COLORS[node.type] || '#888');
+        a.dataset.title = node.title;
+        a.dataset.type = TYPE_RU[node.type] || node.type;
+        a.dataset.conn = conn[node.id];
+        a.textContent = ch;
+        a.addEventListener('mouseenter', () => {
+          tip.innerHTML = `${a.dataset.title} · ${a.dataset.type} · ${a.dataset.conn} связей`;
+          tip.style.display = 'block';
+        });
+        a.addEventListener('mousemove', (e) => {
+          tip.style.left = (e.clientX + 14) + 'px';
+          tip.style.top = (e.clientY + 14) + 'px';
+        });
+        a.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
+        row.appendChild(a);
+      } else {
+        const sp = document.createElement('span');
+        sp.className = 'uc';
+        sp.textContent = ch;
+        row.appendChild(sp);
+      }
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
