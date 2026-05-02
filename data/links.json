@@ -51,7 +51,13 @@
     { "id": "vi-ulam", "type": "visual", "title": "спираль улама", "url": "/null/visuals/ulam.html", "glyph": "◯" },
     { "id": "vi-pascal", "type": "visual", "title": "треугольник паскаля", "url": "/null/visuals/pascal.html", "glyph": "△" },
     { "id": "vi-plotter", "type": "visual", "title": "плоттер функций", "url": "/null/visuals/plotter.html", "glyph": "ƒ" },
-    { "id": "vi-collatz", "type": "visual", "title": "коллатц", "url": "/null/visuals/collatz.html", "glyph": "↯" }
+    { "id": "vi-collatz", "type": "visual", "title": "коллатц", "url": "/null/visuals/collatz.html", "glyph": "↯" },
+    { "id": "cu-37", "type": "curious", "title": "37", "url": "/null/objects/curious/37.html", "glyph": "37" },
+    { "id": "cu-42", "type": "curious", "title": "42", "url": "/null/objects/curious/42.html", "glyph": "42" },
+    { "id": "cu-1729", "type": "curious", "title": "1729", "url": "/null/objects/curious/1729.html", "glyph": "⊞" },
+    { "id": "cu-6174", "type": "curious", "title": "6174", "url": "/null/objects/curious/6174.html", "glyph": "6174" },
+    { "id": "cu-graham", "type": "curious", "title": "число Грэма", "url": "/null/objects/curious/graham.html", "glyph": "G" },
+    { "id": "cu-minus12", "type": "curious", "title": "−1/12", "url": "/null/objects/curious/minus-one-twelfth.html", "glyph": "−¹⁄₁₂" }
   ],
   "edges": [
     { "from": "pi", "to": "transcendental" },
@@ -155,6 +161,20 @@
     { "from": "vi-collatz", "to": "op-mod" },
     { "from": "vi-plotter", "to": "op-integral" },
     { "from": "vi-plotter", "to": "op-partial" },
-    { "from": "vi-plotter", "to": "op-sum" }
+    { "from": "vi-plotter", "to": "op-sum" },
+    { "from": "cu-37", "to": "prime" },
+    { "from": "cu-37", "to": "pr-secretary" },
+    { "from": "cu-37", "to": "euler" },
+    { "from": "cu-42", "to": "prime" },
+    { "from": "cu-42", "to": "fundamental" },
+    { "from": "cu-1729", "to": "natural" },
+    { "from": "cu-1729", "to": "op-sum" },
+    { "from": "cu-6174", "to": "natural" },
+    { "from": "cu-6174", "to": "op-mod" },
+    { "from": "cu-graham", "to": "natural" },
+    { "from": "cu-graham", "to": "op-factorial" },
+    { "from": "cu-minus12", "to": "riemann" },
+    { "from": "cu-minus12", "to": "op-sum" },
+    { "from": "cu-minus12", "to": "natural" }
   ]
 }
