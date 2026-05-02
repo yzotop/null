@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>парадокс Монти Холла — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .mh-frame {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .mh-round {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #bbb;
+    letter-spacing: 0.06em;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .mh-question {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    color: #111;
+    text-align: center;
+    margin: 20px 0 28px;
+    min-height: 32px;
+    line-height: 1.3;
+    transition: color 0.3s;
+  }
+  .mh-question.win  { color: #2ecc71; }
+  .mh-question.lose { color: var(--accent-red); }
+
+  .doors-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin: 32px 0;
+    perspective: 800px;
+  }
+  .door {
+    width: 120px;
+    height: 180px;
+    position: relative;
+    cursor: default;
+    background: #f0ede8;
+    border: 2px solid #ddd;
+    border-radius: 4px 4px 0 0;
+    transition: border-color 0.2s, background 0.25s, transform 0.15s;
+    transform-style: preserve-3d;
+  }
+  .door .arch {
+    background: #e8e4dc;
+    height: 22px;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid #d8d2c4;
+  }
+  .door .num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 38px;
+    color: #bbb;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: color 0.2s, opacity 0.3s;
+  }
+  .door .knob {
+    position: absolute;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #ccc;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.2s;
+  }
+  .door .content {
+    position: absolute;
+    inset: 22px 0 0 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .door .content .icon {
+    font-size: 44px;
+    line-height: 1;
+  }
+  .door .content .label {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 14px;
+    color: #888;
+    margin-top: 6px;
+  }
+
+  .door.hoverable { cursor: pointer; }
+  .door.hoverable:hover {
+    border-color: #555;
+    transform: translateY(-3px);
+  }
+  .door.selected {
+    border-color: #111;
+  }
+  .door.selected .num { color: #111; }
+
+  @keyframes doorOpen {
+    0%   { transform: perspective(800px) rotateY(0deg); }
+    100% { transform: perspective(800px) rotateY(-72deg); }
+  }
+  .door.opening {
+    transform-origin: left center;
+    animation: doorOpen 0.55s ease-in-out forwards;
+  }
+  .door.opened {
+    background: var(--paper);
+    border-style: dashed;
+    border-color: #ddd;
+  }
+  .door.opened .num,
+  .door.opened .knob,
+  .door.opened .arch { opacity: 0; }
+  .door.opened .content { display: flex; }
+  .door.opened.has-car {
+    border-color: #111;
+    border-style: solid;
+    background: #faf8f0;
+  }
+  .door.opened.has-car .content .icon { color: #111; }
+  .door.opened.has-car .content .label { color: #111; }
+
+  .door.winner {
+    border-color: #2ecc71 !important;
+    border-style: solid !important;
+    background: #f0faf0 !important;
+  }
+  .door.winner .content .icon,
+  .door.winner .content .label { color: #2ecc71 !important; }
+
+  .door.loser {
+    border-color: var(--accent-red) !important;
+    background: #fdf5f5 !important;
+  }
+  .door.loser .content .icon,
+  .door.loser .content .label { color: var(--accent-red) !important; }
+
+  /* picked indicator (small dot above) */
+  .door .pick-mark {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--accent-red);
+    letter-spacing: 0.1em;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .door.selected .pick-mark { opacity: 1; }
+
+  .mh-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    margin: 8px 0 24px;
+    min-height: 48px;
+  }
+  .choice-btn {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 12px 28px;
+    cursor: pointer;
+    border: 1.5px solid #111;
+    background: transparent;
+    color: #111;
+    letter-spacing: 0.05em;
+    transition: all 0.15s;
+    text-transform: lowercase;
+  }
+  .choice-btn:hover {
+    background: #111;
+    color: #f7f6f2;
+  }
+  .choice-btn.switch {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+  }
+  .choice-btn.switch:hover {
+    background: var(--accent-red);
+    color: #f7f6f2;
+  }
+  .next-btn {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 10px 22px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #555;
+    letter-spacing: 0.04em;
+  }
+  .next-btn:hover { border-color: #111; color: #111; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 24px 0 12px;
+  }
+  .stats-cell {
+    background: var(--paper);
+    padding: 16px 18px;
+  }
+  .stats-cell .label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .stats-cell .wins {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 36px;
+    color: #111;
+    line-height: 1;
+    margin: 8px 0 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .stats-cell .of {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #bbb;
+  }
+  .stats-cell .pct {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: #555;
+    margin-top: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .stats-cell.switch .pct { color: var(--accent-red); }
+  .stats-cell .bar {
+    height: 2px;
+    background: var(--border);
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stats-cell .bar .fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: #555;
+    transition: width 0.3s ease;
+    width: 0%;
+  }
+  .stats-cell.switch .bar .fill { background: var(--accent-red); }
+
+  .theory {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #bbb;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .auto-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+  .auto-controls button {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 6px 14px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #888;
+    letter-spacing: 0.04em;
+  }
+  .auto-controls button:hover { border-color: #111; color: #111; }
+
+  .why-toggle {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #888;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 8px 0;
+    margin-top: 8px;
+    letter-spacing: 0.04em;
+    border-bottom: 1px dotted #ccc;
+  }
+  .why-toggle:hover { color: var(--accent-red); border-color: var(--accent-red); }
+
+  .explanation {
+    background: var(--paper-mid);
+    padding: 22px 24px;
+    margin: 16px 0 24px;
+    display: none;
+  }
+  .explanation.open { display: block; }
+  .explanation .title {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .explanation p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.65;
+    margin-bottom: 8px;
+  }
+  .explanation canvas {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    height: 64px;
+    margin: 16px auto 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / monty-hall</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №009</div>
+    <div class="ttl">парадокс Монти Холла</div>
+    <div class="lead">три двери · одна машина · всегда меняй выбор.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="mh-frame">
+
+    <div class="mh-round">раунд <span id="roundNum">1</span></div>
+    <div class="mh-question" id="question">выбери дверь.</div>
+
+    <div class="doors-row" id="doors">
+      <div class="door" data-i="0">
+        <div class="pick-mark">твой выбор</div>
+        <div class="arch"></div>
+        <div class="num">1</div>
+        <div class="knob"></div>
+        <div class="content"><div class="icon"></div><div class="label"></div></div>
+      </div>
+      <div class="door" data-i="1">
+        <div class="pick-mark">твой выбор</div>
+        <div class="arch"></div>
+        <div class="num">2</div>
+        <div class="knob"></div>
+        <div class="content"><div class="icon"></div><div class="label"></div></div>
+      </div>
+      <div class="door" data-i="2">
+        <div class="pick-mark">твой выбор</div>
+        <div class="arch"></div>
+        <div class="num">3</div>
+        <div class="knob"></div>
+        <div class="content"><div class="icon"></div><div class="label"></div></div>
+      </div>
+    </div>
+
+    <div class="mh-actions" id="actions"></div>
+
+    <div class="stats-grid">
+      <div class="stats-cell stay">
+        <div class="label">остаться</div>
+        <div class="wins" id="stayWins">0</div>
+        <div class="of">из <span id="stayTotal">0</span> игр</div>
+        <div class="pct"><span id="stayPct">—</span></div>
+        <div class="bar"><div class="fill" id="stayFill"></div></div>
+      </div>
+      <div class="stats-cell switch">
+        <div class="label">поменять</div>
+        <div class="wins" id="switchWins">0</div>
+        <div class="of">из <span id="switchTotal">0</span> игр</div>
+        <div class="pct"><span id="switchPct">—</span></div>
+        <div class="bar"><div class="fill" id="switchFill"></div></div>
+      </div>
+    </div>
+    <div class="theory">теория: остаться → 33.3% · поменять → 66.7%</div>
+
+    <div class="auto-controls">
+      <button id="auto100">▶▶ авто 100</button>
+      <button id="auto1000">▶▶▶ авто 1000</button>
+      <button id="reset">↺ сбросить</button>
+    </div>
+
+    <button class="why-toggle" id="whyToggle">почему 2/3?</button>
+
+    <div class="explanation" id="explanation">
+      <div class="title">// объяснение</div>
+      <p>когда ты выбирал: <strong>P(машина за твоей дверью) = 1/3</strong></p>
+      <p><strong>P(машина за одной из двух других) = 2/3</strong></p>
+      <p>ведущий убрал одну пустую — вся вероятность 2/3 перешла на оставшуюся закрытую.</p>
+      <canvas id="probCanvas" width="720" height="128"></canvas>
+    </div>
+
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="visual-meta">
+    <div class="visual-description">
+      <p>Ведущий знает, где машина — и всегда открывает дверь с козой. Это не случайное действие, а информация. Информация обновляет вероятности по правилу Байеса — от 1/3 до 2/3.</p>
+      <p>Симуляция на 1000 раундов убеждает лучше любого доказательства. Большинство людей, увидевших соотношение ~333 к ~667, перестают спорить.</p>
+    </div>
+    <div class="visual-params">
+      <div class="row"><span>оптимальная стратегия</span><span>поменять</span></div>
+      <div class="row"><span>P(выигрыш) при смене</span><span>2/3 ≈ 66.7%</span></div>
+      <div class="row"><span>P(выигрыш) если остаться</span><span>1/3 ≈ 33.3%</span></div>
+      <div class="row"><span>обобщение</span><span>N дверей: P = (N−1)/N при смене</span></div>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/monty-hall.html">парадокс Монти Холла — полная статья →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/secretary.html">задача о невесте — оптимальный выбор →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/simpson.html">парадокс Симпсона — интуиция против данных →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/monty-hall.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+(() => {
+  const doors = [...document.querySelectorAll('.door')];
+  const actionsEl = document.getElementById('actions');
+  const questionEl = document.getElementById('question');
+  const roundNumEl = document.getElementById('roundNum');
+
+  const stats = { stay: { w: 0, t: 0 }, switch: { w: 0, t: 0 } };
+  let round = 1;
+  let phase = 0;
+  let prize = -1, picked = -1, opened = -1;
+  let busy = false;
+
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+  const setQuestion = (text, cls = '') => {
+    questionEl.className = 'mh-question ' + cls;
+    questionEl.textContent = text;
+  };
+
+  const resetDoors = () => {
+    doors.forEach(d => {
+      d.className = 'door';
+      d.querySelector('.content .icon').textContent = '';
+      d.querySelector('.content .label').textContent = '';
+    });
+    actionsEl.innerHTML = '';
+  };
+
+  const startRound = () => {
+    if (busy) return;
+    resetDoors();
+    prize = Math.floor(Math.random() * 3);
+    picked = -1; opened = -1; phase = 1;
+    roundNumEl.textContent = round;
+    setQuestion('выбери дверь.');
+    doors.forEach(d => d.classList.add('hoverable'));
+  };
+
+  const onPick = async (i) => {
+    if (phase !== 1 || busy) return;
+    busy = true;
+    picked = i;
+    doors.forEach(d => d.classList.remove('hoverable'));
+    doors[i].classList.add('selected');
+    await sleep(420);
+
+    // Phase 2: host opens
+    phase = 2;
+    setQuestion('ведущий открывает дверь с козой…');
+    const choices = [0, 1, 2].filter(x => x !== picked && x !== prize);
+    opened = choices[Math.floor(Math.random() * choices.length)];
+
+    doors[opened].classList.add('opening');
+    await sleep(560);
+    doors[opened].classList.remove('opening');
+    doors[opened].classList.add('opened');
+    doors[opened].querySelector('.content .icon').textContent = '🐐';
+    doors[opened].querySelector('.content .label').textContent = 'коза';
+    await sleep(700);
+
+    // Phase 3: choose
+    phase = 3;
+    setQuestion('менять или остаться?');
+    actionsEl.innerHTML = `
+      <button class="choice-btn" id="stayBtn">остаться</button>
+      <button class="choice-btn switch" id="switchBtn">← поменять</button>
+    `;
+    document.getElementById('stayBtn').onclick = () => decide('stay');
+    document.getElementById('switchBtn').onclick = () => decide('switch');
+    busy = false;
+  };
+
+  const decide = async (strategy) => {
+    if (phase !== 3 || busy) return;
+    busy = true;
+    actionsEl.innerHTML = '';
+    const final = (strategy === 'switch')
+      ? [0, 1, 2].find(x => x !== picked && x !== opened)
+      : picked;
+
+    if (strategy === 'switch') {
+      doors[picked].classList.remove('selected');
+      doors[final].classList.add('selected');
+    }
+    await sleep(280);
+
+    // Phase 4: reveal all remaining
+    phase = 4;
+    setQuestion('открываем двери…');
+    const toReveal = [0, 1, 2].filter(i => i !== opened);
+    for (const i of toReveal) {
+      doors[i].classList.add('opening');
+      await sleep(260);
+      doors[i].classList.remove('opening');
+      doors[i].classList.add('opened');
+      const isCar = (i === prize);
+      doors[i].querySelector('.content .icon').textContent = isCar ? '◆' : '🐐';
+      doors[i].querySelector('.content .label').textContent = isCar ? 'машина' : 'коза';
+      if (isCar) doors[i].classList.add('has-car');
+      await sleep(120);
+    }
+
+    const won = (final === prize);
+    doors[final].classList.add(won ? 'winner' : 'loser');
+
+    stats[strategy].t++;
+    if (won) stats[strategy].w++;
+    updateStats();
+
+    setQuestion(won
+      ? (strategy === 'switch' ? 'поменял → выиграл ✓' : 'остался → выиграл ✓')
+      : (strategy === 'switch' ? 'поменял → проиграл ✗' : 'остался → проиграл ✗'),
+      won ? 'win' : 'lose'
+    );
+
+    await sleep(900);
+    actionsEl.innerHTML = `<button class="next-btn" id="nextBtn">следующий раунд →</button>`;
+    document.getElementById('nextBtn').onclick = () => {
+      round++;
+      busy = false;
+      startRound();
+    };
+    busy = false;
+  };
+
+  const updateStats = () => {
+    const fmt = (s) => s.t > 0 ? (100 * s.w / s.t).toFixed(1) + '%' : '—';
+    document.getElementById('stayWins').textContent = stats.stay.w;
+    document.getElementById('stayTotal').textContent = stats.stay.t;
+    document.getElementById('stayPct').textContent = fmt(stats.stay);
+    document.getElementById('switchWins').textContent = stats.switch.w;
+    document.getElementById('switchTotal').textContent = stats.switch.t;
+    document.getElementById('switchPct').textContent = fmt(stats.switch);
+    document.getElementById('stayFill').style.width =
+      (stats.stay.t > 0 ? (100 * stats.stay.w / stats.stay.t) : 0) + '%';
+    document.getElementById('switchFill').style.width =
+      (stats.switch.t > 0 ? (100 * stats.switch.w / stats.switch.t) : 0) + '%';
+  };
+
+  const runBatch = (n) => {
+    if (busy) return;
+    for (let r = 0; r < n; r++) {
+      const p = Math.floor(Math.random() * 3);
+      const myPick = Math.floor(Math.random() * 3);
+      const opts = [0, 1, 2].filter(x => x !== myPick && x !== p);
+      const op = opts[Math.floor(Math.random() * opts.length)];
+      const swapTo = [0, 1, 2].find(x => x !== myPick && x !== op);
+      // alternate strategies fairly
+      if (r % 2 === 0) {
+        stats.stay.t++; if (myPick === p) stats.stay.w++;
+      } else {
+        stats.switch.t++; if (swapTo === p) stats.switch.w++;
+      }
+    }
+    updateStats();
+  };
+
+  document.getElementById('auto100').onclick = () => runBatch(100);
+  document.getElementById('auto1000').onclick = () => runBatch(1000);
+  document.getElementById('reset').onclick = () => {
+    stats.stay = { w: 0, t: 0 };
+    stats.switch = { w: 0, t: 0 };
+    round = 1;
+    updateStats();
+    startRound();
+  };
+
+  doors.forEach(d => d.addEventListener('click', () => onPick(parseInt(d.dataset.i, 10))));
+
+  // why toggle + canvas
+  const explanation = document.getElementById('explanation');
+  document.getElementById('whyToggle').onclick = (e) => {
+    explanation.classList.toggle('open');
+    e.target.textContent = explanation.classList.contains('open') ? 'свернуть' : 'почему 2/3?';
+    if (explanation.classList.contains('open')) drawProb();
+  };
+
+  const drawProb = () => {
+    const cv = document.getElementById('probCanvas');
+    const ctx = cv.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const rect = cv.getBoundingClientRect();
+    cv.width = rect.width * dpr;
+    cv.height = rect.height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const W = rect.width, H = rect.height;
+    ctx.fillStyle = 'transparent';
+    ctx.clearRect(0, 0, W, H);
+
+    const padX = 12;
+    const usableW = W - padX * 2;
+    const w1 = usableW / 3;     // твоя дверь (1/3)
+    const w2 = (2 * usableW) / 3; // другие две (2/3)
+    const y = 8, h = 44;
+
+    // your door
+    ctx.fillStyle = '#e8e8e4';
+    ctx.fillRect(padX, y, w1, h);
+    ctx.strokeStyle = '#bbb';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(padX + 0.5, y + 0.5, w1 - 1, h - 1);
+
+    // others
+    ctx.fillStyle = 'rgba(196, 74, 50, 0.25)';
+    ctx.fillRect(padX + w1, y, w2, h);
+    ctx.strokeStyle = '#c44a32';
+    ctx.strokeRect(padX + w1 + 0.5, y + 0.5, w2 - 1, h - 1);
+
+    // dashed split inside «другие» — visualization that one is removed
+    const halfW = w2 / 2;
+    ctx.setLineDash([3, 3]);
+    ctx.strokeStyle = '#c44a32';
+    ctx.beginPath();
+    ctx.moveTo(padX + w1 + halfW, y);
+    ctx.lineTo(padX + w1 + halfW, y + h);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // X mark on the removed door (right half)
+    ctx.strokeStyle = '#888';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    const cx = padX + w1 + halfW + halfW / 2;
+    const cy = y + h / 2;
+    ctx.moveTo(cx - 8, cy - 8); ctx.lineTo(cx + 8, cy + 8);
+    ctx.moveTo(cx + 8, cy - 8); ctx.lineTo(cx - 8, cy + 8);
+    ctx.stroke();
+
+    // labels
+    ctx.font = '11px "JetBrains Mono", monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#888';
+    ctx.fillText('твоя дверь', padX + w1 / 2, y + h / 2 - 4);
+    ctx.fillStyle = '#888';
+    ctx.fillText('1/3', padX + w1 / 2, y + h / 2 + 10);
+
+    ctx.fillStyle = '#c44a32';
+    ctx.fillText('оставшаяся', padX + w1 + halfW / 2, y + h / 2 - 4);
+    ctx.fillText('2/3', padX + w1 + halfW / 2, y + h / 2 + 10);
+
+    // bottom annotation
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#bbb';
+    ctx.textAlign = 'center';
+    ctx.fillText('вся вероятность 2/3 теперь на одной двери', W / 2, H - 8);
+  };
+
+  // boot
+  startRound();
+})();
+</script>
+
+</body>
+</html>
