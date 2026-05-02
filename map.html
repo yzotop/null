@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>граф объектов — null/map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/main.css">
+<style>
+  .map-frame {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    border: 1px solid var(--border);
+    background: var(--paper);
+    overflow: hidden;
+  }
+  #graph { width: 100%; height: 100%; display: block; cursor: grab; }
+  #graph:active { cursor: grabbing; }
+  .map-legend {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(247, 246, 242, 0.92);
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #777;
+    line-height: 1.7;
+    pointer-events: none;
+    backdrop-filter: blur(2px);
+  }
+  .map-legend .lg-row {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .map-legend .lg-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .map-tip {
+    position: absolute;
+    pointer-events: none;
+    background: #111;
+    color: #f7f6f2;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 6px 10px;
+    border: 1px solid #333;
+    transform: translate(-50%, -130%);
+    white-space: nowrap;
+    display: none;
+    z-index: 10;
+  }
+  .map-tip .t { display: block; color: #bbb; font-size: 9px; margin-top: 2px; }
+
+  .map-controls {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: 11px; color: #888;
+    margin-top: 16px;
+  }
+  .map-controls label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .map-controls input[type=checkbox] {
+    accent-color: #111;
+    cursor: pointer;
+  }
+  .map-controls button {
+    background: transparent; border: 1px solid #ddd; color: #888;
+    padding: 4px 12px; cursor: pointer;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em;
+  }
+  .map-controls button:hover { border-color: #111; color: #111; }
+
+  .node-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    fill: #555;
+    pointer-events: none;
+    text-anchor: middle;
+  }
+  .node-glyph {
+    font-family: var(--font-serif);
+    font-style: italic;
+    fill: #f7f6f2;
+    pointer-events: none;
+    text-anchor: middle;
+    dominant-baseline: central;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="./">null</a>
+  <nav>
+    <a href="objects/">объекты</a>
+    <a href="essays/">эссе</a>
+    <a href="visuals/">визуалы</a>
+    <a href="music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / map</div>
+
+<main class="container">
+
+  <header class="visual-header">
+    <div class="num">карта · все связи</div>
+    <div class="ttl">граф объектов</div>
+    <div class="lead">все сущности проекта и связи между ними. наведи — увидишь соседей. кликни — перейдёшь.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="map-frame">
+    <svg id="graph"></svg>
+    <div class="map-legend" id="legend"></div>
+    <div class="map-tip" id="tip"></div>
+  </div>
+
+  <div class="map-controls" id="filters"></div>
+
+  <div class="map-controls">
+    <button id="reset">↺ сбросить</button>
+    <button id="zoomIn">+ zoom</button>
+    <button id="zoomOut">− zoom</button>
+    <span class="read" id="stats" style="margin-left:auto;color:#bbb;">—</span>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <span>/null/map.html</span>
+  <span><a href="man.html">about →</a> · <a href="/null/map.html">map →</a></span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+(async () => {
+  const TYPE_RU = {
+    constant:   'константы',
+    type:       'типы',
+    special:    'особенные',
+    theorem:    'теоремы',
+    hypothesis: 'гипотезы',
+    operator:   'операторы',
+    problem:    'задачи',
+    essay:      'эссе',
+    visual:     'визуалы'
+  };
+  const COLORS = {
+    constant:   '#111',
+    type:       '#2c5fb6',
+    special:    '#c44a32',
+    theorem:    '#1a7a4a',
+    hypothesis: '#e67e22',
+    operator:   '#8e44ad',
+    problem:    '#16a085',
+    essay:      '#777',
+    visual:     '#bbb'
+  };
+
+  const data = await fetch('data/links.json').then(r => r.json());
+
+  // build legend + filters
+  const enabled = {};
+  Object.keys(TYPE_RU).forEach(t => enabled[t] = true);
+
+  const legend = document.getElementById('legend');
+  legend.innerHTML = Object.entries(TYPE_RU).map(([t, label]) =>
+    `<div class="lg-row"><span class="lg-dot" style="background:${COLORS[t]}"></span>${label}</div>`
+  ).join('');
+
+  const filters = document.getElementById('filters');
+  filters.innerHTML = Object.entries(TYPE_RU).map(([t, label]) =>
+    `<label><input type="checkbox" data-t="${t}" checked> ${label}</label>`
+  ).join('');
+  filters.querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('change', () => {
+      enabled[inp.dataset.t] = inp.checked;
+      applyFilter();
+    });
+  });
+
+  const svg = d3.select('#graph');
+  const tip = document.getElementById('tip');
+  const stats = document.getElementById('stats');
+
+  let width = 0, height = 0;
+  const measure = () => {
+    const rect = svg.node().getBoundingClientRect();
+    width = rect.width;
+    height = rect.height;
+    svg.attr('viewBox', `0 0 ${width} ${height}`);
+  };
+  measure();
+
+  // root group for zoom
+  const g = svg.append('g');
+  const zoom = d3.zoom()
+    .scaleExtent([0.25, 4])
+    .on('zoom', (e) => {
+      g.attr('transform', e.transform);
+      g.selectAll('.node-label').style('opacity', e.transform.k > 1.5 ? 1 : 0);
+    });
+  svg.call(zoom);
+  svg.on('dblclick.zoom', null);
+  svg.on('dblclick', () => svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity));
+
+  // edges
+  const linkSel = g.append('g').attr('stroke', '#e0e0e0').attr('stroke-width', 1).selectAll('line');
+  // nodes
+  const nodeSel = g.append('g').selectAll('g.node');
+
+  // copy nodes/edges so d3 can mutate
+  const nodes = data.nodes.map(n => ({ ...n }));
+  const byId = Object.fromEntries(nodes.map(n => [n.id, n]));
+  const edges = data.edges
+    .filter(e => byId[e.from] && byId[e.to])
+    .map(e => ({ source: e.from, target: e.to }));
+
+  const simulation = d3.forceSimulation(nodes)
+    .force('link', d3.forceLink(edges).id(d => d.id).distance(80))
+    .force('charge', d3.forceManyBody().strength(-180))
+    .force('center', d3.forceCenter(width / 2, height / 2))
+    .force('collision', d3.forceCollide(20));
+
+  // render
+  const links = linkSel.data(edges).enter().append('line');
+
+  const groups = nodeSel.data(nodes).enter().append('g')
+    .attr('class', 'node')
+    .style('cursor', 'pointer')
+    .call(d3.drag()
+      .on('start', (e, d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+      .on('drag',  (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on('end',   (e, d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; })
+    )
+    .on('mouseover', (e, d) => onHover(d, true))
+    .on('mouseout',  (e, d) => onHover(d, false))
+    .on('click', (e, d) => { window.location.href = d.url; });
+
+  groups.append('circle')
+    .attr('r', 14)
+    .attr('fill', d => COLORS[d.type] || '#888')
+    .attr('stroke', '#f7f6f2')
+    .attr('stroke-width', 1.5);
+
+  groups.append('text')
+    .attr('class', 'node-glyph')
+    .attr('font-size', 11)
+    .text(d => d.glyph);
+
+  groups.append('text')
+    .attr('class', 'node-label')
+    .attr('y', 26)
+    .text(d => d.title)
+    .style('opacity', 0);
+
+  // edge index for hover highlighting
+  const adj = {};
+  nodes.forEach(n => adj[n.id] = new Set());
+  edges.forEach(e => {
+    const s = typeof e.source === 'object' ? e.source.id : e.source;
+    const t = typeof e.target === 'object' ? e.target.id : e.target;
+    adj[s].add(t);
+    adj[t].add(s);
+  });
+
+  const onHover = (d, on) => {
+    if (on) {
+      const neighbors = adj[d.id];
+      groups.selectAll('circle')
+        .attr('r', n => n.id === d.id ? 18 : 14)
+        .attr('opacity', n => (n.id === d.id || neighbors.has(n.id)) ? 1 : 0.2);
+      groups.selectAll('.node-glyph').attr('opacity', n => (n.id === d.id || neighbors.has(n.id)) ? 1 : 0.2);
+      groups.selectAll('.node-label').style('opacity', n => (n.id === d.id || neighbors.has(n.id)) ? 1 : 0);
+      links.attr('stroke', l => {
+        const sId = typeof l.source === 'object' ? l.source.id : l.source;
+        const tId = typeof l.target === 'object' ? l.target.id : l.target;
+        return (sId === d.id || tId === d.id) ? '#111' : '#e0e0e0';
+      }).attr('stroke-opacity', l => {
+        const sId = typeof l.source === 'object' ? l.source.id : l.source;
+        const tId = typeof l.target === 'object' ? l.target.id : l.target;
+        return (sId === d.id || tId === d.id) ? 1 : 0.15;
+      });
+      // tooltip
+      const frame = svg.node().getBoundingClientRect();
+      const transform = d3.zoomTransform(svg.node());
+      const sx = d.x * transform.k + transform.x;
+      const sy = d.y * transform.k + transform.y;
+      tip.style.left = (sx) + 'px';
+      tip.style.top = (sy - 12) + 'px';
+      tip.innerHTML = `${d.title}<span class="t">${TYPE_RU[d.type] || d.type}</span>`;
+      tip.style.display = 'block';
+    } else {
+      groups.selectAll('circle').attr('r', 14).attr('opacity', 1);
+      groups.selectAll('.node-glyph').attr('opacity', 1);
+      const t = d3.zoomTransform(svg.node());
+      groups.selectAll('.node-label').style('opacity', t.k > 1.5 ? 1 : 0);
+      links.attr('stroke', '#e0e0e0').attr('stroke-opacity', 1);
+      tip.style.display = 'none';
+    }
+  };
+
+  simulation.on('tick', () => {
+    links
+      .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+    groups.attr('transform', d => `translate(${d.x}, ${d.y})`);
+  });
+
+  const applyFilter = () => {
+    let visibleNodes = 0, visibleEdges = 0;
+    groups.style('display', d => {
+      const ok = enabled[d.type];
+      if (ok) visibleNodes++;
+      return ok ? null : 'none';
+    });
+    links.style('display', d => {
+      const sType = (typeof d.source === 'object' ? d.source : byId[d.source]).type;
+      const tType = (typeof d.target === 'object' ? d.target : byId[d.target]).type;
+      const ok = enabled[sType] && enabled[tType];
+      if (ok) visibleEdges++;
+      return ok ? null : 'none';
+    });
+    stats.textContent = `узлов: ${visibleNodes} · связей: ${visibleEdges}`;
+  };
+  applyFilter();
+
+  document.getElementById('reset').onclick = () => {
+    svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
+    Object.keys(enabled).forEach(t => enabled[t] = true);
+    filters.querySelectorAll('input').forEach(i => { i.checked = true; });
+    applyFilter();
+  };
+  document.getElementById('zoomIn').onclick = () => svg.transition().call(zoom.scaleBy, 1.4);
+  document.getElementById('zoomOut').onclick = () => svg.transition().call(zoom.scaleBy, 1/1.4);
+
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => {
+      measure();
+      simulation.force('center', d3.forceCenter(width / 2, height / 2));
+      simulation.alpha(0.5).restart();
+    }, 200);
+  });
+})();
+</script>
+
+</body>
+</html>

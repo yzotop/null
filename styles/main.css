@@ -516,6 +516,9 @@ table.meta td.v.mono { font-family: var(--font-mono); font-size: 12px; }
 }
 .related-link a:hover { color: var(--accent-red); }
 
+/* ─────── backlinks ─────── */
+.backlinks { margin-top: 32px; }
+
 /* ─────── visuals ─────── */
 .visual-canvas {
   margin: 0 -40px;
