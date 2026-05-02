@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>разорение игрока — null/objects/problems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .simulation { margin: 40px 0; }
+  .sim-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .sim-controls {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: 11px; color: #999;
+    margin-bottom: 14px;
+  }
+  .sim-controls input[type=range] {
+    width: 160px; height: 1px;
+    -webkit-appearance: none; appearance: none;
+    background: #ddd; outline: none;
+  }
+  .sim-controls input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 10px; height: 10px; background: #111; cursor: pointer;
+  }
+  .sim-controls button {
+    background: transparent; border: 1px solid #ddd; color: #888;
+    padding: 4px 12px; cursor: pointer;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em;
+  }
+  .sim-controls button:hover { border-color: #111; color: #111; }
+  .sim-controls .read { color: #111; font-variant-numeric: tabular-nums; }
+  #walk {
+    display: block; width: 100%; height: 240px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+  }
+  .sim-stats {
+    font-family: var(--font-mono); font-size: 12px;
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 6px 16px; margin-top: 16px; max-width: 540px;
+  }
+  .sim-stats .sk { color: #bbb; }
+  .sim-stats .sv { color: #111; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / problems / разорение игрока</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;">∅</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">задача · №005</div>
+      <div class="obj-title">разорение игрока</div>
+      <div class="obj-subtitle">почему казино всегда выигрывает — даже при честной монете</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">формулировка</td><td class="v">игрок: капитал k, казино: N−k, ставка ±1, до разорения одного из них</td></tr>
+    <tr><td class="k">P(выигрыш) при p=½</td><td class="v mono">k / N</td></tr>
+    <tr><td class="k">при p &lt; ½</td><td class="v mono">P(выигрыш) → 0 экспоненциально</td></tr>
+    <tr><td class="k">бесконечное казино</td><td class="v">P → 0 при любом p ≤ ½</td></tr>
+    <tr><td class="k">класс задач</td><td class="v">случайное блуждание с поглощающими барьерами</td></tr>
+    <tr><td class="k">связано</td><td class="v">вероятность · ∑ · натуральные числа</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · 500 слов · 5 мин</div>
+    <h2 class="essay-title">Против <em>бесконечного</em> кармана.</h2>
+    <p class="essay-lead">даже при честной монете игрок с малым капиталом против богатого казино проиграет. это не несправедливость — это математика случайных блужданий.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Представьте: у вас $10. У казино — $990. Всего $1000 в игре. Монета честная — орёл/решка с вероятностью 50/50. При орле вы получаете $1, при решке — отдаёте $1. Игра продолжается, пока кто-то не разорится. Какова вероятность, что разоритесь именно вы?</p>
+
+        <p>Расчёт даёт неожиданный ответ. P(ваш проигрыш) = 1 − k/N = 1 − 10/1000 = 99%. Девяносто девять процентов. При честной монете. Без всякого мошенничества. Это просто следствие того, что вас и казино разделяет огромная асимметрия в начальном капитале.</p>
+
+        <p>Математически это задача о случайном блуждании с поглощающими барьерами<em class="fn">1</em>. Два барьера — 0 (ваше разорение) и N (разорение казино). Капитал игрока совершает случайные шаги ±1, пока не достигнет одного из барьеров. При честной монете вероятность достичь N раньше, чем 0, равна k/N — пропорциональна начальному капиталу. Это аналог формулы для электрического потенциала: точка с координатой k между «землёй» 0 и «зарядом» N имеет потенциал ровно k/N.</p>
+
+        <blockquote>Казино не обманывает. Оно просто богаче.</blockquote>
+
+        <p>Что происходит, если монета чуть-чуть нечестная — p &lt; 0.5, то есть казино имеет преимущество? Формула становится сложнее: P(игрок выиграет) = (1 − (q/p)<sup>k</sup>) / (1 − (q/p)<sup>N</sup>), где q = 1 − p. И когда мы устремляем N → ∞ (бесконечное казино), это выражение стремится к нулю при любом p ≤ ½. Не «к маленькой величине» — к строгому нулю.</p>
+
+        <p>Численно: при p = 0.499 (казино имеет преимущество всего 0.1%) и капитале игрока k = 100 против бесконечного казино — P(выиграть) ≈ e<sup>−0.2</sup> ≈ 0.0000045%. Шанс на победу — пренебрежимо мал. Достаточно крошечного отклонения монеты от честной, чтобы экспонента сделала своё дело.</p>
+
+        <p>Вот почему казино работает как бизнес. Не нужно мошенничать. Достаточно сделать каждую игру чуть-чуть невыгодной для игрока (что встроено в правила: рулетка с зеро, дом-эдж в покере, маленькое отклонение в блэкджеке) — и случайное блуждание сделает остальное<em class="fn">2</em>. Бесконечный карман побеждает любой конечный.</p>
+
+        <p>Случайное блуждание — фундаментальный процесс в математике и физике. Броуновское движение частицы пыльцы в воде. Диффузия молекул газа. Цены акций в модели Блэка-Шоулза. Все они описываются одним и тем же механизмом: маленький шаг в случайном направлении, снова и снова, пока не достигнем границы<em class="fn">3</em>. Игрок и казино — крошечный частный случай этого универсального процесса.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Задача о разорении игрока — одна из первых в теории вероятностей, обсуждалась в переписке Паскаля и Ферма, 1654.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Дом-эдж рулетки с одним зеро ≈ 2.7%; с двумя зеро (American) ≈ 5.26%. Микроскопически в каждой ставке, катастрофически в перспективе.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">Модель Блэка-Шоулза (1973): цена опциона через геометрическое броуновское движение. Нобелевская премия по экономике 1997.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="simulation">
+    <hr class="section-divider-soft">
+    <div class="sim-label">// симуляция</div>
+
+    <div class="sim-controls">
+      <span>капитал игрока k</span>
+      <input type="range" id="grK" min="1" max="50" step="1" value="10">
+      <span class="read" id="grKVal">10</span>
+      <span style="margin-left:10px;">капитал казино</span>
+      <input type="range" id="grC" min="10" max="500" step="10" value="90">
+      <span class="read" id="grCVal">90</span>
+    </div>
+
+    <div class="sim-controls">
+      <span>p (выигрыш игрока)</span>
+      <input type="range" id="grP" min="0.30" max="0.70" step="0.005" value="0.500">
+      <span class="read" id="grPVal">0.500</span>
+      <span style="margin-left:10px;">N = k + casino =</span>
+      <span class="read" id="grN">100</span>
+    </div>
+
+    <canvas id="walk"></canvas>
+
+    <div class="sim-controls">
+      <button id="grRun">▶ играть (с анимацией)</button>
+      <button id="grBatch">▶▶ 1000 игр</button>
+      <button id="grReset">↺ сброс</button>
+    </div>
+
+    <div class="sim-stats">
+      <span class="sk">сыграно</span>           <span class="sv" id="grTotal">0</span>
+      <span class="sk">игрок выиграл</span>     <span class="sv" id="grWins">0</span>
+      <span class="sk">эмпирически</span>       <span class="sv" id="grEmpPct">—</span>
+      <span class="sk">теория</span>            <span class="sv" id="grTheory">10.0%</span>
+      <span class="sk">средние шаги</span>      <span class="sv" id="grAvgSteps">—</span>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../types/natural.html">натуральные числа →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../operators/sum.html">∑ — блуждание как сумма шагов →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="monty-hall.html">Монти Холл — вероятность и интуиция →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/pseudorandom.html">случайность, которой нет →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/problems/gamblers-ruin.html</span>
+  <a href="/null/man.html">about →</a>
+</footer>
+
+<script>
+(() => {
+  let k = 10, casino = 90, p = 0.5;
+  let stats = { total: 0, wins: 0, totalSteps: 0 };
+  let trajectory = [];
+  let animRunning = false;
+
+  const cv = document.getElementById('walk');
+  const ctx = cv.getContext('2d');
+
+  const N = () => k + casino;
+
+  const updateLabels = () => {
+    document.getElementById('grKVal').textContent = k;
+    document.getElementById('grCVal').textContent = casino;
+    document.getElementById('grPVal').textContent = p.toFixed(3);
+    document.getElementById('grN').textContent = N();
+    // theory: at p=0.5 → k/N; otherwise full formula
+    let theory;
+    if (Math.abs(p - 0.5) < 1e-6) {
+      theory = k / N();
+    } else {
+      const r = (1 - p) / p;
+      theory = (1 - Math.pow(r, k)) / (1 - Math.pow(r, N()));
+    }
+    document.getElementById('grTheory').textContent = (theory * 100).toFixed(1) + '%';
+  };
+
+  const sizeCanvas = () => {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = cv.getBoundingClientRect();
+    cv.width = rect.width * dpr;
+    cv.height = rect.height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+
+  const draw = (currentIdx) => {
+    const rect = cv.getBoundingClientRect();
+    const W = rect.width, H = rect.height;
+    ctx.fillStyle = '#f7f6f2';
+    ctx.fillRect(0, 0, W, H);
+
+    const padL = 36, padR = 12, padT = 12, padB = 24;
+    const usableW = W - padL - padR;
+    const usableH = H - padT - padB;
+    const Nv = N();
+    const yToPx = (v) => padT + usableH - (v / Nv) * usableH;
+
+    // barriers
+    ctx.strokeStyle = '#c44a32';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(padL, yToPx(0)); ctx.lineTo(W - padR, yToPx(0));
+    ctx.moveTo(padL, yToPx(Nv)); ctx.lineTo(W - padR, yToPx(Nv));
+    ctx.stroke();
+
+    // labels
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#c44a32';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('N (разорение казино)', padL - 4, yToPx(Nv));
+    ctx.fillText('0 (разорение игрока)', padL - 4, yToPx(0));
+    // initial k line
+    ctx.strokeStyle = '#ddd';
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath();
+    ctx.moveTo(padL, yToPx(k)); ctx.lineTo(W - padR, yToPx(k));
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#bbb';
+    ctx.fillText(`k = ${k}`, padL - 4, yToPx(k));
+
+    // trajectory
+    if (trajectory.length > 1) {
+      const upto = currentIdx === undefined ? trajectory.length : Math.min(trajectory.length, currentIdx + 1);
+      const xToPx = (i) => padL + (i / Math.max(1, trajectory.length - 1)) * usableW;
+      ctx.strokeStyle = '#111';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      for (let i = 0; i < upto; i++) {
+        const px = xToPx(i), py = yToPx(trajectory[i]);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+
+      // current point
+      const last = upto - 1;
+      const px = xToPx(last), py = yToPx(trajectory[last]);
+      const final = (upto === trajectory.length);
+      const won = final && trajectory[last] >= Nv;
+      const lost = final && trajectory[last] <= 0;
+      ctx.fillStyle = won ? '#2ecc71' : lost ? '#c44a32' : '#111';
+      ctx.beginPath();
+      ctx.arc(px, py, final ? 5 : 3, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  };
+
+  const playGame = () => {
+    let cap = k;
+    const Nv = N();
+    const traj = [cap];
+    let safety = 0;
+    while (cap > 0 && cap < Nv && safety < 200000) {
+      cap += (Math.random() < p) ? 1 : -1;
+      traj.push(cap);
+      safety++;
+    }
+    return { won: cap >= Nv, trajectory: traj };
+  };
+
+  const updateStats = () => {
+    document.getElementById('grTotal').textContent = stats.total;
+    document.getElementById('grWins').textContent = stats.wins;
+    document.getElementById('grEmpPct').textContent = stats.total > 0
+      ? (100 * stats.wins / stats.total).toFixed(1) + '%' : '—';
+    document.getElementById('grAvgSteps').textContent = stats.total > 0
+      ? Math.round(stats.totalSteps / stats.total).toLocaleString('ru') : '—';
+  };
+
+  document.getElementById('grRun').onclick = () => {
+    if (animRunning) return;
+    animRunning = true;
+    const result = playGame();
+    trajectory = result.trajectory;
+    let i = 0;
+    const stepFrame = () => {
+      i = Math.min(trajectory.length - 1, i + 8);
+      draw(i);
+      if (i < trajectory.length - 1) {
+        requestAnimationFrame(stepFrame);
+      } else {
+        stats.total++;
+        if (result.won) stats.wins++;
+        stats.totalSteps += trajectory.length - 1;
+        updateStats();
+        animRunning = false;
+      }
+    };
+    requestAnimationFrame(stepFrame);
+  };
+
+  document.getElementById('grBatch').onclick = () => {
+    let lastTraj = null;
+    let lastWon = false;
+    for (let r = 0; r < 1000; r++) {
+      const result = playGame();
+      stats.total++;
+      if (result.won) stats.wins++;
+      stats.totalSteps += result.trajectory.length - 1;
+      lastTraj = result.trajectory;
+      lastWon = result.won;
+    }
+    trajectory = lastTraj;
+    draw();
+    updateStats();
+  };
+
+  document.getElementById('grReset').onclick = () => {
+    stats = { total: 0, wins: 0, totalSteps: 0 };
+    trajectory = [];
+    draw();
+    updateStats();
+  };
+
+  document.getElementById('grK').addEventListener('input', (e) => {
+    k = parseInt(e.target.value, 10);
+    stats = { total: 0, wins: 0, totalSteps: 0 };
+    trajectory = [];
+    updateLabels(); draw(); updateStats();
+  });
+  document.getElementById('grC').addEventListener('input', (e) => {
+    casino = parseInt(e.target.value, 10);
+    stats = { total: 0, wins: 0, totalSteps: 0 };
+    trajectory = [];
+    updateLabels(); draw(); updateStats();
+  });
+  document.getElementById('grP').addEventListener('input', (e) => {
+    p = parseFloat(e.target.value);
+    stats = { total: 0, wins: 0, totalSteps: 0 };
+    trajectory = [];
+    updateLabels(); draw(); updateStats();
+  });
+
+  // boot
+  updateLabels();
+  sizeCanvas();
+  draw();
+  updateStats();
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => { sizeCanvas(); draw(); }, 120);
+  });
+})();
+</script>
+
+</body>
+</html>

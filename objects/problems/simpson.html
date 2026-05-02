@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>парадокс Симпсона — null/objects/problems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .simulation { margin: 40px 0; }
+  .sim-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  table.sim-table {
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    margin: 16px 0;
+    width: 100%;
+    max-width: 600px;
+  }
+  table.sim-table th, table.sim-table td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: center;
+    color: #111;
+  }
+  table.sim-table th {
+    background: var(--paper-mid);
+    font-weight: 500;
+    color: #888;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  table.sim-table td.label {
+    text-align: left;
+    color: #888;
+    font-size: 11px;
+    background: #faf9f5;
+  }
+  table.sim-table input {
+    width: 56px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: var(--paper);
+    border: 1px solid #ddd;
+    padding: 3px 6px;
+    text-align: center;
+    color: #111;
+  }
+  table.sim-table input:focus { outline: none; border-color: #111; }
+  table.sim-table .pct { color: #555; font-size: 11px; }
+  .verdict {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #555;
+    margin-top: 14px;
+    line-height: 1.7;
+  }
+  .verdict .a { color: #c44a32; }
+  .verdict .b { color: #2c5fb6; }
+  .warn {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / problems / парадокс Симпсона</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;">∩</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">задача · №002</div>
+      <div class="obj-title">парадокс Симпсона</div>
+      <div class="obj-subtitle">группа A лучше B в каждой подгруппе — но хуже в целом</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">формулировка</td><td class="v mono">a/b &gt; c/d и e/f &gt; g/h, но (a+e)/(b+f) &lt; (c+g)/(d+h)</td></tr>
+    <tr><td class="k">открыт</td><td class="v">Эдвард Симпсон · 1951 · известен раньше</td></tr>
+    <tr><td class="k">причина</td><td class="v">скрытая переменная (confounder), искажающая агрегацию</td></tr>
+    <tr><td class="k">применение</td><td class="v">медицинские исследования · спортивная статистика · найм</td></tr>
+    <tr><td class="k">опасность</td><td class="v">неправильная агрегация меняет вывод на противоположный</td></tr>
+    <tr><td class="k">связано</td><td class="v">статистика · вероятность · натуральные числа</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · 580 слов · 5 мин</div>
+    <h2 class="essay-title">Когда данные говорят <em>обратное</em>.</h2>
+    <p class="essay-lead">препарат A эффективнее препарата B для мужчин. и для женщин. но в целом — хуже. это не ошибка, это парадокс Симпсона.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">В 1973 году Калифорнийский университет в Беркли обвинили в дискриминации женщин при поступлении. Данные казались очевидными: мужчин принимали в 44% случаев, женщин — в 35%. Разрыв в девять процентных пунктов. Дискриминация?</p>
+
+        <p>Исследователи изучили данные по факультетам и обнаружили обратное: по большинству факультетов женщин принимали с той же или большей вероятностью, чем мужчин. Парадокс? Нет — парадокс Симпсона<em class="fn">1</em>.</p>
+
+        <p>Объяснение оказалось простым. Женщины чаще подавали заявления на конкурентные факультеты с низким процентом приёма (например, английская филология). Мужчины — на факультеты с высоким процентом приёма (инженерия). Агрегированная статистика создала иллюзию дискриминации, которой на уровне отдельных факультетов не было.</p>
+
+        <blockquote>Данные не лгут. Но агрегация данных лжёт охотно.</blockquote>
+
+        <p>Математический пример. Препарат A помогает 70 из 100 мужчин (70%) и 10 из 20 женщин (50%). Препарат B — 20 из 40 мужчин (50%) и 65 из 100 женщин (65%). По мужчинам A лучше (70% против 50%); по женщинам B лучше (65% против 50%). А что в сумме? A: 80 / 120 = 66.7%. B: 85 / 140 = 60.7%. В сумме A лучше.</p>
+
+        <p>Поменяйте размеры подгрупп — и направление неравенства может развернуться. Это и есть суть парадокса: знак неравенства между подгруппами и знак неравенства между агрегатами могут быть противоположны, если веса подгрупп распределены по-разному.</p>
+
+        <p>Где это критично:</p>
+
+        <p>Клинические испытания. Если не стратифицировать по возрасту, полу или сопутствующим заболеваниям — препарат может выглядеть лучше или хуже, чем есть на самом деле. FDA с 1970-х требует обязательной стратификации именно из-за этой причины.</p>
+
+        <p>Спортивная статистика. Дерек Джетер уступал Дэвиду Джастису по batting average каждый сезон с 1995 по 1997 год — но выиграл по итоговому трёхлетнему среднему<em class="fn">2</em>. Тот же феномен.</p>
+
+        <p>Алгоритмы найма и принятия решений. Система может казаться нейтральной по агрегату и при этом дискриминировать на уровне подгрупп — или наоборот. Это уже не теоретическая угроза: ML-модели регулярно демонстрируют такие эффекты.</p>
+
+        <p>Защита одна — всегда смотреть на подгруппы. Агрегированная статистика может скрывать confounding variable, скрытую переменную, которая одновременно влияет и на распределение наблюдений, и на интересующий нас результат<em class="fn">3</em>. Без анализа структуры данных любой вывод из агрегатов — гадание.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Bickel, Hammel, O'Connell, «Sex Bias in Graduate Admissions: Data from Berkeley», Science, 1975.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Джетер 1995–97: 0.250 / 0.314 / 0.291. Джастис: 0.253 / 0.321 / 0.329. По каждому году Джастис лучше; по сумме — Джетер: 385/1284 vs 312/1046.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">Confounding variable — третий фактор, статистически связанный и с предиктором, и с откликом. Пирлов do-исчисление формализует, как с этим работать.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="simulation">
+    <hr class="section-divider-soft">
+    <div class="sim-label">// симуляция</div>
+
+    <p style="font-family:var(--font-mono);font-size:11px;color:#888;margin-bottom:8px;">
+      редактируй любые числа — таблица пересчитывается автоматически.
+    </p>
+
+    <table class="sim-table">
+      <tr>
+        <th></th>
+        <th>мужчины</th>
+        <th>женщины</th>
+        <th>итого</th>
+      </tr>
+      <tr>
+        <td class="label">препарат A</td>
+        <td><input id="aMs" value="70"> / <input id="aMt" value="100"><div class="pct" id="aMp">70%</div></td>
+        <td><input id="aFs" value="10"> / <input id="aFt" value="20"><div class="pct" id="aFp">50%</div></td>
+        <td><span id="aTs">80</span> / <span id="aTt">120</span><div class="pct" id="aTp">66.7%</div></td>
+      </tr>
+      <tr>
+        <td class="label">препарат B</td>
+        <td><input id="bMs" value="20"> / <input id="bMt" value="40"><div class="pct" id="bMp">50%</div></td>
+        <td><input id="bFs" value="65"> / <input id="bFt" value="100"><div class="pct" id="bFp">65%</div></td>
+        <td><span id="bTs">85</span> / <span id="bTt">140</span><div class="pct" id="bTp">60.7%</div></td>
+      </tr>
+    </table>
+
+    <div class="verdict">
+      <div>по мужчинам: <span class="a" id="vM">A лучше</span></div>
+      <div>по женщинам: <span class="a" id="vF">B лучше</span></div>
+      <div>в целом:     <span class="a" id="vT">A лучше</span></div>
+    </div>
+
+    <div class="warn" id="warn" style="display:none;">
+      ⚠ парадокс Симпсона: подгруппы и агрегация дают противоположный результат.
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../operators/sum.html">∑ — агрегация как суммирование →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="monty-hall.html">Монти Холл — интуиция против вероятности →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="birthday.html">парадокс дней рождения →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/problems/simpson.html</span>
+  <a href="/null/man.html">about →</a>
+</footer>
+
+<script>
+(() => {
+  const ids = ['aMs','aMt','aFs','aFt','bMs','bMt','bFs','bFt'];
+  const fmt = (s, t) => t > 0 ? (100 * s / t).toFixed(1) + '%' : '—';
+  const winner = (pa, pb, tA, tB) => {
+    if (Math.abs(pa - pb) < 1e-9) return 'равно';
+    return pa > pb ? `<span class="a">${tA}</span>` : `<span class="b">${tB}</span>`;
+  };
+
+  const update = () => {
+    const v = (id) => Math.max(0, parseInt(document.getElementById(id).value, 10) || 0);
+    const aMs = v('aMs'), aMt = Math.max(aMs, v('aMt'));
+    const aFs = v('aFs'), aFt = Math.max(aFs, v('aFt'));
+    const bMs = v('bMs'), bMt = Math.max(bMs, v('bMt'));
+    const bFs = v('bFs'), bFt = Math.max(bFs, v('bFt'));
+
+    document.getElementById('aMp').textContent = fmt(aMs, aMt);
+    document.getElementById('aFp').textContent = fmt(aFs, aFt);
+    document.getElementById('bMp').textContent = fmt(bMs, bMt);
+    document.getElementById('bFp').textContent = fmt(bFs, bFt);
+
+    const aTs = aMs + aFs, aTt = aMt + aFt;
+    const bTs = bMs + bFs, bTt = bMt + bFt;
+    document.getElementById('aTs').textContent = aTs;
+    document.getElementById('aTt').textContent = aTt;
+    document.getElementById('aTp').textContent = fmt(aTs, aTt);
+    document.getElementById('bTs').textContent = bTs;
+    document.getElementById('bTt').textContent = bTt;
+    document.getElementById('bTp').textContent = fmt(bTs, bTt);
+
+    const pAm = aMt > 0 ? aMs/aMt : 0, pBm = bMt > 0 ? bMs/bMt : 0;
+    const pAf = aFt > 0 ? aFs/aFt : 0, pBf = bFt > 0 ? bFs/bFt : 0;
+    const pAt = aTt > 0 ? aTs/aTt : 0, pBt = bTt > 0 ? bTs/bTt : 0;
+
+    document.getElementById('vM').outerHTML = `<span id="vM">${winner(pAm, pBm, 'A', 'B')}</span>`;
+    document.getElementById('vF').outerHTML = `<span id="vF">${winner(pAf, pBf, 'A', 'B')}</span>`;
+    document.getElementById('vT').outerHTML = `<span id="vT">${winner(pAt, pBt, 'A', 'B')}</span>`;
+
+    // paradox check: subgroup winner consistent but differs from overall
+    const subgroupConsistent = (pAm > pBm && pAf > pBf) || (pAm < pBm && pAf < pBf);
+    const subgroupWinner = pAm > pBm ? 'A' : 'B';
+    const overallWinner = pAt > pBt ? 'A' : 'B';
+    const isParadox = subgroupConsistent && Math.abs(pAm - pBm) > 1e-9 && Math.abs(pAf - pBf) > 1e-9 && subgroupWinner !== overallWinner;
+    document.getElementById('warn').style.display = isParadox ? 'block' : 'none';
+  };
+
+  ids.forEach(id => document.getElementById(id).addEventListener('input', update));
+  update();
+})();
+</script>
+
+</body>
+</html>

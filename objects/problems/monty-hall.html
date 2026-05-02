@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>парадокс Монти Холла — null/objects/problems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .simulation { margin: 40px 0; }
+  .sim-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .sim-controls {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: 11px; color: #999;
+    margin-bottom: 14px;
+  }
+  .sim-controls button {
+    background: transparent; border: 1px solid #ddd; color: #888;
+    padding: 4px 12px; cursor: pointer;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em;
+  }
+  .sim-controls button:hover { border-color: #111; color: #111; }
+  .sim-controls button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .doors {
+    display: flex; gap: 18px;
+    margin: 24px 0;
+    justify-content: center;
+  }
+  .door {
+    width: 130px; height: 200px;
+    background: var(--paper);
+    border: 1.5px solid #111;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.25s ease;
+    color: #111;
+  }
+  .door:hover:not(.disabled) { background: #f0ede8; }
+  .door.disabled { cursor: not-allowed; }
+  .door .num {
+    font-size: 11px; color: #bbb;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .door .icon { font-size: 56px; line-height: 1; }
+  .door.opened { background: #f0ede8; }
+  .door.picked { border-color: var(--accent-red); border-width: 2.5px; }
+  .door.win    { background: #2ecc71; color: #f7f6f2; }
+  .door.lose   { background: #c44a32; color: #f7f6f2; }
+  .door .label {
+    position: absolute; top: 8px; right: 10px;
+    font-size: 9px; color: var(--accent-red);
+    letter-spacing: 0.06em;
+  }
+
+  .step-msg {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #555;
+    text-align: center;
+    margin: 14px 0 20px;
+    min-height: 36px;
+    line-height: 1.5;
+  }
+  .step-msg .hl { color: #111; font-weight: 500; }
+
+  .sim-stats {
+    font-family: var(--font-mono); font-size: 12px;
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 6px 16px; margin-top: 16px; max-width: 540px;
+  }
+  .sim-stats .sk { color: #bbb; }
+  .sim-stats .sv { color: #111; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / problems / парадокс Монти Холла</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;">♟</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">задача · №003</div>
+      <div class="obj-title">парадокс Монти Холла</div>
+      <div class="obj-subtitle">три двери · одна машина · менять выбор или нет?</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">формулировка</td><td class="v">3 двери, за одной машина; ведущий открывает дверь с козой</td></tr>
+    <tr><td class="k">ответ</td><td class="v mono">менять. P(выигрыш) = 2/3 vs 1/3</td></tr>
+    <tr><td class="k">парадокс</td><td class="v">интуиция говорит 50/50, математика — 2/3</td></tr>
+    <tr><td class="k">история</td><td class="v">Мэрилин вос Савант · 1990 · тысячи писем от математиков, все неправы</td></tr>
+    <tr><td class="k">обобщение</td><td class="v mono">N дверей, открыта N−2: P при смене = (N−1)/N</td></tr>
+    <tr><td class="k">связано</td><td class="v">вероятность · байесовское обновление</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · 540 слов · 5 мин</div>
+    <h2 class="essay-title">Всегда <em>меняй</em> выбор.</h2>
+    <p class="essay-lead">вы выбрали дверь. ведущий открыл другую — там коза. менять? интуиция говорит — без разницы. математика говорит — менять всегда.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Шоу «Давайте заключим сделку». Три двери. За одной — машина, за двумя — козы. Вы выбираете дверь №1. Ведущий, который знает, где машина, открывает дверь №3 — там коза. Менять на дверь №2 или остаться на №1?</p>
+
+        <p>В сентябре 1990 года Мэрилин вос Савант опубликовала ответ в своей колонке Ask Marilyn в журнале Parade: «Меняйте. Вероятность выигрыша при смене — 2/3»<em class="fn">1</em>. Тысячи читателей написали ей, что она неправа. Сотни — с учёными степенями, включая преподавателей математики. Она была права.</p>
+
+        <p>Почему 2/3? Когда вы изначально выбирали дверь, вероятность угадать машину — 1/3. Вероятность того, что машина за одной из двух других — 2/3. Эти числа не меняются от того, что произошло потом. Ведущий открыл одну из «других» дверей — обязательно с козой, потому что он знает, где что, и не открывает машину. Вся вероятность 2/3, которая «лежала» на двух других дверях, теперь сконцентрирована на одной оставшейся закрытой. Смена даёт 2/3 успеха. Остаться на исходной — 1/3.</p>
+
+        <blockquote>Интуиция ошибается потому, что не учитывает: ведущий знает.</blockquote>
+
+        <p>Ключевой момент — ведущий действует не случайно. Он всегда открывает дверь с козой, и никогда — с машиной. Это не просто действие, это информация, которая обновляет вероятности по правилу Байеса. Если бы ведущий открывал дверь действительно случайно (и иногда показывал машину) — тогда оставшиеся две двери действительно были бы равноценны, 50/50<em class="fn">2</em>. Но он не случайный. Его поведение — функция от вашего выбора и расположения машины.</p>
+
+        <p>Проще всего убедиться через симуляцию. Запустите 1000 раундов со стратегией «всегда менять» — выиграете около 667. Со стратегией «всегда оставаться» — около 333. Никакая интуиция не спасёт от арифметики.</p>
+
+        <p>Пол Эрдёш — один из величайших математиков XX века — отказывался верить в правильный ответ, пока ему не показали компьютерную симуляцию<em class="fn">3</em>. Его убедил не аргумент, а данные. Это и есть честный портрет того, как тяжело пересиливать вероятностную интуицию: даже у людей, которые занимаются вероятностями профессионально.</p>
+
+        <p>Обобщение задачи: если дверей не 3, а N, и ведущий открывает N−2 двери (все с козами, кроме одной закрытой), вероятность выигрыша при смене — (N−1)/N. При N=100 это 99%. И это всё ещё контринтуитивно.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Ask Marilyn, Parade Magazine, 9 сентября 1990. Колонка получила около 10 000 писем — большинство утверждало, что Мэрилин ошибается.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Это «парадокс Монти Холла с забывчивым ведущим»: если он не знает, где машина, и просто открыл случайную из двух других — обусловливание на «там коза» возвращает к 50/50.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">История описана в биографии Эрдёша «The Man Who Loved Only Numbers» (Hoffman, 1998).</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="simulation">
+    <hr class="section-divider-soft">
+    <div class="sim-label">// симуляция</div>
+
+    <div class="step-msg" id="stepMsg">шаг 1: кликни на дверь — это твой выбор.</div>
+
+    <div class="doors" id="doors">
+      <div class="door" data-i="0"><div class="num">дверь 1</div><div class="icon" id="ic0">?</div></div>
+      <div class="door" data-i="1"><div class="num">дверь 2</div><div class="icon" id="ic1">?</div></div>
+      <div class="door" data-i="2"><div class="num">дверь 3</div><div class="icon" id="ic2">?</div></div>
+    </div>
+
+    <div class="sim-controls" style="justify-content:center;">
+      <button id="stay" disabled>остаться</button>
+      <button id="swap" disabled>поменять</button>
+      <button id="reset">↺ заново</button>
+      <button id="auto">▶▶ авто 1000 раундов</button>
+    </div>
+
+    <div class="sim-stats">
+      <span class="sk">«менять»: побед</span>      <span class="sv"><span id="swWins">0</span> / <span id="swTot">0</span> = <span id="swPct">—</span></span>
+      <span class="sk">«остаться»: побед</span>   <span class="sv"><span id="stWins">0</span> / <span id="stTot">0</span> = <span id="stPct">—</span></span>
+      <span class="sk">теория «менять»</span>     <span class="sv">66.7% (2/3)</span>
+      <span class="sk">теория «остаться»</span>   <span class="sv">33.3% (1/3)</span>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">задача</span><a href="secretary.html">задача о невесте — оптимальный выбор →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="simpson.html">парадокс Симпсона — интуиция против данных →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../types/natural.html">натуральные числа →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/problems/monty-hall.html</span>
+  <a href="/null/man.html">about →</a>
+</footer>
+
+<script>
+(() => {
+  // game state
+  let prize, picked = -1, opened = -1, finished = false;
+  let stats = { sw: { w: 0, t: 0 }, st: { w: 0, t: 0 } };
+
+  const doors = [...document.querySelectorAll('.door')];
+  const msg = document.getElementById('stepMsg');
+  const stayBtn = document.getElementById('stay');
+  const swapBtn = document.getElementById('swap');
+
+  const reset = () => {
+    prize = Math.floor(Math.random() * 3);
+    picked = -1; opened = -1; finished = false;
+    doors.forEach((d, i) => {
+      d.className = 'door';
+      d.classList.remove('disabled');
+      document.getElementById('ic' + i).textContent = '?';
+      const lbl = d.querySelector('.label');
+      if (lbl) lbl.remove();
+    });
+    stayBtn.disabled = true;
+    swapBtn.disabled = true;
+    msg.innerHTML = 'шаг 1: <span class="hl">кликни на дверь</span> — это твой выбор.';
+  };
+
+  const pick = (i) => {
+    if (finished || picked !== -1) return;
+    picked = i;
+    doors[i].classList.add('picked');
+    // host opens a door that is not picked and not the prize
+    const choices = [0, 1, 2].filter(x => x !== picked && x !== prize);
+    opened = choices[Math.floor(Math.random() * choices.length)];
+    document.getElementById('ic' + opened).textContent = '🐐';
+    doors[opened].classList.add('opened', 'disabled');
+    const lbl = document.createElement('div');
+    lbl.className = 'label';
+    lbl.textContent = 'host';
+    doors[opened].appendChild(lbl);
+    doors.forEach(d => d.classList.add('disabled'));
+    stayBtn.disabled = false;
+    swapBtn.disabled = false;
+    msg.innerHTML = `шаг 2: ведущий открыл дверь ${opened + 1} (коза). <span class="hl">остаться или поменять?</span>`;
+  };
+
+  const reveal = (strategy) => {
+    if (finished || picked === -1) return;
+    finished = true;
+    let final = picked;
+    if (strategy === 'swap') {
+      final = [0, 1, 2].find(x => x !== picked && x !== opened);
+    }
+    // open all
+    [0, 1, 2].forEach(i => {
+      document.getElementById('ic' + i).textContent = (i === prize) ? '🚗' : '🐐';
+      doors[i].classList.add('opened');
+    });
+    doors[final].classList.remove('picked');
+    if (final === prize) doors[final].classList.add('win');
+    else doors[final].classList.add('lose');
+
+    const won = (final === prize);
+    if (strategy === 'swap') { stats.sw.t++; if (won) stats.sw.w++; }
+    else { stats.st.t++; if (won) stats.st.w++; }
+    updateStats();
+
+    msg.innerHTML = won
+      ? `<span class="hl">✓ ${strategy === 'swap' ? 'поменял' : 'остался'} → выиграл машину</span>`
+      : `<span class="hl">✗ ${strategy === 'swap' ? 'поменял' : 'остался'} → коза. машина была за дверью ${prize + 1}.</span>`;
+    stayBtn.disabled = true;
+    swapBtn.disabled = true;
+  };
+
+  const updateStats = () => {
+    document.getElementById('swWins').textContent = stats.sw.w;
+    document.getElementById('swTot').textContent = stats.sw.t;
+    document.getElementById('swPct').textContent = stats.sw.t > 0 ? (100 * stats.sw.w / stats.sw.t).toFixed(1) + '%' : '—';
+    document.getElementById('stWins').textContent = stats.st.w;
+    document.getElementById('stTot').textContent = stats.st.t;
+    document.getElementById('stPct').textContent = stats.st.t > 0 ? (100 * stats.st.w / stats.st.t).toFixed(1) + '%' : '—';
+  };
+
+  doors.forEach(d => {
+    d.addEventListener('click', () => {
+      if (d.classList.contains('disabled')) return;
+      pick(parseInt(d.dataset.i, 10));
+    });
+  });
+  stayBtn.onclick = () => reveal('stay');
+  swapBtn.onclick = () => reveal('swap');
+  document.getElementById('reset').onclick = reset;
+
+  document.getElementById('auto').onclick = () => {
+    for (let r = 0; r < 1000; r++) {
+      const p = Math.floor(Math.random() * 3);
+      const myPick = Math.floor(Math.random() * 3);
+      const choices = [0, 1, 2].filter(x => x !== myPick && x !== p);
+      const op = choices[Math.floor(Math.random() * choices.length)];
+      const swapTo = [0, 1, 2].find(x => x !== myPick && x !== op);
+      // swap result
+      stats.sw.t++; if (swapTo === p) stats.sw.w++;
+      // stay result
+      stats.st.t++; if (myPick === p) stats.st.w++;
+    }
+    updateStats();
+    msg.innerHTML = '<span class="hl">прогнано 1000 раундов авто (по 1000 каждой стратегии)</span>';
+  };
+
+  reset();
+})();
+</script>
+
+</body>
+</html>
