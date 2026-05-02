@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P vs NP — null/objects/hypotheses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / hypotheses / P vs NP</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;">?</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">гипотеза · №004</div>
+      <div class="obj-title">P vs NP</div>
+      <div class="obj-subtitle">если решение можно проверить быстро — можно ли его так же быстро найти?</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">сформулировано</td><td class="v">Стивен Кук · Леонид Левин · 1971 · независимо</td></tr>
+    <tr><td class="k">статус</td><td class="v">не решена · проблема тысячелетия · $1 000 000</td></tr>
+    <tr><td class="k">P</td><td class="v">задачи, решаемые за полиномиальное время</td></tr>
+    <tr><td class="k">NP</td><td class="v">задачи, чьё решение проверяется за полиномиальное время</td></tr>
+    <tr><td class="k">вопрос</td><td class="v mono">P = NP ?</td></tr>
+    <tr><td class="k">консенсус</td><td class="v">большинство теоретиков считают P ≠ NP — но доказательства нет</td></tr>
+    <tr><td class="k">следствие если P=NP</td><td class="v">криптография сломана · ИИ переосмыслен · математика автоматизирована</td></tr>
+    <tr><td class="k">связано</td><td class="v">теорема Гёделя · теорема Тьюринга об остановке</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · 460 слов · 5 мин</div>
+    <h2 class="essay-title">Вопрос, который ломает <em>криптографию</em> — если ответ не тот.</h2>
+    <p class="essay-lead">проверить решение судоку легко. найти его — сложно. всегда ли так? никто не знает.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Возьмите заполненный судоку. Чтобы проверить, что он правильный, нужно несколько секунд: убедиться, что в каждой строке, столбце и квадрате — все цифры от 1 до 9. А чтобы найти решение с нуля для пустого судоку 9×9, опытному человеку нужны минуты или часы. Это и есть разница между P и NP на интуитивном уровне.</p>
+
+        <p>Класс P — задачи, которые компьютер решает быстро: за время, ограниченное многочленом от размера входа. Сложение, сортировка, поиск кратчайшего пути в графе — всё это в P. Класс NP — задачи, для которых правильный ответ можно проверить быстро, даже если найти его трудно. Судоку, задача коммивояжёра, разложение целого числа на простые множители, проверка булевой формулы на выполнимость — всё это NP<em class="fn">1</em>.</p>
+
+        <p>Любая задача из P автоматически в NP — если можно решить за полиномиальное время, то и проверить тоже. Обратное — открытый вопрос. Существуют ли в NP задачи, которые принципиально нельзя решить быстро, или все они на самом деле тоже в P, а мы просто не нашли быстрых алгоритмов?</p>
+
+        <blockquote>Если P = NP, то мир глубоко отличается от того, каким мы его представляем. — Скотт Ааронсон</blockquote>
+
+        <p>Если P = NP, последствия трудно переоценить. Современная криптография — RSA, эллиптические кривые, хеши — основана на том, что некоторые NP-задачи (факторизация больших чисел, дискретный логарифм) вычислительно недоступны. P = NP означало бы, что они доступны — мы просто пока не знаем алгоритма. HTTPS, банковские транзакции, цифровые подписи — всё под угрозой переписывания.</p>
+
+        <p>С другой стороны: математика. Доказательство теоремы — это NP-задача (проверить доказательство легко, найти его — трудно). При P = NP можно было бы автоматически искать доказательства за разумное время. Большинство нерешённых проблем — гипотеза Римана, P vs NP сама — попали бы в зону досягаемости.</p>
+
+        <p>Если же P ≠ NP — это тоже нужно доказать. И вот этого никто не умеет<em class="fn">2</em>. Большинство специалистов считают, что P ≠ NP — это согласуется со всеми эмпирическими данными о вычислительной сложности. Но «большинство считает» — не аргумент в математике. До формального доказательства мы живём с открытым вопросом, который сидит в самой основе того, как устроены вычисления<em class="fn">3</em>.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">NP расшифровывается как «nondeterministic polynomial» — недетерминированно полиномиальное, не «не полиномиальное». Распространённое заблуждение.</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">NP-полные задачи: если хоть одна решена за полиномиальное время — все NP-задачи решены. Кук в 1971 показал, что SAT — NP-полная.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">Известное письмо Гёделя фон Нейману, 1956 — первая известная формулировка вопроса, очень близкого к P vs NP.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">теорема</span><a href="../theorems/godel.html">Гёдель — пределы формальных систем →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../types/natural.html">натуральные числа — основа вычислений →</a></div>
+      <div class="related-link"><span class="related-link-type">гипотеза</span><a href="riemann.html">гипотеза Римана — другая проблема тысячелетия →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/hypotheses/pvsnp.html</span>
+  <a href="/null/man.html">about →</a>
+</footer>
+
+</body>
+</html>
