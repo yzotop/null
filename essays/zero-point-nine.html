@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>0.999… = 1 — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / zero-point-nine</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · 800 слов · 6 мин · 2026.04</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">0.999… равно единице.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">это не приближение и не философия. это доказанный факт. и большинство людей в это не верят.</p>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Возьмите число 0.999… — бесконечную десятичную дробь с девятками. Большинство людей скажут: «это почти единица, но чуть меньше». Они ошибаются. 0.999… = 1. Точно. Без приближения и без округления.</p>
+
+      <p>Первое доказательство — алгебраическое. Пусть x = 0.999…. Тогда 10x = 9.999…. Вычитаем: 10x − x = 9.999… − 0.999… = 9. Слева 9x. Значит x = 1. Готово.</p>
+
+      <p>«Но ты умножил бесконечную дробь на 10 — это нечестно». Хорошо. Второе доказательство — через простые дроби. 1/3 = 0.333… — с этим все согласны. Умножим обе части на 3: 3/3 = 0.999…. Но 3/3 = 1. Значит 0.999… = 1<em class="fn">1</em>.</p>
+
+      <p>«Но между 0.999… и 1 должна быть разница — пусть бесконечно малая». Нет. Если между двумя вещественными числами нет ни одного третьего числа — они равны. Это не договорённость, это аксиома вещественных чисел. Какое число стоит между 0.999… и 1? Назовите хоть одно. Его нет.</p>
+
+      <blockquote>В математике нет «почти». Есть «равно» и «не равно».</blockquote>
+
+      <p>Третье доказательство — через геометрический ряд. 0.999… = 9/10 + 9/100 + 9/1000 + … = 9 · ∑(k=1..∞) (1/10)<sup>k</sup>. Сумма геометрического ряда: 9 · (1/10) / (1 − 1/10) = 9 · (1/10) / (9/10) = 9 · 1/9 = 1. Формула суммы работает, когда |q| &lt; 1. Здесь q = 1/10. Всё законно<em class="fn">2</em>.</p>
+
+      <p>Откуда тогда берётся интуитивное сопротивление? Люди думают, что 0.999… — это процесс: «прибавляем девятки и никогда не заканчиваем». Но математика — не процесс, это объект. 0.999… — уже готовое число, как π или √2. Бесконечная запись не означает незаконченность. Она означает, что в записи бесконечно много знаков — и это другое.</p>
+
+      <p>На самом деле сопротивление появляется из другого места: мы привыкли, что у каждого числа одна запись. Но вещественные числа устроены иначе. У каждого числа с конечной десятичной записью есть две: 0.5 = 0.4999…, 1 = 0.999…, 3.7 = 3.6999…. Это особенность десятичной системы, не парадокс. В двоичной системе то же самое: 0.111… = 1.</p>
+
+      <p>Равенство 0.999… = 1 — не трюк и не договорённость. Это следствие того, как устроены вещественные числа. Аксиома полноты Дедекинда: вещественная прямая не имеет дыр<em class="fn">3</em>. Если бы 0.999… ≠ 1 — между ними была бы дыра. Дыр нет.</p>
+
+      <p>Любопытно, что в нестандартном анализе, где введены бесконечно малые числа (гиперреальные), запись 0.999… можно интерпретировать иначе — и тогда она действительно отличается от 1 на бесконечно малую величину. Но это другая система с другими аксиомами. В стандартной вещественной арифметике, в которой работает почти вся математика и физика, 0.999… = 1 — теорема, не мнение.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Запись 1/3 = 0.333… принимается интуитивно — но это в точности утверждение того же типа, что и 0.999… = 1.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Сумма геометрического ряда ∑(k=0..∞) q<sup>k</sup> = 1/(1−q) при |q| &lt; 1. Доказана Эйлером строго.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Аксиома полноты (Дедекинда): каждое непустое ограниченное сверху множество вещественных чисел имеет точную верхнюю грань.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/types/natural.html">натуральные числа — аксиоматика →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/types/transcendental.html">трансцендентные — вещественная прямая →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../objects/operators/sum.html">∑ — геометрический ряд →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/zero-point-nine.html</span>
+  <a href="../man.html">about →</a>
+</footer>
+
+</body>
+</html>
