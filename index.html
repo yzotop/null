@@ -1,107 +1,290 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>null — каталог объектов</title>
+<title>null</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/main.css">
+<style>
+  .page { max-width: 760px; margin: 0 auto; padding: 40px 40px 80px; }
+
+  .nav-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1.5px solid #111;
+    padding-bottom: 14px; margin-bottom: 56px;
+  }
+  .nav-bar .brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 500; color: #111;
+    text-decoration: none; letter-spacing: -0.01em;
+  }
+  .nav-bar .links {
+    display: flex; gap: 22px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; color: #555;
+  }
+  .nav-bar .links a { color: #555; text-decoration: none; }
+  .nav-bar .links a:hover { color: #c44a32; }
+
+  .hero { margin-bottom: 56px; }
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .hero-title {
+    font-family: 'IM Fell English', serif;
+    font-size: 52px; font-weight: 400;
+    line-height: 1.1; letter-spacing: -0.01em;
+    margin-bottom: 22px;
+  }
+  .hero-sub {
+    font-family: 'IM Fell English', serif;
+    font-style: italic; font-size: 18px;
+    color: #666; line-height: 1.6;
+    max-width: 480px;
+  }
+
+  .cards-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 16px;
+  }
+  .section-card {
+    background: #f7f6f2; padding: 28px 24px;
+    cursor: pointer; position: relative;
+    transition: background 0.12s;
+    display: block; text-decoration: none; color: inherit;
+  }
+  .section-card:hover { background: #edecea; }
+  .card-arr {
+    position: absolute; top: 16px; right: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; color: #ddd;
+    transition: color 0.12s;
+  }
+  .section-card:hover .card-arr { color: #c44a32; }
+  .card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .card-count {
+    font-family: 'IM Fell English', serif;
+    font-style: italic; font-size: 48px;
+    color: #111; line-height: 1; margin-bottom: 6px;
+  }
+  .card-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .card-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; color: #777;
+    line-height: 1.6; margin-bottom: 16px;
+  }
+  .card-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #bbb;
+    border-top: 1px dashed #ddd; padding-top: 8px;
+  }
+
+  .map-teaser {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 0;
+    border-top: 1px solid #e8e8e4;
+    border-bottom: 1px solid #e8e8e4;
+    margin-bottom: 40px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+  }
+  .map-teaser .left { color: #bbb; }
+  .map-teaser .right {
+    color: #111; text-decoration: none;
+    border-bottom: 1px solid #c44a32; padding-bottom: 1px;
+  }
+  .map-teaser .right:hover { color: #c44a32; }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #bbb;
+    border-bottom: 1px solid #e8e8e4;
+    margin-bottom: 20px; padding-bottom: 8px;
+    letter-spacing: 0.06em;
+  }
+  .recent-list { border: 1px solid #e8e8e4; }
+  .recent-row {
+    display: grid;
+    grid-template-columns: 90px 32px 1fr 72px;
+    align-items: center; gap: 16px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0ede8;
+    text-decoration: none; color: inherit;
+  }
+  .recent-row:last-child { border-bottom: none; }
+  .recent-row:hover { background: #f0ede8; }
+  .recent-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .recent-glyph {
+    font-family: 'IM Fell English', serif;
+    font-style: italic; font-size: 20px; color: #111;
+  }
+  .recent-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px; color: #111;
+  }
+  .recent-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #bbb; text-align: right;
+  }
+
+  .footer-bar {
+    border-top: 1.5px solid #111;
+    display: flex; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #bbb;
+    margin-top: 56px; padding-top: 14px;
+  }
+  .footer-bar a { color: #bbb; text-decoration: none; }
+  .footer-bar a:hover { color: #111; }
+
+  @media (max-width: 640px) {
+    .page { padding: 24px 20px 56px; }
+    .hero-title { font-size: 40px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .recent-row { grid-template-columns: 70px 28px 1fr 64px; gap: 10px; padding: 10px 12px; }
+  }
+</style>
 </head>
 <body>
 
-<header class="topbar">
-  <a class="brand" href="/null/">null</a>
-  <nav>
-    <a href="objects/">объекты</a>
-    <a href="essays/">эссе</a>
-    <a href="visuals/">визуалы</a>
-    <a href="music/">музыка</a>
-    <a href="/null/map.html">карта</a>
+<div class="page">
+
+  <nav class="nav-bar">
+    <a class="brand" href="/null/">null</a>
+    <div class="links">
+      <a href="objects/">объекты</a>
+      <a href="essays/">эссе</a>
+      <a href="visuals/">визуалы</a>
+      <a href="music/">музыка</a>
+      <a href="map.html">карта</a>
+    </div>
   </nav>
-</header>
-<div class="breadcrumb">/null/</div>
 
-<main class="container wide">
-  <h1 class="page-title">каталог</h1>
-  <div class="page-sub">математические объекты, наблюдения, отметки на полях</div>
+  <header class="hero">
+    <div class="hero-tag">математика как материя · since 2025</div>
+    <h1 class="hero-title">null.</h1>
+    <p class="hero-sub">числа существовали до нас. простые числа, π, бесконечность — не изобретения, а открытия. этот сайт — картотека.</p>
+  </header>
 
-  <div class="cards">
+  <div class="cards-grid">
 
-    <a class="card" href="objects/constants/pi.html">
-      <div class="card-head">
-        <span class="card-tag">константа · №001</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph">π</div>
-      <div class="card-title">пи</div>
-      <div class="card-desc">отношение длины окружности к диаметру. иррациональное, трансцендентное, нормальность не доказана.</div>
-      <div class="card-num">3.14159 26535 89793 23846…</div>
+    <a class="section-card" href="objects/">
+      <span class="card-arr">→</span>
+      <div class="card-tag">числа · теоремы · операторы</div>
+      <div class="card-count">40</div>
+      <div class="card-name">объектов</div>
+      <div class="card-desc">константы (π e φ γ √2) · типы чисел · особенные · теоремы · гипотезы · операторы · задачи · любопытные.</div>
+      <div class="card-meta">8 категорий · numbers · ideas · operators</div>
     </a>
 
-    <a class="card" href="objects/constants/euler.html">
-      <div class="card-head">
-        <span class="card-tag">константа · №002</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph">e</div>
-      <div class="card-title">число эйлера</div>
-      <div class="card-desc">основание натурального логарифма. предел (1+1/n)^n при n→∞. трансцендентное.</div>
-      <div class="card-num">2.71828 18284 59045 23536…</div>
+    <a class="section-card" href="essays/">
+      <span class="card-arr">→</span>
+      <div class="card-tag">наблюдения · тексты · углы зрения</div>
+      <div class="card-count">12</div>
+      <div class="card-name">эссе</div>
+      <div class="card-desc">0.999… = 1 · формула Эйлера · бесконечность · Гёдель · проблемы тысячелетия · RSA · Фибоначчи.</div>
+      <div class="card-meta">4 темы · ~7 мин чтения</div>
     </a>
 
-    <a class="card" href="objects/constants/phi.html">
-      <div class="card-head">
-        <span class="card-tag">константа · №003</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph">φ</div>
-      <div class="card-title">золотое сечение</div>
-      <div class="card-desc">положительный корень x²=x+1. предел отношения соседних чисел фибоначчи.</div>
-      <div class="card-num">1.61803 39887 49894 84820…</div>
+    <a class="section-card" href="visuals/">
+      <span class="card-arr">→</span>
+      <div class="card-tag">canvas · интерактивные · математика в движении</div>
+      <div class="card-count">9</div>
+      <div class="card-name">визуалов</div>
+      <div class="card-desc">поле простых · спираль Улама · треугольники · Паскаль · Коллатц · Монти Холл · плоттер.</div>
+      <div class="card-meta">canvas · live · zoom + pan</div>
     </a>
 
-    <a class="card" href="objects/constants/pi.html#essay">
-      <div class="card-head">
-        <span class="card-tag">эссе · №001</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph">¶</div>
-      <div class="card-title">о случайности π</div>
-      <div class="card-desc">если число нормально, оно содержит всё что было и будет написано — ровно по одному разу.</div>
-      <div class="card-num">2026.04 · 8 мин чтения</div>
-    </a>
-
-    <a class="card" href="visuals/">
-      <div class="card-head">
-        <span class="card-tag">визуал · §03</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph">⊞</div>
-      <div class="card-title">визуалы</div>
-      <div class="card-desc">математические структуры в движении.</div>
-      <div class="card-num">canvas · live</div>
-    </a>
-
-    <a class="card" href="music/">
-      <div class="card-head">
-        <span class="card-tag">музыка · §04</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph">♩</div>
-      <div class="card-title">музыка</div>
-      <div class="card-desc">алгоритмические скетчи. математическая структура — единственный композитор.</div>
-      <div class="card-num">sonic pi · suno</div>
+    <a class="section-card" href="music/">
+      <span class="card-arr">→</span>
+      <div class="card-tag">sonic pi · suno · алгоритмы</div>
+      <div class="card-count" style="color:#bbb;">♩</div>
+      <div class="card-name" style="color:#bbb;">музыка</div>
+      <div class="card-desc" style="color:#bbb;">алгоритмическая музыка. математическая структура — единственный композитор.</div>
+      <div class="card-meta" style="color:#ddd;">coming soon · bandcamp · suno</div>
     </a>
 
   </div>
-</main>
 
-<footer class="footer">
-  <span>/null/index.html</span>
-  <a href="man.html">about →</a> · <a href="/null/map.html">map →</a>
-</footer>
+  <div class="map-teaser">
+    <span class="left">53 объекта · 103 связи между ними</span>
+    <a class="right" href="map.html">→ граф связей</a>
+  </div>
+
+  <div class="section-num">§ последнее</div>
+  <div class="recent-list">
+
+    <a class="recent-row" href="objects/numbers/curious/minus-one-twelfth.html">
+      <span class="recent-type">любопытное</span>
+      <span class="recent-glyph">−¹⁄₁₂</span>
+      <span class="recent-title">минус одна двенадцатая</span>
+      <span class="recent-date">2026.04</span>
+    </a>
+
+    <a class="recent-row" href="visuals/monty-hall.html">
+      <span class="recent-type">визуал</span>
+      <span class="recent-glyph">♟</span>
+      <span class="recent-title">козы vs машины · монти холл</span>
+      <span class="recent-date">2026.04</span>
+    </a>
+
+    <a class="recent-row" href="objects/numbers/curious/graham.html">
+      <span class="recent-type">любопытное</span>
+      <span class="recent-glyph">G</span>
+      <span class="recent-title">число Грэма</span>
+      <span class="recent-date">2026.04</span>
+    </a>
+
+    <a class="recent-row" href="essays/pseudorandom.html">
+      <span class="recent-type">эссе</span>
+      <span class="recent-glyph">¶</span>
+      <span class="recent-title">случайность, которой нет</span>
+      <span class="recent-date">2026.04</span>
+    </a>
+
+    <a class="recent-row" href="visuals/collatz.html">
+      <span class="recent-type">визуал</span>
+      <span class="recent-glyph">↯</span>
+      <span class="recent-title">коллатц</span>
+      <span class="recent-date">2026.04</span>
+    </a>
+
+    <a class="recent-row" href="objects/ideas/problems/gamblers-ruin.html">
+      <span class="recent-type">задача</span>
+      <span class="recent-glyph">∅</span>
+      <span class="recent-title">разорение игрока</span>
+      <span class="recent-date">2026.04</span>
+    </a>
+
+  </div>
+
+  <footer class="footer-bar">
+    <span>/null · 2025–2026</span>
+    <span><a href="man.html">about →</a> · <a href="map.html">map →</a></span>
+  </footer>
+
+</div>
 
 </body>
 </html>
