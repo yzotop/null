@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6174 — null/objects/curious</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / numbers / curious / 6174</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-family:var(--font-mono);font-size:50px;">6174</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">любопытное · №004</div>
+      <div class="obj-title">константа Капрекара</div>
+      <div class="obj-subtitle">любое четырёхзначное число приходит сюда не более чем за 7 шагов</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">значение</td><td class="v mono">6174</td></tr>
+    <tr><td class="k">открыл</td><td class="v">Д. Р. Капрекар · 1949</td></tr>
+    <tr><td class="k">алгоритм</td><td class="v mono">упорядочи цифры ↓ и ↑, вычти меньшее из большего, повтори</td></tr>
+    <tr><td class="k">максимум</td><td class="v">7 шагов · всегда</td></tr>
+    <tr><td class="k">исключения</td><td class="v">числа с одинаковыми цифрами (1111, 2222, …)</td></tr>
+    <tr><td class="k">трёхзначный аналог</td><td class="v mono">495 — та же идея для трёх цифр</td></tr>
+    <tr><td class="k">связано</td><td class="v">натуральные числа · mod · floor</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · 480 слов · 4 мин</div>
+    <h2 class="essay-title">Число, <em>куда все приходят</em>.</h2>
+    <p class="essay-lead">возьми любое четырёхзначное число. упорядочи цифры. вычти. повтори. максимум через 7 шагов — всегда 6174. всегда.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Возьмём число 1234. Цифры по убыванию: 4321. По возрастанию: 1234. Вычитаем меньшее из большего: 4321 − 1234 = 3087. Повторим. Цифры 3087 по убыванию: 8730. По возрастанию: 0378. 8730 − 0378 = 8352. Ещё раз. 8532 − 2358 = 6174.</p>
+
+        <p>Теперь начинается самое интересное. Применим алгоритм к 6174: цифры по убыванию — 7641, по возрастанию — 1467. 7641 − 1467 = 6174. То же самое. Мы дошли до неподвижной точки и застряли в ней навсегда.</p>
+
+        <p>Д. Р. Капрекар, индийский школьный учитель математики, открыл это в 1949 году<em class="fn">1</em>. Алгоритм прост, результат универсален. Возьмите любое четырёхзначное число, цифры которого не все одинаковы. Упорядочьте цифры по убыванию и по возрастанию (в случае нуля просто получите ведущий ноль). Вычтите меньшее из большего. Повторите с результатом. Не более чем через семь шагов вы окажетесь в 6174.</p>
+
+        <blockquote>6174 — точка, где все четырёхзначные числа находят покой.</blockquote>
+
+        <p>Почему именно 6174? Это единственная неподвижная точка операции Капрекара для четырёхзначных чисел. Доказывается она прямой проверкой всех ~9000 случаев — изящного аналитического доказательства не существует. Но факт точный и проверяется компьютером за секунду.</p>
+
+        <p>Для трёхзначных чисел аналог — 495. 954 − 459 = 495. Любое трёхзначное число, цифры которого не все одинаковы, приходит к 495 за не более чем 6 шагов<em class="fn">2</em>. Для двузначных неподвижной точки нет, есть цикл: 09 → 81 → 63 → 27 → 45 → 09 → … (длина 5). Для пятизначных — три неподвижные точки и несколько циклов; универсального притягивающего числа нет.</p>
+
+        <p>Четырёхзначные оказались уникальным случаем: одна неподвижная точка, и все начальные значения сходятся к ней очень быстро. Капрекар обнаружил эту аномалию интуитивно, перебирая числа в свободное от уроков время. Никакого практического применения у 6174 нет — это чистое математическое любопытство, за которым стоит вопрос, на который мы до сих пор не знаем ответа: почему именно 4 цифры так особенны?</p>
+
+        <p>Капрекар работал в маленьком индийском городке, не имел учёной степени, не занимал академических должностей. И всё же его имя теперь стоит за одной из самых известных «мелочей» теории чисел. Иногда самые красивые открытия делаются от скуки в учительской<em class="fn">3</em>.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Дататрея Рамчандра Капрекар, 1905–1986. Индийский математик-любитель, школьный учитель. Открыл несколько именных числовых конструкций.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Числа Капрекара — это числа n, у которых n² можно разбить на две части, дающие в сумме n. Например, 45² = 2025, и 20 + 25 = 45.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">Алгоритм Капрекара реализован в OEIS как последовательность A151949 — полная таблица сходимости для всех 4-значных чисел.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">тип</span><a href="../types/natural.html">натуральные числа →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../../operators/mod.html">mod — цифры через mod →</a></div>
+      <div class="related-link"><span class="related-link-type">любопытное</span><a href="1729.html">1729 — числа с особыми свойствами →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/numbers/curious/6174.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

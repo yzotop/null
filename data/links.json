@@ -1,180 +1,876 @@
 {
   "nodes": [
-    { "id": "pi", "type": "constant", "title": "число π", "url": "/null/objects/constants/pi.html", "glyph": "π" },
-    { "id": "euler", "type": "constant", "title": "число e", "url": "/null/objects/constants/euler.html", "glyph": "e" },
-    { "id": "phi", "type": "constant", "title": "золотое сечение", "url": "/null/objects/constants/phi.html", "glyph": "φ" },
-    { "id": "gamma", "type": "constant", "title": "постоянная γ", "url": "/null/objects/constants/gamma.html", "glyph": "γ" },
-    { "id": "sqrt2", "type": "constant", "title": "корень из двух", "url": "/null/objects/constants/sqrt2.html", "glyph": "√" },
-    { "id": "natural", "type": "type", "title": "натуральные числа", "url": "/null/objects/types/natural.html", "glyph": "ℕ" },
-    { "id": "prime", "type": "type", "title": "простые числа", "url": "/null/objects/types/prime.html", "glyph": "ℙ" },
-    { "id": "transcendental", "type": "type", "title": "трансцендентные", "url": "/null/objects/types/transcendental.html", "glyph": "𝕋" },
-    { "id": "complex", "type": "type", "title": "комплексные числа", "url": "/null/objects/types/complex.html", "glyph": "ℂ" },
-    { "id": "zero", "type": "special", "title": "ноль", "url": "/null/objects/special/zero.html", "glyph": "0" },
-    { "id": "one", "type": "special", "title": "единица", "url": "/null/objects/special/one.html", "glyph": "1" },
-    { "id": "imaginary", "type": "special", "title": "мнимая единица", "url": "/null/objects/special/imaginary.html", "glyph": "i" },
-    { "id": "godel", "type": "theorem", "title": "теорема Гёделя", "url": "/null/objects/theorems/godel.html", "glyph": "⊬" },
-    { "id": "cantor", "type": "theorem", "title": "теорема Кантора", "url": "/null/objects/theorems/cantor.html", "glyph": "∞" },
-    { "id": "pythagoras", "type": "theorem", "title": "теорема Пифагора", "url": "/null/objects/theorems/pythagoras.html", "glyph": "△" },
-    { "id": "fundamental", "type": "theorem", "title": "основная теорема арифметики", "url": "/null/objects/theorems/fundamental.html", "glyph": "ℙ" },
-    { "id": "riemann", "type": "hypothesis", "title": "гипотеза Римана", "url": "/null/objects/hypotheses/riemann.html", "glyph": "ζ" },
-    { "id": "goldbach", "type": "hypothesis", "title": "гипотеза Гольдбаха", "url": "/null/objects/hypotheses/goldbach.html", "glyph": "+" },
-    { "id": "twin-primes", "type": "hypothesis", "title": "простые близнецы", "url": "/null/objects/hypotheses/twin-primes.html", "glyph": "∥" },
-    { "id": "pvsnp", "type": "hypothesis", "title": "P vs NP", "url": "/null/objects/hypotheses/pvsnp.html", "glyph": "?" },
-    { "id": "op-mod", "type": "operator", "title": "mod", "url": "/null/objects/operators/mod.html", "glyph": "mod" },
-    { "id": "op-floor", "type": "operator", "title": "floor и ceiling", "url": "/null/objects/operators/floor-ceiling.html", "glyph": "⌊⌋" },
-    { "id": "op-xor", "type": "operator", "title": "XOR", "url": "/null/objects/operators/xor.html", "glyph": "⊕" },
-    { "id": "op-nabla", "type": "operator", "title": "набла", "url": "/null/objects/operators/nabla.html", "glyph": "∇" },
-    { "id": "op-factorial", "type": "operator", "title": "факториал", "url": "/null/objects/operators/factorial.html", "glyph": "!" },
-    { "id": "op-sum", "type": "operator", "title": "сумма", "url": "/null/objects/operators/sum.html", "glyph": "∑" },
-    { "id": "op-integral", "type": "operator", "title": "интеграл", "url": "/null/objects/operators/integral.html", "glyph": "∫" },
-    { "id": "op-partial", "type": "operator", "title": "частная производная", "url": "/null/objects/operators/partial.html", "glyph": "∂" },
-    { "id": "pr-secretary", "type": "problem", "title": "задача о невесте", "url": "/null/objects/problems/secretary.html", "glyph": "37" },
-    { "id": "pr-simpson", "type": "problem", "title": "парадокс Симпсона", "url": "/null/objects/problems/simpson.html", "glyph": "∩" },
-    { "id": "pr-monty", "type": "problem", "title": "парадокс Монти Холла", "url": "/null/objects/problems/monty-hall.html", "glyph": "♟" },
-    { "id": "pr-birthday", "type": "problem", "title": "парадокс дней рождения", "url": "/null/objects/problems/birthday.html", "glyph": "∩" },
-    { "id": "pr-gamblers", "type": "problem", "title": "разорение игрока", "url": "/null/objects/problems/gamblers-ruin.html", "glyph": "∅" },
-    { "id": "es-zero-nine", "type": "essay", "title": "0.999… = 1", "url": "/null/essays/zero-point-nine.html", "glyph": "¶" },
-    { "id": "es-infinity", "type": "essay", "title": "Бесконечность — не число", "url": "/null/essays/infinity.html", "glyph": "¶" },
-    { "id": "es-invented", "type": "essay", "title": "Изобретена или открыта", "url": "/null/essays/invented-or-discovered.html", "glyph": "¶" },
-    { "id": "es-euler-formula", "type": "essay", "title": "Формула Эйлера", "url": "/null/essays/euler-formula.html", "glyph": "¶" },
-    { "id": "es-pi-gaussian", "type": "essay", "title": "π в колоколе Гаусса", "url": "/null/essays/pi-in-gaussian.html", "glyph": "¶" },
-    { "id": "es-deck", "type": "essay", "title": "Колода которой не было", "url": "/null/essays/deck-of-cards.html", "glyph": "¶" },
-    { "id": "es-hilbert", "type": "essay", "title": "Гёдель и Гильберт", "url": "/null/essays/hilbert-godel.html", "glyph": "¶" },
-    { "id": "es-millennium", "type": "essay", "title": "Проблемы тысячелетия", "url": "/null/essays/millennium-problems.html", "glyph": "¶" },
-    { "id": "es-zfc", "type": "essay", "title": "Математика которую нельзя доказать", "url": "/null/essays/zfc-independence.html", "glyph": "¶" },
-    { "id": "es-rsa", "type": "essay", "title": "Замок из простых чисел", "url": "/null/essays/rsa-primes.html", "glyph": "¶" },
-    { "id": "es-fibonacci", "type": "essay", "title": "Фибоначчи в природе", "url": "/null/essays/fibonacci-nature.html", "glyph": "¶" },
-    { "id": "es-pseudorandom", "type": "essay", "title": "Случайность которой нет", "url": "/null/essays/pseudorandom.html", "glyph": "¶" },
-    { "id": "vi-prime-field", "type": "visual", "title": "поле простых", "url": "/null/visuals/prime-field.html", "glyph": "⊞" },
-    { "id": "vi-triangles", "type": "visual", "title": "матрица треугольников", "url": "/null/visuals/triangles.html", "glyph": "△" },
-    { "id": "vi-progress", "type": "visual", "title": "прогресс null", "url": "/null/visuals/progress.html", "glyph": "░" },
-    { "id": "vi-ulam", "type": "visual", "title": "спираль улама", "url": "/null/visuals/ulam.html", "glyph": "◯" },
-    { "id": "vi-pascal", "type": "visual", "title": "треугольник паскаля", "url": "/null/visuals/pascal.html", "glyph": "△" },
-    { "id": "vi-plotter", "type": "visual", "title": "плоттер функций", "url": "/null/visuals/plotter.html", "glyph": "ƒ" },
-    { "id": "vi-collatz", "type": "visual", "title": "коллатц", "url": "/null/visuals/collatz.html", "glyph": "↯" },
-    { "id": "cu-37", "type": "curious", "title": "37", "url": "/null/objects/curious/37.html", "glyph": "37" },
-    { "id": "cu-42", "type": "curious", "title": "42", "url": "/null/objects/curious/42.html", "glyph": "42" },
-    { "id": "cu-1729", "type": "curious", "title": "1729", "url": "/null/objects/curious/1729.html", "glyph": "⊞" },
-    { "id": "cu-6174", "type": "curious", "title": "6174", "url": "/null/objects/curious/6174.html", "glyph": "6174" },
-    { "id": "cu-graham", "type": "curious", "title": "число Грэма", "url": "/null/objects/curious/graham.html", "glyph": "G" },
-    { "id": "cu-minus12", "type": "curious", "title": "−1/12", "url": "/null/objects/curious/minus-one-twelfth.html", "glyph": "−¹⁄₁₂" }
+    {
+      "id": "pi",
+      "type": "constant",
+      "title": "число π",
+      "url": "/null/objects/numbers/constants/pi.html",
+      "glyph": "π"
+    },
+    {
+      "id": "euler",
+      "type": "constant",
+      "title": "число e",
+      "url": "/null/objects/numbers/constants/euler.html",
+      "glyph": "e"
+    },
+    {
+      "id": "phi",
+      "type": "constant",
+      "title": "золотое сечение",
+      "url": "/null/objects/numbers/constants/phi.html",
+      "glyph": "φ"
+    },
+    {
+      "id": "gamma",
+      "type": "constant",
+      "title": "постоянная γ",
+      "url": "/null/objects/numbers/constants/gamma.html",
+      "glyph": "γ"
+    },
+    {
+      "id": "sqrt2",
+      "type": "constant",
+      "title": "корень из двух",
+      "url": "/null/objects/numbers/constants/sqrt2.html",
+      "glyph": "√"
+    },
+    {
+      "id": "natural",
+      "type": "type",
+      "title": "натуральные числа",
+      "url": "/null/objects/numbers/types/natural.html",
+      "glyph": "ℕ"
+    },
+    {
+      "id": "prime",
+      "type": "type",
+      "title": "простые числа",
+      "url": "/null/objects/numbers/types/prime.html",
+      "glyph": "ℙ"
+    },
+    {
+      "id": "transcendental",
+      "type": "type",
+      "title": "трансцендентные",
+      "url": "/null/objects/numbers/types/transcendental.html",
+      "glyph": "𝕋"
+    },
+    {
+      "id": "complex",
+      "type": "type",
+      "title": "комплексные числа",
+      "url": "/null/objects/numbers/types/complex.html",
+      "glyph": "ℂ"
+    },
+    {
+      "id": "zero",
+      "type": "special",
+      "title": "ноль",
+      "url": "/null/objects/numbers/special/zero.html",
+      "glyph": "0"
+    },
+    {
+      "id": "one",
+      "type": "special",
+      "title": "единица",
+      "url": "/null/objects/numbers/special/one.html",
+      "glyph": "1"
+    },
+    {
+      "id": "imaginary",
+      "type": "special",
+      "title": "мнимая единица",
+      "url": "/null/objects/numbers/special/imaginary.html",
+      "glyph": "i"
+    },
+    {
+      "id": "godel",
+      "type": "theorem",
+      "title": "теорема Гёделя",
+      "url": "/null/objects/ideas/theorems/godel.html",
+      "glyph": "⊬"
+    },
+    {
+      "id": "cantor",
+      "type": "theorem",
+      "title": "теорема Кантора",
+      "url": "/null/objects/ideas/theorems/cantor.html",
+      "glyph": "∞"
+    },
+    {
+      "id": "pythagoras",
+      "type": "theorem",
+      "title": "теорема Пифагора",
+      "url": "/null/objects/ideas/theorems/pythagoras.html",
+      "glyph": "△"
+    },
+    {
+      "id": "fundamental",
+      "type": "theorem",
+      "title": "основная теорема арифметики",
+      "url": "/null/objects/ideas/theorems/fundamental.html",
+      "glyph": "ℙ"
+    },
+    {
+      "id": "riemann",
+      "type": "hypothesis",
+      "title": "гипотеза Римана",
+      "url": "/null/objects/ideas/hypotheses/riemann.html",
+      "glyph": "ζ"
+    },
+    {
+      "id": "goldbach",
+      "type": "hypothesis",
+      "title": "гипотеза Гольдбаха",
+      "url": "/null/objects/ideas/hypotheses/goldbach.html",
+      "glyph": "+"
+    },
+    {
+      "id": "twin-primes",
+      "type": "hypothesis",
+      "title": "простые близнецы",
+      "url": "/null/objects/ideas/hypotheses/twin-primes.html",
+      "glyph": "∥"
+    },
+    {
+      "id": "pvsnp",
+      "type": "hypothesis",
+      "title": "P vs NP",
+      "url": "/null/objects/ideas/hypotheses/pvsnp.html",
+      "glyph": "?"
+    },
+    {
+      "id": "op-mod",
+      "type": "operator",
+      "title": "mod",
+      "url": "/null/objects/operators/mod.html",
+      "glyph": "mod"
+    },
+    {
+      "id": "op-floor",
+      "type": "operator",
+      "title": "floor и ceiling",
+      "url": "/null/objects/operators/floor-ceiling.html",
+      "glyph": "⌊⌋"
+    },
+    {
+      "id": "op-xor",
+      "type": "operator",
+      "title": "XOR",
+      "url": "/null/objects/operators/xor.html",
+      "glyph": "⊕"
+    },
+    {
+      "id": "op-nabla",
+      "type": "operator",
+      "title": "набла",
+      "url": "/null/objects/operators/nabla.html",
+      "glyph": "∇"
+    },
+    {
+      "id": "op-factorial",
+      "type": "operator",
+      "title": "факториал",
+      "url": "/null/objects/operators/factorial.html",
+      "glyph": "!"
+    },
+    {
+      "id": "op-sum",
+      "type": "operator",
+      "title": "сумма",
+      "url": "/null/objects/operators/sum.html",
+      "glyph": "∑"
+    },
+    {
+      "id": "op-integral",
+      "type": "operator",
+      "title": "интеграл",
+      "url": "/null/objects/operators/integral.html",
+      "glyph": "∫"
+    },
+    {
+      "id": "op-partial",
+      "type": "operator",
+      "title": "частная производная",
+      "url": "/null/objects/operators/partial.html",
+      "glyph": "∂"
+    },
+    {
+      "id": "pr-secretary",
+      "type": "problem",
+      "title": "задача о невесте",
+      "url": "/null/objects/ideas/problems/secretary.html",
+      "glyph": "37"
+    },
+    {
+      "id": "pr-simpson",
+      "type": "problem",
+      "title": "парадокс Симпсона",
+      "url": "/null/objects/ideas/problems/simpson.html",
+      "glyph": "∩"
+    },
+    {
+      "id": "pr-monty",
+      "type": "problem",
+      "title": "парадокс Монти Холла",
+      "url": "/null/objects/ideas/problems/monty-hall.html",
+      "glyph": "♟"
+    },
+    {
+      "id": "pr-birthday",
+      "type": "problem",
+      "title": "парадокс дней рождения",
+      "url": "/null/objects/ideas/problems/birthday.html",
+      "glyph": "∩"
+    },
+    {
+      "id": "pr-gamblers",
+      "type": "problem",
+      "title": "разорение игрока",
+      "url": "/null/objects/ideas/problems/gamblers-ruin.html",
+      "glyph": "∅"
+    },
+    {
+      "id": "es-zero-nine",
+      "type": "essay",
+      "title": "0.999… = 1",
+      "url": "/null/essays/zero-point-nine.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-infinity",
+      "type": "essay",
+      "title": "Бесконечность — не число",
+      "url": "/null/essays/infinity.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-invented",
+      "type": "essay",
+      "title": "Изобретена или открыта",
+      "url": "/null/essays/invented-or-discovered.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-euler-formula",
+      "type": "essay",
+      "title": "Формула Эйлера",
+      "url": "/null/essays/euler-formula.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-pi-gaussian",
+      "type": "essay",
+      "title": "π в колоколе Гаусса",
+      "url": "/null/essays/pi-in-gaussian.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-deck",
+      "type": "essay",
+      "title": "Колода которой не было",
+      "url": "/null/essays/deck-of-cards.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-hilbert",
+      "type": "essay",
+      "title": "Гёдель и Гильберт",
+      "url": "/null/essays/hilbert-godel.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-millennium",
+      "type": "essay",
+      "title": "Проблемы тысячелетия",
+      "url": "/null/essays/millennium-problems.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-zfc",
+      "type": "essay",
+      "title": "Математика которую нельзя доказать",
+      "url": "/null/essays/zfc-independence.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-rsa",
+      "type": "essay",
+      "title": "Замок из простых чисел",
+      "url": "/null/essays/rsa-primes.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-fibonacci",
+      "type": "essay",
+      "title": "Фибоначчи в природе",
+      "url": "/null/essays/fibonacci-nature.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-pseudorandom",
+      "type": "essay",
+      "title": "Случайность которой нет",
+      "url": "/null/essays/pseudorandom.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "vi-prime-field",
+      "type": "visual",
+      "title": "поле простых",
+      "url": "/null/visuals/prime-field.html",
+      "glyph": "⊞"
+    },
+    {
+      "id": "vi-triangles",
+      "type": "visual",
+      "title": "матрица треугольников",
+      "url": "/null/visuals/triangles.html",
+      "glyph": "△"
+    },
+    {
+      "id": "vi-progress",
+      "type": "visual",
+      "title": "прогресс null",
+      "url": "/null/visuals/progress.html",
+      "glyph": "░"
+    },
+    {
+      "id": "vi-ulam",
+      "type": "visual",
+      "title": "спираль улама",
+      "url": "/null/visuals/ulam.html",
+      "glyph": "◯"
+    },
+    {
+      "id": "vi-pascal",
+      "type": "visual",
+      "title": "треугольник паскаля",
+      "url": "/null/visuals/pascal.html",
+      "glyph": "△"
+    },
+    {
+      "id": "vi-plotter",
+      "type": "visual",
+      "title": "плоттер функций",
+      "url": "/null/visuals/plotter.html",
+      "glyph": "ƒ"
+    },
+    {
+      "id": "vi-collatz",
+      "type": "visual",
+      "title": "коллатц",
+      "url": "/null/visuals/collatz.html",
+      "glyph": "↯"
+    },
+    {
+      "id": "cu-37",
+      "type": "curious",
+      "title": "37",
+      "url": "/null/objects/numbers/curious/37.html",
+      "glyph": "37"
+    },
+    {
+      "id": "cu-42",
+      "type": "curious",
+      "title": "42",
+      "url": "/null/objects/numbers/curious/42.html",
+      "glyph": "42"
+    },
+    {
+      "id": "cu-1729",
+      "type": "curious",
+      "title": "1729",
+      "url": "/null/objects/numbers/curious/1729.html",
+      "glyph": "⊞"
+    },
+    {
+      "id": "cu-6174",
+      "type": "curious",
+      "title": "6174",
+      "url": "/null/objects/numbers/curious/6174.html",
+      "glyph": "6174"
+    },
+    {
+      "id": "cu-graham",
+      "type": "curious",
+      "title": "число Грэма",
+      "url": "/null/objects/numbers/curious/graham.html",
+      "glyph": "G"
+    },
+    {
+      "id": "cu-minus12",
+      "type": "curious",
+      "title": "−1/12",
+      "url": "/null/objects/numbers/curious/minus-one-twelfth.html",
+      "glyph": "−¹⁄₁₂"
+    }
   ],
   "edges": [
-    { "from": "pi", "to": "transcendental" },
-    { "from": "pi", "to": "op-sum" },
-    { "from": "pi", "to": "op-integral" },
-    { "from": "pi", "to": "es-euler-formula" },
-    { "from": "pi", "to": "es-pi-gaussian" },
-    { "from": "pi", "to": "vi-prime-field" },
-    { "from": "pi", "to": "vi-progress" },
-    { "from": "euler", "to": "transcendental" },
-    { "from": "euler", "to": "op-integral" },
-    { "from": "euler", "to": "op-factorial" },
-    { "from": "euler", "to": "es-euler-formula" },
-    { "from": "euler", "to": "es-pi-gaussian" },
-    { "from": "phi", "to": "natural" },
-    { "from": "phi", "to": "es-fibonacci" },
-    { "from": "gamma", "to": "op-sum" },
-    { "from": "gamma", "to": "euler" },
-    { "from": "sqrt2", "to": "pythagoras" },
-    { "from": "sqrt2", "to": "transcendental" },
-    { "from": "prime", "to": "fundamental" },
-    { "from": "prime", "to": "riemann" },
-    { "from": "prime", "to": "goldbach" },
-    { "from": "prime", "to": "twin-primes" },
-    { "from": "prime", "to": "es-rsa" },
-    { "from": "prime", "to": "vi-prime-field" },
-    { "from": "prime", "to": "vi-ulam" },
-    { "from": "prime", "to": "vi-pascal" },
-    { "from": "imaginary", "to": "complex" },
-    { "from": "imaginary", "to": "es-euler-formula" },
-    { "from": "godel", "to": "es-hilbert" },
-    { "from": "godel", "to": "es-zfc" },
-    { "from": "godel", "to": "pvsnp" },
-    { "from": "cantor", "to": "natural" },
-    { "from": "cantor", "to": "es-infinity" },
-    { "from": "cantor", "to": "es-zfc" },
-    { "from": "pythagoras", "to": "sqrt2" },
-    { "from": "pythagoras", "to": "complex" },
-    { "from": "fundamental", "to": "prime" },
-    { "from": "fundamental", "to": "one" },
-    { "from": "riemann", "to": "prime" },
-    { "from": "riemann", "to": "complex" },
-    { "from": "riemann", "to": "es-millennium" },
-    { "from": "goldbach", "to": "prime" },
-    { "from": "goldbach", "to": "es-millennium" },
-    { "from": "pvsnp", "to": "godel" },
-    { "from": "pvsnp", "to": "es-millennium" },
-    { "from": "pvsnp", "to": "es-rsa" },
-    { "from": "op-mod", "to": "prime" },
-    { "from": "op-mod", "to": "op-xor" },
-    { "from": "op-mod", "to": "es-rsa" },
-    { "from": "op-mod", "to": "es-pseudorandom" },
-    { "from": "op-factorial", "to": "euler" },
-    { "from": "op-factorial", "to": "pi" },
-    { "from": "op-factorial", "to": "es-deck" },
-    { "from": "op-sum", "to": "op-integral" },
-    { "from": "op-sum", "to": "pi" },
-    { "from": "op-sum", "to": "gamma" },
-    { "from": "op-integral", "to": "op-partial" },
-    { "from": "op-integral", "to": "euler" },
-    { "from": "op-integral", "to": "pi" },
-    { "from": "op-nabla", "to": "op-partial" },
-    { "from": "op-xor", "to": "es-rsa" },
-    { "from": "op-xor", "to": "pvsnp" },
-    { "from": "pr-secretary", "to": "euler" },
-    { "from": "pr-secretary", "to": "op-floor" },
-    { "from": "pr-monty", "to": "pr-secretary" },
-    { "from": "pr-birthday", "to": "op-factorial" },
-    { "from": "pr-birthday", "to": "es-rsa" },
-    { "from": "pr-gamblers", "to": "natural" },
-    { "from": "pr-gamblers", "to": "op-sum" },
-    { "from": "es-euler-formula", "to": "pi" },
-    { "from": "es-euler-formula", "to": "euler" },
-    { "from": "es-euler-formula", "to": "imaginary" },
-    { "from": "es-hilbert", "to": "godel" },
-    { "from": "es-hilbert", "to": "pvsnp" },
-    { "from": "es-zfc", "to": "godel" },
-    { "from": "es-zfc", "to": "cantor" },
-    { "from": "es-rsa", "to": "prime" },
-    { "from": "es-rsa", "to": "op-mod" },
-    { "from": "es-rsa", "to": "pvsnp" },
-    { "from": "es-fibonacci", "to": "phi" },
-    { "from": "es-fibonacci", "to": "natural" },
-    { "from": "es-pseudorandom", "to": "op-mod" },
-    { "from": "es-pseudorandom", "to": "op-xor" },
-    { "from": "es-millennium", "to": "riemann" },
-    { "from": "es-millennium", "to": "goldbach" },
-    { "from": "es-millennium", "to": "pvsnp" },
-    { "from": "es-pi-gaussian", "to": "pi" },
-    { "from": "es-pi-gaussian", "to": "euler" },
-    { "from": "es-pi-gaussian", "to": "op-integral" },
-    { "from": "es-deck", "to": "op-factorial" },
-    { "from": "es-deck", "to": "pvsnp" },
-    { "from": "es-infinity", "to": "cantor" },
-    { "from": "es-infinity", "to": "natural" },
-    { "from": "vi-prime-field", "to": "prime" },
-    { "from": "vi-ulam", "to": "prime" },
-    { "from": "vi-pascal", "to": "prime" },
-    { "from": "vi-pascal", "to": "op-mod" },
-    { "from": "vi-collatz", "to": "natural" },
-    { "from": "vi-collatz", "to": "op-mod" },
-    { "from": "vi-plotter", "to": "op-integral" },
-    { "from": "vi-plotter", "to": "op-partial" },
-    { "from": "vi-plotter", "to": "op-sum" },
-    { "from": "cu-37", "to": "prime" },
-    { "from": "cu-37", "to": "pr-secretary" },
-    { "from": "cu-37", "to": "euler" },
-    { "from": "cu-42", "to": "prime" },
-    { "from": "cu-42", "to": "fundamental" },
-    { "from": "cu-1729", "to": "natural" },
-    { "from": "cu-1729", "to": "op-sum" },
-    { "from": "cu-6174", "to": "natural" },
-    { "from": "cu-6174", "to": "op-mod" },
-    { "from": "cu-graham", "to": "natural" },
-    { "from": "cu-graham", "to": "op-factorial" },
-    { "from": "cu-minus12", "to": "riemann" },
-    { "from": "cu-minus12", "to": "op-sum" },
-    { "from": "cu-minus12", "to": "natural" }
+    {
+      "from": "pi",
+      "to": "transcendental"
+    },
+    {
+      "from": "pi",
+      "to": "op-sum"
+    },
+    {
+      "from": "pi",
+      "to": "op-integral"
+    },
+    {
+      "from": "pi",
+      "to": "es-euler-formula"
+    },
+    {
+      "from": "pi",
+      "to": "es-pi-gaussian"
+    },
+    {
+      "from": "pi",
+      "to": "vi-prime-field"
+    },
+    {
+      "from": "pi",
+      "to": "vi-progress"
+    },
+    {
+      "from": "euler",
+      "to": "transcendental"
+    },
+    {
+      "from": "euler",
+      "to": "op-integral"
+    },
+    {
+      "from": "euler",
+      "to": "op-factorial"
+    },
+    {
+      "from": "euler",
+      "to": "es-euler-formula"
+    },
+    {
+      "from": "euler",
+      "to": "es-pi-gaussian"
+    },
+    {
+      "from": "phi",
+      "to": "natural"
+    },
+    {
+      "from": "phi",
+      "to": "es-fibonacci"
+    },
+    {
+      "from": "gamma",
+      "to": "op-sum"
+    },
+    {
+      "from": "gamma",
+      "to": "euler"
+    },
+    {
+      "from": "sqrt2",
+      "to": "pythagoras"
+    },
+    {
+      "from": "sqrt2",
+      "to": "transcendental"
+    },
+    {
+      "from": "prime",
+      "to": "fundamental"
+    },
+    {
+      "from": "prime",
+      "to": "riemann"
+    },
+    {
+      "from": "prime",
+      "to": "goldbach"
+    },
+    {
+      "from": "prime",
+      "to": "twin-primes"
+    },
+    {
+      "from": "prime",
+      "to": "es-rsa"
+    },
+    {
+      "from": "prime",
+      "to": "vi-prime-field"
+    },
+    {
+      "from": "prime",
+      "to": "vi-ulam"
+    },
+    {
+      "from": "prime",
+      "to": "vi-pascal"
+    },
+    {
+      "from": "imaginary",
+      "to": "complex"
+    },
+    {
+      "from": "imaginary",
+      "to": "es-euler-formula"
+    },
+    {
+      "from": "godel",
+      "to": "es-hilbert"
+    },
+    {
+      "from": "godel",
+      "to": "es-zfc"
+    },
+    {
+      "from": "godel",
+      "to": "pvsnp"
+    },
+    {
+      "from": "cantor",
+      "to": "natural"
+    },
+    {
+      "from": "cantor",
+      "to": "es-infinity"
+    },
+    {
+      "from": "cantor",
+      "to": "es-zfc"
+    },
+    {
+      "from": "pythagoras",
+      "to": "sqrt2"
+    },
+    {
+      "from": "pythagoras",
+      "to": "complex"
+    },
+    {
+      "from": "fundamental",
+      "to": "prime"
+    },
+    {
+      "from": "fundamental",
+      "to": "one"
+    },
+    {
+      "from": "riemann",
+      "to": "prime"
+    },
+    {
+      "from": "riemann",
+      "to": "complex"
+    },
+    {
+      "from": "riemann",
+      "to": "es-millennium"
+    },
+    {
+      "from": "goldbach",
+      "to": "prime"
+    },
+    {
+      "from": "goldbach",
+      "to": "es-millennium"
+    },
+    {
+      "from": "pvsnp",
+      "to": "godel"
+    },
+    {
+      "from": "pvsnp",
+      "to": "es-millennium"
+    },
+    {
+      "from": "pvsnp",
+      "to": "es-rsa"
+    },
+    {
+      "from": "op-mod",
+      "to": "prime"
+    },
+    {
+      "from": "op-mod",
+      "to": "op-xor"
+    },
+    {
+      "from": "op-mod",
+      "to": "es-rsa"
+    },
+    {
+      "from": "op-mod",
+      "to": "es-pseudorandom"
+    },
+    {
+      "from": "op-factorial",
+      "to": "euler"
+    },
+    {
+      "from": "op-factorial",
+      "to": "pi"
+    },
+    {
+      "from": "op-factorial",
+      "to": "es-deck"
+    },
+    {
+      "from": "op-sum",
+      "to": "op-integral"
+    },
+    {
+      "from": "op-sum",
+      "to": "pi"
+    },
+    {
+      "from": "op-sum",
+      "to": "gamma"
+    },
+    {
+      "from": "op-integral",
+      "to": "op-partial"
+    },
+    {
+      "from": "op-integral",
+      "to": "euler"
+    },
+    {
+      "from": "op-integral",
+      "to": "pi"
+    },
+    {
+      "from": "op-nabla",
+      "to": "op-partial"
+    },
+    {
+      "from": "op-xor",
+      "to": "es-rsa"
+    },
+    {
+      "from": "op-xor",
+      "to": "pvsnp"
+    },
+    {
+      "from": "pr-secretary",
+      "to": "euler"
+    },
+    {
+      "from": "pr-secretary",
+      "to": "op-floor"
+    },
+    {
+      "from": "pr-monty",
+      "to": "pr-secretary"
+    },
+    {
+      "from": "pr-birthday",
+      "to": "op-factorial"
+    },
+    {
+      "from": "pr-birthday",
+      "to": "es-rsa"
+    },
+    {
+      "from": "pr-gamblers",
+      "to": "natural"
+    },
+    {
+      "from": "pr-gamblers",
+      "to": "op-sum"
+    },
+    {
+      "from": "es-euler-formula",
+      "to": "pi"
+    },
+    {
+      "from": "es-euler-formula",
+      "to": "euler"
+    },
+    {
+      "from": "es-euler-formula",
+      "to": "imaginary"
+    },
+    {
+      "from": "es-hilbert",
+      "to": "godel"
+    },
+    {
+      "from": "es-hilbert",
+      "to": "pvsnp"
+    },
+    {
+      "from": "es-zfc",
+      "to": "godel"
+    },
+    {
+      "from": "es-zfc",
+      "to": "cantor"
+    },
+    {
+      "from": "es-rsa",
+      "to": "prime"
+    },
+    {
+      "from": "es-rsa",
+      "to": "op-mod"
+    },
+    {
+      "from": "es-rsa",
+      "to": "pvsnp"
+    },
+    {
+      "from": "es-fibonacci",
+      "to": "phi"
+    },
+    {
+      "from": "es-fibonacci",
+      "to": "natural"
+    },
+    {
+      "from": "es-pseudorandom",
+      "to": "op-mod"
+    },
+    {
+      "from": "es-pseudorandom",
+      "to": "op-xor"
+    },
+    {
+      "from": "es-millennium",
+      "to": "riemann"
+    },
+    {
+      "from": "es-millennium",
+      "to": "goldbach"
+    },
+    {
+      "from": "es-millennium",
+      "to": "pvsnp"
+    },
+    {
+      "from": "es-pi-gaussian",
+      "to": "pi"
+    },
+    {
+      "from": "es-pi-gaussian",
+      "to": "euler"
+    },
+    {
+      "from": "es-pi-gaussian",
+      "to": "op-integral"
+    },
+    {
+      "from": "es-deck",
+      "to": "op-factorial"
+    },
+    {
+      "from": "es-deck",
+      "to": "pvsnp"
+    },
+    {
+      "from": "es-infinity",
+      "to": "cantor"
+    },
+    {
+      "from": "es-infinity",
+      "to": "natural"
+    },
+    {
+      "from": "vi-prime-field",
+      "to": "prime"
+    },
+    {
+      "from": "vi-ulam",
+      "to": "prime"
+    },
+    {
+      "from": "vi-pascal",
+      "to": "prime"
+    },
+    {
+      "from": "vi-pascal",
+      "to": "op-mod"
+    },
+    {
+      "from": "vi-collatz",
+      "to": "natural"
+    },
+    {
+      "from": "vi-collatz",
+      "to": "op-mod"
+    },
+    {
+      "from": "vi-plotter",
+      "to": "op-integral"
+    },
+    {
+      "from": "vi-plotter",
+      "to": "op-partial"
+    },
+    {
+      "from": "vi-plotter",
+      "to": "op-sum"
+    },
+    {
+      "from": "cu-37",
+      "to": "prime"
+    },
+    {
+      "from": "cu-37",
+      "to": "pr-secretary"
+    },
+    {
+      "from": "cu-37",
+      "to": "euler"
+    },
+    {
+      "from": "cu-42",
+      "to": "prime"
+    },
+    {
+      "from": "cu-42",
+      "to": "fundamental"
+    },
+    {
+      "from": "cu-1729",
+      "to": "natural"
+    },
+    {
+      "from": "cu-1729",
+      "to": "op-sum"
+    },
+    {
+      "from": "cu-6174",
+      "to": "natural"
+    },
+    {
+      "from": "cu-6174",
+      "to": "op-mod"
+    },
+    {
+      "from": "cu-graham",
+      "to": "natural"
+    },
+    {
+      "from": "cu-graham",
+      "to": "op-factorial"
+    },
+    {
+      "from": "cu-minus12",
+      "to": "riemann"
+    },
+    {
+      "from": "cu-minus12",
+      "to": "op-sum"
+    },
+    {
+      "from": "cu-minus12",
+      "to": "natural"
+    }
   ]
 }

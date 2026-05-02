@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 — null/objects/special</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / numbers / special / 1</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;">1</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">особенное · №002</div>
+      <div class="obj-title">единица</div>
+      <div class="obj-subtitle">мультипликативная нейтраль · не простое и не составное</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">значение</td><td class="v mono">1</td></tr>
+    <tr><td class="k">роль</td><td class="v mono">a × 1 = a · мультипликативная нейтраль</td></tr>
+    <tr><td class="k">статус</td><td class="v">не является простым числом — по определению</td></tr>
+    <tr><td class="k">история</td><td class="v">исключена из простых в XIX веке (ради единственности разложения)</td></tr>
+    <tr><td class="k">парадокс</td><td class="v mono">1<sup>∞</sup> — неопределённость в анализе</td></tr>
+    <tr><td class="k">формула</td><td class="v mono">e<sup>iπ</sup> + 1 = 0 · единица замыкает тождество</td></tr>
+    <tr><td class="k">связано</td><td class="v">простые числа · 0 · основная теорема арифметики</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · 340 слов · 3 мин</div>
+    <h2 class="essay-title">Почему единица — <em>не простое</em> число.</h2>
+    <p class="essay-lead">единица делится только на 1 и на себя. почему же она не простая?</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">По определению простое число — это число больше единицы, делящееся только на 1 и на себя. «Больше единицы» — оговорка, которую часто пропускают, и которая часто кажется произвольной. Зачем исключать единицу? Она ведь подходит под определение, если убрать это «больше».</p>
+
+        <p>Причина — основная теорема арифметики. Она говорит, что любое натуральное число больше единицы единственным образом раскладывается в произведение простых. Например, 12 = 2 × 2 × 3, и никаких других разложений нет. Если включить единицу в простые, то 12 = 1 × 2 × 2 × 3 = 1 × 1 × 2 × 2 × 3 = …, и единственность пропадает<em class="fn">1</em>.</p>
+
+        <blockquote>Единица — это не маленькое простое. Это единственный случай, который должен стоять отдельно, чтобы остальное работало.</blockquote>
+
+        <p>Исторически единицу часто относили к простым числам — у Стевина в XVI веке, у Гольдбаха ещё в 1742 году в письме Эйлеру. Современное соглашение оформилось только в XIX веке, когда стало ясно, что единственность разложения — критически важное свойство для всей теории чисел<em class="fn">2</em>.</p>
+
+        <p>В абстрактной алгебре единица обобщается до понятия «единичного элемента» — нейтрали по умножению. В кольце это элемент e, для которого e·a = a·e = a для всех a. Не во всех кольцах он есть, и в тех, где есть, он играет особую роль: единичные элементы — это те, у которых есть мультипликативный обратный, и в их множестве (группе единиц) живут все «обратимости» кольца<em class="fn">3</em>.</p>
+
+        <p>1<sup>∞</sup> в анализе — отдельная странность. Если f → 1 и g → ∞, то предел f<sup>g</sup> может быть чем угодно: 1, e, ∞, 0. Знаменитое (1 + 1/n)<sup>n</sup> → e — пример именно такой неопределённости.</p>
+
+        <p>Единица выглядит как самое простое из чисел. На деле она требует больше всего оговорок.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">Эта причина приводится во всех современных учебниках теории чисел — Харди-Райт, Вандервал, Айерлэнд-Розен.</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">Анри Лебег в 1899 году ещё включал 1 в список простых. К 1930-м исключение стало стандартным.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">В кольце целых ℤ группа единиц — это {1, −1}. В ℚ — все ненулевые рациональные. В ℤ/12ℤ — числа, взаимно простые с 12.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../types/prime.html">простые числа →</a></div>
+      <div class="related-link"><span class="related-link-type">теорема</span><a href="../../ideas/theorems/fundamental.html">основная теорема арифметики →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="zero.html">0 — другая нейтраль →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../constants/euler.html">e — рождена из (1 + 1/n)<sup>n</sup> →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">теорема</span><a href="/null/objects/ideas/theorems/fundamental.html">основная теорема арифметики →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/numbers/special/one.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

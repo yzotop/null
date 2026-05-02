@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>основная теорема арифметики — null/objects/theorems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / ideas / theorems / основная теорема арифметики</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;">ℙ</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">теорема · №004</div>
+      <div class="obj-title">основная теорема арифметики</div>
+      <div class="obj-subtitle">каждое n &gt; 1 единственным образом раскладывается в произведение простых</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">формулировка</td><td class="v mono">n = p₁<sup>a₁</sup> · p₂<sup>a₂</sup> · … · pₖ<sup>aₖ</sup> · разложение единственно с точностью до порядка</td></tr>
+    <tr><td class="k">доказал</td><td class="v">Евклид · ~300 BC · Начала, книга IX</td></tr>
+    <tr><td class="k">следствие</td><td class="v">простые числа — «атомы» арифметики</td></tr>
+    <tr><td class="k">причина</td><td class="v">почему 1 не простое: нарушило бы единственность разложения</td></tr>
+    <tr><td class="k">пример</td><td class="v mono">12 = 2² · 3 · единственным образом</td></tr>
+    <tr><td class="k">связано</td><td class="v">простые числа · 1 · гипотеза Гольдбаха</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · 360 слов · 3 мин</div>
+    <h2 class="essay-title">Почему единица — <em>не простое</em> число.</h2>
+    <p class="essay-lead">определение простого числа исключает единицу. это не случайность — это необходимость.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Простое число — это натуральное число больше 1, делящееся только на себя и на единицу. «Больше 1» — ключевые слова. Единица исключена намеренно. И это не вопрос вкуса, а условие, без которого арифметика теряет одно из своих важнейших свойств.</p>
+
+        <p>До XIX века математики иногда считали 1 простым. Стевин в XVI веке относил её к простым; Гольдбах в письме Эйлеру 1742 года ещё включал. Современное соглашение оформилось только к концу XIX — началу XX века, когда стало ясно, что единственность разложения — критически важное свойство для всей теории чисел<em class="fn">1</em>.</p>
+
+        <blockquote>Математики исключили 1 из простых не потому, что так решили, а потому что иначе не работает.</blockquote>
+
+        <p>Основная теорема арифметики говорит: каждое натуральное число больше 1 раскладывается в произведение простых единственным образом — с точностью до порядка сомножителей. 12 = 2 · 2 · 3. Только так и никак иначе.</p>
+
+        <p>Если считать 1 простым — единственность ломается. 12 = 1 · 2 · 2 · 3 = 1 · 1 · 2 · 2 · 3 = … Сколько угодно разных разложений. Теорема, в которой написано «единственным образом», превращается в теорему «с точностью до количества единиц», и теряет смысл.</p>
+
+        <p>Это типичный пример того, как в математике работают определения. Они не описывают объекты как они «есть» в природе — они выбираются так, чтобы теоремы были красивыми и общими. Когда оказывается, что определение мешает, его меняют<em class="fn">2</em>.</p>
+
+        <p>Основная теорема — это не просто факт об арифметике. Это причина существования отдельной науки — теории чисел. В кольцах с единственным разложением (UFD) теорема обобщается; в кольцах, где она не выполняется, возникают совершенно другие математические миры. Например, в ℤ[√−5] разложение неединственно: 6 = 2 · 3 = (1 + √−5)(1 − √−5)<em class="fn">3</em>. Это привело к созданию теории идеалов и алгебраической теории чисел.</p>
+
+        <p>Один маленький пункт в определении простого числа — «больше единицы» — стоит за половиной всей классической арифметики.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">Анри Лебег ещё в 1899 году включал 1 в список простых в одной из своих публикаций. К 1930-м исключение стало стандартным.</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">Аналогично переопределили «многоугольник» (исключив самопересекающиеся), «функцию» (требуя однозначности), «непрерывность» (через ε–δ).</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">ℤ[√−5] = {a + b√−5 : a, b ∈ ℤ}. Здесь единственность разложения нарушается, и для её восстановления Куммер ввёл идеальные числа.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../../numbers/types/prime.html">простые числа →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../../numbers/special/one.html">1 — почему не простое →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../../numbers/types/natural.html">натуральные числа →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">тип</span><a href="/null/objects/numbers/types/prime.html">простые числа →</a></div>
+      <div class="related-link"><span class="related-link-type">любопытное</span><a href="/null/objects/numbers/curious/42.html">42 →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/ideas/theorems/fundamental.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>
