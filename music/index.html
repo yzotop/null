@@ -6,8 +6,86 @@
 <title>музыка — null</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles/main.css">
+<style>
+  .music-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .music-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: normal; font-weight: 400;
+    font-size: 36px; color: #111;
+    margin-bottom: 6px; line-height: 1.1;
+  }
+  .music-sub {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 16px;
+    color: #666; line-height: 1.65;
+    max-width: 580px; margin-bottom: 36px;
+  }
+  .ep-row {
+    display: grid;
+    grid-template-columns: 44px 1fr 180px 90px 88px 78px;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 14px;
+    border-bottom: 0.5px solid var(--border);
+    text-decoration: none; color: inherit;
+    transition: background 0.12s;
+  }
+  .ep-row:hover { background: var(--paper-mid); }
+  .ep-row.head {
+    background: var(--paper-mid);
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 10px 14px;
+  }
+  .ep-row.head:hover { background: var(--paper-mid); }
+  .ep-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 22px;
+    color: #111; text-align: center;
+  }
+  .ep-name {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 18px; color: #111;
+    line-height: 1.25;
+  }
+  .ep-name .sub {
+    display: block;
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 11px;
+    color: #888;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .ep-genre, .ep-tracks-col, .ep-status {
+    font-family: var(--font-mono);
+    font-size: 10px; color: #888;
+  }
+  .ep-status.prod { color: var(--accent-red); }
+  .ep-suno {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-red);
+    text-align: right;
+    text-decoration: none;
+  }
+  .ep-suno:hover { text-decoration: underline; }
+
+  @media (max-width: 720px) {
+    .ep-row { grid-template-columns: 36px 1fr auto; }
+    .ep-row.head { display: none; }
+    .ep-genre, .ep-tracks-col, .ep-status { display: none; }
+  }
+</style>
 </head>
 <body>
 
@@ -24,12 +102,66 @@
 <div class="breadcrumb">/null / music</div>
 
 <main class="container">
-  <h1 class="page-title">музыка</h1>
-  <div class="page-sub">алгоритмические скетчи · sonic pi · suno · coming soon</div>
+  <div class="music-tag">музыка · null</div>
+  <h1 class="music-h1">музыка</h1>
+  <p class="music-sub">алгоритмическая музыка. математическая структура — единственный композитор. вычисление вместо нарратива. состояния вместо мелодий.</p>
 
-  <p style="font-family: var(--font-serif); font-size: 17px; line-height: 1.75; color: #555; max-width: 620px;">
-    раздел в разработке.
-  </p>
+  <hr class="section-divider">
+
+  <div class="ep-row head">
+    <span></span>
+    <span>EP</span>
+    <span>жанр</span>
+    <span>треков</span>
+    <span>статус</span>
+    <span></span>
+  </div>
+
+  <a class="ep-row" href="discrete.html">
+    <span class="ep-glyph">◼</span>
+    <span class="ep-name">DISCRETE<span class="sub">чистая теория чисел · тон только если выполняется условие</span></span>
+    <span class="ep-genre">ambient · algorithmic</span>
+    <span class="ep-tracks-col">4 · 11:17</span>
+    <span class="ep-status">released</span>
+    <a class="ep-suno" href="https://suno.com/playlist/d9ef024d-9d45-463c-a050-851c99626b3c" target="_blank" rel="noopener" onclick="event.stopPropagation();">→ suno</a>
+  </a>
+
+  <a class="ep-row" href="null-execution.html">
+    <span class="ep-glyph">⚙</span>
+    <span class="ep-name">NULL EXECUTION<span class="sub">glitch как failure state · runtime lifecycle</span></span>
+    <span class="ep-genre">glitch · industrial</span>
+    <span class="ep-tracks-col">4 · 16:14</span>
+    <span class="ep-status">released</span>
+    <a class="ep-suno" href="https://suno.com/playlist/5085a460-dd30-4def-b7bb-2f351d795830" target="_blank" rel="noopener" onclick="event.stopPropagation();">→ suno</a>
+  </a>
+
+  <a class="ep-row" href="bit-parade.html">
+    <span class="ep-glyph">▓</span>
+    <span class="ep-name">BIT PARADE<span class="sub">стабильные лупы · игра без замысла играть</span></span>
+    <span class="ep-genre">electronic · loop</span>
+    <span class="ep-tracks-col">4 · 12:01</span>
+    <span class="ep-status">released</span>
+    <a class="ep-suno" href="https://suno.com/playlist/941f6953-e6e0-4892-ac5f-52a1f0bb354a" target="_blank" rel="noopener" onclick="event.stopPropagation();">→ suno</a>
+  </a>
+
+  <a class="ep-row" href="constants.html">
+    <span class="ep-glyph">K</span>
+    <span class="ep-name">CONSTANTS<span class="sub">каждый трек — именованное число</span></span>
+    <span class="ep-genre">rave · jungle · industrial</span>
+    <span class="ep-tracks-col">3</span>
+    <span class="ep-status prod">in production</span>
+    <a class="ep-suno" href="https://suno.com/playlist/4dd36eef-49a9-40e6-b4d3-ba6dfa6b28a7" target="_blank" rel="noopener" onclick="event.stopPropagation();">→ suno</a>
+  </a>
+
+  <a class="ep-row" href="quad.html">
+    <span class="ep-glyph">◈</span>
+    <span class="ep-name">QUAD<span class="sub">31GN4L · ATT3MPT · C0LL1310N · ST4BL3</span></span>
+    <span class="ep-genre">signal · transmission</span>
+    <span class="ep-tracks-col">4</span>
+    <span class="ep-status">released</span>
+    <a class="ep-suno" href="https://suno.com/playlist/e69df2ed-221e-4877-91c9-bf9c7d83b7d1" target="_blank" rel="noopener" onclick="event.stopPropagation();">→ suno</a>
+  </a>
+
 </main>
 
 <footer class="footer">

@@ -372,6 +372,41 @@
       "glyph": "♟"
     },
     {
+      "id": "mu-discrete",
+      "type": "music",
+      "title": "DISCRETE",
+      "url": "/null/music/discrete.html",
+      "glyph": "◼"
+    },
+    {
+      "id": "mu-nullex",
+      "type": "music",
+      "title": "NULL EXECUTION",
+      "url": "/null/music/null-execution.html",
+      "glyph": "⚙"
+    },
+    {
+      "id": "mu-bitparade",
+      "type": "music",
+      "title": "BIT PARADE",
+      "url": "/null/music/bit-parade.html",
+      "glyph": "▓"
+    },
+    {
+      "id": "mu-constants",
+      "type": "music",
+      "title": "CONSTANTS",
+      "url": "/null/music/constants.html",
+      "glyph": "K"
+    },
+    {
+      "id": "mu-quad",
+      "type": "music",
+      "title": "QUAD",
+      "url": "/null/music/quad.html",
+      "glyph": "◈"
+    },
+    {
       "id": "cu-37",
       "type": "curious",
       "title": "37",
@@ -882,6 +917,15 @@
     {
       "from": "vi-monty",
       "to": "pr-monty"
-    }
+    },
+    { "from": "mu-discrete", "to": "prime" },
+    { "from": "mu-discrete", "to": "twin-primes" },
+    { "from": "mu-discrete", "to": "vi-prime-field" },
+    { "from": "mu-nullex", "to": "es-pseudorandom" },
+    { "from": "mu-nullex", "to": "pvsnp" },
+    { "from": "mu-constants", "to": "cu-42" },
+    { "from": "mu-constants", "to": "cu-1729" },
+    { "from": "mu-quad", "to": "op-xor" },
+    { "from": "mu-quad", "to": "es-pseudorandom" }
   ]
 }

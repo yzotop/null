@@ -22,6 +22,7 @@ const TYPE_RU = {
   operator:   'оператор',
   problem:    'задача',
   curious:    'любопытное',
+  music:      'альбом',
   essay:      'эссе',
   visual:     'визуал'
 };
@@ -44,7 +45,7 @@ const urlToFs = (url) => {
 const renderBacklinks = (sourceIds) => {
   if (sourceIds.size === 0) return null;
   // sort by type order, then by title
-  const typeOrder = ['constant','type','special','theorem','hypothesis','operator','problem','curious','essay','visual'];
+  const typeOrder = ['constant','type','special','theorem','hypothesis','operator','problem','curious','music','essay','visual'];
   const list = [...sourceIds].map(id => byId[id]).filter(Boolean).sort((a, b) => {
     const ta = typeOrder.indexOf(a.type), tb = typeOrder.indexOf(b.type);
     if (ta !== tb) return ta - tb;
