@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>пять чисел, одно уравнение — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / euler-formula</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · 750 слов · 6 мин · 2026.04</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Пять чисел. Одно уравнение.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">e<sup>iπ</sup> + 1 = 0 — формула Эйлера объединяет пять фундаментальных констант. математики называют её самой красивой. но красота здесь не метафора.</p>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Есть пять чисел, которые математики считают фундаментальными. 0 — аддитивная нейтраль, начало числовой прямой. 1 — мультипликативная нейтраль, начало умножения. e — основание натурального логарифма, неподвижная точка дифференцирования. i — мнимая единица, поворот на 90°. π — отношение длины окружности к диаметру.</p>
+
+      <p>Формула Эйлера: e<sup>iπ</sup> + 1 = 0. Все пять в одном равенстве. Ни одного лишнего символа, ни одной лишней операции. Каждая константа появляется ровно один раз<em class="fn">1</em>.</p>
+
+      <p>Откуда она берётся? Эйлер доказал в 1748 году более общее тождество: e<sup>ix</sup> = cos x + i·sin x для любого вещественного x. Подставим x = π: e<sup>iπ</sup> = cos π + i·sin π = −1 + 0 = −1. Прибавим 1 к обеим сторонам: e<sup>iπ</sup> + 1 = 0.</p>
+
+      <p>Но почему e<sup>ix</sup> = cos x + i·sin x? Доказательство — через степенные ряды<em class="fn">2</em>. Ряд Тейлора экспоненты: e<sup>x</sup> = 1 + x + x²/2! + x³/3! + x⁴/4! + …. Ряды для синуса и косинуса: cos x = 1 − x²/2! + x⁴/4! − …; sin x = x − x³/3! + x⁵/5! − ….</p>
+
+      <p>Подставим ix вместо x в ряд для e<sup>x</sup>. Степени i циклятся: i¹ = i, i² = −1, i³ = −i, i⁴ = 1, и дальше повторяется. Чётные степени дают вещественные слагаемые, нечётные — мнимые. После пересборки оказывается, что вещественная часть — это в точности cos x, а мнимая — i·sin x. Тождество доказано не магией, а арифметикой степенных рядов.</p>
+
+      <blockquote>Это уравнение — самое замечательное в математике. — Ричард Фейнман</blockquote>
+
+      <p>Почему это считают красивым? Потому что формула связывает три разных мира. e и натуральный логарифм — анализ, непрерывность, рост; они появляются в задачах о росте и распаде. π — геометрия, окружности, тригонометрия; они появляются там, где есть форма и круговое движение. i — алгебра, расширение поля вещественных чисел; они появляются там, где надо извлекать корни из отрицательного.</p>
+
+      <p>Эти три константы открывались независимо в разных контекстах разными людьми. Π знали ещё в Вавилоне за две тысячи лет до Пифагора. e появилось у Бернулли в задаче о банковских процентах в 1683 году. i придумал Кардано в 1545 году как технический трюк для решения кубических уравнений. Никто из них не подозревал, что эти три величины окажутся связаны одной строкой.</p>
+
+      <p>Геометрически формула Эйлера выглядит совсем просто. Умножение на e<sup>iθ</sup> — это поворот на угол θ радиан в комплексной плоскости. e<sup>iπ</sup> — поворот на π радиан, то есть на полу-оборот. Точка 1 после такого поворота переходит в −1. Формула Эйлера — это просто запись того, что поворот на 180° переводит единицу в её отражение<em class="fn">3</em>.</p>
+
+      <p>Но именно эта простота геометрической интерпретации делает формулу глубокой. Экспонента, изначально определённая как «непрерывное умножение по чуть-чуть», на комплексной плоскости оказывается тем же, что вращение. Это не аналогия — это математический факт. И он связывает рост с поворотом, анализ с геометрией.</p>
+
+      <p>В опросах математиков формула Эйлера регулярно занимает первое место среди «самых красивых». Красота здесь означает максимум содержания при минимуме символов. Пять констант, три операции (умножение, возведение в степень, сложение), один знак равенства — и связь между всеми главными ветками математики становится одной строкой.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Формула впервые появляется у Эйлера в «Введении в анализ бесконечных», 1748. Сам он, впрочем, не выделял именно случай x = π — это сделали позже.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Степенной ряд e<sup>x</sup> сходится для всех x ∈ ℂ — ключевое свойство, делающее это рассуждение строгим.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Обобщение: e<sup>iθ</sup> = cos θ + i·sin θ — формула для произвольного угла. Основа фурье-анализа и всей теории сигналов.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/constants/euler.html">e — основание формулы →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/constants/pi.html">π — поворот на полу-оборот →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/special/imaginary.html">i — мнимая единица →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/special/zero.html">0 и 1 — особенные числа →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../objects/operators/sum.html">∑ — степенные ряды →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/euler-formula.html</span>
+  <a href="../man.html">about →</a>
+</footer>
+
+</body>
+</html>
