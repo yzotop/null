@@ -205,21 +205,27 @@ function initCells(){
   }
 }
 
-function playRound(strategy){
+function tick(){
+  if(stayWins>=TARGET||switchWins>=TARGET)return;
+  // одна и та же раздача для обеих стратегий
   const car=Math.floor(Math.random()*3);
   const pick=Math.floor(Math.random()*3);
-  let reveal;
-  do{reveal=Math.floor(Math.random()*3);}while(reveal===pick||reveal===car);
-  let final;
-  if(strategy==='stay'){final=pick;}
-  else{for(let d=0;d<3;d++){if(d!==pick&&d!==reveal){final=d;break;}}}
-  return final===car;
-}
-
-function tick(){
-  if(stayWins>=TARGET&&switchWins>=TARGET)return;
-  if(stayWins<TARGET){stayGames++;if(playRound('stay')){const c=document.getElementById('stay-'+stayWins);c.className='cell win stay-win new';c.textContent='🐐';stayWins++;}}
-  if(switchWins<TARGET){switchGames++;if(playRound('switch')){const c=document.getElementById('switch-'+switchWins);c.className='cell win switch-win new';c.textContent='🚗';switchWins++;}}
+  // если машина за начальным выбором — выигрывает «остаться», иначе — «поменять»
+  const stayWon=(pick===car);
+  stayGames++;
+  switchGames++;
+  if(stayWon && stayWins<TARGET){
+    const c=document.getElementById('stay-'+stayWins);
+    c.className='cell win stay-win new';
+    c.textContent='🐐';
+    stayWins++;
+  }
+  if(!stayWon && switchWins<TARGET){
+    const c=document.getElementById('switch-'+switchWins);
+    c.className='cell win switch-win new';
+    c.textContent='🚗';
+    switchWins++;
+  }
   gamesDone++;
   updateUI();
   if(stayWins>=TARGET||switchWins>=TARGET)endRace();
