@@ -76,7 +76,7 @@
 
   <hr class="section-divider">
 
-  <section class="visual-canvas">
+  <section class="visual-canvas light">
     <canvas id="collatz"></canvas>
   </section>
 
@@ -240,7 +240,7 @@
   let barTooltip = null;
   const drawBars = (anim = 1) => {
     const { W, H } = dims();
-    ctx.fillStyle = '#0c0c0d';
+    ctx.fillStyle = '#f7f6f2';
     ctx.fillRect(0, 0, W, H);
 
     let maxSteps = 0, maxValGlobal = 1;
@@ -309,7 +309,7 @@
 
   const drawPath = () => {
     const { W, H } = dims();
-    ctx.fillStyle = '#0c0c0d';
+    ctx.fillStyle = '#f7f6f2';
     ctx.fillRect(0, 0, W, H);
 
     if (pathSeq.length === 0) return;
@@ -391,7 +391,7 @@
       ctx.beginPath();
       ctx.arc(px, py, 4, 0, Math.PI * 2);
       ctx.fill();
-      ctx.strokeStyle = '#0c0c0d';
+      ctx.strokeStyle = '#f7f6f2';
       ctx.lineWidth = 1;
       ctx.stroke();
       ctx.fillStyle = '#bbb';
@@ -477,7 +477,7 @@
 
   const drawTree = () => {
     const { W, H } = dims();
-    ctx.fillStyle = '#0c0c0d';
+    ctx.fillStyle = '#f7f6f2';
     ctx.fillRect(0, 0, W, H);
 
     const root = buildTree(treeDepth);
