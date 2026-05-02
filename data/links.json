@@ -365,6 +365,13 @@
       "glyph": "↯"
     },
     {
+      "id": "vi-monty",
+      "type": "visual",
+      "title": "монти холл — козы vs машины",
+      "url": "/null/visuals/monty-hall.html",
+      "glyph": "♟"
+    },
+    {
       "id": "cu-37",
       "type": "curious",
       "title": "37",
@@ -871,6 +878,10 @@
     {
       "from": "cu-minus12",
       "to": "natural"
+    },
+    {
+      "from": "vi-monty",
+      "to": "pr-monty"
     }
   ]
 }
