@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>треугольник Паскаля — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .visual-controls .group {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 16px;
+  }
+  .visual-controls button.on {
+    border-color: #111;
+    color: #111;
+    background: #f0ede8;
+  }
+  #pascal { display: block; width: 100%; height: 520px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / pascal</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №005</div>
+    <div class="ttl">треугольник Паскаля</div>
+    <div class="lead">числа в строках. чётные и нечётные. фрактал из арифметики.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <section class="visual-canvas light" style="padding:24px 24px;">
+    <canvas id="pascal"></canvas>
+  </section>
+
+  <div class="visual-controls">
+    <span class="group">
+      <button id="toggle">● live</button>
+    </span>
+    <span class="group">
+      <span>делитель</span>
+      <button class="div on" data-d="2">2</button>
+      <button class="div" data-d="3">3</button>
+      <button class="div" data-d="5">5</button>
+      <button class="div" data-d="7">7</button>
+    </span>
+    <span class="group">
+      <span>режим</span>
+      <button class="mode on" data-m="sym">символы</button>
+      <button class="mode" data-m="num">числа</button>
+      <button class="mode" data-m="dot">точки</button>
+    </span>
+    <span class="group">
+      <span>строк</span>
+      <input type="range" id="rowsSlider" min="8" max="64" step="1" value="32">
+      <span class="read" id="rowsVal">32</span>
+    </span>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="visual-meta">
+    <div class="visual-description">
+      <p>Треугольник Паскаля — это таблица биномиальных коэффициентов C(n, k). Строка n содержит коэффициенты разложения (a + b)<sup>n</sup>. Каждое число равно сумме двух чисел над ним: C(n, k) = C(n−1, k−1) + C(n−1, k).</p>
+      <p>Если выделить числа, кратные простому p — получается фрактал. При делителе 2 — это в точности треугольник Серпинского. Это следствие теоремы Куммера о переносе в p-ичном сложении: C(n, k) делится на p тогда и только тогда, когда при сложении k и n−k в системе счисления по основанию p происходит хотя бы один перенос.</p>
+    </div>
+    <div class="visual-params">
+      <div class="row"><span>алгоритм</span><span>C(n,k) = C(n−1,k−1) + C(n−1,k)</span></div>
+      <div class="row"><span>делитель</span><span id="metaDivisor">2</span></div>
+      <div class="row"><span>строк</span><span id="metaRows">32</span></div>
+      <div class="row"><span>ячеек</span><span id="metaCells">528</span></div>
+      <div class="row"><span>fps</span><span>~30</span></div>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">теорема</span><a href="../objects/theorems/fundamental.html">основная теорема арифметики →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/types/prime.html">простые числа — делитель = простое →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../objects/operators/mod.html">mod — кратность через mod →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="prime-field.html">поле простых →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/pascal.html</span>
+  <a href="../man.html">about →</a>
+</footer>
+
+<script>
+(() => {
+  const cv = document.getElementById('pascal');
+  const ctx = cv.getContext('2d');
+
+  const sizeCanvas = () => {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = cv.getBoundingClientRect();
+    cv.width = Math.floor(rect.width * dpr);
+    cv.height = Math.floor(rect.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+
+  let rows = 32;
+  let divisor = 2;
+  let mode = 'sym';
+  let triangle = []; // triangle[r] = array of (value mod divisor)
+  let visibleRow = 0;
+  let running = true;
+
+  // build triangle of mod values for current rows/divisor
+  const build = () => {
+    triangle = [];
+    for (let n = 0; n < rows; n++) {
+      const row = new Array(n + 1);
+      row[0] = 1 % divisor;
+      row[n] = 1 % divisor;
+      for (let k = 1; k < n; k++) {
+        row[k] = (triangle[n - 1][k - 1] + triangle[n - 1][k]) % divisor;
+      }
+      triangle.push(row);
+    }
+  };
+
+  const cells = () => (rows * (rows + 1)) / 2;
+
+  const updateMeta = () => {
+    document.getElementById('metaDivisor').textContent = divisor;
+    document.getElementById('metaRows').textContent = rows;
+    document.getElementById('metaCells').textContent = cells();
+    document.getElementById('rowsVal').textContent = rows;
+  };
+
+  const draw = () => {
+    const rect = cv.getBoundingClientRect();
+    const W = rect.width, H = rect.height;
+    ctx.fillStyle = '#f7f6f2';
+    ctx.fillRect(0, 0, W, H);
+
+    const cellW = W / (rows + 1);
+    const cellH = Math.min(cellW * 0.95, H / (rows + 1));
+    const fontSize = Math.max(7, Math.min(cellW * 0.55, 16));
+    const dotR = Math.max(1.5, Math.min(cellW * 0.32, 6));
+
+    ctx.font = fontSize + 'px "JetBrains Mono", monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    const cx = W / 2;
+    const yOff = (H - cellH * rows) / 2;
+
+    const upTo = Math.min(visibleRow, rows);
+
+    for (let n = 0; n < upTo; n++) {
+      const row = triangle[n];
+      const y = yOff + n * cellH + cellH / 2;
+      const startX = cx - (n * cellW) / 2;
+      for (let k = 0; k <= n; k++) {
+        const x = startX + k * cellW;
+        const r = row[k];
+        const isMul = (r === 0);
+
+        if (mode === 'sym') {
+          let ch, color;
+          if (divisor === 2) {
+            ch = isMul ? '█' : '░';
+            color = isMul ? '#111' : '#ccc';
+          } else {
+            if (isMul) { ch = '█'; color = '#111'; }
+            else if (r === 1) { ch = '▓'; color = '#555'; }
+            else if (r === 2) { ch = '▒'; color = '#999'; }
+            else { ch = '░'; color = '#ccc'; }
+          }
+          ctx.fillStyle = color;
+          ctx.fillText(ch, x, y);
+        } else if (mode === 'num') {
+          // need actual value; recompute or use raw
+          // for performance use mod result for highlight, but show actual binomial for small n
+          if (n <= 22) {
+            const val = binomial(n, k);
+            if (isMul) {
+              ctx.fillStyle = '#111';
+              ctx.fillRect(x - cellW * 0.45, y - cellH * 0.42, cellW * 0.9, cellH * 0.84);
+              ctx.fillStyle = '#f7f6f2';
+              ctx.font = (fontSize) + 'px "JetBrains Mono", monospace';
+              ctx.fillText(String(val), x, y);
+            } else {
+              ctx.fillStyle = '#ddd';
+              ctx.fillText(String(val), x, y);
+            }
+          } else {
+            // for large n, show only mod value
+            if (isMul) {
+              ctx.fillStyle = '#111';
+              ctx.fillRect(x - cellW * 0.42, y - cellH * 0.4, cellW * 0.84, cellH * 0.8);
+            }
+          }
+        } else if (mode === 'dot') {
+          ctx.beginPath();
+          if (isMul) {
+            ctx.fillStyle = '#111';
+            ctx.arc(x, y, dotR, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            ctx.strokeStyle = '#ddd';
+            ctx.lineWidth = 1;
+            ctx.arc(x, y, dotR * 0.55, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+  };
+
+  // exact binomial for small n (BigInt fallback for safety)
+  const binomial = (n, k) => {
+    if (k < 0 || k > n) return 0;
+    if (k === 0 || k === n) return 1;
+    k = Math.min(k, n - k);
+    let result = 1;
+    for (let i = 0; i < k; i++) {
+      result = result * (n - i) / (i + 1);
+    }
+    return Math.round(result);
+  };
+
+  // animation loop
+  let lastT = performance.now();
+  const frame = (now) => {
+    const dt = now - lastT;
+    if (running && visibleRow < rows && dt > 33) {
+      lastT = now;
+      visibleRow = Math.min(rows, visibleRow + 2);
+      draw();
+    }
+    requestAnimationFrame(frame);
+  };
+
+  const reset = () => {
+    visibleRow = 0;
+    build();
+    updateMeta();
+    draw();
+  };
+
+  // controls
+  document.getElementById('toggle').onclick = (e) => {
+    running = !running;
+    e.target.textContent = running ? '● live' : '○ pause';
+  };
+
+  const setActive = (sel, btn) => {
+    document.querySelectorAll(sel).forEach((b) => b.classList.remove('on'));
+    btn.classList.add('on');
+  };
+
+  document.querySelectorAll('button.div').forEach((b) => {
+    b.onclick = () => {
+      divisor = parseInt(b.dataset.d, 10);
+      setActive('button.div', b);
+      reset();
+    };
+  });
+
+  document.querySelectorAll('button.mode').forEach((b) => {
+    b.onclick = () => {
+      mode = b.dataset.m;
+      setActive('button.mode', b);
+      visibleRow = rows; // mode change doesn't need reanimation
+      draw();
+    };
+  });
+
+  const slider = document.getElementById('rowsSlider');
+  slider.addEventListener('input', () => {
+    rows = parseInt(slider.value, 10);
+    reset();
+  });
+
+  // boot
+  sizeCanvas();
+  reset();
+  requestAnimationFrame(frame);
+
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => {
+      sizeCanvas();
+      visibleRow = rows;
+      draw();
+    }, 120);
+  });
+})();
+</script>
+
+</body>
+</html>
