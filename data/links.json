@@ -407,6 +407,20 @@
       "glyph": "◈"
     },
     {
+      "id": "mu-dm",
+      "type": "music",
+      "title": "DELTA MACHINE",
+      "url": "/null/music/delta-machine/",
+      "glyph": "δ"
+    },
+    {
+      "id": "mu-opstack",
+      "type": "music",
+      "title": "OPERATOR STACK",
+      "url": "/null/music/delta-machine/operator-stack.html",
+      "glyph": "∑"
+    },
+    {
       "id": "cu-37",
       "type": "curious",
       "title": "37",
@@ -926,6 +940,10 @@
     { "from": "mu-constants", "to": "cu-42" },
     { "from": "mu-constants", "to": "cu-1729" },
     { "from": "mu-quad", "to": "op-xor" },
-    { "from": "mu-quad", "to": "es-pseudorandom" }
+    { "from": "mu-quad", "to": "es-pseudorandom" },
+    { "from": "mu-opstack", "to": "op-sum" },
+    { "from": "mu-opstack", "to": "op-xor" },
+    { "from": "mu-opstack", "to": "op-mod" },
+    { "from": "mu-opstack", "to": "op-factorial" }
   ]
 }

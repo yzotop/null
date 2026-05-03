@@ -1,0 +1,1797 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OPERATOR STACK — null/music/delta machine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .ep-tag { font-family: 'Times New Roman', Georgia, serif; font-style: italic; font-size: 10px; color: #bbb; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
+  .ep-h1  { font-family: 'Times New Roman', Georgia, serif; font-size: 44px; font-weight: 400; color: #111; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 10px; }
+  .ep-sub { font-family: 'Times New Roman', Georgia, serif; font-style: italic; font-size: 17px; color: #666; line-height: 1.6; max-width: 580px; }
+  .ep-meta-table { width: 100%; border-collapse: collapse; margin: 28px 0 12px; max-width: 600px; }
+  .ep-meta-table td { padding: 8px 0; border-bottom: 0.5px solid var(--border); font-family: var(--font-mono); font-size: 11px; vertical-align: top; }
+  .ep-meta-table td.k { color: #bbb; width: 160px; text-transform: uppercase; letter-spacing: 0.05em; font-size: 10px; }
+  .ep-meta-table td.v { color: #111; }
+  .section-label { font-family: var(--font-mono); font-size: 9px; color: #bbb; letter-spacing: 0.12em; text-transform: uppercase; margin: 36px 0 14px; }
+  .ep-concept p { font-family: 'Times New Roman', Georgia, serif; font-size: 16px; line-height: 1.75; color: #1a1a1a; margin-bottom: 14px; max-width: 660px; }
+
+  .track-block { border-bottom: 1px solid #e8e8e4; padding: 32px 0; }
+  .track-block:last-child { border-bottom: none; }
+  .track-head {
+    display: flex; align-items: baseline; gap: 20px; margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .track-num { font-family: var(--font-mono); font-size: 11px; color: #bbb; }
+  .track-op { font-family: 'Times New Roman', Georgia, serif; font-style: italic; font-size: 32px; color: #111; line-height: 1; }
+  .track-name { font-family: 'Times New Roman', Georgia, serif; font-size: 20px; color: #111; }
+  .track-link {
+    font-family: var(--font-mono); font-size: 10px;
+    color: var(--accent-red); text-decoration: none;
+    border-bottom: 1px solid transparent; margin-left: auto;
+  }
+  .track-link:hover { border-color: var(--accent-red); }
+  .track-link.no-obj { color: #ccc; cursor: default; }
+  .track-desc { font-family: var(--font-sans); font-size: 13px; color: #666; line-height: 1.65; margin-bottom: 16px; max-width: 660px; }
+
+  .code-block {
+    background: #f0ede8;
+    border-left: 2px solid #111;
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+  .code-block pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.7;
+    color: #333;
+    white-space: pre;
+    overflow-x: auto;
+    margin: 0;
+  }
+  .kw  { color: #2c5fb6; }
+  .cm  { color: #999; font-style: italic; }
+  .str { color: #c44a32; }
+  .num { color: #1a7a4a; }
+
+  .code-toggle {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 4px 0;
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+  .code-toggle:hover { color: #111; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../../">null</a>
+  <nav>
+    <a href="../../objects/">объекты</a>
+    <a href="../../essays/">эссе</a>
+    <a href="../../visuals/">визуалы</a>
+    <a href="../" class="active">музыка</a>
+    <a href="/null/map.html">карта</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / music / delta machine / operator stack</div>
+
+<main class="container">
+<article>
+
+  <div class="ep-tag">музыка · delta machine · sonic pi</div>
+  <h1 class="ep-h1">OPERATOR STACK</h1>
+  <p class="ep-sub">8 треков = 8 вычислительных операций. арифметика становится ритмом. логика становится структурой.</p>
+
+  <hr class="section-divider">
+
+  <table class="ep-meta-table">
+    <tr><td class="k">артист</td><td class="v">DELTA MACHINE</td></tr>
+    <tr><td class="k">движок</td><td class="v">Sonic Pi</td></tr>
+    <tr><td class="k">треков</td><td class="v">8</td></tr>
+    <tr><td class="k">длительность</td><td class="v">8 × 2:30 ≈ 20 мин</td></tr>
+    <tr><td class="k">тональность</td><td class="v">D minor / pentatonic</td></tr>
+    <tr><td class="k">bpm</td><td class="v">210–224</td></tr>
+    <tr><td class="k">год</td><td class="v">2026</td></tr>
+    <tr><td class="k">статус</td><td class="v">released</td></tr>
+    <tr><td class="k">концепт</td><td class="v">Controlled Chaos</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="section-label">// концепт</div>
+  <div class="ep-concept">
+    <p>OPERATOR STACK — это не о запуске машины. Это о её работе.</p>
+    <p>Каждый трек — вычислительная операция. Арифметика становится ритмом. Логика становится структурой. Прерывания становятся синкопами. Паника становится паттерном.</p>
+    <p>Система доведена до теплового предела — но не рушится. Машина перегревается. Машина пересчитывает. Машина выживает.</p>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <div class="section-label">// треки</div>
+
+<div class="track-block">
+  <div class="track-head">
+    <span class="track-num">01</span>
+    <span class="track-op">+</span>
+    <span class="track-name">ADD</span>
+    <a class="track-link" href="../../objects/operators/sum.html">→ ∑ сумма</a>
+  </div>
+  <div class="track-desc">четыре параллельных потока — clock / bus / alu / heat. бинарная маска &quot;10110111…&quot; управляет шиной данных. голоса наслаиваются 1→2→3 по мере прогресса.</div>
+  <div class="code-block"><pre class="code-full"># OPERATOR STACK
+# 01 — ADD(+) — COMPUTE CUT (max electronic / computation)
+use_debug false
+use_bpm 210
+
+set :t0, vt
+set :dur, 150.0
+
+total = get(:dur)
+t0 = get(:t0)
+
+# global &quot;machine chassis&quot;
+with_fx :compressor, threshold: 0.40, slope_above: 0.55 do
+  with_fx :hpf, cutoff: 28 do
+    with_fx :lpf, cutoff: 120 do
+      with_fx :distortion, distort: 0.12 do
+        
+        # --- building blocks (all renamed to avoid core conflicts) ---
+        define :dm_clk_tick do |a|
+          with_fx :hpf, cutoff: 120 do
+            sample :elec_tick, amp: a
+          end
+        end
+        
+        define :dm_bus_click do |a|
+          with_fx :hpf, cutoff: 110 do
+            sample :elec_blip, amp: a
+          end
+        end
+        
+        define :dm_bus_click2 do |a|
+          with_fx :hpf, cutoff: 115 do
+            sample :elec_blip2, amp: a
+          end
+        end
+        
+        define :dm_kick_soft do |a|
+          # still gives headbang anchor, but not dominant
+          sample :bd_tek, amp: a
+        end
+        
+        define :dm_alu_pulse do |n, a, cut|
+          use_synth :pulse
+          with_fx :lpf, cutoff: cut do
+            synth :pulse,
+              note: n,
+              release: 0.12,
+              amp: a,
+              width: 0.25
+          end
+        end
+        
+        define :dm_alu_fm do |n, a, cut|
+          use_synth :fm
+          with_fx :lpf, cutoff: cut do
+            synth :fm,
+              note: n,
+              release: 0.10,
+              depth: 2.0,
+              divisor: 2,
+              amp: a
+          end
+        end
+        
+        define :dm_hash_noise do |a|
+          use_synth :noise
+          with_fx :hpf, cutoff: 95 do
+            synth :noise, release: 0.08, amp: a
+          end
+        end
+        
+        # --- binary driver ---
+        # &quot;instruction stream&quot; (editable): 1 = event, 0 = rest
+        bin = &quot;10110111001011010011101100101101&quot;.chars.map { |c| c == &quot;1&quot; ? 1 : 0 }.ring
+        
+        # --- harmonic domain: D center but digital ---
+        roots = (ring :d2, :d2, :a1, :c2, :d2, :f2, :a1, :d2)
+        hi    = (ring :d4, :f4, :a4, :c5, :a4, :f4).ring
+        
+        # --- compute beds (threads) ---
+        
+        # CLOCK: constant high-frequency pulse (the machine heartbeat)
+        in_thread(name: :clock) do
+          i = 0
+          while (vt - t0) &lt; total
+            t = vt - get(:t0)
+            break if t &gt; get(:dur)
+            prog = (vt - t0) / total
+            inten = prog &lt; 0.75 ? 1.0 : 1.15
+            # subtle widening later
+            with_fx :echo, mix: 0.22, phase: 0.25, decay: 1.6 do
+            dm_clk_tick(0.18 * inten)
+          end
+          i += 1
+          sleep 0.125
+        end
+      end
+      
+      # BUS: clicky data transfers (binary-gated)
+      in_thread(name: :bus) do
+        while (vt - t0) &lt; total
+          t = vt - get(:t0)
+          break if t &gt; get(:dur)
+          prog = (vt - t0) / total
+          inten = prog &lt; 0.35 ? 0.8 : (prog &lt; 0.8 ? 1.0 : 1.2)
+          
+          if bin.tick(:bus) == 1
+            with_fx :bitcrusher, bits: 6, sample_rate: 12000, mix: 0.6 do
+              dm_bus_click(0.20 * inten)
+              dm_bus_click2(0.12 * inten) if one_in(2)
+            end
+          end
+          
+          sleep 0.125
+        end
+      end
+      
+      # ALU: additive computation (ADD+) — layering voices over time
+      in_thread(name: :alu) do
+        step = 0
+        while (vt - t0) &lt; total
+          t = vt - get(:t0)
+          break if t &gt; get(:dur)
+          prog = (vt - t0) / total
+          inten =
+          if prog &lt; 0.25
+            0.85
+          elsif prog &lt; 0.75
+            1.00
+          else
+            1.20
+          end
+          
+          voices =
+          if prog &lt; 0.33
+            1
+          elsif prog &lt; 0.75
+            2
+          else
+            3
+          end
+          
+          base = roots.tick(:rt)
+          cut  = (78 + prog * 28).to_i
+          
+          with_fx :bitcrusher, bits: 7, sample_rate: 14000, mix: 0.55 do
+          dm_alu_pulse(base,       0.32 * inten, cut)
+          if voices &gt;= 2
+            dm_alu_pulse(base + 7, 0.18 * inten, cut)
+          end
+          if voices &gt;= 3
+            dm_alu_fm(base + 12,   0.12 * inten, cut + 10)
+          end
+        end
+        
+        # occasional &quot;carry&quot; ping (the + operation)
+        if one_in(6)
+          with_fx :echo, mix: 0.30, phase: 0.125, decay: 1.4 do
+            dm_alu_fm(hi.tick(:hi), 0.10 * inten, 100)
+          end
+        end
+        
+        step += 1
+        sleep 0.25
+      end
+    end
+    
+    # HASH/NOISE: computation heat (subtle) + slicer to sound like interrupts
+    in_thread(name: :heat) do
+      while (vt - t0) &lt; total
+        t = vt - get(:t0)
+        break if t &gt; get(:dur)
+        prog = (vt - t0) / total
+        inten = prog &lt; 0.6 ? 0.7 : 1.0
+        with_fx :slicer, phase: 0.25, mix: 0.25 + prog*0.25 do
+        dm_hash_noise(0.03 * inten)
+      end
+      sleep 0.25
+    end
+  end
+  
+  # --- anchor: very soft kick (keeps headbang without drums dominating) ---
+  # quarter-note pulse, slightly varying, gated near the end to feel &quot;overclock&quot;
+  while (vt - t0) &lt; total
+    t = vt - get(:t0)
+    break if t &gt; get(:dur)
+    prog = (vt - t0) / total
+    inten = prog &lt; 0.75 ? 1.0 : 1.2
+    
+    if prog &lt; 0.85
+      dm_kick_soft(0.55 * inten)
+    else
+      # end: stutter
+      dm_kick_soft(0.45 * inten) if one_in(2)
+    end
+    
+    sleep 0.5
+  end
+  
+end
+end
+end
+end</pre></div>
+</div>
+
+<div class="track-block">
+  <div class="track-head">
+    <span class="track-num">02</span>
+    <span class="track-op">−</span>
+    <span class="track-name">SUB</span>
+    <span class="track-link no-obj">— нет прямого объекта</span>
+  </div>
+  <div class="track-desc">маска cut гасит амплитуду до 0.35× в момент вычитания. тишина как математическая операция.</div>
+  <div class="code-block"><pre class="code-full"># OPERATOR STACK
+# 02 — SUB(−) — FINAL (bits quieter + rarer, computer sound forward)
+use_debug false
+use_bpm 215
+
+set :t0, vt
+set :dur, 150.0
+
+# ---- helpers ----
+define :dm_kick do |a|
+  sample :bd_tek, amp: a
+end
+
+define :dm_sn do |a|
+  sample :sn_dolf, amp: a
+end
+
+define :dm_hat do |a|
+  with_fx :hpf, cutoff: 105 do
+    sample :drum_cymbal_closed, amp: a
+  end
+end
+
+define :dm_tick do |a|
+  with_fx :hpf, cutoff: 120 do
+    sample :elec_tick, amp: a
+  end
+end
+
+define :dm_blip do |a|
+  with_fx :hpf, cutoff: 112 do
+    sample :elec_blip, amp: a
+  end
+end
+
+define :dm_blip2 do |a|
+  with_fx :hpf, cutoff: 116 do
+    sample :elec_blip2, amp: a
+  end
+end
+
+define :dm_alu do |n, a, cut|
+  use_synth :pulse
+  with_fx :lpf, cutoff: cut do
+    synth :pulse, note: n, release: 0.10, amp: a, width: 0.22
+  end
+end
+
+define :dm_alu_hi do |n, a, cut|
+  use_synth :fm
+  with_fx :lpf, cutoff: cut do
+    synth :fm, note: n, release: 0.08, depth: 2.0, divisor: 2, amp: a
+  end
+end
+
+# ---- patterns (rarer drums) ----
+# keep mostly on, cut is rare &quot;minus moment&quot;
+keep = &quot;1111111111111111&quot;.chars.map { |c| c == &quot;1&quot; ? 1 : 0 }.ring
+cut  = &quot;0001000000010000&quot;.chars.map { |c| c == &quot;1&quot; ? 1 : 0 }.ring  # rare minus
+
+# kick 2x per bar (rarer than 4-on-floor)
+kick16 = (ring 1,0,0,0,  0,0,0,0,  1,0,0,0,  0,0,0,0)
+
+# snare only on &quot;4&quot; (rare, not busy)
+sn16   = (ring 0,0,0,0,  0,0,0,0,  0,0,0,0,  1,0,0,0)
+
+# hats reduced
+hat16  = (spread 7,16).ring
+
+roots = (ring :d2, :d2, :a1, :c2, :d2, :f2, :a1, :d2)
+hi    = (ring :d4, :f4, :a4, :c5, :a4, :f4).ring
+
+# ---- global frame (heavy FX once) ----
+with_fx :compressor, threshold: 0.40, slope_above: 0.55 do
+  with_fx :hpf, cutoff: 30 do
+    with_fx :lpf, cutoff: 120 do
+      with_fx :distortion, distort: 0.12 do
+        with_fx :bitcrusher, bits: 6, sample_rate: 12000, mix: 0.45 do
+          with_fx :slicer, phase: 0.25, mix: 0.24 do
+            
+            # reference start to let prog ramp (2 minutes)
+            set :op_start, vt
+            set :op_total, get(:dur)
+            
+            # DRUMS: quieter + rarer, comp-ticks keep motion
+            live_loop :drums do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              t = (vt - get(:op_start))
+              prog = [t / get(:op_total), 1.0].min
+              inten = prog &lt; 0.7 ? 1.0 : 1.15
+              
+              step = tick(:d) % 16
+              removed = (cut.look(:c) == 1)
+              
+              # drums (quiet)
+              dm_kick(0.07 * inten) if kick16.look(:k16) == 1 &amp;&amp; !(removed &amp;&amp; step == 0)
+              dm_hat(0.16 * inten)  if hat16.look(:h16) == 1  &amp;&amp; !(removed &amp;&amp; one_in(3))
+              
+              # stable computer metronome accents (replaces drum density)
+              if step == 0 || step == 8
+                dm_tick(0.10 * inten)
+              end
+              
+              # small blips to keep dance feel (not too often)
+              if (step == 6 || step == 14) &amp;&amp; !removed
+                dm_blip(0.11 * inten)
+              end
+              if (step == 3 || step == 11) &amp;&amp; one_in(3) &amp;&amp; !removed
+                dm_blip2(0.08 * inten)
+              end
+              
+              # advance masks/patterns together
+              keep.tick(:k)
+              cut.tick(:c)
+              kick16.tick(:k16)
+              sn16.tick(:s16)
+              hat16.tick(:h16)
+              
+              sleep 0.125
+            end
+            
+            # ALU: the star (louder + stable), subtraction via amp_mul
+            live_loop :alu do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              t = (vt - get(:op_start))
+              prog = [t / get(:op_total), 1.0].min
+              
+              inten =
+              if prog &lt; 0.25
+                0.95
+              elsif prog &lt; 0.75
+                1.05
+              else
+                1.22
+              end
+              
+              removed = (cut.look(:c) == 1)
+              
+              base = roots.tick(:rt)
+              cf = (92 - prog * 18).to_i  # slowly darker
+              
+              # SUB: during cut moments, reduce instead of deleting time events
+              amp_mul = removed ? 0.35 : 1.0
+              
+              dm_alu(base, 0.32 * inten * amp_mul, cf + 22)            # louder than before
+              dm_alu(base + 7, 0.12 * inten * amp_mul, cf + 18) if one_in(2)
+              
+              # high compute pings (slightly louder)
+              dm_alu_hi(hi.tick(:hi), 0.08 * inten * amp_mul, 102) if one_in(4)
+              
+              sleep 0.25
+            end
+            
+            # predictable micro-break every 16 beats (not rando, not rippy)
+            live_loop :breaks do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              t = (vt - get(:op_start))
+              prog = [t / get(:op_total), 1.0].min
+              inten = prog &lt; 0.8 ? 1.0 : 1.15
+              
+              sleep 16.0
+              with_fx :echo, mix: 0.20, phase: 0.125, decay: 1.0 do
+                8.times do
+                  dm_tick(0.09 * inten)
+                  sleep 0.125
+                end
+              end
+            end
+            
+          end
+        end
+      end
+    end
+  end
+end</pre></div>
+</div>
+
+<div class="track-block">
+  <div class="track-head">
+    <span class="track-num">03</span>
+    <span class="track-op">×</span>
+    <span class="track-name">MUL</span>
+    <a class="track-link" href="../../objects/operators/factorial.html">→ ! факториал</a>
+  </div>
+  <div class="track-desc">7 живых лупов. умножение как наслоение голосов. typewriter groove — клавиши как операнды.</div>
+  <div class="code-block"><pre class="code-full"># OPERATOR STACK
+# 03 — PRINT MELODY + TYPEWRITER (melodic computers, no noise)
+# Length: 2:30, BPM: 215
+use_debug false
+use_bpm 215
+use_sched_ahead_time 1.0
+
+# ---------- helpers ----------
+define :tick_hi do |a|
+  with_fx :hpf, cutoff: 118 do
+    sample :elec_tick, amp: a
+  end
+end
+
+define :blip do |a|
+  with_fx :hpf, cutoff: 112 do
+    sample (one_in(2) ? :elec_blip : :elec_blip2), amp: a
+  end
+end
+
+define :soft_hat do |a|
+  with_fx :hpf, cutoff: 115 do
+    sample :drum_cymbal_closed, amp: a
+  end
+end
+
+define :power_pulse do |a|
+  sample :bd_tek, amp: a
+end
+
+# melodic computer ping (pleasant)
+define :ping_fm do |n, a, cut|
+  use_synth :fm
+  with_fx :lpf, cutoff: cut do
+    synth :fm,
+          note: n,
+          release: 0.08,
+          depth: 1.8,
+          divisor: 3.0,
+          amp: a
+  end
+end
+
+# warm melodic layer (still &quot;digital&quot;)
+define :ping_kal do |n, a, cut|
+  use_synth :kalimba
+  with_fx :lpf, cutoff: cut do
+    synth :kalimba,
+          note: n,
+          release: 0.18,
+          amp: a
+  end
+end
+
+# soft bass pulse, musical not boomy
+define :bass_pulse do |n, a|
+  use_synth :chipbass
+  with_fx :lpf, cutoff: 75 do
+    synth :chipbass,
+          note: n - 24,
+          release: 0.20,
+          amp: a
+  end
+end
+
+# print burst, TONAL and bounded (no spam)
+define :print_burst_tonal do |notes_ring, base_amp|
+  lines = (one_in(2) ? 2 : 3) # 2–3 lines max
+  lines.times do
+    4.times do |i|
+      n = notes_ring.tick(:pr)
+      if i.even?
+        tick_hi(base_amp * 0.90)
+      else
+        ping_fm(n + 12, base_amp * 0.85, 120)
+      end
+      sleep 0.125
+    end
+    sleep 0.125
+  end
+end
+
+# ---------- timeline ----------
+set :t0, vt
+set :dur, 150.0 # 2:30
+
+# melodic material (D minor-ish, but airy/digital)
+lead = (scale :d4, :minor_pentatonic, num_octaves: 2).ring
+ops  = (ring :d3, :f3, :a3, :c4, :a3, :f3).ring
+
+# ---------- global frame ----------
+with_fx :compressor, threshold: 0.38, slope_above: 0.60 do
+  with_fx :hpf, cutoff: 28 do
+    with_fx :lpf, cutoff: 128 do
+      with_fx :distortion, distort: 0.08 do
+        with_fx :bitcrusher, bits: 6, sample_rate: 12000, mix: 0.28 do
+          with_fx :reverb, mix: 0.10, room: 0.9 do
+
+            # 1) CLOCK (subtle)
+            live_loop :clock do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              prog = [t / get(:dur), 1.0].min
+
+              a = (prog &lt; 0.20 ? 0.05 : (prog &lt; 0.75 ? 0.07 : 0.055))
+              tick_hi(a)
+              sleep 0.25
+            end
+
+            # 2) BUS (blips, but musical density)
+            live_loop :bus do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              prog = [t / get(:dur), 1.0].min
+
+              dens = (prog &lt; 0.25 ? 0.35 : (prog &lt; 0.70 ? 0.65 : 0.50))
+
+              if rand &lt; dens
+                k = (ring 2,3,3,4).tick(:pk)
+                k.times do |i|
+                  blip(0.05 + (i==0 ? 0.02 : 0.0))
+                  sleep 0.125
+                end
+              else
+                sleep 0.25
+              end
+            end
+
+            # 3) ALU MELODY (main melodic engine)
+            live_loop :alu_melody do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              prog = [t / get(:dur), 1.0].min
+
+              base = ops.tick(:op)
+              cut  = (115 - prog*15).to_i
+
+              inten =
+                if prog &lt; 0.25
+                  0.85
+                elsif prog &lt; 0.75
+                  1.05
+                else
+                  0.95
+                end
+
+              # one pleasant ping always
+              ping_kal(base + 12, 0.08 * inten, cut)
+
+              # answer note (gives melody)
+              ping_fm(lead.tick(:ld), 0.06 * inten, 122) if one_in(2)
+
+              # rare octave sparkle
+              ping_fm(base + 24, 0.04 * inten, 125) if prog &gt; 0.30 &amp;&amp; one_in(5)
+
+              sleep 0.25
+            end
+
+            # 4) BASS (rare, musical, not boomy)
+            live_loop :bass do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              prog = [t / get(:dur), 1.0].min
+
+              if prog &gt; 0.15 &amp;&amp; one_in(2)
+                bass_pulse((ring :d2, :d2, :a1, :c2).tick(:bs), 0.10)
+              end
+              sleep 0.5
+            end
+
+            # 5) PRINT MODE (tonal bursts, bounded)
+            live_loop :print_mode do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              prog = [t / get(:dur), 1.0].min
+
+              active = (prog &gt; 0.20 &amp;&amp; prog &lt; 0.55) || (prog &gt; 0.78)
+
+              if active &amp;&amp; one_in(9)
+                with_fx :echo, mix: 0.14, phase: 0.125, decay: 0.8 do
+                  print_burst_tonal(lead, 0.07)
+                end
+              else
+                sleep 0.25
+              end
+            end
+
+            # 6) TYPEWRITER GROOVE (teletypish, tonal, no noise)
+            live_loop :typewriter do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              prog = [t / get(:dur), 1.0].min
+
+              active = (prog &gt; 0.18 &amp;&amp; prog &lt; 0.60) || (prog &gt; 0.78)
+              if !active
+                sleep 0.25
+                next
+              end
+
+              burst_kind = (one_in(3) ? :line : :word)
+              base_notes = (ring :d5, :f5, :a5, :c6, :a5, :f5).ring
+
+              # keystroke synth: clicky but tonal
+              define :key_pulse do |n, a|
+                use_synth :pulse
+                with_fx :hpf, cutoff: 90 do
+                  with_fx :lpf, cutoff: 120 do
+                    synth :pulse,
+                          note: n,
+                          release: 0.045,
+                          amp: a,
+                          width: 0.12
+                  end
+                end
+              end
+
+              jit = (ring 0,0,0, 1,-1, 0, 2,-2).tick(:jit)
+              step = 0.125
+
+              gate = (burst_kind == :line ? one_in(10) : one_in(7))
+
+              if gate
+                with_fx :echo, mix: 0.10, phase: 0.125, decay: 0.7 do
+                  if burst_kind == :word
+                    chars = (ring 6,7,8,9,10).choose
+                    chars.times do
+                      n = base_notes.tick(:tn) + jit
+                      key_pulse(n, 0.052)
+                      sleep (one_in(6) ? step * 2 : step)
+                    end
+                  else
+                    2.times do
+                      8.times do
+                        n = base_notes.tick(:tn2) + jit
+                        key_pulse(n, 0.048)
+                        sleep step
+                      end
+                      sleep step * 2
+                    end
+                  end
+                end
+              else
+                sleep 0.25
+              end
+            end
+
+            # 7) POWER (minimal drums, supporting only)
+            live_loop :power do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              prog = [t / get(:dur), 1.0].min
+              step = tick(:p) % 16
+
+              # rare PSU surge, not dance kick
+              power_pulse(0.22) if (step == 0 || (prog &gt; 0.45 &amp;&amp; step == 10)) &amp;&amp; one_in(3)
+
+              # hats safe (no false.tick)
+              soft_hat(0.04) if prog &gt; 0.30 &amp;&amp; spread(4,16).tick(:hh)
+
+              sleep 0.125
+            end
+
+          end
+        end
+      end
+    end
+  end
+end</pre></div>
+</div>
+
+<div class="track-block">
+  <div class="track-head">
+    <span class="track-num">04</span>
+    <span class="track-op">⇧</span>
+    <span class="track-name">SHIFT</span>
+    <span class="track-link no-obj">— нет прямого объекта</span>
+  </div>
+  <div class="track-desc">три петли с разными периодами (0.333 / 0.25 / 0.2). полиритм через сдвиг фазы. самый компактный трек — 81 строка.</div>
+  <div class="code-block"><pre class="code-full"># OPERATOR STACK
+# 04 — MULTIPLY (×)
+use_debug false
+use_bpm 210
+use_sched_ahead_time 1.0
+
+set :t0, vt
+set :dur, 150.0
+
+notes = (scale :d4, :minor_pentatonic, num_octaves: 2).ring
+
+define :tone do |n, a, cut|
+  use_synth :blade
+  with_fx :lpf, cutoff: cut do
+    synth :blade,
+      note: n,
+      release: 0.15,
+      amp: a
+  end
+end
+
+define :low_tone do |n, a|
+  use_synth :fm
+  with_fx :lpf, cutoff: 90 do
+    synth :fm,
+      note: n - 24,
+      release: 0.25,
+      depth: 1.5,
+      amp: a
+  end
+end
+
+# ---------- Layer 1 (3-beat cycle)
+live_loop :x3 do
+  t = vt - get(:t0)
+  stop if t &gt; get(:dur)
+  
+  prog = [t/get(:dur), 1.0].min
+  cut = (110 - prog*20).to_i
+  
+  tone(notes.tick(:a), 0.07, cut)
+  sleep 0.333
+end
+
+# ---------- Layer 2 (4-beat grid)
+live_loop :x4 do
+  t = vt - get(:t0)
+  stop if t &gt; get(:dur)
+  
+  prog = [t/get(:dur), 1.0].min
+  cut = (120 - prog*25).to_i
+  
+  tone(notes.tick(:b)+7, 0.06, cut)
+  sleep 0.25
+end
+
+# ---------- Layer 3 (5-beat cycle)
+live_loop :x5 do
+  t = vt - get(:t0)
+  stop if t &gt; get(:dur)
+  
+  prog = [t/get(:dur), 1.0].min
+  cut = (115 - prog*15).to_i
+  
+  tone(notes.tick(:c)+12, 0.05, cut)
+  sleep 0.2
+end
+
+# ---------- Harmonic emergence (second half only)
+live_loop :emerge do
+  t = vt - get(:t0)
+  stop if t &gt; get(:dur)
+  
+  prog = t/get(:dur)
+  
+  if prog &gt; 0.45
+    low_tone((ring :d2,:a1,:c2,:f2).tick(:bass), 0.12)
+  end
+  
+  sleep 0.5
+end</pre></div>
+</div>
+
+<div class="track-block">
+  <div class="track-head">
+    <span class="track-num">05</span>
+    <span class="track-op">⊕</span>
+    <span class="track-name">XOR</span>
+    <a class="track-link" href="../../objects/operators/xor.html">→ ⊕ XOR</a>
+  </div>
+  <div class="track-desc">две ритмические маски mask_a и mask_b. XOR без битовых операций: (a &amp;&amp; !b) || (!a &amp;&amp; b). после 45% включается «wrong opcode» — !on if one_in(3).</div>
+  <div class="code-block"><pre class="code-full"># OPERATOR STACK
+# 05 — XOR PARTY (⊕) — fun, robotic, computer-forward
+# Length: 2:30, BPM: 214
+use_debug false
+use_bpm 214
+use_sched_ahead_time 1.0
+
+set :t0, vt
+set :dur, 150.0
+
+# --- tonal pools (bright, robot-friendly; still D minor family) ---
+mel = (scale :d4, :minor_pentatonic, num_octaves: 2).ring
+hi  = (ring :d6, :f6, :a6, :c7, :a6, :f6).ring
+bas = (ring :d2, :a1, :c2, :f2).ring
+
+# --- helpers ---
+define :dm_kick do |a|
+  sample :bd_tek, amp: a
+end
+
+define :dm_sn do |a|
+  sample :sn_dolf, amp: a
+end
+
+define :dm_hat do |a|
+  with_fx :hpf, cutoff: 118 do
+    sample :drum_cymbal_closed, amp: a
+  end
+end
+
+define :dm_tick do |a|
+  with_fx :hpf, cutoff: 122 do
+    sample :elec_tick, amp: a
+  end
+end
+
+define :dm_blip do |a|
+  with_fx :hpf, cutoff: 112 do
+    sample (one_in(2) ? :elec_blip : :elec_blip2), amp: a
+  end
+end
+
+define :dm_pulse do |n, a, pan, cut|
+  use_synth :pulse
+  with_fx :lpf, cutoff: cut do
+    synth :pulse,
+      note: n,
+      release: 0.07,
+      amp: a,
+      pan: pan,
+      width: 0.11
+  end
+end
+
+define :dm_fm do |n, a, pan, cut|
+  use_synth :fm
+  with_fx :lpf, cutoff: cut do
+    synth :fm,
+      note: n,
+      release: 0.06,
+      depth: 2.2,
+      divisor: 3.0,
+      amp: a,
+      pan: pan
+  end
+end
+
+define :dm_sub do |n, a|
+  use_synth :chipbass
+  with_fx :lpf, cutoff: 78 do
+    synth :chipbass,
+      note: n,
+      release: 0.22,
+      amp: a
+  end
+end
+
+# XOR-ish rhythm: two masks, we &quot;flip&quot; accents by phase
+mask_a = (ring 1,0,1,0,  1,0,0,1,  1,0,1,0,  0,1,0,0) # 16 steps
+mask_b = (ring 0,1,0,1,  0,1,1,0,  0,1,0,1,  1,0,1,1)
+
+# master frame (industrial but clean)
+with_fx :compressor, threshold: 0.38, slope_above: 0.62 do
+  with_fx :hpf, cutoff: 28 do
+    with_fx :lpf, cutoff: 130 do
+      with_fx :distortion, distort: 0.10 do
+        with_fx :bitcrusher, bits: 6, sample_rate: 12000, mix: 0.28 do
+          with_fx :reverb, mix: 0.06, room: 0.85 do
+            
+            # stable clock
+            live_loop :clock do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              sleep 0.125
+            end
+            
+            # drums: DnB-ish skeleton, not noisy, upbeat
+            live_loop :drums do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              prog = [t / get(:dur), 1.0].min
+              step = tick(:d) % 16
+              
+              # arc: cheerful -&gt; turbo -&gt; playful break -&gt; finish
+              inten =
+              if prog &lt; 0.20
+                0.85
+              elsif prog &lt; 0.75
+                1.00
+              elsif prog &lt; 0.90
+                0.70
+              else
+                1.05
+              end
+              
+              # kick: 0 + 10 (skeleton)
+              dm_kick(0.18 * inten) if (step == 0 || step == 10) &amp;&amp; !(prog &gt; 0.75 &amp;&amp; prog &lt; 0.90 &amp;&amp; step == 10)
+              
+              # snare: 4 + 12 (classic drive)
+              dm_sn(0.12 * inten) if (step == 4 || step == 12) &amp;&amp; !(prog &gt; 0.75 &amp;&amp; prog &lt; 0.90 &amp;&amp; step == 12)
+              
+              # hats: lively but controlled
+              dm_hat((0.05 + prog*0.01) * inten) if spread((prog &lt; 0.75 ? 6 : 5), 16).tick(:hh)
+              
+              # computer ticks as groove glue
+              dm_tick(0.06 * inten) if (step == 8) || (prog &gt; 0.35 &amp;&amp; step == 2 &amp;&amp; one_in(2))
+              
+              # tiny blips (sparingly)
+              dm_blip(0.035 * inten) if (step == 7 || step == 15) &amp;&amp; one_in(4)
+              
+              sleep 0.125
+            end
+            
+            # bass: robot bouncer
+            live_loop :bass do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              prog = [t / get(:dur), 1.0].min
+              
+              n = bas.tick(:bs)
+              a = 0.11 + prog*0.02
+              
+              # in the &quot;playful break&quot; bass becomes sparse
+              if prog &gt; 0.75 &amp;&amp; prog &lt; 0.90
+                dm_sub(n, a*0.65) if one_in(2)
+                sleep 0.5
+              else
+                dm_sub(n, a)
+                sleep 0.5
+              end
+            end
+            
+            # robot lead: XOR flip accents between two masks
+            live_loop :xor_lead do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              prog = [t / get(:dur), 1.0].min
+              step = tick(:x) % 16
+              
+              # flip speed increases over time (more fun)
+              flip = (prog &lt; 0.45 ? 0 : 1)
+              
+              a_on = (mask_a.look(:ma) == 1)
+              b_on = (mask_b.look(:mb) == 1)
+              
+              # XOR without using bit ops: (A &amp;&amp; !B) || (!A &amp;&amp; B)
+              on = (a_on &amp;&amp; !b_on) || (!a_on &amp;&amp; b_on)
+              on = !on if flip == 1 &amp;&amp; one_in(3)  # occasional &quot;wrong opcode&quot; = playful
+              
+              cut = (128 - prog*20).to_i
+              amp = 0.055 + prog*0.03
+              
+              if on
+                n = mel[(tick(:mi) * (ring 1,2,3,5,2,1).look(:mi)) % mel.length] + 12
+                pan = (ring -0.55, 0.55, -0.25, 0.25, 0).tick(:pn)
+                
+                # alternate pulse/fm for &quot;robot talk&quot;
+                if one_in(2)
+                  dm_pulse(n, amp, pan, [cut, 130].min)
+                else
+                  dm_fm(n + (one_in(4) ? 12 : 0), amp*0.85, pan, [cut, 130].min)
+                end
+                
+                dm_tick(amp*0.75) if one_in(4)
+              end
+              
+              mask_a.tick(:ma)
+              mask_b.tick(:mb)
+              
+              sleep 0.125
+            end
+            
+            # &quot;joy beeps&quot;: cheerful high pings like UI notifications
+            live_loop :ui_beeps do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              prog = [t / get(:dur), 1.0].min
+              
+              # keep them not too frequent (avoid timing overload)
+              if one_in(prog &lt; 0.60 ? 6 : 4)
+                with_fx :echo, mix: 0.10, phase: 0.125, decay: 0.6 do
+                  dm_fm(hi.tick(:hi), 0.045 + prog*0.01, rrand(-0.6, 0.6), 130)
+                end
+              end
+              
+              sleep 0.25
+            end
+            
+            # predictable micro-break every 16 beats (keeps dance feel)
+            live_loop :breaks do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              prog = [t / get(:dur), 1.0].min
+              
+              sleep 16.0
+              with_fx :echo, mix: 0.12, phase: 0.125, decay: 0.8 do
+                8.times do
+                  dm_tick(0.06 + prog*0.01)
+                  sleep 0.125
+                end
+              end
+            end
+            
+          end
+        end
+      end
+    end
+  end
+end</pre></div>
+</div>
+
+<div class="track-block">
+  <div class="track-head">
+    <span class="track-num">06</span>
+    <span class="track-op">%</span>
+    <span class="track-name">MOD</span>
+    <a class="track-link" href="../../objects/operators/mod.html">→ mod</a>
+  </div>
+  <div class="track-desc">cycle = (prog * 8).floor % 4 — четырёхфазный modulo. cutoff качается от Math.sin(vt). ритм = остаток от деления.</div>
+  <div class="code-block"><pre class="code-full"># OPERATOR STACK
+# 06 — MODULO GROOVE (%)
+# Cyclic modular rhythm — architectural shift
+# Length: 2:30
+
+use_debug false
+use_bpm 218
+use_sched_ahead_time 1.0
+
+set :t0, vt
+set :dur, 150.0
+
+# tonal material
+notes = (scale :d3, :minor_pentatonic, num_octaves: 2).ring
+high  = (ring :d5, :f5, :a5, :c6).ring
+
+define :dm_kick do |a|
+  sample :bd_tek, amp: a
+end
+
+define :dm_hat do |a|
+  with_fx :hpf, cutoff: 115 do
+    sample :drum_cymbal_closed, amp: a
+  end
+end
+
+define :dm_tick do |a|
+  with_fx :hpf, cutoff: 120 do
+    sample :elec_tick, amp: a
+  end
+end
+
+define :dm_prophet do |n, a, cut|
+  use_synth :prophet
+  with_fx :lpf, cutoff: cut do
+    synth :prophet,
+      note: n,
+      release: 0.35,
+      amp: a,
+      cutoff: cut
+  end
+end
+
+define :dm_dsaw do |n, a, cut|
+  use_synth :dsaw
+  with_fx :lpf, cutoff: cut do
+    synth :dsaw,
+      note: n,
+      release: 0.25,
+      amp: a
+  end
+end
+
+with_fx :compressor, threshold: 0.45, slope_above: 0.6 do
+  with_fx :hpf, cutoff: 28 do
+    
+    # CLOCK
+    live_loop :clock do
+      t = vt - get(:t0)
+      stop if t &gt; get(:dur)
+      sleep 0.125
+    end
+    
+    # MODULO RHYTHM ENGINE
+    live_loop :mod_cycle do
+      t = vt - get(:t0)
+      stop if t &gt; get(:dur)
+      
+      prog = [t / get(:dur), 1.0].min
+      cycle = (prog * 8).floor % 4  # 4-state modulo cycle
+      
+      step = tick(:mc) % 16
+      
+      # kick only on state 0
+      if cycle == 0
+        dm_kick(0.18) if step == 0
+      end
+      
+      # hats shift every state
+      if spread(4 + cycle, 16).tick(:hh)
+        dm_hat(0.05 + prog*0.02)
+      end
+      
+      # periodic ticks (clock signal)
+      dm_tick(0.04) if step == 8
+      
+      sleep 0.125
+    end
+    
+    # MODULO MELODY
+    live_loop :mod_melody do
+      t = vt - get(:t0)
+      stop if t &gt; get(:dur)
+      
+      prog = [t / get(:dur), 1.0].min
+      phase = (prog * 6).floor % 3
+      
+      base = notes.tick(:n)
+      
+      cut = 100 + (Math.sin(vt) * 15)
+      
+      if phase == 0
+        dm_prophet(base, 0.10 + prog*0.05, cut)
+      elsif phase == 1
+        dm_dsaw(base + 12, 0.08 + prog*0.05, cut + 10)
+      else
+        dm_prophet(base - 12, 0.09 + prog*0.04, cut - 10)
+      end
+      
+      sleep 0.25
+    end
+    
+    # HIGH FRACTAL PINGS
+    live_loop :fractal_ping do
+      t = vt - get(:t0)
+      stop if t &gt; get(:dur)
+      
+      prog = [t / get(:dur), 1.0].min
+      
+      if one_in(6)
+        use_synth :fm
+        synth :fm,
+          note: high.choose,
+          release: 0.12,
+          depth: 2,
+          divisor: 2,
+          amp: 0.05 + prog*0.03
+      end
+      
+      sleep 0.25
+    end
+    
+  end
+end</pre></div>
+</div>
+
+<div class="track-block">
+  <div class="track-head">
+    <span class="track-num">07</span>
+    <span class="track-op">⇄</span>
+    <span class="track-name">HANDSHAKE</span>
+    <span class="track-link no-obj">— нет прямого объекта</span>
+  </div>
+  <div class="track-desc">без барабанов. client слева, server справа. set :seq как разделяемое состояние между потоками. congestion window в зоне 55–90% прогресса.</div>
+  <div class="code-block"><pre class="code-full"># OPERATOR STACK
+# 07 — HANDSHAKE (network protocol, no drums)
+# Controlled chaos: packets + responses + latency
+# Length: 2:30
+
+use_debug false
+use_bpm 220
+use_sched_ahead_time 1.0
+
+set :t0, vt
+set :dur, 150.0
+
+# --- pitch pools (still in D minor world) ---
+base = (ring :d3, :f3, :a3, :c4, :a3, :f3).ring
+hi   = (ring :d5, :f5, :a5, :c6, :a5, :f5).ring
+
+# --- helpers ---
+define :dm_tick do |a, pan|
+  with_fx :hpf, cutoff: 125 do
+    sample :elec_tick, amp: a, pan: pan
+  end
+end
+
+define :dm_blip do |a, pan|
+  with_fx :hpf, cutoff: 115 do
+    sample (one_in(2) ? :elec_blip : :elec_blip2), amp: a, pan: pan
+  end
+end
+
+define :dm_pulse_pkt do |n, a, pan, cut|
+  use_synth :pulse
+  with_fx :lpf, cutoff: cut do
+    synth :pulse,
+      note: n,
+      release: 0.06,
+      amp: a,
+      pan: pan,
+      width: 0.12
+  end
+end
+
+define :dm_fm_ping do |n, a, pan, cut|
+  use_synth :fm
+  with_fx :lpf, cutoff: cut do
+    synth :fm,
+      note: n,
+      release: 0.07,
+      depth: 2.0,
+      divisor: 2.0,
+      amp: a,
+      pan: pan
+  end
+end
+
+# deterministic &quot;network&quot;
+set :seq, 0
+
+with_fx :compressor, threshold: 0.42, slope_above: 0.6 do
+  with_fx :hpf, cutoff: 30 do
+    with_fx :lpf, cutoff: 125 do
+      # lighter than other tracks; protocol must be clean
+      with_fx :bitcrusher, bits: 7, sample_rate: 14000, mix: 0.18 do
+        with_fx :echo, mix: 0.10, phase: 0.125, decay: 0.9 do
+          with_fx :reverb, mix: 0.05, room: 0.8 do
+            
+            # CLOCK (subtle)
+            live_loop :clock do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              
+              # keep it very light
+              dm_tick(0.03, 0) if (tick(:cl) % 16 == 0)
+              sleep 0.125
+            end
+            
+            # CLIENT: sends packets (left side)
+            live_loop :client do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              
+              prog = [t / get(:dur), 1.0].min
+              
+              # phases: connect -&gt; transmit -&gt; congest -&gt; stabilize
+              inten =
+              if prog &lt; 0.20
+                0.75
+              elsif prog &lt; 0.75
+                1.0
+              elsif prog &lt; 0.90
+                1.15
+              else
+                0.85
+              end
+              
+              # burst size bounded (no spam, no timing error)
+              burst = (prog &lt; 0.75 ? (ring 3,4,5).choose : (ring 4,5,6).choose)
+              burst = [burst, 6].min
+              
+              # send burst (packets) with micro-jitter but bounded
+              burst.times do
+                n = base.tick(:cb)
+                
+                cut = (112 - prog*14).to_i
+                dm_pulse_pkt(n + 12, 0.05 * inten, -0.55, cut)
+                
+                # occasional header blip
+                dm_blip(0.022 * inten, -0.35) if one_in(3)
+                
+                set :seq, (get(:seq) + 1)
+                sleep (ring 0.125, 0.125, 0.25).choose
+              end
+              
+              # idle gap (latency window)
+              sleep (ring 0.375, 0.5, 0.625).choose
+            end
+            
+            # SERVER: responds (right side), slightly delayed
+            live_loop :server do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              
+              prog = [t / get(:dur), 1.0].min
+              
+              inten =
+              if prog &lt; 0.25
+                0.70
+              elsif prog &lt; 0.80
+                1.0
+              else
+                1.10
+              end
+              
+              # simulate latency: wait for seq changes, but never busy-wait
+              s = get(:seq)
+              sleep (ring 0.125, 0.25, 0.375).choose
+              
+              # response probability increases after &quot;connection&quot;
+              if s &gt; 6 &amp;&amp; one_in(2)
+                n = hi.tick(:sv)
+                cut = (120 - prog*10).to_i
+                
+                dm_fm_ping(n, 0.038 * inten, 0.55, cut)
+                dm_tick(0.028 * inten, 0.35) if one_in(3)
+              end
+              
+              # ack cluster occasionally
+              if s &gt; 20 &amp;&amp; one_in(prog &lt; 0.75 ? 6 : 4)
+                2.times do
+                  dm_pulse_pkt(hi.choose, 0.028 * inten, 0.45, 122)
+                  sleep 0.125
+                end
+              end
+              
+              sleep (ring 0.25, 0.375).choose
+            end
+            
+            # CONGESTION WINDOW: controlled chaos mid-late, still bounded
+            live_loop :congestion do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              
+              prog = [t / get(:dur), 1.0].min
+              
+              # only in the hot zone
+              if prog &gt; 0.55 &amp;&amp; prog &lt; 0.90
+                # short, bounded &quot;retransmit&quot; sparkles
+                if one_in(4)
+                  with_fx :echo, mix: 0.14, phase: 0.125, decay: 0.6 do
+                    4.times do
+                      dm_blip(0.018, rrand(-0.2, 0.2))
+                      sleep 0.125
+                    end
+                  end
+                end
+              end
+              
+              sleep 0.5
+            end
+            
+            # FINALIZATION: last 12 seconds -&gt; calm settle (no hard stop clicks)
+            live_loop :settle do
+              t = vt - get(:t0)
+              stop if t &gt; get(:dur)
+              
+              remain = get(:dur) - t
+              if remain &lt; 12.0
+                # slow &quot;OK&quot; pulses
+                dm_pulse_pkt(:d4, 0.03, 0, 110)
+                sleep 1.0
+              else
+                sleep 1.0
+              end
+            end
+            
+          end
+        end
+      end
+    end
+  end
+end</pre></div>
+</div>
+
+<div class="track-block">
+  <div class="track-head">
+    <span class="track-num">08</span>
+    <span class="track-op">Σ</span>
+    <span class="track-name">SUM / KERNEL PANIC</span>
+    <a class="track-link" href="../../objects/operators/sum.html">→ ∑ сумма</a>
+  </div>
+  <div class="track-desc">6 фаз: panic → scheduler → sigma → stabilize → ok. Σ-мотив: три ноты суммируются в аккорд после 62%. финал: super clean, никаких кликов.</div>
+  <div class="code-block"><pre class="code-full"># OPERATOR STACK
+# 08 — KERNEL PANIC → OK (Σ)
+# The most &quot;computer&quot; finale: overload → scheduler → stabilization
+# Length: 2:30
+
+use_debug false
+use_bpm 224
+use_sched_ahead_time 1.0
+
+set :t0, vt
+set :dur, 150.0
+
+# --- pitch pools (still D minor family) ---
+roots = (ring :d2, :d2, :a1, :c2, :d2, :f2, :a1, :d2).ring
+mid   = (ring :d3, :f3, :a3, :c4, :a3, :f3, :d3, :c4).ring
+hi    = (ring :d5, :f5, :a5, :c6, :a5, :f5).ring
+
+# --- helpers ---
+define :dm_tick do |a, pan|
+  with_fx :hpf, cutoff: 125 do
+    sample :elec_tick, amp: a, pan: pan
+  end
+end
+
+define :dm_kick_soft do |a|
+  sample :bd_tek, amp: a
+end
+
+define :dm_hat_soft do |a|
+  with_fx :hpf, cutoff: 115 do
+    sample :drum_cymbal_closed, amp: a
+  end
+end
+
+define :dm_pulse_pkt do |n, a, pan, cut|
+  use_synth :pulse
+  with_fx :lpf, cutoff: cut do
+    synth :pulse,
+      note: n,
+      release: 0.06,
+      amp: a,
+      pan: pan,
+      width: 0.12
+  end
+end
+
+define :dm_fm_ping do |n, a, pan, cut|
+  use_synth :fm
+  with_fx :lpf, cutoff: cut do
+    synth :fm,
+      note: n,
+      release: 0.08,
+      depth: 2.2,
+      divisor: 2.0,
+      amp: a,
+      pan: pan
+  end
+end
+
+define :dm_kernel_pad do |n, a, cut|
+  use_synth :hollow
+  with_fx :lpf, cutoff: cut do
+    synth :hollow,
+      note: n,
+      attack: 0.25,
+      sustain: 0.6,
+      release: 1.2,
+      amp: a
+  end
+end
+
+define :dm_sigma_chime do |n, a|
+  # Σ motif: short clean &quot;sum&quot; sparkle
+  use_synth :blade
+  with_fx :lpf, cutoff: 118 do
+    synth :blade,
+      note: n,
+      release: 0.18,
+      amp: a,
+      cutoff: 118
+  end
+end
+
+# A safe deterministic clock for ticks
+set :clk, 0
+
+with_fx :compressor, threshold: 0.44, slope_above: 0.62 do
+  with_fx :hpf, cutoff: 30 do
+    with_fx :lpf, cutoff: 125 do
+      # lighter crunch than other tracks, so it feels &quot;release-ready&quot;
+      with_fx :bitcrusher, bits: 7, sample_rate: 14000, mix: 0.22 do
+        with_fx :distortion, distort: 0.10 do
+          with_fx :echo, mix: 0.09, phase: 0.125, decay: 0.8 do
+            with_fx :reverb, mix: 0.06, room: 0.9 do
+              
+              # CLOCK (keeps timing stable)
+              live_loop :clock do
+                t = vt - get(:t0)
+                stop if t &gt; get(:dur)
+                
+                set :clk, tick(:clock) % 16
+                sleep 0.125
+              end
+              
+              # PANIC SPIKES (0:00–0:35) — bounded bursts, no timing errors
+              live_loop :panic do
+                t = vt - get(:t0)
+                stop if t &gt; get(:dur)
+                
+                prog = [t / get(:dur), 1.0].min
+                
+                if prog &lt; 0.24
+                  # quick spikes, but bounded
+                  if one_in(3)
+                    4.times do
+                      dm_fm_ping(hi.choose, 0.030, rrand(-0.7, 0.7), 124)
+                      dm_tick(0.018, rrand(-0.4, 0.4)) if one_in(2)
+                      sleep 0.125
+                    end
+                  end
+                end
+                
+                sleep 0.25
+              end
+              
+              # SCHEDULER PULSE (main engine) — the &quot;kernel heartbeat&quot;
+              live_loop :scheduler do
+                t = vt - get(:t0)
+                stop if t &gt; get(:dur)
+                
+                prog = [t / get(:dur), 1.0].min
+                step = get(:clk)
+                
+                # phases: ramp → stable → resolve
+                inten =
+                if prog &lt; 0.25
+                  0.85
+                elsif prog &lt; 0.80
+                  1.05
+                else
+                  0.90
+                end
+                
+                # Minimal drums: just enough head-nod, never clubby
+                if prog &gt; 0.18 &amp;&amp; prog &lt; 0.82
+                  dm_kick_soft(0.12 * inten) if (step == 0 || step == 8) &amp;&amp; one_in(2)
+                  dm_hat_soft(0.05 * inten)  if spread(5,16).tick(:hh8)
+                end
+                
+                # Pulse packets (compute)
+                base = roots.tick(:rt)
+                cut = (118 - prog*10).to_i
+                dm_pulse_pkt(base + 12, 0.055 * inten, rrand(-0.35, 0.35), cut)
+                
+                # occasional &quot;syscall&quot; ping
+                dm_fm_ping(mid.choose + 24, 0.022 * inten, rrand(-0.6, 0.6), 122) if one_in(4)
+                
+                # clock tick accents
+                dm_tick(0.020 * inten, 0) if step == 4 || step == 12
+                
+                sleep 0.25
+              end
+              
+              # Σ (SUM) MOTIF — appears more towards the end
+              live_loop :sigma do
+                t = vt - get(:t0)
+                stop if t &gt; get(:dur)
+                
+                prog = [t / get(:dur), 1.0].min
+                
+                if prog &gt; 0.62 &amp;&amp; one_in(3)
+                  # Σ motif is always a small 3-note sum
+                  n0 = (ring :d5, :f5, :a5, :c6).choose
+                  dm_sigma_chime(n0, 0.030)
+                  sleep 0.125
+                  dm_sigma_chime(n0 - 2, 0.022)
+                  sleep 0.125
+                  dm_sigma_chime(n0 + 3, 0.026)
+                end
+                
+                sleep 0.5
+              end
+              
+              # STABILIZATION PAD (last 30–35s) — cinematic closure
+              live_loop :stabilize do
+                t = vt - get(:t0)
+                stop if t &gt; get(:dur)
+                
+                remain = get(:dur) - t
+                prog = [t / get(:dur), 1.0].min
+                
+                if remain &lt; 34.0
+                  # open and calm down
+                  a = 0.05 + (1.0 - (remain/34.0)) * 0.04
+                  cut = (92 + (1.0 - (remain/34.0)) * 18).to_i # 92→110
+                  dm_kernel_pad((ring :d3, :f3, :a3, :c4).choose, a, cut)
+                  
+                  # remove percussive density automatically near the end
+                  dm_tick(0.014, 0) if one_in(3)
+                  sleep 1.0
+                else
+                  sleep 1.0
+                end
+              end
+              
+              # FINAL OK (last 10s) — super clean, no clicks, no chaos
+              live_loop :ok do
+                t = vt - get(:t0)
+                stop if t &gt; get(:dur)
+                
+                remain = get(:dur) - t
+                if remain &lt; 10.0
+                  dm_pulse_pkt(:d4, 0.030, 0, 108)
+                  dm_sigma_chime(:d6, 0.018) if one_in(2)
+                  sleep 1.0
+                else
+                  sleep 1.0
+                end
+              end
+              
+            end
+          end
+        end
+      end
+    end
+  end
+end</pre></div>
+</div>
+
+  <hr class="section-divider-soft">
+
+  <div class="section-label">// связанное</div>
+  <section class="related">
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../../objects/operators/sum.html">∑ сумма →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../../objects/operators/xor.html">⊕ XOR →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../../objects/operators/mod.html">mod →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../../objects/operators/factorial.html">! факториал →</a></div>
+      <div class="related-link"><span class="related-link-type">альбом</span><a href="../discrete.html">NULL · DISCRETE — простые числа →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/music/delta-machine/operator-stack.html</span>
+  <a href="../../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+function highlightSonicPi(code) {
+  var KEYWORDS = ['define','do','end','if','elsif','else','with_fx','live_loop','in_thread','use_synth','use_bpm','use_debug','use_sched_ahead_time','synth','sample','sleep','set','get','tick','look','stop','while','times','ring','scale','choose','one_in','rand','rrand','min','max','floor','to_i','chars','map','join','spread','break','next','return','vt','Math'];
+  var h = code;
+  // already-escaped html stays as-is; comments first (after the word boundary preserves spans? we need to do comments before keyword regex captures # in middle of code)
+  h = h.replace(/(#[^
+]*)/g, '<span class="cm">$1</span>');
+  h = h.replace(new RegExp('\b(' + KEYWORDS.join('|') + ')\b','g'), '<span class="kw">$1</span>');
+  h = h.replace(/(:[a-z_][a-z_0-9]*)/g, '<span class="str">$1</span>');
+  h = h.replace(/(\d+\.?\d*)/g, '<span class="num">$1</span>');
+  return h;
+}
+
+document.querySelectorAll('.code-full').forEach(function(block) {
+  var raw = block.textContent;
+  var lines = raw.split('\n');
+  var parent = block.parentNode;
+
+  if (lines.length <= 35) {
+    block.innerHTML = highlightSonicPi(raw.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'));
+    return;
+  }
+
+  var preview = lines.slice(0, 35).join('\n');
+  var rest = lines.slice(35).join('\n');
+
+  var prePreview = document.createElement('pre');
+  prePreview.innerHTML = highlightSonicPi(preview.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'));
+
+  var preRest = document.createElement('pre');
+  preRest.innerHTML = highlightSonicPi(rest.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'));
+  preRest.style.display = 'none';
+
+  block.replaceWith(prePreview, preRest);
+
+  var btn = document.createElement('button');
+  btn.className = 'code-toggle';
+  var hiddenCount = lines.length - 35;
+  btn.textContent = '[ показать полностью → ] (' + hiddenCount + ' строк)';
+  btn.onclick = function() {
+    if (preRest.style.display === 'none') {
+      preRest.style.display = 'block';
+      btn.textContent = '[ свернуть ↑ ]';
+    } else {
+      preRest.style.display = 'none';
+      btn.textContent = '[ показать полностью → ] (' + hiddenCount + ' строк)';
+    }
+  };
+  parent.appendChild(btn);
+});
+</script>
+
+</body>
+</html>

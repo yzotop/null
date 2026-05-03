@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DELTA MACHINE — null/music</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .music-tag { font-family: var(--font-mono); font-size: 9px; color: #bbb; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+  .music-h1  { font-family: 'Times New Roman', Georgia, serif; font-style: normal; font-weight: 400; font-size: 36px; color: #111; margin-bottom: 6px; line-height: 1.1; letter-spacing: -0.01em; }
+  .music-sub { font-family: 'Times New Roman', Georgia, serif; font-style: italic; font-size: 16px; color: #666; line-height: 1.65; max-width: 580px; margin-bottom: 36px; }
+  .alb-row {
+    display: grid;
+    grid-template-columns: 44px 1fr 90px 78px;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 14px;
+    border-bottom: 0.5px solid var(--border);
+    text-decoration: none; color: inherit;
+    transition: background 0.12s;
+  }
+  .alb-row:hover { background: var(--paper-mid); }
+  .alb-row.head {
+    background: var(--paper-mid);
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 10px 14px;
+  }
+  .alb-row.head:hover { background: var(--paper-mid); }
+  .alb-row.dim { opacity: 0.55; cursor: default; }
+  .alb-glyph { font-family: 'Times New Roman', Georgia, serif; font-style: italic; font-size: 24px; color: #111; text-align: center; }
+  .alb-name {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 18px; color: #111; line-height: 1.25;
+  }
+  .alb-name .sub {
+    display: block; font-family: var(--font-sans); font-style: normal;
+    font-size: 11px; color: #888; margin-top: 4px; line-height: 1.4;
+  }
+  .alb-meta { font-family: var(--font-mono); font-size: 10px; color: #888; }
+  .alb-status { font-family: var(--font-mono); font-size: 10px; color: #888; text-align: right; }
+  .alb-status.soon { color: #bbb; }
+
+  @media (max-width: 720px) {
+    .alb-row { grid-template-columns: 36px 1fr auto; }
+    .alb-row.head { display: none; }
+    .alb-meta { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../../">null</a>
+  <nav>
+    <a href="../../objects/">объекты</a>
+    <a href="../../essays/">эссе</a>
+    <a href="../../visuals/">визуалы</a>
+    <a href="../" class="active">музыка</a>
+    <a href="/null/map.html">карта</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / music / delta machine</div>
+
+<main class="container">
+  <div class="music-tag">музыка · delta machine</div>
+  <h1 class="music-h1">DELTA MACHINE</h1>
+  <p class="music-sub">sonic pi. алгоритм как партитура. код как единственный инструмент.</p>
+
+  <hr class="section-divider">
+
+  <div class="alb-row head">
+    <span></span>
+    <span>альбом</span>
+    <span>год</span>
+    <span>статус</span>
+  </div>
+
+  <a class="alb-row" href="operator-stack.html">
+    <span class="alb-glyph">∑</span>
+    <span class="alb-name">OPERATOR STACK<span class="sub">8 треков = 8 операций. + − × ⇧ ⊕ % ⇄ Σ</span></span>
+    <span class="alb-meta">2026</span>
+    <span class="alb-status">released</span>
+  </a>
+
+  <div class="alb-row dim">
+    <span class="alb-glyph">δ</span>
+    <span class="alb-name">DELTA INITIATION PROTOCOL<span class="sub">8 треков как ритуал инициализации. D minor.</span></span>
+    <span class="alb-meta">2026</span>
+    <span class="alb-status soon">coming soon</span>
+  </div>
+
+  <div class="alb-row dim">
+    <span class="alb-glyph">∂</span>
+    <span class="alb-name">INSTANTANEOUS MOMENTARY CALCULATIONS<span class="sub">6 треков. непрерывная вычислительная трансформация. E minor.</span></span>
+    <span class="alb-meta">2026</span>
+    <span class="alb-status soon">coming soon</span>
+  </div>
+
+  <div class="alb-row dim">
+    <span class="alb-glyph">♪</span>
+    <span class="alb-name">HAPPY MACHINE NOISES<span class="sub">4 трека. дружелюбные машинные сигналы. chiptune.</span></span>
+    <span class="alb-meta">2026</span>
+    <span class="alb-status soon">coming soon</span>
+  </div>
+
+  <div class="alb-row dim">
+    <span class="alb-glyph" style="font-style:normal;">8</span>
+    <span class="alb-name">8<span class="sub">4 трека. mixolydian / dorian. robot hooks.</span></span>
+    <span class="alb-meta">2026</span>
+    <span class="alb-status soon">coming soon</span>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <span>/null/music/delta-machine/index.html</span>
+  <a href="../../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>
