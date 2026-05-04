@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>65536 — null/objects/curious</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / numbers / curious / 65536</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-family:var(--font-mono);font-size:44px;">2¹⁶</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">любопытное · №007</div>
+      <div class="obj-title">65536</div>
+      <div class="obj-subtitle">2¹⁶ · граница 16-битной памяти · число которое знает каждый программист</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">значение</td><td class="v mono">65536</td></tr>
+    <tr><td class="k">формула</td><td class="v mono">2¹⁶ = 65536</td></tr>
+    <tr><td class="k">тип</td><td class="v">степень двойки · натуральное</td></tr>
+    <tr><td class="k">байты</td><td class="v">65536 байт = 64 килобайта</td></tr>
+    <tr><td class="k">порты</td><td class="v">номера TCP/UDP портов: от 0 до 65535 (всего 65536)</td></tr>
+    <tr><td class="k">Unicode</td><td class="v">в Unicode 65536 кодовых точек в базовой многоязычной плоскости (BMP)</td></tr>
+    <tr><td class="k">цвета</td><td class="v">65536 цветов в 16-битной палитре (High Color)</td></tr>
+    <tr><td class="k">связано</td><td class="v">натуральные числа · mod · CONSTANTS/65536</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~500 слов · 4 мин</div>
+    <h2 class="essay-title">Граница которую знают все <em>программисты</em>.</h2>
+    <p class="essay-lead">65536 — это не просто число. это архитектурное решение принятое в 1970-х которое до сих пор определяет как устроены компьютеры и сети.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Шестнадцать бит. Ровно столько нужно чтобы закодировать числа от 0 до 65535. Это 65536 состояний — и это число встречается в вычислениях буквально везде.</p>
+
+        <p>Когда в 1970-х разрабатывали протокол TCP/IP — нужно было решить сколько портов может иметь одно устройство. Взяли 16 бит. Получили 65536 портов — от 0 до 65535. Порт 80 это HTTP. Порт 443 это HTTPS. Порт 22 это SSH. Все они умещаются в диапазон 16-битного числа<em class="fn">1</em>.</p>
+
+        <p>Когда в 1991 году создавали стандарт Unicode — первоначальная идея была кодировать все символы мира в 16 битах. 65536 символов казалось достаточно. Оказалось — нет. Китайских иероглифов одних больше 80 000. Unicode расширили до 21 бита (1 114 112 кодовых точек). Но первые 65536 — Базовая Многоязычная Плоскость (BMP) — остались особыми. Большинство символов которые вы видите каждый день живут именно там<em class="fn">2</em>.</p>
+
+        <blockquote>65536 — это не математическая константа. это архитектурный выбор ставший фактом природы.</blockquote>
+
+        <p>В играх 1990-х 65536 цветов было пределом мечтаний. «High Color» — 16-битная палитра. После эпохи 256 цветов это казалось бесконечностью.</p>
+
+        <p>65536 = 2¹⁶. Степень двойки — и поэтому красивое число в двоичной арифметике. В двоичной записи: 1 0000 0000 0000 0000 — единица и шестнадцать нулей. Именно такие числа компьютеры любят больше всего — они ложатся точно на границы регистров и адресных пространств<em class="fn">3</em>.</p>
+
+        <p>В музыкальном треке CONSTANTS/65536 Delta Machine — это число стало industrial-ритмом. 65536 состояний как 65536 ударов. Граница памяти как музыкальная структура.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">TCP порты 0–1023 зарезервированы (well-known ports) · 1024–49151 registered · 49152–65535 dynamic.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Unicode BMP (Basic Multilingual Plane) — U+0000 до U+FFFF · большинство современных символов.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">В Java тип char — 16-битный беззнаковый, диапазон 0–65535. Исторически совпадает с BMP Unicode.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">тип</span><a href="../types/natural.html">натуральные числа →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../../operators/mod.html">mod →</a></div>
+      <div class="related-link"><span class="related-link-type">любопытное</span><a href="graham.html">число Грэма — контраст: 65536 vs G →</a></div>
+      <div class="related-link"><span class="related-link-type">альбом</span><a href="../../../music/delta-machine/">CONSTANTS — трек 65536 →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">альбом</span><a href="/null/music/constants.html">CONSTANTS →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/numbers/curious/65536.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

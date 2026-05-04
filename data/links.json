@@ -461,6 +461,13 @@
       "title": "−1/12",
       "url": "/null/objects/numbers/curious/minus-one-twelfth.html",
       "glyph": "−¹⁄₁₂"
+    },
+    {
+      "id": "cu-65536",
+      "type": "curious",
+      "title": "65536",
+      "url": "/null/objects/numbers/curious/65536.html",
+      "glyph": "2¹⁶"
     }
   ],
   "edges": [
@@ -944,6 +951,9 @@
     { "from": "mu-opstack", "to": "op-sum" },
     { "from": "mu-opstack", "to": "op-xor" },
     { "from": "mu-opstack", "to": "op-mod" },
-    { "from": "mu-opstack", "to": "op-factorial" }
+    { "from": "mu-opstack", "to": "op-factorial" },
+    { "from": "cu-65536", "to": "natural" },
+    { "from": "cu-65536", "to": "op-mod" },
+    { "from": "mu-constants", "to": "cu-65536" }
   ]
 }
