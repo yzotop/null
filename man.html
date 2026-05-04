@@ -6,8 +6,43 @@
 <title>man null — null reference manual</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/main.css">
+<style>
+  .man section p,
+  .man section .body {
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #111;
+  }
+  .man section p + p { margin-top: 10px; }
+  .man table.files td.k {
+    color: #555;
+    width: 220px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    vertical-align: top;
+    padding-right: 16px;
+  }
+  .man table.files td.v {
+    color: #222;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+  }
+  .man .cat {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 0.02em;
+    line-height: 1.85;
+  }
+  .man .cat .k { color: #aaa; display: inline-block; min-width: 220px; }
+  .man section h2 { color: #c44a32; }
+</style>
 </head>
 <body>
 
@@ -35,48 +70,79 @@
 
     <section>
       <h2>NAME</h2>
-      <p>null — личный архив математических объектов, эссе и алгоритмических скетчей.</p>
+      <p>null — картотека математических объектов.</p>
+      <p>математика как материя. числа существовали до нас.</p>
     </section>
 
     <section>
       <h2>SYNOPSIS</h2>
-      <p><span style="font-family: var(--font-mono); font-size: 13px;">null { objects | essays | sketches | man }</span></p>
+      <p><span style="font-family: var(--font-mono); font-size: 13px;">null [объекты | эссе | визуалы | музыка | карта | find]</span></p>
     </section>
 
     <section>
       <h2>DESCRIPTION</h2>
-      <p>null — это статичный сайт без базы данных, без аналитики, без подписки. Здесь живут наблюдения за числами и формами, которые я считаю достойными внимания. Каждый объект — отдельный файл с метаданными, эссе и набором маргиналий на полях.</p>
-      <p>Проект называется null потому, что он начинается с пустоты — с условия, из которого ещё ничего не следует — и постепенно заполняется. Заполнение медленное и не системное.</p>
-      <p>Любая страница может быть прочитана как самостоятельный текст. Связи между ними — это не оглавление, а сноски: их можно идти, а можно не идти.</p>
+      <p>На основном сайте я пишу про аналитику — про то как из данных извлекать смысл. Этот проект — про обратное. Про числа у которых смысл уже есть, до всякой аналитики.</p>
+      <p>Простые числа, π, теорема Гёделя — это не инструменты. Это материал. Как глина или дерево.</p>
+      <p>null — картотека этого материала. Объекты, эссе, визуалы, музыка.</p>
     </section>
 
     <section>
-      <h2>FILES</h2>
+      <h2>CONTENTS</h2>
       <table class="files">
-        <tr><td class="k">/null/index.html</td><td class="v">главная — сетка карточек</td></tr>
-        <tr><td class="k">/null/objects/</td><td class="v">константы, числа, формы</td></tr>
-        <tr><td class="k">/null/essays/</td><td class="v">прозаические заметки</td></tr>
-        <tr><td class="k">/null/sketches/</td><td class="v">алгоритмическая музыка (Sonic Pi)</td></tr>
-        <tr><td class="k">/null/man.html</td><td class="v">этот файл</td></tr>
-        <tr><td class="k">/null/feed.xml</td><td class="v">RSS</td></tr>
-        <tr><td class="k">/null/styles/main.css</td><td class="v">единственная таблица стилей</td></tr>
+        <tr><td class="k">/null/objects/</td><td class="v">40 объектов · числа · теоремы · операторы · задачи</td></tr>
+        <tr><td class="k">/null/essays/</td><td class="v">12 эссе · ~7 минут чтения каждое</td></tr>
+        <tr><td class="k">/null/visuals/</td><td class="v">9 визуализаций · интерактивные canvas</td></tr>
+        <tr><td class="k">/null/music/</td><td class="v">5 EP NULL (suno) · DELTA MACHINE (sonic pi)</td></tr>
+        <tr><td class="k">/null/map.html</td><td class="v">граф связей · 53 узла · 103 ребра</td></tr>
+        <tr><td class="k">/null/find.html</td><td class="v">поиск по всему сайту</td></tr>
       </table>
     </section>
 
     <section>
+      <h2>OBJECTS</h2>
+      <p>Восемь категорий объектов:</p>
+      <div class="cat" style="margin-top: 12px;">
+        <div><span class="k">numbers/constants/</span>π e φ γ √2</div>
+        <div><span class="k">numbers/types/</span>ℕ ℙ 𝕋 ℂ</div>
+        <div><span class="k">numbers/special/</span>0 1 i</div>
+        <div><span class="k">numbers/curious/</span>37 42 1729 6174 G −1/12</div>
+        <div><span class="k">ideas/theorems/</span>Гёдель Кантор Пифагор арифметика</div>
+        <div><span class="k">ideas/hypotheses/</span>Риман Гольдбах близнецы P vs NP</div>
+        <div><span class="k">ideas/problems/</span>невеста Симпсон Монти Холл дни рождения казино</div>
+        <div><span class="k">operators/</span>mod ⌊⌋ ⊕ ∇ ! ∑ ∫ ∂</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>MUSIC</h2>
+      <p>NULL — алгоритмическая музыка на Suno. Пять EP: DISCRETE · NULL EXECUTION · BIT PARADE · CONSTANTS · QUAD. Треки привязаны к математическим объектам сайта.</p>
+      <p>DELTA MACHINE — живое кодирование на Sonic Pi. Код как партитура. Математическая структура — единственный композитор. Ключевой альбом: OPERATOR STACK — 8 треков = 8 операторов.</p>
+    </section>
+
+    <section>
       <h2>SEE ALSO</h2>
-      <p><span style="font-family: var(--font-mono); font-size: 13px;">π(7), e(7), φ(7), prime-drone(1), pi-randomness(7)</span></p>
+      <table class="files">
+        <tr><td class="k">davydov.my</td><td class="v">основной сайт — аналитика и курсы</td></tr>
+        <tr><td class="k">yzotop.github.io/null</td><td class="v">репозиторий</td></tr>
+        <tr><td class="k">suno.com/@null</td><td class="v">музыка NULL на Suno</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>AUTHOR</h2>
+      <p>Александр Давыдов · 2025–2026</p>
     </section>
 
     <section>
       <h2>BUGS</h2>
-      <p>Эссе пишутся медленнее, чем хотелось бы. Скетчи требуют установленного Sonic Pi, что сужает аудиторию. Шрифт IM Fell English тяжеловат на медленных соединениях, но альтернативы у меня для него нет.</p>
-      <p>Сообщения об ошибках принимаются по почте, ответы — не гарантированы.</p>
+      <p>null выходит без расписания.</p>
+      <p>подписаться нельзя — можно только вернуться.</p>
+      <p>find → <a href="/null/find.html" style="color:#c44a32;">/null/find.html</a></p>
     </section>
 
     <div class="man-bar bottom">
       <span>NULL(1)</span>
-      <span>iss. 04 · 2026.04</span>
+      <span>iss. 05 · 2026.05</span>
       <span>NULL(1)</span>
     </div>
 
