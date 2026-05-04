@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>find — null</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/main.css">
+<style>
+  .find-wrap { max-width: 880px; margin: 0 auto; }
+  .find-h1 {
+    font-family: "Times New Roman", Georgia, serif;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 1.1;
+    margin: 0 0 24px 0;
+  }
+  .find-prompt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #111;
+    padding: 8px 2px;
+    margin-bottom: 16px;
+  }
+  .find-prompt .caret {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: #111;
+    user-select: none;
+  }
+  .find-prompt input {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: #111;
+    padding: 4px 0;
+    caret-color: #c44a32;
+  }
+  .find-prompt input::placeholder { color: #bbb; }
+
+  .find-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+  .find-types button {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: #777;
+    padding: 4px 10px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    border-radius: 0;
+    transition: all 0.12s ease;
+  }
+  .find-types button:hover { color: #111; border-color: #111; }
+  .find-types button.on {
+    color: #fff;
+    background: #111;
+    border-color: #111;
+  }
+
+  .find-counter {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #999;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .find-list { display: block; }
+  .find-row {
+    display: grid;
+    grid-template-columns: 80px 32px 1fr 80px;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 4px;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.08s ease;
+  }
+  .find-row:hover, .find-row.active {
+    background: #f0ede8;
+  }
+  .find-row .ftype {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+  }
+  .find-row .fglyph {
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 22px;
+    text-align: center;
+    color: #111;
+  }
+  .find-row .ftitle {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    color: #111;
+  }
+  .find-row .ftitle mark {
+    background: #fef4a8;
+    color: #111;
+    padding: 0 2px;
+  }
+  .find-row .fpath {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #aaa;
+    text-align: right;
+    letter-spacing: 0.04em;
+  }
+
+  .find-empty, .find-none {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: #777;
+    padding: 16px 0;
+    line-height: 1.7;
+  }
+  .find-empty .label, .find-none .label {
+    color: #aaa;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    margin: 18px 0 8px 0;
+    display: block;
+  }
+  .find-none code {
+    font-family: var(--font-mono);
+    color: #c44a32;
+  }
+  .find-suggest {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+  }
+  .find-suggest a {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #555;
+    text-decoration: none;
+    border-bottom: 1px dotted #ccc;
+  }
+  .find-suggest a:hover { color: #111; border-color: #111; }
+
+  .find-hint {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: 0.06em;
+    margin-top: 24px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .find-hint kbd {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    background: #f0ede8;
+    border: 1px solid var(--border);
+    padding: 1px 5px;
+    color: #555;
+    margin: 0 2px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="./">null</a>
+  <nav>
+    <a href="objects/">объекты</a>
+    <a href="essays/">эссе</a>
+    <a href="visuals/">визуалы</a>
+    <a href="music/">музыка</a>
+    <a href="map.html">карта</a>
+    <a href="find.html" class="active">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / find</div>
+
+<main class="container">
+<article>
+  <div class="find-wrap">
+
+    <h1 class="find-h1">find</h1>
+
+    <div class="find-prompt">
+      <span class="caret">&gt;_</span>
+      <input id="q" type="text" autocomplete="off" spellcheck="false" placeholder="искать по всему null...">
+    </div>
+
+    <div class="find-types" id="types"></div>
+
+    <div class="find-counter" id="counter"></div>
+
+    <div id="results"></div>
+
+    <div class="find-hint">
+      <kbd>↑</kbd><kbd>↓</kbd> навигация · <kbd>Enter</kbd> открыть · <kbd>Esc</kbd> очистить
+    </div>
+
+  </div>
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/find.html</span>
+  <a href="man.html">about →</a> · <a href="map.html">map →</a>
+</footer>
+
+<script>
+(() => {
+  const TYPE_RU = {
+    constant: 'константа',
+    type: 'тип',
+    special: 'особенное',
+    theorem: 'теорема',
+    hypothesis: 'гипотеза',
+    operator: 'оператор',
+    problem: 'задача',
+    curious: 'любопытное',
+    essay: 'эссе',
+    visual: 'визуал',
+    music: 'альбом'
+  };
+  const COLORS = {
+    constant: '#111',
+    type: '#2c5fb6',
+    special: '#c44a32',
+    theorem: '#1a7a4a',
+    hypothesis: '#e67e22',
+    operator: '#8e44ad',
+    problem: '#16a085',
+    curious: '#b7950b',
+    essay: '#777',
+    visual: '#999',
+    music: '#1a5276'
+  };
+  const SECTION = {
+    constant: 'objects',
+    type: 'objects',
+    special: 'objects',
+    theorem: 'objects',
+    hypothesis: 'objects',
+    operator: 'objects',
+    problem: 'objects',
+    curious: 'objects',
+    essay: 'essays',
+    visual: 'visuals',
+    music: 'music'
+  };
+  const ORDER = ['constant','type','special','theorem','hypothesis','operator','problem','curious','essay','visual','music'];
+
+  const qEl = document.getElementById('q');
+  const typesEl = document.getElementById('types');
+  const counterEl = document.getElementById('counter');
+  const resultsEl = document.getElementById('results');
+
+  let nodes = [];
+  let activeType = 'all';
+  let activeIdx = 0;
+  let currentList = [];
+
+  const escapeHTML = (s) => s.replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  const highlight = (text, query) => {
+    if (!query) return escapeHTML(text);
+    const esc = escapeHTML(text);
+    const qe = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return esc.replace(new RegExp('(' + qe + ')', 'ig'), '<mark>$1</mark>');
+  };
+
+  const score = (node, query) => {
+    const q = query.toLowerCase();
+    const t = node.title.toLowerCase();
+    const ty = (TYPE_RU[node.type] || node.type).toLowerCase();
+    const id = node.id.toLowerCase();
+    let s = 0;
+    if (t === q) s += 10;
+    if (t.startsWith(q)) s += 5;
+    if (t.includes(q)) s += 3;
+    if (ty.includes(q)) s += 2;
+    if (id.includes(q)) s += 1;
+    return s;
+  };
+
+  const renderTypes = () => {
+    const counts = { all: nodes.length };
+    nodes.forEach(n => { counts[n.type] = (counts[n.type] || 0) + 1; });
+    const html = ['<button data-t="all" class="' + (activeType==='all'?'on':'') + '">все · ' + counts.all + '</button>'];
+    ORDER.forEach(t => {
+      if (!counts[t]) return;
+      html.push('<button data-t="' + t + '" class="' + (activeType===t?'on':'') + '">' + TYPE_RU[t] + ' · ' + counts[t] + '</button>');
+    });
+    typesEl.innerHTML = html.join('');
+    typesEl.querySelectorAll('button').forEach(b => {
+      b.onclick = () => {
+        activeType = b.dataset.t;
+        renderTypes();
+        run();
+      };
+    });
+  };
+
+  const sample = (arr, n) => {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a.slice(0, n);
+  };
+
+  const renderRow = (node, query) => {
+    const color = COLORS[node.type] || '#111';
+    const sec = SECTION[node.type] || '';
+    return '<a class="find-row" href="' + node.url + '" data-id="' + node.id + '">' +
+      '<span class="ftype" style="color:' + color + '">' + (TYPE_RU[node.type] || node.type) + '</span>' +
+      '<span class="fglyph">' + escapeHTML(node.glyph || '·') + '</span>' +
+      '<span class="ftitle">' + highlight(node.title, query) + '</span>' +
+      '<span class="fpath">' + sec + '</span>' +
+      '</a>';
+  };
+
+  const renderEmpty = () => {
+    const filtered = activeType === 'all' ? nodes : nodes.filter(n => n.type === activeType);
+    const picks = sample(filtered, 6);
+    counterEl.textContent = 'найдено ' + filtered.length + ' объектов · введи запрос';
+    resultsEl.innerHTML =
+      '<div class="find-empty">' +
+        '<span class="label">// случайные объекты</span>' +
+        '<div class="find-list">' + picks.map(n => renderRow(n, '')).join('') + '</div>' +
+      '</div>';
+    currentList = picks;
+    activeIdx = 0;
+  };
+
+  const renderNone = (query) => {
+    const picks = sample(nodes, 5);
+    counterEl.textContent = 'найдено: 0';
+    resultsEl.innerHTML =
+      '<div class="find-none">' +
+        '<code>&gt; find: no matches for "' + escapeHTML(query) + '"</code>' +
+        '<span class="label">// попробуй</span>' +
+        '<div class="find-suggest">' +
+          picks.map(n => '<a href="' + n.url + '">' + escapeHTML(n.title) + '</a>').join('') +
+        '</div>' +
+      '</div>';
+    currentList = [];
+    activeIdx = 0;
+  };
+
+  const run = () => {
+    const query = qEl.value.trim();
+    let pool = activeType === 'all' ? nodes : nodes.filter(n => n.type === activeType);
+
+    if (!query) { renderEmpty(); return; }
+
+    const scored = pool
+      .map(n => ({ n, s: score(n, query) }))
+      .filter(x => x.s > 0)
+      .sort((a, b) => b.s - a.s || a.n.title.localeCompare(b.n.title))
+      .slice(0, 20)
+      .map(x => x.n);
+
+    if (!scored.length) { renderNone(query); return; }
+
+    counterEl.textContent = 'найдено: ' + scored.length + ' объектов · по запросу "' + query + '"';
+    resultsEl.innerHTML = '<div class="find-list">' + scored.map(n => renderRow(n, query)).join('') + '</div>';
+    currentList = scored;
+    activeIdx = 0;
+    updateActive();
+  };
+
+  const updateActive = () => {
+    const rows = resultsEl.querySelectorAll('.find-row');
+    rows.forEach((r, i) => r.classList.toggle('active', i === activeIdx));
+    const cur = rows[activeIdx];
+    if (cur) cur.scrollIntoView({ block: 'nearest' });
+  };
+
+  qEl.addEventListener('input', run);
+  qEl.addEventListener('keydown', (e) => {
+    const rows = resultsEl.querySelectorAll('.find-row');
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      activeIdx = Math.min(rows.length - 1, activeIdx + 1);
+      updateActive();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      activeIdx = Math.max(0, activeIdx - 1);
+      updateActive();
+    } else if (e.key === 'Enter') {
+      const cur = rows[activeIdx];
+      if (cur) window.location.href = cur.getAttribute('href');
+    } else if (e.key === 'Escape') {
+      qEl.value = '';
+      run();
+    }
+  });
+
+  fetch('data/links.json')
+    .then(r => r.json())
+    .then(d => {
+      nodes = d.nodes || [];
+      renderTypes();
+      renderEmpty();
+      qEl.focus();
+    })
+    .catch(err => {
+      resultsEl.innerHTML = '<div class="find-none"><code>&gt; find: error loading data/links.json</code></div>';
+    });
+})();
+</script>
+
+</body>
+</html>
