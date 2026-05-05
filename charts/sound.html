@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>звук чисел — null/charts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .ex-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .ex-h1 {
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 1.1;
+    margin: 0 0 10px 0;
+  }
+  .ex-sub {
+    font-family: "Times New Roman", Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #666;
+    line-height: 1.55;
+    max-width: 620px;
+  }
+
+  .track-wrap {
+    border: 1.5px solid #111;
+    margin: 28px 0 24px 0;
+    background: #f7f6f2;
+  }
+  .track {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    border-bottom: 1px solid #e8e8e4;
+  }
+  .track:last-child { border-bottom: none; }
+  .track-label {
+    padding: 12px 16px;
+    border-right: 1px solid #e8e8e4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .track-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #111;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .track-data {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    color: #bbb;
+    margin-top: 3px;
+    letter-spacing: .04em;
+  }
+  .track-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    padding: 8px 12px;
+    height: 56px;
+    overflow: hidden;
+  }
+  .bar {
+    flex: 1;
+    min-width: 4px;
+    background: #e8e8e4;
+    transition: background 0.08s ease;
+  }
+  .bar.melody.active   { background: #888; }
+  .bar.melody.playing  { background: #c44a32; }
+  .bar.rhythm.active   { background: #6a89bc; }
+  .bar.rhythm.playing  { background: #1a3a7a; }
+  .bar.dynamics.active { background: #6aa088; }
+  .bar.dynamics.playing { background: #0f4a2a; }
+
+  .controls-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 18px;
+  }
+  @media (max-width: 720px) { .controls-grid { grid-template-columns: 1fr; } }
+  .control-cell { background: #f7f6f2; padding: 18px 16px; }
+  .ctl-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .ctl-row { margin-bottom: 10px; }
+  .ctl-row:last-child { margin-bottom: 0; }
+  .ctl-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #888;
+    margin-bottom: 4px;
+    letter-spacing: .04em;
+  }
+  .ctl-row select, .ctl-row input[type="range"] {
+    width: 100%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 5px 8px;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #111;
+    border-radius: 0;
+  }
+  .ctl-row select:focus { outline: none; border-color: #111; }
+  .ctl-row .read {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    margin-top: 3px;
+    letter-spacing: .04em;
+  }
+
+  .play-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+  .play-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 8px 16px;
+    border: 1px solid #111;
+    background: transparent;
+    color: #111;
+    cursor: pointer;
+    letter-spacing: .04em;
+    transition: all 0.1s ease;
+  }
+  .play-btn:hover { background: #f0ede8; }
+
+  .sound-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    letter-spacing: .03em;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    min-height: 1.6em;
+    padding: 8px 12px;
+    background: #f0ede8;
+    border-left: 2px solid #c44a32;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin: 32px 0 18px 0;
+  }
+  @media (max-width: 720px) { .meta-grid { grid-template-columns: 1fr; } }
+  .meta-cell {
+    background: #f7f6f2;
+    padding: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    line-height: 1.7;
+    color: #555;
+  }
+  .meta-cell .h {
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .sound-desc {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #666;
+    line-height: 1.7;
+    max-width: 620px;
+    margin: 24px 0 8px 0;
+  }
+  .sound-desc code {
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 12px;
+    color: #c44a32;
+    background: #f0ede8;
+    padding: 1px 5px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="./" class="active">графики</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / charts / sound</div>
+
+<main class="container">
+<article>
+
+  <div class="ex-tag">графики · звук</div>
+  <h1 class="ex-h1">звук чисел</h1>
+  <p class="ex-sub">простые числа — мелодия. gaps — ритм. делители — динамика.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <div class="track-wrap">
+    <div class="track">
+      <div class="track-label">
+        <div class="track-name">мелодия</div>
+        <div class="track-data" id="trkMelData">primes</div>
+      </div>
+      <div class="track-bars" id="bars-melody"></div>
+    </div>
+    <div class="track">
+      <div class="track-label">
+        <div class="track-name">ритм</div>
+        <div class="track-data" id="trkRhyData">gaps</div>
+      </div>
+      <div class="track-bars" id="bars-rhythm"></div>
+    </div>
+    <div class="track">
+      <div class="track-label">
+        <div class="track-name">динамика</div>
+        <div class="track-data" id="trkDynData">divisors</div>
+      </div>
+      <div class="track-bars" id="bars-dynamics"></div>
+    </div>
+  </div>
+
+  <div class="controls-grid">
+    <div class="control-cell">
+      <div class="ctl-label">// мелодия</div>
+      <div class="ctl-row">
+        <div class="ctl-sub">данные</div>
+        <select id="melodyData">
+          <option value="primes">простые числа</option>
+          <option value="fib">числа фибоначчи</option>
+          <option value="divisors">делители</option>
+          <option value="e">константа e</option>
+          <option value="pi">константа π</option>
+        </select>
+      </div>
+      <div class="ctl-row">
+        <div class="ctl-sub">гамма</div>
+        <select id="scaleSelect">
+          <option value="d_minor_pentatonic">d minor pentatonic</option>
+          <option value="d_minor">d minor</option>
+          <option value="d_major">d major</option>
+          <option value="chromatic">хроматик</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="control-cell">
+      <div class="ctl-label">// ритм · gaps</div>
+      <div class="ctl-row">
+        <div class="ctl-sub">источник</div>
+        <select id="rhythmData">
+          <option value="gaps">gaps между простыми</option>
+          <option value="equal">единица (равный ритм)</option>
+          <option value="fib">числа фибоначчи</option>
+          <option value="random">случайные</option>
+        </select>
+      </div>
+      <div class="ctl-row">
+        <div class="ctl-sub">темп · нот/сек</div>
+        <input id="tempoSlider" type="range" min="1" max="16" step="1" value="4">
+        <div class="read" id="tempoVal">4</div>
+      </div>
+    </div>
+
+    <div class="control-cell">
+      <div class="ctl-label">// динамика</div>
+      <div class="ctl-row">
+        <div class="ctl-sub">громкость</div>
+        <select id="dynData">
+          <option value="divisors">количество делителей</option>
+          <option value="constant">константа (одинаково)</option>
+          <option value="inverse">обратная (большие тише)</option>
+        </select>
+      </div>
+      <div class="ctl-row">
+        <div class="ctl-sub">тембр</div>
+        <select id="waveSelect">
+          <option value="sine">sine — мягкий</option>
+          <option value="triangle">triangle — тёплый</option>
+          <option value="square">square — жёсткий</option>
+          <option value="sawtooth">sawtooth — резкий</option>
+          <option value="fm">fm — модуляция</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="play-row">
+    <button class="play-btn" id="playBtn">▶ играть</button>
+    <button class="play-btn" id="stopBtn">■ стоп</button>
+    <button class="play-btn" id="loopBtn">↺ луп</button>
+    <button class="play-btn" id="fastBtn">▶▶ быстро</button>
+  </div>
+
+  <div class="sound-status" id="soundStatus">готов · нажми ▶ играть</div>
+
+  <hr class="section-divider-soft">
+
+  <div class="meta-grid">
+    <div class="meta-cell">
+      <div class="h">// мелодия</div>
+      данные → частота<br>
+      гамма: пентатоника<br>
+      D3 = 146.83 Hz
+    </div>
+    <div class="meta-cell">
+      <div class="h">// ритм</div>
+      gaps → паузы<br>
+      большой gap = долгая<br>
+      пауза между нотами
+    </div>
+    <div class="meta-cell">
+      <div class="h">// динамика</div>
+      делители → громкость<br>
+      много делителей = громче<br>
+      простые числа = тихие
+    </div>
+  </div>
+
+  <p class="sound-desc">в Sonic Pi мы писали: <code>scale :d3, :minor_pentatonic</code> · <code>notes.tick · sleep gap</code>. здесь — то же самое, но в браузере. математическая структура — единственный композитор.</p>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">альбом</span><a href="../music/delta-machine/operator-stack.html">delta machine · operator-stack →</a></div>
+      <div class="related-link"><span class="related-link-type">альбом</span><a href="../music/discrete.html">NULL · DISCRETE →</a></div>
+      <div class="related-link"><span class="related-link-type">тип</span><a href="../objects/numbers/types/prime.html">простые числа →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../objects/operators/mod.html">mod →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/charts/sound.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+(() => {
+  // ── data ────────────────────────────────────────────────────────────
+  const sieve = (n) => {
+    const c = new Uint8Array(n + 1); c[0] = c[1] = 1;
+    for (let i = 2; i * i <= n; i++) if (!c[i]) for (let j = i*i; j <= n; j += i) c[j] = 1;
+    const p = []; for (let i = 2; i <= n && p.length < 32; i++) if (!c[i]) p.push(i);
+    return p;
+  };
+  const divCount = (n) => { let c = 0; for (let i = 1; i <= n; i++) if (n % i === 0) c++; return c; };
+
+  const PRIMES = sieve(150);
+  const FIB = [1,1,2,3,5,8,13,21,34,55,89,144,233,377].slice(0, 16);
+  const PI_DIGITS = [3,1,4,1,5,9,2,6,5,3,5,8,9,7,9,3,2,3,8,4,6,2,6,4,3,3,8,3,2,7];
+  const GAPS = PRIMES.slice(1).map((p, i) => p - PRIMES[i]);
+  const DIVISORS = Array.from({length: 32}, (_, i) => divCount(i + 1));
+  const E_DIGITS = [2,7,1,8,2,8,1,8,2,8,4,5,9,0,4,5,2,3,5,3,6,0,2,8,7,4,7,1,3,5];
+
+  const SCALES = {
+    'd_minor_pentatonic': [0,3,5,7,10,12,15,17,19,22],
+    'd_minor':            [0,2,3,5,7,8,10,12,14,15],
+    'd_major':            [0,2,4,5,7,9,11,12,14,16],
+    'chromatic':          [0,1,2,3,4,5,6,7,8,9,10,11,12]
+  };
+  const BASE_FREQ = 146.83;
+
+  const scaleFreq = (normValue, scaleName) => {
+    const scale = SCALES[scaleName] || SCALES.d_minor_pentatonic;
+    const idx = Math.round(normValue * (scale.length - 1));
+    const semitones = scale[Math.max(0, Math.min(idx, scale.length - 1))];
+    return BASE_FREQ * Math.pow(2, semitones / 12);
+  };
+
+  // ── audio ───────────────────────────────────────────────────────────
+  let audioCtx = null;
+  const getAudioCtx = () => {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    return audioCtx;
+  };
+
+  const playNote = (ctx, freq, duration, volume, waveType) => {
+    if (waveType === 'fm') {
+      const carrier = ctx.createOscillator();
+      const modulator = ctx.createOscillator();
+      const modGain = ctx.createGain();
+      const masterGain = ctx.createGain();
+
+      modulator.frequency.value = freq * 2.0;
+      modGain.gain.value = freq * 2.0;
+      carrier.frequency.value = freq;
+
+      modulator.connect(modGain);
+      modGain.connect(carrier.frequency);
+      carrier.connect(masterGain);
+      masterGain.connect(ctx.destination);
+
+      masterGain.gain.setValueAtTime(volume * 0.3, ctx.currentTime);
+      masterGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration * 0.85);
+
+      modulator.start(ctx.currentTime);
+      carrier.start(ctx.currentTime);
+      modulator.stop(ctx.currentTime + duration);
+      carrier.stop(ctx.currentTime + duration);
+    } else {
+      const osc = ctx.createOscillator();
+      const gainNode = ctx.createGain();
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = Math.min(freq * 6, 3000);
+
+      osc.connect(filter);
+      filter.connect(gainNode);
+      gainNode.connect(ctx.destination);
+
+      osc.type = waveType;
+      osc.frequency.value = freq;
+
+      gainNode.gain.setValueAtTime(volume * 0.25, ctx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration * 0.85);
+
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + duration);
+    }
+  };
+
+  // ── data getters ────────────────────────────────────────────────────
+  const getMelodyData = () => {
+    const k = document.getElementById('melodyData').value;
+    if (k === 'fib')      return FIB;
+    if (k === 'divisors') return DIVISORS;
+    if (k === 'e')        return E_DIGITS;
+    if (k === 'pi')       return PI_DIGITS;
+    return PRIMES;
+  };
+  const getRhythmData = () => {
+    const k = document.getElementById('rhythmData').value;
+    if (k === 'equal')  return Array(32).fill(1);
+    if (k === 'fib')    return FIB;
+    if (k === 'random') return Array.from({length: 32}, () => Math.floor(Math.random() * 6) + 1);
+    return GAPS;
+  };
+  const getDynamicsData = () => {
+    const k = document.getElementById('dynData').value;
+    const melody = getMelodyData();
+    if (k === 'divisors') return melody.map((v) => divCount(v));
+    if (k === 'constant') return Array(melody.length).fill(5);
+    if (k === 'inverse') {
+      const mx = Math.max(...melody);
+      return melody.map((v) => mx - v + 1);
+    }
+    return Array(melody.length).fill(5);
+  };
+
+  // ── visualization ───────────────────────────────────────────────────
+  const buildBars = () => {
+    const melody = getMelodyData();
+    const rhythm = getRhythmData();
+    const dynamics = getDynamicsData();
+
+    const sets = {
+      melody:   { data: melody,   max: Math.max(...melody) || 1 },
+      rhythm:   { data: rhythm,   max: Math.max(...rhythm) || 1 },
+      dynamics: { data: dynamics, max: Math.max(...dynamics) || 1 }
+    };
+    Object.keys(sets).forEach((type) => {
+      const c = document.getElementById('bars-' + type);
+      c.innerHTML = '';
+      const { data, max } = sets[type];
+      data.forEach((v, i) => {
+        const b = document.createElement('div');
+        b.className = 'bar ' + type;
+        b.id = 'bar-' + type + '-' + i;
+        b.style.height = Math.max(3, Math.round((v / max) * 44)) + 'px';
+        c.appendChild(b);
+      });
+    });
+
+    document.getElementById('trkMelData').textContent = document.getElementById('melodyData').value;
+    document.getElementById('trkRhyData').textContent = document.getElementById('rhythmData').value;
+    document.getElementById('trkDynData').textContent = document.getElementById('dynData').value;
+  };
+
+  const updateBars = (step) => {
+    ['melody', 'rhythm', 'dynamics'].forEach((type) => {
+      const container = document.getElementById('bars-' + type);
+      const bars = container.querySelectorAll('.bar');
+      bars.forEach((b, i) => {
+        b.classList.remove('playing', 'active');
+        if (i < step) b.classList.add('active');
+        if (i === step) b.classList.add('playing');
+      });
+    });
+  };
+
+  const resetBars = () => {
+    document.querySelectorAll('.bar').forEach((b) => b.classList.remove('playing', 'active'));
+  };
+
+  const updateStatus = (text) => {
+    document.getElementById('soundStatus').textContent = text;
+  };
+
+  // ── sequencer ───────────────────────────────────────────────────────
+  let isPlaying = false;
+  let isLooping = false;
+  let currentStep = 0;
+  let stepTimeout = null;
+
+  const playStep = () => {
+    if (!isPlaying) return;
+    const melody = getMelodyData();
+    const rhythm = getRhythmData();
+    const dynamics = getDynamicsData();
+    const scaleName = document.getElementById('scaleSelect').value;
+    const waveType = document.getElementById('waveSelect').value;
+    const tempo = parseInt(document.getElementById('tempoSlider').value, 10);
+
+    if (currentStep >= melody.length) {
+      if (isLooping) { currentStep = 0; }
+      else {
+        isPlaying = false;
+        updateStatus('готово · ' + melody.length + ' нот');
+        resetBars();
+        playBtn.style.background = 'transparent';
+        playBtn.style.color = '#111';
+        return;
+      }
+    }
+
+    updateBars(currentStep);
+
+    const melMin = Math.min(...melody);
+    const melMax = Math.max(...melody);
+    const normMel = (melody[currentStep] - melMin) / ((melMax - melMin) || 1);
+    const freq = scaleFreq(normMel, scaleName);
+
+    const gapIdx = currentStep % rhythm.length;
+    const gapVal = rhythm[gapIdx];
+    const gapMax = Math.max(...rhythm) || 1;
+    const noteDuration = (1 / tempo) * (1 + (gapVal / gapMax) * 1.5);
+
+    const dynVal = dynamics[currentStep] || 1;
+    const dynMax = Math.max(...dynamics) || 1;
+    const volume = 0.1 + (dynVal / dynMax) * 0.6;
+
+    const ctx = getAudioCtx();
+    playNote(ctx, freq, noteDuration * 0.8, volume, waveType);
+
+    updateStatus(
+      'шаг ' + (currentStep + 1) + '/' + melody.length +
+      ' · ' + Math.round(freq) + ' Hz' +
+      ' · gap ' + gapVal +
+      ' · vol ' + volume.toFixed(2)
+    );
+
+    const delay = (1 / tempo) * 1000 * (1 + gapVal / gapMax);
+    currentStep++;
+    stepTimeout = setTimeout(playStep, delay);
+  };
+
+  // ── controls ────────────────────────────────────────────────────────
+  const playBtn = document.getElementById('playBtn');
+  const stopBtn = document.getElementById('stopBtn');
+  const loopBtn = document.getElementById('loopBtn');
+  const fastBtn = document.getElementById('fastBtn');
+
+  const startPlay = () => {
+    if (isPlaying) return;
+    isPlaying = true;
+    currentStep = 0;
+    const ctx = getAudioCtx();
+    if (ctx.state === 'suspended') ctx.resume();
+    playStep();
+    playBtn.style.background = '#111';
+    playBtn.style.color = '#f7f6f2';
+  };
+
+  const stopPlay = () => {
+    isPlaying = false;
+    clearTimeout(stepTimeout);
+    resetBars();
+    updateStatus('остановлено');
+    playBtn.style.background = 'transparent';
+    playBtn.style.color = '#111';
+  };
+
+  const toggleLoop = () => {
+    isLooping = !isLooping;
+    loopBtn.style.background = isLooping ? '#111' : 'transparent';
+    loopBtn.style.color = isLooping ? '#f7f6f2' : '#111';
+  };
+
+  const fastPlay = () => {
+    document.getElementById('tempoSlider').value = 12;
+    document.getElementById('tempoVal').textContent = '12';
+    stopPlay();
+    setTimeout(startPlay, 60);
+  };
+
+  playBtn.onclick = startPlay;
+  stopBtn.onclick = stopPlay;
+  loopBtn.onclick = toggleLoop;
+  fastBtn.onclick = fastPlay;
+
+  document.getElementById('tempoSlider').addEventListener('input', (e) => {
+    document.getElementById('tempoVal').textContent = e.target.value;
+  });
+
+  ['melodyData', 'rhythmData', 'dynData'].forEach((id) => {
+    document.getElementById(id).addEventListener('change', () => {
+      stopPlay();
+      buildBars();
+    });
+  });
+
+  // boot
+  buildBars();
+})();
+</script>
+
+</body>
+</html>
