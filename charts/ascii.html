@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ascii — null/charts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .ex-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .ex-h1 {
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 1.1;
+    margin: 0 0 10px 0;
+  }
+  .ex-sub {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: #777;
+    line-height: 1.55;
+    max-width: 620px;
+  }
+
+  .dataset-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin: 24px 0 32px 0;
+    flex-wrap: wrap;
+  }
+  .ds-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .ds-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .04em;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #888;
+    padding: 5px 12px;
+    cursor: pointer;
+  }
+  .ds-btn:hover { border-color: #111; color: #111; }
+  .ds-btn.active { border-color: #111; color: #111; background: #f0ede8; }
+
+  .ascii-block {
+    margin-bottom: 48px;
+  }
+  .ascii-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .copy-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .04em;
+    background: transparent;
+    border: 1px solid #ddd;
+    color: #888;
+    padding: 3px 8px;
+    cursor: pointer;
+    text-transform: lowercase;
+  }
+  .copy-btn:hover { border-color: #111; color: #111; }
+  .copy-btn.copied { border-color: #1a7a4a; color: #1a7a4a; }
+
+  .ascii-pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #111;
+    background: transparent;
+    white-space: pre;
+    overflow-x: auto;
+    margin: 0 0 8px 0;
+    padding: 0;
+  }
+  .ascii-pre .hi { color: #c44a32; }
+  .ascii-desc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    letter-spacing: .03em;
+    line-height: 1.6;
+  }
+
+  .ascii-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    letter-spacing: .02em;
+    line-height: 1.7;
+    padding: 16px 0;
+    border-top: 1px solid #e8e8e4;
+    border-bottom: 1px solid #e8e8e4;
+    margin: 24px 0 32px 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="./" class="active">графики</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / charts / ascii</div>
+
+<main class="container">
+<article>
+
+  <div class="ex-tag">графики · ascii</div>
+  <h1 class="ex-h1">ascii</h1>
+  <p class="ex-sub">графики символами. ▁▂▃▄▅▆▇█ · терминальная эстетика.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <div class="dataset-row" id="datasetRow">
+    <span class="ds-label">data</span>
+    <button class="ds-btn active" data-d="primes">простые</button>
+    <button class="ds-btn" data-d="pi">π</button>
+    <button class="ds-btn" data-d="fib">фибоначчи</button>
+    <button class="ds-btn" data-d="gaps">gaps</button>
+    <button class="ds-btn" data-d="divisors">делители</button>
+  </div>
+
+  <div class="ascii-block" data-block="spark">
+    <div class="ascii-label">
+      <span>spark · блок-символы · плотность</span>
+      <button class="copy-btn" data-target="spark">copy</button>
+    </div>
+    <pre class="ascii-pre" id="spark"></pre>
+    <div class="ascii-desc">каждый символ = одно значение. высота = нормализованная величина (▁ = min, █ = max).</div>
+  </div>
+
+  <div class="ascii-block" data-block="vbar">
+    <div class="ascii-label">
+      <span>bar · вертикальные столбцы</span>
+      <button class="copy-btn" data-target="vbar">copy</button>
+    </div>
+    <pre class="ascii-pre" id="vbar"></pre>
+    <div class="ascii-desc">первые 20 значений. █ = значение выше уровня строки. красный — максимум.</div>
+  </div>
+
+  <div class="ascii-block" data-block="hbar">
+    <div class="ascii-label">
+      <span>hbar · горизонтальные строки</span>
+      <button class="copy-btn" data-target="hbar">copy</button>
+    </div>
+    <pre class="ascii-pre" id="hbar"></pre>
+    <div class="ascii-desc">█ = занятая часть · ░ = оставшееся пространство.</div>
+  </div>
+
+  <div class="ascii-block" data-block="scatter">
+    <div class="ascii-label">
+      <span>scatter · сетка символов</span>
+      <button class="copy-btn" data-target="scatter">copy</button>
+    </div>
+    <pre class="ascii-pre" id="scatter"></pre>
+    <div class="ascii-desc">каждая · = одно значение. x = порядковый номер, y = величина.</div>
+  </div>
+
+  <div class="ascii-block" data-block="line">
+    <div class="ascii-label">
+      <span>line · кривая символами</span>
+      <button class="copy-btn" data-target="line">copy</button>
+    </div>
+    <pre class="ascii-pre" id="line"></pre>
+    <div class="ascii-desc">● = значение · │ = соединение с предыдущей точкой. кривая нормирована к ширине 60.</div>
+  </div>
+
+  <div class="ascii-block" data-block="heat">
+    <div class="ascii-label">
+      <span>heat · тепловая карта</span>
+      <button class="copy-btn" data-target="heat">copy</button>
+    </div>
+    <pre class="ascii-pre" id="heat"></pre>
+    <div class="ascii-desc">символ = величина: ' ' &lt; · &lt; ░ &lt; ▒ &lt; ▓ &lt; █. строки по 10 значений.</div>
+  </div>
+
+  <div class="ascii-note">
+    ascii графики — традиция идущая от первых компьютерных терминалов 1960-х. когда не было графических дисплеев — данные рисовали символами. сегодня это эстетический выбор, не ограничение.
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">графики</span><a href="explorer.html">explorer →</a></div>
+      <div class="related-link"><span class="related-link-type">тип</span><a href="../objects/numbers/types/prime.html">простые числа →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/pi.html">число π →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../objects/operators/mod.html">mod →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/charts/ascii.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+(() => {
+  // ── data ────────────────────────────────────────────────────────────
+  const sieve = (n) => {
+    const c = new Uint8Array(n + 1);
+    c[0] = c[1] = 1;
+    for (let i = 2; i * i <= n; i++) if (!c[i]) for (let j = i*i; j <= n; j += i) c[j] = 1;
+    const p = [];
+    for (let i = 2; i <= n && p.length < 100; i++) if (!c[i]) p.push(i);
+    return p;
+  };
+  const divisorCount = (n) => { let c = 0; for (let i = 1; i <= n; i++) if (n % i === 0) c++; return c; };
+
+  const PRIMES = sieve(600);
+  const PI = [1,4,1,5,9,2,6,5,3,5,8,9,7,9,3,2,3,8,4,6,2,6,4,3,3,8,3,2,7,9,5,0,2,8,8,4,1,9,7,1,6,9,3,9,9,3,7,5,1,0,5,8,2,0,9,7,4,9,4,4];
+  const FIB = (() => { const f = [1, 1]; while (f.length < 30) f.push(f[f.length-1] + f[f.length-2]); return f; })();
+  const GAPS = PRIMES.slice(1).map((p, i) => p - PRIMES[i]);
+  const DIVISORS = Array.from({length: 60}, (_, i) => divisorCount(i + 1));
+
+  const DATASETS = {
+    primes:   { label: 'простые числа', data: PRIMES,   labels: PRIMES.map((_, i) => 'p' + (i + 1)) },
+    pi:       { label: 'цифры π',       data: PI,       labels: PI.map((_, i) => String(i)) },
+    fib:      { label: 'фибоначчи',     data: FIB,      labels: FIB.map((_, i) => 'F' + (i + 1)) },
+    gaps:     { label: 'gaps',          data: GAPS,     labels: GAPS.map((_, i) => 'g' + (i + 1)) },
+    divisors: { label: 'делители',      data: DIVISORS, labels: Array.from({length: 60}, (_, i) => String(i + 1)) }
+  };
+
+  const escapeHTML = (s) => s.replace(/[&<>]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+  // ── chart builders ──────────────────────────────────────────────────
+  const SPARKS = ['▁','▂','▃','▄','▅','▆','▇','█'];
+
+  const sparkLine = (data) => {
+    const min = Math.min(...data), max = Math.max(...data);
+    const range = max - min || 1;
+    return data.map((v) => {
+      const idx = Math.round((v - min) / range * 7);
+      return SPARKS[Math.max(0, Math.min(7, idx))];
+    }).join('');
+  };
+
+  const buildSpark = (ds) => {
+    // four sparks for any selected dataset, plus three companions for variety
+    const rows = [
+      ['primes', PRIMES.slice(0, 60)],
+      ['π',      PI.slice(0, 60)],
+      ['fib',    FIB.slice(0, 20)],
+      ['gaps',   GAPS.slice(0, 60)]
+    ];
+    // also include the currently-selected one at the top, if not one of these
+    const lines = rows.map(([name, d]) => name.padEnd(8) + ' ' + sparkLine(d));
+    return lines.join('\n');
+  };
+
+  // vertical bar chart over first N values
+  const vertBar = (data, height = 12, width = 3) => {
+    const min = Math.min(...data), max = Math.max(...data);
+    const range = max - min || 1;
+    const cols = data.map((v) => Math.round((v - min) / range * height));
+    const maxIdx = data.indexOf(max);
+
+    const lines = [];
+    for (let row = height; row >= 0; row--) {
+      let line = '';
+      cols.forEach((h, i) => {
+        const fill = h >= row ? '█' : ' ';
+        const cell = fill.repeat(width) + ' ';
+        line += (i === maxIdx && fill === '█') ? '<span class="hi">' + cell + '</span>' : cell;
+      });
+      const yLabel = row === height ? String(max).padStart(4)
+                   : row === 0      ? String(min).padStart(4)
+                   :                  '    ';
+      lines.push(yLabel + ' │' + line);
+    }
+    lines.push('     └' + '─'.repeat(data.length * (width + 1)));
+    return lines.join('\n');
+  };
+
+  const horizBar = (labels, data, maxWidth = 40) => {
+    const max = Math.max(...data) || 1;
+    const lines = [];
+    labels.forEach((label, i) => {
+      const v = data[i];
+      const barLen = Math.round(v / max * maxWidth);
+      const bar = '█'.repeat(barLen) + '░'.repeat(maxWidth - barLen);
+      const valStr = String(v).padStart(6);
+      lines.push(String(label).padEnd(8) + ' │' + bar + '│ ' + valStr);
+    });
+    return lines.join('\n');
+  };
+
+  const asciiScatter = (data, width = 60, height = 16) => {
+    // data = [{x, y}]
+    const xs = data.map((d) => d.x);
+    const ys = data.map((d) => d.y);
+    const minX = Math.min(...xs), maxX = Math.max(...xs);
+    const minY = Math.min(...ys), maxY = Math.max(...ys);
+    const rangeX = (maxX - minX) || 1, rangeY = (maxY - minY) || 1;
+
+    const grid = Array.from({length: height}, () => Array(width).fill(' '));
+    data.forEach(({ x, y }) => {
+      const col = Math.round((x - minX) / rangeX * (width - 1));
+      const row = height - 1 - Math.round((y - minY) / rangeY * (height - 1));
+      if (row >= 0 && row < height && col >= 0 && col < width) grid[row][col] = '·';
+    });
+
+    const lines = [];
+    grid.forEach((row, i) => {
+      const yVal = Math.round(maxY - i / (height - 1) * (maxY - minY));
+      lines.push(String(yVal).padStart(5) + ' │' + row.join(''));
+    });
+    lines.push('      └' + '─'.repeat(width));
+    const xPad = ' '.repeat(Math.max(0, width - String(maxX).length - String(minX).length));
+    lines.push('       ' + String(minX) + xPad + String(maxX));
+    return lines.join('\n');
+  };
+
+  const asciiLine = (data, width = 60, height = 16) => {
+    if (data.length < 2) data = [...data, ...data];
+    const min = Math.min(...data), max = Math.max(...data);
+    const range = max - min || 1;
+    const grid = Array.from({length: height}, () => Array(width).fill(' '));
+
+    const step = (data.length - 1) / (width - 1);
+    const points = [];
+    for (let col = 0; col < width; col++) {
+      const idx = col * step;
+      const i = Math.floor(idx);
+      const frac = idx - i;
+      const v = i + 1 < data.length ? data[i] * (1 - frac) + data[i + 1] * frac : data[i];
+      const row = height - 1 - Math.round((v - min) / range * (height - 1));
+      points.push({ row: Math.max(0, Math.min(height - 1, row)), col });
+    }
+
+    points.forEach(({ row, col }, i) => {
+      if (i > 0) {
+        const prev = points[i - 1];
+        const rMin = Math.min(row, prev.row);
+        const rMax = Math.max(row, prev.row);
+        for (let r = rMin; r <= rMax; r++) grid[r][col] = (r === row) ? '●' : '│';
+      } else {
+        grid[row][col] = '●';
+      }
+    });
+
+    const lines = [];
+    grid.forEach((row, i) => {
+      const yVal = Math.round(max - i / (height - 1) * (max - min));
+      lines.push(String(yVal).padStart(5) + ' │' + row.join('') + '│');
+    });
+    lines.push('      └' + '─'.repeat(width) + '┘');
+    return lines.join('\n');
+  };
+
+  const HEAT = [' ', '·', '░', '▒', '▓', '█'];
+  const asciiHeat = (data, cols = 10) => {
+    const min = Math.min(...data), max = Math.max(...data);
+    const range = max - min || 1;
+    const lines = [];
+    for (let i = 0; i < data.length; i += cols) {
+      const row = data.slice(i, i + cols);
+      let line = String(i + 1).padStart(4) + ' │ ';
+      row.forEach((v) => {
+        const idx = Math.round((v - min) / range * 5);
+        line += HEAT[Math.max(0, Math.min(5, idx))] + ' ';
+      });
+      lines.push(line);
+    }
+    return lines.join('\n');
+  };
+
+  // ── render ──────────────────────────────────────────────────────────
+  let dsKey = 'primes';
+
+  // raw text cache for copy
+  const rawText = {};
+
+  const setHTML = (id, text, html) => {
+    rawText[id] = text;
+    document.getElementById(id).innerHTML = html;
+  };
+
+  const render = () => {
+    const ds = DATASETS[dsKey];
+    const data = ds.data;
+    const labels = ds.labels;
+
+    // spark — fixed selection of all four kinds
+    const sparkText = buildSpark(ds);
+    setHTML('spark', sparkText, escapeHTML(sparkText));
+
+    // vbar — first 20 values of selected dataset, max highlighted
+    const vbarSlice = data.slice(0, 20);
+    const vbarHTML = vertBar(vbarSlice);
+    // raw without spans
+    const vbarText = vbarHTML.replace(/<[^>]+>/g, '');
+    document.getElementById('vbar').innerHTML = vbarHTML;
+    rawText.vbar = vbarText;
+
+    // hbar — first 15 values, with labels
+    const hbarSlice = data.slice(0, 15);
+    const hbarLabels = labels.slice(0, 15);
+    const hbarText = horizBar(hbarLabels, hbarSlice);
+    setHTML('hbar', hbarText, escapeHTML(hbarText));
+
+    // scatter — first 60 values as (i+1, v)
+    const scatSlice = data.slice(0, 60).map((v, i) => ({ x: i + 1, y: v }));
+    const scatText = asciiScatter(scatSlice);
+    setHTML('scatter', scatText, escapeHTML(scatText));
+
+    // line — first 60 values
+    const lineSlice = data.slice(0, 60);
+    const lineText = asciiLine(lineSlice);
+    setHTML('line', lineText, escapeHTML(lineText));
+
+    // heat — first 60 values, 10 per row
+    const heatSlice = data.slice(0, 60);
+    const heatText = asciiHeat(heatSlice, 10);
+    setHTML('heat', heatText, escapeHTML(heatText));
+  };
+
+  // ── controls ────────────────────────────────────────────────────────
+  document.querySelectorAll('#datasetRow .ds-btn').forEach((b) => {
+    b.onclick = () => {
+      dsKey = b.dataset.d;
+      document.querySelectorAll('#datasetRow .ds-btn').forEach((x) => x.classList.remove('active'));
+      b.classList.add('active');
+      render();
+    };
+  });
+
+  // copy buttons
+  document.querySelectorAll('.copy-btn').forEach((b) => {
+    b.onclick = async () => {
+      const id = b.dataset.target;
+      const text = rawText[id] || '';
+      try {
+        await navigator.clipboard.writeText(text);
+        b.textContent = 'copied';
+        b.classList.add('copied');
+        setTimeout(() => { b.textContent = 'copy'; b.classList.remove('copied'); }, 1200);
+      } catch (e) {
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (_) {}
+        document.body.removeChild(ta);
+        b.textContent = 'copied';
+        b.classList.add('copied');
+        setTimeout(() => { b.textContent = 'copy'; b.classList.remove('copied'); }, 1200);
+      }
+    };
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
