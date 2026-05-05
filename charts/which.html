@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>какой график? — null/charts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .ex-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .ex-h1 {
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 1.1;
+    margin: 0 0 10px 0;
+  }
+  .ex-sub {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: #777;
+    line-height: 1.55;
+    max-width: 620px;
+  }
+
+  .which-dialog {
+    max-width: 600px;
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 28px;
+  }
+
+  .q-trail {
+    font-size: 10px;
+    color: #bbb;
+    margin-bottom: 6px;
+    letter-spacing: .03em;
+    line-height: 1.6;
+  }
+  .q-trail span { color: #888; }
+
+  .q-block {
+    margin-bottom: 24px;
+    animation: fadeIn 0.2s ease;
+  }
+  .q-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .q-text {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 22px;
+    color: #111;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  .q-options {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .q-opt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 10px 16px;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #555;
+    cursor: pointer;
+    text-align: left;
+    letter-spacing: .02em;
+    transition: all 0.1s ease;
+  }
+  .q-opt:hover {
+    border-color: #111;
+    color: #111;
+    background: #f0ede8;
+  }
+
+  .result-block {
+    animation: fadeIn 0.3s ease;
+    padding: 28px;
+    border: 1.5px solid #111;
+    margin-top: 8px;
+    background: #fcfbf8;
+  }
+  .result-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 56px;
+    color: #111;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .result-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .result-type {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 28px;
+    color: #111;
+    margin-bottom: 10px;
+    line-height: 1.15;
+  }
+  .result-reason {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .result-rules {
+    border-top: 1px dashed #ddd;
+    padding-top: 14px;
+    margin-bottom: 18px;
+  }
+  .rules-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .rule-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #444;
+    line-height: 1.7;
+  }
+  .rule-item .arr { color: #c44a32; margin-right: 4px; }
+
+  .result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .result-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 8px 14px;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #555;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: .02em;
+    transition: all 0.1s ease;
+    display: inline-block;
+  }
+  .result-btn:hover { border-color: #111; color: #111; background: #f0ede8; }
+  .result-btn.primary { border-color: #111; color: #111; }
+
+  .result-path {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: .04em;
+    border-top: 1px dashed #ddd;
+    padding-top: 12px;
+  }
+  .result-path span { color: #888; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="./" class="active">графики</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / charts / which</div>
+
+<main class="container">
+<article>
+
+  <div class="ex-tag">графики · выбор типа</div>
+  <h1 class="ex-h1">какой график?</h1>
+  <p class="ex-sub">ответь на вопросы — получи рекомендацию.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <div class="which-dialog" id="dialog"></div>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/charts/which.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+(() => {
+  const TREE = {
+    q1: {
+      num: '01',
+      text: 'Что ты хочешь показать?',
+      options: [
+        { text: 'сравнение — насколько X больше Y',      next: 'q2_compare',  short: 'сравнение' },
+        { text: 'изменение во времени — как менялось',   next: 'q2_time',     short: 'время' },
+        { text: 'распределение — как данные разброшены', next: 'q2_dist',     short: 'распределение' },
+        { text: 'связь — зависит ли X от Y',             next: 'q2_relation', short: 'связь' },
+        { text: 'часть от целого — доля в сумме',        next: 'q2_part',     short: 'часть/целое' }
+      ]
+    },
+
+    q2_compare: {
+      num: '02',
+      text: 'Сколько категорий?',
+      options: [
+        { text: 'до 10 категорий',    next: 'q3_compare_few',  short: 'до 10' },
+        { text: '10 и больше',        next: 'q3_compare_many', short: '10+' },
+        { text: 'только 2 категории', next: 'res_bar_simple',  short: '2' }
+      ]
+    },
+    q3_compare_few: {
+      num: '03',
+      text: 'Нужно ли показать несколько групп для каждой категории?',
+      options: [
+        { text: 'да — grouped или stacked',           next: 'res_bar_grouped', short: 'с группами' },
+        { text: 'нет — одно значение на категорию',   next: 'res_bar',         short: 'без групп' }
+      ]
+    },
+    q3_compare_many: {
+      num: '03',
+      text: 'Важен ли точный порядок (рейтинг)?',
+      options: [
+        { text: 'да — хочу отсортированный список',  next: 'res_hbar',    short: 'рейтинг' },
+        { text: 'нет — просто много категорий',      next: 'res_heatmap', short: 'паттерны' }
+      ]
+    },
+
+    q2_time: {
+      num: '02',
+      text: 'Данные непрерывные или дискретные?',
+      options: [
+        { text: 'непрерывные — много точек, плавная кривая', next: 'q3_time_cont', short: 'непрерывные' },
+        { text: 'дискретные — конкретные моменты времени',   next: 'q3_time_disc', short: 'дискретные' }
+      ]
+    },
+    q3_time_cont: {
+      num: '03',
+      text: 'Нужно показать объём (накопление)?',
+      options: [
+        { text: 'да — важна площадь под кривой', next: 'res_area', short: 'объём' },
+        { text: 'нет — только тренд',            next: 'res_line', short: 'тренд' }
+      ]
+    },
+    q3_time_disc: {
+      num: '03',
+      text: 'Значение постоянно до следующего события?',
+      options: [
+        { text: 'да — ступенчатые данные (ставки, тарифы)', next: 'res_step', short: 'ступени' },
+        { text: 'нет — обычные измерения',                  next: 'res_line', short: 'обычные' }
+      ]
+    },
+
+    q2_dist: {
+      num: '02',
+      text: 'Сколько групп нужно сравнить?',
+      options: [
+        { text: 'одна группа',           next: 'res_histogram', short: '1 группа' },
+        { text: 'две и больше групп',    next: 'q3_dist_multi', short: '2+ группы' }
+      ]
+    },
+    q3_dist_multi: {
+      num: '03',
+      text: 'Важны ли выбросы и медиана?',
+      options: [
+        { text: 'да — нужна полная статистика', next: 'res_boxplot',   short: 'полная статистика' },
+        { text: 'нет — просто форма',           next: 'res_histogram', short: 'форма' }
+      ]
+    },
+
+    q2_relation: {
+      num: '02',
+      text: 'Сколько переменных?',
+      options: [
+        { text: 'две переменные',     next: 'res_scatter', short: '2' },
+        { text: 'три переменные',     next: 'res_bubble',  short: '3' },
+        { text: 'много переменных',   next: 'res_radar',   short: '4+' }
+      ]
+    },
+
+    q2_part: {
+      num: '02',
+      text: 'Сколько частей?',
+      options: [
+        { text: '2–4 части',          next: 'res_pie',     short: '2–4' },
+        { text: '5 и больше частей',  next: 'res_bar_pct', short: '5+' },
+        { text: 'иерархия частей',    next: 'res_treemap', short: 'иерархия' }
+      ]
+    }
+  };
+
+  const RESULTS = {
+    res_bar: {
+      type: 'bar chart', glyph: '▌',
+      reason: 'классика для сравнения категорий. сортируй от большего к меньшему.',
+      rules: ['начинай ось с нуля · 100% консенсус', 'не более 10 категорий для читаемости']
+    },
+    res_bar_simple: {
+      type: 'bar chart', glyph: '▌',
+      reason: 'для сравнения двух значений bar chart идеален. можно добавить стрелку разницы.',
+      rules: ['всегда называй обе категории', 'выдели разницу числом или стрелкой']
+    },
+    res_bar_grouped: {
+      type: 'grouped bar chart', glyph: '▌▌',
+      reason: 'несколько групп на одну категорию. grouped лучше stacked для точного сравнения.',
+      rules: ['не более 3–4 групп · иначе нечитаемо', 'используй разные цвета для групп']
+    },
+    res_hbar: {
+      type: 'horizontal bar chart', glyph: '━',
+      reason: 'горизонтальный bar удобнее когда категорий много или названия длинные.',
+      rules: ['сортируй по убыванию', 'выравнивай метки по правому краю']
+    },
+    res_line: {
+      type: 'line chart', glyph: '╱',
+      reason: 'линия показывает тренд и непрерывность. стандарт для временных рядов.',
+      rules: ['не более 4 линий на одном графике · 94% консенсус', 'начинай ось с нуля']
+    },
+    res_area: {
+      type: 'area chart', glyph: '◢',
+      reason: 'заливка подчёркивает объём и накопление. не используй при большом перекрытии.',
+      rules: ['начинай ось Y с нуля · 77% консенсус', 'ограничь до 3–4 рядов']
+    },
+    res_step: {
+      type: 'step chart', glyph: '⌐',
+      reason: 'значение постоянно до следующего события — идеально для ставок и тарифов.',
+      rules: ['не используй для непрерывных данных', 'step = line с stepped: true в Chart.js']
+    },
+    res_histogram: {
+      type: 'histogram', glyph: '█▇▅▃',
+      reason: 'показывает как данные распределены по диапазонам. не путай с bar chart.',
+      rules: ['используй равные интервалы (бакеты)', 'правило Стёрджеса: k ≈ 1 + 3.3·log(n)']
+    },
+    res_boxplot: {
+      type: 'box plot', glyph: '├──┤',
+      reason: 'компактно показывает min Q1 медиану Q3 max и выбросы. идеально для сравнения групп.',
+      rules: ['нужно минимум 20 точек для смысла', 'объясни что означают усы']
+    },
+    res_scatter: {
+      type: 'scatter plot', glyph: '·',
+      reason: 'каждая точка — одно наблюдение с двумя координатами. видна корреляция и выбросы.',
+      rules: ['используй прозрачность при наложении · 78% консенсус', 'добавь линию тренда если нужна']
+    },
+    res_bubble: {
+      type: 'bubble chart', glyph: '○',
+      reason: 'scatter + размер пузыря = третья переменная. три измерения на плоскости.',
+      rules: ['размер = площадь, не радиус · важно', 'не более 20–30 пузырей']
+    },
+    res_radar: {
+      type: 'radar chart', glyph: '✦',
+      reason: 'профиль объекта по нескольким осям. хорошо для сравнения 2–3 объектов.',
+      rules: ['4–8 осей оптимально', 'bar chart часто понятнее']
+    },
+    res_pie: {
+      type: 'pie chart', glyph: '◔',
+      reason: 'подходит только для 2–4 частей. люди плохо сравнивают углы.',
+      rules: ['не более 5 сегментов · 78% консенсус', 'bar chart почти всегда лучше']
+    },
+    res_bar_pct: {
+      type: '100% stacked bar', glyph: '▌▍▎',
+      reason: 'для многих частей stacked bar читается лучше pie.',
+      rules: ['выдели самую важную часть цветом', 'добавь прямые метки процентов']
+    },
+    res_treemap: {
+      type: 'treemap', glyph: '⊞',
+      reason: 'иерархические части целого — прямоугольники пропорциональны значению.',
+      rules: ['метки прямо на прямоугольниках', 'крупные блоки слева вверху']
+    },
+    res_heatmap: {
+      type: 'heatmap', glyph: '▒',
+      reason: 'много категорий × метрика — цвет передаёт паттерны в большом массиве.',
+      rules: ['используй непрерывную палитру · 100% консенсус', 'добавь числа в ячейки если важна точность']
+    }
+  };
+
+  const dialog = document.getElementById('dialog');
+  let currentKey = 'q1';
+  let trail = []; // [{short, key}]
+
+  const escapeHTML = (s) => s.replace(/[&<>]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+  const renderTrail = () => {
+    if (!trail.length) return '';
+    const parts = trail.map((t) => '<span>' + escapeHTML(t.short) + '</span>').join(' → ');
+    return '<div class="q-trail">' + parts + ' →</div>';
+  };
+
+  const renderQuestion = (key) => {
+    const node = TREE[key];
+    if (!node) return;
+    const optsHTML = node.options.map((o, i) =>
+      '<button class="q-opt" data-i="' + i + '">' + escapeHTML(o.text) + '</button>'
+    ).join('');
+    dialog.innerHTML =
+      renderTrail() +
+      '<div class="q-block">' +
+        '<div class="q-num">вопрос ' + node.num + '</div>' +
+        '<div class="q-text">' + escapeHTML(node.text) + '</div>' +
+        '<div class="q-options">' + optsHTML + '</div>' +
+      '</div>';
+
+    dialog.querySelectorAll('.q-opt').forEach((btn) => {
+      btn.onclick = () => {
+        const i = parseInt(btn.dataset.i, 10);
+        const opt = node.options[i];
+        trail.push({ short: opt.short, key: opt.next });
+        currentKey = opt.next;
+        if (opt.next.startsWith('res_')) {
+          renderResult(opt.next);
+        } else {
+          renderQuestion(opt.next);
+        }
+      };
+    });
+  };
+
+  const renderResult = (key) => {
+    const r = RESULTS[key];
+    if (!r) return;
+    const pathHTML = trail.map((t) => '<span>' + escapeHTML(t.short) + '</span>').join(' → ');
+    const rulesHTML = r.rules.map((rule) =>
+      '<div class="rule-item"><span class="arr">→</span>' + escapeHTML(rule) + '</div>'
+    ).join('');
+    dialog.innerHTML =
+      '<div class="result-block">' +
+        '<div class="result-tag">// рекомендация</div>' +
+        '<div class="result-glyph">' + escapeHTML(r.glyph) + '</div>' +
+        '<div class="result-type">' + escapeHTML(r.type) + '</div>' +
+        '<div class="result-reason">' + escapeHTML(r.reason) + '</div>' +
+        '<div class="result-rules">' +
+          '<div class="rules-label">// правила</div>' +
+          rulesHTML +
+        '</div>' +
+        '<div class="result-actions">' +
+          '<a class="result-btn primary" href="types.html">посмотреть тип →</a>' +
+          '<a class="result-btn" href="explorer.html">попробовать в explorer →</a>' +
+          '<button class="result-btn" id="resetBtn">↺ начать заново</button>' +
+        '</div>' +
+        '<div class="result-path">' + pathHTML + '</div>' +
+      '</div>';
+
+    document.getElementById('resetBtn').onclick = reset;
+  };
+
+  const reset = () => {
+    currentKey = 'q1';
+    trail = [];
+    renderQuestion('q1');
+  };
+
+  reset();
+})();
+</script>
+
+</body>
+</html>
