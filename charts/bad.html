@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>плохие графики — null/charts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .ex-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .ex-h1 {
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 1.1;
+    margin: 0 0 10px 0;
+  }
+  .ex-sub {
+    font-family: "Times New Roman", Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #666;
+    line-height: 1.55;
+    max-width: 620px;
+  }
+  .intro {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 24px 0 32px 0;
+  }
+
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+  .filter-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .04em;
+    background: transparent;
+    border: 1px solid #ddd;
+    color: #888;
+    padding: 5px 11px;
+    cursor: pointer;
+  }
+  .filter-pill:hover { border-color: #111; color: #111; }
+  .filter-pill.active { border-color: #111; color: #111; background: #f0ede8; }
+
+  .bad-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 32px;
+    transition: opacity 0.2s ease;
+  }
+  .bad-block.dim { opacity: 0.2; pointer-events: none; }
+  @media (max-width: 720px) { .bad-block { grid-template-columns: 1fr; } }
+
+  .bad-left, .bad-right {
+    background: #f7f6f2;
+    padding: 24px 22px;
+  }
+  .bad-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .bad-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #c44a32;
+    border: 1px solid #c44a32;
+    padding: 2px 8px;
+    margin-bottom: 12px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .fix-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #1a7a4a;
+    border: 1px solid #1a7a4a;
+    padding: 2px 8px;
+    margin-bottom: 12px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .bad-title {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 22px;
+    color: #111;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+  }
+  .bad-claim {
+    font-family: var(--font-sans);
+    font-style: italic;
+    font-size: 13px;
+    color: #c44a32;
+    margin-bottom: 4px;
+  }
+  .fix-claim {
+    font-family: var(--font-sans);
+    font-style: italic;
+    font-size: 13px;
+    color: #1a7a4a;
+    margin-bottom: 4px;
+  }
+  .bad-ascii, .fix-ascii {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.55;
+    white-space: pre;
+    margin: 14px 0 10px 0;
+    color: #111;
+    overflow-x: auto;
+  }
+  .bad-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #c44a32;
+    letter-spacing: .04em;
+    margin-top: 8px;
+  }
+  .why {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.65;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed #ddd;
+  }
+  .why-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .summary {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #ddd;
+  }
+  .summary-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .summary-table {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.9;
+    color: #111;
+    white-space: pre;
+    overflow-x: auto;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="./" class="active">графики</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / charts / bad</div>
+
+<main class="container">
+<article>
+
+  <div class="ex-tag">графики · антипаттерны</div>
+  <h1 class="ex-h1">плохие графики</h1>
+  <p class="ex-sub">как данные врут. и как это заметить.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <p class="intro">графики могут врать не фальсифицируя данные. усечённая ось. неправильный тип. 3D-эффект. двойная шкала. каждый из этих приёмов искажает восприятие, сохраняя «точность» цифр.</p>
+
+  <div class="filter-row" id="filter"></div>
+
+  <div id="grid"></div>
+
+  <div class="summary">
+    <div class="summary-label">// сводка антипаттернов</div>
+    <pre class="summary-table">антипаттерн             │ вместо этого
+────────────────────────┼──────────────────────────────
+усечённая ось           │ начинай с нуля (bar chart)
+3D эффект               │ плоский chart
+pie с 10+ сегментами    │ horizontal bar
+двойная ось             │ два отдельных графика
+line для категорий      │ bar chart
+радужные цвета          │ монохром + 1 акцент
+иконки разного размера  │ bar chart
+stacked area            │ line chart</pre>
+  </div>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/charts/bad.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+(() => {
+  const escapeHTML = (s) => s.replace(/[&<>]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+  const PATTERNS = [
+    {
+      num: '№001', cat: 'ось', title: 'усечённая ось',
+      badClaim: '«продажи растут на 50%!»',
+      badAscii:
+        ' 100 │         ████\n' +
+        '  99 │    ████ ████\n' +
+        '  98 │    ████ ████\n' +
+        '  97 │    ████ ████\n' +
+        '  96 │████ ████ ████\n' +
+        '  95 └─────────────\n' +
+        '       янв  фев  мар',
+      badCaption: 'визуально кажется что рост огромный',
+      fixClaim: '«реальный рост: +2%»',
+      fixAscii:
+        ' 100 │         ████\n' +
+        '  80 │         ████\n' +
+        '  60 │    ████ ████\n' +
+        '  40 │    ████ ████\n' +
+        '  20 │████ ████ ████\n' +
+        '   0 └─────────────\n' +
+        '       янв  фев  мар',
+      why: 'ось Y должна начинаться с нуля для bar chart. усечение создаёт визуальное увеличение в 25× реального роста. 100% консенсус среди 23 организаций: начинай ось с нуля.'
+    },
+    {
+      num: '№002', cat: 'декорация', title: '3D bar chart',
+      badClaim: '«объёмные бары — солиднее»',
+      badAscii:
+        '      /█/   /██/   /███/\n' +
+        '     /█/   /██/   /███/\n' +
+        '    ███   ████   █████\n' +
+        '   ─────────────────────\n' +
+        '    кат A   кат B   кат C',
+      badCaption: '3D скрывает реальные значения',
+      fixClaim: '«плоско и точно»',
+      fixAscii:
+        '   A │████████████████│ 80\n' +
+        '   B │████████████    │ 60\n' +
+        '   C │████████        │ 40\n' +
+        '     └────────────────',
+      why: '3D не добавляет информации — только декорацию. перспектива искажает восприятие высоты, передние бары кажутся больше. избегай теней и 3D-баров: 100% консенсус.'
+    },
+    {
+      num: '№003', cat: 'тип', title: 'pie chart с 10+ сегментами',
+      badClaim: '«доли всех 12 категорий»',
+      badAscii:
+        '       ◔◑◕●\n' +
+        '    ████░░░▒▒▒▓▓▓...\n' +
+        '\n' +
+        '    и ещё 8 категорий\n' +
+        '    1–2% каждая',
+      badCaption: 'мозг не может сравнивать маленькие углы',
+      fixClaim: '«отсортированный bar chart»',
+      fixAscii:
+        '   A         │████████████████│ 31%\n' +
+        '   B         │████████████    │ 24%\n' +
+        '   C         │████████        │ 17%\n' +
+        '   D         │██████          │ 12%\n' +
+        '   остальные │██████          │ 16%\n' +
+        '             └────────────────',
+      why: 'человек плохо сравнивает углы. при >5 сегментах pie chart теряет смысл. bar chart передаёт ту же информацию точнее. 96% консенсус: не используй pie если «остальное» теряет смысл.'
+    },
+    {
+      num: '№004', cat: 'ось', title: 'двойная ось Y',
+      badClaim: '«продажи коррелируют с рейтингом!»',
+      badAscii:
+        '   млн │╱╱╱╱╱        │ %\n' +
+        '   100 │  ╱          │ 50\n' +
+        '    50 │     ╲╲╲╲╲   │ 25\n' +
+        '     0 └──────────────  0',
+      badCaption: 'две оси создают иллюзию корреляции',
+      fixClaim: '«два отдельных графика»',
+      fixAscii:
+        '   ── продажи (млн) ──\n' +
+        '    100 │   ╱╲\n' +
+        '     50 │ ╱    ╲\n' +
+        '      0 └────────\n' +
+        '\n' +
+        '   ── доля рынка (%) ──\n' +
+        '     50 │\n' +
+        '     25 │ ╲╲╲╲╲\n' +
+        '      0 └────────',
+      why: 'двойная ось позволяет показать любую корреляцию, просто подобрав масштаб второй оси. это не ложь в данных — ложь в визуализации. используй два отдельных графика и считай корреляцию формально.'
+    },
+    {
+      num: '№005', cat: 'тип', title: 'line chart для категорий',
+      badClaim: '«динамика по продуктам»',
+      badAscii:
+        '   50 │   ●\n' +
+        '   40 │    ╲●\n' +
+        '   30 │ ●    ╲\n' +
+        '   20 │  ╲    ●\n' +
+        '    0 └─────────\n' +
+        '       A  B  C  D',
+      badCaption: 'линия подразумевает непрерывность которой нет',
+      fixClaim: '«bar chart по категориям»',
+      fixAscii:
+        '   A │████████████        │ 30\n' +
+        '   B │████████████████████│ 50\n' +
+        '   C │█████████████████   │ 42\n' +
+        '   D │████████            │ 20\n' +
+        '     └────────────────────',
+      why: 'line chart показывает изменение во времени или непрерывные данные. если категории не связаны (яблоки, груши, апельсины) — линия между ними не имеет смысла. 100% консенсус: не используй line для категориальных данных.'
+    },
+    {
+      num: '№006', cat: 'декорация', title: 'радужная цветовая схема',
+      badClaim: '«каждой категории — свой цвет радуги»',
+      badAscii:
+        '   ████ A  красный\n' +
+        '   ████ B  оранжевый\n' +
+        '   ████ C  жёлтый\n' +
+        '   ████ D  зелёный\n' +
+        '   ████ E  синий\n' +
+        '   ████ F  фиолетовый\n' +
+        '   ████ G  розовый',
+      badCaption: 'в ч/б все одинаковые · при дальтонизме часть неразличима',
+      fixClaim: '«монохром + один акцент»',
+      fixAscii:
+        '   ░░░░ A  данные\n' +
+        '   ░░░░ B  данные\n' +
+        '   ████ C  ВАЖНОЕ  ← акцент\n' +
+        '   ░░░░ D  данные\n' +
+        '   ░░░░ E  данные',
+      why: 'цвет должен передавать информацию, а не украшать. используй максимум 2–3 цвета. проверь читаемость в ч/б и при дальтонизме. категориальная палитра — не радуга, а проверенная schema (Tableau 10, ColorBrewer Set2).'
+    },
+    {
+      num: '№007', cat: 'масштаб', title: 'площадь вместо высоты',
+      badClaim: '«B в 1.5× больше A»',
+      badAscii:
+        '   A:  💰\n' +
+        '\n' +
+        '   B:  💰💰💰\n' +
+        '       (иконка в 1.5× выше →\n' +
+        '        в 2.25× больше по площади)',
+      badCaption: 'мозг воспринимает площадь, не высоту',
+      fixClaim: '«bar chart с одним измерением»',
+      fixAscii:
+        '   A │████████        │ 10\n' +
+        '   B │████████████████│ 30\n' +
+        '     └────────────────',
+      why: 'если иконка в 2× больше по высоте — площадь увеличивается в 4× (квадрат). мозг воспринимает площадь и переоценивает разницу. в bubble chart размер пузыря должен кодироваться площадью, а не радиусом — это важно.'
+    },
+    {
+      num: '№008', cat: 'тип', title: 'stacked area для сравнения',
+      badClaim: '«три ряда сразу — компактно»',
+      badAscii:
+        '   ████████████████████\n' +
+        '   ████▓▓▓▓▓▓▓▓▓▓▓▓████\n' +
+        '   ████▓▓▓░░░░░░░░░▓████\n' +
+        '   ────────────────────',
+      badCaption: 'только нижняя линия читается точно',
+      fixClaim: '«line chart с тремя линиями»',
+      fixAscii:
+        '   100 │    ●────●\n' +
+        '    50 │●──●      ●\n' +
+        '    20 │            ●──●\n' +
+        '     0 └────────────────',
+      why: 'stacked area хороша для показа общего объёма. но сравнивать отдельные слои невозможно — у каждого свой непостоянный baseline, кроме нижнего. для сравнения нескольких рядов используй обычный line chart.'
+    }
+  ];
+
+  // ── filter ──────────────────────────────────────────────────────────
+  const counts = { 'все': PATTERNS.length };
+  PATTERNS.forEach((p) => { counts[p.cat] = (counts[p.cat] || 0) + 1; });
+  const order = ['все', 'ось', 'тип', 'декорация', 'масштаб'];
+  const filterEl = document.getElementById('filter');
+  filterEl.innerHTML = order
+    .filter((k) => counts[k])
+    .map((k) => '<button class="filter-pill' + (k === 'все' ? ' active' : '') + '" data-c="' + k + '">' + k + ' · ' + counts[k] + '</button>')
+    .join('');
+
+  // ── render ──────────────────────────────────────────────────────────
+  const grid = document.getElementById('grid');
+  grid.innerHTML = PATTERNS.map((p) => `
+    <div class="bad-block" data-cat="${p.cat}">
+      <div class="bad-left">
+        <div class="bad-num">${p.num}</div>
+        <span class="bad-tag">${p.cat} · плохо</span>
+        <h3 class="bad-title">${escapeHTML(p.title)}</h3>
+        <div class="bad-claim">${escapeHTML(p.badClaim)}</div>
+        <pre class="bad-ascii">${escapeHTML(p.badAscii)}</pre>
+        <div class="bad-caption">${escapeHTML(p.badCaption)}</div>
+      </div>
+      <div class="bad-right">
+        <div class="bad-num">исправление</div>
+        <span class="fix-tag">как надо</span>
+        <h3 class="bad-title">${escapeHTML(p.title)}</h3>
+        <div class="fix-claim">${escapeHTML(p.fixClaim)}</div>
+        <pre class="fix-ascii">${escapeHTML(p.fixAscii)}</pre>
+        <div class="why">
+          <div class="why-label">// почему плохо</div>
+          ${escapeHTML(p.why)}
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // ── filter logic ────────────────────────────────────────────────────
+  filterEl.querySelectorAll('.filter-pill').forEach((b) => {
+    b.onclick = () => {
+      const cat = b.dataset.c;
+      filterEl.querySelectorAll('.filter-pill').forEach((x) => x.classList.remove('active'));
+      b.classList.add('active');
+      grid.querySelectorAll('.bad-block').forEach((card) => {
+        const match = (cat === 'все') || (card.dataset.cat === cat);
+        card.classList.toggle('dim', !match);
+      });
+    };
+  });
+})();
+</script>
+
+</body>
+</html>
