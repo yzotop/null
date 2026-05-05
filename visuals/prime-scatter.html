@@ -30,7 +30,7 @@
     min-width: 38px;
     font-variant-numeric: tabular-nums;
   }
-  .visual-controls input[type="range"] { width: 180px; }
+  .visual-controls input[type="range"] { width: 160px; }
   .visual-controls button.on {
     border-color: #111;
     color: #111;
@@ -38,8 +38,8 @@
   }
   .visual-controls .preset { font-family: var(--font-mono); font-size: 11px; }
 
-  .scatter-wrap { position: relative; }
-  #primeScatter { display: block; width: 100%; height: 520px; cursor: crosshair; }
+  .scatter-wrap { position: relative; background: #f7f6f2; }
+  #primeScatter { display: block; width: 100%; height: 560px; cursor: crosshair; }
   .scatter-tooltip {
     position: absolute;
     pointer-events: none;
@@ -48,21 +48,23 @@
     font-family: var(--font-mono);
     font-size: 10px;
     padding: 6px 8px;
-    line-height: 1.4;
+    line-height: 1.45;
     white-space: pre;
     transform: translate(-50%, -130%);
     opacity: 0;
     transition: opacity 0.1s ease;
     letter-spacing: 0.02em;
+    max-width: 240px;
   }
   .scatter-tooltip.on { opacity: 1; }
-  .scatter-hint {
+  .scatter-insight {
     font-family: var(--font-mono);
-    font-size: 10px;
-    color: #bbb;
-    letter-spacing: 0.04em;
-    margin-top: 8px;
+    font-size: 11px;
+    color: #888;
+    letter-spacing: 0.02em;
+    margin-top: 14px;
     line-height: 1.6;
+    min-height: 1.6em;
   }
 </style>
 </head>
@@ -87,12 +89,12 @@
   <header class="visual-header">
     <div class="num">визуал · №013</div>
     <div class="ttl">простые в координатах остатков</div>
-    <div class="lead">p mod A × p mod B · паттерны которых не должно быть</div>
+    <div class="lead">тепловая карта p mod A × p mod B · структура которой не должно быть</div>
   </header>
 
   <hr class="section-divider">
 
-  <section class="visual-canvas light" style="padding:24px 24px;">
+  <section class="visual-canvas light" style="padding:24px 24px;background:#f7f6f2;">
     <div class="scatter-wrap">
       <canvas id="primeScatter"></canvas>
       <div class="scatter-tooltip" id="tip"></div>
@@ -101,55 +103,44 @@
 
   <div class="visual-controls">
     <div class="row">
-      <span class="lbl">mod A (X)</span>
-      <input id="modASlider" type="range" min="2" max="30" step="1" value="6">
+      <span class="lbl">mod A</span>
+      <input id="modASlider" type="range" min="2" max="20" step="1" value="6">
       <span class="read" id="modAVal">6</span>
-      <span class="lbl">mod B (Y)</span>
-      <input id="modBSlider" type="range" min="2" max="30" step="1" value="10">
-      <span class="read" id="modBVal">10</span>
+      <span class="lbl">mod B</span>
+      <input id="modBSlider" type="range" min="2" max="20" step="1" value="6">
+      <span class="read" id="modBVal">6</span>
+      <span class="lbl">простых</span>
+      <input id="nSlider" type="range" min="100" max="5000" step="50" value="1000">
+      <span class="read" id="nPrimesVal">1000</span>
     </div>
     <div class="row">
-      <span class="lbl">простых N</span>
-      <input id="nSlider" type="range" min="50" max="5000" step="50" value="500">
-      <span class="read" id="nPrimesVal">500</span>
-      <span class="lbl">размер точки</span>
-      <input id="dotSlider" type="range" min="1" max="8" step="1" value="3">
-      <span class="read" id="dotSizeVal">3</span>
-    </div>
-    <div class="row">
-      <span class="lbl">цвет</span>
+      <span class="lbl">схема</span>
       <button class="color" data-c="mono">монохром</button>
-      <button class="color" data-c="size">по величине p</button>
-      <button class="color on" data-c="density">по плотности</button>
+      <button class="color on" data-c="blue">синий</button>
+      <button class="color" data-c="red">красный</button>
     </div>
     <div class="row">
-      <button class="preset" data-a="6"  data-b="10">mod 6 × mod 10 · классика</button>
-      <button class="preset" data-a="4"  data-b="6">mod 4 × mod 6</button>
-      <button class="preset" data-a="10" data-b="10">mod 10 × mod 10</button>
-      <button class="preset" data-a="7"  data-b="11">mod 7 × mod 11</button>
-      <button class="preset" data-a="30" data-b="30">mod 30 × mod 30</button>
+      <button class="preset" data-a="6"  data-b="6">6×6</button>
+      <button class="preset" data-a="6"  data-b="10">6×10</button>
+      <button class="preset" data-a="10" data-b="10">10×10</button>
+      <button class="preset" data-a="7"  data-b="11">7×11</button>
+      <button class="preset" data-a="12" data-b="12">12×12</button>
     </div>
   </div>
 
-  <div class="scatter-hint">
-    <span style="display:inline-block;width:10px;height:10px;background:#e8e8e4;vertical-align:middle;margin-right:4px;"></span> = нет простых (запрещено теоремой)
-    &nbsp;·&nbsp;
-    <span style="display:inline-block;width:10px;height:10px;background:#111;vertical-align:middle;margin-right:4px;"></span> = много простых
-  </div>
+  <div class="scatter-insight" id="insight"></div>
 
   <hr class="section-divider-soft">
 
   <section class="visual-meta">
     <div class="visual-description">
-      <p>Простые числа выглядят случайными — но в координатах остатков проявляются чёткие паттерны. При mod 6 все простые &gt; 3 дают только остатки 1 и 5. При mod 10 — только 1, 3, 7, 9 (никогда чётные и кратные 5).</p>
-      <p>Это следствие основной теоремы арифметики — простые не могут иметь общих делителей с модулем. Если gcd(r, m) &gt; 1, то остаток r при делении на m может встретиться только у самого простого делителя m. Все остальные простые попадают в столбцы и строки, взаимно простые с модулем.</p>
+      <p>Каждая ячейка (x, y) показывает сколько простых чисел дают остаток x при делении на A и остаток y при делении на B. Пустые ячейки — математически запрещены.</p>
+      <p>Это следствие того, что простые числа взаимно просты с любым числом, не делящим их. Если gcd(x, A) &gt; 1, то остаток x при делении на A может встретиться только у самого простого делителя A — все остальные простые в эту колонку никогда не попадают.</p>
     </div>
     <div class="visual-params">
-      <div class="row"><span>простых</span><span id="metaN">500</span></div>
-      <div class="row"><span>mod A</span><span id="metaA">6</span></div>
-      <div class="row"><span>mod B</span><span id="metaB">10</span></div>
-      <div class="row"><span>заполненных ячеек</span><span><span id="metaCells">—</span> из <span id="metaTotal">—</span></span></div>
-      <div class="row"><span>пустых ячеек</span><span id="metaEmpty">—</span></div>
+      <div class="row"><span>простых</span><span id="metaN">1000</span></div>
+      <div class="row"><span>заполнено</span><span><span id="metaCells">—</span> из <span id="metaTotal">—</span></span></div>
+      <div class="row"><span>пусто</span><span id="metaEmpty">—</span></div>
     </div>
   </section>
 
@@ -180,15 +171,13 @@
   const ctx = cv.getContext('2d');
   const tip = document.getElementById('tip');
 
-  let modA = 6, modB = 10;
-  let nPrimes = 500;
-  let dotSize = 3;
-  let colorMode = 'density';
+  let modA = 6, modB = 6;
+  let nPrimes = 1000;
+  let scheme = 'blue';
+  let hoverCell = null; // {xi, yi}
 
-  // sieve once for max range; expand if needed
+  // sieve
   let primes = [];
-  let maxP = 0;
-
   const sieve = (limit) => {
     const composite = new Uint8Array(limit + 1);
     composite[0] = composite[1] = 1;
@@ -201,18 +190,16 @@
     for (let i = 2; i <= limit; i++) if (!composite[i]) out.push(i);
     return out;
   };
-
-  // generate enough primes (10000 fits in ~110000)
   const ensurePrimes = (count) => {
     if (primes.length >= count) return;
-    let limit = 130000;
+    let limit = 80000;
     while (true) {
       primes = sieve(limit);
       if (primes.length >= count) break;
       limit *= 2;
     }
   };
-  ensurePrimes(10000);
+  ensurePrimes(5000);
 
   const sizeCanvas = () => {
     const dpr = window.devicePixelRatio || 1;
@@ -222,16 +209,25 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   };
 
-  // layout state for hover lookup
-  let layout = { offsetX: 0, offsetY: 0, cellW: 0, cellH: 0, plotW: 0, plotH: 0 };
-  // density[xi][yi]
+  // schemes: lerp from low → high
+  const SCHEMES = {
+    mono: { lo: [224, 221, 216], hi: [17, 17, 17] },     // #e0ddd8 → #111
+    blue: { lo: [232, 223, 240], hi: [44, 95, 182] },    // #e8dff0 → #2c5fb6
+    red:  { lo: [253, 238, 232], hi: [196, 74, 50] }     // #fdeee8 → #c44a32
+  };
+  const lerp = (a, b, t) => Math.round(a + (b - a) * t);
+  const cellColor = (d, maxD) => {
+    const s = SCHEMES[scheme];
+    const t = maxD > 0 ? d / maxD : 0;
+    return 'rgb(' + lerp(s.lo[0], s.hi[0], t) + ',' + lerp(s.lo[1], s.hi[1], t) + ',' + lerp(s.lo[2], s.hi[2], t) + ')';
+  };
+
+  let layout = { offsetX: 0, offsetY: 0, cellSize: 0, gap: 2 };
   let density = [];
 
   const computeDensity = () => {
     density = [];
-    for (let i = 0; i < modA; i++) {
-      density.push(new Int32Array(modB));
-    }
+    for (let i = 0; i < modA; i++) density.push(new Int32Array(modB));
     const used = primes.slice(0, nPrimes);
     for (let i = 0; i < used.length; i++) {
       const p = used[i];
@@ -245,138 +241,134 @@
     ctx.fillStyle = '#f7f6f2';
     ctx.fillRect(0, 0, W, H);
 
-    const padL = 40, padR = 16, padT = 16, padB = 28;
-    const plotW = W - padL - padR;
-    const plotH = H - padT - padB;
-    const cellW = plotW / modA;
-    const cellH = plotH / modB;
-    layout = { offsetX: padL, offsetY: padT, cellW, cellH, plotW, plotH };
-
-    const used = primes.slice(0, nPrimes);
-    maxP = used[used.length - 1] || 1;
-
     computeDensity();
 
-    // density background (always show subtle)
+    // layout
+    const padX = 56;  // for Y labels
+    const padTop = 10;
+    const padBottom = 56; // for X labels
+    const availW = W - padX - 16;
+    const availH = H - padTop - padBottom;
+    const gap = 2;
+    let cellSize = Math.floor(Math.min(
+      (availW - (modA - 1) * gap) / modA,
+      (availH - (modB - 1) * gap) / modB
+    ));
+    cellSize = Math.max(cellSize, 18);
+    const gridW = modA * cellSize + (modA - 1) * gap;
+    const gridH = modB * cellSize + (modB - 1) * gap;
+    const offsetX = padX + Math.max(0, (availW - gridW) / 2);
+    const offsetY = padTop + Math.max(0, (availH - gridH) / 2);
+    layout = { offsetX, offsetY, cellSize, gap };
+
+    // max density (for color normalization, ignore zeros)
     let maxD = 0;
     for (let xi = 0; xi < modA; xi++)
       for (let yi = 0; yi < modB; yi++)
         if (density[xi][yi] > maxD) maxD = density[xi][yi];
 
-    if (colorMode === 'density') {
-      // empty cells: solid #e8e8e4 grey ("forbidden")
-      // non-empty: lerp #f0ede8 → #111 by alpha = 0.1 + (d/maxD)*0.9 over a #f0ede8 base
-      for (let xi = 0; xi < modA; xi++) {
-        for (let yi = 0; yi < modB; yi++) {
-          const d = density[xi][yi];
-          const x = padL + xi * cellW, y = padT + yi * cellH;
-          if (d === 0) {
-            ctx.fillStyle = '#e8e8e4';
-            ctx.fillRect(x, y, cellW, cellH);
+    // cells
+    for (let xi = 0; xi < modA; xi++) {
+      for (let yi = 0; yi < modB; yi++) {
+        const d = density[xi][yi];
+        const x = offsetX + xi * (cellSize + gap);
+        const y = offsetY + yi * (cellSize + gap);
+        if (d === 0) {
+          ctx.fillStyle = '#f0ede8';
+          ctx.fillRect(x, y, cellSize, cellSize);
+          ctx.strokeStyle = '#e8e8e4';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(x + 0.5, y + 0.5, cellSize - 1, cellSize - 1);
+        } else {
+          ctx.fillStyle = cellColor(d, maxD);
+          ctx.fillRect(x, y, cellSize, cellSize);
+        }
+      }
+    }
+
+    // hover outline (drawn on top of cells, before text)
+    if (hoverCell) {
+      const x = offsetX + hoverCell.xi * (cellSize + gap);
+      const y = offsetY + hoverCell.yi * (cellSize + gap);
+      ctx.strokeStyle = '#111';
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(x - 1, y - 1, cellSize + 2, cellSize + 2);
+    }
+
+    // text in cells
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    for (let xi = 0; xi < modA; xi++) {
+      for (let yi = 0; yi < modB; yi++) {
+        const d = density[xi][yi];
+        const x = offsetX + xi * (cellSize + gap) + cellSize / 2;
+        const y = offsetY + yi * (cellSize + gap) + cellSize / 2;
+        if (d === 0) {
+          ctx.font = '12px "JetBrains Mono", monospace';
+          ctx.fillStyle = '#ddd';
+          ctx.fillText('·', x, y);
+        } else if (cellSize >= 40) {
+          // dark cells: white-ish text; light cells: dark text
+          const t = maxD > 0 ? d / maxD : 0;
+          ctx.fillStyle = t > 0.5 ? 'rgba(255,255,255,0.85)' : '#444';
+          if (cellSize >= 56) {
+            ctx.font = '11px "JetBrains Mono", monospace';
+            ctx.fillText(String(d), x, y - 6);
+            ctx.font = '8px "JetBrains Mono", monospace';
+            ctx.fillStyle = t > 0.5 ? 'rgba(255,255,255,0.55)' : '#999';
+            ctx.fillText(xi + ',' + yi, x, y + 8);
           } else {
-            ctx.fillStyle = '#f0ede8';
-            ctx.fillRect(x, y, cellW, cellH);
-            const a = 0.1 + (maxD > 0 ? d / maxD : 0) * 0.9;
-            ctx.fillStyle = 'rgba(17,17,17,' + a.toFixed(3) + ')';
-            ctx.fillRect(x, y, cellW, cellH);
-          }
-        }
-      }
-    } else {
-      // light shading for empty cells so the "forbidden" structure is still readable
-      for (let xi = 0; xi < modA; xi++) {
-        for (let yi = 0; yi < modB; yi++) {
-          if (density[xi][yi] === 0) {
-            ctx.fillStyle = '#efece6';
-            ctx.fillRect(padL + xi * cellW, padT + yi * cellH, cellW, cellH);
+            ctx.font = '9px "JetBrains Mono", monospace';
+            ctx.fillText(String(d), x, y);
           }
         }
       }
     }
 
-    // grid
-    ctx.strokeStyle = '#e8e8e4';
-    ctx.lineWidth = 0.5;
-    for (let xi = 0; xi <= modA; xi++) {
-      const x = padL + xi * cellW;
-      ctx.beginPath(); ctx.moveTo(x, padT); ctx.lineTo(x, padT + plotH); ctx.stroke();
+    // axis labels (X bottom, Y left)
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#999';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    for (let xi = 0; xi < modA; xi++) {
+      const x = offsetX + xi * (cellSize + gap) + cellSize / 2;
+      ctx.fillText(String(xi), x, offsetY + gridH + 6);
     }
-    for (let yi = 0; yi <= modB; yi++) {
-      const y = padT + yi * cellH;
-      ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(padL + plotW, y); ctx.stroke();
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    for (let yi = 0; yi < modB; yi++) {
+      const y = offsetY + yi * (cellSize + gap) + cellSize / 2;
+      ctx.fillText(String(yi), offsetX - 8, y);
     }
 
-    // axis labels
+    // axis titles
     ctx.font = '9px "JetBrains Mono", monospace';
     ctx.fillStyle = '#bbb';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'top';
-    const xStep = modA <= 12 ? 1 : Math.ceil(modA / 12);
-    for (let xi = 0; xi < modA; xi += xStep) {
-      ctx.fillText(String(xi), padL + xi * cellW + cellW/2, padT + plotH + 6);
-    }
-    ctx.textAlign = 'right';
-    ctx.textBaseline = 'middle';
-    const yStep = modB <= 12 ? 1 : Math.ceil(modB / 12);
-    for (let yi = 0; yi < modB; yi += yStep) {
-      ctx.fillText(String(yi), padL - 6, padT + yi * cellH + cellH/2);
-    }
+    ctx.fillText('p mod ' + modA, offsetX + gridW / 2, offsetY + gridH + 26);
 
-    // dots — exactly at cell centers, no jitter
-    if (colorMode === 'density') {
-      // small white markers on non-empty cells just to confirm "there are primes here"
-      ctx.fillStyle = 'rgba(247,246,242,0.85)';
-      for (let xi = 0; xi < modA; xi++) {
-        for (let yi = 0; yi < modB; yi++) {
-          if (density[xi][yi] > 0) {
-            const x = padL + xi * cellW + cellW/2;
-            const y = padT + yi * cellH + cellH/2;
-            ctx.beginPath();
-            ctx.arc(x, y, 2, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }
-      }
-    } else if (colorMode === 'mono') {
-      // one centered dot per non-empty cell
-      ctx.fillStyle = 'rgba(17,17,17,0.7)';
-      for (let xi = 0; xi < modA; xi++) {
-        for (let yi = 0; yi < modB; yi++) {
-          if (density[xi][yi] > 0) {
-            const x = padL + xi * cellW + cellW/2;
-            const y = padT + yi * cellH + cellH/2;
-            ctx.beginPath();
-            ctx.arc(x, y, dotSize, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }
-      }
-    } else {
-      // size mode: hue by log(p), one dot per prime, all at cell center
-      const logMax = Math.log(maxP) || 1;
-      for (let i = 0; i < used.length; i++) {
-        const p = used[i];
-        const xi = p % modA;
-        const yi = p % modB;
-        const x = padL + xi * cellW + cellW/2;
-        const y = padT + yi * cellH + cellH/2;
-        const hue = Math.round((Math.log(p) / logMax) * 240);
-        ctx.fillStyle = 'hsla(' + hue + ',60%,35%,0.5)';
-        ctx.beginPath();
-        ctx.arc(x, y, dotSize, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
+    ctx.save();
+    ctx.translate(offsetX - 38, offsetY + gridH / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('p mod ' + modB, 0, 0);
+    ctx.restore();
+  };
+
+  const insightFor = (a, b) => {
+    if (a === 6 && b === 6) return 'простые > 3 дают только остатки 1 и 5. заполнены 4 ячейки из 36';
+    if (a === 6 || b === 6) return 'колонки 0, 2, 3, 4 — запрещены. простые делятся только на 1 и само число';
+    if (a === 10 || b === 10) return 'чётные остатки и 0, 5 — запрещены. все простые > 5 нечётны и не кратны 5';
+    return 'светлые ячейки — запрещены. простые взаимно просты с любым модулем';
   };
 
   const updateMeta = () => {
     document.getElementById('modAVal').textContent = modA;
     document.getElementById('modBVal').textContent = modB;
     document.getElementById('nPrimesVal').textContent = nPrimes;
-    document.getElementById('dotSizeVal').textContent = dotSize;
     document.getElementById('metaN').textContent = nPrimes;
-    document.getElementById('metaA').textContent = modA;
-    document.getElementById('metaB').textContent = modB;
     document.getElementById('metaTotal').textContent = modA * modB;
     let filled = 0;
     for (let xi = 0; xi < modA; xi++)
@@ -384,11 +376,11 @@
         if (density[xi] && density[xi][yi] > 0) filled++;
     document.getElementById('metaCells').textContent = filled;
     document.getElementById('metaEmpty').textContent = (modA * modB) - filled;
+    document.getElementById('insight').textContent = insightFor(modA, modB);
   };
 
   const render = () => { draw(); updateMeta(); };
 
-  // controls
   const setActive = (sel, btn) => {
     document.querySelectorAll(sel).forEach((b) => b.classList.remove('on'));
     btn.classList.add('on');
@@ -401,10 +393,8 @@
     ensurePrimes(nPrimes);
     render();
   });
-  document.getElementById('dotSlider').addEventListener('input', (e) => { dotSize = parseInt(e.target.value, 10); render(); });
-
   document.querySelectorAll('button.color').forEach((b) => {
-    b.onclick = () => { colorMode = b.dataset.c; setActive('button.color', b); render(); };
+    b.onclick = () => { scheme = b.dataset.c; setActive('button.color', b); render(); };
   });
   document.querySelectorAll('button.preset').forEach((b) => {
     b.onclick = () => {
@@ -416,28 +406,57 @@
     };
   });
 
-  // hover tooltip
+  // hover
+  const hitTest = (mx, my) => {
+    const { offsetX, offsetY, cellSize, gap } = layout;
+    const dx = mx - offsetX, dy = my - offsetY;
+    if (dx < 0 || dy < 0) return null;
+    const xi = Math.floor(dx / (cellSize + gap));
+    const yi = Math.floor(dy / (cellSize + gap));
+    if (xi < 0 || xi >= modA || yi < 0 || yi >= modB) return null;
+    // ignore the gap stripes
+    const inX = dx - xi * (cellSize + gap);
+    const inY = dy - yi * (cellSize + gap);
+    if (inX > cellSize || inY > cellSize) return null;
+    return { xi, yi };
+  };
+
+  const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+
   cv.addEventListener('mousemove', (e) => {
     const rect = cv.getBoundingClientRect();
     const mx = e.clientX - rect.left;
     const my = e.clientY - rect.top;
-    const { offsetX, offsetY, cellW, cellH, plotW, plotH } = layout;
-    if (mx < offsetX || mx > offsetX + plotW || my < offsetY || my > offsetY + plotH) {
-      tip.classList.remove('on');
+    const c = hitTest(mx, my);
+    if (!c) {
+      if (hoverCell) { hoverCell = null; tip.classList.remove('on'); draw(); }
       return;
     }
-    const xi = Math.floor((mx - offsetX) / cellW);
-    const yi = Math.floor((my - offsetY) / cellH);
-    if (xi < 0 || xi >= modA || yi < 0 || yi >= modB) { tip.classList.remove('on'); return; }
-    const cnt = density[xi][yi];
-    let text = 'p ≡ ' + xi + ' (mod ' + modA + ')\np ≡ ' + yi + ' (mod ' + modB + ')\n';
-    text += cnt === 0 ? 'запрещено — простых нет' : ('точек: ' + cnt);
+    if (!hoverCell || hoverCell.xi !== c.xi || hoverCell.yi !== c.yi) {
+      hoverCell = c;
+      draw();
+    }
+    const cnt = density[c.xi][c.yi];
+    let text = 'p ≡ ' + c.xi + ' (mod ' + modA + ')\np ≡ ' + c.yi + ' (mod ' + modB + ')\n';
+    if (cnt === 0) {
+      const gA = gcd(c.xi, modA), gB = gcd(c.yi, modB);
+      const reason = (gA > 1 && c.xi !== 0) ? 'gcd(' + c.xi + ',' + modA + ') = ' + gA
+                   : (gB > 1 && c.yi !== 0) ? 'gcd(' + c.yi + ',' + modB + ') = ' + gB
+                   : 'нет простых в выборке';
+      text += 'запрещено — ' + reason;
+    } else {
+      text += 'простых: ' + cnt;
+    }
     tip.textContent = text;
-    tip.style.left = (mx) + 'px';
-    tip.style.top = (my) + 'px';
+    tip.style.left = mx + 'px';
+    tip.style.top = my + 'px';
     tip.classList.add('on');
   });
-  cv.addEventListener('mouseleave', () => tip.classList.remove('on'));
+  cv.addEventListener('mouseleave', () => {
+    hoverCell = null;
+    tip.classList.remove('on');
+    draw();
+  });
 
   // boot
   sizeCanvas();
