@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>умножение на окружности — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .visual-controls .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+    margin-bottom: 10px;
+  }
+  .visual-controls .row:last-child { margin-bottom: 0; }
+  .visual-controls .lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #777;
+    letter-spacing: 0.04em;
+  }
+  .visual-controls .read {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    min-width: 56px;
+    font-variant-numeric: tabular-nums;
+  }
+  .visual-controls input[type="range"] {
+    width: 240px;
+  }
+  .visual-controls button.on {
+    border-color: #111;
+    color: #111;
+    background: #f0ede8;
+  }
+  .visual-controls .preset {
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  #mulCircle { display: block; width: 100%; height: 560px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / multiplication-circle</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №010</div>
+    <div class="ttl">умножение на окружности</div>
+    <div class="lead">точки на окружности · умножение · хорды · кардиоида · нефроида</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <section class="visual-canvas light" style="padding:24px 24px;">
+    <canvas id="mulCircle"></canvas>
+  </section>
+
+  <div class="visual-controls">
+    <div class="row">
+      <span class="lbl">множитель k</span>
+      <input id="kSlider" type="range" min="1" max="10" step="0.01" value="2">
+      <span class="read" id="kVal">2.00</span>
+      <button id="animK">● анимация k</button>
+    </div>
+    <div class="row">
+      <span class="lbl">точек N</span>
+      <input id="nSlider" type="range" min="10" max="500" step="1" value="200">
+      <span class="read" id="nVal">200</span>
+    </div>
+    <div class="row">
+      <span class="lbl">цвет линий</span>
+      <button class="color" data-c="mono">монохром</button>
+      <button class="color on" data-c="hue">градиент по углу</button>
+      <button class="color" data-c="len">градиент по длине</button>
+    </div>
+    <div class="row">
+      <button id="reset">↺ сбросить</button>
+      <button class="preset" data-k="2"   data-n="200">k=2 кардиоида</button>
+      <button class="preset" data-k="3"   data-n="200">k=3 нефроида</button>
+      <button class="preset" data-k="1.5" data-n="200">k=1.5</button>
+      <button class="preset" data-k="1.6180339887" data-n="200">k=φ=1.618</button>
+      <button class="preset" data-k="3.14159265" data-n="200">k=π=3.14159</button>
+    </div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="visual-meta">
+    <div class="visual-description">
+      <p>N точек равномерно расположены на окружности. Каждая точка i соединяется с точкой (i × k) mod N. При k=2 возникает кардиоида — та самая кривая что описывает движение точки на окружности катящейся по другой окружности.</p>
+      <p>При k=3 — нефроида (две катящиеся окружности). При иррациональных k — спирали, муаровые узоры, плотные сетки. Математика умножения становится геометрической формой.</p>
+    </div>
+    <div class="visual-params">
+      <div class="row"><span>точек N</span><span id="metaN">200</span></div>
+      <div class="row"><span>хорд</span><span id="metaLines">200</span></div>
+      <div class="row"><span>множитель</span><span>k = <span id="metaK">2.00</span></span></div>
+      <div class="row"><span>форма</span><span id="metaShape">кардиоида</span></div>
+      <div class="row"><span>правило</span><span>j = (i × k) mod N</span></div>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/pi.html">π — пресет k=π →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/phi.html">φ — пресет k=φ →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../objects/operators/mod.html">mod — j = i×k mod N →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="plotter.html">плоттер функций →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/multiplication-circle.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+(() => {
+  const cv = document.getElementById('mulCircle');
+  const ctx = cv.getContext('2d');
+
+  let k = 2.0;
+  let N = 200;
+  let colorMode = 'hue';
+  let animating = false;
+  let animStart = 0;
+  let animFromK = 2;
+
+  const sizeCanvas = () => {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = cv.getBoundingClientRect();
+    cv.width = Math.floor(rect.width * dpr);
+    cv.height = Math.floor(rect.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+
+  const lerp = (a, b, t) => a + (b - a) * t;
+
+  const detectShape = (k) => {
+    const eps = 0.01;
+    if (Math.abs(k - 2) < eps) return 'кардиоида';
+    if (Math.abs(k - 3) < eps) return 'нефроида';
+    if (Math.abs(k - 4) < eps) return 'четырёхлепестковая';
+    if (Math.abs(k - 5) < eps) return 'пятилепестковая';
+    if (Math.abs(k - 1.6180339887) < eps) return 'золотое сечение φ';
+    if (Math.abs(k - 3.14159265) < eps) return 'число π';
+    return 'k = ' + k.toFixed(3);
+  };
+
+  const updateMeta = () => {
+    document.getElementById('kVal').textContent = k.toFixed(2);
+    document.getElementById('nVal').textContent = N;
+    document.getElementById('metaN').textContent = N;
+    document.getElementById('metaLines').textContent = N;
+    document.getElementById('metaK').textContent = k.toFixed(2);
+    document.getElementById('metaShape').textContent = detectShape(k);
+  };
+
+  const draw = () => {
+    const rect = cv.getBoundingClientRect();
+    const W = rect.width, H = rect.height;
+
+    ctx.fillStyle = '#f7f6f2';
+    ctx.fillRect(0, 0, W, H);
+
+    const cx = W / 2, cy = H / 2;
+    const radius = Math.min(W, H) / 2 - 40;
+
+    // outline circle
+    ctx.strokeStyle = '#e8e8e4';
+    ctx.lineWidth = 0.5;
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // precompute points
+    const pts = new Array(N);
+    for (let i = 0; i < N; i++) {
+      const a = (2 * Math.PI * i) / N - Math.PI / 2;
+      pts[i] = { x: cx + radius * Math.cos(a), y: cy + radius * Math.sin(a) };
+    }
+
+    const maxLen = 2 * radius;
+
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i < N; i++) {
+      const j = (i * k) % N;
+      const ja = Math.floor(j) % N;
+      const jb = (ja + 1) % N;
+      const jt = j - Math.floor(j);
+      const fx = pts[i].x, fy = pts[i].y;
+      const tx = lerp(pts[ja].x, pts[jb].x, jt);
+      const ty = lerp(pts[ja].y, pts[jb].y, jt);
+
+      let stroke;
+      if (colorMode === 'mono') {
+        stroke = 'rgba(17,17,17,0.18)';
+      } else if (colorMode === 'hue') {
+        const hue = Math.round((i / N) * 360);
+        stroke = 'hsla(' + hue + ',60%,38%,0.42)';
+      } else {
+        const dx = tx - fx, dy = ty - fy;
+        const len = Math.sqrt(dx * dx + dy * dy);
+        const u = Math.min(1, len / maxLen);
+        const v = Math.round(220 - u * 200); // 220 light → 20 dark
+        const a = (0.15 + u * 0.45).toFixed(2);
+        stroke = 'rgba(' + v + ',' + v + ',' + v + ',' + a + ')';
+      }
+
+      ctx.strokeStyle = stroke;
+      ctx.beginPath();
+      ctx.moveTo(fx, fy);
+      ctx.lineTo(tx, ty);
+      ctx.stroke();
+    }
+
+    // small marks at points
+    ctx.fillStyle = 'rgba(17,17,17,0.5)';
+    for (let i = 0; i < N; i++) {
+      ctx.fillRect(pts[i].x - 0.5, pts[i].y - 0.5, 1, 1);
+    }
+  };
+
+  const render = () => { updateMeta(); draw(); };
+
+  // controls
+  const kSlider = document.getElementById('kSlider');
+  const nSlider = document.getElementById('nSlider');
+  kSlider.addEventListener('input', () => {
+    k = parseFloat(kSlider.value);
+    if (animating) { animating = false; document.getElementById('animK').classList.remove('on'); }
+    render();
+  });
+  nSlider.addEventListener('input', () => {
+    N = parseInt(nSlider.value, 10);
+    render();
+  });
+
+  const setActive = (sel, btn) => {
+    document.querySelectorAll(sel).forEach((b) => b.classList.remove('on'));
+    btn.classList.add('on');
+  };
+
+  document.querySelectorAll('button.color').forEach((b) => {
+    b.onclick = () => {
+      colorMode = b.dataset.c;
+      setActive('button.color', b);
+      draw();
+    };
+  });
+
+  document.querySelectorAll('button.preset').forEach((b) => {
+    b.onclick = () => {
+      k = parseFloat(b.dataset.k);
+      N = parseInt(b.dataset.n, 10);
+      kSlider.value = Math.min(10, Math.max(1, k));
+      nSlider.value = N;
+      if (animating) { animating = false; document.getElementById('animK').classList.remove('on'); }
+      render();
+    };
+  });
+
+  document.getElementById('reset').onclick = () => {
+    k = 2; N = 200;
+    kSlider.value = 2; nSlider.value = 200;
+    if (animating) { animating = false; document.getElementById('animK').classList.remove('on'); }
+    render();
+  };
+
+  const animBtn = document.getElementById('animK');
+  animBtn.onclick = () => {
+    animating = !animating;
+    animBtn.classList.toggle('on', animating);
+    if (animating) {
+      animFromK = k;
+      animStart = performance.now();
+    }
+  };
+
+  const loop = (now) => {
+    if (animating) {
+      const period = 20000; // 20s up, 20s down
+      const t = ((now - animStart) % (period * 2)) / period;
+      const tri = t < 1 ? t : 2 - t; // 0..1..0
+      k = animFromK + tri * 5;
+      if (k > 10) k = 10;
+      kSlider.value = Math.min(10, Math.max(1, k));
+      render();
+    }
+    requestAnimationFrame(loop);
+  };
+
+  // boot
+  sizeCanvas();
+  render();
+  requestAnimationFrame(loop);
+
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => { sizeCanvas(); draw(); }, 120);
+  });
+})();
+</script>
+
+</body>
+</html>
