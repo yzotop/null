@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>полярные розы — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .visual-controls .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+    margin-bottom: 10px;
+  }
+  .visual-controls .row:last-child { margin-bottom: 0; }
+  .visual-controls .lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #777;
+    letter-spacing: 0.04em;
+  }
+  .visual-controls .read {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    min-width: 28px;
+    font-variant-numeric: tabular-nums;
+  }
+  .visual-controls input[type="range"] { width: 200px; }
+  .visual-controls button.on {
+    border-color: #111;
+    color: #111;
+    background: #f0ede8;
+  }
+  .visual-controls .preset { font-family: var(--font-mono); font-size: 11px; }
+  #polarRose { display: block; width: 100%; height: 560px; }
+
+  .rose-gallery {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .rose-gallery .item {
+    flex: 0 0 auto;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: #f7f6f2;
+    padding: 4px;
+    transition: border-color 0.12s ease;
+  }
+  .rose-gallery .item:hover { border-color: #111; }
+  .rose-gallery canvas { display: block; width: 80px; height: 80px; }
+  .rose-gallery .cap {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #999;
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / polar-roses</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №011</div>
+    <div class="ttl">полярные розы</div>
+    <div class="lead">r = cos(n/d · θ) · лепестки · симметрия · дробные параметры</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <section class="visual-canvas light" style="padding:24px 24px;">
+    <canvas id="polarRose"></canvas>
+  </section>
+
+  <div class="visual-controls">
+    <div class="row">
+      <span class="lbl">n</span>
+      <input id="nSlider" type="range" min="1" max="20" step="1" value="3">
+      <span class="read" id="nVal">3</span>
+      <span class="lbl">d</span>
+      <input id="dSlider" type="range" min="1" max="20" step="1" value="1">
+      <span class="read" id="dVal">1</span>
+      <button id="animBtn">● анимация</button>
+    </div>
+    <div class="row">
+      <span class="lbl">шаг θ</span>
+      <button class="step" data-s="0.001">fine</button>
+      <button class="step on" data-s="0.005">normal</button>
+      <button class="step" data-s="0.02">fast</button>
+      <span class="lbl" style="margin-left:18px;">периодов</span>
+      <input id="periodSlider" type="range" min="1" max="6" step="1" value="2">
+      <span class="read" id="periodVal">2</span>
+    </div>
+    <div class="row">
+      <span class="lbl">цвет</span>
+      <button class="color" data-c="mono">монохром</button>
+      <button class="color on" data-c="theta">градиент по θ</button>
+      <button class="color" data-c="r">градиент по r</button>
+    </div>
+    <div class="row">
+      <button class="preset" data-n="1" data-d="1">n=1 d=1 · окружность</button>
+      <button class="preset" data-n="2" data-d="1">n=2 d=1 · 4 лепестка</button>
+      <button class="preset" data-n="3" data-d="1">n=3 d=1 · роза</button>
+      <button class="preset" data-n="5" data-d="1">n=5 d=1 · 5 лепестков</button>
+      <button class="preset" data-n="7" data-d="3">n=7 d=3 · сложный узор</button>
+      <button class="preset" data-n="3" data-d="2">n=3 d=2 · 12 лепестков</button>
+      <button class="preset" data-n="4" data-d="3">n=4 d=3 · 24 лепестка</button>
+    </div>
+  </div>
+
+  <div class="rose-gallery" id="gallery"></div>
+
+  <hr class="section-divider-soft">
+
+  <section class="visual-meta">
+    <div class="visual-description">
+      <p>r = cos(k · θ) — полярное уравнение розы. Параметр k = n/d определяет всё. При целом нечётном k — ровно k лепестков. При целом чётном k — 2k лепестков.</p>
+      <p>При дробном k = n/d (несократимом) роза замыкается через lcm(n,d) оборотов и имеет n·d лепестков (или 2n·d, в зависимости от чётности). Простые отношения дают простые формы. Сложные отношения — сложные узоры.</p>
+    </div>
+    <div class="visual-params">
+      <div class="row"><span>k = n/d</span><span id="metaK">3/1 = 3.000</span></div>
+      <div class="row"><span>лепестков (теория)</span><span id="metaPetals">3</span></div>
+      <div class="row"><span>полных оборотов</span><span id="metaTurns">1</span></div>
+      <div class="row"><span>точек на кривой</span><span id="metaPoints">—</span></div>
+      <div class="row"><span>уравнение</span><span>r = cos(k · θ)</span></div>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/pi.html">π — периодичность θ →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/phi.html">φ — попробуй k ≈ φ →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../objects/operators/mod.html">mod — lcm и gcd →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="multiplication-circle.html">умножение на окружности →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="ulam.html">спираль улама →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/polar-roses.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+(() => {
+  const cv = document.getElementById('polarRose');
+  const ctx = cv.getContext('2d');
+
+  let n = 3, d = 1;
+  let dTheta = 0.005;
+  let periods = 2;
+  let colorMode = 'theta';
+  let animating = false;
+  let animStart = 0;
+
+  const sizeCanvas = () => {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = cv.getBoundingClientRect();
+    cv.width = Math.floor(rect.width * dpr);
+    cv.height = Math.floor(rect.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+
+  const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+  const lcm = (a, b) => a * b / gcd(a, b);
+
+  const totalThetaFor = (n, d) => {
+    const g = gcd(n, d);
+    const nn = n / g, dd = d / g;
+    let turns = (dd % 2 === 0) ? 2 * dd : dd;
+    let total = 2 * Math.PI * turns;
+    if (total > 12 * Math.PI) total = 12 * Math.PI;
+    return { total, turns };
+  };
+
+  const petalCount = (n, d) => {
+    const g = gcd(n, d);
+    const nn = n / g, dd = d / g;
+    if (dd === 1) return (nn % 2 === 0) ? 2 * nn : nn;
+    // fractional rose
+    const product = nn * dd;
+    return ((nn * dd) % 2 === 0) ? product : product;
+  };
+
+  const lerpColor = (c1, c2, t) => {
+    const r = Math.round(c1[0] + (c2[0] - c1[0]) * t);
+    const g = Math.round(c1[1] + (c2[1] - c1[1]) * t);
+    const b = Math.round(c1[2] + (c2[2] - c1[2]) * t);
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+  };
+  const C_BLUE = [44, 95, 182];
+  const C_RED  = [196, 74, 50];
+
+  const updateMeta = () => {
+    document.getElementById('nVal').textContent = n;
+    document.getElementById('dVal').textContent = d;
+    document.getElementById('periodVal').textContent = periods;
+    const k = n / d;
+    document.getElementById('metaK').textContent = n + '/' + d + ' = ' + k.toFixed(3);
+    document.getElementById('metaPetals').textContent = petalCount(n, d);
+    const { turns } = totalThetaFor(n, d);
+    const usedTurns = Math.min(turns * periods, 12);
+    document.getElementById('metaTurns').textContent = usedTurns.toFixed(2);
+  };
+
+  const drawRose = (context, opts) => {
+    const { W, H, n, d, periods, dTheta, colorMode, axes } = opts;
+
+    context.fillStyle = '#f7f6f2';
+    context.fillRect(0, 0, W, H);
+
+    const cx = W / 2, cy = H / 2;
+    const radius = Math.min(W, H) / 2 - (axes ? 40 : 8);
+
+    if (axes) {
+      context.strokeStyle = '#e8e8e4';
+      context.lineWidth = 0.5;
+      context.beginPath();
+      context.moveTo(cx - radius, cy); context.lineTo(cx + radius, cy);
+      context.moveTo(cx, cy - radius); context.lineTo(cx, cy + radius);
+      context.stroke();
+      context.beginPath();
+      context.arc(cx, cy, radius, 0, Math.PI * 2);
+      context.stroke();
+    }
+
+    const k = n / d;
+    const { total } = totalThetaFor(n, d);
+    const totalTheta = Math.min(12 * Math.PI, total * periods);
+    let pts = 0;
+
+    if (colorMode === 'mono') {
+      // soft fill
+      context.beginPath();
+      let first = true;
+      for (let theta = 0; theta <= totalTheta; theta += dTheta) {
+        const r = radius * Math.cos(k * theta);
+        const x = cx + r * Math.cos(theta);
+        const y = cy + r * Math.sin(theta);
+        if (first) { context.moveTo(x, y); first = false; }
+        else context.lineTo(x, y);
+        pts++;
+      }
+      context.closePath();
+      context.fillStyle = 'rgba(17,17,17,0.03)';
+      context.fill();
+      context.strokeStyle = 'rgba(17,17,17,0.85)';
+      context.lineWidth = axes ? 1.5 : 1;
+      context.stroke();
+    } else {
+      // segmented colored stroke
+      let prevX = null, prevY = null;
+      for (let theta = 0; theta <= totalTheta; theta += dTheta) {
+        const r = radius * Math.cos(k * theta);
+        const x = cx + r * Math.cos(theta);
+        const y = cy + r * Math.sin(theta);
+        if (prevX !== null) {
+          let stroke;
+          if (colorMode === 'theta') {
+            const hue = Math.round((theta / totalTheta) * 360);
+            stroke = 'hsla(' + hue + ',65%,40%,0.7)';
+            context.lineWidth = axes ? 1.5 : 1;
+          } else {
+            const u = Math.min(1, Math.abs(r) / radius);
+            stroke = lerpColor(C_BLUE, C_RED, u);
+            context.lineWidth = (axes ? 1 : 0.7) + u * (axes ? 1 : 0.3);
+          }
+          context.strokeStyle = stroke;
+          context.beginPath();
+          context.moveTo(prevX, prevY);
+          context.lineTo(x, y);
+          context.stroke();
+        }
+        prevX = x; prevY = y;
+        pts++;
+      }
+    }
+
+    return pts;
+  };
+
+  const draw = () => {
+    const rect = cv.getBoundingClientRect();
+    const pts = drawRose(ctx, {
+      W: rect.width, H: rect.height,
+      n, d, periods, dTheta, colorMode, axes: true
+    });
+    document.getElementById('metaPoints').textContent = pts.toLocaleString('ru-RU');
+  };
+
+  const render = () => { updateMeta(); draw(); };
+
+  // controls
+  const nSlider = document.getElementById('nSlider');
+  const dSlider = document.getElementById('dSlider');
+  const periodSlider = document.getElementById('periodSlider');
+  nSlider.addEventListener('input', () => {
+    n = parseInt(nSlider.value, 10);
+    if (animating) { animating = false; document.getElementById('animBtn').classList.remove('on'); }
+    render();
+  });
+  dSlider.addEventListener('input', () => {
+    d = parseInt(dSlider.value, 10);
+    render();
+  });
+  periodSlider.addEventListener('input', () => {
+    periods = parseInt(periodSlider.value, 10);
+    render();
+  });
+
+  const setActive = (sel, btn) => {
+    document.querySelectorAll(sel).forEach((b) => b.classList.remove('on'));
+    btn.classList.add('on');
+  };
+
+  document.querySelectorAll('button.step').forEach((b) => {
+    b.onclick = () => {
+      dTheta = parseFloat(b.dataset.s);
+      setActive('button.step', b);
+      draw();
+    };
+  });
+
+  document.querySelectorAll('button.color').forEach((b) => {
+    b.onclick = () => {
+      colorMode = b.dataset.c;
+      setActive('button.color', b);
+      draw();
+    };
+  });
+
+  document.querySelectorAll('button.preset').forEach((b) => {
+    b.onclick = () => {
+      n = parseInt(b.dataset.n, 10);
+      d = parseInt(b.dataset.d, 10);
+      nSlider.value = n; dSlider.value = d;
+      if (animating) { animating = false; document.getElementById('animBtn').classList.remove('on'); }
+      render();
+    };
+  });
+
+  const animBtn = document.getElementById('animBtn');
+  animBtn.onclick = () => {
+    animating = !animating;
+    animBtn.classList.toggle('on', animating);
+    if (animating) animStart = performance.now();
+  };
+
+  const loop = (now) => {
+    if (animating) {
+      const period = 30000;
+      const t = ((now - animStart) % (period * 2)) / period;
+      const tri = t < 1 ? t : 2 - t; // 0..1..0
+      const newN = Math.max(1, Math.min(20, Math.round(1 + tri * 19)));
+      if (newN !== n) {
+        n = newN;
+        nSlider.value = n;
+        render();
+      }
+    }
+    requestAnimationFrame(loop);
+  };
+
+  // gallery
+  const presets = [
+    { n: 1, d: 1 }, { n: 2, d: 1 }, { n: 3, d: 1 },
+    { n: 5, d: 1 }, { n: 7, d: 3 }, { n: 3, d: 2 }
+  ];
+  const gallery = document.getElementById('gallery');
+  presets.forEach((p) => {
+    const item = document.createElement('div');
+    item.className = 'item';
+    const c = document.createElement('canvas');
+    c.width = 160; c.height = 160; // hi-dpi
+    const cap = document.createElement('div');
+    cap.className = 'cap';
+    cap.textContent = 'n=' + p.n + ' d=' + p.d;
+    item.appendChild(c);
+    item.appendChild(cap);
+    gallery.appendChild(item);
+    const cx = c.getContext('2d');
+    cx.setTransform(2, 0, 0, 2, 0, 0);
+    drawRose(cx, { W: 80, H: 80, n: p.n, d: p.d, periods: 2, dTheta: 0.01, colorMode: 'theta', axes: false });
+    item.onclick = () => {
+      n = p.n; d = p.d;
+      nSlider.value = n; dSlider.value = d;
+      if (animating) { animating = false; animBtn.classList.remove('on'); }
+      render();
+    };
+  });
+
+  // boot
+  sizeCanvas();
+  render();
+  requestAnimationFrame(loop);
+
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => { sizeCanvas(); draw(); }, 120);
+  });
+})();
+</script>
+
+</body>
+</html>
