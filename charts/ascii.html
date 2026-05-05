@@ -100,6 +100,28 @@
     padding: 0;
   }
   .ascii-pre .hi { color: #c44a32; }
+  .ascii-pre.heat {
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0.1em;
+  }
+  .ascii-legend {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #111;
+    line-height: 1.4;
+    margin: 6px 0 8px 0;
+    letter-spacing: 0.1em;
+  }
+  .ascii-legend .scale {
+    display: block;
+  }
+  .ascii-legend .axis {
+    display: block;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: 0.06em;
+  }
   .ascii-desc {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
@@ -205,8 +227,12 @@
       <span>heat · тепловая карта</span>
       <button class="copy-btn" data-target="heat">copy</button>
     </div>
-    <pre class="ascii-pre" id="heat"></pre>
-    <div class="ascii-desc">символ = величина: ' ' &lt; · &lt; ░ &lt; ▒ &lt; ▓ &lt; █. строки по 10 значений.</div>
+    <pre class="ascii-pre heat" id="heat"></pre>
+    <div class="ascii-legend">
+      <span class="scale">  ·  ░  ▒  ▓  █</span>
+      <span class="axis">min &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max</span>
+    </div>
+    <div class="ascii-desc">первые 100 значений · 20 в строку. красным — пики (≥ 90% от максимума: для делителей это 12, 24, 36, 48, 60, 72…).</div>
   </div>
 
   <div class="ascii-note">
@@ -250,14 +276,14 @@
   const PI = [1,4,1,5,9,2,6,5,3,5,8,9,7,9,3,2,3,8,4,6,2,6,4,3,3,8,3,2,7,9,5,0,2,8,8,4,1,9,7,1,6,9,3,9,9,3,7,5,1,0,5,8,2,0,9,7,4,9,4,4];
   const FIB = (() => { const f = [1, 1]; while (f.length < 30) f.push(f[f.length-1] + f[f.length-2]); return f; })();
   const GAPS = PRIMES.slice(1).map((p, i) => p - PRIMES[i]);
-  const DIVISORS = Array.from({length: 60}, (_, i) => divisorCount(i + 1));
+  const DIVISORS = Array.from({length: 100}, (_, i) => divisorCount(i + 1));
 
   const DATASETS = {
     primes:   { label: 'простые числа', data: PRIMES,   labels: PRIMES.map((_, i) => 'p' + (i + 1)) },
     pi:       { label: 'цифры π',       data: PI,       labels: PI.map((_, i) => String(i)) },
     fib:      { label: 'фибоначчи',     data: FIB,      labels: FIB.map((_, i) => 'F' + (i + 1)) },
     gaps:     { label: 'gaps',          data: GAPS,     labels: GAPS.map((_, i) => 'g' + (i + 1)) },
-    divisors: { label: 'делители',      data: DIVISORS, labels: Array.from({length: 60}, (_, i) => String(i + 1)) }
+    divisors: { label: 'делители',      data: DIVISORS, labels: Array.from({length: 100}, (_, i) => String(i + 1)) }
   };
 
   const escapeHTML = (s) => s.replace(/[&<>]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
@@ -388,20 +414,33 @@
   };
 
   const HEAT = [' ', '·', '░', '▒', '▓', '█'];
-  const asciiHeat = (data, cols = 10) => {
+  // returns { html, text } so we can both render colors and copy plain text
+  const asciiHeat = (data, cols = 20) => {
     const min = Math.min(...data), max = Math.max(...data);
     const range = max - min || 1;
-    const lines = [];
+    const accentThreshold = max * 0.9;
+    const htmlLines = [];
+    const textLines = [];
     for (let i = 0; i < data.length; i += cols) {
       const row = data.slice(i, i + cols);
-      let line = String(i + 1).padStart(4) + ' │ ';
+      const prefix = String(i + 1).padStart(4) + ' │ ';
+      let htmlLine = prefix;
+      let textLine = prefix;
       row.forEach((v) => {
         const idx = Math.round((v - min) / range * 5);
-        line += HEAT[Math.max(0, Math.min(5, idx))] + ' ';
+        const sym = HEAT[Math.max(0, Math.min(5, idx))];
+        const cell = sym + ' ';
+        textLine += cell;
+        if (v >= accentThreshold && v > min) {
+          htmlLine += '<span class="hi">' + sym + '</span> ';
+        } else {
+          htmlLine += cell;
+        }
       });
-      lines.push(line);
+      htmlLines.push(htmlLine);
+      textLines.push(textLine);
     }
-    return lines.join('\n');
+    return { html: htmlLines.join('\n'), text: textLines.join('\n') };
   };
 
   // ── render ──────────────────────────────────────────────────────────
@@ -448,10 +487,11 @@
     const lineText = asciiLine(lineSlice);
     setHTML('line', lineText, escapeHTML(lineText));
 
-    // heat — first 60 values, 10 per row
-    const heatSlice = data.slice(0, 60);
-    const heatText = asciiHeat(heatSlice, 10);
-    setHTML('heat', heatText, escapeHTML(heatText));
+    // heat — first 100 values, 20 per row, max-values accented
+    const heatSlice = data.slice(0, 100);
+    const heat = asciiHeat(heatSlice, 20);
+    document.getElementById('heat').innerHTML = heat.html;
+    rawText.heat = heat.text;
   };
 
   // ── controls ────────────────────────────────────────────────────────
