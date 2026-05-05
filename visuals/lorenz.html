@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>аттрактор лоренца — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .visual-controls .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+    margin-bottom: 10px;
+  }
+  .visual-controls .row:last-child { margin-bottom: 0; }
+  .visual-controls .lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #777;
+    letter-spacing: 0.04em;
+  }
+  .visual-controls .read {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    min-width: 38px;
+    font-variant-numeric: tabular-nums;
+  }
+  .visual-controls input[type="range"] { width: 180px; }
+  .visual-controls button.on {
+    border-color: #111;
+    color: #111;
+    background: #f0ede8;
+  }
+  .visual-controls .preset { font-family: var(--font-mono); font-size: 11px; }
+  #lorenz {
+    display: block;
+    width: 100%;
+    height: 580px;
+    cursor: grab;
+  }
+  #lorenz.drag { cursor: grabbing; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / lorenz</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №012</div>
+    <div class="ttl">аттрактор лоренца</div>
+    <div class="lead">dx/dt = σ(y−x) · dy/dt = x(ρ−z)−y · dz/dt = xy−βz · детерминированный хаос</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <section class="visual-canvas light" style="padding:24px 24px;">
+    <canvas id="lorenz"></canvas>
+  </section>
+
+  <div class="visual-controls">
+    <div class="row">
+      <span class="lbl">σ</span>
+      <input id="sigSlider" type="range" min="1" max="20" step="0.1" value="10">
+      <span class="read" id="sigVal">10.0</span>
+      <span class="lbl">ρ</span>
+      <input id="rhoSlider" type="range" min="1" max="50" step="0.1" value="28">
+      <span class="read" id="rhoVal">28.0</span>
+      <span class="lbl">β</span>
+      <input id="betaSlider" type="range" min="0.1" max="5" step="0.1" value="2.667">
+      <span class="read" id="betaVal">2.67</span>
+    </div>
+    <div class="row">
+      <span class="lbl">скорость</span>
+      <input id="speedSlider" type="range" min="1" max="20" step="1" value="5">
+      <span class="read" id="speedVal">5</span>
+      <span class="lbl">хвост</span>
+      <input id="tailSlider" type="range" min="100" max="5000" step="50" value="2000">
+      <span class="read" id="tailVal">2000</span>
+      <button id="playBtn">● пауза</button>
+      <button id="resetBtn">↺ сбросить</button>
+    </div>
+    <div class="row">
+      <span class="lbl">проекция</span>
+      <button class="proj" data-p="xy">XY</button>
+      <button class="proj" data-p="xz">XZ</button>
+      <button class="proj" data-p="yz">YZ</button>
+      <button class="proj on" data-p="auto">авто-вращение</button>
+    </div>
+    <div class="row">
+      <span class="lbl">цвет</span>
+      <button class="color" data-c="mono">монохром</button>
+      <button class="color on" data-c="time">по времени</button>
+      <button class="color" data-c="speed">по скорости</button>
+    </div>
+    <div class="row">
+      <button class="preset" data-s="10"  data-r="28" data-b="2.667">классика σ=10 ρ=28 β=8/3</button>
+      <button class="preset" data-s="10"  data-r="15" data-b="2.667">ρ=15 · один аттрактор</button>
+      <button class="preset" data-s="10"  data-r="99" data-b="2.667">ρ=99 · хаос</button>
+      <button class="preset" data-s="5"   data-r="28" data-b="1">σ=5 β=1 · другая форма</button>
+    </div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="visual-meta">
+    <div class="visual-description">
+      <p>В 1963 году Эдвард Лоренц изучал упрощённые модели атмосферной конвекции. Он заметил, что крошечное изменение начальных условий полностью меняет траекторию через несколько шагов. Так появилось понятие «эффект бабочки».</p>
+      <p>Система детерминирована — каждый следующий момент определяется предыдущим через три уравнения. Но траектория никогда не повторяется и при этом никогда не покидает компактную область фазового пространства. Это и есть детерминированный хаос.</p>
+    </div>
+    <div class="visual-params">
+      <div class="row"><span>σ</span><span id="metaSigma">10.0</span></div>
+      <div class="row"><span>ρ</span><span id="metaRho">28.0</span></div>
+      <div class="row"><span>β</span><span id="metaBeta">2.67</span></div>
+      <div class="row"><span>точек в хвосте</span><span id="metaPoints">2000</span></div>
+      <div class="row"><span>шагов</span><span id="metaSteps">0</span></div>
+      <div class="row"><span>интегратор</span><span>RK4 · dt = 0.005</span></div>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/pseudorandom.html">случайность которой нет — детерминизм →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/invented-or-discovered.html">математика изобретена или открыта →</a></div>
+      <div class="related-link"><span class="related-link-type">гипотеза</span><a href="../objects/ideas/hypotheses/pvsnp.html">P vs NP — предсказуемость →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="collatz.html">коллатц — другой вид хаоса →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/lorenz.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+(() => {
+  const cv = document.getElementById('lorenz');
+  const ctx = cv.getContext('2d');
+
+  // params
+  let sigma = 10, rho = 28, beta = 2.667;
+  let stepsPerFrame = 5;
+  let tailLength = 2000;
+  let dt = 0.005;
+  let projection = 'auto';
+  let colorMode = 'time';
+  let playing = true;
+  let steps = 0;
+
+  // rotation
+  let autoAngle = 0;
+  let rotY = 0, rotX = 0; // mouse-controlled
+  let dragging = false;
+  let lastMx = 0, lastMy = 0;
+
+  // state
+  let x = 0.1, y = 0, z = 0;
+  let trail = []; // {x,y,z,sp}
+
+  const sizeCanvas = () => {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = cv.getBoundingClientRect();
+    cv.width = Math.floor(rect.width * dpr);
+    cv.height = Math.floor(rect.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+
+  const f = (x, y, z) => ({
+    dx: sigma * (y - x),
+    dy: x * (rho - z) - y,
+    dz: x * y - beta * z
+  });
+
+  const rk4Step = () => {
+    const k1 = f(x, y, z);
+    const k2 = f(x + dt/2 * k1.dx, y + dt/2 * k1.dy, z + dt/2 * k1.dz);
+    const k3 = f(x + dt/2 * k2.dx, y + dt/2 * k2.dy, z + dt/2 * k2.dz);
+    const k4 = f(x + dt * k3.dx,   y + dt * k3.dy,   z + dt * k3.dz);
+    const nx = x + dt/6 * (k1.dx + 2*k2.dx + 2*k3.dx + k4.dx);
+    const ny = y + dt/6 * (k1.dy + 2*k2.dy + 2*k3.dy + k4.dy);
+    const nz = z + dt/6 * (k1.dz + 2*k2.dz + 2*k3.dz + k4.dz);
+    const ddx = nx - x, ddy = ny - y, ddz = nz - z;
+    const sp = Math.sqrt(ddx*ddx + ddy*ddy + ddz*ddz);
+    x = nx; y = ny; z = nz;
+    return sp;
+  };
+
+  // project (x,y,z) -> screen using current projection
+  const project = (px, py, pz, W, H) => {
+    const cx = W / 2, cy = H / 2;
+    const scale = Math.min(W, H) / 80;
+    let sx, sy;
+    if (projection === 'xy') {
+      sx = cx + px * scale;
+      sy = cy - py * scale;
+    } else if (projection === 'xz') {
+      sx = cx + px * scale;
+      sy = H * 0.85 - pz * scale;
+    } else if (projection === 'yz') {
+      sx = cx + py * scale;
+      sy = H * 0.85 - pz * scale;
+    } else {
+      // auto-rotate around z, plus mouse rotX/rotY
+      const a = autoAngle + rotY;
+      const ca = Math.cos(a), sa = Math.sin(a);
+      const rx = px * ca - py * sa;
+      const ry = px * sa + py * ca;
+      // tilt: rotate around X axis (rotX)
+      const cb = Math.cos(rotX), sb = Math.sin(rotX);
+      const ry2 = ry * cb - pz * sb;
+      const rz2 = ry * sb + pz * cb;
+      sx = cx + rx * scale;
+      sy = cy + 80 - ry2 * scale * 0.5 - rz2 * scale * 0.7;
+    }
+    return [sx, sy];
+  };
+
+  const C_BLUE = [44, 95, 182];
+  const C_RED  = [196, 74, 50];
+  const lerpColor = (c1, c2, t) => {
+    const r = Math.round(c1[0] + (c2[0]-c1[0])*t);
+    const g = Math.round(c1[1] + (c2[1]-c1[1])*t);
+    const b = Math.round(c1[2] + (c2[2]-c1[2])*t);
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+  };
+
+  const draw = () => {
+    const rect = cv.getBoundingClientRect();
+    const W = rect.width, H = rect.height;
+    ctx.fillStyle = '#f7f6f2';
+    ctx.fillRect(0, 0, W, H);
+
+    if (trail.length < 2) return;
+
+    // speed normalization for color mode
+    let maxSp = 0.001;
+    if (colorMode === 'speed') {
+      for (let i = 0; i < trail.length; i++) if (trail[i].sp > maxSp) maxSp = trail[i].sp;
+    }
+
+    let prevSx = null, prevSy = null;
+    for (let i = 0; i < trail.length; i++) {
+      const p = trail[i];
+      const [sx, sy] = project(p.x, p.y, p.z, W, H);
+      if (prevSx !== null) {
+        const t = i / trail.length; // 0=old, 1=new
+        let stroke, lw;
+        if (colorMode === 'mono') {
+          const a = 0.05 + t * 0.85;
+          stroke = 'rgba(17,17,17,' + a.toFixed(3) + ')';
+          lw = 0.5 + t * 1.0;
+        } else if (colorMode === 'time') {
+          const hue = Math.round(t * 240);
+          const a = 0.1 + t * 0.7;
+          stroke = 'hsla(' + hue + ',65%,40%,' + a.toFixed(3) + ')';
+          lw = 0.6 + t * 1.0;
+        } else {
+          const u = Math.min(1, p.sp / maxSp);
+          const base = lerpColor(C_BLUE, C_RED, u);
+          stroke = base;
+          ctx.globalAlpha = (0.1 + t * 0.75);
+          lw = 0.6 + t * 1.0;
+        }
+        ctx.strokeStyle = stroke;
+        ctx.lineWidth = lw;
+        ctx.beginPath();
+        ctx.moveTo(prevSx, prevSy);
+        ctx.lineTo(sx, sy);
+        ctx.stroke();
+        if (colorMode === 'speed') ctx.globalAlpha = 1;
+      }
+      prevSx = sx; prevSy = sy;
+    }
+
+    // current point with glow
+    const [hx, hy] = project(x, y, z, W, H);
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = '#c44a32';
+    ctx.fillStyle = '#c44a32';
+    ctx.beginPath();
+    ctx.arc(hx, hy, 3, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  };
+
+  const updateMeta = () => {
+    document.getElementById('sigVal').textContent = sigma.toFixed(1);
+    document.getElementById('rhoVal').textContent = rho.toFixed(1);
+    document.getElementById('betaVal').textContent = beta.toFixed(2);
+    document.getElementById('speedVal').textContent = stepsPerFrame;
+    document.getElementById('tailVal').textContent = tailLength;
+    document.getElementById('metaSigma').textContent = sigma.toFixed(1);
+    document.getElementById('metaRho').textContent = rho.toFixed(1);
+    document.getElementById('metaBeta').textContent = beta.toFixed(2);
+    document.getElementById('metaPoints').textContent = trail.length;
+    document.getElementById('metaSteps').textContent = steps.toLocaleString('ru-RU');
+  };
+
+  const reset = () => {
+    x = 0.1; y = 0; z = 0;
+    trail = [];
+    steps = 0;
+    autoAngle = 0;
+    updateMeta();
+    draw();
+  };
+
+  // animation loop
+  let lastMetaT = 0;
+  const loop = (now) => {
+    if (playing) {
+      for (let i = 0; i < stepsPerFrame; i++) {
+        const sp = rk4Step();
+        trail.push({ x: x, y: y, z: z, sp: sp });
+        if (trail.length > tailLength) trail.shift();
+        steps++;
+      }
+      if (projection === 'auto') autoAngle += 0.003;
+      draw();
+      if (now - lastMetaT > 100) { updateMeta(); lastMetaT = now; }
+    }
+    requestAnimationFrame(loop);
+  };
+
+  // controls
+  const setActive = (sel, btn) => {
+    document.querySelectorAll(sel).forEach((b) => b.classList.remove('on'));
+    btn.classList.add('on');
+  };
+
+  document.getElementById('sigSlider').addEventListener('input', (e) => { sigma = parseFloat(e.target.value); updateMeta(); });
+  document.getElementById('rhoSlider').addEventListener('input', (e) => { rho   = parseFloat(e.target.value); updateMeta(); });
+  document.getElementById('betaSlider').addEventListener('input', (e) => { beta  = parseFloat(e.target.value); updateMeta(); });
+  document.getElementById('speedSlider').addEventListener('input', (e) => { stepsPerFrame = parseInt(e.target.value, 10); updateMeta(); });
+  document.getElementById('tailSlider').addEventListener('input', (e) => {
+    tailLength = parseInt(e.target.value, 10);
+    while (trail.length > tailLength) trail.shift();
+    updateMeta();
+  });
+
+  const playBtn = document.getElementById('playBtn');
+  playBtn.onclick = () => {
+    playing = !playing;
+    playBtn.textContent = playing ? '● пауза' : '▶ играть';
+  };
+  document.getElementById('resetBtn').onclick = reset;
+
+  document.querySelectorAll('button.proj').forEach((b) => {
+    b.onclick = () => {
+      projection = b.dataset.p;
+      setActive('button.proj', b);
+      draw();
+    };
+  });
+  document.querySelectorAll('button.color').forEach((b) => {
+    b.onclick = () => {
+      colorMode = b.dataset.c;
+      setActive('button.color', b);
+      draw();
+    };
+  });
+  document.querySelectorAll('button.preset').forEach((b) => {
+    b.onclick = () => {
+      sigma = parseFloat(b.dataset.s);
+      rho = parseFloat(b.dataset.r);
+      beta = parseFloat(b.dataset.b);
+      document.getElementById('sigSlider').value = sigma;
+      document.getElementById('rhoSlider').value = rho;
+      document.getElementById('betaSlider').value = beta;
+      reset();
+    };
+  });
+
+  // mouse rotation (only meaningful in auto)
+  cv.addEventListener('mousedown', (e) => {
+    dragging = true; cv.classList.add('drag');
+    lastMx = e.clientX; lastMy = e.clientY;
+  });
+  window.addEventListener('mouseup', () => { dragging = false; cv.classList.remove('drag'); });
+  window.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - lastMx;
+    const dy = e.clientY - lastMy;
+    lastMx = e.clientX; lastMy = e.clientY;
+    rotY += dx * 0.005;
+    rotX += dy * 0.005;
+    rotX = Math.max(-1.4, Math.min(1.4, rotX));
+    if (!playing) draw();
+  });
+
+  // boot
+  sizeCanvas();
+  reset();
+  requestAnimationFrame(loop);
+
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => { sizeCanvas(); draw(); }, 120);
+  });
+})();
+</script>
+
+</body>
+</html>
