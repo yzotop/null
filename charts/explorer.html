@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>explorer — null/charts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  .ex-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .ex-h1 {
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 1.1;
+    margin: 0 0 10px 0;
+  }
+  .ex-sub {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: #777;
+    line-height: 1.55;
+    max-width: 620px;
+  }
+
+  .chart-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 16px;
+    border-bottom: 1.5px solid #111;
+    flex-wrap: wrap;
+  }
+  .tab {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+    color: #bbb;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1.5px;
+  }
+  .tab:hover { color: #555; }
+  .tab.active { color: #111; border-bottom-color: #111; }
+
+  .dataset-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .ds-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .ds-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .04em;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #888;
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+  .ds-btn:hover { border-color: #111; color: #111; }
+  .ds-btn.active { border-color: #111; color: #111; background: #f0ede8; }
+
+  .color-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .color-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .color-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #888;
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+  .color-btn:hover { border-color: #111; color: #111; }
+  .color-btn.active { border-color: #111; color: #111; background: #f0ede8; }
+
+  .canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    margin-bottom: 16px;
+  }
+
+  .chart-info {
+    display: grid;
+    grid-template-columns: 100px 140px 1fr;
+    gap: 24px;
+    padding: 14px 0 16px 0;
+    border-top: 1px solid #e8e8e4;
+    margin-bottom: 32px;
+  }
+  .info-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .info-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #111;
+  }
+  .info-insight {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: #888;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="./" class="active">графики</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / charts / explorer</div>
+
+<main class="container">
+<article>
+
+  <div class="ex-tag">графики · explorer</div>
+  <h1 class="ex-h1">explorer</h1>
+  <p class="ex-sub">один набор математических данных · девять способов смотреть</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <!-- type tabs -->
+  <div class="chart-tabs" id="tabs">
+    <button class="tab active" data-t="line">line</button>
+    <button class="tab" data-t="bar">bar</button>
+    <button class="tab" data-t="scatter">scatter</button>
+    <button class="tab" data-t="area">area</button>
+    <button class="tab" data-t="step">step</button>
+    <button class="tab" data-t="dot">dot</button>
+    <button class="tab" data-t="radar">radar</button>
+    <button class="tab" data-t="histogram">histogram</button>
+    <button class="tab" data-t="polar">polar</button>
+  </div>
+
+  <!-- dataset selector -->
+  <div class="dataset-row" id="datasetRow">
+    <span class="ds-label">data</span>
+    <button class="ds-btn active" data-d="primes">простые числа</button>
+    <button class="ds-btn" data-d="pi">цифры π</button>
+    <button class="ds-btn" data-d="fib">фибоначчи</button>
+    <button class="ds-btn" data-d="gaps">gaps</button>
+    <button class="ds-btn" data-d="divisors">делители</button>
+  </div>
+
+  <!-- color scheme -->
+  <div class="color-row" id="colorRow">
+    <span class="color-label">color</span>
+    <button class="color-btn active" data-s="mono">монохром</button>
+    <button class="color-btn" data-s="accent">акцент</button>
+    <button class="color-btn" data-s="spectrum">спектр</button>
+  </div>
+
+  <!-- chart canvas -->
+  <div class="canvas-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+
+  <!-- info row -->
+  <div class="chart-info">
+    <div>
+      <div class="info-label">тип</div>
+      <div class="info-value" id="infoType">line</div>
+    </div>
+    <div>
+      <div class="info-label">данные</div>
+      <div class="info-value" id="infoData">простые числа</div>
+    </div>
+    <div>
+      <div class="info-label">insight</div>
+      <div class="info-insight" id="infoInsight">—</div>
+    </div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">тип</span><a href="../objects/numbers/types/prime.html">простые числа →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/pi.html">число π →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/phi.html">золотое сечение — Фибоначчи →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../objects/operators/mod.html">mod →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/prime-field.html">поле простых →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/charts/explorer.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+(() => {
+  // ── data ────────────────────────────────────────────────────────────
+  const sieve = (n) => {
+    const c = new Uint8Array(n + 1);
+    c[0] = c[1] = 1;
+    for (let i = 2; i * i <= n; i++) if (!c[i]) for (let j = i*i; j <= n; j += i) c[j] = 1;
+    const p = [];
+    for (let i = 2; i <= n && p.length < 40; i++) if (!c[i]) p.push(i);
+    return p;
+  };
+  const divisorCount = (n) => {
+    let count = 0;
+    for (let i = 1; i <= n; i++) if (n % i === 0) count++;
+    return count;
+  };
+
+  const PRIMES = sieve(200);
+  const PI_DIGITS = [1,4,1,5,9,2,6,5,3,5,8,9,7,9,3,2,3,8,4,6,2,6,4,3,3,8,3,2,7,9,5,0,2,8,8,4,1,9,7,1];
+  const FIB = (() => { const f=[1,1]; while(f.length<20) f.push(f[f.length-1]+f[f.length-2]); return f; })();
+  const GAPS = PRIMES.slice(1).map((p, i) => p - PRIMES[i]);
+  const DIVISORS = Array.from({length: 40}, (_, i) => divisorCount(i + 1));
+
+  const DATASETS = {
+    primes: {
+      label: 'простые числа',
+      labels: PRIMES.map((_, i) => 'p' + (i + 1)),
+      data: PRIMES,
+      insight: 'простые числа редеют с ростом n. теорема о простых числах: π(n) ≈ n/ln(n).'
+    },
+    pi: {
+      label: 'цифры π',
+      labels: PI_DIGITS.map((_, i) => String(i + 1)),
+      data: PI_DIGITS,
+      insight: 'цифры π выглядят случайными — каждая встречается ~10% времени. нормальность π не доказана.'
+    },
+    fib: {
+      label: 'числа фибоначчи',
+      labels: FIB.map((_, i) => 'F' + (i + 1)),
+      data: FIB,
+      insight: 'F(n) = F(n-1) + F(n-2). отношение соседних чисел стремится к φ = 1.618…'
+    },
+    gaps: {
+      label: 'gaps между простыми',
+      labels: GAPS.map((_, i) => 'g' + (i + 1)),
+      data: GAPS,
+      insight: 'разрывы между соседними простыми. гипотеза близнецов: бесконечно ли пар с gap = 2?'
+    },
+    divisors: {
+      label: 'количество делителей',
+      labels: Array.from({length: 40}, (_, i) => String(i + 1)),
+      data: DIVISORS,
+      insight: 'τ(n) — количество делителей n. пики у высококомпозитных чисел: 12, 24, 36, 48…'
+    }
+  };
+
+  const CHART_DESCRIPTIONS = {
+    line:      'line — непрерывность и тренд. как значение меняется от точки к точке.',
+    bar:       'bar — сравнение дискретных значений. яркость кодирует величину.',
+    scatter:   'scatter — каждая точка независима. видны выбросы и кластеры.',
+    area:      'area — line + заполнение. подчёркивает накопленный объём.',
+    step:      'step — значение постоянно до следующего события. хорошо для ступенчатых функций.',
+    dot:       'dot / bubble — размер точки = третье измерение. здесь кодирует саму величину.',
+    radar:     'radar — форма профиля данных. первые 12 значений на круговых осях.',
+    histogram: 'histogram — распределение по диапазонам. сколько значений попадает в каждый бакет.',
+    polar:     'polar area — как bar chart по кругу. подчёркивает периодичность данных.'
+  };
+
+  // ── color schemes ──────────────────────────────────────────────────
+  const norm = (v, min, max) => max > min ? (v - min) / (max - min) : 0.5;
+
+  const lerpColor = (c1, c2, t) => {
+    const r = Math.round(c1[0] + (c2[0] - c1[0]) * t);
+    const g = Math.round(c1[1] + (c2[1] - c1[1]) * t);
+    const b = Math.round(c1[2] + (c2[2] - c1[2]) * t);
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+  };
+  const C_BLUE = [44, 95, 182];
+  const C_RED  = [196, 74, 50];
+
+  // returns array of per-point colors
+  const colorize = (scheme, data, opacity = 1) => {
+    const min = Math.min(...data);
+    const max = Math.max(...data);
+    if (scheme === 'mono') {
+      return data.map((v) => {
+        const a = (0.15 + 0.85 * norm(v, min, max)) * opacity;
+        return 'rgba(17,17,17,' + a.toFixed(3) + ')';
+      });
+    }
+    if (scheme === 'accent') {
+      // top-3 highlighted red, others muted
+      const sorted = data.slice().sort((a, b) => b - a);
+      const threshold = sorted[Math.min(2, sorted.length - 1)];
+      return data.map((v) => {
+        if (v >= threshold) return 'rgba(196,74,50,' + opacity.toFixed(2) + ')';
+        return 'rgba(17,17,17,' + (0.4 * opacity).toFixed(3) + ')';
+      });
+    }
+    // spectrum
+    return data.map((v) => {
+      const t = norm(v, min, max);
+      const base = lerpColor(C_BLUE, C_RED, t);
+      if (opacity < 1) {
+        // convert rgb(...) to rgba
+        const m = base.match(/rgb\((\d+),(\d+),(\d+)\)/);
+        return 'rgba(' + m[1] + ',' + m[2] + ',' + m[3] + ',' + opacity + ')';
+      }
+      return base;
+    });
+  };
+
+  // primary single color (used where Chart.js needs one)
+  const primaryColor = (scheme, data) => {
+    if (scheme === 'mono') return '#111';
+    if (scheme === 'accent') return '#c44a32';
+    // spectrum: pick mid
+    return lerpColor(C_BLUE, C_RED, 0.5);
+  };
+
+  // primary with alpha
+  const primaryRGBA = (scheme, alpha) => {
+    if (scheme === 'mono') return 'rgba(17,17,17,' + alpha + ')';
+    if (scheme === 'accent') return 'rgba(196,74,50,' + alpha + ')';
+    return 'rgba(120, 84, 116,' + alpha + ')'; // spectrum mid
+  };
+
+  // ── histogram helper ───────────────────────────────────────────────
+  const makeHistogram = (data, bins = 10) => {
+    const min = Math.min(...data);
+    const max = Math.max(...data);
+    const step = (max - min) / bins || 1;
+    const counts = new Array(bins).fill(0);
+    const labels = [];
+    for (let i = 0; i < bins; i++) {
+      const lo = min + i * step;
+      labels.push(Math.round(lo).toString());
+    }
+    data.forEach((v) => {
+      const idx = Math.min(Math.floor((v - min) / step), bins - 1);
+      counts[idx]++;
+    });
+    return { labels, counts };
+  };
+
+  // ── chart config builders ──────────────────────────────────────────
+  const monoFont = { family: "'JetBrains Mono', monospace", size: 9 };
+
+  const baseTooltip = {
+    backgroundColor: '#111',
+    titleColor: '#f7f6f2',
+    bodyColor: '#f7f6f2',
+    titleFont: { family: "'JetBrains Mono', monospace", size: 10 },
+    bodyFont: { family: "'JetBrains Mono', monospace", size: 10 },
+    padding: 8,
+    cornerRadius: 0,
+    displayColors: false
+  };
+
+  const cartesianScales = {
+    x: {
+      grid: { color: 'rgba(0,0,0,0.04)', drawBorder: false },
+      ticks: { font: monoFont, color: '#bbb', maxTicksLimit: 10, maxRotation: 0 }
+    },
+    y: {
+      grid: { color: 'rgba(0,0,0,0.04)', drawBorder: false },
+      ticks: { font: monoFont, color: '#bbb', maxTicksLimit: 6 }
+    }
+  };
+
+  const radialScales = {
+    r: {
+      grid: { color: 'rgba(0,0,0,0.06)' },
+      angleLines: { color: 'rgba(0,0,0,0.06)' },
+      ticks: { font: monoFont, color: '#bbb', backdropColor: 'transparent' },
+      pointLabels: { font: { family: "'JetBrains Mono', monospace", size: 9 }, color: '#888' }
+    }
+  };
+
+  const buildConfig = (type, dsKey, scheme) => {
+    const ds = DATASETS[dsKey];
+    const data = ds.data;
+    const labels = ds.labels;
+    const colors = colorize(scheme, data);
+    const primary = primaryColor(scheme, data);
+    const min = Math.min(...data), max = Math.max(...data);
+
+    const common = {
+      plugins: {
+        legend: { display: false },
+        tooltip: baseTooltip
+      },
+      animation: { duration: 400, easing: 'easeInOutQuart' },
+      responsive: true,
+      maintainAspectRatio: false
+    };
+
+    if (type === 'line') {
+      return {
+        type: 'line',
+        data: { labels, datasets: [{
+          label: ds.label,
+          data,
+          borderColor: primary,
+          backgroundColor: primary,
+          pointRadius: 3,
+          pointBackgroundColor: colors,
+          pointBorderColor: colors,
+          tension: 0,
+          fill: false,
+          borderWidth: 1.5
+        }]},
+        options: { ...common, scales: cartesianScales }
+      };
+    }
+
+    if (type === 'bar') {
+      return {
+        type: 'bar',
+        data: { labels, datasets: [{
+          label: ds.label,
+          data,
+          backgroundColor: colors,
+          borderRadius: 0,
+          borderWidth: 0,
+          barPercentage: 0.7
+        }]},
+        options: { ...common, scales: cartesianScales }
+      };
+    }
+
+    if (type === 'scatter') {
+      return {
+        type: 'scatter',
+        data: { datasets: [{
+          label: ds.label,
+          data: data.map((v, i) => ({ x: i + 1, y: v })),
+          pointRadius: 4,
+          pointBorderWidth: 1.5,
+          pointBackgroundColor: 'transparent',
+          pointBorderColor: colors
+        }]},
+        options: { ...common, scales: cartesianScales }
+      };
+    }
+
+    if (type === 'area') {
+      return {
+        type: 'line',
+        data: { labels, datasets: [{
+          label: ds.label,
+          data,
+          borderColor: primary,
+          backgroundColor: primaryRGBA(scheme, 0.08),
+          pointRadius: 0,
+          tension: 0.3,
+          fill: true,
+          borderWidth: 1.5
+        }]},
+        options: { ...common, scales: cartesianScales }
+      };
+    }
+
+    if (type === 'step') {
+      return {
+        type: 'line',
+        data: { labels, datasets: [{
+          label: ds.label,
+          data,
+          borderColor: primary,
+          backgroundColor: primary,
+          pointRadius: 0,
+          stepped: 'before',
+          fill: false,
+          borderWidth: 1.5
+        }]},
+        options: { ...common, scales: cartesianScales }
+      };
+    }
+
+    if (type === 'dot') {
+      return {
+        type: 'bubble',
+        data: { datasets: [{
+          label: ds.label,
+          data: data.map((v, i) => ({ x: i + 1, y: v, r: 2 + norm(v, min, max) * 10 })),
+          backgroundColor: colorize(scheme, data, 0.6),
+          borderColor: primary,
+          borderWidth: 0
+        }]},
+        options: { ...common, scales: cartesianScales }
+      };
+    }
+
+    if (type === 'radar') {
+      const labels12 = labels.slice(0, 12);
+      const data12 = data.slice(0, 12);
+      return {
+        type: 'radar',
+        data: { labels: labels12, datasets: [{
+          label: ds.label,
+          data: data12,
+          backgroundColor: 'rgba(17,17,17,0.05)',
+          borderColor: primary,
+          borderWidth: 1.5,
+          pointRadius: 3,
+          pointBackgroundColor: colorize(scheme, data12)
+        }]},
+        options: { ...common, scales: radialScales }
+      };
+    }
+
+    if (type === 'histogram') {
+      const { labels: hLabels, counts } = makeHistogram(data, 10);
+      return {
+        type: 'bar',
+        data: { labels: hLabels, datasets: [{
+          label: 'count',
+          data: counts,
+          backgroundColor: colorize(scheme, counts),
+          borderRadius: 0,
+          borderWidth: 0,
+          barPercentage: 0.95,
+          categoryPercentage: 1
+        }]},
+        options: { ...common, scales: cartesianScales }
+      };
+    }
+
+    if (type === 'polar') {
+      const labels12 = labels.slice(0, 12);
+      const data12 = data.slice(0, 12);
+      return {
+        type: 'polarArea',
+        data: { labels: labels12, datasets: [{
+          label: ds.label,
+          data: data12,
+          backgroundColor: colorize(scheme, data12, 0.7),
+          borderColor: '#f7f6f2',
+          borderWidth: 1
+        }]},
+        options: { ...common, scales: radialScales }
+      };
+    }
+
+    return { type: 'line', data: { labels, datasets: [] }, options: common };
+  };
+
+  // ── state & rendering ──────────────────────────────────────────────
+  let chartType = 'line';
+  let datasetKey = 'primes';
+  let scheme = 'mono';
+  let chart = null;
+
+  const canvas = document.getElementById('chart');
+  const ctx = canvas.getContext('2d');
+
+  const render = () => {
+    if (chart) { chart.destroy(); chart = null; }
+    const config = buildConfig(chartType, datasetKey, scheme);
+    chart = new Chart(ctx, config);
+
+    document.getElementById('infoType').textContent = chartType;
+    document.getElementById('infoData').textContent = DATASETS[datasetKey].label;
+    document.getElementById('infoInsight').textContent =
+      CHART_DESCRIPTIONS[chartType] + ' ' + DATASETS[datasetKey].insight;
+  };
+
+  // ── controls ───────────────────────────────────────────────────────
+  const setActive = (sel, btn) => {
+    document.querySelectorAll(sel).forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+  };
+
+  document.querySelectorAll('#tabs .tab').forEach((b) => {
+    b.onclick = () => { chartType = b.dataset.t; setActive('#tabs .tab', b); render(); };
+  });
+  document.querySelectorAll('#datasetRow .ds-btn').forEach((b) => {
+    b.onclick = () => { datasetKey = b.dataset.d; setActive('#datasetRow .ds-btn', b); render(); };
+  });
+  document.querySelectorAll('#colorRow .color-btn').forEach((b) => {
+    b.onclick = () => { scheme = b.dataset.s; setActive('#colorRow .color-btn', b); render(); };
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
