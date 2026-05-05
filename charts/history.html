@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>история визуализации — null/charts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .ex-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .ex-h1 {
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 1.1;
+    margin: 0 0 10px 0;
+  }
+  .ex-sub {
+    font-family: "Times New Roman", Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #666;
+    line-height: 1.55;
+    max-width: 620px;
+  }
+
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 24px 0 36px 0;
+  }
+  .filter-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .04em;
+    background: transparent;
+    border: 1px solid #ddd;
+    color: #888;
+    padding: 5px 11px;
+    cursor: pointer;
+  }
+  .filter-pill:hover { border-color: #111; color: #111; }
+  .filter-pill.active { border-color: #111; color: #111; background: #f0ede8; }
+
+  .timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #ddd;
+    transform: translateX(-50%);
+  }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    gap: 0;
+    margin-bottom: 48px;
+    align-items: start;
+    transition: opacity 0.2s ease;
+  }
+  .tl-item.dim { opacity: 0.2; pointer-events: none; }
+  .tl-item.right .tl-content { grid-column: 3; }
+  .tl-item.left  .tl-content { grid-column: 1; text-align: right; }
+  .tl-item.left  .tl-ascii   { display: inline-block; text-align: left; }
+  .tl-dot {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+  }
+  .tl-dot-inner {
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid #111;
+    background: #f7f6f2;
+  }
+  .tl-dot-inner.major {
+    background: #111;
+    width: 11px;
+    height: 11px;
+  }
+  .tl-year {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 28px;
+    color: #111;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .tl-who {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .tl-title {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 18px;
+    color: #111;
+    margin: 0 0 8px 0;
+    line-height: 1.25;
+  }
+  .tl-desc {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .tl-ascii {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    line-height: 1.45;
+    color: #444;
+    white-space: pre;
+    background: #f0ede8;
+    padding: 8px 10px;
+    display: inline-block;
+    margin-top: 8px;
+    text-align: left;
+  }
+  .tl-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    color: #bbb;
+    border: 1px solid #e8e8e4;
+    padding: 2px 6px;
+    margin-bottom: 8px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 720px) {
+    .timeline::before { left: 20px; }
+    .tl-item {
+      grid-template-columns: 40px 1fr;
+    }
+    .tl-item.right .tl-content,
+    .tl-item.left  .tl-content {
+      grid-column: 2;
+      text-align: left;
+    }
+    .tl-item.left .tl-ascii { display: inline-block; }
+    .tl-dot { grid-column: 1; }
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-top: 56px;
+  }
+  @media (max-width: 580px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat {
+    background: #f7f6f2;
+    padding: 22px 18px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 32px;
+    color: #111;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="./" class="active">графики</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / charts / history</div>
+
+<main class="container">
+<article>
+
+  <div class="ex-tag">графики · история</div>
+  <h1 class="ex-h1">история визуализации</h1>
+  <p class="ex-sub">от глиняных табличек до интерактивных дашбордов. 4000 лет.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <div class="filter-row" id="filter"></div>
+
+  <div class="timeline" id="timeline"></div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-num">4000</div><div class="stat-label">лет</div></div>
+    <div class="stat"><div class="stat-num">20</div><div class="stat-label">событий</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">типов графиков</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">революции</div></div>
+  </div>
+
+  <hr class="section-divider-soft" style="margin-top:48px;">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">графики</span><a href="types.html">типы графиков →</a></div>
+      <div class="related-link"><span class="related-link-type">графики</span><a href="bad.html">плохие графики →</a></div>
+      <div class="related-link"><span class="related-link-type">графики</span><a href="which.html">какой график? →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/">граф связей →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/pi.html">π →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/charts/history.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+(() => {
+  const escapeHTML = (s) => s.replace(/[&<>]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+  const EVENTS = [
+    {
+      year: '~2700 до н.э.', sortKey: -2700,
+      who: 'шумерская цивилизация', title: 'первые таблицы данных',
+      desc: 'глиняные таблички с учётом зерна и скота. строки и столбцы — первая структурированная запись данных.',
+      ascii: 'зерно │ 120 │ 240 │ 180 │\nскот  │  45 │  67 │  89 │',
+      tag: 'таблица'
+    },
+    {
+      year: '~150 н.э.', sortKey: 150,
+      who: 'Клавдий Птолемей', title: 'координатная система для карт',
+      desc: '«Географика» — первый систематический атлас мира с координатами. широта и долгота как способ кодировать пространство числами.',
+      ascii: ' 90°│     *  *\n 45°│  *     *  *\n  0°│*  *  *\n-45°│         *\n    └──────────────\n     0°  90° 180°',
+      tag: 'карта'
+    },
+    {
+      year: '1644', sortKey: 1644,
+      who: 'Михаэль Ван Ланген', title: 'первый bar chart',
+      desc: '«Statistical Breviary» — первый известный bar chart. сравнение длин рек в виде горизонтальных полос.',
+      ascii: 'Нил  │███████████████│ 6650\nАмаз │████████████│ 6400\nЯнцзы│██████████│ 6300',
+      tag: 'bar chart'
+    },
+    {
+      year: '1765', sortKey: 1765,
+      who: 'Джозеф Прайс', title: 'первый временной ряд',
+      desc: 'график изменения государственного долга Англии во времени. ось X = время, ось Y = значение — теперь стандарт.',
+      ascii: ' 100│         ●\n  80│      ●─●\n  60│   ●─●\n  40│●─●\n     ──────────\n     1700    1760',
+      tag: 'line chart'
+    },
+    {
+      year: '1786', sortKey: 1786, major: true,
+      who: 'Уильям Плейфэр', title: 'изобретение bar chart и line chart',
+      desc: '«Commercial and Political Atlas» — Плейфэр изобрёл большинство типов графиков, которые мы используем сейчас. в 1801 он добавил pie chart.',
+      ascii: ' 50│  ██\n 40│  ██ ██\n 30│██ ██ ██\n 20│██ ██ ██\n  0└────────\n    A  B  C',
+      tag: 'bar · line · pie'
+    },
+    {
+      year: '1801', sortKey: 1801,
+      who: 'Уильям Плейфэр', title: 'первый pie chart',
+      desc: '«Statistical Breviary» — круговая диаграмма для сравнения площадей европейских стран. спорное изобретение: bar chart почти всегда лучше.',
+      ascii: '   ████\n ██░░░░██\n █░░  ░░█\n ██░░░░██\n   ████',
+      tag: 'pie chart'
+    },
+    {
+      year: '1833', sortKey: 1833,
+      who: 'Джон Гершель', title: 'scatter plot',
+      desc: 'использовал scatter plot для изучения двойных звёзд. каждая точка — одно наблюдение с двумя координатами.',
+      ascii: ' 9│  · ·\n 6│·   · ·\n 3│  · ·\n 0│·    ·\n  └───────',
+      tag: 'scatter'
+    },
+    {
+      year: '1854', sortKey: 1854, major: true,
+      who: 'Джон Сноу', title: 'карта эпидемии холеры',
+      desc: 'нанёс случаи холеры на карту Лондона — и обнаружил источник вспышки (насос на Брод-стрит). первый пример визуализации как инструмента анализа.',
+      ascii: '·· ·     насос\n· ●●● ←  ████\n·· ●●●●  здесь\n   ●●',
+      tag: 'карта · анализ'
+    },
+    {
+      year: '1858', sortKey: 1858, major: true,
+      who: 'Флоренс Найтингейл', title: '«розовая диаграмма» — polar area',
+      desc: 'показала что солдаты в Крымской войне умирают от болезней больше, чем от ранений. изменила санитарные стандарты армии. первое использование визуализации для политического влияния.',
+      ascii: '    ████\n  ██░░░░██\n  ███████  ← болезни\n  ██   ██  ← ранения',
+      tag: 'polar · политика'
+    },
+    {
+      year: '1869', sortKey: 1869, major: true,
+      who: 'Шарль Жозеф Минар', title: 'карта похода Наполеона',
+      desc: 'шесть переменных в одном изображении: направление, позиция, температура, потери, дата, расстояние. Эдвард Тафт назвал её «лучшей статистической картой».',
+      ascii: '═════════════╗ Москва\n═══════╝\n═══╝\n(ширина = численность армии)',
+      tag: 'карта · многомерная'
+    },
+    {
+      year: '1895', sortKey: 1895,
+      who: 'Карл Пирсон', title: 'histogram',
+      desc: '«Contributions to the Mathematical Theory of Evolution» — histogram для показа распределения данных. Пирсон же ввёл термин «стандартное отклонение».',
+      ascii: '      ██\n    ████\n   █████\n  ███████\n──────────',
+      tag: 'histogram · статистика'
+    },
+    {
+      year: '1914', sortKey: 1914,
+      who: 'Уиллард Бринтон', title: 'первое руководство по визуализации',
+      desc: '«Graphic Methods for Presenting Facts» — первая книга о лучших практиках визуализации данных. предшественник washuvis guidelines.',
+      ascii: '«используй bar chart\n для сравнения.\n начинай ось с нуля.»',
+      tag: 'best practices'
+    },
+    {
+      year: '1967', sortKey: 1967, major: true,
+      who: 'Жак Бертен', title: '«Семиология графики»',
+      desc: 'первая теоретическая основа визуализации. 7 визуальных переменных: позиция, размер, форма, цвет, ориентация, текстура, значение.',
+      ascii: 'позиция  ● ●  ●\nразмер   · ○  ●\nцвет     □ ▒  ■',
+      tag: 'теория'
+    },
+    {
+      year: '1970', sortKey: 1970, major: true,
+      who: 'Джон Тьюки', title: 'box plot и EDA',
+      desc: '«Exploratory Data Analysis» — box plot, stem-and-leaf plot. Тьюки изменил подход к анализу данных: сначала смотри, потом считай.',
+      ascii: '├──[   │   ]──┤\nmin Q1  Q2 Q3 max',
+      tag: 'box plot · EDA'
+    },
+    {
+      year: '1983', sortKey: 1983, major: true,
+      who: 'Эдвард Тафт', title: '«Визуальное отображение информации»',
+      desc: 'data-ink ratio — отношение пикселей данных ко всем пикселям. «чем больше чернил тратится на данные — тем лучше график». «chartjunk» — термин для декоративных элементов без смысла.',
+      ascii: 'плохо:           хорошо:\n ╔═══════╗        │\n ║ ▓▓▓▓▓ ║       ███\n ║ ▒▒▒▒▒ ║       █\n ╚═══════╝       ──',
+      tag: 'теория · data-ink'
+    },
+    {
+      year: '1985', sortKey: 1985,
+      who: 'Уильям Кливленд', title: 'иерархия точности восприятия',
+      desc: 'люди точнее воспринимают: позицию > длину > угол > площадь > цвет. теоретическое обоснование почему scatter > bar > pie.',
+      ascii: 'точнее → менее точно\n●  vs  ██  vs  ◔\nпозиция длина  угол',
+      tag: 'восприятие · теория'
+    },
+    {
+      year: '1991', sortKey: 1991,
+      who: 'Джок Макинли', title: 'APT — автоматический выбор графика',
+      desc: 'первая система автоматического подбора типа графика на основе типов данных. предшественник современных BI-инструментов.',
+      ascii: 'данные → [APT] → тип графика\nчисло+категория → bar chart\nчисло+число → scatter',
+      tag: 'автоматизация'
+    },
+    {
+      year: '1999', sortKey: 1999,
+      who: 'Лиланд Вилкинсон', title: '«Грамматика графики»',
+      desc: 'графики как композиция: данные + маппинг + геометрия + масштаб + координаты. основа ggplot2 (R) и Vega-Lite.',
+      ascii: 'data → aes() → geom_*()\nx=год, y=цена → geom_line()',
+      tag: 'грамматика · ggplot'
+    },
+    {
+      year: '2006', sortKey: 2006, major: true,
+      who: 'Ханс Рослинг', title: 'Gapminder — движущийся bubble chart',
+      desc: 'TED-talk 2006 — анимированный bubble chart роста стран мира. показал что интерактивные графики могут менять мировоззрение. 200 лет данных · 200 стран · 4 минуты.',
+      ascii: 'ожид │        ●\nжизни│     ●●●\n     │  ●●●\n     └───────────\n        ВВП/чел',
+      tag: 'bubble · анимация · TED'
+    },
+    {
+      year: '2010-е', sortKey: 2011, major: true,
+      who: 'Босток · Огиевецкий · Хир', title: 'D3.js — данные через DOM',
+      desc: '«Data-Driven Documents» — библиотека, которая изменила веб-визуализацию. граф связей на этом сайте сделан на D3. миллионы интерактивных графиков в браузере.',
+      ascii: 'данные → DOM → SVG\n\nd3.select()\n  .data([1,2,3])\n  .enter()\n  .append(\'rect\')',
+      tag: 'd3.js · web · open source'
+    }
+  ];
+
+  // ── era assignment ──────────────────────────────────────────────────
+  const eraOf = (k) => {
+    if (k < 1800) return 'до 1800';
+    if (k < 1900) return '1800–1900';
+    if (k < 2000) return '1900–2000';
+    return 'после 2000';
+  };
+  EVENTS.forEach((e) => { e.era = eraOf(e.sortKey); });
+
+  // ── filter ──────────────────────────────────────────────────────────
+  const counts = { 'все': EVENTS.length };
+  EVENTS.forEach((e) => { counts[e.era] = (counts[e.era] || 0) + 1; });
+  const order = ['все', 'до 1800', '1800–1900', '1900–2000', 'после 2000'];
+  const filterEl = document.getElementById('filter');
+  filterEl.innerHTML = order
+    .filter((k) => counts[k])
+    .map((k) => '<button class="filter-pill' + (k === 'все' ? ' active' : '') + '" data-c="' + k + '">' + k + ' · ' + counts[k] + '</button>')
+    .join('');
+
+  // ── render ──────────────────────────────────────────────────────────
+  const tl = document.getElementById('timeline');
+  tl.innerHTML = EVENTS.map((e, i) => {
+    const side = (i % 2 === 0) ? 'left' : 'right';
+    return `
+      <div class="tl-item ${side}" data-era="${e.era}">
+        <div class="tl-content">
+          <span class="tl-tag">${escapeHTML(e.tag)}</span>
+          <div class="tl-year">${escapeHTML(e.year)}</div>
+          <div class="tl-who">${escapeHTML(e.who)}</div>
+          <h3 class="tl-title">${escapeHTML(e.title)}</h3>
+          <div class="tl-desc">${escapeHTML(e.desc)}</div>
+          <pre class="tl-ascii">${escapeHTML(e.ascii)}</pre>
+        </div>
+        <div class="tl-dot"><div class="tl-dot-inner${e.major ? ' major' : ''}"></div></div>
+      </div>
+    `;
+  }).join('');
+
+  filterEl.querySelectorAll('.filter-pill').forEach((b) => {
+    b.onclick = () => {
+      const cat = b.dataset.c;
+      filterEl.querySelectorAll('.filter-pill').forEach((x) => x.classList.remove('active'));
+      b.classList.add('active');
+      tl.querySelectorAll('.tl-item').forEach((it) => {
+        const match = (cat === 'все') || (it.dataset.era === cat);
+        it.classList.toggle('dim', !match);
+      });
+    };
+  });
+})();
+</script>
+
+</body>
+</html>
