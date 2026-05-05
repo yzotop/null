@@ -181,6 +181,21 @@
   let x = 0.1, y = 0, z = 0;
   let trail = []; // {x,y,z,sp}
 
+  // dynamic projection scale (recomputed when params or canvas size change)
+  let scale = 1, centerX = 0, centerY = 0, zCenter = 0;
+  const recomputeScale = () => {
+    const rect = cv.getBoundingClientRect();
+    const W = rect.width, H = rect.height;
+    const xRange = 2 * Math.sqrt(beta * Math.max(1, rho - 1));
+    const zMax = rho;
+    zCenter = rho * 0.6;
+    const scaleX = W * 0.80 / (xRange * 2.2);
+    const scaleZ = H * 0.80 / (zMax * 1.1);
+    scale = Math.min(scaleX, scaleZ);
+    centerX = W * 0.50;
+    centerY = H * 0.50 + zCenter * scale * 0.1;
+  };
+
   const sizeCanvas = () => {
     const dpr = window.devicePixelRatio || 1;
     const rect = cv.getBoundingClientRect();
@@ -210,32 +225,29 @@
   };
 
   // project (x,y,z) -> screen using current projection.
-  // Lorenz envelope: x≈[-25,25], y≈[-30,30], z≈[0,50].
-  // We pick scale so the attractor fills ~80% of the canvas.
-  const project = (px, py, pz, W, H) => {
-    const centerX = W * 0.50;
-    const centerY = H * 0.55;
-    const scale = Math.min(W / 60, H / 55) * 0.85;
+  // Scale and centers are recomputed dynamically from (sigma, rho, beta) so
+  // the attractor fits the canvas for both classic ρ=28 and chaotic ρ=99.
+  const project = (px, py, pz) => {
     let sx, sy;
     if (projection === 'xy') {
       sx = centerX + px * scale;
       sy = centerY - py * scale;
     } else if (projection === 'xz') {
       sx = centerX + px * scale;
-      sy = centerY - (pz - 25) * scale;
+      sy = centerY - (pz - zCenter) * scale;
     } else if (projection === 'yz') {
       sx = centerX + py * scale;
-      sy = centerY - (pz - 25) * scale;
+      sy = centerY - (pz - zCenter) * scale;
     } else {
       // auto-rotate around z, plus mouse rotX/rotY
       const a = autoAngle + rotY;
       const ca = Math.cos(a), sa = Math.sin(a);
       const rx = px * ca - py * sa;
       const ry = px * sa + py * ca;
-      // tilt: rotate around X axis (rotX)
       const cb = Math.cos(rotX), sb = Math.sin(rotX);
-      const ry2 = ry * cb - (pz - 25) * sb;
-      const rz2 = ry * sb + (pz - 25) * cb;
+      const zc = pz - zCenter;
+      const ry2 = ry * cb - zc * sb;
+      const rz2 = ry * sb + zc * cb;
       sx = centerX + rx * scale;
       sy = centerY - (ry2 * 0.45 + rz2 * 0.85) * scale;
     }
@@ -268,7 +280,7 @@
     let prevSx = null, prevSy = null;
     for (let i = 0; i < trail.length; i++) {
       const p = trail[i];
-      const [sx, sy] = project(p.x, p.y, p.z, W, H);
+      const [sx, sy] = project(p.x, p.y, p.z);
       if (prevSx !== null) {
         const t = i / trail.length; // 0=old, 1=new
         let stroke, lw;
@@ -300,7 +312,7 @@
     }
 
     // current point with glow
-    const [hx, hy] = project(x, y, z, W, H);
+    const [hx, hy] = project(x, y, z);
     ctx.shadowBlur = 8;
     ctx.shadowColor = '#c44a32';
     ctx.fillStyle = '#c44a32';
@@ -328,6 +340,7 @@
     trail = [];
     steps = 0;
     autoAngle = 0;
+    recomputeScale();
     updateMeta();
     draw();
   };
@@ -355,9 +368,9 @@
     btn.classList.add('on');
   };
 
-  document.getElementById('sigSlider').addEventListener('input', (e) => { sigma = parseFloat(e.target.value); updateMeta(); });
-  document.getElementById('rhoSlider').addEventListener('input', (e) => { rho   = parseFloat(e.target.value); updateMeta(); });
-  document.getElementById('betaSlider').addEventListener('input', (e) => { beta  = parseFloat(e.target.value); updateMeta(); });
+  document.getElementById('sigSlider').addEventListener('input', (e) => { sigma = parseFloat(e.target.value); recomputeScale(); updateMeta(); });
+  document.getElementById('rhoSlider').addEventListener('input', (e) => { rho   = parseFloat(e.target.value); recomputeScale(); updateMeta(); });
+  document.getElementById('betaSlider').addEventListener('input', (e) => { beta  = parseFloat(e.target.value); recomputeScale(); updateMeta(); });
   document.getElementById('speedSlider').addEventListener('input', (e) => { stepsPerFrame = parseInt(e.target.value, 10); updateMeta(); });
   document.getElementById('tailSlider').addEventListener('input', (e) => {
     tailLength = parseInt(e.target.value, 10);
@@ -423,7 +436,7 @@
   let resizeT;
   window.addEventListener('resize', () => {
     clearTimeout(resizeT);
-    resizeT = setTimeout(() => { sizeCanvas(); draw(); }, 120);
+    resizeT = setTimeout(() => { sizeCanvas(); recomputeScale(); draw(); }, 120);
   });
 })();
 </script>
