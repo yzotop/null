@@ -110,8 +110,8 @@
     </div>
     <div class="row">
       <span class="lbl">простых N</span>
-      <input id="nSlider" type="range" min="100" max="10000" step="50" value="2000">
-      <span class="read" id="nPrimesVal">2000</span>
+      <input id="nSlider" type="range" min="50" max="5000" step="50" value="500">
+      <span class="read" id="nPrimesVal">500</span>
       <span class="lbl">размер точки</span>
       <input id="dotSlider" type="range" min="1" max="8" step="1" value="3">
       <span class="read" id="dotSizeVal">3</span>
@@ -119,8 +119,8 @@
     <div class="row">
       <span class="lbl">цвет</span>
       <button class="color" data-c="mono">монохром</button>
-      <button class="color on" data-c="size">по величине p</button>
-      <button class="color" data-c="density">по плотности</button>
+      <button class="color" data-c="size">по величине p</button>
+      <button class="color on" data-c="density">по плотности</button>
     </div>
     <div class="row">
       <button class="preset" data-a="6"  data-b="10">mod 6 × mod 10 · классика</button>
@@ -132,7 +132,9 @@
   </div>
 
   <div class="scatter-hint">
-    серые ячейки содержат мало или 0 простых — это следствие теоремы о простых в арифметических прогрессиях
+    <span style="display:inline-block;width:10px;height:10px;background:#e8e8e4;vertical-align:middle;margin-right:4px;"></span> = нет простых (запрещено теоремой)
+    &nbsp;·&nbsp;
+    <span style="display:inline-block;width:10px;height:10px;background:#111;vertical-align:middle;margin-right:4px;"></span> = много простых
   </div>
 
   <hr class="section-divider-soft">
@@ -143,7 +145,7 @@
       <p>Это следствие основной теоремы арифметики — простые не могут иметь общих делителей с модулем. Если gcd(r, m) &gt; 1, то остаток r при делении на m может встретиться только у самого простого делителя m. Все остальные простые попадают в столбцы и строки, взаимно простые с модулем.</p>
     </div>
     <div class="visual-params">
-      <div class="row"><span>простых</span><span id="metaN">2000</span></div>
+      <div class="row"><span>простых</span><span id="metaN">500</span></div>
       <div class="row"><span>mod A</span><span id="metaA">6</span></div>
       <div class="row"><span>mod B</span><span id="metaB">10</span></div>
       <div class="row"><span>заполненных ячеек</span><span><span id="metaCells">—</span> из <span id="metaTotal">—</span></span></div>
@@ -179,9 +181,9 @@
   const tip = document.getElementById('tip');
 
   let modA = 6, modB = 10;
-  let nPrimes = 2000;
+  let nPrimes = 500;
   let dotSize = 3;
-  let colorMode = 'size';
+  let colorMode = 'density';
 
   // sieve once for max range; expand if needed
   let primes = [];
@@ -262,15 +264,22 @@
         if (density[xi][yi] > maxD) maxD = density[xi][yi];
 
     if (colorMode === 'density') {
+      // empty cells: solid #e8e8e4 grey ("forbidden")
+      // non-empty: lerp #f0ede8 → #111 by alpha = 0.1 + (d/maxD)*0.9 over a #f0ede8 base
       for (let xi = 0; xi < modA; xi++) {
         for (let yi = 0; yi < modB; yi++) {
-          const u = maxD > 0 ? density[xi][yi] / maxD : 0;
-          // f0ede8 -> 111 lerp
-          const r = Math.round(240 + (17 - 240) * u);
-          const g = Math.round(237 + (17 - 237) * u);
-          const b = Math.round(232 + (17 - 232) * u);
-          ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
-          ctx.fillRect(padL + xi * cellW, padT + yi * cellH, cellW, cellH);
+          const d = density[xi][yi];
+          const x = padL + xi * cellW, y = padT + yi * cellH;
+          if (d === 0) {
+            ctx.fillStyle = '#e8e8e4';
+            ctx.fillRect(x, y, cellW, cellH);
+          } else {
+            ctx.fillStyle = '#f0ede8';
+            ctx.fillRect(x, y, cellW, cellH);
+            const a = 0.1 + (maxD > 0 ? d / maxD : 0) * 0.9;
+            ctx.fillStyle = 'rgba(17,17,17,' + a.toFixed(3) + ')';
+            ctx.fillRect(x, y, cellW, cellH);
+          }
         }
       }
     } else {
@@ -313,31 +322,50 @@
       ctx.fillText(String(yi), padL - 6, padT + yi * cellH + cellH/2);
     }
 
-    // dots
-    const logMax = Math.log(maxP);
-    for (let i = 0; i < used.length; i++) {
-      const p = used[i];
-      const xi = p % modA;
-      const yi = p % modB;
-      const jx = (Math.sin(p * 127.1) * 0.5) * cellW * 0.35;
-      const jy = (Math.sin(p * 311.7) * 0.5) * cellH * 0.35;
-      const x = padL + xi * cellW + cellW/2 + jx;
-      const y = padT + yi * cellH + cellH/2 + jy;
-
-      let style;
-      if (colorMode === 'mono') {
-        style = 'rgba(17,17,17,0.5)';
-      } else if (colorMode === 'size') {
-        const hue = Math.round((Math.log(p) / logMax) * 240);
-        style = 'hsla(' + hue + ',60%,35%,0.6)';
-      } else {
-        // density mode: dots in light translucent ink so background carries info
-        style = 'rgba(247,246,242,0.55)';
+    // dots — exactly at cell centers, no jitter
+    if (colorMode === 'density') {
+      // small white markers on non-empty cells just to confirm "there are primes here"
+      ctx.fillStyle = 'rgba(247,246,242,0.85)';
+      for (let xi = 0; xi < modA; xi++) {
+        for (let yi = 0; yi < modB; yi++) {
+          if (density[xi][yi] > 0) {
+            const x = padL + xi * cellW + cellW/2;
+            const y = padT + yi * cellH + cellH/2;
+            ctx.beginPath();
+            ctx.arc(x, y, 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
       }
-      ctx.fillStyle = style;
-      ctx.beginPath();
-      ctx.arc(x, y, dotSize, 0, Math.PI * 2);
-      ctx.fill();
+    } else if (colorMode === 'mono') {
+      // one centered dot per non-empty cell
+      ctx.fillStyle = 'rgba(17,17,17,0.7)';
+      for (let xi = 0; xi < modA; xi++) {
+        for (let yi = 0; yi < modB; yi++) {
+          if (density[xi][yi] > 0) {
+            const x = padL + xi * cellW + cellW/2;
+            const y = padT + yi * cellH + cellH/2;
+            ctx.beginPath();
+            ctx.arc(x, y, dotSize, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+    } else {
+      // size mode: hue by log(p), one dot per prime, all at cell center
+      const logMax = Math.log(maxP) || 1;
+      for (let i = 0; i < used.length; i++) {
+        const p = used[i];
+        const xi = p % modA;
+        const yi = p % modB;
+        const x = padL + xi * cellW + cellW/2;
+        const y = padT + yi * cellH + cellH/2;
+        const hue = Math.round((Math.log(p) / logMax) * 240);
+        ctx.fillStyle = 'hsla(' + hue + ',60%,35%,0.5)';
+        ctx.beginPath();
+        ctx.arc(x, y, dotSize, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
   };
 
