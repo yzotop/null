@@ -209,20 +209,23 @@
     return sp;
   };
 
-  // project (x,y,z) -> screen using current projection
+  // project (x,y,z) -> screen using current projection.
+  // Lorenz envelope: x≈[-25,25], y≈[-30,30], z≈[0,50].
+  // We pick scale so the attractor fills ~80% of the canvas.
   const project = (px, py, pz, W, H) => {
-    const cx = W / 2, cy = H / 2;
-    const scale = Math.min(W, H) / 80;
+    const centerX = W * 0.50;
+    const centerY = H * 0.55;
+    const scale = Math.min(W / 60, H / 55) * 0.85;
     let sx, sy;
     if (projection === 'xy') {
-      sx = cx + px * scale;
-      sy = cy - py * scale;
+      sx = centerX + px * scale;
+      sy = centerY - py * scale;
     } else if (projection === 'xz') {
-      sx = cx + px * scale;
-      sy = H * 0.85 - pz * scale;
+      sx = centerX + px * scale;
+      sy = centerY - (pz - 25) * scale;
     } else if (projection === 'yz') {
-      sx = cx + py * scale;
-      sy = H * 0.85 - pz * scale;
+      sx = centerX + py * scale;
+      sy = centerY - (pz - 25) * scale;
     } else {
       // auto-rotate around z, plus mouse rotX/rotY
       const a = autoAngle + rotY;
@@ -231,10 +234,10 @@
       const ry = px * sa + py * ca;
       // tilt: rotate around X axis (rotX)
       const cb = Math.cos(rotX), sb = Math.sin(rotX);
-      const ry2 = ry * cb - pz * sb;
-      const rz2 = ry * sb + pz * cb;
-      sx = cx + rx * scale;
-      sy = cy + 80 - ry2 * scale * 0.5 - rz2 * scale * 0.7;
+      const ry2 = ry * cb - (pz - 25) * sb;
+      const rz2 = ry * sb + (pz - 25) * cb;
+      sx = centerX + rx * scale;
+      sy = centerY - (ry2 * 0.45 + rz2 * 0.85) * scale;
     }
     return [sx, sy];
   };
