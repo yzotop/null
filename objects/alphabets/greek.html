@@ -50,16 +50,37 @@
     color: inherit;
     display: block;
     transition: background 0.1s ease;
+    border-left: 3px solid transparent;
   }
-  a.greek-cell { cursor: pointer; }
-  a.greek-cell:hover { background: #f0ede8; }
+  /* inactive cell: dimmed text */
+  .greek-cell .greek-letter { color: #ccc; }
+  .greek-cell .greek-name   { color: #ddd; }
+  .greek-cell .greek-usage  { color: #ddd; }
+
+  /* active cell: link */
+  a.greek-cell {
+    cursor: pointer;
+    background: #f0ede8;
+  }
+  a.greek-cell .greek-letter {
+    transition: transform 0.15s ease;
+  }
+  a.greek-cell:hover {
+    background: #e8e4dc;
+  }
+  a.greek-cell:hover .greek-letter {
+    transform: scale(1.05);
+  }
+  a.greek-cell .greek-name  { color: #888; }
+  a.greek-cell .greek-usage { color: #555; }
+
   .greek-letter {
     font-family: 'Times New Roman', Georgia, serif;
     font-style: italic;
     font-size: 42px;
-    color: #111;
     line-height: 1;
     display: inline-block;
+    transform-origin: left center;
   }
   .greek-letter-upper {
     font-family: 'Times New Roman', Georgia, serif;
@@ -71,14 +92,12 @@
   .greek-name {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: #bbb;
     letter-spacing: .04em;
     margin-top: 8px;
   }
   .greek-usage {
     font-family: var(--font-sans);
     font-size: 11px;
-    color: #666;
     line-height: 1.5;
     margin-top: 4px;
   }
@@ -89,12 +108,24 @@
     margin-top: 8px;
     letter-spacing: .04em;
   }
-  .greek-active-dot {
+  .greek-active-marker {
     position: absolute;
     top: 12px;
     right: 12px;
-    width: 6px; height: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .greek-active-dot {
+    width: 8px; height: 8px;
     border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .greek-active-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
   }
 
   .active-list {
@@ -181,7 +212,8 @@
 </footer>
 
 <script>
-  const COLORS = { constant: '#111', operator: '#8e44ad', hypothesis: '#e67e22' };
+  const COLORS = { constant: '#c44a32', operator: '#8e44ad', hypothesis: '#e67e22' };
+  const TYPE_RU = { constant: 'константа', operator: 'оператор', hypothesis: 'гипотеза' };
   const LETTERS = [
     ['α','Α','альфа',     'угол · коэффициент · вероятность ошибки 1-го рода'],
     ['β','Β','бета',      'угол · коэффициент регрессии · вероятность ошибки 2-го рода'],
@@ -216,22 +248,29 @@
   const grid = document.getElementById('greek');
   grid.innerHTML = LETTERS.map((row) => {
     const [low, up, name, usage, link] = row;
-    const dot = link
-      ? '<span class="greek-active-dot" style="background:' + (COLORS[link.type] || '#111') + '"></span>'
+    const color = link ? (COLORS[link.type] || '#111') : null;
+    const marker = link
+      ? '<span class="greek-active-marker">' +
+          '<span class="greek-active-label" style="color:' + color + '">' + (TYPE_RU[link.type] || link.type) + '</span>' +
+          '<span class="greek-active-dot" style="background:' + color + '"></span>' +
+        '</span>'
       : '';
     const linkHTML = link
       ? '<div class="greek-link">→ ' + link.label + '</div>'
       : '';
+    const letterStyle = color ? ' style="color:' + color + '"' : '';
     const inner =
-      dot +
-      '<span class="greek-letter">' + low + '</span>' +
+      marker +
+      '<span class="greek-letter"' + letterStyle + '>' + low + '</span>' +
       '<span class="greek-letter-upper">' + up + '</span>' +
       '<div class="greek-name">' + name + '</div>' +
       '<div class="greek-usage">' + usage + '</div>' +
       linkHTML;
-    return link
-      ? '<a class="greek-cell" href="' + link.href + '">' + inner + '</a>'
-      : '<div class="greek-cell">' + inner + '</div>';
+    if (link) {
+      const cellStyle = ' style="border-left-color:' + color + '"';
+      return '<a class="greek-cell" href="' + link.href + '"' + cellStyle + '>' + inner + '</a>';
+    }
+    return '<div class="greek-cell">' + inner + '</div>';
   }).join('');
 </script>
 
