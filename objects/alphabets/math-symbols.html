@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>математические символы — null/objects/alphabets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .ah-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ah-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 36px;
+    line-height: 1.1; margin: 0 0 12px 0;
+  }
+  .ah-sub {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 16px;
+    color: #666; line-height: 1.55; max-width: 640px;
+  }
+  .sec-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: #bbb;
+    letter-spacing: .12em; text-transform: uppercase;
+    margin: 36px 0 14px 0;
+  }
+  .sym-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+  }
+  @media (max-width: 900px) { .sym-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 640px) { .sym-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .sym-cell {
+    background: #f7f6f2;
+    padding: 18px 14px;
+    position: relative;
+    min-height: 110px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: background 0.1s ease;
+  }
+  a.sym-cell { cursor: pointer; }
+  a.sym-cell:hover { background: #f0ede8; }
+  .sym-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 36px;
+    color: #111;
+    line-height: 1;
+  }
+  .sym-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: .04em;
+    margin-top: 10px;
+  }
+  .sym-usage {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: #666;
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+  .sym-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #c44a32;
+    margin-top: 8px;
+    letter-spacing: .04em;
+  }
+  .sym-active-dot {
+    position: absolute; top: 12px; right: 12px;
+    width: 6px; height: 6px; border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / alphabets / математические символы</div>
+
+<main class="container">
+<article>
+
+  <div class="ah-tag">объекты · алфавиты</div>
+  <h1 class="ah-h1">математические символы</h1>
+  <p class="ah-sub">ℕ ℤ ℚ ℝ ℂ · специальные символы Unicode для математики.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <div class="sec-label">// множества чисел</div>
+  <div class="sym-grid" id="grid-sets"></div>
+
+  <div class="sec-label">// операторы · уже есть как объекты</div>
+  <div class="sym-grid" id="grid-ops"></div>
+
+  <div class="sec-label">// стрелки и прочее</div>
+  <div class="sym-grid" id="grid-misc"></div>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/alphabets/math-symbols.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+  const COLORS = { type: '#2c5fb6', special: '#c44a32', operator: '#8e44ad', essay: '#777' };
+
+  const SETS = [
+    ['ℕ', 'натуральные', '0, 1, 2, 3, …', { href: '../numbers/types/natural.html', label: 'натуральные числа', type: 'type' }],
+    ['ℤ', 'целые', '… −2, −1, 0, 1, 2, …'],
+    ['ℚ', 'рациональные', 'дроби p/q'],
+    ['ℝ', 'вещественные', 'числовая прямая'],
+    ['ℂ', 'комплексные', 'a + bi', { href: '../numbers/types/complex.html', label: 'комплексные числа', type: 'type' }],
+    ['ℙ', 'простые', '2, 3, 5, 7, 11, …', { href: '../numbers/types/prime.html', label: 'простые числа', type: 'type' }],
+    ['ℵ', 'алеф', 'кардинальные числа · бесконечности', { href: '../numbers/special/aleph.html', label: 'алеф-ноль', type: 'special' }],
+    ['ℯ', 'число e', 'основание натурального логарифма', { href: '../numbers/constants/euler.html', label: 'число Эйлера', type: 'constant' }],
+    ['ℏ', 'планк', 'постоянная Планка / 2π'],
+    ['ℓ', 'эль', 'длина · ℓ-норма'],
+    ['℘', 'степ. множ.', '𝒫(X) — все подмножества'],
+    ['ℑ', 'мнимая часть', 'Im(z) числа z'],
+    ['ℜ', 'веществ. часть', 'Re(z) числа z']
+  ];
+
+  const OPS = [
+    ['∑', 'сумма', 'Σ aₖ — повторённое сложение', { href: '../operators/sum.html', label: 'оператор ∑', type: 'operator' }],
+    ['∫', 'интеграл', 'предел сумм Римана', { href: '../operators/integral.html', label: 'оператор ∫', type: 'operator' }],
+    ['∂', 'частная', '∂f/∂x — частная производная', { href: '../operators/partial.html', label: 'оператор ∂', type: 'operator' }],
+    ['∇', 'набла', 'градиент · дивергенция · ротор', { href: '../operators/nabla.html', label: 'оператор ∇', type: 'operator' }],
+    ['⊕', 'XOR', 'исключающее или', { href: '../operators/xor.html', label: 'оператор ⊕', type: 'operator' }],
+    ['mod', 'модуль', 'остаток от деления', { href: '../operators/mod.html', label: 'оператор mod', type: 'operator' }],
+    ['⌊⌋', 'floor', 'округление вниз', { href: '../operators/floor.html', label: 'оператор ⌊⌋', type: 'operator' }],
+    ['!', 'факториал', 'n! = 1·2·3·…·n', { href: '../operators/factorial.html', label: 'оператор !', type: 'operator' }]
+  ];
+
+  const MISC = [
+    ['∞', 'бесконечность', 'не число · потенциальное и актуальное', { href: '../../essays/infinity.html', label: 'эссе о бесконечности', type: 'essay' }],
+    ['∅', 'пустое мн-во', '{ } — множество без элементов'],
+    ['∈', 'принадлежит', 'x ∈ A — x является элементом A'],
+    ['⊂', 'подмножество', 'A ⊂ B — каждый элемент A в B']
+  ];
+
+  function buildGrid(id, items) {
+    const grid = document.getElementById(id);
+    grid.innerHTML = items.map((row) => {
+      const [glyph, name, usage, link] = row;
+      const dot = link
+        ? '<span class="sym-active-dot" style="background:' + (COLORS[link.type] || '#111') + '"></span>'
+        : '';
+      const linkHTML = link
+        ? '<div class="sym-link">→ ' + link.label + '</div>'
+        : '';
+      const inner =
+        dot +
+        '<span class="sym-glyph">' + glyph + '</span>' +
+        '<div class="sym-name">' + name + '</div>' +
+        '<div class="sym-usage">' + usage + '</div>' +
+        linkHTML;
+      return link
+        ? '<a class="sym-cell" href="' + link.href + '">' + inner + '</a>'
+        : '<div class="sym-cell">' + inner + '</div>';
+    }).join('');
+  }
+
+  buildGrid('grid-sets', SETS);
+  buildGrid('grid-ops', OPS);
+  buildGrid('grid-misc', MISC);
+</script>
+
+</body>
+</html>

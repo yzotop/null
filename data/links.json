@@ -481,7 +481,9 @@
     { "id": "mu-hmn",     "type": "music", "title": "Happy Machine Noises", "url": "/null/music/delta-machine/happy-machine-noises.html", "glyph": "♪" },
     { "id": "mu-disc-dm", "type": "music", "title": "DISCRETE (delta machine)", "url": "/null/music/delta-machine/discrete.html", "glyph": "◼" },
     { "id": "mu-imc",     "type": "music", "title": "Instantaneous Momentary Calculations", "url": "/null/music/delta-machine/instantaneous.html", "glyph": "∂" },
-    { "id": "aleph0",     "type": "special", "title": "ℵ₀ алеф-ноль", "url": "/null/objects/numbers/special/aleph.html", "glyph": "ℵ₀" }
+    { "id": "aleph0",     "type": "special", "title": "ℵ₀ алеф-ноль", "url": "/null/objects/numbers/special/aleph.html", "glyph": "ℵ₀" },
+    { "id": "alph-greek", "type": "alphabet", "title": "греческий алфавит", "url": "/null/objects/alphabets/greek.html", "glyph": "Ω" },
+    { "id": "alph-math",  "type": "alphabet", "title": "математические символы", "url": "/null/objects/alphabets/math-symbols.html", "glyph": "ℕ" }
   ],
   "edges": [
     {
@@ -997,6 +999,15 @@
     { "from": "aleph0",     "to": "natural" },
     { "from": "aleph0",     "to": "cantor" },
     { "from": "aleph0",     "to": "es-zfc" },
-    { "from": "aleph0",     "to": "es-infinity" }
+    { "from": "aleph0",     "to": "es-infinity" },
+    { "from": "alph-greek", "to": "pi" },
+    { "from": "alph-greek", "to": "phi" },
+    { "from": "alph-greek", "to": "gamma" },
+    { "from": "alph-greek", "to": "riemann" },
+    { "from": "alph-math",  "to": "natural" },
+    { "from": "alph-math",  "to": "complex" },
+    { "from": "alph-math",  "to": "prime" },
+    { "from": "alph-math",  "to": "aleph0" },
+    { "from": "alph-math",  "to": "op-sum" }
   ]
 }

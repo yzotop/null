@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>алфавиты — null/objects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .ah-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ah-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 36px;
+    line-height: 1.1; margin: 0 0 12px 0;
+  }
+  .ah-sub {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 16px;
+    color: #666; line-height: 1.55; max-width: 620px;
+  }
+  .ah-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+  }
+  @media (max-width: 640px) { .ah-grid { grid-template-columns: 1fr; } }
+  .ah-card {
+    display: block; text-decoration: none; color: inherit;
+    border: 1px solid var(--border);
+    background: #fcfbf8; padding: 24px 22px;
+    transition: border-color 0.12s ease, background 0.12s ease;
+  }
+  .ah-card:hover { border-color: #111; background: #f0ede8; }
+  .ah-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 14px;
+  }
+  .ah-mtag {
+    font-family: var(--font-mono); font-size: 9px;
+    color: #bbb; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .ah-arrow { font-family: var(--font-mono); font-size: 14px; color: #bbb; }
+  .ah-card:hover .ah-arrow { color: #111; }
+  .ah-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 44px;
+    line-height: 1; color: #111; margin-bottom: 12px;
+  }
+  .ah-title {
+    font-family: var(--font-sans);
+    font-size: 18px; font-weight: 500;
+    color: #111; margin-bottom: 6px;
+  }
+  .ah-desc {
+    font-family: var(--font-sans);
+    font-size: 13px; color: #777;
+    line-height: 1.55; margin-bottom: 10px;
+  }
+  .ah-meta {
+    font-family: var(--font-mono);
+    font-size: 10px; color: #aaa;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / alphabets</div>
+
+<main class="container">
+<article>
+
+  <div class="ah-tag">объекты · алфавиты</div>
+  <h1 class="ah-h1">алфавиты</h1>
+  <p class="ah-sub">символы, которые математика взяла из других языков. каждый — с историей и функцией.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <div class="ah-grid">
+
+    <a class="ah-card" href="greek.html">
+      <div class="ah-head"><span class="ah-mtag">алфавит · §01</span><span class="ah-arrow">→</span></div>
+      <div class="ah-glyph">Ω</div>
+      <div class="ah-title">греческий алфавит</div>
+      <div class="ah-desc">24 буквы. π φ γ ζ λ σ θ — большинство уже живут на сайте как объекты.</div>
+      <div class="ah-meta">24 символа · 5 активны на сайте</div>
+    </a>
+
+    <a class="ah-card" href="math-symbols.html">
+      <div class="ah-head"><span class="ah-mtag">алфавит · §02</span><span class="ah-arrow">→</span></div>
+      <div class="ah-glyph" style="font-style:normal;">ℕ</div>
+      <div class="ah-title">математические символы</div>
+      <div class="ah-desc">ℕ ℤ ℚ ℝ ℂ ℙ ℵ и Unicode-операторы. специальные символы, созданные для математики.</div>
+      <div class="ah-meta">25+ символов · Unicode-блоки</div>
+    </a>
+
+  </div>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/alphabets/index.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

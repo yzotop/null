@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>греческий алфавит — null/objects/alphabets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .ah-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ah-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 36px;
+    line-height: 1.1; margin: 0 0 12px 0;
+  }
+  .ah-sub {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 16px;
+    color: #666; line-height: 1.55; max-width: 640px;
+  }
+  .intro {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 16px; line-height: 1.7;
+    color: #1a1a1a; max-width: 640px;
+    margin: 28px 0 28px 0;
+  }
+  .greek-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+  }
+  @media (max-width: 900px) { .greek-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 640px) { .greek-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .greek-cell {
+    background: #f7f6f2;
+    padding: 20px 16px;
+    position: relative;
+    min-height: 130px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: background 0.1s ease;
+  }
+  a.greek-cell { cursor: pointer; }
+  a.greek-cell:hover { background: #f0ede8; }
+  .greek-letter {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 42px;
+    color: #111;
+    line-height: 1;
+    display: inline-block;
+  }
+  .greek-letter-upper {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: normal;
+    font-size: 18px;
+    color: #bbb;
+    margin-left: 6px;
+  }
+  .greek-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: .04em;
+    margin-top: 8px;
+  }
+  .greek-usage {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: #666;
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+  .greek-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #c44a32;
+    margin-top: 8px;
+    letter-spacing: .04em;
+  }
+  .greek-active-dot {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+
+  .active-list {
+    margin-top: 32px;
+  }
+  .active-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .active-tiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .active-tile {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #555;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    padding: 6px 10px;
+    transition: all 0.1s ease;
+  }
+  .active-tile:hover { border-color: #111; color: #111; background: #f0ede8; }
+  .active-tile em {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #111;
+    margin-right: 4px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / alphabets / греческий</div>
+
+<main class="container">
+<article>
+
+  <div class="ah-tag">объекты · алфавиты</div>
+  <h1 class="ah-h1">греческий алфавит</h1>
+  <p class="ah-sub">математика использует греческий с XVII века. 24 буквы — каждая со своей функцией.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <p class="intro">Греческий алфавит вошёл в математику через Европу XVII–XVIII веков. Эйлер, Гаусс, Риман писали формулы по-латински, но брали греческие буквы для констант и переменных. π для периметра круга. φ для золотого сечения. ζ для дзета-функции. Традиция закрепилась — теперь греческий язык математики.</p>
+
+  <div class="greek-grid" id="greek"></div>
+
+  <div class="active-list">
+    <div class="active-label">// активны на сайте · 5 из 24</div>
+    <div class="active-tiles">
+      <a class="active-tile" href="../numbers/constants/gamma.html"><em>γ</em>гамма · константа</a>
+      <a class="active-tile" href="../ideas/hypotheses/riemann.html"><em>ζ</em>дзета · Риман</a>
+      <a class="active-tile" href="../numbers/constants/pi.html"><em>π</em>пи · константа</a>
+      <a class="active-tile" href="../operators/sum.html"><em>σ/Σ</em>сигма · сумма</a>
+      <a class="active-tile" href="../numbers/constants/phi.html"><em>φ</em>фи · константа</a>
+    </div>
+  </div>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/alphabets/greek.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+  const COLORS = { constant: '#111', operator: '#8e44ad', hypothesis: '#e67e22' };
+  const LETTERS = [
+    ['α','Α','альфа',     'угол · коэффициент · вероятность ошибки 1-го рода'],
+    ['β','Β','бета',      'угол · коэффициент регрессии · вероятность ошибки 2-го рода'],
+    ['γ','Γ','гамма',     'константа Эйлера-Маскерони · гамма-функция · угол',
+     { href: '../numbers/constants/gamma.html', label: 'постоянная γ', type: 'constant' }],
+    ['δ','Δ','дельта',    'малое изменение · дискриминант · оператор Лапласа'],
+    ['ε','Ε','эпсилон',   'малое число · предел в ε-δ определении'],
+    ['ζ','Ζ','дзета',     'дзета-функция Римана ζ(s)',
+     { href: '../ideas/hypotheses/riemann.html', label: 'гипотеза Римана', type: 'hypothesis' }],
+    ['η','Η','эта',       'КПД · обучаемость в машинном обучении'],
+    ['θ','Θ','тета',      'угол · параметр в статистике'],
+    ['ι','Ι','йота',      'редко · иногда для воображаемой единицы'],
+    ['κ','Κ','каппа',     'кривизна · коэффициент теплопроводности'],
+    ['λ','Λ','лямбда',    'собственное значение · длина волны · лямбда-исчисление'],
+    ['μ','Μ','мю',        'среднее · коэффициент трения · микро (10⁻⁶)'],
+    ['ν','Ν','ню',        'частота · степени свободы'],
+    ['ξ','Ξ','кси',       'случайная переменная · координата'],
+    ['ο','Ο','омикрон',   'O-нотация (асимптотика)'],
+    ['π','Π','пи',        'отношение длины окружности к диаметру · 3.14159…',
+     { href: '../numbers/constants/pi.html', label: 'число π', type: 'constant' }],
+    ['ρ','Ρ','ро',        'корреляция · плотность · радиус'],
+    ['σ','Σ','сигма',     'стандартное отклонение · сумма (Σ) · поверхность',
+     { href: '../operators/sum.html', label: 'оператор ∑', type: 'operator' }],
+    ['τ','Τ','тау',       '2π = 6.283… · период · сдвиг'],
+    ['υ','Υ','ипсилон',   'редко в математике'],
+    ['φ','Φ','фи',        'золотое сечение φ = 1.618… · угол · функция Эйлера',
+     { href: '../numbers/constants/phi.html', label: 'золотое сечение', type: 'constant' }],
+    ['χ','Χ','хи',        'хи-квадрат распределение · характеристика'],
+    ['ψ','Ψ','пси',       'волновая функция · поток'],
+    ['ω','Ω','омега',     'угловая скорость · предельный ординал · Ω-нотация']
+  ];
+  const grid = document.getElementById('greek');
+  grid.innerHTML = LETTERS.map((row) => {
+    const [low, up, name, usage, link] = row;
+    const dot = link
+      ? '<span class="greek-active-dot" style="background:' + (COLORS[link.type] || '#111') + '"></span>'
+      : '';
+    const linkHTML = link
+      ? '<div class="greek-link">→ ' + link.label + '</div>'
+      : '';
+    const inner =
+      dot +
+      '<span class="greek-letter">' + low + '</span>' +
+      '<span class="greek-letter-upper">' + up + '</span>' +
+      '<div class="greek-name">' + name + '</div>' +
+      '<div class="greek-usage">' + usage + '</div>' +
+      linkHTML;
+    return link
+      ? '<a class="greek-cell" href="' + link.href + '">' + inner + '</a>'
+      : '<div class="greek-cell">' + inner + '</div>';
+  }).join('');
+</script>
+
+</body>
+</html>
