@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DISCRETE — null/music/delta machine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .ep-tag { font-family: 'Times New Roman', Georgia, serif; font-style: italic; font-size: 10px; color: #bbb; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
+  .ep-h1  { font-family: 'Times New Roman', Georgia, serif; font-size: 44px; font-weight: 400; color: #111; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 10px; }
+  .ep-sub { font-family: 'Times New Roman', Georgia, serif; font-style: italic; font-size: 17px; color: #666; line-height: 1.6; max-width: 580px; }
+  .ep-meta-table { width: 100%; border-collapse: collapse; margin: 28px 0 12px; max-width: 600px; }
+  .ep-meta-table td { padding: 8px 0; border-bottom: 0.5px solid var(--border); font-family: var(--font-mono); font-size: 11px; vertical-align: top; }
+  .ep-meta-table td.k { color: #bbb; width: 160px; text-transform: uppercase; letter-spacing: 0.05em; font-size: 10px; }
+  .ep-meta-table td.v { color: #111; }
+  .section-label { font-family: var(--font-mono); font-size: 9px; color: #bbb; letter-spacing: 0.12em; text-transform: uppercase; margin: 36px 0 14px; }
+  .ep-concept p { font-family: 'Times New Roman', Georgia, serif; font-size: 16px; line-height: 1.75; color: #1a1a1a; margin-bottom: 14px; max-width: 660px; }
+  .track-block { border-bottom: 1px solid #e8e8e4; padding: 24px 0; }
+  .track-block:last-child { border-bottom: none; }
+  .track-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
+  .track-num { font-family: var(--font-mono); font-size: 11px; color: #bbb; }
+  .track-name { font-family: 'Times New Roman', Georgia, serif; font-size: 22px; color: #111; }
+  .track-desc { font-family: var(--font-sans); font-size: 13px; color: #666; line-height: 1.65; max-width: 660px; }
+  .code-block { background: #f0ede8; border-left: 2px solid #111; padding: 16px 20px; margin-bottom: 8px; overflow: hidden; }
+  .code-block pre { font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.7; color: #333; white-space: pre; overflow-x: auto; margin: 0; }
+  .kw  { color: #2c5fb6; }
+  .cm  { color: #999; font-style: italic; }
+  .str { color: #c44a32; }
+  .num { color: #1a7a4a; }
+  .code-toggle { font-family: var(--font-mono); font-size: 10px; color: #888; cursor: pointer; border: none; background: transparent; padding: 4px 0; margin-top: 4px; letter-spacing: 0.04em; }
+  .code-toggle:hover { color: #111; }
+  .code-note { font-family: var(--font-mono); font-size: 10px; color: #bbb; margin-top: 6px; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../../">null</a>
+  <nav>
+    <a href="../../objects/">объекты</a>
+    <a href="../../essays/">эссе</a>
+    <a href="../../visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="../" class="active">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / music / delta machine / discrete</div>
+
+<main class="container">
+<article>
+
+  <div class="ep-tag">музыка · delta machine · sonic pi</div>
+  <h1 class="ep-h1">DISCRETE</h1>
+  <p class="ep-sub">холодная математика. простые числа как мелодия. in production.</p>
+
+  <hr class="section-divider">
+
+  <table class="ep-meta-table">
+    <tr><td class="k">артист</td><td class="v">DELTA MACHINE</td></tr>
+    <tr><td class="k">движок</td><td class="v">Sonic Pi</td></tr>
+    <tr><td class="k">треков</td><td class="v">4 (запланировано)</td></tr>
+    <tr><td class="k">длительность</td><td class="v">08:00 (план)</td></tr>
+    <tr><td class="k">статус</td><td class="v">in production · 2026</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="section-label">// концепт</div>
+  <div class="ep-concept">
+    <p>DISCRETE — это математика без компромисса.</p>
+    <p>Мелодия индексируется простыми числами. Ноты выбираются из F-major pentatonic через pr[i] % 8.</p>
+    <p>Prime · Twin · Recurrence · Divisors — четыре теоремы как четыре трека. Звучит как доказательство.</p>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <div class="section-label">// треки</div>
+
+<div class="track-block">
+  <div class="track-head">
+    <span class="track-num">01</span>
+    <span class="track-name">Prime</span>
+  </div>
+  <div class="track-desc">тон только если n простое. пауза если составное.</div>
+</div>
+
+<div class="track-block">
+  <div class="track-head">
+    <span class="track-num">02</span>
+    <span class="track-name">Twin</span>
+  </div>
+  <div class="track-desc">два голоса. звучат вместе если (n, n+2) простые.</div>
+</div>
+
+<div class="track-block">
+  <div class="track-head">
+    <span class="track-num">03</span>
+    <span class="track-name">Recurrence</span>
+  </div>
+  <div class="track-desc">следующая нота зависит от предыдущей.</div>
+</div>
+
+<div class="track-block">
+  <div class="track-head">
+    <span class="track-num">04</span>
+    <span class="track-name">Divisors</span>
+  </div>
+  <div class="track-desc">количество делителей n = плотность звука.</div>
+</div>
+
+  <hr class="section-divider-soft">
+
+  <div class="section-label">// код · 01.rb · Prime</div>
+  <div class="code-block"><pre class="code-full"># Discrete - Track 01: Prime
+# dur = 120.0s
+# Pure melodic, crystal xylophone. No beats.
+
+start_t = vt
+dur = 120.0
+
+use_bpm 168
+use_debug false
+
+define :alive do |st, d|
+  (vt - st) &lt; d
+end
+
+define :master_gain do |st, d|
+  t = vt - st
+  return 1.0 if t &lt; d - 14
+  g = (d - t) / 14.0
+  return 0.0 if g &lt; 0
+  g
+end
+
+define :elapsed do |st|
+  vt - st
+end
+
+define :section do |st|
+  t = elapsed(st)
+  return 0 if t &lt; 30
+  return 1 if t &lt; 60
+  return 2 if t &lt; 90
+  3
+end
+
+define :prime_q do |n|
+  return false if n &lt; 2
+  return true if n == 2
+  return false if n.even?
+  i = 3
+  lim = Math.sqrt(n).floor
+  while i &lt;= lim
+    return false if (n % i).zero?
+    i += 2
+  end
+  true
+end
+
+define :prime_list do |count|
+  out = []
+  x = 2
+  while out.length &lt; count
+    out.push(x) if prime_q(x)
+    x += 1
+  end
+  out
+end
+
+pr = prime_list(256)
+scale_notes = scale(:f4, :major_pentatonic, num_octaves: 3)
+
+# Prime-indexed melodic sequence
+degrees = ring(0, 1, 2, 3, 4, 5, 6, 7)
+melody = pr.map { |p| scale_notes[(degrees[p % 8] + (p % 3)) % scale_notes.length] }
+harmony = pr.map { |p| scale_notes[(degrees[(p + 2) % 8] + (p % 2)) % scale_notes.length] - 12 }
+
+set :melody_ring, ring(*melody)
+set :harmony_ring, ring(*harmony)
+
+live_loop :prime_clock do
+  stop unless alive(start_t, dur)
+  cue :tick
+  sleep 0.125
+end
+
+# Main xylophone melody — crystal glockenspiel
+live_loop :prime_xylo do
+  sync :tick
+  stop unless alive(start_t, dur)
+  g = master_gain(start_t, dur)
+  sec = section(start_t)
+  idx = tick(:xylo_idx)
+
+  n = get(:melody_ring)[idx]
+  next if n.nil?
+
+  with_fx :reverb, room: 0.88, mix: 0.32 do
+    with_fx :echo, phase: 1.0, decay: 6, mix: 0.22 do
+      sample :glockenspiel, note: n, amp: 1.0 * g, release: 0.08
+    end
+  end
+end
+
+# Soft harmonic answer — lower register, same timbre
+live_loop :prime_xylo_low do
+  sync :tick
+  stop unless alive(start_t, dur)
+  g = master_gain(start_t, dur)
+  sec = section(start_t)
+  idx = tick(:xylo_low_idx)
+  next unless [2, 5, 7].include?(idx % 8)
+
+  n = get(:harmony_ring)[idx + 3]
+  next if n.nil?
+
+  with_fx :reverb, room: 0.9, mix: 0.35 do
+    sample :glockenspiel, note: n, amp: 0.6 * g, release: 0.1
+  end
+end
+
+# Occasional high sparkle — prime accents
+live_loop :prime_sparkle do
+  sync :tick
+  stop unless alive(start_t, dur)
+  g = master_gain(start_t, dur)
+  idx = tick(:spark_idx)
+  next unless (idx % 5).zero?
+
+  n = get(:melody_ring)[idx + 11]
+  next if n.nil?
+
+  with_fx :reverb, room: 0.92, mix: 0.4 do
+    sample :glockenspiel, note: n + 12, amp: 0.5 * g, release: 0.06
+  end
+end
+
+</pre></div>
+  <div class="code-note">// альбом в производстве · код может измениться</div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">альбом</span><a href="../discrete.html">NULL · DISCRETE →</a></div>
+      <div class="related-link"><span class="related-link-type">тип</span><a href="../../objects/numbers/types/prime.html">простые числа →</a></div>
+      <div class="related-link"><span class="related-link-type">гипотеза</span><a href="../../objects/ideas/hypotheses/twin-primes.html">простые близнецы →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../../visuals/prime-field.html">поле простых →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../../visuals/ulam.html">спираль улама →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/music/delta-machine/discrete.html</span>
+  <a href="../../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+function highlightSonicPi(code) {
+  var KEYWORDS = ['define','do','end','if','elsif','else','with_fx','live_loop','in_thread','use_synth','use_bpm','use_debug','use_sched_ahead_time','synth','sample','sleep','set','get','tick','look','stop','while','times','ring','scale','choose','one_in','rand','rrand','min','max','floor','to_i','chars','map','join','spread','break','next','return','vt','Math','cue','sync','take'];
+  var h = code;
+  h = h.replace(/(#[^\n]*)/g, '<span class="cm">$1</span>');
+  h = h.replace(new RegExp('\\b(' + KEYWORDS.join('|') + ')\\b','g'), '<span class="kw">$1</span>');
+  h = h.replace(/(:[a-z_][a-z_0-9]*)/g, '<span class="str">$1</span>');
+  h = h.replace(/(\d+\.?\d*)/g, '<span class="num">$1</span>');
+  return h;
+}
+
+document.querySelectorAll('.code-full').forEach(function(block) {
+  var raw = block.textContent;
+  var lines = raw.split('\n');
+  var parent = block.parentNode;
+  if (lines.length <= 35) {
+    block.innerHTML = highlightSonicPi(raw.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'));
+    return;
+  }
+  var preview = lines.slice(0, 35).join('\n');
+  var rest = lines.slice(35).join('\n');
+  var prePreview = document.createElement('pre');
+  prePreview.innerHTML = highlightSonicPi(preview.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'));
+  var preRest = document.createElement('pre');
+  preRest.innerHTML = highlightSonicPi(rest.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'));
+  preRest.style.display = 'none';
+  block.replaceWith(prePreview, preRest);
+  var btn = document.createElement('button');
+  btn.className = 'code-toggle';
+  var hiddenCount = lines.length - 35;
+  btn.textContent = '[ показать полностью \u2192 ] (' + hiddenCount + ' \u0441\u0442\u0440\u043e\u043a)';
+  btn.onclick = function() {
+    if (preRest.style.display === 'none') {
+      preRest.style.display = 'block';
+      btn.textContent = '[ \u0441\u0432\u0435\u0440\u043d\u0443\u0442\u044c \u2191 ]';
+    } else {
+      preRest.style.display = 'none';
+      btn.textContent = '[ \u043f\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e \u2192 ] (' + hiddenCount + ' \u0441\u0442\u0440\u043e\u043a)';
+    }
+  };
+  parent.appendChild(btn);
+});
+</script>
+
+</body>
+</html>

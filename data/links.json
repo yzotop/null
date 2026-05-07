@@ -475,7 +475,12 @@
     { "id": "ch-which",    "type": "chart", "title": "какой график?", "url": "/null/charts/which.html", "glyph": "?" },
     { "id": "ch-bad",      "type": "chart", "title": "плохие графики", "url": "/null/charts/bad.html", "glyph": "✗" },
     { "id": "ch-history",  "type": "chart", "title": "история визуализации", "url": "/null/charts/history.html", "glyph": "∿" },
-    { "id": "ch-sound",    "type": "chart", "title": "звук чисел", "url": "/null/charts/sound.html", "glyph": "♩" }
+    { "id": "ch-sound",    "type": "chart", "title": "звук чисел", "url": "/null/charts/sound.html", "glyph": "♩" },
+    { "id": "mu-dip",     "type": "music", "title": "Delta Initiation Protocol", "url": "/null/music/delta-machine/delta-initiation-protocol.html", "glyph": "δ" },
+    { "id": "mu-8",       "type": "music", "title": "8", "url": "/null/music/delta-machine/8.html", "glyph": "8" },
+    { "id": "mu-hmn",     "type": "music", "title": "Happy Machine Noises", "url": "/null/music/delta-machine/happy-machine-noises.html", "glyph": "♪" },
+    { "id": "mu-disc-dm", "type": "music", "title": "DISCRETE (delta machine)", "url": "/null/music/delta-machine/discrete.html", "glyph": "◼" },
+    { "id": "mu-imc",     "type": "music", "title": "Instantaneous Momentary Calculations", "url": "/null/music/delta-machine/instantaneous.html", "glyph": "∂" }
   ],
   "edges": [
     {
@@ -970,6 +975,15 @@
     { "from": "ch-types",    "to": "ch-explorer" },
     { "from": "ch-which",    "to": "ch-types" },
     { "from": "ch-bad",      "to": "ch-types" },
-    { "from": "ch-history",  "to": "ch-types" }
+    { "from": "ch-history",  "to": "ch-types" },
+    { "from": "mu-dip",     "to": "natural" },
+    { "from": "mu-dip",     "to": "mu-opstack" },
+    { "from": "mu-8",       "to": "cu-65536" },
+    { "from": "mu-hmn",     "to": "mu-opstack" },
+    { "from": "mu-disc-dm", "to": "prime" },
+    { "from": "mu-disc-dm", "to": "twin-primes" },
+    { "from": "mu-disc-dm", "to": "mu-discrete" },
+    { "from": "mu-imc",     "to": "mu-dip" },
+    { "from": "mu-imc",     "to": "mu-opstack" }
   ]
 }
