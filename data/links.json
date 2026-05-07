@@ -468,7 +468,14 @@
       "title": "65536",
       "url": "/null/objects/numbers/curious/65536.html",
       "glyph": "2¹⁶"
-    }
+    },
+    { "id": "ch-explorer", "type": "chart", "title": "explorer", "url": "/null/charts/explorer.html", "glyph": "ƒ" },
+    { "id": "ch-ascii",    "type": "chart", "title": "ascii графики", "url": "/null/charts/ascii.html", "glyph": "░" },
+    { "id": "ch-types",    "type": "chart", "title": "типы графиков", "url": "/null/charts/types.html", "glyph": "☰" },
+    { "id": "ch-which",    "type": "chart", "title": "какой график?", "url": "/null/charts/which.html", "glyph": "?" },
+    { "id": "ch-bad",      "type": "chart", "title": "плохие графики", "url": "/null/charts/bad.html", "glyph": "✗" },
+    { "id": "ch-history",  "type": "chart", "title": "история визуализации", "url": "/null/charts/history.html", "glyph": "∿" },
+    { "id": "ch-sound",    "type": "chart", "title": "звук чисел", "url": "/null/charts/sound.html", "glyph": "♩" }
   ],
   "edges": [
     {
@@ -954,6 +961,15 @@
     { "from": "mu-opstack", "to": "op-factorial" },
     { "from": "cu-65536", "to": "natural" },
     { "from": "cu-65536", "to": "op-mod" },
-    { "from": "mu-constants", "to": "cu-65536" }
+    { "from": "mu-constants", "to": "cu-65536" },
+    { "from": "ch-explorer", "to": "prime" },
+    { "from": "ch-explorer", "to": "pi" },
+    { "from": "ch-ascii",    "to": "prime" },
+    { "from": "ch-sound",    "to": "prime" },
+    { "from": "ch-sound",    "to": "mu-opstack" },
+    { "from": "ch-types",    "to": "ch-explorer" },
+    { "from": "ch-which",    "to": "ch-types" },
+    { "from": "ch-bad",      "to": "ch-types" },
+    { "from": "ch-history",  "to": "ch-types" }
   ]
 }
