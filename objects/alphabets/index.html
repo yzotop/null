@@ -27,10 +27,11 @@
   }
   .ah-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     margin-top: 28px;
   }
+  @media (max-width: 920px) { .ah-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 640px) { .ah-grid { grid-template-columns: 1fr; } }
   .ah-card {
     display: block; text-decoration: none; color: inherit;
@@ -128,6 +129,14 @@
       <div class="ah-title">еврейский алфавит</div>
       <div class="ah-desc">22 буквы. математика взяла одну. Кантор выбрал алеф для бесконечности — не случайно.</div>
       <div class="ah-meta">1 активная буква · Кантор · 1883</div>
+    </a>
+
+    <a class="ah-card" href="fraktur.html">
+      <div class="ah-head"><span class="ah-mtag">алфавит · §05</span><span class="ah-arrow">→</span></div>
+      <div class="ah-glyph" style="font-style:normal;">𝔄</div>
+      <div class="ah-title">готический алфавит</div>
+      <div class="ah-desc">фрактур в математике. числовые множества и алгебры Ли. старонемецкий шрифт стал языком абстрактной алгебры.</div>
+      <div class="ah-meta">52 символа · алгебраические структуры</div>
     </a>
 
   </div>

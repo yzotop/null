@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>готический алфавит — null/objects/alphabets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .ah-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ah-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 36px;
+    line-height: 1.1; margin: 0 0 12px 0;
+  }
+  .ah-sub {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 16px;
+    color: #666; line-height: 1.55; max-width: 640px;
+  }
+  .intro {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 16px; line-height: 1.7;
+    color: #1a1a1a; max-width: 640px;
+    margin: 28px 0 28px 0;
+  }
+  .intro p + p { margin-top: 14px; }
+  .sec-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: #bbb;
+    letter-spacing: .12em; text-transform: uppercase;
+    margin: 36px 0 14px 0;
+  }
+  .soft-hr { border: none; border-top: 1px solid #ddd; margin: 36px 0 0 0; }
+
+  .frk-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+  }
+  @media (max-width: 900px) { .frk-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 540px) { .frk-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .frk-cell {
+    background: #f7f6f2;
+    padding: 16px 12px;
+    position: relative;
+    min-height: 120px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: background 0.1s ease;
+    border-left: 3px solid transparent;
+  }
+  .frk-cell .frk-glyph { color: #111; }
+  .frk-cell .frk-name  { color: #bbb; }
+  .frk-cell .frk-usage { color: #666; }
+
+  a.frk-cell { cursor: pointer; background: #f0ede8; }
+  a.frk-cell .frk-glyph { transition: transform 0.15s ease; transform-origin: left center; display: inline-block; }
+  a.frk-cell:hover { background: #e8e4dc; }
+  a.frk-cell:hover .frk-glyph { transform: scale(1.05); }
+  a.frk-cell .frk-name  { color: #888; }
+  a.frk-cell .frk-usage { color: #555; }
+
+  .frk-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 32px;
+    line-height: 1;
+  }
+  .frk-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .04em;
+    margin-top: 8px;
+  }
+  .frk-usage {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    line-height: 1.45;
+    margin-top: 4px;
+  }
+  .frk-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #c44a32;
+    margin-top: 8px;
+    letter-spacing: .04em;
+  }
+  .frk-active-marker {
+    position: absolute;
+    top: 10px; right: 10px;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .frk-active-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .frk-active-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .nota-table {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    border-collapse: collapse;
+    margin: 8px 0;
+  }
+  .nota-table th, .nota-table td {
+    text-align: left;
+    padding: 6px 18px 6px 0;
+    border-bottom: 1px solid #e8e8e4;
+  }
+  .nota-table th {
+    color: #bbb;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: 9px;
+  }
+  .nota-table td.frk {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 18px;
+    color: #111;
+  }
+  .nota-table td.bb {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 18px;
+    color: #111;
+  }
+  .nota-table td.lbl { color: #555; }
+
+  .nota-note {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #888;
+    line-height: 1.65;
+    max-width: 600px;
+    margin-top: 16px;
+  }
+  .history-text {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.75;
+    color: #555;
+    max-width: 640px;
+  }
+  .history-text p + p { margin-top: 14px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / alphabets / готический</div>
+
+<main class="container">
+<article>
+
+  <div class="ah-tag">объекты · алфавиты</div>
+  <h1 class="ah-h1">готический алфавит</h1>
+  <p class="ah-sub">фрактур в математике. числовые множества и алгебраические структуры. старонемецкий шрифт стал языком абстрактной алгебры.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <div class="intro">
+    <p>Фрактур (Fraktur) — немецкий готический шрифт XVI века. В XIX веке немецкие математики писали на нём учебники и статьи. Гаусс, Риман, Дедекинд, Кантор — все они работали в традиции, где фрактур был стандартным академическим шрифтом.</p>
+    <p>Когда понадобились новые обозначения для числовых множеств и алгебраических структур — фрактурные буквы были под рукой. ℤ для целых чисел, ℚ для рациональных, ℝ для вещественных — все они изначально писались готическим шрифтом.</p>
+    <p>Сегодня настоящий фрактур используется редко. Но его наследие — в каждой формуле с ℕ ℤ ℝ ℂ.</p>
+  </div>
+
+  <div class="sec-label">// строчные · 26 букв</div>
+  <div class="frk-grid" id="grid-lower"></div>
+
+  <div class="sec-label">// заглавные · 26 букв</div>
+  <div class="frk-grid" id="grid-upper"></div>
+
+  <hr class="soft-hr">
+  <div class="sec-label">// числовые множества · история обозначений</div>
+
+  <table class="nota-table">
+    <tr><th>множество</th><th>фрактур</th><th>двойной</th><th>сегодня</th></tr>
+    <tr><td class="lbl">натуральные</td><td class="frk">𝔑</td><td class="bb">ℕ</td><td class="bb">ℕ</td></tr>
+    <tr><td class="lbl">целые</td>      <td class="frk">𝔷</td><td class="bb">ℤ</td><td class="bb">ℤ</td></tr>
+    <tr><td class="lbl">рациональные</td><td class="frk">𝔮</td><td class="bb">ℚ</td><td class="bb">ℚ</td></tr>
+    <tr><td class="lbl">вещественные</td><td class="frk">𝔯</td><td class="bb">ℝ</td><td class="bb">ℝ</td></tr>
+    <tr><td class="lbl">комплексные</td> <td class="frk">ℭ</td><td class="bb">ℂ</td><td class="bb">ℂ</td></tr>
+    <tr><td class="lbl">простые</td>     <td class="frk">𝔭</td><td class="bb">ℙ</td><td class="bb">ℙ</td></tr>
+  </table>
+  <p class="nota-note">«двойные» буквы (blackboard bold) придумал Николас Бурбаки в середине XX века — чтобы отличать множества от переменных при написании мелом на доске. Фрактур стало слишком сложно воспроизводить от руки.</p>
+
+  <hr class="soft-hr">
+  <div class="sec-label">// история</div>
+  <div class="history-text">
+    <p>Fraktur разработан в начале XVI века при дворе Максимилиана I. Использовался в немецкоязычных странах до середины XX века. В 1941 году нацистская Германия официально отказалась от фрактура — парадоксально, сославшись на его «негерманское» происхождение.</p>
+    <p>В математике фрактур выжил — в Unicode, в LaTeX (<code>\mathfrak{}</code>), в обозначениях алгебр Ли и идеалов теории колец. Узкоспециальный, но незаменимый.</p>
+  </div>
+
+  <hr class="section-divider-soft" style="margin-top:36px;">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">тип</span><a href="../numbers/types/complex.html">комплексные числа →</a></div>
+      <div class="related-link"><span class="related-link-type">особенное</span><a href="../numbers/special/aleph.html">ℵ₀ алеф-ноль →</a></div>
+      <div class="related-link"><span class="related-link-type">алфавит</span><a href="math-symbols.html">математические символы →</a></div>
+      <div class="related-link"><span class="related-link-type">алфавит</span><a href="greek.html">греческий →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/alphabets/fraktur.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+  const COLORS = { type: '#2c5fb6', special: '#c44a32', constant: '#c44a32', operator: '#8e44ad' };
+  const TYPE_RU = { type: 'тип', special: 'особенное', constant: 'константа', operator: 'оператор' };
+
+  const LOWER = [
+    ['𝔞', 'a', 'коэффициент в алгебре'],
+    ['𝔟', 'b', 'идеал в теории колец'],
+    ['𝔠', 'c', '𝔠 = |ℝ| · мощность вещественных чисел',
+      { href: '../numbers/special/aleph.html', label: 'мощность континуума', type: 'special' }],
+    ['𝔡', 'd', '—'],
+    ['𝔢', 'e', 'основание логарифма (старая нотация)'],
+    ['𝔣', 'f', 'функция'],
+    ['𝔤', 'g', 'алгебра Ли 𝔤'],
+    ['𝔥', 'h', 'алгебра Ли 𝔥 (картановская)'],
+    ['𝔦', 'i', '—'],
+    ['𝔧', 'j', '—'],
+    ['𝔨', 'k', 'алгебра Ли 𝔨'],
+    ['𝔩', 'l', '—'],
+    ['𝔪', 'm', 'максимальный идеал 𝔪'],
+    ['𝔫', 'n', 'нильрадикал 𝔫'],
+    ['𝔬', 'o', '—'],
+    ['𝔭', 'p', 'простые идеалы в теории колец',
+      { href: '../numbers/types/prime.html', label: 'простые', type: 'type' }],
+    ['𝔮', 'q', 'рациональные (старая нотация)'],
+    ['𝔯', 'r', 'вещественные (старая нотация)'],
+    ['𝔰', 's', 'алгебра Ли 𝔰𝔩(2)'],
+    ['𝔱', 't', '—'],
+    ['𝔲', 'u', '—'],
+    ['𝔳', 'v', '—'],
+    ['𝔴', 'w', '—'],
+    ['𝔵', 'x', '—'],
+    ['𝔶', 'y', '—'],
+    ['𝔷', 'z', 'целые (старая нотация)']
+  ];
+
+  const UPPER = [
+    ['𝔄', 'A', '—'],
+    ['𝔅', 'B', '—'],
+    ['ℭ', 'C', 'комплексные (старая нотация)'],
+    ['𝔇', 'D', '—'],
+    ['𝔈', 'E', '—'],
+    ['𝔉', 'F', '—'],
+    ['𝔊', 'G', '—'],
+    ['ℌ', 'H', 'ℌ — пространство аналитических функций (Харди)',
+      { href: '../numbers/special/aleph.html', label: 'пространство Харди', type: 'special' }],
+    ['ℑ', 'I', 'ℑ(z) = Im(z) · мнимая часть комплексного числа',
+      { href: '../numbers/types/complex.html', label: 'комплексные числа', type: 'type' }],
+    ['𝔍', 'J', '—'],
+    ['𝔎', 'K', '—'],
+    ['𝔏', 'L', '—'],
+    ['𝔐', 'M', '—'],
+    ['𝔑', 'N', 'натуральные (старая нотация)'],
+    ['𝔒', 'O', '—'],
+    ['𝔓', 'P', 'степенное множество (иногда)'],
+    ['𝔔', 'Q', '—'],
+    ['ℜ', 'R', 'ℜ(z) = Re(z) · вещественная часть комплексного числа',
+      { href: '../numbers/types/complex.html', label: 'комплексные числа', type: 'type' }],
+    ['𝔖', 'S', '—'],
+    ['𝔗', 'T', '—'],
+    ['𝔘', 'U', '—'],
+    ['𝔙', 'V', '—'],
+    ['𝔚', 'W', '—'],
+    ['𝔛', 'X', '—'],
+    ['𝔜', 'Y', '—'],
+    ['ℨ', 'Z', 'целые (историческая нотация)']
+  ];
+
+  function buildGrid(id, items) {
+    const grid = document.getElementById(id);
+    grid.innerHTML = items.map((row) => {
+      const [glyph, name, usage, link] = row;
+      const color = link ? (COLORS[link.type] || '#111') : null;
+      const marker = link
+        ? '<span class="frk-active-marker">' +
+            '<span class="frk-active-label" style="color:' + color + '">' + (TYPE_RU[link.type] || link.type) + '</span>' +
+            '<span class="frk-active-dot" style="background:' + color + '"></span>' +
+          '</span>'
+        : '';
+      const linkHTML = link
+        ? '<div class="frk-link">→ ' + link.label + '</div>'
+        : '';
+      const glyphStyle = color ? ' style="color:' + color + '"' : '';
+      const inner =
+        marker +
+        '<span class="frk-glyph"' + glyphStyle + '>' + glyph + '</span>' +
+        '<div class="frk-name">' + name + '</div>' +
+        '<div class="frk-usage">' + usage + '</div>' +
+        linkHTML;
+      if (link) {
+        const cellStyle = ' style="border-left-color:' + color + '"';
+        return '<a class="frk-cell" href="' + link.href + '"' + cellStyle + '>' + inner + '</a>';
+      }
+      return '<div class="frk-cell">' + inner + '</div>';
+    }).join('');
+  }
+  buildGrid('grid-lower', LOWER);
+  buildGrid('grid-upper', UPPER);
+</script>
+
+</body>
+</html>
