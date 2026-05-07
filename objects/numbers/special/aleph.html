@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ℵ₀ — null/objects/special</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / numbers / special / ℵ₀</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:72px;">ℵ₀</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">особенное · №004</div>
+      <div class="obj-title">алеф-ноль</div>
+      <div class="obj-subtitle">первая бесконечность · мощность натуральных чисел · наименьший бесконечный кардинал</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">ℵ₀ · алеф-ноль · алеф-нуль</td></tr>
+    <tr><td class="k">тип</td><td class="v">трансцендентный кардинал · бесконечный</td></tr>
+    <tr><td class="k">ввёл</td><td class="v">Георг Кантор, 1883</td></tr>
+    <tr><td class="k">мощность</td><td class="v mono">|ℕ| = |ℤ| = |ℚ| = ℵ₀</td></tr>
+    <tr><td class="k">следующий</td><td class="v mono">ℵ₁ — следующий кардинал после ℵ₀</td></tr>
+    <tr><td class="k">гипотеза</td><td class="v">континуум-гипотеза: |ℝ| = ℵ₁? — независима от ZFC</td></tr>
+    <tr><td class="k">связано</td><td class="v">натуральные числа · теорема Кантора · ZFC · бесконечность</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~600 слов · 5 мин</div>
+    <h2 class="essay-title">Бесконечностей много. Эта — <em>наименьшая</em>.</h2>
+    <p class="essay-lead">бесконечность — не одна. их бесконечно много. ℵ₀ — самая маленькая из них. мощность натуральных чисел. Кантор доказал, что она меньше мощности вещественных чисел.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Бесконечность долго считалась одной. Бесконечно большой — и всё. Кантор в 1883 году показал, что это не так<em class="fn">1</em>.</p>
+
+        <p>Начнём с вопроса: чего больше — натуральных чисел или чётных? Интуиция говорит: натуральных в два раза больше. Но интуиция ошибается. Кантор предложил считать множества равномощными, если между ними можно построить взаимно однозначное соответствие. Натуральные ↔ чётные: 1↔2, 2↔4, 3↔6, 4↔8, … Каждому натуральному соответствует ровно одно чётное. Значит их поровну.</p>
+
+        <p>Это кажется парадоксом. Но это определение. Часть бесконечного множества может быть равномощна целому — это и есть отличие бесконечных множеств от конечных.</p>
+
+        <p>Мощность натуральных чисел Кантор обозначил ℵ₀. Алеф — первая буква еврейского алфавита. Ноль — потому что это наименьший бесконечный кардинал. ℵ₀ = |ℕ| = |ℤ| = |ℚ|.</p>
+
+        <p>Натуральные, целые и рациональные числа — одной мощности. Это удивительно: рациональных чисел «намного больше» — между любыми двумя натуральными есть бесконечно много рациональных. Но мощность та же. Доказательство для ℚ: диагональный обход таблицы дробей p/q. Каждую дробь можно пронумеровать натуральным числом. Значит |ℚ| = ℵ₀.</p>
+
+        <p>А вещественные числа?</p>
+
+        <p>Кантор доказал, что |ℝ| &gt; ℵ₀. Доказательство: предположим, что все вещественные числа от 0 до 1 можно пронумеровать r₁, r₂, r₃, … Построим число d так, чтобы i-я цифра d отличалась от i-й цифры rᵢ. Тогда d отличается от каждого rᵢ хотя бы одной цифрой. Значит d не входит в список — противоречие. Список не может быть полным. |ℝ| &gt; ℵ₀<em class="fn">2</em>.</p>
+
+        <blockquote>«Я вижу это, но не верю в это.» — Кантор в письме Дедекинду после доказательства, что |ℝ| &gt; |ℕ|.</blockquote>
+
+        <p>Мощность вещественных чисел обозначают 𝔠 (континуум). 𝔠 = 2<sup>ℵ₀</sup>.</p>
+
+        <p>Что между ℵ₀ и 𝔠? Континуум-гипотеза Кантора: ℵ₁ = 𝔠 — нет кардинала строго между ℵ₀ и мощностью вещественных. Гильберт поставил её первой в списке 23 проблем в 1900 году. Гёдель в 1940 показал: континуум-гипотезу нельзя опровергнуть в ZFC. Коэн в 1963 показал: её нельзя доказать в ZFC. Она независима от аксиом — ни истинна, ни ложна в рамках ZFC<em class="fn">3</em>.</p>
+
+        <p>ℵ₀ — это не просто «бесконечность». Это конкретный математический объект с точным определением. Первый член бесконечной иерархии: ℵ₀ &lt; ℵ₁ &lt; ℵ₂ &lt; … — и эта последовательность сама бесконечна<em class="fn">4</em>.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">Кантор ввёл ℵ (алеф) в работе «Grundlagen einer allgemeinen Mannichfaltigkeitslehre», 1883.</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">Диагональный аргумент Кантора для несчётности ℝ — 1891. Один из самых изящных аргументов в математике.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">Континуум-гипотеза: Гёдель (1940) — нельзя опровергнуть; Коэн (1963) — нельзя доказать. Независима от ZFC.</span>
+        </div>
+        <div class="note">
+          <span class="n">[4]</span>
+          <span class="t">Арифметика алефов: ℵ₀ + 1 = ℵ₀, ℵ₀ + ℵ₀ = ℵ₀, ℵ₀ × ℵ₀ = ℵ₀. Но 2<sup>ℵ₀</sup> &gt; ℵ₀.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">тип</span><a href="../types/natural.html">натуральные числа →</a></div>
+      <div class="related-link"><span class="related-link-type">теорема</span><a href="../../ideas/theorems/cantor.html">теорема Кантора →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../../essays/infinity.html">бесконечность — не число →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../../essays/zfc-independence.html">ZFC — независимость аксиом →</a></div>
+      <div class="related-link"><span class="related-link-type">гипотеза</span><a href="../../ideas/hypotheses/riemann.html">Риман — кардиналы в теории функций →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/numbers/special/aleph.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

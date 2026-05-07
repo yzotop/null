@@ -480,7 +480,8 @@
     { "id": "mu-8",       "type": "music", "title": "8", "url": "/null/music/delta-machine/8.html", "glyph": "8" },
     { "id": "mu-hmn",     "type": "music", "title": "Happy Machine Noises", "url": "/null/music/delta-machine/happy-machine-noises.html", "glyph": "♪" },
     { "id": "mu-disc-dm", "type": "music", "title": "DISCRETE (delta machine)", "url": "/null/music/delta-machine/discrete.html", "glyph": "◼" },
-    { "id": "mu-imc",     "type": "music", "title": "Instantaneous Momentary Calculations", "url": "/null/music/delta-machine/instantaneous.html", "glyph": "∂" }
+    { "id": "mu-imc",     "type": "music", "title": "Instantaneous Momentary Calculations", "url": "/null/music/delta-machine/instantaneous.html", "glyph": "∂" },
+    { "id": "aleph0",     "type": "special", "title": "ℵ₀ алеф-ноль", "url": "/null/objects/numbers/special/aleph.html", "glyph": "ℵ₀" }
   ],
   "edges": [
     {
@@ -992,6 +993,10 @@
     { "from": "mu-disc-dm", "to": "twin-primes" },
     { "from": "mu-disc-dm", "to": "mu-discrete" },
     { "from": "mu-imc",     "to": "mu-dip" },
-    { "from": "mu-imc",     "to": "mu-opstack" }
+    { "from": "mu-imc",     "to": "mu-opstack" },
+    { "from": "aleph0",     "to": "natural" },
+    { "from": "aleph0",     "to": "cantor" },
+    { "from": "aleph0",     "to": "es-zfc" },
+    { "from": "aleph0",     "to": "es-infinity" }
   ]
 }
