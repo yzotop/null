@@ -548,6 +548,14 @@
       "to": "euler"
     },
     {
+      "from": "gamma",
+      "to": "natural"
+    },
+    {
+      "from": "gamma",
+      "to": "riemann"
+    },
+    {
       "from": "sqrt2",
       "to": "pythagoras"
     },
