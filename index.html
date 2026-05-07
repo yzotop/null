@@ -271,6 +271,25 @@
 
   </div>
 
+  <div style="text-align:center;margin:24px 0;">
+    <button onclick="goRandom()" style="
+      font-family:'JetBrains Mono',monospace;
+      font-size:11px;
+      letter-spacing:.08em;
+      border:1px solid #ddd;
+      background:transparent;
+      color:#888;
+      padding:10px 24px;
+      cursor:pointer;
+      transition:all 0.15s;
+    "
+    onmouseover="this.style.borderColor='#111';this.style.color='#111'"
+    onmouseout="this.style.borderColor='#ddd';this.style.color='#888'"
+    >
+      ↯ случайный объект
+    </button>
+  </div>
+
   <div class="map-teaser">
     <span class="left">74 объекта · 142 связи между ними</span>
     <a class="right" href="map.html">→ граф связей</a>
@@ -329,6 +348,26 @@
   </footer>
 
 </div>
+
+<script>
+async function goRandom() {
+  if (!window._nullNodes) {
+    const r = await fetch('data/links.json');
+    const d = await r.json();
+    window._nullNodes = d.nodes.filter(n =>
+      n.url && (
+        n.url.includes('/null/objects/') ||
+        n.url.includes('/null/essays/') ||
+        n.url.includes('/null/visuals/')
+      )
+    );
+  }
+  const nodes = window._nullNodes;
+  if (!nodes || !nodes.length) return;
+  const pick = nodes[Math.floor(Math.random() * nodes.length)];
+  window.location.href = pick.url;
+}
+</script>
 
 </body>
 </html>
