@@ -484,7 +484,8 @@
     { "id": "aleph0",     "type": "special", "title": "ℵ₀ алеф-ноль", "url": "/null/objects/numbers/special/aleph.html", "glyph": "ℵ₀" },
     { "id": "alph-greek", "type": "alphabet", "title": "греческий алфавит", "url": "/null/objects/alphabets/greek.html", "glyph": "Ω" },
     { "id": "alph-math",  "type": "alphabet", "title": "математические символы", "url": "/null/objects/alphabets/math-symbols.html", "glyph": "ℕ" },
-    { "id": "alph-latin", "type": "alphabet", "title": "латинский алфавит", "url": "/null/objects/alphabets/latin.html", "glyph": "x" }
+    { "id": "alph-latin", "type": "alphabet", "title": "латинский алфавит", "url": "/null/objects/alphabets/latin.html", "glyph": "x" },
+    { "id": "alph-hebrew","type": "alphabet", "title": "еврейский алфавит", "url": "/null/objects/alphabets/hebrew.html", "glyph": "ℵ" }
   ],
   "edges": [
     {
@@ -1014,6 +1015,10 @@
     { "from": "alph-latin", "to": "imaginary" },
     { "from": "alph-latin", "to": "natural" },
     { "from": "alph-latin", "to": "prime" },
-    { "from": "alph-latin", "to": "op-partial" }
+    { "from": "alph-latin", "to": "op-partial" },
+    { "from": "alph-hebrew","to": "aleph0" },
+    { "from": "alph-hebrew","to": "cantor" },
+    { "from": "alph-hebrew","to": "es-infinity" },
+    { "from": "alph-hebrew","to": "es-zfc" }
   ]
 }

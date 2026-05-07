@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>еврейский алфавит — null/objects/alphabets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .ah-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ah-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 36px;
+    line-height: 1.1; margin: 0 0 12px 0;
+  }
+  .ah-sub {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 16px;
+    color: #666; line-height: 1.55; max-width: 640px;
+  }
+  .intro {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 16px; line-height: 1.7;
+    color: #1a1a1a; max-width: 640px;
+    margin: 28px 0 32px 0;
+  }
+  .intro p + p { margin-top: 14px; }
+  .sec-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: #bbb;
+    letter-spacing: .12em; text-transform: uppercase;
+    margin: 32px 0 14px 0;
+  }
+  .soft-hr { border: none; border-top: 1px solid #ddd; margin: 36px 0 0 0; }
+
+  /* big aleph card */
+  .aleph-card {
+    border: 1.5px solid #111;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    margin-bottom: 16px;
+    background: #f7f6f2;
+  }
+  @media (max-width: 640px) { .aleph-card { grid-template-columns: 1fr; } }
+  .aleph-left {
+    border-right: 1px solid #e8e8e4;
+    padding: 40px 28px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: #f0ede8;
+    text-align: center;
+  }
+  @media (max-width: 640px) {
+    .aleph-left { border-right: none; border-bottom: 1px solid #e8e8e4; }
+  }
+  .aleph-mega {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 96px; color: #111; line-height: 1;
+  }
+  .aleph-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #bbb;
+    letter-spacing: .04em; margin-top: 12px;
+  }
+  .aleph-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: #c44a32;
+    letter-spacing: .08em; text-transform: uppercase;
+    margin-top: 6px;
+    display: flex; align-items: center; gap: 5px;
+    justify-content: center;
+  }
+  .aleph-type-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #c44a32;
+    display: inline-block;
+  }
+  .aleph-right { padding: 32px 28px; }
+  .aleph-name {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 28px; color: #111;
+    line-height: 1.15; margin: 0 0 4px 0;
+  }
+  .aleph-val {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 18px;
+    color: #555; margin-bottom: 18px;
+    line-height: 1.4;
+  }
+  .aleph-meta { width: 100%; border-collapse: collapse; }
+  .aleph-meta td {
+    padding: 7px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; vertical-align: top;
+  }
+  .aleph-meta td.k {
+    color: #bbb; width: 150px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    font-size: 10px;
+  }
+  .aleph-meta td.v { color: #111; }
+  .aleph-link {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #c44a32;
+    margin-top: 18px;
+    text-decoration: none;
+    letter-spacing: .04em;
+    border-bottom: 1px dotted #c44a32;
+  }
+  .aleph-link:hover { color: #111; border-color: #111; }
+
+  /* hebrew alphabet grid */
+  .hebrew-grid {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 720px) { .hebrew-grid { grid-template-columns: repeat(6, 1fr); } }
+  @media (max-width: 480px) { .hebrew-grid { grid-template-columns: repeat(4, 1fr); } }
+  .heb-cell {
+    background: #f7f6f2;
+    padding: 14px 6px;
+    text-align: center;
+  }
+  .heb-cell.active { background: #f0ede8; border-bottom: 3px solid #c44a32; }
+  .heb-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 28px; color: #111;
+    display: block; line-height: 1.2;
+  }
+  .heb-cell.active .heb-glyph { font-size: 32px; color: #c44a32; }
+  .heb-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px; color: #bbb;
+    letter-spacing: .04em;
+    margin-top: 5px; display: block;
+  }
+  .heb-cell.active .heb-name { color: #888; }
+  .alphabet-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #bbb;
+    letter-spacing: .03em; line-height: 1.7;
+  }
+
+  /* why aleph */
+  .why-text {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #444;
+    max-width: 640px;
+  }
+  .why-text p + p { margin-top: 14px; }
+
+  /* hierarchy ascii */
+  .ascii-block {
+    background: #f0ede8;
+    border-left: 2px solid #111;
+    padding: 18px 22px;
+    margin-bottom: 8px;
+    overflow-x: auto;
+  }
+  .ascii-block pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 2;
+    color: #555;
+    white-space: pre;
+    margin: 0;
+  }
+  .ascii-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    line-height: 1.7;
+    margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / alphabets / еврейский</div>
+
+<main class="container">
+<article>
+
+  <div class="ah-tag">объекты · алфавиты</div>
+  <h1 class="ah-h1">еврейский алфавит</h1>
+  <p class="ah-sub">22 буквы. математика взяла одну — ℵ. и с ней описала всю бесконечность.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <div class="intro">
+    <p>В 1883 году Георг Кантор искал обозначение для бесконечных кардинальных чисел. Греческие буквы были заняты. Латинские — тоже. Он выбрал ℵ — алеф, первую букву еврейского алфавита.</p>
+    <p>Выбор не случаен. Кантор был глубоко религиозен. Для него бесконечность была атрибутом Бога. Алеф в иудейской традиции символизирует бесконечность и единство. Математика и теология встретились в одном символе.</p>
+  </div>
+
+  <div class="aleph-card">
+    <div class="aleph-left">
+      <div class="aleph-mega">ℵ</div>
+      <div class="aleph-tag">алеф · 1-я буква</div>
+      <div class="aleph-type"><span class="aleph-type-dot"></span><span>особенное</span></div>
+    </div>
+    <div class="aleph-right">
+      <h2 class="aleph-name">алеф-ноль</h2>
+      <div class="aleph-val">ℵ₀ · мощность натуральных чисел</div>
+      <table class="aleph-meta">
+        <tr><td class="k">ввёл</td><td class="v">Георг Кантор · 1883</td></tr>
+        <tr><td class="k">обозначает</td><td class="v">наименьший бесконечный кардинал</td></tr>
+        <tr><td class="k">мощность</td><td class="v">|ℕ| = |ℤ| = |ℚ| = ℵ₀</td></tr>
+        <tr><td class="k">следующий</td><td class="v">ℵ₁ · ℵ₂ · … · ℵ_ω · …</td></tr>
+        <tr><td class="k">статус</td><td class="v">кардинал — не число (рациональность неприменима)</td></tr>
+      </table>
+      <a class="aleph-link" href="../numbers/special/aleph.html">→ объект · ℵ₀ алеф-ноль</a>
+    </div>
+  </div>
+
+  <hr class="soft-hr">
+  <div class="sec-label">// 22 буквы · одна в математике</div>
+
+  <div class="hebrew-grid" id="grid-hebrew"></div>
+  <div class="alphabet-note">текст идёт справа налево · иврит — семитский язык · 22 согласные буквы · гласные обозначаются огласовками</div>
+
+  <hr class="soft-hr">
+  <div class="sec-label">// почему именно ℵ</div>
+
+  <div class="why-text">
+    <p>Кантор писал Дедекинду в 1882: «я выбрал букву алеф не только потому, что латинские и греческие буквы уже используются, но и потому, что алеф — символ Единого в иудейской мистике».</p>
+    <p>В каббале алеф связан с концепцией <em>Ein Sof</em> — бесконечного. Кантор был набожным протестантом, но хорошо знал еврейскую традицию. Для него математическая бесконечность и религиозная бесконечность были аспектами одного и того же.</p>
+    <p>Его коллеги отнеслись к теории множеств враждебно. Кронекер называл его «развратителем молодёжи». Пуанкаре — «болезнью математики». Кантор страдал от депрессии и умер в психиатрической клинике в 1918 году.</p>
+    <p>Сейчас теория множеств — фундамент всей математики. А ℵ — один из самых узнаваемых символов в науке.</p>
+  </div>
+
+  <hr class="soft-hr">
+  <div class="sec-label">// иерархия кардиналов</div>
+
+  <div class="ascii-block"><pre> ℵ₀  ←  натуральные · целые · рациональные
+  │
+  │   &lt; (строго меньше)
+  ↓
+ ℵ₁  ←  следующий кардинал после ℵ₀
+  │       (равен ли мощности вещественных? — континуум-гипотеза)
+  ↓
+ ℵ₂
+  ↓
+  ⋮
+  ↓
+ ℵ_ω ←  первый «предельный» алеф
+  ↓
+  ⋮      бесконечная иерархия</pre></div>
+  <div class="ascii-note">
+    2<sup>ℵ₀</sup> &gt; ℵ₀ · теорема Кантора · 1891<br>
+    равно ли 2<sup>ℵ₀</sup> = ℵ₁ · континуум-гипотеза · независима от ZFC
+  </div>
+
+  <hr class="section-divider-soft" style="margin-top:36px;">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">особенное</span><a href="../numbers/special/aleph.html">ℵ₀ алеф-ноль →</a></div>
+      <div class="related-link"><span class="related-link-type">теорема</span><a href="../ideas/theorems/cantor.html">теорема Кантора →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/infinity.html">бесконечность — не число →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/zfc-independence.html">ZFC — независимость аксиом →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/alphabets/hebrew.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+  const HEBREW = [
+    ['א','алеф',  true],
+    ['ב','бет'],   ['ג','гимел'], ['ד','далет'], ['ה','хе'],   ['ו','вав'],
+    ['ז','заин'],  ['ח','хет'],   ['ט','тет'],   ['י','йод'],  ['כ','каф'],
+    ['ל','ламед'], ['מ','мем'],   ['נ','нун'],   ['ס','самех'],['ע','аин'],
+    ['פ','пе'],    ['צ','цади'],  ['ק','коф'],   ['ר','реш'],  ['ש','шин'],
+    ['ת','тав']
+  ];
+  document.getElementById('grid-hebrew').innerHTML = HEBREW.map((row) => {
+    const [glyph, name, active] = row;
+    const cls = active ? 'heb-cell active' : 'heb-cell';
+    return '<div class="' + cls + '">' +
+             '<span class="heb-glyph">' + glyph + '</span>' +
+             '<span class="heb-name">' + name + '</span>' +
+           '</div>';
+  }).join('');
+</script>
+
+</body>
+</html>
