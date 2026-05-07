@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>двоичная система — null/objects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles/main.css">
+<style>
+  .ns-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ns-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 36px;
+    line-height: 1.1; margin: 0 0 12px 0;
+  }
+  .ns-glyph-row {
+    display: flex; align-items: baseline; gap: 18px;
+    margin-bottom: 12px;
+  }
+  .ns-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 64px; color: #c44a32;
+    line-height: 1;
+  }
+  .ns-sub {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 16px;
+    color: #666; line-height: 1.55; max-width: 640px;
+  }
+  .ns-meta {
+    width: 100%; border-collapse: collapse;
+    margin: 24px 0 12px; max-width: 640px;
+  }
+  .ns-meta td {
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-family: var(--font-mono); font-size: 11px;
+    vertical-align: top;
+  }
+  .ns-meta td.k {
+    color: #bbb; width: 160px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    font-size: 10px;
+  }
+  .ns-meta td.v { color: #111; }
+
+  .sec-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin: 32px 0 14px 0;
+  }
+  .ns-essay p {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 16px; line-height: 1.75;
+    color: #1a1a1a; margin-bottom: 12px;
+    max-width: 640px;
+  }
+  .ns-table {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; border-collapse: collapse;
+    margin: 12px 0;
+  }
+  .ns-table th, .ns-table td {
+    text-align: left;
+    padding: 6px 22px 6px 0;
+    border-bottom: 1px solid #e8e8e4;
+  }
+  .ns-table th {
+    color: #bbb;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: 9px;
+  }
+  .ns-table td.bits { letter-spacing: 0.1em; }
+  .bit-on  { display: inline-block; width: 10px; height: 10px; background: #111; }
+  .bit-off { display: inline-block; width: 10px; height: 10px; background: #e8e8e4; }
+
+  .interactive {
+    border: 1px solid var(--border);
+    background: #fcfbf8;
+    padding: 18px 20px;
+    margin: 14px 0 8px 0;
+    max-width: 560px;
+  }
+  .int-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: .1em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .int-input {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px; color: #111;
+    border: none; border-bottom: 1.5px solid #111;
+    background: transparent; outline: none;
+    padding: 6px 0; width: 200px;
+  }
+  .int-output {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px; color: #c44a32;
+    margin-top: 14px; line-height: 1.55;
+    word-break: break-all;
+  }
+  
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / numbers / numeral-systems / двоичная</div>
+
+<main class="container">
+<article>
+
+  <div class="ns-tag">объекты · система счисления · позиционная</div>
+  <div class="ns-glyph-row">
+    <span class="ns-glyph">01</span>
+    <h1 class="ns-h1" style="margin:0;">двоичная</h1>
+  </div>
+  <p class="ns-sub">основание 2 · только 0 и 1 · язык, которым говорят компьютеры.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <table class="ns-meta">
+    <tr><td class="k">основание</td><td class="v">2</td></tr>
+    <tr><td class="k">цифры</td><td class="v">0 · 1</td></tr>
+    <tr><td class="k">изобрёл</td><td class="v">Лейбниц · 1679 · «Explication de l'Arithmétique Binaire»</td></tr>
+    <tr><td class="k">связь</td><td class="v">Буль · булева алгебра · AND OR NOT</td></tr>
+    <tr><td class="k">в природе</td><td class="v">ДНК (4 основания, но двоичная логика)</td></tr>
+    <tr><td class="k">позиционная</td><td class="v">да · 1010 = 1·2³ + 0·2² + 1·2¹ + 0·2⁰ = 10</td></tr>
+  </table>
+
+  <div class="sec-label">// первые 16 чисел</div>
+  <table class="ns-table">
+    <tr><th>10</th><th>2</th><th>биты</th></tr>
+    <tr><td>0</td><td>0000</td><td class="bits"><span class="bit-off"></span><span class="bit-off"></span><span class="bit-off"></span><span class="bit-off"></span></td></tr>
+    <tr><td>1</td><td>0001</td><td class="bits"><span class="bit-off"></span><span class="bit-off"></span><span class="bit-off"></span><span class="bit-on"></span></td></tr>
+    <tr><td>2</td><td>0010</td><td class="bits"><span class="bit-off"></span><span class="bit-off"></span><span class="bit-on"></span><span class="bit-off"></span></td></tr>
+    <tr><td>3</td><td>0011</td><td class="bits"><span class="bit-off"></span><span class="bit-off"></span><span class="bit-on"></span><span class="bit-on"></span></td></tr>
+    <tr><td>4</td><td>0100</td><td class="bits"><span class="bit-off"></span><span class="bit-on"></span><span class="bit-off"></span><span class="bit-off"></span></td></tr>
+    <tr><td>5</td><td>0101</td><td class="bits"><span class="bit-off"></span><span class="bit-on"></span><span class="bit-off"></span><span class="bit-on"></span></td></tr>
+    <tr><td>6</td><td>0110</td><td class="bits"><span class="bit-off"></span><span class="bit-on"></span><span class="bit-on"></span><span class="bit-off"></span></td></tr>
+    <tr><td>7</td><td>0111</td><td class="bits"><span class="bit-off"></span><span class="bit-on"></span><span class="bit-on"></span><span class="bit-on"></span></td></tr>
+    <tr><td>8</td><td>1000</td><td class="bits"><span class="bit-on"></span><span class="bit-off"></span><span class="bit-off"></span><span class="bit-off"></span></td></tr>
+    <tr><td>9</td><td>1001</td><td class="bits"><span class="bit-on"></span><span class="bit-off"></span><span class="bit-off"></span><span class="bit-on"></span></td></tr>
+    <tr><td>10</td><td>1010</td><td class="bits"><span class="bit-on"></span><span class="bit-off"></span><span class="bit-on"></span><span class="bit-off"></span></td></tr>
+    <tr><td>11</td><td>1011</td><td class="bits"><span class="bit-on"></span><span class="bit-off"></span><span class="bit-on"></span><span class="bit-on"></span></td></tr>
+    <tr><td>12</td><td>1100</td><td class="bits"><span class="bit-on"></span><span class="bit-on"></span><span class="bit-off"></span><span class="bit-off"></span></td></tr>
+    <tr><td>13</td><td>1101</td><td class="bits"><span class="bit-on"></span><span class="bit-on"></span><span class="bit-off"></span><span class="bit-on"></span></td></tr>
+    <tr><td>14</td><td>1110</td><td class="bits"><span class="bit-on"></span><span class="bit-on"></span><span class="bit-on"></span><span class="bit-off"></span></td></tr>
+    <tr><td>15</td><td>1111</td><td class="bits"><span class="bit-on"></span><span class="bit-on"></span><span class="bit-on"></span><span class="bit-on"></span></td></tr>
+  </table>
+
+  <div class="sec-label">// эссе</div>
+  <div class="ns-essay">
+    <p>Лейбниц в 1679 году написал работу о двоичной арифметике. Он был вдохновлён китайской «Книгой перемен» (И-Цзин) — 64 гексаграммы из шести целых/прерывистых черт. Лейбниц увидел в этом протодвоичный код.</p>
+    <p>Почему компьютеры используют двоичную систему? Потому что транзистор имеет два состояния: проводит / не проводит. Вкл/выкл. 1/0. Истина/ложь. Двоичная система идеально совпадает с физикой электроники.</p>
+    <p>65536 = 2¹⁶. Граница 16-битной памяти. 4 294 967 296 = 2³². Адресное пространство 32-битной системы. Все эти числа — просто красивые степени двойки.</p>
+    <p>Двоичная — это самая бедная и самая мощная система одновременно. Бедная — потому что у неё всего две цифры. Мощная — потому что любую информацию можно закодировать последовательностью этих двух цифр.</p>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">любопытное</span><a href="../curious/65536.html">65536 →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../../operators/xor.html">XOR →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../../operators/mod.html">mod →</a></div>
+      <div class="related-link"><span class="related-link-type">система</span><a href="hexadecimal.html">шестнадцатеричная →</a></div>
+    </div>
+  </section>
+
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/numbers/numeral-systems/двоичная</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

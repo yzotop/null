@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>шестнадцатеричная — null/objects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles/main.css">
+<style>
+  .ns-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ns-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 36px;
+    line-height: 1.1; margin: 0 0 12px 0;
+  }
+  .ns-glyph-row {
+    display: flex; align-items: baseline; gap: 18px;
+    margin-bottom: 12px;
+  }
+  .ns-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 64px; color: #c44a32;
+    line-height: 1;
+  }
+  .ns-sub {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 16px;
+    color: #666; line-height: 1.55; max-width: 640px;
+  }
+  .ns-meta {
+    width: 100%; border-collapse: collapse;
+    margin: 24px 0 12px; max-width: 640px;
+  }
+  .ns-meta td {
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-family: var(--font-mono); font-size: 11px;
+    vertical-align: top;
+  }
+  .ns-meta td.k {
+    color: #bbb; width: 160px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    font-size: 10px;
+  }
+  .ns-meta td.v { color: #111; }
+
+  .sec-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin: 32px 0 14px 0;
+  }
+  .ns-essay p {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 16px; line-height: 1.75;
+    color: #1a1a1a; margin-bottom: 12px;
+    max-width: 640px;
+  }
+  .ns-table {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; border-collapse: collapse;
+    margin: 12px 0;
+  }
+  .ns-table th, .ns-table td {
+    text-align: left;
+    padding: 6px 22px 6px 0;
+    border-bottom: 1px solid #e8e8e4;
+  }
+  .ns-table th {
+    color: #bbb;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: 9px;
+  }
+  .ns-table td.bits { letter-spacing: 0.1em; }
+  .bit-on  { display: inline-block; width: 10px; height: 10px; background: #111; }
+  .bit-off { display: inline-block; width: 10px; height: 10px; background: #e8e8e4; }
+
+  .interactive {
+    border: 1px solid var(--border);
+    background: #fcfbf8;
+    padding: 18px 20px;
+    margin: 14px 0 8px 0;
+    max-width: 560px;
+  }
+  .int-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: .1em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .int-input {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px; color: #111;
+    border: none; border-bottom: 1.5px solid #111;
+    background: transparent; outline: none;
+    padding: 6px 0; width: 200px;
+  }
+  .int-output {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px; color: #c44a32;
+    margin-top: 14px; line-height: 1.55;
+    word-break: break-all;
+  }
+  
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / numbers / numeral-systems / шестнадцатеричная</div>
+
+<main class="container">
+<article>
+
+  <div class="ns-tag">объекты · система счисления · позиционная</div>
+  <div class="ns-glyph-row">
+    <span class="ns-glyph">FF</span>
+    <h1 class="ns-h1" style="margin:0;">шестнадцатеричная</h1>
+  </div>
+  <p class="ns-sub">основание 16 · 0–9 и A–F · язык цветов и памяти.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <table class="ns-meta">
+    <tr><td class="k">основание</td><td class="v">16</td></tr>
+    <tr><td class="k">цифры</td><td class="v">0 1 2 3 4 5 6 7 8 9 A B C D E F</td></tr>
+    <tr><td class="k">использование</td><td class="v">адреса памяти · цвета #RRGGBB · Unicode · MAC-адреса</td></tr>
+    <tr><td class="k">связь</td><td class="v">4 бита = 1 hex-цифра · байт = 2 hex-цифры</td></tr>
+    <tr><td class="k">примеры</td><td class="v">#c44a32 = красный сайта · 0xFF = 255 · 0x1F4 = 500</td></tr>
+  </table>
+
+  <div class="sec-label">// первые 16 значений · dec / hex / bin</div>
+  <table class="ns-table">
+    <tr><th>10</th><th>16</th><th>2</th></tr>
+    <tr><td>0</td><td>0</td><td>0000</td></tr>
+    <tr><td>1</td><td>1</td><td>0001</td></tr>
+    <tr><td>2</td><td>2</td><td>0010</td></tr>
+    <tr><td>3</td><td>3</td><td>0011</td></tr>
+    <tr><td>4</td><td>4</td><td>0100</td></tr>
+    <tr><td>5</td><td>5</td><td>0101</td></tr>
+    <tr><td>6</td><td>6</td><td>0110</td></tr>
+    <tr><td>7</td><td>7</td><td>0111</td></tr>
+    <tr><td>8</td><td>8</td><td>1000</td></tr>
+    <tr><td>9</td><td>9</td><td>1001</td></tr>
+    <tr><td>10</td><td>A</td><td>1010</td></tr>
+    <tr><td>11</td><td>B</td><td>1011</td></tr>
+    <tr><td>12</td><td>C</td><td>1100</td></tr>
+    <tr><td>13</td><td>D</td><td>1101</td></tr>
+    <tr><td>14</td><td>E</td><td>1110</td></tr>
+    <tr><td>15</td><td>F</td><td>1111</td></tr>
+  </table>
+
+  <div class="sec-label">// цвета null в hex</div>
+  <table class="ns-table">
+    <tr><th></th><th>hex</th><th>роль</th><th>RGB</th></tr>
+    <tr><td><span style="display:inline-block;width:18px;height:18px;background:#f7f6f2;border:1px solid #ddd;vertical-align:middle;"></span></td><td>#f7f6f2</td><td>фон</td><td>R=f7=247 G=f6=246 B=f2=242</td></tr>
+    <tr><td><span style="display:inline-block;width:18px;height:18px;background:#111111;border:1px solid #ddd;vertical-align:middle;"></span></td><td>#111111</td><td>чернила</td><td>R=11=17 G=11=17 B=11=17</td></tr>
+    <tr><td><span style="display:inline-block;width:18px;height:18px;background:#c44a32;border:1px solid #ddd;vertical-align:middle;"></span></td><td>#c44a32</td><td>красный акцент</td><td>R=c4=196 G=4a=74 B=32=50</td></tr>
+    <tr><td><span style="display:inline-block;width:18px;height:18px;background:#2c5fb6;border:1px solid #ddd;vertical-align:middle;"></span></td><td>#2c5fb6</td><td>синий</td><td>R=2c=44 G=5f=95 B=b6=182</td></tr>
+    <tr><td><span style="display:inline-block;width:18px;height:18px;background:#1a7a4a;border:1px solid #ddd;vertical-align:middle;"></span></td><td>#1a7a4a</td><td>зелёный</td><td>R=1a=26 G=7a=122 B=4a=74</td></tr>
+  </table>
+
+  <div class="sec-label">// эссе</div>
+  <div class="ns-essay">
+    <p>Шестнадцатеричная система — компромисс между двоичной и десятичной. Двоичная понятна процессору, но нечитаема человеку. Десятичная читаема человеком, но неудобна для битовых операций. Hex — посередине.</p>
+    <p>4 двоичных бита = 1 hex-цифра. Байт (8 бит) = 2 hex-цифры. 0xFF = 11111111₂ = 255₁₀. Красиво и компактно.</p>
+    <p>Цвета в вебе — hex по историческим причинам. #c44a32 — это три байта: R = 0xc4, G = 0x4a, B = 0x32. Каждый компонент от 0x00 (0) до 0xFF (255). 16 миллионов цветов. Все в шести символах.</p>
+    <p>Hex — единственная позиционная система, где цифры включают буквы. Это не каприз: 16 не помещается в десять арабских цифр, и проще расширить алфавит, чем придумать шесть новых символов.</p>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">любопытное</span><a href="../curious/65536.html">65536 →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../../operators/xor.html">XOR →</a></div>
+      <div class="related-link"><span class="related-link-type">система</span><a href="binary.html">двоичная →</a></div>
+    </div>
+  </section>
+
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/numbers/numeral-systems/шестнадцатеричная</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

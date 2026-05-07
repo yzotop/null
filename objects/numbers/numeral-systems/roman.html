@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>римские цифры — null/objects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles/main.css">
+<style>
+  .ns-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ns-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 36px;
+    line-height: 1.1; margin: 0 0 12px 0;
+  }
+  .ns-glyph-row {
+    display: flex; align-items: baseline; gap: 18px;
+    margin-bottom: 12px;
+  }
+  .ns-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 64px; color: #c44a32;
+    line-height: 1;
+  }
+  .ns-sub {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 16px;
+    color: #666; line-height: 1.55; max-width: 640px;
+  }
+  .ns-meta {
+    width: 100%; border-collapse: collapse;
+    margin: 24px 0 12px; max-width: 640px;
+  }
+  .ns-meta td {
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-family: var(--font-mono); font-size: 11px;
+    vertical-align: top;
+  }
+  .ns-meta td.k {
+    color: #bbb; width: 160px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    font-size: 10px;
+  }
+  .ns-meta td.v { color: #111; }
+
+  .sec-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin: 32px 0 14px 0;
+  }
+  .ns-essay p {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 16px; line-height: 1.75;
+    color: #1a1a1a; margin-bottom: 12px;
+    max-width: 640px;
+  }
+  .ns-table {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; border-collapse: collapse;
+    margin: 12px 0;
+  }
+  .ns-table th, .ns-table td {
+    text-align: left;
+    padding: 6px 22px 6px 0;
+    border-bottom: 1px solid #e8e8e4;
+  }
+  .ns-table th {
+    color: #bbb;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: 9px;
+  }
+  .ns-table td.bits { letter-spacing: 0.1em; }
+  .bit-on  { display: inline-block; width: 10px; height: 10px; background: #111; }
+  .bit-off { display: inline-block; width: 10px; height: 10px; background: #e8e8e4; }
+
+  .interactive {
+    border: 1px solid var(--border);
+    background: #fcfbf8;
+    padding: 18px 20px;
+    margin: 14px 0 8px 0;
+    max-width: 560px;
+  }
+  .int-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: .1em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .int-input {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px; color: #111;
+    border: none; border-bottom: 1.5px solid #111;
+    background: transparent; outline: none;
+    padding: 6px 0; width: 200px;
+  }
+  .int-output {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px; color: #c44a32;
+    margin-top: 14px; line-height: 1.55;
+    word-break: break-all;
+  }
+  
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / numbers / numeral-systems / римские</div>
+
+<main class="container">
+<article>
+
+  <div class="ns-tag">объекты · система счисления · непозиционная</div>
+  <div class="ns-glyph-row">
+    <span class="ns-glyph">XIV</span>
+    <h1 class="ns-h1" style="margin:0;">римские цифры</h1>
+  </div>
+  <p class="ns-sub">не позиционная · субтрактивная нотация · от Рима до часов.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <table class="ns-meta">
+    <tr><td class="k">основание</td><td class="v">нет · непозиционная</td></tr>
+    <tr><td class="k">символы</td><td class="v">I (1) · V (5) · X (10) · L (50) · C (100) · D (500) · M (1000)</td></tr>
+    <tr><td class="k">изобрели</td><td class="v">Рим · ~500 до н.э.</td></tr>
+    <tr><td class="k">субтракция</td><td class="v">IV = 4 · IX = 9 · XL = 40 · CM = 900</td></tr>
+    <tr><td class="k">максимум</td><td class="v">MMMCMXCIX = 3999 (стандарт)</td></tr>
+    <tr><td class="k">сегодня</td><td class="v">часы · главы книг · годы · Супербоулы</td></tr>
+  </table>
+
+  <div class="sec-label">// правила</div>
+  <table class="ns-table">
+    <tr><th>символ</th><th>значение</th></tr>
+    <tr><td>I</td><td>1</td></tr>
+    <tr><td>V</td><td>5</td></tr>
+    <tr><td>X</td><td>10</td></tr>
+    <tr><td>L</td><td>50</td></tr>
+    <tr><td>C</td><td>100</td></tr>
+    <tr><td>D</td><td>500</td></tr>
+    <tr><td>M</td><td>1000</td></tr>
+  </table>
+
+  <ul style="font-family:var(--font-mono);font-size:11px;color:#555;line-height:1.8;list-style:none;padding:0;margin:8px 0 18px 0;">
+    <li>· меньшая перед большей = вычитание (IV = 4)</li>
+    <li>· меньшая после большей = сложение (VI = 6)</li>
+    <li>· максимум 3 одинаковых подряд (III, но не IIII)</li>
+  </ul>
+
+  <div class="interactive">
+    <div class="int-label">// конвертер · 1 ÷ 3999</div>
+    <input class="int-input" id="rIn" type="text" inputmode="numeric" placeholder="2024">
+    <div class="int-output" id="rOut"></div>
+  </div>
+
+  <div class="sec-label">// эссе</div>
+  <div class="ns-essay">
+    <p>Римские цифры — непозиционная система. V всегда = 5, неважно, где стоит. Это фундаментальное отличие от десятичной, где позиция имеет значение.</p>
+    <p>Арифметика в римской системе — ад. Попробуй умножить XIV на IX без перевода в десятичную. Именно поэтому Европа с радостью приняла индо-арабские цифры.</p>
+    <p>Но римские цифры выжили в нишах, где важна неизменность. Год на фасаде здания: MCMXCIX. Номер Супербоула: LVIII. Глава в книге: Chapter XIV. Часы: XII. В этих контекстах непозиционность — достоинство. Число не складывают — его читают.</p>
+    <p>В этом смысле римские цифры ближе к иероглифам, чем к арифметическому языку. Они помнят, а не вычисляют.</p>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">тип</span><a href="../types/natural.html">натуральные числа →</a></div>
+      <div class="related-link"><span class="related-link-type">система</span><a href="decimal.html">десятичная →</a></div>
+    </div>
+  </section>
+
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/numbers/numeral-systems/римские</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+<script>
+  const PAIRS = [
+    [1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],
+    [100,'C'],[90,'XC'],[50,'L'],[40,'XL'],
+    [10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']
+  ];
+  function toRoman(n) {
+    let out = '';
+    for (const [v, s] of PAIRS) { while (n >= v) { out += s; n -= v; } }
+    return out;
+  }
+  function decompose(n) {
+    const parts = [];
+    for (const [v, s] of PAIRS) { while (n >= v) { parts.push(v); n -= v; } }
+    return parts;
+  }
+  const out = document.getElementById('rOut');
+  document.getElementById('rIn').addEventListener('input', (e) => {
+    const raw = e.target.value.trim();
+    if (!raw) { out.innerHTML = ''; return; }
+    const n = parseInt(raw, 10);
+    if (!Number.isFinite(n) || n < 1 || n > 3999) {
+      out.innerHTML = '<span style="color:#888;">введи число от 1 до 3999</span>';
+      return;
+    }
+    const r = toRoman(n);
+    const parts = decompose(n);
+    out.innerHTML = r + '<div style="font-size:11px;color:#888;margin-top:8px;">' +
+      n + ' = ' + parts.join(' + ') + '</div>';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>системы счисления — null/objects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles/main.css">
+<style>
+  .ns-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ns-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 36px;
+    line-height: 1.1; margin: 0 0 12px 0;
+  }
+  .ns-glyph-row {
+    display: flex; align-items: baseline; gap: 18px;
+    margin-bottom: 12px;
+  }
+  .ns-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 64px; color: #c44a32;
+    line-height: 1;
+  }
+  .ns-sub {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 16px;
+    color: #666; line-height: 1.55; max-width: 640px;
+  }
+  .ns-meta {
+    width: 100%; border-collapse: collapse;
+    margin: 24px 0 12px; max-width: 640px;
+  }
+  .ns-meta td {
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-family: var(--font-mono); font-size: 11px;
+    vertical-align: top;
+  }
+  .ns-meta td.k {
+    color: #bbb; width: 160px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    font-size: 10px;
+  }
+  .ns-meta td.v { color: #111; }
+
+  .sec-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin: 32px 0 14px 0;
+  }
+  .ns-essay p {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 16px; line-height: 1.75;
+    color: #1a1a1a; margin-bottom: 12px;
+    max-width: 640px;
+  }
+  .ns-table {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; border-collapse: collapse;
+    margin: 12px 0;
+  }
+  .ns-table th, .ns-table td {
+    text-align: left;
+    padding: 6px 22px 6px 0;
+    border-bottom: 1px solid #e8e8e4;
+  }
+  .ns-table th {
+    color: #bbb;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: 9px;
+  }
+  .ns-table td.bits { letter-spacing: 0.1em; }
+  .bit-on  { display: inline-block; width: 10px; height: 10px; background: #111; }
+  .bit-off { display: inline-block; width: 10px; height: 10px; background: #e8e8e4; }
+
+  .interactive {
+    border: 1px solid var(--border);
+    background: #fcfbf8;
+    padding: 18px 20px;
+    margin: 14px 0 8px 0;
+    max-width: 560px;
+  }
+  .int-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: .1em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .int-input {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px; color: #111;
+    border: none; border-bottom: 1.5px solid #111;
+    background: transparent; outline: none;
+    padding: 6px 0; width: 200px;
+  }
+  .int-output {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px; color: #c44a32;
+    margin-top: 14px; line-height: 1.55;
+    word-break: break-all;
+  }
+  
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / numbers / numeral-systems</div>
+
+<main class="container">
+<article>
+
+  <div class="ns-tag">объекты · числа · системы счисления</div>
+  <h1 class="ns-h1">системы счисления</h1>
+  <p class="ns-sub">одно число — много записей. каждая система — свой способ видеть количество.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <p style="font-family:'Times New Roman',Georgia,serif;font-size:16px;line-height:1.7;color:#1a1a1a;max-width:640px;margin:24px 0 28px 0;">«число 42 можно записать как XLII, как 101010₂, как 2A₁₆, как ⟨▽▽⟩ (вавилонская), как ●● на ●● (майя). Это одно и то же количество — разные способы его записать. Система счисления — это не число. Это язык для чисел.»</p>
+
+  <div class="converter">
+    <div class="conv-label">// конвертер · введи число</div>
+    <input class="int-input" id="convInput" type="text" inputmode="numeric" placeholder="42">
+    <div class="int-output" id="convOut"></div>
+  </div>
+
+  <div class="sec-label">// каталог</div>
+  <table class="ns-table" style="font-size:11px;">
+    <tr>
+      <th>глиф</th><th>название</th><th>основание</th><th>изобрели</th><th>статус</th>
+    </tr>
+    <tr><td><a href="decimal.html">0–9</a></td><td><a href="decimal.html">десятичная</a></td><td>10</td><td>Индия · ~600 н.э.</td><td>повсеместно</td></tr>
+    <tr><td><a href="binary.html">01</a></td><td><a href="binary.html">двоичная</a></td><td>2</td><td>Лейбниц · 1679</td><td>компьютеры</td></tr>
+    <tr><td><a href="roman.html">XIV</a></td><td><a href="roman.html">римские</a></td><td>—</td><td>Рим · ~500 до н.э.</td><td>исторически</td></tr>
+    <tr><td><a href="babylonian.html">▽</a></td><td><a href="babylonian.html">вавилонская</a></td><td>60</td><td>Вавилон · ~2000 до н.э.</td><td>история · время</td></tr>
+    <tr><td><a href="mayan.html">●</a></td><td><a href="mayan.html">майя</a></td><td>20</td><td>Майя · ~400 до н.э.</td><td>история</td></tr>
+    <tr><td><a href="hexadecimal.html">FF</a></td><td><a href="hexadecimal.html">шестнадцатеричная</a></td><td>16</td><td>XX в. · программисты</td><td>код · цвет · память</td></tr>
+  </table>
+
+<script>
+  const ROMAN_PAIRS = [
+    [1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],
+    [100,'C'],[90,'XC'],[50,'L'],[40,'XL'],
+    [10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']
+  ];
+  function toRoman(n) {
+    if (n <= 0 || n > 3999) return null;
+    let out = '';
+    for (const [v, s] of ROMAN_PAIRS) { while (n >= v) { out += s; n -= v; } }
+    return out;
+  }
+  const out = document.getElementById('convOut');
+  document.getElementById('convInput').addEventListener('input', (e) => {
+    const raw = e.target.value.trim();
+    if (!raw) { out.innerHTML = ''; return; }
+    const n = parseInt(raw, 10);
+    if (!Number.isFinite(n) || n < 0) {
+      out.innerHTML = '<span style="color:#888;">введи целое число ≥ 0</span>';
+      return;
+    }
+    const lines = [
+      ['десятичная',     n.toString(10)],
+      ['двоичная',       n.toString(2)],
+      ['восьмеричная',   n.toString(8)],
+      ['шестнадцатер.',  n.toString(16).toUpperCase()]
+    ];
+    if (n >= 1 && n <= 3999) lines.push(['римские', toRoman(n)]);
+    out.innerHTML = lines.map(([k, v]) =>
+      '<div><span style="display:inline-block;width:130px;color:#888;font-size:11px;">' + k + '</span>' + v + '</div>'
+    ).join('');
+  });
+</script>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/numbers/numeral-systems</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

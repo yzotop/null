@@ -486,7 +486,13 @@
     { "id": "alph-math",  "type": "alphabet", "title": "математические символы", "url": "/null/objects/alphabets/math-symbols.html", "glyph": "ℕ" },
     { "id": "alph-latin", "type": "alphabet", "title": "латинский алфавит", "url": "/null/objects/alphabets/latin.html", "glyph": "x" },
     { "id": "alph-hebrew","type": "alphabet", "title": "еврейский алфавит", "url": "/null/objects/alphabets/hebrew.html", "glyph": "ℵ" },
-    { "id": "alph-fraktur","type": "alphabet", "title": "готический алфавит", "url": "/null/objects/alphabets/fraktur.html", "glyph": "𝔄" }
+    { "id": "alph-fraktur","type": "alphabet", "title": "готический алфавит", "url": "/null/objects/alphabets/fraktur.html", "glyph": "𝔄" },
+    { "id": "ns-decimal", "type": "numeral", "title": "десятичная система счисления", "url": "/null/objects/numbers/numeral-systems/decimal.html", "glyph": "10" },
+    { "id": "ns-binary",  "type": "numeral", "title": "двоичная система счисления", "url": "/null/objects/numbers/numeral-systems/binary.html", "glyph": "01" },
+    { "id": "ns-roman",   "type": "numeral", "title": "римские цифры", "url": "/null/objects/numbers/numeral-systems/roman.html", "glyph": "XIV" },
+    { "id": "ns-babylon", "type": "numeral", "title": "вавилонская система", "url": "/null/objects/numbers/numeral-systems/babylonian.html", "glyph": "▽" },
+    { "id": "ns-mayan",   "type": "numeral", "title": "система майя", "url": "/null/objects/numbers/numeral-systems/mayan.html", "glyph": "●" },
+    { "id": "ns-hex",     "type": "numeral", "title": "шестнадцатеричная", "url": "/null/objects/numbers/numeral-systems/hexadecimal.html", "glyph": "FF" }
   ],
   "edges": [
     {
@@ -1024,6 +1030,14 @@
     { "from": "alph-fraktur","to": "aleph0" },
     { "from": "alph-fraktur","to": "complex" },
     { "from": "alph-fraktur","to": "natural" },
-    { "from": "alph-fraktur","to": "alph-math" }
+    { "from": "alph-fraktur","to": "alph-math" },
+    { "from": "ns-binary",  "to": "cu-65536" },
+    { "from": "ns-binary",  "to": "op-xor" },
+    { "from": "ns-hex",     "to": "cu-65536" },
+    { "from": "ns-hex",     "to": "op-xor" },
+    { "from": "ns-roman",   "to": "natural" },
+    { "from": "ns-babylon", "to": "natural" },
+    { "from": "ns-mayan",   "to": "natural" },
+    { "from": "ns-decimal", "to": "natural" }
   ]
 }
