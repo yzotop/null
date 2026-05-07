@@ -483,7 +483,8 @@
     { "id": "mu-imc",     "type": "music", "title": "Instantaneous Momentary Calculations", "url": "/null/music/delta-machine/instantaneous.html", "glyph": "∂" },
     { "id": "aleph0",     "type": "special", "title": "ℵ₀ алеф-ноль", "url": "/null/objects/numbers/special/aleph.html", "glyph": "ℵ₀" },
     { "id": "alph-greek", "type": "alphabet", "title": "греческий алфавит", "url": "/null/objects/alphabets/greek.html", "glyph": "Ω" },
-    { "id": "alph-math",  "type": "alphabet", "title": "математические символы", "url": "/null/objects/alphabets/math-symbols.html", "glyph": "ℕ" }
+    { "id": "alph-math",  "type": "alphabet", "title": "математические символы", "url": "/null/objects/alphabets/math-symbols.html", "glyph": "ℕ" },
+    { "id": "alph-latin", "type": "alphabet", "title": "латинский алфавит", "url": "/null/objects/alphabets/latin.html", "glyph": "x" }
   ],
   "edges": [
     {
@@ -1008,6 +1009,11 @@
     { "from": "alph-math",  "to": "complex" },
     { "from": "alph-math",  "to": "prime" },
     { "from": "alph-math",  "to": "aleph0" },
-    { "from": "alph-math",  "to": "op-sum" }
+    { "from": "alph-math",  "to": "op-sum" },
+    { "from": "alph-latin", "to": "euler" },
+    { "from": "alph-latin", "to": "imaginary" },
+    { "from": "alph-latin", "to": "natural" },
+    { "from": "alph-latin", "to": "prime" },
+    { "from": "alph-latin", "to": "op-partial" }
   ]
 }

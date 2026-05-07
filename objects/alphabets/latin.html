@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>латинский алфавит — null/objects/alphabets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .ah-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ah-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 36px;
+    line-height: 1.1; margin: 0 0 12px 0;
+  }
+  .ah-sub {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 16px;
+    color: #666; line-height: 1.55; max-width: 640px;
+  }
+  .intro {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 16px; line-height: 1.7;
+    color: #1a1a1a; max-width: 640px;
+    margin: 28px 0 28px 0;
+  }
+  .sec-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: #bbb;
+    letter-spacing: .12em; text-transform: uppercase;
+    margin: 36px 0 14px 0;
+  }
+  .lat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+  }
+  @media (max-width: 900px) { .lat-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 640px) { .lat-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .lat-cell {
+    background: #f7f6f2;
+    padding: 18px 14px;
+    position: relative;
+    min-height: 122px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: background 0.1s ease;
+    border-left: 3px solid transparent;
+  }
+  /* upper-case grid: tighter */
+  .lat-grid.upper .lat-cell { padding: 14px 12px; min-height: 100px; }
+
+  .lat-cell .lat-letter { color: #111; }
+  .lat-cell .lat-name   { color: #bbb; }
+  .lat-cell .lat-usage  { color: #666; }
+
+  a.lat-cell {
+    cursor: pointer;
+    background: #f0ede8;
+  }
+  a.lat-cell .lat-letter { transition: transform 0.15s ease; transform-origin: left center; display: inline-block; }
+  a.lat-cell:hover { background: #e8e4dc; }
+  a.lat-cell:hover .lat-letter { transform: scale(1.05); }
+  a.lat-cell .lat-name  { color: #888; }
+  a.lat-cell .lat-usage { color: #555; }
+
+  .lat-letter {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 38px;
+    line-height: 1;
+  }
+  .lat-grid.upper .lat-letter {
+    font-style: normal;
+    font-size: 32px;
+  }
+  .lat-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .04em;
+    margin-top: 10px;
+  }
+  .lat-usage {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+  .lat-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #c44a32;
+    margin-top: 8px;
+    letter-spacing: .04em;
+  }
+  .lat-active-marker {
+    position: absolute;
+    top: 10px; right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .lat-active-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .lat-active-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .lat-fact {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #666;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 28px 0 16px 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / alphabets / латинский</div>
+
+<main class="container">
+<article>
+
+  <div class="ah-tag">объекты · алфавиты</div>
+  <h1 class="ah-h1">латинский алфавит</h1>
+  <p class="ah-sub">26 букв. большинство уже заняты. математика использует латинский для всего остального.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <p class="intro">Латинский алфавит вошёл в математику через средневековые переводы арабских текстов. Аль-Хорезми, Аль-Кинди — через них латынь стала языком европейской математики. Сегодня латинские буквы распределены по ролям: начало алфавита (a b c) — константы и коэффициенты. Середина (f g h) — функции. Конец (x y z) — переменные и неизвестные. Это не правило — это традиция. Но традиция сильнее правил.</p>
+
+  <div class="sec-label">// строчные · 26 букв</div>
+  <div class="lat-grid" id="grid-lower"></div>
+
+  <div class="sec-label">// заглавные · другая роль</div>
+  <div class="lat-grid upper" id="grid-upper"></div>
+
+  <hr style="border:none;border-top:1px solid #ddd;margin:32px 0 0 0;">
+
+  <p class="lat-fact">«конец алфавита для переменных — традиция от Декарта (1637). в "Геометрии" он использовал a, b, c для известных и x, y, z — для неизвестных. с тех пор x стало символом неизвестного не только в математике, но и в языке: X-фактор, X-файлы, поколение X.»</p>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/alphabets/latin.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+<script>
+  const COLORS = {
+    constant: '#c44a32',
+    special:  '#c44a32',
+    type:     '#2c5fb6',
+    operator: '#8e44ad'
+  };
+  const TYPE_RU = {
+    constant: 'константа',
+    special:  'особенное',
+    type:     'тип',
+    operator: 'оператор'
+  };
+
+  const LOWER = [
+    ['a', 'эй',     'коэффициент · первый элемент последовательности · полуось эллипса'],
+    ['b', 'би',     'коэффициент · основание степени · вторая полуось'],
+    ['c', 'си',     'константа интегрирования · скорость света · третья сторона треугольника'],
+    ['d', 'ди',     'дифференциал · d/dx производная · размерность',
+     { href: '../operators/partial.html', label: 'оператор ∂', type: 'operator' }],
+    ['e', 'и',      'число Эйлера · 2.71828…',
+     { href: '../numbers/constants/euler.html', label: 'число Эйлера', type: 'constant' }],
+    ['f', 'эф',     'функция f(x) · f как отображение'],
+    ['g', 'же',     'функция · метрический тензор · ускорение свободного падения'],
+    ['h', 'аш',     'функция · высота · постоянная Планка (h)'],
+    ['i', 'и',      'мнимая единица · √(−1) · индекс суммы',
+     { href: '../numbers/special/imaginary.html', label: 'мнимая единица', type: 'special' }],
+    ['j', 'жей',    'индекс · мнимая единица в электротехнике (вместо i)'],
+    ['k', 'кей',    'константа · кривизна · волновое число'],
+    ['l', 'эль',    'длина · ℓ-норма · угловой момент'],
+    ['m', 'эм',     'масса · наклон прямой · количество строк матрицы'],
+    ['n', 'эн',     'натуральное число · размер выборки · количество столбцов'],
+    ['o', 'о',      'O-нотация асимптотики · o-малое'],
+    ['p', 'пи',     'простое число · вероятность · импульс'],
+    ['q', 'ку',     'знаменатель дроби · заряд'],
+    ['r', 'эр',     'радиус · корреляция · остаток'],
+    ['s', 'эс',     'длина дуги · переменная в преобразовании Лапласа'],
+    ['t', 'ти',     'время · параметр · транспонирование (Tᵀ)'],
+    ['u', 'ю',      'переменная замены · вектор'],
+    ['v', 'ви',     'вектор · скорость · объём'],
+    ['w', 'даблю',  'вес · работа · комплексная переменная'],
+    ['x', 'икс',    'неизвестное · переменная · координата'],
+    ['y', 'уай',    'вторая переменная · координата · результат функции'],
+    ['z', 'зет',    'комплексная переменная · координата · целые числа (ℤ)']
+  ];
+
+  const UPPER = [
+    ['A', 'A', 'первый элемент · матрица · площадь'],
+    ['B', 'B', 'матрица · магнитное поле'],
+    ['C', 'C', 'множество · константа · комбинации C(n,k)'],
+    ['D', 'D', 'определитель · дифференциальный оператор'],
+    ['E', 'E', 'математическое ожидание E[X] · энергия'],
+    ['F', 'F', 'функция · поле · сила'],
+    ['G', 'G', 'гравитационная константа · граф'],
+    ['H', 'H', 'гамильтониан · гипотеза'],
+    ['I', 'I', 'тождественная матрица · интеграл'],
+    ['J', 'J', 'матрица Якоби'],
+    ['K', 'K', 'компактное множество'],
+    ['L', 'L', 'лагранжиан · пространство Лебега'],
+    ['M', 'M', 'матрица · многообразие'],
+    ['N', 'N', 'натуральные числа (ℕ-нотация) · нормальное распределение N(μ,σ²)',
+     { href: '../numbers/types/natural.html', label: 'натуральные числа', type: 'type' }],
+    ['O', 'O', 'O-нотация Ландау'],
+    ['P', 'P', 'вероятность P(A) · простые числа (ℙ-нотация)',
+     { href: '../numbers/types/prime.html', label: 'простые числа', type: 'type' }],
+    ['Q', 'Q', 'рациональные числа (ℚ-нотация)'],
+    ['R', 'R', 'вещественные числа (ℝ-нотация)'],
+    ['S', 'S', 'поверхность · сумма · симметрическая группа'],
+    ['T', 'T', 'преобразование · температура · транспонирование'],
+    ['U', 'U', 'объединение · унитарная матрица'],
+    ['V', 'V', 'пространство · объём · потенциал'],
+    ['W', 'W', 'работа · матрица весов'],
+    ['X', 'X', 'случайная величина'],
+    ['Y', 'Y', 'случайная величина · сферические функции'],
+    ['Z', 'Z', 'целые числа (ℤ-нотация)']
+  ];
+
+  function buildGrid(id, items) {
+    const grid = document.getElementById(id);
+    grid.innerHTML = items.map((row) => {
+      const [glyph, name, usage, link] = row;
+      const color = link ? (COLORS[link.type] || '#111') : null;
+      const marker = link
+        ? '<span class="lat-active-marker">' +
+            '<span class="lat-active-label" style="color:' + color + '">' + (TYPE_RU[link.type] || link.type) + '</span>' +
+            '<span class="lat-active-dot" style="background:' + color + '"></span>' +
+          '</span>'
+        : '';
+      const linkHTML = link
+        ? '<div class="lat-link">→ ' + link.label + '</div>'
+        : '';
+      const glyphStyle = color ? ' style="color:' + color + '"' : '';
+      const inner =
+        marker +
+        '<span class="lat-letter"' + glyphStyle + '>' + glyph + '</span>' +
+        '<div class="lat-name">' + name + '</div>' +
+        '<div class="lat-usage">' + usage + '</div>' +
+        linkHTML;
+      if (link) {
+        const cellStyle = ' style="border-left-color:' + color + '"';
+        return '<a class="lat-cell" href="' + link.href + '"' + cellStyle + '>' + inner + '</a>';
+      }
+      return '<div class="lat-cell">' + inner + '</div>';
+    }).join('');
+  }
+
+  buildGrid('grid-lower', LOWER);
+  buildGrid('grid-upper', UPPER);
+</script>
+
+</body>
+</html>

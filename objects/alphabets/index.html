@@ -27,10 +27,11 @@
   }
   .ah-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     margin-top: 28px;
   }
+  @media (max-width: 920px) { .ah-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 640px) { .ah-grid { grid-template-columns: 1fr; } }
   .ah-card {
     display: block; text-decoration: none; color: inherit;
@@ -112,6 +113,14 @@
       <div class="ah-title">математические символы</div>
       <div class="ah-desc">ℕ ℤ ℚ ℝ ℂ ℙ ℵ и Unicode-операторы. специальные символы, созданные для математики.</div>
       <div class="ah-meta">25+ символов · Unicode-блоки</div>
+    </a>
+
+    <a class="ah-card" href="latin.html">
+      <div class="ah-head"><span class="ah-mtag">алфавит · §03</span><span class="ah-arrow">→</span></div>
+      <div class="ah-glyph">x</div>
+      <div class="ah-title">латинский алфавит</div>
+      <div class="ah-desc">26 букв. a b c — константы. f g h — функции. x y z — переменные.</div>
+      <div class="ah-meta">26 символов · традиция Декарта · 1637</div>
     </a>
 
   </div>
