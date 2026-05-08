@@ -500,7 +500,8 @@
     { "id": "bk-newton",   "type": "book", "title": "Principia · Ньютон", "url": "/null/objects/books/newton-principia.html", "glyph": "ℕ" },
     { "id": "bk-euler",    "type": "book", "title": "Introductio · Эйлер", "url": "/null/objects/books/euler-introductio.html", "glyph": "e" },
     { "id": "bk-gauss",    "type": "book", "title": "Disquisitiones · Гаусс", "url": "/null/objects/books/gauss-disquisitiones.html", "glyph": "ℤ" },
-    { "id": "bk-bourbaki", "type": "book", "title": "Элементы математики · Бурбаки", "url": "/null/objects/books/bourbaki.html", "glyph": "ℬ" }
+    { "id": "bk-bourbaki", "type": "book", "title": "Элементы математики · Бурбаки", "url": "/null/objects/books/bourbaki.html", "glyph": "ℬ" },
+    { "id": "es-zero-history", "type": "essay", "title": "История нуля", "url": "/null/essays/zero-history.html", "glyph": "¶" }
   ],
   "edges": [
     {
@@ -1062,6 +1063,10 @@
     { "from": "bk-gauss",    "to": "op-mod" },
     { "from": "bk-gauss",    "to": "prime" },
     { "from": "bk-bourbaki", "to": "es-zfc" },
-    { "from": "bk-bourbaki", "to": "natural" }
+    { "from": "bk-bourbaki", "to": "natural" },
+    { "from": "es-zero-history", "to": "zero" },
+    { "from": "es-zero-history", "to": "ns-decimal" },
+    { "from": "es-zero-history", "to": "ns-mayan" },
+    { "from": "es-zero-history", "to": "ns-babylon" }
   ]
 }
