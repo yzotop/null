@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Introductio in Analysin — null/objects/books</title>
+<title>Introductio in Analysin Infinitorum — null/objects/books</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -74,13 +74,6 @@
     letter-spacing: 0.12em; text-transform: uppercase;
     margin: 32px 0 14px 0;
   }
-  .stub-note {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #bbb;
-    letter-spacing: .04em;
-    margin-top: 18px;
-  }
 </style>
 </head>
 <body>
@@ -106,16 +99,16 @@
     <div class="book-cover">e</div>
     <div>
       <div class="bk-tag">книга · 1748</div>
-      <h1 class="bk-h1">Introductio in Analysin</h1>
+      <h1 class="bk-h1">Introductio in Analysin Infinitorum</h1>
       <div class="bk-author">Леонард Эйлер · 1748</div>
       <table class="book-meta">
       <tr><td class="k">год</td><td class="v">1748</td></tr>
-      <tr><td class="k">полное название</td><td class="v">Introductio in Analysin Infinitorum</td></tr>
+      <tr><td class="k">полное название</td><td class="v">«Introductio in Analysin Infinitorum» · два тома</td></tr>
       <tr><td class="k">автор</td><td class="v">Леонард Эйлер · 1748</td></tr>
-      <tr><td class="k">язык</td><td class="v">латынь</td></tr>
+      <tr><td class="k">язык</td><td class="v">латинский</td></tr>
       <tr><td class="k">жанр</td><td class="v">математический трактат</td></tr>
-      <tr><td class="k">идея</td><td class="v">первая систематическая теория функций · e^(iπ) + 1 = 0 · sin/cos через e</td></tr>
-      <tr><td class="k">связано</td><td class="v">число Эйлера · π · формула Эйлера</td></tr>
+      <tr><td class="k">идея</td><td class="v">функция как центральный объект анализа · e · π · sin/cos через степенные ряды</td></tr>
+      <tr><td class="k">связано</td><td class="v">число e · число π · формула Эйлера</td></tr>
       </table>
     </div>
   </div>
@@ -124,20 +117,28 @@
   <hr class="section-divider">
 
   <section id="essay">
-    <div class="essay-label">эссе · ~200 слов · 2 мин</div>
-    <h2 class="essay-title">Первая книга про <em>функции</em>.</h2>
-    <p class="essay-lead">Эйлер написал учебник, в котором впервые появилось почти всё, чему сегодня учат на первом курсе анализа.</p>
+    <div class="essay-label">эссе · ~500 слов · 4 мин</div>
+    <h2 class="essay-title">Книга, которая поставила <em>функцию</em> в центр математики.</h2>
+    <p class="essay-lead">до Эйлера анализ был о кривых и площадях. Эйлер сделал его о функциях. И попутно дал математике большую часть её нотации.</p>
 
     <div class="essay">
       <div class="essay-body">
-        <p>«Introductio in Analysin Infinitorum» — два тома 1748 года. Здесь впервые систематически изложена теория функций как самостоятельных объектов: f(x), а не «выражение от x».</p>
-        <p>В этой книге появляется e^(iπ) + 1 = 0. Эйлер выводит формулу e^(ix) = cos(x) + i·sin(x) — связь экспоненты и тригонометрии.</p>
-        <p>Здесь же — функция Эйлера φ(n), счёт чисел, взаимно простых с n. Первая систематическая теория рядов: 1 + 1/2² + 1/3² + … = π²/6.</p>
-        <p>Эйлер писал ясно и щедро. После него анализ перестал быть тайной для посвящённых — он стал учебной дисциплиной.</p>
+        <p>Эйлер написал «Introductio» в 1748 году. Ему было 40 лет. Он был слеп на один глаз. И он был самым продуктивным математиком в истории<em class="fn">1</em>.</p>
+        <p>До «Introductio» центральным объектом анализа была кривая. Эйлер сместил фокус: центральный объект — функция. f(x) — правило, которое каждому x ставит в соответствие значение. Это кажется очевидным. До Эйлера — не было<em class="fn">4</em>.</p>
+        <p>В «Introductio» Эйлер показал, что синус и косинус можно выразить через экспоненту с мнимым показателем: e^(ix) = cos(x) + i·sin(x). При x = π: e^(iπ) = −1, то есть e^(iπ) + 1 = 0. Пять констант. Одно уравнение<em class="fn">3</em>.</p>
+        <blockquote>«Читайте Эйлера, читайте Эйлера — он учитель всех нас.» — Пьер-Симон Лаплас.</blockquote>
+        <p>Эйлер также показал, что e можно выразить как сумму ряда: e = 1 + 1/1! + 1/2! + 1/3! + … И что π²/6 = 1 + 1/4 + 1/9 + 1/16 + … (базельская задача)<em class="fn">2</em>.</p>
+        <p>Нотация, которую мы используем сегодня, — во многом от Эйлера: f(x) для функции · e для основания логарифма · i для мнимой единицы · π для числа пи · Σ для суммы. Эйлер не изобрёл все эти символы — но именно он сделал их стандартными.</p>
+        <p>«Introductio» — первый современный учебник анализа. Все учебники после него идут по его следам.</p>
       </div>
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Эйлер опубликовал более 800 работ — продолжал работать ослепнув полностью в 1771.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Базельская задача: Σ 1/n² = π²/6 — решена Эйлером в 1734, до «Introductio».</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">Формула e^(ix) = cos(x) + i·sin(x) — частный случай в «Introductio» 1748.</span></div>
+        <div class="note"><span class="n">[4]</span><span class="t">Обозначение f(x) для функции — Эйлер · 1734.</span></div>
+      </aside>
     </div>
   </section>
-<div class="stub-note">// эссе в разработке</div>
 
   <hr class="section-divider-soft">
 
@@ -146,7 +147,9 @@
     <div class="related-links">
       <div class="related-link"><span class="related-link-type">константа</span><a href="../numbers/constants/euler.html">число e →</a></div>
       <div class="related-link"><span class="related-link-type">константа</span><a href="../numbers/constants/pi.html">π →</a></div>
+      <div class="related-link"><span class="related-link-type">особенное</span><a href="../numbers/special/imaginary.html">мнимая единица i →</a></div>
       <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/euler-formula.html">формула Эйлера →</a></div>
+      <div class="related-link"><span class="related-link-type">книга</span><a href="newton-principia.html">Ньютон · Principia →</a></div>
     </div>
   </section>
 
@@ -154,7 +157,7 @@
 </main>
 
 <footer class="footer">
-  <span>/null/objects/books/Introductio</span>
+  <span>/null/objects/books/euler-introductio.html</span>
   <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
 </footer>
 
