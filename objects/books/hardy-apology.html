@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Апология математика — null/objects/books</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .bk-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .bk-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 32px;
+    line-height: 1.15; margin: 0 0 4px 0;
+  }
+  .bk-author {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #555;
+    letter-spacing: .03em;
+    margin-bottom: 14px;
+  }
+  .book-header {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
+    border: 1.5px solid #111;
+    padding: 24px;
+  }
+  @media (max-width: 640px) {
+    .book-header { grid-template-columns: 1fr; gap: 20px; }
+  }
+  .book-cover {
+    background: #1a3a5a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    color: #f7f6f2;
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1;
+  }
+  .book-meta {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+  }
+  .book-meta td {
+    padding: 7px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    vertical-align: top;
+  }
+  .book-meta td.k {
+    color: #bbb; width: 150px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 10px;
+  }
+  .book-meta td.v { color: #111; }
+  .sec-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin: 32px 0 14px 0;
+  }
+  .stub-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: .04em;
+    margin-top: 18px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / books / Апология математика</div>
+
+<main class="container">
+<article>
+
+  <div class="book-header">
+    <div class="book-cover">∫</div>
+    <div>
+      <div class="bk-tag">книга · 1940</div>
+      <h1 class="bk-h1">Апология математика</h1>
+      <div class="bk-author">Годфри Харди · 1940</div>
+      <table class="book-meta">
+      <tr><td class="k">год</td><td class="v">1940</td></tr>
+      <tr><td class="k">полное название</td><td class="v">A Mathematician's Apology</td></tr>
+      <tr><td class="k">автор</td><td class="v">Годфри Харди · 1940</td></tr>
+      <tr><td class="k">язык</td><td class="v">английский</td></tr>
+      <tr><td class="k">жанр</td><td class="v">эссе · мемуары</td></tr>
+      <tr><td class="k">идея</td><td class="v">математика красива сама по себе · полезность — не критерий</td></tr>
+      <tr><td class="k">связано</td><td class="v">число Харди-Рамануджана · простые числа · красота</td></tr>
+      </table>
+    </div>
+  </div>
+
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~500 слов · 4 мин</div>
+    <h2 class="essay-title">Оправдание <em>бесполезного</em>.</h2>
+    <p class="essay-lead">Харди написал эту книгу в 62 года, когда уже не мог заниматься математикой. Это объяснение — почему математика стоит того, чтобы ею заниматься. Ответ: потому что она красива.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p>«Апология» — одно из самых честных признаний в истории науки. Харди не притворяется, что математика полезна. Он утверждает, что это не важно.</p>
+        <p>«Настоящая математика почти полностью бесполезна». Он имеет в виду чистую математику — теорию чисел, анализ. Не прикладную, которая строит мосты и запускает ракеты<em class="fn">1</em>.</p>
+        <p>Харди определяет красоту в математике как конкретное понятие. Красивое доказательство — неожиданное, экономное, неизбежное. Доказательство Евклида о бесконечности простых — красиво. Доказательство теоремы Пифагора через площади — красиво. Длинное вычисление с перебором случаев — нет.</p>
+        <blockquote>«Красота — первый критерий: в мире нет места для некрасивой математики.» — Харди.</blockquote>
+        <p>В книге — история дружбы с Рамануджаном. Харди приехал к умирающему Рамануджану и сказал, что приехал на скучном такси с номером 1729. Рамануджан ответил, что это очень интересное число: 1729 = 1³ + 12³ = 9³ + 10³ — наименьшее с двумя представлениями<em class="fn">3</em>.</p>
+        <p>В конце книги — меланхолия. Харди перенёс инсульт и не может работать. Он пишет, что математик, который перестал создавать, — как поэт, который перестал писать стихи. Комментатор — второсортная роль<em class="fn">2</em>.</p>
+        <p>Книга сама является доказательством своего тезиса. Она красива. Она бесполезна. Это делает её ценной<em class="fn">4</em>.</p>
+      </div>
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Харди · 1877–1947 · Кембридж · работы по теории чисел и анализу.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">«Апология» написана после инсульта 1939 — последняя крупная работа Харди.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">История такси и 1729 — одна из самых известных в математике.</span></div>
+        <div class="note"><span class="n">[4]</span><span class="t">Харди был убеждённым атеистом и пацифистом. Его «бесполезная» теория чисел позже легла в основу криптографии RSA.</span></div>
+      </aside>
+    </div>
+  </section>
+
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">любопытное</span><a href="../numbers/curious/1729.html">1729 →</a></div>
+      <div class="related-link"><span class="related-link-type">тип</span><a href="../numbers/types/prime.html">простые числа →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/rsa-primes.html">RSA — простые в криптографии →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/books/Апология математика</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

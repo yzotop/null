@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Начала — null/objects/books</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .bk-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .bk-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 32px;
+    line-height: 1.15; margin: 0 0 4px 0;
+  }
+  .bk-author {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #555;
+    letter-spacing: .03em;
+    margin-bottom: 14px;
+  }
+  .book-header {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
+    border: 1.5px solid #111;
+    padding: 24px;
+  }
+  @media (max-width: 640px) {
+    .book-header { grid-template-columns: 1fr; gap: 20px; }
+  }
+  .book-cover {
+    background: #1a3a5a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    color: #f7f6f2;
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1;
+  }
+  .book-meta {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+  }
+  .book-meta td {
+    padding: 7px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    vertical-align: top;
+  }
+  .book-meta td.k {
+    color: #bbb; width: 150px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 10px;
+  }
+  .book-meta td.v { color: #111; }
+  .sec-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin: 32px 0 14px 0;
+  }
+  .stub-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: .04em;
+    margin-top: 18px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / books / Начала</div>
+
+<main class="container">
+<article>
+
+  <div class="book-header">
+    <div class="book-cover">Ε</div>
+    <div>
+      <div class="bk-tag">книга · ~300 до н.э.</div>
+      <h1 class="bk-h1">Начала</h1>
+      <div class="bk-author">Евклид · ~300 до н.э.</div>
+      <table class="book-meta">
+      <tr><td class="k">год</td><td class="v">~300 до н.э.</td></tr>
+      <tr><td class="k">полное название</td><td class="v">Στοιχεῖα · «Начала» · 13 книг</td></tr>
+      <tr><td class="k">автор</td><td class="v">Евклид · ~300 до н.э.</td></tr>
+      <tr><td class="k">язык</td><td class="v">греческий</td></tr>
+      <tr><td class="k">жанр</td><td class="v">математический трактат</td></tr>
+      <tr><td class="k">идея</td><td class="v">аксиоматический метод: из минимума аксиом — весь корпус геометрии</td></tr>
+      <tr><td class="k">переводы</td><td class="v">более 1000 изданий · второе место по тиражу после Библии</td></tr>
+      <tr><td class="k">связано</td><td class="v">теорема о бесконечности простых · теорема Пифагора</td></tr>
+      </table>
+    </div>
+  </div>
+
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~500 слов · 4 мин</div>
+    <h2 class="essay-title">Книга, которая изобрела <em>доказательство</em>.</h2>
+    <p class="essay-lead">до Евклида математики знали много фактов. Евклид показал, как из нескольких очевидных аксиом доказать всё остальное.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p>«Начала» — не сборник открытий Евклида. Большинство теорем были известны до него. Евклид сделал другое: он организовал знание.</p>
+        <p>Структура «Начал» — аксиоматическая. 5 аксиом. 5 постулатов. Всё остальное — следствия. Из «целое больше части» и «через две точки проходит прямая» Евклид вывел сотни теорем — строго, шаг за шагом.</p>
+        <p>Это была революция в мышлении. До Евклида математика была набором рецептов. После — системой доказательств.</p>
+        <blockquote>«Нет царской дороги к геометрии.» — Евклид Птолемею I.</blockquote>
+        <p>13 книг «Начал» охватывают планиметрию (книги I–VI), теорию чисел (книги VII–IX) — включая доказательство бесконечности простых, — и стереометрию (книги X–XIII)<em class="fn">1</em>.</p>
+        <p>Книга IX, теорема 20: простых чисел бесконечно много. Доказательство — одно из самых изящных в истории математики. Предположим, что простых конечное множество: p₁, p₂, …, pₙ. Возьмём число N = p₁ × p₂ × … × pₙ + 1. N не делится ни на одно из простых — значит либо N простое, либо его делитель — новое простое не из списка. Противоречие. Простых бесконечно<em class="fn">2</em>.</p>
+        <p>5-й постулат Евклида — про параллельные прямые — две тысячи лет казался менее очевидным, чем остальные. В XIX веке Гаусс, Лобачевский и Бойяи построили геометрии, где он не выполняется — и они были непротиворечивы. Так появилась неевклидова геометрия. Оказалось, что аксиомы — выбор, а не истина<em class="fn">3</em>.</p>
+      </div>
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">«Начала» — второй по числу изданий текст в истории после Библии (более 1000 изданий).</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Теорема IX.20 о бесконечности простых — одно из старейших сохранившихся доказательств в человеческой истории.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">5-й постулат: через точку вне прямой можно провести ровно одну параллельную. В геометрии Лобачевского — бесконечно много. В геометрии Римана — ни одной.</span></div>
+      </aside>
+    </div>
+  </section>
+
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">гипотеза</span><a href="../ideas/hypotheses/twin-primes.html">простые близнецы →</a></div>
+      <div class="related-link"><span class="related-link-type">теорема</span><a href="../ideas/theorems/fundamental.html">основная теорема арифметики →</a></div>
+      <div class="related-link"><span class="related-link-type">тип</span><a href="../numbers/types/prime.html">простые числа →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/books/Начала</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

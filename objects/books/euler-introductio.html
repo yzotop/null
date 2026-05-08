@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introductio in Analysin — null/objects/books</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .bk-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .bk-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 32px;
+    line-height: 1.15; margin: 0 0 4px 0;
+  }
+  .bk-author {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #555;
+    letter-spacing: .03em;
+    margin-bottom: 14px;
+  }
+  .book-header {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
+    border: 1.5px solid #111;
+    padding: 24px;
+  }
+  @media (max-width: 640px) {
+    .book-header { grid-template-columns: 1fr; gap: 20px; }
+  }
+  .book-cover {
+    background: #1a3a5a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    color: #f7f6f2;
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1;
+  }
+  .book-meta {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+  }
+  .book-meta td {
+    padding: 7px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    vertical-align: top;
+  }
+  .book-meta td.k {
+    color: #bbb; width: 150px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 10px;
+  }
+  .book-meta td.v { color: #111; }
+  .sec-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin: 32px 0 14px 0;
+  }
+  .stub-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: .04em;
+    margin-top: 18px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / books / Introductio</div>
+
+<main class="container">
+<article>
+
+  <div class="book-header">
+    <div class="book-cover">e</div>
+    <div>
+      <div class="bk-tag">книга · 1748</div>
+      <h1 class="bk-h1">Introductio in Analysin</h1>
+      <div class="bk-author">Леонард Эйлер · 1748</div>
+      <table class="book-meta">
+      <tr><td class="k">год</td><td class="v">1748</td></tr>
+      <tr><td class="k">полное название</td><td class="v">Introductio in Analysin Infinitorum</td></tr>
+      <tr><td class="k">автор</td><td class="v">Леонард Эйлер · 1748</td></tr>
+      <tr><td class="k">язык</td><td class="v">латынь</td></tr>
+      <tr><td class="k">жанр</td><td class="v">математический трактат</td></tr>
+      <tr><td class="k">идея</td><td class="v">первая систематическая теория функций · e^(iπ) + 1 = 0 · sin/cos через e</td></tr>
+      <tr><td class="k">связано</td><td class="v">число Эйлера · π · формула Эйлера</td></tr>
+      </table>
+    </div>
+  </div>
+
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~200 слов · 2 мин</div>
+    <h2 class="essay-title">Первая книга про <em>функции</em>.</h2>
+    <p class="essay-lead">Эйлер написал учебник, в котором впервые появилось почти всё, чему сегодня учат на первом курсе анализа.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p>«Introductio in Analysin Infinitorum» — два тома 1748 года. Здесь впервые систематически изложена теория функций как самостоятельных объектов: f(x), а не «выражение от x».</p>
+        <p>В этой книге появляется e^(iπ) + 1 = 0. Эйлер выводит формулу e^(ix) = cos(x) + i·sin(x) — связь экспоненты и тригонометрии.</p>
+        <p>Здесь же — функция Эйлера φ(n), счёт чисел, взаимно простых с n. Первая систематическая теория рядов: 1 + 1/2² + 1/3² + … = π²/6.</p>
+        <p>Эйлер писал ясно и щедро. После него анализ перестал быть тайной для посвящённых — он стал учебной дисциплиной.</p>
+      </div>
+    </div>
+  </section>
+<div class="stub-note">// эссе в разработке</div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../numbers/constants/euler.html">число e →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../numbers/constants/pi.html">π →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/euler-formula.html">формула Эйлера →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/books/Introductio</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

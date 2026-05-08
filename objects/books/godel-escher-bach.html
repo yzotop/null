@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Гёдель, Эшер, Бах — null/objects/books</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .bk-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .bk-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 32px;
+    line-height: 1.15; margin: 0 0 4px 0;
+  }
+  .bk-author {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #555;
+    letter-spacing: .03em;
+    margin-bottom: 14px;
+  }
+  .book-header {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
+    border: 1.5px solid #111;
+    padding: 24px;
+  }
+  @media (max-width: 640px) {
+    .book-header { grid-template-columns: 1fr; gap: 20px; }
+  }
+  .book-cover {
+    background: #1a3a5a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    color: #f7f6f2;
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1;
+  }
+  .book-meta {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+  }
+  .book-meta td {
+    padding: 7px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    vertical-align: top;
+  }
+  .book-meta td.k {
+    color: #bbb; width: 150px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 10px;
+  }
+  .book-meta td.v { color: #111; }
+  .sec-label {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin: 32px 0 14px 0;
+  }
+  .stub-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: .04em;
+    margin-top: 18px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / books / Гёдель Эшер Бах</div>
+
+<main class="container">
+<article>
+
+  <div class="book-header">
+    <div class="book-cover">∞</div>
+    <div>
+      <div class="bk-tag">книга · 1979</div>
+      <h1 class="bk-h1">Гёдель, Эшер, Бах</h1>
+      <div class="bk-author">Дуглас Хофштадтер · 1979</div>
+      <table class="book-meta">
+      <tr><td class="k">год</td><td class="v">1979</td></tr>
+      <tr><td class="k">полное название</td><td class="v">Gödel, Escher, Bach: an Eternal Golden Braid</td></tr>
+      <tr><td class="k">автор</td><td class="v">Дуглас Хофштадтер · 1979</td></tr>
+      <tr><td class="k">язык</td><td class="v">английский</td></tr>
+      <tr><td class="k">жанр</td><td class="v">научно-популярная · философия математики</td></tr>
+      <tr><td class="k">идея</td><td class="v">самореференция и рекурсия как основа сознания и смысла</td></tr>
+      <tr><td class="k">премия</td><td class="v">Пулитцеровская · 1980</td></tr>
+      <tr><td class="k">связано</td><td class="v">теорема Гёделя · рекурсия · формальные системы</td></tr>
+      </table>
+    </div>
+  </div>
+
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~500 слов · 4 мин</div>
+    <h2 class="essay-title">Книга о книге <em>о книгах</em>.</h2>
+    <p class="essay-lead">ГЭБ — книга, которая описывает себя, пока описывает другое. Она о рекурсии — и рекурсивна. Она о смысле — и смысл её не поддаётся пересказу.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p>Хофштадтер написал ГЭБ, пытаясь объяснить теорему Гёделя. Но книга стала чем-то большим.</p>
+        <p>Три героя книги — Гёдель, Эшер и Бах — связаны одной идеей: самореференция. Гёдель построил математическое утверждение, которое говорит о себе. Эшер рисовал руки, которые рисуют друг друга. Бах писал фуги, которые возвращаются к себе.</p>
+        <p>Теорема Гёделя в пересказе Хофштадтера: любая достаточно мощная формальная система содержит истинные утверждения, которые нельзя доказать внутри системы. Это не дефект системы — это её свойство. Достаточно мощные системы неизбежно неполны<em class="fn">1</em>.</p>
+        <blockquote>«I am a strange loop.» — Хофштадтер · название его более поздней книги.</blockquote>
+        <p>ГЭБ построена как фуга. Главы чередуются с диалогами Ахилла и Черепахи — персонажей из парадокса Зенона<em class="fn">2</em>. Каждый диалог иллюстрирует идею следующей главы. Книга о структуре — структурна.</p>
+        <p>Хофштадтер задаёт вопрос: что такое «я»? Если мозг — формальная система, то «я» — это странная петля. Самореференция, которая порождает ощущение себя<em class="fn">3</em>.</p>
+        <p>ГЭБ продаётся как книга о математике. Читается как книга о сознании. Является книгой о том, что они одно и то же.</p>
+      </div>
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Пулитцеровская премия в категории general non-fiction · 1980.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Диалоги Ахилла и Черепахи отсылают к «What the Tortoise Said to Achilles» Льюиса Кэрролла, 1895.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">«Strange loop» — центральная концепция: система, которая через иерархию уровней возвращается к себе. Пример: «это утверждение недоказуемо».</span></div>
+      </aside>
+    </div>
+  </section>
+
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">теорема</span><a href="../ideas/theorems/godel.html">теорема Гёделя →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/hilbert-godel.html">Гёдель и Гильберт →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/zfc-independence.html">ZFC — независимость →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/books/Гёдель Эшер Бах</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

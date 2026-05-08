@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>книги — null/objects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .bk-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .bk-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 36px;
+    line-height: 1.1; margin: 0 0 12px 0;
+  }
+  .bk-sub {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 16px;
+    color: #666; line-height: 1.55; max-width: 640px;
+  }
+  .bk-intro {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 16px; line-height: 1.7;
+    color: #1a1a1a; max-width: 640px;
+    margin: 28px 0 28px 0;
+  }
+  .bk-row {
+    display: grid;
+    grid-template-columns: 50px 1fr 130px 100px;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 14px;
+    border-bottom: 0.5px solid var(--border);
+    text-decoration: none; color: inherit;
+    transition: background 0.12s;
+  }
+  .bk-row:hover { background: #f0ede8; }
+  .bk-row.head {
+    background: #f0ede8;
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 10px 14px;
+  }
+  .bk-row.head:hover { background: #f0ede8; }
+  .bk-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 24px; color: #111;
+    text-align: center;
+  }
+  .bk-name {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 18px; color: #111;
+  }
+  .bk-name .sub {
+    display: block; font-family: var(--font-sans);
+    font-size: 11px; color: #888; margin-top: 4px;
+  }
+  .bk-author-cell, .bk-year-cell {
+    font-family: var(--font-mono); font-size: 10px; color: #888;
+  }
+  @media (max-width: 720px) {
+    .bk-row { grid-template-columns: 40px 1fr; }
+    .bk-row.head { display: none; }
+    .bk-author-cell, .bk-year-cell { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / books</div>
+
+<main class="container">
+<article>
+
+  <div class="bk-tag">объекты · книги</div>
+  <h1 class="bk-h1">книги</h1>
+  <p class="bk-sub">математические книги, которые изменили способ думать. не учебники — манифесты.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <p class="bk-intro">«Есть книги, которые передают знание. И есть книги, которые меняют то, как знание выглядит. „Начала“ Евклида не просто геометрия — это изобретение доказательства. „Гёдель, Эшер, Бах“ не просто о математике — это о природе смысла. Эти книги здесь.»</p>
+
+  <div class="bk-row head">
+    <span></span><span>название · автор</span><span>год</span><span>связано</span>
+  </div>
+
+  <a class="bk-row" href="euclid-elements.html">
+    <span class="bk-glyph">Ε</span>
+    <span class="bk-name">Начала<span class="sub">Евклид · аксиомы и доказательство</span></span>
+    <span class="bk-author-cell">Евклид</span>
+    <span class="bk-year-cell">~300 до н.э.</span>
+  </a>
+
+  <a class="bk-row" href="descartes-geometry.html">
+    <span class="bk-glyph">⟡</span>
+    <span class="bk-name">Геометрия<span class="sub">Декарт · координаты x y z</span></span>
+    <span class="bk-author-cell">Декарт</span>
+    <span class="bk-year-cell">1637</span>
+  </a>
+
+  <a class="bk-row" href="newton-principia.html">
+    <span class="bk-glyph" style="font-style:normal;">ℕ</span>
+    <span class="bk-name">Математические начала<span class="sub">Ньютон · законы движения, исчисление</span></span>
+    <span class="bk-author-cell">Ньютон</span>
+    <span class="bk-year-cell">1687</span>
+  </a>
+
+  <a class="bk-row" href="euler-introductio.html">
+    <span class="bk-glyph">e</span>
+    <span class="bk-name">Introductio in Analysin<span class="sub">Эйлер · функция, e, π</span></span>
+    <span class="bk-author-cell">Эйлер</span>
+    <span class="bk-year-cell">1748</span>
+  </a>
+
+  <a class="bk-row" href="gauss-disquisitiones.html">
+    <span class="bk-glyph" style="font-style:normal;">ℤ</span>
+    <span class="bk-name">Disquisitiones Arithmeticae<span class="sub">Гаусс · теория чисел, mod</span></span>
+    <span class="bk-author-cell">Гаусс</span>
+    <span class="bk-year-cell">1801</span>
+  </a>
+
+  <a class="bk-row" href="bourbaki.html">
+    <span class="bk-glyph" style="font-style:normal;">ℬ</span>
+    <span class="bk-name">Элементы математики<span class="sub">Бурбаки · полная реформа на ZFC</span></span>
+    <span class="bk-author-cell">Бурбаки</span>
+    <span class="bk-year-cell">1939–</span>
+  </a>
+
+  <a class="bk-row" href="godel-escher-bach.html">
+    <span class="bk-glyph" style="font-style:normal;">∞</span>
+    <span class="bk-name">Гёдель, Эшер, Бах<span class="sub">Хофштадтер · самореференция и сознание</span></span>
+    <span class="bk-author-cell">Хофштадтер</span>
+    <span class="bk-year-cell">1979</span>
+  </a>
+
+  <a class="bk-row" href="hardy-apology.html">
+    <span class="bk-glyph">∫</span>
+    <span class="bk-name">Апология математика<span class="sub">Харди · красота и бесполезность</span></span>
+    <span class="bk-author-cell">Харди</span>
+    <span class="bk-year-cell">1940</span>
+  </a>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/books/index.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

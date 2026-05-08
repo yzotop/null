@@ -492,7 +492,15 @@
     { "id": "ns-roman",   "type": "numeral", "title": "римские цифры", "url": "/null/objects/numbers/numeral-systems/roman.html", "glyph": "XIV" },
     { "id": "ns-babylon", "type": "numeral", "title": "вавилонская система", "url": "/null/objects/numbers/numeral-systems/babylonian.html", "glyph": "▽" },
     { "id": "ns-mayan",   "type": "numeral", "title": "система майя", "url": "/null/objects/numbers/numeral-systems/mayan.html", "glyph": "●" },
-    { "id": "ns-hex",     "type": "numeral", "title": "шестнадцатеричная", "url": "/null/objects/numbers/numeral-systems/hexadecimal.html", "glyph": "FF" }
+    { "id": "ns-hex",     "type": "numeral", "title": "шестнадцатеричная", "url": "/null/objects/numbers/numeral-systems/hexadecimal.html", "glyph": "FF" },
+    { "id": "bk-euclid",   "type": "book", "title": "Начала · Евклид", "url": "/null/objects/books/euclid-elements.html", "glyph": "Ε" },
+    { "id": "bk-geb",      "type": "book", "title": "Гёдель Эшер Бах", "url": "/null/objects/books/godel-escher-bach.html", "glyph": "∞" },
+    { "id": "bk-hardy",    "type": "book", "title": "Апология математика · Харди", "url": "/null/objects/books/hardy-apology.html", "glyph": "∫" },
+    { "id": "bk-descartes","type": "book", "title": "Геометрия · Декарт", "url": "/null/objects/books/descartes-geometry.html", "glyph": "⟡" },
+    { "id": "bk-newton",   "type": "book", "title": "Principia · Ньютон", "url": "/null/objects/books/newton-principia.html", "glyph": "ℕ" },
+    { "id": "bk-euler",    "type": "book", "title": "Introductio · Эйлер", "url": "/null/objects/books/euler-introductio.html", "glyph": "e" },
+    { "id": "bk-gauss",    "type": "book", "title": "Disquisitiones · Гаусс", "url": "/null/objects/books/gauss-disquisitiones.html", "glyph": "ℤ" },
+    { "id": "bk-bourbaki", "type": "book", "title": "Элементы математики · Бурбаки", "url": "/null/objects/books/bourbaki.html", "glyph": "ℬ" }
   ],
   "edges": [
     {
@@ -1038,6 +1046,22 @@
     { "from": "ns-roman",   "to": "natural" },
     { "from": "ns-babylon", "to": "natural" },
     { "from": "ns-mayan",   "to": "natural" },
-    { "from": "ns-decimal", "to": "natural" }
+    { "from": "ns-decimal", "to": "natural" },
+    { "from": "bk-euclid",   "to": "prime" },
+    { "from": "bk-euclid",   "to": "fundamental" },
+    { "from": "bk-geb",      "to": "godel" },
+    { "from": "bk-geb",      "to": "es-zfc" },
+    { "from": "bk-hardy",    "to": "cu-1729" },
+    { "from": "bk-hardy",    "to": "prime" },
+    { "from": "bk-hardy",    "to": "es-rsa" },
+    { "from": "bk-descartes","to": "alph-latin" },
+    { "from": "bk-newton",   "to": "op-integral" },
+    { "from": "bk-newton",   "to": "op-partial" },
+    { "from": "bk-euler",    "to": "euler" },
+    { "from": "bk-euler",    "to": "pi" },
+    { "from": "bk-gauss",    "to": "op-mod" },
+    { "from": "bk-gauss",    "to": "prime" },
+    { "from": "bk-bourbaki", "to": "es-zfc" },
+    { "from": "bk-bourbaki", "to": "natural" }
   ]
 }
