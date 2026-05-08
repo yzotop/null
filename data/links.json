@@ -501,7 +501,8 @@
     { "id": "bk-euler",    "type": "book", "title": "Introductio · Эйлер", "url": "/null/objects/books/euler-introductio.html", "glyph": "e" },
     { "id": "bk-gauss",    "type": "book", "title": "Disquisitiones · Гаусс", "url": "/null/objects/books/gauss-disquisitiones.html", "glyph": "ℤ" },
     { "id": "bk-bourbaki", "type": "book", "title": "Элементы математики · Бурбаки", "url": "/null/objects/books/bourbaki.html", "glyph": "ℬ" },
-    { "id": "es-zero-history", "type": "essay", "title": "История нуля", "url": "/null/essays/zero-history.html", "glyph": "¶" }
+    { "id": "es-zero-history", "type": "essay", "title": "История нуля", "url": "/null/essays/zero-history.html", "glyph": "¶" },
+    { "id": "es-infinity-types", "type": "essay", "title": "Бесконечностей много", "url": "/null/essays/infinity-types.html", "glyph": "¶" }
   ],
   "edges": [
     {
@@ -1067,6 +1068,10 @@
     { "from": "es-zero-history", "to": "zero" },
     { "from": "es-zero-history", "to": "ns-decimal" },
     { "from": "es-zero-history", "to": "ns-mayan" },
-    { "from": "es-zero-history", "to": "ns-babylon" }
+    { "from": "es-zero-history", "to": "ns-babylon" },
+    { "from": "es-infinity-types", "to": "aleph0" },
+    { "from": "es-infinity-types", "to": "cantor" },
+    { "from": "es-infinity-types", "to": "es-infinity" },
+    { "from": "es-infinity-types", "to": "alph-hebrew" }
   ]
 }

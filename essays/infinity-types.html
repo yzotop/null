@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>бесконечностей много — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / infinity-types</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~700 слов · 6 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Бесконечностей много.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">бесконечность — не одна. Кантор доказал, что некоторые бесконечности больше других. это одна из самых странных истин в математике. счётная и несчётная. ℵ₀ и 𝔠. отель Гильберта.</p>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Бесконечность долго считалась одной. Бесконечно большой — и всё. Аристотель различал «потенциальную» бесконечность (можно продолжать вечно) и «актуальную» (существует как завершённое целое). Актуальную он считал невозможной.</p>
+
+      <p>Кантор с этим не согласился.</p>
+
+      <p>В 1873 году он поставил вопрос: можно ли пронумеровать все рациональные числа натуральными? То есть — равномощны ли ℚ и ℕ? Интуиция говорит: нет. Рациональных чисел «намного больше». Между 0 и 1 их бесконечно много — 1/2, 1/3, 2/3, 1/4, … А натуральных в этом промежутке — ноль.</p>
+
+      <p>Но интуиция ошибается. Кантор построил таблицу всех дробей p/q и обошёл её по диагонали — зигзагом. Каждой дроби он поставил в соответствие натуральное число. Получилась биекция: |ℚ| = |ℕ| = ℵ₀. Значит натуральные, целые и рациональные числа — одной мощности. Все они счётны: их можно пронумеровать натуральными числами.</p>
+
+      <p>А вещественные числа?</p>
+
+      <p>Кантор доказал, что вещественные несчётны. Метод — диагональный аргумент (1891). Предположим, что все вещественные числа от 0 до 1 пронумерованы: r₁ = 0.a₁₁ a₁₂ a₁₃ …, r₂ = 0.a₂₁ a₂₂ a₂₃ …, r₃ = 0.a₃₁ a₃₂ a₃₃ … Построим число d: первая цифра d отличается от a₁₁, вторая — от a₂₂, n-я — от aₙₙ. Тогда d отличается от каждого rₙ хотя бы одной цифрой. Значит d не входит в список — хотя d ∈ [0, 1]. Список неполон. |ℝ| &gt; ℵ₀<em class="fn">1</em>.</p>
+
+      <blockquote>«Я вижу это — но не верю в это.» — Кантор · письмо Дедекинду · после доказательства |ℝ| &gt; |ℕ|.</blockquote>
+
+      <p>Мощность вещественных чисел обозначают 𝔠 (континуум). 𝔠 = 2<sup>ℵ₀</sup> = |℘(ℕ)| — мощность множества всех подмножеств натуральных чисел<em class="fn">4</em>.</p>
+
+      <p>Отель Гильберта — мысленный эксперимент Давида Гильберта<em class="fn">2</em>. Отель с бесконечным числом номеров — и все заняты. Приехал ещё один гость. Решение: переселить каждого из номера n в номер n+1. Номер 1 освободился.</p>
+
+      <p>Приехал автобус с бесконечным числом пассажиров. Решение: переселить каждого из номера n в номер 2n. Освободились все нечётные номера — бесконечно много. Но приехало бесконечно много автобусов с бесконечным числом пассажиров. Это уже сложнее — но и здесь есть решение через ту же диагональ Кантора.</p>
+
+      <p>Теперь представим отель с 𝔠 пассажирами. Для них уже нет места — даже в бесконечном отеле. 𝔠 &gt; ℵ₀.</p>
+
+      <p>Что между ℵ₀ и 𝔠? Континуум-гипотеза Кантора: ничего. 𝔠 = ℵ₁ — следующий кардинал после ℵ₀. Гильберт поставил её первой из своих 23 проблем в 1900 году. Гёдель показал в 1940: континуум-гипотезу нельзя опровергнуть в ZFC. Коэн показал в 1963: нельзя и доказать. Она независима от аксиом. Математика не может решить, истинна она или нет<em class="fn">3</em>.</p>
+
+      <p>Иерархия бесконечностей: ℵ₀ &lt; ℵ₁ &lt; ℵ₂ &lt; … &lt; ℵ_ω &lt; … И эта иерархия сама бесконечна. Бесконечностей бесконечно много.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Диагональный аргумент Кантора для несчётности ℝ · 1891 · один из самых элегантных в математике.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Отель Гильберта — мысленный эксперимент. Описан в лекции Гильберта 1924 года «О бесконечном» (Über das Unendliche).</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Континуум-гипотеза: Гёдель (1940) — нельзя опровергнуть; Коэн (1963) — нельзя доказать. Независима от ZFC.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">𝔠 = 2<sup>ℵ₀</sup> = |ℝ| = |℘(ℕ)|. Мощность континуума равна мощности множества всех подмножеств натуральных чисел.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">особенное</span><a href="../objects/numbers/special/aleph.html">ℵ₀ алеф-ноль →</a></div>
+      <div class="related-link"><span class="related-link-type">теорема</span><a href="../objects/ideas/theorems/cantor.html">теорема Кантора →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="infinity.html">бесконечность — не число →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="zfc-independence.html">ZFC — независимость аксиом →</a></div>
+      <div class="related-link"><span class="related-link-type">алфавит</span><a href="../objects/alphabets/hebrew.html">еврейский алфавит (ℵ) →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/infinity-types.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>
