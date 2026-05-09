@@ -713,6 +713,13 @@
       "title": "Тайна простых чисел",
       "url": "/null/essays/primes-mystery.html",
       "glyph": "¶"
+    },
+    {
+      "id": "vi-coordinates",
+      "type": "visual",
+      "title": "системы координат",
+      "url": "/null/visuals/coordinates.html",
+      "glyph": "⊕"
     }
   ],
   "edges": [
@@ -1579,6 +1586,9 @@
     {
       "from": "es-primes",
       "to": "es-rsa"
-    }
+    },
+    { "from": "vi-coordinates", "to": "pi" },
+    { "from": "vi-coordinates", "to": "imaginary" },
+    { "from": "vi-coordinates", "to": "bk-descartes" }
   ]
 }

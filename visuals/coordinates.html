@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>системы координат — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .coord-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 720px) { .coord-wrap { grid-template-columns: 1fr; } }
+  .coord-canvas-wrap {
+    background: #f7f6f2;
+    position: relative;
+  }
+  #coordCanvas {
+    display: block;
+    width: 100%;
+    height: 420px;
+    cursor: crosshair;
+  }
+  .coord-canvas-wrap.dragging #coordCanvas { cursor: grabbing; }
+  .coord-panels {
+    background: #f7f6f2;
+    display: flex;
+    flex-direction: column;
+  }
+  .panel {
+    padding: 22px 26px;
+    border-bottom: 1px solid #e8e8e4;
+    flex: 1;
+  }
+  .panel:last-child { border-bottom: none; }
+  .panel-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .coord-display {
+    display: flex;
+    gap: 28px;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .coord-cell { min-width: 84px; }
+  .coord-val {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 36px;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .cart .coord-val { color: #c44a32; }
+  .pol  .coord-val { color: #2c5fb6; }
+  .cmp  .coord-val { color: #1a7a4a; }
+  .coord-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #bbb;
+    margin-top: 5px;
+    letter-spacing: .04em;
+  }
+  .formula {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #888;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+  }
+
+  .coord-explainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 720px) { .coord-explainer { grid-template-columns: 1fr; } }
+  .ex-cell {
+    background: #f7f6f2;
+    padding: 22px 22px;
+  }
+  .ex-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .ex-cell.cart .ex-glyph { color: #c44a32; }
+  .ex-cell.pol  .ex-glyph { color: #2c5fb6; }
+  .ex-cell.cmp  .ex-glyph { color: #1a7a4a; }
+  .ex-text {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / coordinates</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №014</div>
+    <div class="ttl">системы координат</div>
+    <div class="lead">одна точка · три описания · двигай мышью</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="coord-wrap">
+    <div class="coord-canvas-wrap" id="cwrap">
+      <canvas id="coordCanvas"></canvas>
+    </div>
+    <div class="coord-panels">
+
+      <div class="panel cart">
+        <div class="panel-label">// декартовы · René Descartes · 1637</div>
+        <div class="coord-display">
+          <div class="coord-cell">
+            <div class="coord-val" id="valX">2.00</div>
+            <div class="coord-name">x</div>
+          </div>
+          <div class="coord-cell">
+            <div class="coord-val" id="valY">1.50</div>
+            <div class="coord-name">y</div>
+          </div>
+        </div>
+        <div class="formula">P = (x, y)</div>
+      </div>
+
+      <div class="panel pol">
+        <div class="panel-label">// полярные · Isaac Newton · ~1671</div>
+        <div class="coord-display">
+          <div class="coord-cell">
+            <div class="coord-val" id="valR">2.50</div>
+            <div class="coord-name">r</div>
+          </div>
+          <div class="coord-cell">
+            <div class="coord-val" id="valTheta">36.9°</div>
+            <div class="coord-name">θ</div>
+          </div>
+        </div>
+        <div class="formula">r = √(x² + y²)<br>θ = atan2(y, x)</div>
+      </div>
+
+      <div class="panel cmp">
+        <div class="panel-label">// комплексное · Carl Friedrich Gauss · 1831</div>
+        <div class="coord-display">
+          <div class="coord-cell" style="min-width:auto;">
+            <div class="coord-val" id="valZ">2.00 + 1.50i</div>
+            <div class="coord-name">z = x + yi</div>
+          </div>
+        </div>
+        <div class="formula">|z| = <span id="valZmod">2.50</span><br>arg(z) = <span id="valZarg">36.9°</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="coord-explainer">
+    <div class="ex-cell cart">
+      <div class="ex-glyph">(x, y)</div>
+      <div class="ex-text">горизонтальное и вертикальное расстояние от начала координат. Декарт ввёл в 1637 в «Геометрии». Самая используемая система.</div>
+    </div>
+    <div class="ex-cell pol">
+      <div class="ex-glyph">(r, θ)</div>
+      <div class="ex-text">расстояние от начала r и угол θ от оси X. Удобны для окружностей, спиралей, волн. Полярные розы: r = cos(n/d · θ).</div>
+    </div>
+    <div class="ex-cell cmp">
+      <div class="ex-glyph">x + yi</div>
+      <div class="ex-text">комплексная плоскость Гаусса: вещественная + мнимая ось. |z| = r — модуль; arg(z) = θ — аргумент. Формула Эйлера: e<sup>iθ</sup> = cos θ + i·sin θ.</div>
+    </div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/pi.html">π — угол в радианах →</a></div>
+      <div class="related-link"><span class="related-link-type">особенное</span><a href="../objects/numbers/special/imaginary.html">мнимая единица i — комплексная плоскость →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="polar-roses.html">полярные розы — r = cos(n/d · θ) →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="lorenz.html">аттрактор Лоренца — 3D координаты →</a></div>
+      <div class="related-link"><span class="related-link-type">книга</span><a href="/null/books/descartes-geometry.html">Декарт · Геометрия →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/coordinates.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(() => {
+  const canvas = document.getElementById('coordCanvas');
+  const cwrap = document.getElementById('cwrap');
+  const ctx = canvas.getContext('2d');
+  const SCALE = 60; // px per unit
+
+  let dpr = window.devicePixelRatio || 1;
+  let point = { x: 2, y: 1.5 };
+  let dragging = false;
+
+  const sizeCanvas = () => {
+    dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.floor(rect.width * dpr);
+    canvas.height = Math.floor(rect.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+
+  const center = () => {
+    const r = canvas.getBoundingClientRect();
+    return { cx: r.width / 2, cy: r.height / 2, w: r.width, h: r.height };
+  };
+
+  const screenToUnit = (px, py) => {
+    const { cx, cy } = center();
+    return { x: (px - cx) / SCALE, y: (cy - py) / SCALE };
+  };
+
+  const getPolar = (x, y) => {
+    const r = Math.sqrt(x*x + y*y);
+    let t = Math.atan2(y, x) * 180 / Math.PI;
+    if (t < 0) t += 360;
+    return { r, theta: t };
+  };
+
+  const draw = () => {
+    const { cx, cy, w, h } = center();
+    ctx.fillStyle = '#f7f6f2';
+    ctx.fillRect(0, 0, w, h);
+
+    // grid
+    ctx.strokeStyle = 'rgba(0,0,0,0.04)';
+    ctx.lineWidth = 1;
+    for (let x = cx % SCALE; x < w; x += SCALE) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+    }
+    for (let y = cy % SCALE; y < h; y += SCALE) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+    }
+
+    // polar circles
+    ctx.strokeStyle = 'rgba(0,0,0,0.045)';
+    for (let r = 1; r <= 4; r++) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, r * SCALE, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    // polar rays every 30°
+    for (let a = 0; a < 360; a += 30) {
+      const rad = a * Math.PI / 180;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + Math.cos(rad) * 4 * SCALE, cy - Math.sin(rad) * 4 * SCALE);
+      ctx.stroke();
+    }
+
+    // axes
+    ctx.strokeStyle = '#ccc';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, h); ctx.stroke();
+
+    // axis labels and unit ticks
+    ctx.fillStyle = '#bbb';
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'top';
+    ctx.fillText('x', w - 6, cy + 4);
+    ctx.textAlign = 'left';
+    ctx.fillText('y', cx + 5, 4);
+
+    // point in screen coords
+    const px = cx + point.x * SCALE;
+    const py = cy - point.y * SCALE;
+
+    // dashed projections to axes
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = 'rgba(196,74,50,0.5)';
+    ctx.lineWidth = 1;
+    // vertical to x-axis
+    ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(px, cy); ctx.stroke();
+    // horizontal to y-axis
+    ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(cx, py); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // r line (origin → point)
+    ctx.strokeStyle = 'rgba(44,95,182,0.55)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(px, py); ctx.stroke();
+
+    // arc for θ
+    const { r, theta } = getPolar(point.x, point.y);
+    if (r > 0.05) {
+      const arcR = Math.min(28, r * SCALE * 0.4);
+      ctx.strokeStyle = 'rgba(44,95,182,0.55)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.arc(cx, cy, arcR, 0, -theta * Math.PI / 180, true);
+      ctx.stroke();
+    }
+
+    // labels
+    ctx.font = '10px "JetBrains Mono", monospace';
+    // x label below dashed
+    ctx.fillStyle = '#c44a32';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillText('x = ' + point.x.toFixed(2), px, cy + 6);
+    // y label left of dashed
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('y = ' + point.y.toFixed(2), cx - 6, py);
+    // r label on the line
+    ctx.fillStyle = '#2c5fb6';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    if (r > 0.1) {
+      const mx = cx + (px - cx) * 0.55;
+      const my = cy + (py - cy) * 0.55;
+      ctx.fillText('r = ' + r.toFixed(2), mx + 6, my - 8);
+    }
+    // θ near arc
+    if (r > 0.2) {
+      const arcR = Math.min(28, r * SCALE * 0.4);
+      const midA = (theta / 2) * Math.PI / 180;
+      const lx = cx + Math.cos(midA) * (arcR + 12);
+      const ly = cy - Math.sin(midA) * (arcR + 12);
+      ctx.fillText('θ = ' + theta.toFixed(1) + '°', lx, ly);
+    }
+
+    // point
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = 'rgba(196,74,50,0.4)';
+    ctx.fillStyle = '#c44a32';
+    ctx.beginPath();
+    ctx.arc(px, py, 7, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  };
+
+  const updatePanels = () => {
+    const { r, theta } = getPolar(point.x, point.y);
+    document.getElementById('valX').textContent = point.x.toFixed(2);
+    document.getElementById('valY').textContent = point.y.toFixed(2);
+    document.getElementById('valR').textContent = r.toFixed(2);
+    document.getElementById('valTheta').textContent = theta.toFixed(1) + '°';
+    const sign = point.y >= 0 ? '+' : '−';
+    document.getElementById('valZ').textContent =
+      point.x.toFixed(2) + ' ' + sign + ' ' + Math.abs(point.y).toFixed(2) + 'i';
+    document.getElementById('valZmod').textContent = r.toFixed(2);
+    document.getElementById('valZarg').textContent = theta.toFixed(1) + '°';
+  };
+
+  const render = () => { draw(); updatePanels(); };
+
+  // ── interaction ────────────────────────────────────────────────────
+  const setFromEvent = (clientX, clientY) => {
+    const rect = canvas.getBoundingClientRect();
+    const px = clientX - rect.left;
+    const py = clientY - rect.top;
+    const u = screenToUnit(px, py);
+    point.x = Math.max(-4, Math.min(4, u.x));
+    point.y = Math.max(-3, Math.min(3, u.y));
+    render();
+  };
+
+  canvas.addEventListener('mousedown', (e) => {
+    dragging = true;
+    cwrap.classList.add('dragging');
+    setFromEvent(e.clientX, e.clientY);
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    setFromEvent(e.clientX, e.clientY);
+  });
+  window.addEventListener('mouseup', () => {
+    dragging = false;
+    cwrap.classList.remove('dragging');
+  });
+
+  // touch
+  canvas.addEventListener('touchstart', (e) => {
+    if (!e.touches[0]) return;
+    e.preventDefault();
+    dragging = true;
+    setFromEvent(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: false });
+  canvas.addEventListener('touchmove', (e) => {
+    if (!dragging || !e.touches[0]) return;
+    e.preventDefault();
+    setFromEvent(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: false });
+  canvas.addEventListener('touchend', () => { dragging = false; });
+
+  // boot
+  sizeCanvas();
+  render();
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => { sizeCanvas(); render(); }, 120);
+  });
+})();
+</script>
+
+</body>
+</html>
