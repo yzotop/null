@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>тайна простых чисел — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="/null/charts/">графики</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / primes-mystery</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~700 слов · 6 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Тайна простых чисел.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">они бесконечны. они непредсказуемы. они везде. простые числа — атомы математики: любое натуральное число раскладывается в них единственным образом, но сами они не раскладываются ни во что.</p>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Простые числа — числа, у которых нет делителей, кроме 1 и самого себя. 2, 3, 5, 7, 11, 13, 17, 19, 23, 29… Они кажутся случайными. Но это не так.</p>
+
+      <p>Основная теорема арифметики говорит: любое натуральное число больше 1 единственным образом раскладывается в произведение простых. 12 = 2 × 2 × 3. 100 = 2 × 2 × 5 × 5. 97 = 97. Простые — атомы. Остальные числа — молекулы.</p>
+
+      <p>Первый вопрос: сколько их? Евклид ответил в ~300 до н.э.: бесконечно много. Доказательство изящно. Допустим, простых конечное число: p₁, p₂, …, pₙ. Возьмём N = p₁ × p₂ × … × pₙ + 1. N не делится ни на одно из простых — значит либо N простое, либо у него делитель, которого нет в списке. Противоречие. Простых бесконечно.</p>
+
+      <p>Второй вопрос: как они распределены? Здесь всё сложнее.</p>
+
+      <p>Простые редеют с ростом чисел. Среди первых 10 чисел — 4 простых (40%). Среди первых 100 — 25 (25%). Среди первых 1000 — 168 (16.8%). Среди первых миллиона — 78 498 (7.8%).</p>
+
+      <p>Теорема о простых числах (Адамар и де ла Валле-Пуссен, независимо, 1896): количество простых до N примерно равно N / ln(N). При больших N — очень точно. Но не точно. Разница между реальным количеством и N / ln(N) — это погрешность. Насколько мала эта погрешность? Вот здесь начинается тайна<em class="fn">1</em>.</p>
+
+      <blockquote>«Простые числа растут как сорняки среди натуральных чисел, и кажется, что никакой закономерности в них нет. И при этом они подчиняются удивительно правильным статистическим законам.» — Дон Загье.</blockquote>
+
+      <p>В 1859 году Риман написал статью. Восемь страниц. Одна из самых важных в истории математики. Он ввёл дзета-функцию: ζ(s) = 1 + 1/2ˢ + 1/3ˢ + 1/4ˢ + …<em class="fn">2</em></p>
+
+      <p>И заметил: точность теоремы о простых числах зависит от того, где находятся нули ζ(s). Риман высказал гипотезу: все нетривиальные нули лежат на прямой Re(s) = 1/2. Это и есть гипотеза Римана.</p>
+
+      <p>Если она верна — мы знаем, насколько точно простые числа описываются формулой N / ln(N). Если нет — распределение простых может быть хаотичнее, чем мы думаем.</p>
+
+      <p>Гипотеза Римана не доказана. Уже 165 лет. Проверены первые 10 триллионов нулей — все на прямой. Но доказательства нет. Это первая из проблем тысячелетия Клэя. Миллион долларов за решение.</p>
+
+      <p>Простые числа скрывают другие тайны. Гипотеза Гольдбаха (1742): любое чётное число &gt; 2 есть сумма двух простых. 4 = 2 + 2. 6 = 3 + 3. 100 = 3 + 97. 1000 = 3 + 997. Проверено до 4 × 10¹⁸. Не доказано<em class="fn">3</em>.</p>
+
+      <p>Гипотеза о простых близнецах: простых пар (p, p+2) бесконечно много. 3 и 5. 11 и 13. 17 и 19. 1 000 000 007 и 1 000 000 009. Не доказано.</p>
+
+      <p>И при этом — простые числа лежат в основе современной криптографии. RSA шифрует данные, используя то, что перемножить два больших простых легко, а разложить произведение обратно — вычислительно невозможно. Каждый раз, когда вы заходите на сайт по https, — вы используете тайну простых чисел<em class="fn">4</em>.</p>
+
+      <p>Атомы математики защищают интернет.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Теорема о простых числах: Жак Адамар и Шарль де ла Валле-Пуссен независимо доказали её в 1896 году. π(n) ~ n / ln(n).</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Статья Римана «Über die Anzahl der Primzahlen unter einer gegebenen Größe» — 1859, 8 страниц. Изменила теорию чисел.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Гипотеза Гольдбаха — письмо Эйлеру, 1742. Проверена до 4 × 10¹⁸. Не доказана.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">RSA-шифрование: Ривест, Шамир, Адлеман, 1977. Основано на сложности разложения на простые множители.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">тип</span><a href="../objects/numbers/types/prime.html">простые числа →</a></div>
+      <div class="related-link"><span class="related-link-type">гипотеза</span><a href="../objects/ideas/hypotheses/riemann.html">Риман →</a></div>
+      <div class="related-link"><span class="related-link-type">гипотеза</span><a href="../objects/ideas/hypotheses/goldbach.html">Гольдбах →</a></div>
+      <div class="related-link"><span class="related-link-type">гипотеза</span><a href="../objects/ideas/hypotheses/twin-primes.html">простые близнецы →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="rsa-primes.html">RSA — простые в криптографии →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/prime-field.html">поле простых →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/ulam.html">спираль Улама →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/primes-mystery.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a>
+</footer>
+
+</body>
+</html>

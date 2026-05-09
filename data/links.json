@@ -502,7 +502,8 @@
     { "id": "bk-gauss",    "type": "book", "title": "Disquisitiones · Гаусс", "url": "/null/objects/books/gauss-disquisitiones.html", "glyph": "ℤ" },
     { "id": "bk-bourbaki", "type": "book", "title": "Элементы математики · Бурбаки", "url": "/null/objects/books/bourbaki.html", "glyph": "ℬ" },
     { "id": "es-zero-history", "type": "essay", "title": "История нуля", "url": "/null/essays/zero-history.html", "glyph": "¶" },
-    { "id": "es-infinity-types", "type": "essay", "title": "Бесконечностей много", "url": "/null/essays/infinity-types.html", "glyph": "¶" }
+    { "id": "es-infinity-types", "type": "essay", "title": "Бесконечностей много", "url": "/null/essays/infinity-types.html", "glyph": "¶" },
+    { "id": "es-primes", "type": "essay", "title": "Тайна простых чисел", "url": "/null/essays/primes-mystery.html", "glyph": "¶" }
   ],
   "edges": [
     {
@@ -1072,6 +1073,11 @@
     { "from": "es-infinity-types", "to": "aleph0" },
     { "from": "es-infinity-types", "to": "cantor" },
     { "from": "es-infinity-types", "to": "es-infinity" },
-    { "from": "es-infinity-types", "to": "alph-hebrew" }
+    { "from": "es-infinity-types", "to": "alph-hebrew" },
+    { "from": "es-primes", "to": "prime" },
+    { "from": "es-primes", "to": "riemann" },
+    { "from": "es-primes", "to": "goldbach" },
+    { "from": "es-primes", "to": "twin-primes" },
+    { "from": "es-primes", "to": "es-rsa" }
   ]
 }
