@@ -6,8 +6,110 @@
 <title>символы — null/visuals</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sym-filters {
+    display: flex;
+    gap: 1px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    background: #ddd;
+    border: 1px solid #ddd;
+  }
+  .sym-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border: none;
+    background: #f7f6f2;
+    color: #bbb;
+    cursor: pointer;
+    transition: all .1s;
+    white-space: nowrap;
+  }
+  .sym-btn:hover { color: #555; background: #f0ede8; }
+  .sym-btn.on { color: #111; background: #f0ede8; }
+
+  .sym-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 32px;
+  }
+  .sym-card {
+    background: #f7f6f2;
+    padding: 20px 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    transition: background .1s;
+  }
+  .sym-card:hover { background: #f0ede8; }
+  .sym-card:hover .sym-glyph { transform: translateY(-2px); }
+  .sym-type-tag {
+    position: absolute;
+    top: 8px; right: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #ccc;
+  }
+  .sym-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 10px;
+    transition: transform .15s;
+  }
+  .sym-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    color: #888;
+    letter-spacing: .02em;
+    text-align: center;
+    line-height: 1.4;
+    max-width: 72px;
+  }
+  .sym-conns {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    color: #ccc;
+    margin-top: 3px;
+  }
+
+  .sym-legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  .sym-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .04em;
+  }
+  .sym-legend-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+</style>
 </head>
 <body>
 
@@ -30,68 +132,31 @@
   <header class="visual-header">
     <div class="num">визуал · №008</div>
     <div class="ttl">символы</div>
-    <div class="lead">все глифы проекта. размер — количество связей. цвет — тип.</div>
+    <div class="lead">все объекты проекта. цвет — тип. размер — количество связей.</div>
   </header>
 
   <hr class="section-divider">
 
-  <div class="symbols-section-label">// символы проекта · <span id="activeCount">0</span> объектов</div>
-  <div class="symbols-wrap" id="active-symbols"></div>
-
-  <div class="symbols-legend" id="legend"></div>
-
-  <hr class="section-divider-soft">
-
-  <div class="symbols-section-label">// математический unicode · контекст</div>
-
-  <div class="unicode-row">
-    <div class="unicode-row-label">греческий алфавит</div>
-    <div class="unicode-chars" id="row-greek"></div>
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;">
+    <div id="symMeta" style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#bbb;letter-spacing:.06em;">загрузка…</div>
   </div>
 
-  <div class="unicode-row">
-    <div class="unicode-row-label">математические операторы</div>
-    <div class="unicode-chars" id="row-ops"></div>
-  </div>
+  <div class="sym-filters" id="symFilters"></div>
 
-  <div class="unicode-row">
-    <div class="unicode-row-label">математические буквы и символы</div>
-    <div class="unicode-chars" id="row-letters"></div>
-  </div>
+  <div class="sym-grid" id="symGrid"></div>
 
-  <div class="unicode-row">
-    <div class="unicode-row-label">геометрические фигуры и блоки</div>
-    <div class="unicode-chars" id="row-geom"></div>
-  </div>
+  <hr style="border:none;border-top:1px solid #e8e8e4;margin:8px 0 16px;">
 
-  <div class="unicode-row">
-    <div class="unicode-row-label">стрелки и прочее</div>
-    <div class="unicode-chars" id="row-arrows"></div>
-  </div>
+  <div class="sym-legend" id="symLegend"></div>
 
-  <hr class="section-divider-soft">
-
-  <section class="visual-meta">
-    <div class="visual-description">
-      <p>Каждый символ на сайте — это объект с историей. Размер плитки отражает количество связей с другими объектами в графе. π и простые числа — самые связанные. Серые символы из тех же Unicode-блоков просто соседствуют с активными по диапазону, но в проекте не используются.</p>
-      <p>Нажмите на любой активный символ — откроется его страница. Наведите — увидите title, тип и количество связей.</p>
-    </div>
-    <div class="visual-params">
-      <div class="row"><span>активных символов</span><span id="metaActive">–</span></div>
-      <div class="row"><span>максимум связей</span><span><span id="metaMaxConn">–</span> у <span id="metaMaxSym">–</span></span></div>
-      <div class="row"><span>Unicode блоков</span><span>5</span></div>
-      <div class="row"><span>размер</span><span>24 → 96 px</span></div>
-    </div>
-  </section>
-
-  <hr class="section-divider-soft">
+  <hr class="section-divider-soft" style="margin-top:32px;">
 
   <section class="related">
     <div class="related-label">связанное</div>
     <div class="related-links">
       <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/map.html">граф объектов →</a></div>
-      <div class="related-link"><span class="related-link-type">визуал</span><a href="prime-field.html">поле простых →</a></div>
-      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/pi.html">π — самый связанный →</a></div>
+      <div class="related-link"><span class="related-link-type">алфавит</span><a href="../objects/alphabets/math-symbols.html">математические символы →</a></div>
+      <div class="related-link"><span class="related-link-type">алфавит</span><a href="../objects/alphabets/greek.html">греческий алфавит →</a></div>
     </div>
   </section>
 
@@ -103,167 +168,131 @@
   <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/find.html">find →</a>
 </footer>
 
-<div class="symbol-tooltip" id="tip"></div>
-
 <script>
-(async () => {
-  const COLORS = {
-    constant:   '#111',
-    type:       '#2c5fb6',
-    special:    '#c44a32',
-    theorem:    '#1a7a4a',
-    hypothesis: '#e67e22',
-    operator:   '#8e44ad',
-    problem:    '#16a085',
-    curious:    '#b7950b',
-    music:      '#1a5276',
-    essay:      '#777',
-    visual:     '#999'
-  };
-  const TYPE_RU = {
-    constant:'константа', type:'тип', special:'особенное',
-    theorem:'теорема', hypothesis:'гипотеза', operator:'оператор',
-    problem:'задача', curious:'любопытное', music:'альбом', essay:'эссе', visual:'визуал'
-  };
-  const TYPE_RU_PLURAL = {
-    constant:'константы', type:'типы', special:'особенные',
-    theorem:'теоремы', hypothesis:'гипотезы', operator:'операторы',
-    problem:'задачи', curious:'любопытные', music:'музыка', essay:'эссе', visual:'визуалы'
-  };
+const COLORS = {
+  constant:   '#c44a32',
+  type:       '#2c5fb6',
+  special:    '#c44a32',
+  theorem:    '#1a7a4a',
+  hypothesis: '#e67e22',
+  operator:   '#8e44ad',
+  problem:    '#16a085',
+  curious:    '#b7950b',
+  essay:      '#888',
+  visual:     '#666',
+  music:      '#1a5276',
+  chart:      '#5d4e8a',
+  book:       '#1a3a5a',
+  alphabet:   '#4a235a',
+  numeral:    '#784212',
+  coordinate: '#1a5276'
+};
 
-  const data = await fetch('/null/data/links.json').then(r => r.json());
+const TYPE_RU = {
+  constant: 'константа', type: 'тип', special: 'особенное',
+  theorem: 'теорема', hypothesis: 'гипотеза', operator: 'оператор',
+  problem: 'задача', curious: 'любопытное', essay: 'эссе',
+  visual: 'визуал', music: 'музыка', chart: 'графики',
+  book: 'книга', alphabet: 'алфавит', numeral: 'счисление',
+  coordinate: 'координаты'
+};
 
-  // count connections per node id
-  const conn = {};
-  data.nodes.forEach(n => conn[n.id] = 0);
-  data.edges.forEach(e => {
-    if (conn[e.from] !== undefined) conn[e.from]++;
-    if (conn[e.to]   !== undefined) conn[e.to]++;
-  });
-  const maxConn = Math.max(...Object.values(conn), 1);
+const TYPE_ORDER = [
+  'constant','type','special','theorem','hypothesis','operator','problem',
+  'curious','coordinate','numeral','alphabet','book','essay','visual','chart','music'
+];
 
-  // active glyph map: glyph string → first node with that glyph (most connected wins ties)
-  const glyphToNode = {};
-  data.nodes
-    .slice()
-    .sort((a, b) => conn[b.id] - conn[a.id])
-    .forEach(n => {
-      if (!glyphToNode[n.glyph]) glyphToNode[n.glyph] = n;
+let allNodes = [];
+let activeFilter = 'all';
+
+fetch('/null/data/links.json')
+  .then(r => r.json())
+  .then(data => {
+    const edges = data.edges || [];
+    const connCount = {};
+    edges.forEach(e => {
+      connCount[e.from] = (connCount[e.from] || 0) + 1;
+      connCount[e.to]   = (connCount[e.to]   || 0) + 1;
     });
 
-  // ─── Active section: render every node as a tile ───
-  const wrap = document.getElementById('active-symbols');
-  const sortedNodes = data.nodes
-    .slice()
-    .sort((a, b) => conn[b.id] - conn[a.id]);
+    allNodes = data.nodes
+      .filter(n => n.glyph && n.url)
+      .map(n => ({ ...n, conns: connCount[n.id] || 0 }))
+      .sort((a, b) => b.conns - a.conns);
 
-  document.getElementById('activeCount').textContent = sortedNodes.length;
-  document.getElementById('metaActive').textContent = sortedNodes.length;
-  const top = sortedNodes[0];
-  document.getElementById('metaMaxConn').textContent = conn[top.id];
-  document.getElementById('metaMaxSym').textContent = top.title;
-
-  const minSize = 24, maxSize = 96;
-  for (const n of sortedNodes) {
-    const c = conn[n.id];
-    const size = minSize + (c / maxConn) * (maxSize - minSize);
-    const a = document.createElement('a');
-    a.className = 'symbol-tile';
-    a.href = n.url;
-    a.dataset.title = n.title;
-    a.dataset.type = TYPE_RU[n.type] || n.type;
-    a.dataset.conn = c;
-    a.style.setProperty('--type-color', COLORS[n.type] || '#888');
-    a.style.borderColor = '';
-    a.innerHTML = `
-      <span class="symbol-connections">${c}</span>
-      <span class="symbol-glyph" style="font-size:${size.toFixed(0)}px;color:${COLORS[n.type] || '#888'};">${n.glyph}</span>
-      <span class="symbol-type-label">${TYPE_RU[n.type] || n.type}</span>
-    `;
-    wrap.appendChild(a);
-  }
-
-  // tooltip + hover-coloring on tiles
-  const tip = document.getElementById('tip');
-  document.querySelectorAll('.symbol-tile').forEach(t => {
-    t.addEventListener('mouseenter', () => {
-      t.style.borderColor = t.style.getPropertyValue('--type-color');
-      tip.innerHTML = `${t.dataset.title} · ${t.dataset.type} · ${t.dataset.conn} связей`;
-      tip.style.display = 'block';
-    });
-    t.addEventListener('mousemove', (e) => {
-      tip.style.left = (e.clientX + 14) + 'px';
-      tip.style.top = (e.clientY + 14) + 'px';
-    });
-    t.addEventListener('mouseleave', () => {
-      t.style.borderColor = '';
-      tip.style.display = 'none';
-    });
+    buildFilters();
+    buildLegend();
+    render();
+  })
+  .catch(err => {
+    document.getElementById('symMeta').textContent = 'ошибка загрузки данных';
   });
 
-  // ─── Legend ───
-  const legend = document.getElementById('legend');
-  Object.entries(TYPE_RU_PLURAL).forEach(([t, label]) => {
-    const el = document.createElement('span');
-    el.className = 'lg';
-    el.innerHTML = `<span class="dot" style="background:${COLORS[t]}"></span>${label}`;
-    legend.appendChild(el);
+function buildFilters() {
+  const wrap = document.getElementById('symFilters');
+  wrap.innerHTML = '';
+  const present = new Set(allNodes.map(n => n.type));
+  const types = ['all', ...TYPE_ORDER.filter(t => present.has(t))];
+
+  types.forEach(t => {
+    const count = (t === 'all')
+      ? allNodes.length
+      : allNodes.filter(n => n.type === t).length;
+    const btn = document.createElement('button');
+    btn.className = 'sym-btn' + (t === 'all' ? ' on' : '');
+    btn.textContent = (t === 'all' ? 'все' : (TYPE_RU[t] || t)) + ' · ' + count;
+    btn.dataset.type = t;
+    btn.onclick = () => {
+      activeFilter = t;
+      document.querySelectorAll('.sym-btn').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      render();
+    };
+    wrap.appendChild(btn);
   });
+}
 
-  // ─── Unicode rows ───
-  const rows = {
-    'row-greek': 'αβγδεζηθικλμνξοπρστυφχψω ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ',
-    'row-ops':   '∀∁∂∃∄∅∆∇∈∉∊∋∌∍∎∏∐∑−∓∔∕∖∗∘∙√∛∜∝∞∟∠∡∢∣∤∥∦∧∨∩∪∫∬∭∮∯∰∱∲∳∴∵∶∷∸∹∺∻∼∽∾∿≀≁≂≃≄≅≆≇≈≉≊≋≌≍≎≏≐≑≒≓≔≕≖≗≘≙≚≛≜≝≞≟≠≡≢≣≤≥≦≧≨≩≪≫≬≭≮≯≰≱≲≳≴≵⊂⊃⊄⊅⊆⊇⊈⊉⊊⊋⊌⊍⊎⊏⊐⊑⊒⊓⊔⊕⊖⊗⊘⊙⊚⊛⊜⊝⊞⊟⊠⊡⊢⊣⊤⊥⊦⊧⊨⊩⊪⊫⊬⊭⊮⊯',
-    'row-letters':'ℂ℃℄℅℆ℇ℈℉ℊℋℌℍℎℏℐℑℒℓ℔ℕ№℗℘ℙℚℛℜℝ℞℟℠℡™℣ℤ℥Ω℧ℨ℩KÅℬℭ℮ℯℰℱℲℳℴℵℶℷℸℹ℺℻ℼℽℾℿ𝕋𝔠',
-    'row-geom':  '■□▢▣▤▥▦▧▨▩▪▫▬▭▮▯▰▱△▲▴▵▶▷▸▹►▻▼▽▾▿◀◁◂◃◄◅◆◇◈◉◊○◌◍◎●◐◑◒◓◔◕◖◗◘◙◚◛◜◝◞◟◠◡◢◣◤◥◦◧◨◩◪◫◬◭◮◯░▒▓█▔▕',
-    'row-arrows':'←↑→↓↔↕↖↗↘↙↚↛↜↝↞↟↠↡↢↣↤↥↦↧↨↩↪↫↬↭↮↯↰↱↲↳↴↵↶↷↸↹↺↻⇒⇔⟶⟷⟹⌊⌋⌈⌉⌀⌂⌘⌛⌜⌝⌞⌟'
-  };
+function buildLegend() {
+  const wrap = document.getElementById('symLegend');
+  wrap.innerHTML = '';
+  const present = new Set(allNodes.map(n => n.type));
+  TYPE_ORDER.filter(t => present.has(t)).forEach(t => {
+    const item = document.createElement('div');
+    item.className = 'sym-legend-item';
+    item.innerHTML =
+      '<div class="sym-legend-dot" style="background:' + (COLORS[t] || '#888') + '"></div>' +
+      (TYPE_RU[t] || t);
+    wrap.appendChild(item);
+  });
+}
 
-  // helper: lookup node by single-character glyph
-  const findNodeByChar = (ch) => {
-    return glyphToNode[ch] || null;
-  };
+function render() {
+  const grid = document.getElementById('symGrid');
+  grid.innerHTML = '';
 
-  for (const [rowId, chars] of Object.entries(rows)) {
-    const row = document.getElementById(rowId);
-    for (const ch of chars) {
-      if (ch === ' ') {
-        const sp = document.createElement('span');
-        sp.style.width = '12px';
-        sp.style.display = 'inline-block';
-        row.appendChild(sp);
-        continue;
-      }
-      const node = findNodeByChar(ch);
-      if (node) {
-        const a = document.createElement('a');
-        a.className = 'uc active';
-        a.href = node.url;
-        a.style.color = COLORS[node.type] || '#888';
-        a.style.setProperty('--type-color', COLORS[node.type] || '#888');
-        a.dataset.title = node.title;
-        a.dataset.type = TYPE_RU[node.type] || node.type;
-        a.dataset.conn = conn[node.id];
-        a.textContent = ch;
-        a.addEventListener('mouseenter', () => {
-          tip.innerHTML = `${a.dataset.title} · ${a.dataset.type} · ${a.dataset.conn} связей`;
-          tip.style.display = 'block';
-        });
-        a.addEventListener('mousemove', (e) => {
-          tip.style.left = (e.clientX + 14) + 'px';
-          tip.style.top = (e.clientY + 14) + 'px';
-        });
-        a.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
-        row.appendChild(a);
-      } else {
-        const sp = document.createElement('span');
-        sp.className = 'uc';
-        sp.textContent = ch;
-        row.appendChild(sp);
-      }
-    }
-  }
-})();
+  const list = (activeFilter === 'all')
+    ? allNodes
+    : allNodes.filter(n => n.type === activeFilter);
+
+  document.getElementById('symMeta').textContent =
+    list.length + ' объектов · сортировка по связям';
+
+  list.forEach(n => {
+    const color = COLORS[n.type] || '#888';
+    const typeAbbr = (TYPE_RU[n.type] || '').slice(0, 3);
+
+    const card = document.createElement('a');
+    card.className = 'sym-card';
+    card.href = n.url;
+    card.title = n.title + ' · ' + n.conns + ' связей';
+    card.innerHTML =
+      '<div class="sym-type-tag" style="color:' + color + '">' + typeAbbr + '</div>' +
+      '<div class="sym-glyph" style="color:' + color + '">' + n.glyph + '</div>' +
+      '<div class="sym-title">' + n.title + '</div>' +
+      '<div class="sym-conns">' + n.conns + '</div>';
+    grid.appendChild(card);
+  });
+}
 </script>
 
 </body>
