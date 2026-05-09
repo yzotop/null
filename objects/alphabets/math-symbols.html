@@ -143,7 +143,10 @@
   <div class="sec-label">// операторы · уже есть как объекты</div>
   <div class="sym-grid" id="grid-ops"></div>
 
-  <div class="sec-label">// стрелки и прочее</div>
+  <div class="sec-label">// стрелки и кванторы</div>
+  <div class="sym-grid" id="grid-arrows"></div>
+
+  <div class="sec-label">// прочее</div>
   <div class="sym-grid" id="grid-misc"></div>
 
 </article>
@@ -172,9 +175,9 @@
 
   const SETS = [
     ['ℕ', 'натуральные', '0, 1, 2, 3, …', { href: '../numbers/types/natural.html', label: 'натуральные числа', type: 'type' }],
-    ['ℤ', 'целые', '… −2, −1, 0, 1, 2, …'],
-    ['ℚ', 'рациональные', 'дроби p/q'],
-    ['ℝ', 'вещественные', 'числовая прямая'],
+    ['ℤ', 'целые', '…−2, −1, 0, 1, 2… · ℕ + ноль + отрицательные', { href: '../numbers/types/integer.html', label: 'целые числа', type: 'type' }],
+    ['ℚ', 'рациональные', 'p/q · дроби · периодические десятичные', { href: '../numbers/types/rational.html', label: 'рациональные числа', type: 'type' }],
+    ['ℝ', 'вещественные', 'числовая прямая · рациональные + иррациональные', { href: '../numbers/types/real.html', label: 'вещественные числа', type: 'type' }],
     ['ℂ', 'комплексные', 'a + bi', { href: '../numbers/types/complex.html', label: 'комплексные числа', type: 'type' }],
     ['ℙ', 'простые', '2, 3, 5, 7, 11, …', { href: '../numbers/types/prime.html', label: 'простые числа', type: 'type' }],
     ['ℵ', 'алеф', 'кардинальные числа · бесконечности', { href: '../numbers/special/aleph.html', label: 'алеф-ноль', type: 'special' }],
@@ -195,6 +198,15 @@
     ['mod', 'модуль', 'остаток от деления', { href: '../operators/mod.html', label: 'оператор mod', type: 'operator' }],
     ['⌊⌋', 'floor', 'округление вниз', { href: '../operators/floor-ceiling.html', label: 'оператор ⌊⌋', type: 'operator' }],
     ['!', 'факториал', 'n! = 1·2·3·…·n', { href: '../operators/factorial.html', label: 'оператор !', type: 'operator' }]
+  ];
+
+  const ARROWS = [
+    ['→',  'правая стрелка',  'f: A → B · отображение, импликация'],
+    ['⇒',  'двойная стрелка', 'если P, то Q · следование'],
+    ['↦',  'отображение',     'x ↦ x² · «переходит в»'],
+    ['⟺', 'эквивалентность', 'P ⟺ Q · тогда и только тогда'],
+    ['∀',  'для всех',        '∀x ∈ ℝ · квантор всеобщности'],
+    ['∃',  'существует',      '∃x : x² = 2 · квантор существования']
   ];
 
   const MISC = [
@@ -235,6 +247,7 @@
 
   buildGrid('grid-sets', SETS);
   buildGrid('grid-ops', OPS);
+  buildGrid('grid-arrows', ARROWS);
   buildGrid('grid-misc', MISC);
 </script>
 
