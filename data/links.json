@@ -720,6 +720,27 @@
       "title": "системы координат",
       "url": "/null/visuals/coordinates.html",
       "glyph": "⊕"
+    },
+    {
+      "id": "coord-cart",
+      "type": "coordinate",
+      "title": "декартовы координаты",
+      "url": "/null/objects/coordinates/cartesian.html",
+      "glyph": "(x,y)"
+    },
+    {
+      "id": "coord-polar",
+      "type": "coordinate",
+      "title": "полярные координаты",
+      "url": "/null/objects/coordinates/polar.html",
+      "glyph": "(r,θ)"
+    },
+    {
+      "id": "coord-complex",
+      "type": "coordinate",
+      "title": "комплексная плоскость",
+      "url": "/null/objects/coordinates/complex-plane.html",
+      "glyph": "x+yi"
     }
   ],
   "edges": [
@@ -1589,6 +1610,15 @@
     },
     { "from": "vi-coordinates", "to": "pi" },
     { "from": "vi-coordinates", "to": "imaginary" },
-    { "from": "vi-coordinates", "to": "bk-descartes" }
+    { "from": "vi-coordinates", "to": "bk-descartes" },
+    { "from": "coord-cart",    "to": "bk-descartes" },
+    { "from": "coord-cart",    "to": "vi-coordinates" },
+    { "from": "coord-cart",    "to": "alph-latin" },
+    { "from": "coord-polar",   "to": "pi" },
+    { "from": "coord-polar",   "to": "vi-coordinates" },
+    { "from": "coord-complex", "to": "imaginary" },
+    { "from": "coord-complex", "to": "es-euler-formula" },
+    { "from": "coord-complex", "to": "vi-coordinates" },
+    { "from": "coord-complex", "to": "bk-gauss" }
   ]
 }

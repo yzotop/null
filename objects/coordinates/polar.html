@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>полярные координаты — null/objects/coordinates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / coordinates / полярные</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-family:'Times New Roman',Georgia,serif;font-style:italic;font-size:48px;color:#1a5276;">(r, θ)</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">система координат · №002</div>
+      <div class="obj-title">полярные координаты</div>
+      <div class="obj-subtitle">расстояние и угол · идеальны для окружностей · Newton · ~1671</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">ввёл</td><td class="v">Isaac Newton · ~1671 · впервые опубликовано Якобом Бернулли · 1691</td></tr>
+    <tr><td class="k">параметры</td><td class="v">r — радиус (расстояние от полюса) · θ — полярный угол</td></tr>
+    <tr><td class="k">диапазон</td><td class="v">r ≥ 0 · θ ∈ [0°, 360°) или [−180°, 180°)</td></tr>
+    <tr><td class="k">декарт ↔ полярные</td><td class="v">x = r·cos(θ) · y = r·sin(θ)</td></tr>
+    <tr><td class="k">обратный переход</td><td class="v">r = √(x² + y²) · θ = atan2(y, x)</td></tr>
+    <tr><td class="k">применение</td><td class="v">спирали · розы · окружности · волны · астрономия</td></tr>
+    <tr><td class="k">связано</td><td class="v">декартовы · π · φ · полярные розы</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~500 слов · 4 мин</div>
+    <h2 class="essay-title">Когда угол важнее <em>расстояния</em>.</h2>
+    <p class="essay-lead">декартовы координаты описывают мир через прямые линии. полярные — через расстояние и поворот. для всего кругового они естественнее.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p>Окружность в декартовых координатах: x² + y² = r². Та же окружность в полярных: r = const. Одна буква вместо уравнения.</p>
+        <p>Спираль Архимеда в декартовых — сложное неявное уравнение. В полярных: r = aθ. Расстояние от центра пропорционально углу<em class="fn">3</em>.</p>
+        <p>Полярные координаты описывают точку через r — расстояние от полюса (начала координат) — и θ — угол от полярной оси (обычно направление вправо).</p>
+        <blockquote>«Полярные координаты — это взгляд на мир глазами компаса, а не линейки.»</blockquote>
+        <p>Перевод в декартовы: x = r · cos(θ), y = r · sin(θ). И обратно: r = √(x² + y²), θ = atan2(y, x). Функция atan2 учитывает знаки x и y и возвращает угол в правильной четверти. Это важно: arctan(y/x) не различает (1, 1) и (−1, −1). atan2 различает<em class="fn">4</em>.</p>
+        <p>Полярные розы — r = cos(n/d · θ). При n = 2, d = 1: четыре лепестка. При n = 3, d = 1: три лепестка. При дробных n/d — сложные незамкнутые узоры. Всё из одного уравнения в полярных координатах.</p>
+        <p>В астрономии орбиты планет описываются в полярных координатах. Закон Кеплера: r = a(1 − e²) / (1 + e·cos(θ)). r — расстояние до Солнца, θ — угол, e — эксцентриситет. Солнце — в полюсе.</p>
+        <p>В физике волны описываются через угол: A·cos(ωt + φ) — амплитуда, частота, фаза. Это полярный взгляд на колебание<em class="fn">1</em><em class="fn">2</em>.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Первое использование полярных координат — предположительно Newton, ~1671. Якоб Бернулли опубликовал систему в 1691.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Термин «полярные координаты» — Gregorio Fontana, конец XVIII века.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">Спираль Архимеда: r = aθ. Описана Архимедом ~225 до н.э. — задолго до полярных координат.</span></div>
+        <div class="note"><span class="n">[4]</span><span class="t">atan2(y, x) — стандартная функция в программировании. Возвращает угол от −π до π, учитывая знаки обоих аргументов.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../../visuals/polar-roses.html">полярные розы →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../../visuals/coordinates.html">системы координат →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../numbers/constants/pi.html">π →</a></div>
+      <div class="related-link"><span class="related-link-type">система</span><a href="cartesian.html">декартовы →</a></div>
+      <div class="related-link"><span class="related-link-type">система</span><a href="complex-plane.html">комплексная плоскость →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/coordinates/polar.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

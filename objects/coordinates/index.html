@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>системы координат — null/objects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .co-tag {
+    font-family: var(--font-mono);
+    font-size: 9px; color: #bbb;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .co-h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-weight: normal; font-size: 36px;
+    line-height: 1.1; margin: 0 0 12px 0;
+  }
+  .co-sub {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 16px;
+    color: #666; line-height: 1.55; max-width: 620px;
+  }
+  .co-intro {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 16px; line-height: 1.7;
+    color: #1a1a1a; max-width: 640px;
+    margin: 28px 0 32px 0;
+  }
+  .co-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 920px) { .co-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .co-grid { grid-template-columns: 1fr; } }
+  .co-card {
+    display: block; text-decoration: none; color: inherit;
+    border: 1px solid var(--border);
+    background: #fcfbf8; padding: 24px 22px;
+    transition: border-color 0.12s ease, background 0.12s ease;
+  }
+  .co-card:hover { border-color: #111; background: #f0ede8; }
+  .co-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 14px;
+  }
+  .co-mtag {
+    font-family: var(--font-mono); font-size: 9px;
+    color: #bbb; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .co-arrow { font-family: var(--font-mono); font-size: 14px; color: #bbb; }
+  .co-card:hover .co-arrow { color: #111; }
+  .co-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic; font-size: 36px;
+    line-height: 1; color: #1a5276;
+    margin-bottom: 14px;
+  }
+  .co-title {
+    font-family: var(--font-sans);
+    font-size: 18px; font-weight: 500;
+    color: #111; margin-bottom: 6px;
+  }
+  .co-desc {
+    font-family: var(--font-sans);
+    font-size: 13px; color: #777;
+    line-height: 1.55; margin-bottom: 10px;
+  }
+  .co-meta {
+    font-family: var(--font-mono);
+    font-size: 10px; color: #aaa;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / coordinates</div>
+
+<main class="container">
+<article>
+
+  <div class="co-tag">объекты · системы координат</div>
+  <h1 class="co-h1">системы координат</h1>
+  <p class="co-sub">разные способы описать одно место. одна точка — много языков.</p>
+
+  <hr class="section-divider" style="margin-top:24px;">
+
+  <p class="co-intro">«Точка в пространстве существует до любой системы координат. Система координат — это выбор языка для её описания. Декартовы координаты говорят: „3 вправо и 2 вверх“. Полярные: „на расстоянии 3.6 под углом 34°“. Комплексные: „3 + 2i“. Это одна и та же точка.»</p>
+
+  <div class="co-grid">
+    <a class="co-card" href="cartesian.html">
+      <div class="co-head"><span class="co-mtag">система · §01</span><span class="co-arrow">→</span></div>
+      <div class="co-glyph">(x, y)</div>
+      <div class="co-title">декартовы</div>
+      <div class="co-desc">горизонталь и вертикаль. самая используемая система. Декарт · 1637.</div>
+      <div class="co-meta">2D · 3D · прямоугольные оси</div>
+    </a>
+
+    <a class="co-card" href="polar.html">
+      <div class="co-head"><span class="co-mtag">система · §02</span><span class="co-arrow">→</span></div>
+      <div class="co-glyph">(r, θ)</div>
+      <div class="co-title">полярные</div>
+      <div class="co-desc">расстояние и угол. идеальны для окружностей и волн. Newton · ~1671.</div>
+      <div class="co-meta">2D · угол · радиус</div>
+    </a>
+
+    <a class="co-card" href="complex-plane.html">
+      <div class="co-head"><span class="co-mtag">система · §03</span><span class="co-arrow">→</span></div>
+      <div class="co-glyph">x + yi</div>
+      <div class="co-title">комплексная плоскость</div>
+      <div class="co-desc">вещественная и мнимая ось. плоскость Гаусса. Gauss · 1831.</div>
+      <div class="co-meta">ℂ · модуль · аргумент</div>
+    </a>
+  </div>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/coordinates/index.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
