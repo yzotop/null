@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ℤ — null/objects/types</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / numbers / types / ℤ</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;">ℤ</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">тип · №005</div>
+      <div class="obj-title">целые числа</div>
+      <div class="obj-subtitle">…−3 −2 −1 0 1 2 3… · натуральные + ноль + отрицательные</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v">ℤ — от нем. <em>Zahlen</em> (числа) · Гаусс</td></tr>
+    <tr><td class="k">элементы</td><td class="v">…−3, −2, −1, 0, 1, 2, 3…</td></tr>
+    <tr><td class="k">мощность</td><td class="v">ℵ₀ · счётное множество · |ℤ| = |ℕ|</td></tr>
+    <tr><td class="k">свойства</td><td class="v">группа по сложению · кольцо по умножению</td></tr>
+    <tr><td class="k">содержит</td><td class="v">ℕ ⊂ ℤ</td></tr>
+    <tr><td class="k">содержится</td><td class="v">ℤ ⊂ ℚ ⊂ ℝ ⊂ ℂ</td></tr>
+    <tr><td class="k">связано</td><td class="v">натуральные · рациональные · ноль · mod</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~500 слов · 4 мин</div>
+    <h2 class="essay-title">Числа в <em>обе стороны</em>.</h2>
+    <p class="essay-lead">натуральные числа идут вправо — 1, 2, 3, 4… целые идут в обе стороны. добавление нуля и отрицательных чисел — не очевидный шаг.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p>Натуральные числа возникли из счёта. Один камень. Два камня. Три камня. Но что, если камней стало меньше, чем было? Что, если долг превышает имущество?</p>
+        <p>Отрицательные числа появились из практики. Китайские математики использовали их для долгов ещё в III веке до н.э. В «Девяти главах математического искусства» — красные счётные палочки для положительных, чёрные для отрицательных<em class="fn">1</em>.</p>
+        <p>В Европе отрицательные числа долго считали бессмысленными. Декарт называл их «ложными». Паскаль писал, что вычитание 4 из 0 — чистая бессмыслица. Постепенно практика победила скептицизм<em class="fn">2</em>.</p>
+        <blockquote>«Бог создал натуральные числа — всё остальное дело рук человеческих.» — Леопольд Кронекер.</blockquote>
+        <p>Целые числа ℤ — это натуральные числа, их отрицательные копии и ноль. ℤ = {…, −3, −2, −1, 0, 1, 2, 3, …}<em class="fn">3</em>.</p>
+        <p>Целые числа образуют кольцо: можно складывать, вычитать и умножать — результат всегда целый. Но деление — нет: 7 ÷ 2 = 3.5 ∉ ℤ. Для деления нужны рациональные числа.</p>
+        <p>Мощность ℤ равна мощности ℕ — оба счётны. Кантор доказал это, построив биекцию: 0 → 0, 1 → 1, −1 → 2, 2 → 3, −2 → 4, … Целых «не больше», чем натуральных, — хотя они содержат натуральные. Это парадокс бесконечных множеств<em class="fn">4</em>.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">«Девять глав математического искусства» · Китай · ~200 до н.э. — первое систематическое использование отрицательных чисел.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Декарт называл отрицательные корни уравнений «ложными» (XVII век). Паскаль и многие современники считали отрицательные числа фикцией.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">ℤ — от нем. <em>Zahlen</em> (числа). Нотация установлена в XIX веке немецкими математиками.</span></div>
+        <div class="note"><span class="n">[4]</span><span class="t">|ℤ| = |ℕ| = ℵ₀. Доказательство — через зигзагообразную нумерацию ℤ натуральными числами.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">тип</span><a href="natural.html">натуральные числа →</a></div>
+      <div class="related-link"><span class="related-link-type">тип</span><a href="rational.html">рациональные →</a></div>
+      <div class="related-link"><span class="related-link-type">особенное</span><a href="../special/zero.html">ноль →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../../operators/mod.html">mod →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../../essays/infinity-types.html">бесконечностей много →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">тип</span><a href="/null/objects/numbers/types/rational.html">рациональные числа ℚ →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/numbers/types/integer.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

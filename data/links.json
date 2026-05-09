@@ -741,6 +741,27 @@
       "title": "комплексная плоскость",
       "url": "/null/objects/coordinates/complex-plane.html",
       "glyph": "x+yi"
+    },
+    {
+      "id": "integer",
+      "type": "type",
+      "title": "целые числа ℤ",
+      "url": "/null/objects/numbers/types/integer.html",
+      "glyph": "ℤ"
+    },
+    {
+      "id": "rational",
+      "type": "type",
+      "title": "рациональные числа ℚ",
+      "url": "/null/objects/numbers/types/rational.html",
+      "glyph": "ℚ"
+    },
+    {
+      "id": "real",
+      "type": "type",
+      "title": "вещественные числа ℝ",
+      "url": "/null/objects/numbers/types/real.html",
+      "glyph": "ℝ"
     }
   ],
   "edges": [
@@ -1619,6 +1640,20 @@
     { "from": "coord-complex", "to": "imaginary" },
     { "from": "coord-complex", "to": "es-euler-formula" },
     { "from": "coord-complex", "to": "vi-coordinates" },
-    { "from": "coord-complex", "to": "bk-gauss" }
+    { "from": "coord-complex", "to": "bk-gauss" },
+    { "from": "integer",  "to": "natural" },
+    { "from": "integer",  "to": "zero" },
+    { "from": "integer",  "to": "op-mod" },
+    { "from": "integer",  "to": "es-infinity-types" },
+    { "from": "rational", "to": "integer" },
+    { "from": "rational", "to": "real" },
+    { "from": "rational", "to": "sqrt2" },
+    { "from": "rational", "to": "es-infinity-types" },
+    { "from": "real",     "to": "rational" },
+    { "from": "real",     "to": "complex" },
+    { "from": "real",     "to": "pi" },
+    { "from": "real",     "to": "euler" },
+    { "from": "real",     "to": "sqrt2" },
+    { "from": "real",     "to": "es-infinity-types" }
   ]
 }

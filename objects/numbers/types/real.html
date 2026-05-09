@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ℝ — null/objects/types</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / numbers / types / ℝ</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;">ℝ</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">тип · №007</div>
+      <div class="obj-title">вещественные числа</div>
+      <div class="obj-subtitle">числовая прямая · рациональные + иррациональные · несчётные</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v">ℝ</td></tr>
+    <tr><td class="k">элементы</td><td class="v">все точки числовой прямой</td></tr>
+    <tr><td class="k">примеры</td><td class="v">1/2 · √2 · π · e · −7 · 0.123456789…</td></tr>
+    <tr><td class="k">мощность</td><td class="v">𝔠 = 2<sup>ℵ₀</sup> · несчётное множество</td></tr>
+    <tr><td class="k">содержит</td><td class="v">ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ</td></tr>
+    <tr><td class="k">содержится</td><td class="v">ℝ ⊂ ℂ</td></tr>
+    <tr><td class="k">свойство</td><td class="v">полное упорядоченное поле</td></tr>
+    <tr><td class="k">связано</td><td class="v">рациональные · комплексные · π · e · √2</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~500 слов · 4 мин</div>
+    <h2 class="essay-title">Числовая прямая <em>без дыр</em>.</h2>
+    <p class="essay-lead">рациональные числа плотны — но оставляют дыры. вещественные числа заполняют все дыры. их несчётно много.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p>Числовая прямая — интуитивный образ. Бесконечная линия, где каждой точке соответствует число. Вещественные числа ℝ — это все точки числовой прямой<em class="fn">1</em>.</p>
+        <p>Рациональные числа плотны: между любыми двумя рациональными есть ещё рациональное. Но они не покрывают прямую полностью. √2 — иррациональное. π — иррациональное. e — иррациональное. Между рациональными числами — бесконечно много дыр.</p>
+        <p>Вещественные числа заполняют эти дыры. ℝ = ℚ ∪ (иррациональные). Иррациональные бывают двух видов: алгебраические (√2, ∛5 — корни многочленов с целыми коэффициентами) и трансцендентные (π, e — не корни никаких таких многочленов)<em class="fn">3</em>.</p>
+        <blockquote>«Непрерывность числовой прямой — глубокая идея, которую математики формализовали только в XIX веке.»</blockquote>
+        <p>Мощность ℝ несчётна: |ℝ| = 𝔠 = 2<sup>ℵ₀</sup> > ℵ₀. Кантор доказал это диагональным аргументом. Вещественных чисел «больше», чем натуральных, — их нельзя пронумеровать<em class="fn">2</em>.</p>
+        <p>Вещественные числа — полное упорядоченное поле. Полнота означает: любая ограниченная последовательность имеет предел в ℝ. Это ключевое свойство для математического анализа. Без него производные и интегралы не определены корректно<em class="fn">4</em>.</p>
+        <p>Следующий шаг — комплексные числа ℂ. В ℝ уравнение x² + 1 = 0 не имеет решений. В ℂ — имеет: x = ±i. Комплексные числа алгебраически замкнуты.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Дедекиндовы сечения — Richard Dedekind, 1872. Первое строгое определение вещественных чисел.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">|ℝ| = 𝔠 = 2<sup>ℵ₀</sup>. Теорема Кантора, 1874.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">Алгебраические числа счётны, трансцендентных несчётно. «Почти все» вещественные числа трансцендентны (в смысле меры).</span></div>
+        <div class="note"><span class="n">[4]</span><span class="t">Полнота ℝ: теорема Больцано-Вейерштрасса, аксиома полноты Дедекинда.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">тип</span><a href="rational.html">рациональные →</a></div>
+      <div class="related-link"><span class="related-link-type">тип</span><a href="complex.html">комплексные →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../constants/pi.html">π →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../constants/euler.html">e →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../constants/sqrt2.html">√2 →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../../essays/infinity-types.html">бесконечностей много →</a></div>
+      <div class="related-link"><span class="related-link-type">алфавит</span><a href="../../alphabets/math-symbols.html">математические символы (ℝ) →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">тип</span><a href="/null/objects/numbers/types/rational.html">рациональные числа ℚ →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/numbers/types/real.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
