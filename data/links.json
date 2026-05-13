@@ -1654,6 +1654,8 @@
     { "from": "real",     "to": "pi" },
     { "from": "real",     "to": "euler" },
     { "from": "real",     "to": "sqrt2" },
-    { "from": "real",     "to": "es-infinity-types" }
+    { "from": "real",     "to": "es-infinity-types" },
+    { "from": "sqrt2",    "to": "bk-euclid" },
+    { "from": "sqrt2",    "to": "es-infinity-types" }
   ]
 }
