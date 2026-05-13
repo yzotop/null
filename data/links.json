@@ -736,6 +736,20 @@
       "glyph": "¶"
     },
     {
+      "id": "es-markov",
+      "type": "essay",
+      "title": "Цепи Маркова",
+      "url": "/null/essays/markov-chains.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "vi-markov",
+      "type": "visual",
+      "title": "цепи Маркова",
+      "url": "/null/visuals/markov.html",
+      "glyph": "→"
+    },
+    {
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
@@ -1676,6 +1690,11 @@
     { "from": "vi-benford", "to": "vi-ulam" },
     { "from": "es-game-theory", "to": "pr-monty" },
     { "from": "es-game-theory", "to": "pr-gamblers" },
-    { "from": "es-game-theory", "to": "es-rsa" }
+    { "from": "es-game-theory", "to": "es-rsa" },
+    { "from": "es-markov", "to": "pr-gamblers" },
+    { "from": "es-markov", "to": "es-game-theory" },
+    { "from": "es-markov", "to": "vi-markov" },
+    { "from": "vi-markov", "to": "es-markov" },
+    { "from": "vi-markov", "to": "pr-gamblers" }
   ]
 }

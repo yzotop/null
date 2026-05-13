@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>будущее зависит только от настоящего — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .payoff {
+    border-collapse: collapse;
+    margin: 14px 0 8px 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .payoff th, .payoff td {
+    border: 1px solid #ddd;
+    padding: 8px 14px;
+    text-align: center;
+    color: #111;
+  }
+  .payoff th { background: #f0ede8; font-weight: 500; color: #555; }
+  .payoff td.lbl { background: #f7f6f2; color: #555; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / markov-chains</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~700 слов · 6 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Будущее зависит только от настоящего.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">большинство процессов в мире зависят от истории. цепь Маркова — процесс, который забывает прошлое. только текущее состояние определяет следующее.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">теория вероятностей · стохастические процессы</td></tr>
+    <tr><td class="k">читать</td><td class="v">~6 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">случайность · задача о разорении · вероятность</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Большая часть процессов в мире зависит от истории. Представь пьяного человека на улице. На каждом шагу он случайно идёт вперёд или назад. Куда он попадёт через час? Это случайное блуждание — простейшая цепь Маркова.</p>
+
+      <p>Цепь Маркова — последовательность состояний, где вероятность следующего состояния зависит только от текущего, но не от предыдущих. Это называется марковским свойством. Андрей Марков сформулировал его в 1906 году, изучая чередование гласных и согласных в «Евгении Онегине». Он хотел показать, что закон больших чисел применим к зависимым событиям — не только к независимым<em class="fn">1</em>.</p>
+
+      <p>Простой пример — погода. Если сегодня солнечно — завтра солнечно с вероятностью 0.8, дождь с вероятностью 0.2. Если сегодня дождь — завтра солнечно с вероятностью 0.4, дождь с вероятностью 0.6.</p>
+
+      <table class="payoff">
+        <tr><th></th><th>солн</th><th>дождь</th></tr>
+        <tr><td class="lbl">солн</td><td>0.8</td><td>0.2</td></tr>
+        <tr><td class="lbl">дождь</td><td>0.4</td><td>0.6</td></tr>
+      </table>
+
+      <p>Через много шагов цепь достигает стационарного распределения — состояния, где вероятности перестают меняться. Для этой погоды: солнечно 67%, дождь 33% — независимо от того, с чего начали.</p>
+
+      <blockquote>Случайное блуждание в двумерном пространстве — это прогулка пьяного. Он всегда вернётся домой. В трёх измерениях — это полёт пьяной птицы. Она потеряется навсегда. — Шизуо Какутани, вариация теоремы Пойа</blockquote>
+
+      <p>PageRank — алгоритм, который сделал Google. Интернет как граф: страницы — состояния, ссылки — переходы. Случайный пользователь случайно кликает по ссылкам. PageRank страницы — вероятность оказаться на ней в стационарном распределении этой цепи Маркова. Страница важна, если на неё ссылаются важные страницы. Рекурсивное определение решается через собственные векторы матрицы<em class="fn">2</em>.</p>
+
+      <p>Цепи Маркова с непрерывным временем описывают радиоактивный распад, очереди в банке, распространение болезней. Скрытые марковские модели — основа распознавания речи в 1990-х. Метод Монте-Карло с марковскими цепями (MCMC) — как обучаются современные байесовские модели и нейросети<em class="fn">4</em>.</p>
+
+      <p>Самое удивительное свойство — эргодичность. Если из любого состояния можно попасть в любое другое — цепь эргодична. Она «забывает» начальное состояние. Долгосрочное поведение не зависит от того, с чего начали. Только структура переходов определяет судьбу системы.</p>
+
+      <p>Пьяный человек на прямой улице рано или поздно вернётся к началу — с вероятностью 1. На двумерной плоскости — тоже. В трёхмерном пространстве — уже нет. Вероятность возврата меньше единицы. Это теорема Пойа (1921)<em class="fn">3</em>.</p>
+
+      <p>Память — это не свойство процесса. Это свойство описания. Любой процесс с конечной памятью можно сделать марковским, расширив пространство состояний: вместо «сегодняшней погоды» взять «последние семь дней». Цена — экспоненциальный рост числа состояний. Поэтому марковские модели одновременно и универсальны, и капризны: всё зависит от того, как выбрать «настоящее».</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Андрей Марков — «Распространение закона больших чисел на зависимые величины» (1906). Анализ чередования гласных и согласных в первых 20 000 буквах «Евгения Онегина».</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">PageRank — Ларри Пейдж и Сергей Брин, Stanford, 1998. Назван в честь Ларри Пейджа и понятия «page». Патент истёк в 2019.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Теорема Пойа о возврате (Дьёрдь Пойа, 1921): возврат гарантирован в 1D и 2D, не гарантирован в 3D и выше. Вероятность возврата в 3D ≈ 0.34.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">MCMC (Markov Chain Monte Carlo): алгоритм Метрополиса-Гастингса (1953, обобщён Гастингсом в 1970). Основа современного байесовского вывода и обучения нейросетей.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/gamblers-ruin.html">разорение игрока →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="pseudorandom.html">случайность которой нет →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="game-theory.html">теория игр — кооперация →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/markov.html">цепи Маркова — интерактив →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/markov.html">цепи Маркова →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/markov-chains.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>цепи Маркова — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .markov-wrap {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 24px;
+  }
+  .markov-canvas-wrap { background: #f7f6f2; position: relative; }
+  #markovCanvas { display: block; width: 100%; height: 380px; }
+  .markov-panel { background: #f7f6f2; padding: 20px; }
+
+  .preset-buttons {
+    display: flex;
+    gap: 0;
+    margin-bottom: 18px;
+    border: 1px solid #ddd;
+  }
+  .preset-buttons button {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-right: 1px solid #ddd;
+    padding: 8px 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #777;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+  }
+  .preset-buttons button:last-child { border-right: none; }
+  .preset-buttons button:hover { color: #111; }
+  .preset-buttons button.on {
+    background: #f0ede8;
+    color: #111;
+    font-weight: 500;
+  }
+
+  .panel-current {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 32px;
+    color: #c44a32;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .panel-step-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .panel-step {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: #111;
+    margin-bottom: 14px;
+  }
+
+  .stats-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    margin-top: 8px;
+  }
+  .stat-row {
+    margin-bottom: 6px;
+  }
+  .stat-row .h {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #111;
+    margin-bottom: 3px;
+  }
+  .stat-row .h .pct { color: #888; font-size: 9px; }
+  .stat-row .bar {
+    background: #e8e8e4;
+    height: 8px;
+    overflow: hidden;
+  }
+  .stat-row .fill {
+    background: #c44a32;
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s;
+  }
+  .stat-row .stationary {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #888;
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  .panel-buttons {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .panel-buttons button {
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 8px 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #555;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+  }
+  .panel-buttons button:hover { border-color: #111; color: #111; }
+  .panel-buttons button.on {
+    background: #c44a32;
+    border-color: #c44a32;
+    color: #f7f6f2;
+  }
+
+  .markov-note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 15px;
+    color: #666;
+    line-height: 1.7;
+    max-width: 620px;
+    margin: 20px 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / markov</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №016</div>
+    <div class="ttl">цепи Маркова</div>
+    <div class="lead">состояния и переходы. нажми играть — система эволюционирует. через много шагов забывает начальное состояние.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="preset-buttons" style="max-width:520px;margin-bottom:18px;">
+    <button class="preset on" data-p="weather">погода</button>
+    <button class="preset"    data-p="pagerank">PageRank</button>
+    <button class="preset"    data-p="walk">случайное блуждание</button>
+  </div>
+
+  <div class="markov-wrap">
+    <div class="markov-canvas-wrap">
+      <canvas id="markovCanvas"></canvas>
+    </div>
+    <div class="markov-panel">
+      <div class="panel-step-label">текущее состояние</div>
+      <div class="panel-current" id="curState">—</div>
+
+      <div class="panel-step-label">шаг</div>
+      <div class="panel-step" id="stepN">0</div>
+
+      <div class="stats-label">// посещения</div>
+      <div id="statsList"></div>
+
+      <div class="panel-buttons">
+        <button id="btnStep">▶ шаг</button>
+        <button id="btnTen">▶▶ 10 шагов</button>
+        <button id="btnPlay">▶▶▶ играть</button>
+        <button id="btnReset">↺ сброс</button>
+      </div>
+    </div>
+  </div>
+
+  <hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+  <div class="markov-note">
+    «марковское свойство: P(X<sub>n+1</sub> = s | X<sub>0</sub>, X<sub>1</sub>, …, X<sub>n</sub>) = P(X<sub>n+1</sub> = s | X<sub>n</sub>). будущее зависит только от настоящего — не от прошлого. через много шагов система забывает начальное состояние.»
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/markov-chains.html">цепи Маркова — текст →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/gamblers-ruin.html">разорение игрока →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/pseudorandom.html">случайность которой нет →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/game-theory.html">теория игр →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/markov-chains.html">Цепи Маркова →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/markov.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(() => {
+  const PRESETS = {
+    weather: {
+      name: 'погода',
+      states: [
+        { id: 'sun',  label: 'солнечно', x: 0.3, y: 0.5 },
+        { id: 'rain', label: 'дождь',    x: 0.7, y: 0.5 }
+      ],
+      transitions: [
+        { from: 'sun',  to: 'sun',  prob: 0.8 },
+        { from: 'sun',  to: 'rain', prob: 0.2 },
+        { from: 'rain', to: 'sun',  prob: 0.4 },
+        { from: 'rain', to: 'rain', prob: 0.6 }
+      ],
+      start: 'sun',
+      stationary: { sun: 0.667, rain: 0.333 }
+    },
+    pagerank: {
+      name: 'PageRank',
+      states: [
+        { id: 'A', label: 'A', x: 0.22, y: 0.30 },
+        { id: 'B', label: 'B', x: 0.78, y: 0.22 },
+        { id: 'C', label: 'C', x: 0.82, y: 0.74 },
+        { id: 'D', label: 'D', x: 0.22, y: 0.78 }
+      ],
+      transitions: [
+        { from: 'A', to: 'B', prob: 0.5 },
+        { from: 'A', to: 'D', prob: 0.5 },
+        { from: 'B', to: 'C', prob: 1.0 },
+        { from: 'C', to: 'A', prob: 0.5 },
+        { from: 'C', to: 'D', prob: 0.5 },
+        { from: 'D', to: 'A', prob: 1.0 }
+      ],
+      start: 'A',
+      stationary: { A: 0.333, B: 0.167, C: 0.167, D: 0.333 }
+    },
+    walk: {
+      name: 'случайное блуждание',
+      states: [
+        { id: 's1', label: '1', x: 0.1, y: 0.5 },
+        { id: 's2', label: '2', x: 0.3, y: 0.5 },
+        { id: 's3', label: '3', x: 0.5, y: 0.5 },
+        { id: 's4', label: '4', x: 0.7, y: 0.5 },
+        { id: 's5', label: '5', x: 0.9, y: 0.5 }
+      ],
+      transitions: [
+        { from: 's1', to: 's1', prob: 0.5 },
+        { from: 's1', to: 's2', prob: 0.5 },
+        { from: 's2', to: 's1', prob: 0.5 },
+        { from: 's2', to: 's3', prob: 0.5 },
+        { from: 's3', to: 's2', prob: 0.5 },
+        { from: 's3', to: 's4', prob: 0.5 },
+        { from: 's4', to: 's3', prob: 0.5 },
+        { from: 's4', to: 's5', prob: 0.5 },
+        { from: 's5', to: 's4', prob: 0.5 },
+        { from: 's5', to: 's5', prob: 0.5 }
+      ],
+      start: 's3',
+      stationary: { s1: 0.1, s2: 0.2, s3: 0.4, s4: 0.2, s5: 0.1 }
+    }
+  };
+
+  const cv = document.getElementById('markovCanvas');
+  const ctx = cv.getContext('2d');
+
+  let presetKey = 'weather';
+  let preset = PRESETS[presetKey];
+  let currentState = preset.start;
+  let visits = {};
+  let step = 0;
+  let playing = false;
+  let playT = null;
+  let flashEdge = null; // {from, to, t}
+
+  const sizeCanvas = () => {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = cv.getBoundingClientRect();
+    cv.width = Math.floor(rect.width * dpr);
+    cv.height = Math.floor(rect.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+  const dims = () => {
+    const r = cv.getBoundingClientRect();
+    return { W: r.width, H: r.height };
+  };
+
+  const resetVisits = () => {
+    visits = {};
+    for (const s of preset.states) visits[s.id] = 0;
+    visits[currentState] = 1;
+  };
+
+  const getState = (id) => preset.states.find(s => s.id === id);
+  const transitionsFrom = (id) => preset.transitions.filter(t => t.from === id);
+
+  const stepOnce = () => {
+    const opts = transitionsFrom(currentState);
+    const r = Math.random();
+    let acc = 0;
+    let nextId = currentState;
+    for (const t of opts) {
+      acc += t.prob;
+      if (r <= acc) { nextId = t.to; break; }
+    }
+    flashEdge = { from: currentState, to: nextId, t: performance.now() };
+    currentState = nextId;
+    visits[currentState] = (visits[currentState] || 0) + 1;
+    step++;
+    updatePanel();
+    draw();
+  };
+
+  const updatePanel = () => {
+    const cur = getState(currentState);
+    document.getElementById('curState').textContent = cur.label;
+    document.getElementById('stepN').textContent = step;
+    const total = Object.values(visits).reduce((a, b) => a + b, 0) || 1;
+    const list = document.getElementById('statsList');
+    list.innerHTML = '';
+    for (const s of preset.states) {
+      const v = visits[s.id] || 0;
+      const pct = (v / total) * 100;
+      const stat = (preset.stationary[s.id] || 0) * 100;
+      const row = document.createElement('div');
+      row.className = 'stat-row';
+      row.innerHTML =
+        `<div class="h"><span>${s.label}</span><span class="pct">${pct.toFixed(1)}%</span></div>` +
+        `<div class="bar"><div class="fill" style="width:${pct}%"></div></div>` +
+        `<div class="stationary">теор. ${stat.toFixed(1)}%</div>`;
+      list.appendChild(row);
+    }
+  };
+
+  // ---------- draw ----------
+  const NODE_R = 28;
+
+  const drawArrow = (x1, y1, x2, y2, prob, opts = {}) => {
+    const { selfLoop = false, curve = 0, flash = false } = opts;
+    const color = flash ? '#c44a32' : '#bbb';
+    const labelColor = flash ? '#c44a32' : '#888';
+    ctx.strokeStyle = color;
+    ctx.lineWidth = flash ? 2 : 1;
+
+    if (selfLoop) {
+      // small loop above the node
+      const cx = x1, cy = y1 - NODE_R - 14;
+      ctx.beginPath();
+      ctx.arc(cx, cy, 16, 0, Math.PI * 2);
+      ctx.stroke();
+      // arrow tip pointing into top of node
+      const tipx = x1 + 2, tipy = y1 - NODE_R + 1;
+      drawArrowHead(tipx, tipy, Math.PI / 2 + 0.4, color);
+      ctx.font = '9px "JetBrains Mono", monospace';
+      ctx.fillStyle = labelColor;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText(prob.toFixed(2), cx, cy - 18);
+      return;
+    }
+
+    const dx = x2 - x1, dy = y2 - y1;
+    const dist = Math.hypot(dx, dy);
+    const nx = dx / dist, ny = dy / dist;
+    // shrink to node boundaries
+    const sx = x1 + nx * NODE_R;
+    const sy = y1 + ny * NODE_R;
+    const ex = x2 - nx * NODE_R;
+    const ey = y2 - ny * NODE_R;
+
+    // curve offset (perpendicular)
+    const px = -ny * curve;
+    const py = nx * curve;
+    const cx = (sx + ex) / 2 + px;
+    const cy = (sy + ey) / 2 + py;
+
+    ctx.beginPath();
+    ctx.moveTo(sx, sy);
+    ctx.quadraticCurveTo(cx, cy, ex, ey);
+    ctx.stroke();
+
+    // arrow head
+    const angle = Math.atan2(ey - cy, ex - cx);
+    drawArrowHead(ex, ey, angle, color);
+
+    // label
+    ctx.font = '9px "JetBrains Mono", monospace';
+    ctx.fillStyle = labelColor;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    const lx = cx - ny * 8;
+    const ly = cy + nx * 8;
+    // background for readability
+    const txt = prob.toFixed(2);
+    const tw = ctx.measureText(txt).width + 4;
+    ctx.fillStyle = '#f7f6f2';
+    ctx.fillRect(lx - tw / 2, ly - 6, tw, 12);
+    ctx.fillStyle = labelColor;
+    ctx.fillText(txt, lx, ly);
+  };
+
+  const drawArrowHead = (x, y, angle, color) => {
+    const h = 7;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x - h * Math.cos(angle - 0.4), y - h * Math.sin(angle - 0.4));
+    ctx.lineTo(x - h * Math.cos(angle + 0.4), y - h * Math.sin(angle + 0.4));
+    ctx.closePath();
+    ctx.fill();
+  };
+
+  const draw = () => {
+    const { W, H } = dims();
+    ctx.fillStyle = '#f7f6f2';
+    ctx.fillRect(0, 0, W, H);
+
+    const pad = 50;
+    const ux = (x) => pad + x * (W - 2 * pad);
+    const uy = (y) => pad + y * (H - 2 * pad);
+
+    // compute pixel positions
+    const pos = {};
+    for (const s of preset.states) pos[s.id] = { x: ux(s.x), y: uy(s.y) };
+
+    // detect pairs for curving (a→b and b→a)
+    const hasReverse = (t) => preset.transitions.some(x => x.from === t.to && x.to === t.from && t.from !== t.to);
+
+    const now = performance.now();
+    const flashActive = flashEdge && (now - flashEdge.t) < 350;
+
+    // edges
+    for (const t of preset.transitions) {
+      const a = pos[t.from], b = pos[t.to];
+      const selfLoop = t.from === t.to;
+      const curve = !selfLoop && hasReverse(t) ? 22 : 0;
+      const flash = flashActive && flashEdge.from === t.from && flashEdge.to === t.to;
+      drawArrow(a.x, a.y, b.x, b.y, t.prob, { selfLoop, curve, flash });
+    }
+
+    // nodes
+    for (const s of preset.states) {
+      const p = pos[s.id];
+      const active = s.id === currentState;
+      ctx.fillStyle = active ? '#c44a32' : '#f7f6f2';
+      ctx.strokeStyle = '#111';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, NODE_R, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.font = 'italic 14px "Times New Roman", Georgia, serif';
+      ctx.fillStyle = active ? '#f7f6f2' : '#111';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(s.label, p.x, p.y + 1);
+    }
+  };
+
+  // animation loop (for flash)
+  const loop = () => {
+    if (flashEdge && (performance.now() - flashEdge.t) < 350) {
+      draw();
+    }
+    requestAnimationFrame(loop);
+  };
+
+  // ---------- controls ----------
+  const setPreset = (key) => {
+    presetKey = key;
+    preset = PRESETS[key];
+    currentState = preset.start;
+    step = 0;
+    resetVisits();
+    document.querySelectorAll('button.preset').forEach(b => {
+      b.classList.toggle('on', b.dataset.p === key);
+    });
+    stopPlay();
+    updatePanel();
+    draw();
+  };
+
+  const stopPlay = () => {
+    playing = false;
+    if (playT) { clearInterval(playT); playT = null; }
+    document.getElementById('btnPlay').classList.remove('on');
+    document.getElementById('btnPlay').textContent = '▶▶▶ играть';
+  };
+
+  document.querySelectorAll('button.preset').forEach(b => {
+    b.onclick = () => setPreset(b.dataset.p);
+  });
+  document.getElementById('btnStep').onclick = () => { stopPlay(); stepOnce(); };
+  document.getElementById('btnTen').onclick = () => {
+    stopPlay();
+    for (let i = 0; i < 10; i++) stepOnce();
+  };
+  document.getElementById('btnPlay').onclick = () => {
+    if (playing) { stopPlay(); return; }
+    playing = true;
+    document.getElementById('btnPlay').classList.add('on');
+    document.getElementById('btnPlay').textContent = '■ стоп';
+    playT = setInterval(stepOnce, 600);
+  };
+  document.getElementById('btnReset').onclick = () => {
+    stopPlay();
+    currentState = preset.start;
+    step = 0;
+    resetVisits();
+    updatePanel();
+    draw();
+  };
+
+  // boot
+  sizeCanvas();
+  resetVisits();
+  updatePanel();
+  draw();
+  requestAnimationFrame(loop);
+
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => { sizeCanvas(); draw(); }, 120);
+  });
+})();
+</script>
+
+</body>
+</html>
