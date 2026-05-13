@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>закон Бенфорда — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  #benford {
+    display: block;
+    width: 100%;
+    height: 460px;
+  }
+  .visual-controls .group {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 16px;
+    flex-wrap: wrap;
+  }
+  .visual-controls button.on {
+    border-color: #111;
+    color: #111;
+    background: #f0ede8;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  .stats-cell .k {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .stats-cell .v {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: #111;
+  }
+  .stats-cell .verdict {
+    margin-top: 6px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: #444;
+  }
+  .stats-cell .verdict.match { color: #1a7a4a; }
+  .stats-cell .verdict.miss  { color: #c44a32; }
+  .explain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 12px;
+  }
+  .explain-grid h4 {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 8px 0;
+    font-weight: 500;
+  }
+  .explain-grid p {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: #333;
+    line-height: 1.55;
+    margin: 0 0 8px 0;
+  }
+  .explain-grid .mono { font-family: var(--font-mono); font-size: 12px; color: #111; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / benford</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №015</div>
+    <div class="ttl">закон Бенфорда</div>
+    <div class="lead">первые цифры чисел в «природных» данных распределены не равномерно. цифра 1 встречается в 6 раз чаще цифры 9.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <section class="visual-canvas light">
+    <canvas id="benford"></canvas>
+  </section>
+
+  <div class="visual-controls">
+    <span class="group">
+      <span>данные</span>
+      <button class="ds on" data-d="fibonacci">фибоначчи</button>
+      <button class="ds" data-d="primes">простые</button>
+      <button class="ds" data-d="powers2">степени 2</button>
+      <button class="ds" data-d="factorials">факториалы</button>
+      <button class="ds" data-d="random">равномерные</button>
+    </span>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stats-cell">
+      <div class="k">набор</div>
+      <div class="v" id="dsName">фибоначчи</div>
+      <div class="v" id="dsCount" style="color:#888; font-size:12px; margin-top:4px;">— чисел</div>
+    </div>
+    <div class="stats-cell">
+      <div class="k">отклонение от закона</div>
+      <div class="v" id="dsDeviation">—</div>
+      <div class="verdict" id="dsVerdict">—</div>
+    </div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <div class="explain-grid">
+    <div>
+      <h4>формула</h4>
+      <p class="mono">P(d) = log₁₀(1 + 1/d)</p>
+      <p>P(1) ≈ 30.1% · P(2) ≈ 17.6% · P(3) ≈ 12.5% · … · P(9) ≈ 4.6%. Сумма = 1.</p>
+      <p>Закон выводится из инвариантности относительно смены единиц: распределение должно быть одинаковым в метрах и в милях. Единственное масштабно-инвариантное распределение для первой цифры — логарифмическое.</p>
+    </div>
+    <div>
+      <h4>где работает</h4>
+      <p>данные, охватывающие несколько порядков: численность населения, длины рек, площади стран, физические константы, биржевые цены, расходы из бухгалтерских отчётов.</p>
+      <p>используется в форензическом аудите: реальные транзакции следуют Бенфорду, выдуманные — нет. Этот метод принимают суды США как косвенное доказательство фальсификации.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="visual-meta">
+    <div class="visual-description">
+      <p>Саймон Ньюком заметил закономерность в 1881 году: страницы логарифмических таблиц с числами, начинающимися на 1, были истёрты сильнее. Фрэнк Бенфорд переоткрыл и формализовал закон в 1938 году, проверив его на 20 наборах данных — от длин рек до молекулярных весов.</p>
+      <p>Закон не работает для данных с ограниченным диапазоном (рост людей, IQ), для последовательностей с фиксированной структурой (телефонные номера) и для строго равномерных распределений. Зато прекрасно работает для всего, что растёт мультипликативно — а это огромная часть природы и экономики.</p>
+    </div>
+    <div class="visual-params">
+      <div class="row"><span>открыто</span><span>Ньюком · 1881</span></div>
+      <div class="row"><span>формализовано</span><span>Бенфорд · 1938</span></div>
+      <div class="row"><span>P(1)</span><span>30.103%</span></div>
+      <div class="row"><span>P(9)</span><span>4.576%</span></div>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/numbers/types/natural.html">натуральные числа →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/numbers/types/prime.html">простые числа →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/numbers/constants/euler.html">e — логарифмическая шкала →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="ulam.html">спираль Улама →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/benford.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(() => {
+  // ---------- Benford expected ----------
+  const benford = [1,2,3,4,5,6,7,8,9].map(d => Math.log10(1 + 1/d) * 100);
+
+  // ---------- data generators ----------
+  const sieve = (limit) => {
+    const s = new Uint8Array(limit + 1);
+    const ps = [];
+    for (let i = 2; i <= limit; i++) {
+      if (!s[i]) {
+        ps.push(i);
+        for (let j = i * i; j <= limit; j += i) s[j] = 1;
+      }
+    }
+    return ps;
+  };
+
+  const fib = (count) => {
+    // use BigInt for exact first digits at scale
+    const arr = [1n, 1n];
+    while (arr.length < count) arr.push(arr[arr.length - 1] + arr[arr.length - 2]);
+    return arr.map(b => b.toString());
+  };
+
+  const powers2 = (count) => {
+    const arr = [];
+    let v = 1n;
+    for (let i = 0; i < count; i++) { arr.push(v.toString()); v *= 2n; }
+    return arr;
+  };
+
+  const factorials = (count) => {
+    const arr = [];
+    let v = 1n;
+    for (let i = 1; i <= count; i++) { v *= BigInt(i); arr.push(v.toString()); }
+    return arr;
+  };
+
+  const randomNums = (count) => {
+    const arr = [];
+    for (let i = 0; i < count; i++) {
+      arr.push(String(Math.floor(Math.random() * 9_999_999) + 1));
+    }
+    return arr;
+  };
+
+  // ---------- first digit ----------
+  const firstDigit = (s) => {
+    // s is a string of digits (or stringified number)
+    for (let i = 0; i < s.length; i++) {
+      const c = s.charCodeAt(i);
+      if (c >= 49 && c <= 57) return c - 48; // '1'..'9'
+    }
+    return 0;
+  };
+
+  const getDistribution = (arr) => {
+    const counts = [0,0,0,0,0,0,0,0,0];
+    let total = 0;
+    for (const x of arr) {
+      const d = firstDigit(typeof x === 'string' ? x : String(x));
+      if (d >= 1 && d <= 9) { counts[d - 1]++; total++; }
+    }
+    return counts.map(c => total === 0 ? 0 : c * 100 / total);
+  };
+
+  const deviation = (observed) => {
+    // sum of absolute differences, as percentage points
+    let s = 0;
+    for (let i = 0; i < 9; i++) s += Math.abs(observed[i] - benford[i]);
+    return s;
+  };
+
+  // ---------- datasets ----------
+  const datasets = {
+    fibonacci:  { name: 'фибоначчи',     build: () => fib(500) },
+    primes:     { name: 'простые',       build: () => sieve(50000).map(String) },
+    powers2:    { name: 'степени 2',     build: () => powers2(500) },
+    factorials: { name: 'факториалы',    build: () => factorials(300) },
+    random:     { name: 'равномерные',   build: () => randomNums(5000) }
+  };
+
+  // ---------- chart ----------
+  const cv = document.getElementById('benford');
+  const ctx = cv.getContext('2d');
+
+  Chart.defaults.font.family = "'JetBrains Mono', monospace";
+  Chart.defaults.font.size = 11;
+  Chart.defaults.color = '#555';
+
+  const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['1','2','3','4','5','6','7','8','9'],
+      datasets: [
+        {
+          type: 'bar',
+          label: 'наблюдаемое',
+          data: [],
+          backgroundColor: 'rgba(196, 74, 50, 0.72)',
+          borderColor: '#c44a32',
+          borderWidth: 1,
+          borderRadius: 0,
+          order: 2
+        },
+        {
+          type: 'line',
+          label: 'закон Бенфорда',
+          data: benford,
+          borderColor: '#111',
+          backgroundColor: 'transparent',
+          borderWidth: 1.5,
+          borderDash: [4, 3],
+          pointRadius: 3,
+          pointBackgroundColor: '#111',
+          tension: 0,
+          order: 1
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: { duration: 600 },
+      plugins: {
+        legend: {
+          position: 'top',
+          align: 'end',
+          labels: {
+            boxWidth: 12,
+            boxHeight: 12,
+            usePointStyle: false,
+            padding: 14
+          }
+        },
+        tooltip: {
+          backgroundColor: '#111',
+          titleColor: '#f7f6f2',
+          bodyColor: '#f7f6f2',
+          borderColor: '#333',
+          borderWidth: 1,
+          titleFont: { family: "'JetBrains Mono', monospace", size: 11 },
+          bodyFont:  { family: "'JetBrains Mono', monospace", size: 11 },
+          padding: 10,
+          callbacks: {
+            label: (item) => `${item.dataset.label}: ${item.parsed.y.toFixed(2)}%`
+          }
+        }
+      },
+      scales: {
+        x: {
+          title: { display: true, text: 'первая цифра', color: '#888', font: { size: 10 } },
+          grid: { display: false },
+          ticks: { color: '#444' }
+        },
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: '% наблюдений', color: '#888', font: { size: 10 } },
+          grid: { color: '#ececec' },
+          ticks: { color: '#444', callback: (v) => v + '%' }
+        }
+      }
+    }
+  });
+
+  // ---------- update ----------
+  const update = (key) => {
+    const ds = datasets[key];
+    const arr = ds.build();
+    const dist = getDistribution(arr);
+    chart.data.datasets[0].data = dist;
+    chart.update();
+
+    document.getElementById('dsName').textContent = ds.name;
+    document.getElementById('dsCount').textContent = `${arr.length.toLocaleString('ru')} чисел`;
+
+    const dev = deviation(dist);
+    document.getElementById('dsDeviation').textContent = `Σ|Δ| = ${dev.toFixed(2)} п.п.`;
+    const verdict = document.getElementById('dsVerdict');
+    if (dev < 5) {
+      verdict.textContent = 'почти идеальное совпадение с законом';
+      verdict.className = 'verdict match';
+    } else if (dev < 20) {
+      verdict.textContent = 'совпадение в пределах нормы';
+      verdict.className = 'verdict match';
+    } else if (dev < 50) {
+      verdict.textContent = 'заметное отклонение';
+      verdict.className = 'verdict';
+    } else {
+      verdict.textContent = 'не подчиняется закону';
+      verdict.className = 'verdict miss';
+    }
+  };
+
+  document.querySelectorAll('button.ds').forEach((b) => {
+    b.onclick = () => {
+      document.querySelectorAll('button.ds').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      update(b.dataset.d);
+    };
+  });
+
+  update('fibonacci');
+})();
+</script>
+
+</body>
+</html>

@@ -722,6 +722,13 @@
       "glyph": "⊕"
     },
     {
+      "id": "vi-benford",
+      "type": "visual",
+      "title": "закон Бенфорда",
+      "url": "/null/visuals/benford.html",
+      "glyph": "log"
+    },
+    {
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
@@ -1656,6 +1663,9 @@
     { "from": "real",     "to": "sqrt2" },
     { "from": "real",     "to": "es-infinity-types" },
     { "from": "sqrt2",    "to": "bk-euclid" },
-    { "from": "sqrt2",    "to": "es-infinity-types" }
+    { "from": "sqrt2",    "to": "es-infinity-types" },
+    { "from": "vi-benford", "to": "prime" },
+    { "from": "vi-benford", "to": "natural" },
+    { "from": "vi-benford", "to": "vi-ulam" }
   ]
 }
