@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>что такое доказательство — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / proof</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~750 слов · 7 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Что такое доказательство.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">математики доказывают теоремы уже 2500 лет. но вопрос «что считать доказательством» — до сих пор открыт.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">философия математики · логика · история</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">теорема Гёделя · ZFC · Евклид · Гёдель-Гильберт</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Математики доказывают теоремы уже 2500 лет. Первым систематическим собранием доказательств были «Начала» Евклида (~300 до н.э.). Метод: аксиомы плюс правила вывода — теоремы. Каждый шаг проверяем. Цепочка необрываема. Это казалось идеальным фундаментом. Две тысячи лет математики строили на нём. Потом выяснилось, что фундамент неполный.</p>
+
+      <p>В 1931 году Курт Гёдель доказал: в любой достаточно мощной формальной системе есть истинные утверждения, которые нельзя доказать средствами этой системы. Математика не может доказать собственную непротиворечивость. Это не недостаток — это фундаментальное свойство.</p>
+
+      <p>Но задолго до Гёделя возник другой вопрос: что вообще значит «доказать»?</p>
+
+      <p>Греческое доказательство — это цепочка рассуждений, которую может проверить любой разумный человек. Каждый шаг очевиден. Ошибку можно найти. Это социальный процесс — сообщество математиков читает доказательство и соглашается или не соглашается.</p>
+
+      <p>В XX веке математики попытались формализовать эту практику. Гильберт хотел записать всю математику в виде формальной системы — символов и правил манипуляции. Доказательство — последовательность символов, где каждый шаг следует из предыдущих по правилам. Человеческое понимание не нужно. Гёдель разрушил эту мечту. Но идея формального доказательства осталась.</p>
+
+      <blockquote>Доказательство — это то, что убеждает разумного человека. Строгое доказательство — то, что убеждает даже неразумного человека. — Марк Кац, математик</blockquote>
+
+      <p>В 1976 году Кеннет Аппель и Вольфганг Хакен доказали четырёхцветную теорему: любую карту можно раскрасить четырьмя цветами так, чтобы соседние страны имели разные. Математики пытались доказать это с 1852 года — 124 года. Аппель и Хакен доказали. Но их доказательство содержало проверку 1936 особых случаев, выполненную компьютером. Никакой человек не мог проверить каждый случай вручную<em class="fn">1</em>.</p>
+
+      <p>Математическое сообщество раскололось. Одни сказали: это доказательство, компьютер надёжен. Другие сказали: это не доказательство, мы не понимаем, почему оно истинно. Нет озарения. Нет инсайта. Только перебор.</p>
+
+      <p>Это философский вопрос о природе математического знания. Доказательство — это верификация истинности или понимание причины истинности?</p>
+
+      <p>Сегодня компьютерные доказательства стали мощнее. Proof assistants — Lean, Coq, Isabelle — позволяют записать доказательство формально, и компьютер проверяет каждый шаг<em class="fn">2</em>. В 2022–2023 годах математики верифицировали в Lean ключевые результаты Питера Шольца о perfectoid spaces — одни из сложнейших современных<em class="fn">3</em>.</p>
+
+      <p>Парадокс: формальное доказательство надёжнее человеческого. Люди делают ошибки. Компьютер — нет. Но формальное доказательство непонятно человеку напрямую. Его нужно «переводить» обратно в человеческий язык.</p>
+
+      <p>Есть и третий тип — вероятностное доказательство. Тест Миллера-Рабина проверяет простоту числа: если тест пройден — число простое с вероятностью больше 1 − 4<sup>−k</sup>. Для криптографии достаточно. Для математики — нет<em class="fn">4</em>.</p>
+
+      <p>Что считать доказательством? Греки требовали понимания. Гильберт требовал формальности. Аппель и Хакен показали, что формальность и понимание могут расходиться. Гёдель показал, что даже формальность имеет предел.</p>
+
+      <p>Возможно, доказательство — это не свойство текста. Это отношение между текстом и сообществом, которое его читает. Доказательство — то, что математическое сообщество принимает как достаточное основание для уверенности. Социальный консенсус. Временный. Пересматриваемый.</p>
+
+      <p>Это не скептицизм — это честность.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Четырёхцветная теорема — Аппель и Хакен, 1976. Первое крупное доказательство с существенным использованием компьютера. Вызвало дискуссию о природе математического доказательства.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Proof assistants: Lean 4 (Microsoft Research), Coq (INRIA), Isabelle (Cambridge / TU Munich). Lean mathlib — формализованная библиотека математики, более 1 млн строк.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Liquid Tensor Experiment — формальная верификация теоремы Шольца о perfectoid spaces в Lean. Завершён в 2022 году под руководством самого Шольца.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Тест Миллера-Рабина — вероятностный тест простоты (1976–1980). Основа криптографических алгоритмов вроде RSA: используют «вероятно простые» числа.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">теорема</span><a href="../objects/ideas/theorems/godel.html">теорема Гёделя →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="hilbert-godel.html">Гёдель и Гильберт →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="zfc-independence.html">ZFC — независимость аксиом →</a></div>
+      <div class="related-link"><span class="related-link-type">книга</span><a href="../books/godel-escher-bach.html">Гёдель, Эшер, Бах →</a></div>
+      <div class="related-link"><span class="related-link-type">книга</span><a href="../books/euclid-elements.html">Евклид · Начала →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="rsa-primes.html">RSA — вероятностная простота →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/proof.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

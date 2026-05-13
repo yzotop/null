@@ -750,6 +750,13 @@
       "glyph": "→"
     },
     {
+      "id": "es-proof",
+      "type": "essay",
+      "title": "Что такое доказательство",
+      "url": "/null/essays/proof.html",
+      "glyph": "¶"
+    },
+    {
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
@@ -1695,6 +1702,10 @@
     { "from": "es-markov", "to": "es-game-theory" },
     { "from": "es-markov", "to": "vi-markov" },
     { "from": "vi-markov", "to": "es-markov" },
-    { "from": "vi-markov", "to": "pr-gamblers" }
+    { "from": "vi-markov", "to": "pr-gamblers" },
+    { "from": "es-proof", "to": "godel" },
+    { "from": "es-proof", "to": "bk-euclid" },
+    { "from": "es-proof", "to": "bk-geb" },
+    { "from": "es-proof", "to": "es-rsa" }
   ]
 }
