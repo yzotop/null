@@ -764,6 +764,13 @@
       "glyph": "¶"
     },
     {
+      "id": "es-inf-paradox",
+      "type": "essay",
+      "title": "Парадоксы бесконечности",
+      "url": "/null/essays/infinity-paradoxes.html",
+      "glyph": "¶"
+    },
+    {
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
@@ -1718,6 +1725,11 @@
     { "from": "es-math-music", "to": "pi" },
     { "from": "es-math-music", "to": "imaginary" },
     { "from": "es-math-music", "to": "mu-opstack" },
-    { "from": "es-math-music", "to": "ch-sound" }
+    { "from": "es-math-music", "to": "ch-sound" },
+    { "from": "es-inf-paradox", "to": "aleph0" },
+    { "from": "es-inf-paradox", "to": "cantor" },
+    { "from": "es-inf-paradox", "to": "es-infinity" },
+    { "from": "es-inf-paradox", "to": "es-zfc" },
+    { "from": "es-inf-paradox", "to": "bk-geb" }
   ]
 }

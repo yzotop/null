@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>парадоксы бесконечности — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / infinity-paradoxes</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~750 слов · 7 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Парадоксы бесконечности.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">интуиция хорошо работает для конечных вещей. для бесконечных — ломается. математика предлагает три способа сломать её окончательно.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">теория множеств · бесконечность · логика</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">ℵ₀ · теорема Кантора · ZFC · бесконечность</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Интуиция хорошо работает для конечных вещей. Часть меньше целого. Из ничего не получить что-то. Множество не может быть элементом самого себя. Для бесконечных вещей всё это неверно.</p>
+
+      <div class="sub-h">отель Гильберта</div>
+
+      <p>Представь отель с бесконечным числом номеров. Все номера заняты. Приезжает ещё один гость. В обычном отеле — мест нет. В отеле Гильберта — пожалуйста<em class="fn">1</em>.</p>
+
+      <p>Попросим каждого гостя переехать из номера n в номер n+1. Номер 1 освободился. Приехал автобус с бесконечным числом пассажиров. Попросим каждого гостя переехать из номера n в номер 2n. Освободились все нечётные номера — бесконечно много мест. Приехало бесконечно много автобусов с бесконечным числом пассажиров. И это решается — через диагональный обход Кантора.</p>
+
+      <p>Отель Гильберта показывает: ℵ₀ + 1 = ℵ₀. ℵ₀ + ℵ₀ = ℵ₀. ℵ₀ × ℵ₀ = ℵ₀. Бесконечность не «становится больше» от добавления. Часть бесконечного множества может быть равномощна целому.</p>
+
+      <div class="sub-h">парадокс Банаха–Тарского</div>
+
+      <p>1924 год. Стефан Банах и Альфред Тарский доказали теорему: твёрдый шар можно разбить на конечное число частей и сложить из них два шара того же размера<em class="fn">2</em>.</p>
+
+      <p>Буквально: один шар → два одинаковых шара. Из ничего — удвоение объёма. Это не фокус и не ошибка. Это теорема.</p>
+
+      <p>Но «части» в этой теореме — не обычные куски. Это неизмеримые множества — настолько «дырявые», что у них нет объёма в обычном смысле. Их нельзя построить физически — только доказать существование.</p>
+
+      <blockquote>Парадокс — это не противоречие в природе вещей, а противоречие между природой вещей и нашим недостаточным пониманием их. — Пер Мартин-Лёф</blockquote>
+
+      <p>Теорема Банаха–Тарского использует аксиому выбора. Она говорит: для любого семейства непустых множеств существует функция, выбирающая по одному элементу из каждого. Кажется очевидным. Но влечёт парадоксальные следствия. Математики приняли аксиому выбора — без неё слишком многое перестаёт работать. Платой стали такие парадоксы. Математика непротиворечива — но контринтуитивна.</p>
+
+      <div class="sub-h">парадокс Рассела</div>
+
+      <p>1901 год. Бертран Рассел нашёл противоречие в наивной теории множеств Фреге<em class="fn">3</em>.</p>
+
+      <p>Рассмотрим множество всех множеств, которые не содержат себя как элемент. Назовём его R. Содержит ли R само себя?</p>
+
+      <p>Если да — R содержит себя, значит по определению R не должно входить в R. Противоречие. Если нет — R не содержит себя, значит по определению R должно входить в R. Снова противоречие.</p>
+
+      <p>R не может ни содержать себя, ни не содержать. Такое множество не существует — но определение кажется законным. Это разрушило наивную теорию множеств. Фреге получил письмо от Рассела, когда его книга уже печаталась. Он добавил послесловие: «Основание науки поколеблено».</p>
+
+      <p>Ответом стала аксиоматическая теория множеств — ZFC. В ZFC нельзя написать «множество всех множеств» — такой объект просто не существует по аксиомам<em class="fn">4</em>. Парадокс исчезает — потому что запрещён.</p>
+
+      <p>Все три парадокса говорят об одном: математическая интуиция — опасный инструмент. Она работает в знакомых областях. На границах — ломается. Задача математики — не доверять интуиции, а строить формальные системы, которые работают даже тогда, когда интуиция молчит.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Отель Гильберта — мысленный эксперимент Давида Гильберта, впервые описан в лекции «Über das Unendliche» (1924), популяризирован Джорджем Гамовым в «One Two Three… Infinity» (1947).</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Теорема Банаха–Тарского (1924) использует аксиому выбора. Части — неизмеримые множества по Лебегу, физически нереализуемы. В 2D-плоскости аналогичной теоремы нет: мера Лебега инвариантна.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Парадокс Рассела — письмо Фреге от 16 июня 1902 года. Готлоб Фреге ответил: «Едва ли может случиться с математиком что-нибудь более нежелательное» — и добавил в книгу «Grundgesetze der Arithmetik» послесловие.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">ZFC (Цермело–Френкель + аксиома выбора) — стандартная аксиоматика современной математики. Снимает парадокс Рассела через аксиомную схему выделения: нельзя «взять все множества», можно только выделять подмножества из уже существующих.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/numbers/special/aleph.html">ℵ₀ — алеф-ноль →</a></div>
+      <div class="related-link"><span class="related-link-type">теорема</span><a href="../objects/ideas/theorems/cantor.html">теорема Кантора →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="infinity-types.html">бесконечностей много →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="zfc-independence.html">ZFC — независимость аксиом →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="hilbert-godel.html">Гёдель и Гильберт →</a></div>
+      <div class="related-link"><span class="related-link-type">книга</span><a href="../books/godel-escher-bach.html">Гёдель, Эшер, Бах →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/infinity-paradoxes.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
