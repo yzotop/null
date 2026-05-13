@@ -729,6 +729,13 @@
       "glyph": "log"
     },
     {
+      "id": "es-game-theory",
+      "type": "essay",
+      "title": "Математика предательства · теория игр",
+      "url": "/null/essays/game-theory.html",
+      "glyph": "¶"
+    },
+    {
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
@@ -1666,6 +1673,9 @@
     { "from": "sqrt2",    "to": "es-infinity-types" },
     { "from": "vi-benford", "to": "prime" },
     { "from": "vi-benford", "to": "natural" },
-    { "from": "vi-benford", "to": "vi-ulam" }
+    { "from": "vi-benford", "to": "vi-ulam" },
+    { "from": "es-game-theory", "to": "pr-monty" },
+    { "from": "es-game-theory", "to": "pr-gamblers" },
+    { "from": "es-game-theory", "to": "es-rsa" }
   ]
 }

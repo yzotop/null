@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>математика предательства — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .payoff {
+    border-collapse: collapse;
+    margin: 14px 0 8px 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .payoff th, .payoff td {
+    border: 1px solid #ddd;
+    padding: 8px 14px;
+    text-align: center;
+    color: #111;
+  }
+  .payoff th { background: #f0ede8; font-weight: 500; color: #555; }
+  .payoff td.lbl { background: #f7f6f2; color: #555; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / game-theory</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~700 слов · 7 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Математика предательства.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">два человека. два выбора. сотрудничать или предать. если оба предадут — оба проиграют. если оба будут сотрудничать — оба выиграют. но каждый в отдельности выиграет больше, если предаст.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">теория игр · Nash · Axelrod</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">задача Монти Холла · задача о невесте · вероятность</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Дилемма заключённого — самая известная задача теории игр. Два подозреваемых. Каждый может молчать или донести. Если оба молчат — оба получают по 1 году. Если один доносит, а другой молчит — доносчик выходит на свободу, молчун получает 10 лет. Если оба доносят — оба получают по 5 лет.</p>
+
+      <p>Матрица выплат:</p>
+
+      <table class="payoff">
+        <tr><th></th><th>B молчит</th><th>B доносит</th></tr>
+        <tr><td class="lbl">A молчит</td><td>−1 / −1</td><td>−10 / 0</td></tr>
+        <tr><td class="lbl">A доносит</td><td>0 / −10</td><td>−5 / −5</td></tr>
+      </table>
+
+      <p>Каждый думает: «если он молчит — мне выгоднее донести (0 &gt; −1). Если он доносит — мне всё равно выгоднее донести (−5 &gt; −10).» Доминирующая стратегия для обоих — предательство. Оба доносят. Оба получают по 5 лет. Хотя могли бы получить по 1.</p>
+
+      <p>Это равновесие Нэша — состояние, где ни один игрок не может улучшить свой результат, изменив только свою стратегию. Джон Нэш доказал, что такое равновесие существует в любой конечной игре. Нобелевская премия 1994<em class="fn">2</em>.</p>
+
+      <blockquote>Успех стратегии «Око за око» учит нас, что нет нужды быть завистливым, нет нужды быть первым, кто предаёт, нужно отвечать взаимностью — и на кооперацию, и на предательство, нельзя быть слишком умным. — Роберт Аксельрод, «Эволюция кооперации», 1984</blockquote>
+
+      <p>Но что, если игра повторяется? В 1980 году политолог Роберт Аксельрод провёл турнир. Он пригласил учёных прислать стратегии для повторяющейся дилеммы заключённого — 200 раундов. Пришли стратегии от математиков, психологов, экономистов. Некоторые сложные — с анализом истории ходов. Некоторые простые.</p>
+
+      <p>Победила самая простая стратегия из всех. «Око за око» (Tit for Tat) — от Анатолия Рапопорта. Правило: в первом раунде сотрудничай. В каждом следующем — повтори то, что сделал оппонент в прошлом<em class="fn">3</em>.</p>
+
+      <p>Почему она победила? Она <em>добрая</em> — начинает с кооперации. Она <em>наказывает</em> — немедленно отвечает на предательство. Она <em>прощает</em> — после наказания возвращается к сотрудничеству. Она <em>прозрачная</em> — оппонент легко понимает логику. Аксельрод провёл второй турнир — все знали, что победило «Око за око». Оно победило снова.</p>
+
+      <p>Теория игр объясняет не только тюремные дилеммы. Ценовые войны компаний — повторяющаяся дилемма заключённого. Ядерное сдерживание — игра с асимметричными выплатами. Эволюция альтруизма — почему организмы помогают друг другу. Биолог Джон Мэйнард Смит применил теорию игр к эволюции: стратегии не выбираются — они отбираются естественным отбором<em class="fn">4</em>.</p>
+
+      <p>Самый важный вывод Аксельрода: в мире без центральной власти, без договоров, без принуждения — кооперация может возникнуть сама. Если игра повторяется достаточно долго и игроки достаточно «терпеливы» (ценят будущее) — сотрудничество становится рациональным.</p>
+
+      <p>Математика показывает: предательство оптимально один раз. Кооперация оптимальна всегда — если есть завтра.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Дилемма заключённого сформулирована Мерриллом Флудом и Мелвином Дрешером (RAND, 1950). Названа Альбертом Такером в том же году.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Равновесие Нэша — Джон Нэш, диссертация 1950 г., 28 страниц. Нобелевская премия по экономике 1994.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Турниры Аксельрода (1980 и 1981) и книга «The Evolution of Cooperation» (Basic Books, 1984). 14 стратегий в первом турнире, 62 — во втором.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Эволюционно стабильная стратегия (ESS) — Джон Мэйнард Смит, 1973. Концепция перевела теорию игр из экономики в биологию.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/monty-hall.html">Монти Холл — выбор против интуиции →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/gamblers-ruin.html">разорение игрока →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/secretary.html">задача о невесте →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="rsa-primes.html">RSA — кооперация через шифрование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="pseudorandom.html">случайность которой нет →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/game-theory.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
