@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>разложение Фурье — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  #fourierCanvas { display:block; width:100%; height:260px; background:#f7f6f2; }
+  .f-ctrl {
+    display:flex; gap:24px; flex-wrap:wrap; align-items:center;
+    margin-bottom:16px;
+    font-family:var(--font-mono); font-size:10px; color:#555;
+  }
+  .f-ctrl .grp { display:inline-flex; align-items:center; gap:10px; }
+  .f-ctrl input[type=range] { width:200px; }
+  .f-ctrl select {
+    background:var(--paper); border:1px solid #ddd;
+    font-family:var(--font-mono); font-size:11px; color:#111;
+    padding:4px 8px;
+  }
+  .f-ctrl .val { color:#111; min-width:30px; display:inline-block; text-align:right; }
+  .note-block {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 15px; color:#666; line-height:1.7;
+    max-width:620px; margin:20px 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / fourier</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №019</div>
+    <div class="ttl">разложение Фурье</div>
+    <div class="lead">любой периодический сигнал — сумма синусоид. двигай слайдер — добавляй гармоники.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="f-ctrl">
+    <span class="grp">
+      <span>гармоник</span>
+      <input type="range" id="harm" min="1" max="20" value="1" step="1">
+      <span class="val" id="harmVal">1</span>
+    </span>
+    <span class="grp">
+      <span>волна</span>
+      <select id="wave">
+        <option value="square">прямоугольная</option>
+        <option value="saw">пила</option>
+        <option value="tri">треугольная</option>
+      </select>
+    </span>
+  </div>
+
+  <section class="visual-canvas light">
+    <canvas id="fourierCanvas"></canvas>
+  </section>
+
+  <div class="note-block">
+    «синие линии — отдельные синусоиды разных частот. красная линия — их сумма. при 20 гармониках прямоугольная волна почти идеальна. так работает MP3 и любая обработка звука.»
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/math-music.html">математика звука →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/pi.html">π — период синуса →</a></div>
+      <div class="related-link"><span class="related-link-type">особенное</span><a href="../objects/numbers/special/imaginary.html">i — комплексное Фурье →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="charts/sound.html">звук чисел →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/fourier.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(() => {
+  const BG='#f7f6f2', FG='#111', FG2='#888', RED='#c44a32', BLUE='#2c5fb6';
+  const cv = document.getElementById('fourierCanvas');
+  const ctx = cv.getContext('2d');
+
+  let harmonics = 1;
+  let waveType = 'square';
+
+  const sizeCanvas = () => {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = cv.getBoundingClientRect();
+    cv.width = Math.floor(rect.width * dpr);
+    cv.height = Math.floor(rect.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+  const dims = () => {
+    const r = cv.getBoundingClientRect();
+    return { W: r.width, H: r.height };
+  };
+
+  // coefficient for harmonic k (1-indexed) and value of partial at t
+  // returns { amp, phase, k }  — harmonic component value = amp * sin(k * t + phase)
+  // For each wave we define an iterator over k=1..K
+  const components = (K) => {
+    const out = [];
+    if (waveType === 'square') {
+      // sum over odd k: (4/π) * sin(k t) / k
+      for (let m = 0; m < K; m++) {
+        const k = 2 * m + 1;
+        out.push({ k, amp: (4 / Math.PI) / k, phase: 0, mode: 'sin' });
+      }
+    } else if (waveType === 'saw') {
+      // (2/π) * Σ (-1)^(k+1) sin(k t) / k
+      for (let k = 1; k <= K; k++) {
+        out.push({ k, amp: (2 / Math.PI) * ((k % 2 === 1) ? 1 : -1) / k, phase: 0, mode: 'sin' });
+      }
+    } else { // tri
+      // (8/π²) Σ_{m=0..} (-1)^m sin((2m+1)t) / (2m+1)²
+      for (let m = 0; m < K; m++) {
+        const k = 2 * m + 1;
+        out.push({ k, amp: (8 / (Math.PI * Math.PI)) * ((m % 2 === 0) ? 1 : -1) / (k * k), phase: 0, mode: 'sin' });
+      }
+    }
+    return out;
+  };
+
+  const draw = () => {
+    const { W, H } = dims();
+    ctx.fillStyle = BG;
+    ctx.fillRect(0, 0, W, H);
+
+    const padL = 36, padR = 14, padT = 14, padB = 14;
+    const uw = W - padL - padR;
+    const uh = H - padT - padB;
+    const midY = padT + uh / 2;
+
+    // axes
+    ctx.strokeStyle = '#e0e0e0';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(padL, midY); ctx.lineTo(W - padR, midY);
+    ctx.moveTo(padL, padT); ctx.lineTo(padL, H - padB);
+    ctx.stroke();
+
+    // y labels
+    ctx.font = '9px "JetBrains Mono", monospace';
+    ctx.fillStyle = FG2;
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('+1', padL - 4, midY - uh / 2 * 0.95);
+    ctx.fillText('0',  padL - 4, midY);
+    ctx.fillText('−1', padL - 4, midY + uh / 2 * 0.95);
+
+    const samples = 600;
+    const tMin = 0, tMax = 4 * Math.PI;
+    const tToX = (t) => padL + ((t - tMin) / (tMax - tMin)) * uw;
+    const vToY = (v) => midY - v * (uh / 2) * 0.9;
+
+    const comps = components(harmonics);
+
+    // individual sinusoids — faint blue
+    ctx.strokeStyle = BLUE;
+    ctx.globalAlpha = 0.35;
+    ctx.lineWidth = 1;
+    for (const c of comps) {
+      ctx.beginPath();
+      for (let i = 0; i <= samples; i++) {
+        const t = tMin + (i / samples) * (tMax - tMin);
+        const v = c.amp * Math.sin(c.k * t + c.phase);
+        const x = tToX(t), y = vToY(v);
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+
+    // sum — red bold
+    ctx.strokeStyle = RED;
+    ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    for (let i = 0; i <= samples; i++) {
+      const t = tMin + (i / samples) * (tMax - tMin);
+      let v = 0;
+      for (const c of comps) v += c.amp * Math.sin(c.k * t + c.phase);
+      const x = tToX(t), y = vToY(v);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // legend
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = FG2;
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillText(`${waveType} · ${harmonics} гармоник`, padL + 4, padT + 2);
+  };
+
+  document.getElementById('harm').addEventListener('input', (e) => {
+    harmonics = parseInt(e.target.value, 10);
+    document.getElementById('harmVal').textContent = harmonics;
+    draw();
+  });
+  document.getElementById('wave').addEventListener('change', (e) => {
+    waveType = e.target.value;
+    draw();
+  });
+
+  sizeCanvas();
+  draw();
+
+  let rt;
+  window.addEventListener('resize', () => {
+    clearTimeout(rt); rt = setTimeout(() => { sizeCanvas(); draw(); }, 120);
+  });
+})();
+</script>
+
+</body>
+</html>

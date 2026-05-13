@@ -750,6 +750,27 @@
       "glyph": "→"
     },
     {
+      "id": "vi-prime-polar",
+      "type": "visual",
+      "title": "простые в полярных координатах",
+      "url": "/null/visuals/prime-polar.html",
+      "glyph": "⊙"
+    },
+    {
+      "id": "vi-sorting",
+      "type": "visual",
+      "title": "алгоритмы сортировки",
+      "url": "/null/visuals/sorting.html",
+      "glyph": "↕"
+    },
+    {
+      "id": "vi-fourier",
+      "type": "visual",
+      "title": "разложение Фурье",
+      "url": "/null/visuals/fourier.html",
+      "glyph": "∿"
+    },
+    {
       "id": "es-proof",
       "type": "essay",
       "title": "Что такое доказательство",
@@ -1730,6 +1751,15 @@
     { "from": "es-inf-paradox", "to": "cantor" },
     { "from": "es-inf-paradox", "to": "es-infinity" },
     { "from": "es-inf-paradox", "to": "es-zfc" },
-    { "from": "es-inf-paradox", "to": "bk-geb" }
+    { "from": "es-inf-paradox", "to": "bk-geb" },
+    { "from": "vi-prime-polar", "to": "prime" },
+    { "from": "vi-prime-polar", "to": "vi-ulam" },
+    { "from": "vi-prime-polar", "to": "es-primes" },
+    { "from": "vi-sorting", "to": "natural" },
+    { "from": "vi-sorting", "to": "op-mod" },
+    { "from": "vi-fourier", "to": "pi" },
+    { "from": "vi-fourier", "to": "imaginary" },
+    { "from": "vi-fourier", "to": "es-math-music" },
+    { "from": "vi-fourier", "to": "ch-sound" }
   ]
 }

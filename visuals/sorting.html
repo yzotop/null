@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>алгоритмы сортировки — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  #sortCanvas { display:block; width:100%; height:240px; background:#f7f6f2; }
+  .sort-ctrl {
+    display:flex; gap:6px; flex-wrap:wrap; align-items:center;
+    margin-bottom:14px;
+  }
+  .sort-ctrl button {
+    background:transparent; border:1px solid #ddd; padding:8px 12px;
+    font-family:var(--font-mono); font-size:10px; color:#555;
+    cursor:pointer; letter-spacing:0.04em;
+  }
+  .sort-ctrl button:hover { border-color:#111; color:#111; }
+  .sort-ctrl button.on { background:#c44a32; border-color:#c44a32; color:#f7f6f2; }
+  .sort-info {
+    margin-left:auto;
+    font-family:var(--font-mono); font-size:10px; color:#888;
+  }
+  .sort-info b { color:#111; font-weight:500; }
+  .complexity {
+    width:100%; border-collapse:collapse;
+    font-family:var(--font-mono); font-size:11px;
+    margin-top:18px;
+  }
+  .complexity th, .complexity td {
+    border-bottom:1px solid #eee; padding:8px 10px; text-align:left;
+  }
+  .complexity th { color:#888; font-weight:500; font-size:9px; text-transform:uppercase; letter-spacing:0.08em; }
+  .complexity td { color:#111; }
+  .complexity td:first-child { color:#555; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / sorting</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №018</div>
+    <div class="ttl">алгоритмы сортировки</div>
+    <div class="lead">как числа находят своё место. bubble · insertion · quick · merge sort.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="sort-ctrl">
+    <button class="algo on" data-a="bubble">bubble sort</button>
+    <button class="algo"    data-a="insertion">insertion sort</button>
+    <button class="algo"    data-a="quick">quick sort</button>
+    <button class="algo"    data-a="merge">merge sort</button>
+    <button id="reset">↺ новый массив</button>
+    <span class="sort-info">сравнений: <b id="cmpN">0</b> · обменов: <b id="swpN">0</b></span>
+  </div>
+
+  <section class="visual-canvas light">
+    <canvas id="sortCanvas"></canvas>
+  </section>
+
+  <table class="complexity">
+    <thead>
+      <tr><th>алгоритм</th><th>лучший</th><th>средний</th><th>худший</th><th>стабильный</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>bubble sort</td>   <td>O(n)</td>       <td>O(n²)</td>       <td>O(n²)</td>       <td>да</td></tr>
+      <tr><td>insertion sort</td><td>O(n)</td>       <td>O(n²)</td>       <td>O(n²)</td>       <td>да</td></tr>
+      <tr><td>quick sort</td>    <td>O(n log n)</td> <td>O(n log n)</td> <td>O(n²)</td>       <td>нет</td></tr>
+      <tr><td>merge sort</td>    <td>O(n log n)</td> <td>O(n log n)</td> <td>O(n log n)</td> <td>да</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="progress.html">прогресс — числовые паттерны →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/numbers/types/natural.html">натуральные числа →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../objects/operators/mod.html">mod →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/sorting.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(() => {
+  const BG='#f7f6f2', FG='#111', FG2='#888', RED='#c44a32', BLUE='#2c5fb6', ORANGE='#e67e22';
+
+  const cv = document.getElementById('sortCanvas');
+  const ctx = cv.getContext('2d');
+
+  let N = 50;
+  let arr = [];
+  let highlight = { cmp: [], cur: -1, sorted: new Set() };
+  let cmpCount = 0, swpCount = 0;
+  let running = false;
+  let stopFlag = false;
+
+  const newArray = () => {
+    arr = Array.from({ length: N }, () => Math.floor(Math.random() * 100) + 2);
+    highlight = { cmp: [], cur: -1, sorted: new Set() };
+    cmpCount = 0; swpCount = 0;
+    updateInfo();
+    draw();
+  };
+
+  const updateInfo = () => {
+    document.getElementById('cmpN').textContent = cmpCount;
+    document.getElementById('swpN').textContent = swpCount;
+  };
+
+  const sizeCanvas = () => {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = cv.getBoundingClientRect();
+    cv.width = Math.floor(rect.width * dpr);
+    cv.height = Math.floor(rect.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+  const dims = () => {
+    const r = cv.getBoundingClientRect();
+    return { W: r.width, H: r.height };
+  };
+
+  const draw = () => {
+    const { W, H } = dims();
+    ctx.fillStyle = BG;
+    ctx.fillRect(0, 0, W, H);
+    const max = Math.max(...arr, 1);
+    const bw = (W - 8) / arr.length;
+    for (let i = 0; i < arr.length; i++) {
+      const h = (arr[i] / max) * (H - 14);
+      let c = FG;
+      if (highlight.sorted.has(i)) c = BLUE;
+      if (highlight.cmp.includes(i)) c = ORANGE;
+      if (highlight.cur === i) c = RED;
+      ctx.fillStyle = c;
+      ctx.fillRect(4 + i * bw, H - h - 4, Math.max(1, bw - 1), h);
+    }
+  };
+
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+  const speed = () => Math.max(8, 220 / Math.sqrt(arr.length));
+
+  // ----- bubble -----
+  const bubbleSort = async () => {
+    for (let i = 0; i < arr.length && !stopFlag; i++) {
+      for (let j = 0; j < arr.length - i - 1 && !stopFlag; j++) {
+        highlight.cmp = [j, j + 1];
+        cmpCount++; updateInfo(); draw();
+        await sleep(speed());
+        if (arr[j] > arr[j + 1]) {
+          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          swpCount++; updateInfo();
+        }
+      }
+      highlight.sorted.add(arr.length - i - 1);
+    }
+    highlight.cmp = [];
+    for (let i = 0; i < arr.length; i++) highlight.sorted.add(i);
+    draw();
+  };
+
+  // ----- insertion -----
+  const insertionSort = async () => {
+    for (let i = 1; i < arr.length && !stopFlag; i++) {
+      let j = i;
+      highlight.cur = i;
+      while (j > 0 && !stopFlag) {
+        highlight.cmp = [j - 1, j];
+        cmpCount++; updateInfo(); draw();
+        await sleep(speed());
+        if (arr[j - 1] > arr[j]) {
+          [arr[j - 1], arr[j]] = [arr[j], arr[j - 1]];
+          swpCount++; updateInfo();
+          j--;
+        } else break;
+      }
+    }
+    highlight.cmp = []; highlight.cur = -1;
+    for (let i = 0; i < arr.length; i++) highlight.sorted.add(i);
+    draw();
+  };
+
+  // ----- quick -----
+  const quickSort = async (l = 0, r = arr.length - 1) => {
+    if (stopFlag) return;
+    if (l >= r) {
+      if (l === r) highlight.sorted.add(l);
+      return;
+    }
+    const pivot = arr[r];
+    let i = l;
+    for (let j = l; j < r && !stopFlag; j++) {
+      highlight.cmp = [j, r];
+      cmpCount++; updateInfo(); draw();
+      await sleep(speed());
+      if (arr[j] < pivot) {
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+        swpCount++; updateInfo();
+        i++;
+      }
+    }
+    [arr[i], arr[r]] = [arr[r], arr[i]];
+    swpCount++; updateInfo();
+    highlight.sorted.add(i);
+    await quickSort(l, i - 1);
+    await quickSort(i + 1, r);
+  };
+
+  // ----- merge (record-based) -----
+  function mergeSteps(a) {
+    const s = [];
+    const ar = [...a];
+    function ms(l, r) {
+      if (r - l <= 1) return;
+      const m = Math.floor((l + r) / 2);
+      ms(l, m); ms(m, r);
+      const left = ar.slice(l, m), right = ar.slice(m, r);
+      let i = 0, j = 0, k = l;
+      while (i < left.length && j < right.length) {
+        s.push({ type: 'cmp', i: l + i, j: m + j });
+        if (left[i] <= right[j]) { ar[k++] = left[i++]; }
+        else { ar[k++] = right[j++]; }
+        s.push({ type: 'swap', arr: [...ar], i: k - 1 });
+      }
+      while (i < left.length) { ar[k++] = left[i++]; s.push({ type: 'swap', arr: [...ar], i: k - 1 }); }
+      while (j < right.length) { ar[k++] = right[j++]; s.push({ type: 'swap', arr: [...ar], i: k - 1 }); }
+    }
+    ms(0, ar.length);
+    return s;
+  }
+  const mergeSort = async () => {
+    const steps = mergeSteps(arr);
+    for (const step of steps) {
+      if (stopFlag) return;
+      if (step.type === 'cmp') {
+        highlight.cmp = [step.i, step.j];
+        cmpCount++;
+      } else {
+        arr = step.arr;
+        highlight.cur = step.i;
+        swpCount++;
+      }
+      updateInfo(); draw();
+      await sleep(speed() * 0.6);
+    }
+    highlight.cmp = []; highlight.cur = -1;
+    for (let i = 0; i < arr.length; i++) highlight.sorted.add(i);
+    draw();
+  };
+
+  const ALGO = {
+    bubble: bubbleSort,
+    insertion: insertionSort,
+    quick: quickSort,
+    merge: mergeSort
+  };
+
+  const run = async (key) => {
+    if (running) { stopFlag = true; await sleep(20); }
+    stopFlag = false;
+    running = true;
+    document.querySelectorAll('button.algo').forEach(b => {
+      b.classList.toggle('on', b.dataset.a === key);
+    });
+    newArray();
+    await ALGO[key]();
+    running = false;
+  };
+
+  document.querySelectorAll('button.algo').forEach(b => {
+    b.onclick = () => run(b.dataset.a);
+  });
+  document.getElementById('reset').onclick = () => {
+    stopFlag = true;
+    setTimeout(() => { running = false; newArray(); }, 30);
+  };
+
+  sizeCanvas();
+  newArray();
+
+  let rt;
+  window.addEventListener('resize', () => {
+    clearTimeout(rt); rt = setTimeout(() => { sizeCanvas(); draw(); }, 120);
+  });
+})();
+</script>
+
+</body>
+</html>

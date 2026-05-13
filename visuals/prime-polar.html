@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>простые в полярных — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  #polarCanvas { display:block; width:100%; height:480px; }
+  .ctrl-row {
+    display:flex; gap:24px; flex-wrap:wrap; align-items:center;
+    margin-bottom:18px; font-family:var(--font-mono); font-size:10px; color:#555;
+  }
+  .ctrl-row .grp { display:inline-flex; align-items:center; gap:10px; }
+  .ctrl-row input[type=range] { width:160px; }
+  .ctrl-row .val { color:#111; min-width:42px; display:inline-block; text-align:right; }
+  .note-block {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 15px; color:#666; line-height:1.7;
+    max-width:620px; margin:20px 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / prime-polar</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №017</div>
+    <div class="ttl">простые в полярных</div>
+    <div class="lead">простые числа как точки в полярных координатах. угол = остаток от деления на N. спирали и лучи.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="ctrl-row">
+    <span class="grp">
+      <span>mod N</span>
+      <input type="range" id="modN" min="2" max="20" value="6" step="1">
+      <span class="val" id="modVal">6</span>
+    </span>
+    <span class="grp">
+      <span>точек</span>
+      <input type="range" id="cnt" min="500" max="5000" value="2000" step="100">
+      <span class="val" id="cntVal">2000</span>
+    </span>
+  </div>
+
+  <section class="visual-canvas light">
+    <canvas id="polarCanvas"></canvas>
+  </section>
+
+  <div class="note-block">
+    «цвет точки = p mod N. разные N открывают разные паттерны. mod 6 → спирали. mod 10 → лучи. mod 30 → галактика.»
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="ulam.html">спираль Улама →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="prime-field.html">поле простых →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/numbers/types/prime.html">простые числа →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/primes-mystery.html">тайна простых чисел →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/prime-polar.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(() => {
+  const BG='#f7f6f2', FG='#111', FG2='#888', RED='#c44a32', BLUE='#2c5fb6';
+  const PALETTE = ['#c44a32','#2c5fb6','#1a7a4a','#e67e22','#8e44ad','#16a085','#d35400','#2980b9','#27ae60','#c0392b','#7f8c8d','#9b59b6','#f39c12','#34495e','#1abc9c','#e74c3c','#3498db','#2ecc71','#f1c40f','#95a5a6'];
+
+  const cv = document.getElementById('polarCanvas');
+  const ctx = cv.getContext('2d');
+
+  let modN = 6;
+  let count = 2000;
+  let primes = [];
+
+  const sieve = (limit) => {
+    const s = new Uint8Array(limit + 1);
+    const ps = [];
+    for (let i = 2; i <= limit; i++) {
+      if (!s[i]) {
+        ps.push(i);
+        for (let j = i * i; j <= limit; j += i) s[j] = 1;
+      }
+    }
+    return ps;
+  };
+
+  // Generate enough primes so that primes[count-1] is the count-th prime
+  const ensurePrimes = (need) => {
+    // upper bound for n-th prime: n*(ln n + ln ln n) for n >= 6
+    const lim = Math.max(50, Math.ceil(need * (Math.log(need) + Math.log(Math.log(need + 5)) + 2)));
+    primes = sieve(lim);
+    while (primes.length < need) {
+      primes = sieve(lim * 2);
+    }
+  };
+
+  const sizeCanvas = () => {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = cv.getBoundingClientRect();
+    cv.width = Math.floor(rect.width * dpr);
+    cv.height = Math.floor(rect.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+  const dims = () => {
+    const r = cv.getBoundingClientRect();
+    return { W: r.width, H: r.height };
+  };
+
+  const draw = () => {
+    const { W, H } = dims();
+    ctx.fillStyle = BG;
+    ctx.fillRect(0, 0, W, H);
+
+    const cx = W / 2, cy = H / 2;
+    const maxR = Math.min(W, H) / 2 - 22;
+
+    // axis cross faint
+    ctx.strokeStyle = '#ececec';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, cy); ctx.lineTo(W, cy);
+    ctx.moveTo(cx, 0); ctx.lineTo(cx, H);
+    ctx.stroke();
+
+    const N = count;
+    if (primes.length < N) ensurePrimes(N);
+    const pmax = primes[N - 1];
+    const scale = maxR / Math.sqrt(pmax);
+
+    for (let i = 0; i < N; i++) {
+      const p = primes[i];
+      const r = Math.sqrt(p) * scale;
+      const theta = (p % modN) * (2 * Math.PI / modN);
+      const x = cx + r * Math.cos(theta);
+      const y = cy + r * Math.sin(theta);
+      const col = PALETTE[(p % modN) % PALETTE.length];
+      ctx.fillStyle = col;
+      ctx.beginPath();
+      ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // legend
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = FG2;
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillText(`mod ${modN} · ${N.toLocaleString('ru')} простых · радиус = √p`, 12, 12);
+  };
+
+  document.getElementById('modN').addEventListener('input', (e) => {
+    modN = parseInt(e.target.value, 10);
+    document.getElementById('modVal').textContent = modN;
+    draw();
+  });
+  document.getElementById('cnt').addEventListener('input', (e) => {
+    count = parseInt(e.target.value, 10);
+    document.getElementById('cntVal').textContent = count;
+    ensurePrimes(count);
+    draw();
+  });
+
+  ensurePrimes(count);
+  sizeCanvas();
+  draw();
+
+  let rt;
+  window.addEventListener('resize', () => {
+    clearTimeout(rt); rt = setTimeout(() => { sizeCanvas(); draw(); }, 120);
+  });
+})();
+</script>
+
+</body>
+</html>
