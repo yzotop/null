@@ -757,6 +757,13 @@
       "glyph": "¶"
     },
     {
+      "id": "es-math-music",
+      "type": "essay",
+      "title": "Математика звука",
+      "url": "/null/essays/math-music.html",
+      "glyph": "¶"
+    },
+    {
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
@@ -1706,6 +1713,11 @@
     { "from": "es-proof", "to": "godel" },
     { "from": "es-proof", "to": "bk-euclid" },
     { "from": "es-proof", "to": "bk-geb" },
-    { "from": "es-proof", "to": "es-rsa" }
+    { "from": "es-proof", "to": "es-rsa" },
+    { "from": "es-math-music", "to": "euler" },
+    { "from": "es-math-music", "to": "pi" },
+    { "from": "es-math-music", "to": "imaginary" },
+    { "from": "es-math-music", "to": "mu-opstack" },
+    { "from": "es-math-music", "to": "ch-sound" }
   ]
 }

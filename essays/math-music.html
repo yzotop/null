@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>математика звука — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / math-music</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~750 слов · 7 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Математика звука.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">музыка — это математика, которую можно услышать. не метафора. буквально. звук — колебания давления воздуха. музыкальный звук — периодические колебания. периодичность — математическое свойство.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">акустика · теория музыки · Фурье · Delta Machine</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">π · e · операторы · Delta Machine · звук чисел</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Музыка — это математика, которую можно услышать. Не метафора. Буквально. Звук — это колебания давления воздуха. Музыкальный звук — периодические колебания. Периодичность — математическое свойство.</p>
+
+      <p>Октава — это удвоение частоты. Нота ля первой октавы — 440 Гц. Нота ля второй октавы — 880 Гц. Отношение 2:1. Это не договорённость — это физика. Струна вдвое короче колеблется вдвое быстрее. Две ноты в отношении 2:1 звучат «одинаково» — мозг воспринимает их как один и тот же звук разной высоты.</p>
+
+      <p>Пифагорейцы знали это. Они построили музыкальный строй на простых отношениях. Квинта — 3:2. Кварта — 4:3. Большая терция — 5:4. Чем проще отношение — тем консонанснее интервал. Это работает. Но есть проблема.</p>
+
+      <p>Двенадцать квинт по 3:2 должны давать семь октав по 2:1. (3/2)<sup>12</sup> ≈ 129.746. 2<sup>7</sup> = 128. Они не равны. Разница — пифагорова комма. Строй на чистых квинтах не замыкается.</p>
+
+      <blockquote>Музыка — это скрытая арифметика души, не знающей, что она считает. — Готфрид Вильгельм Лейбниц</blockquote>
+
+      <p>В XVII–XVIII веках придумали темперацию. Равномерная темперация: октава делится на 12 равных полутонов. Каждый полутон = 2<sup>1/12</sup> ≈ 1.05946. Квинта в равномерной темперации = 2<sup>7/12</sup> ≈ 1.4983. Это не 3:2 = 1.5000. Разница — 0.1%. Едва слышима. Зато все тональности звучат одинаково. Бах написал «Хорошо темперированный клавир» — 24 прелюдии и фуги во всех тональностях — чтобы показать, что это работает<em class="fn">1</em>.</p>
+
+      <p>В 1822 году Жозеф Фурье доказал: любой периодический сигнал можно разложить в сумму синусов и косинусов разных частот<em class="fn">2</em>.</p>
+
+      <p style="font-family:var(--font-mono);font-size:12px;color:#111;margin:6px 0 10px 0;">f(t) = a₀ + Σ (aₙ cos(nωt) + bₙ sin(nωt))</p>
+
+      <p>Это преобразование Фурье. Любой звук — это набор синусоид. Тембр скрипки отличается от тембра флейты потому, что у них разные наборы обертонов — разные коэффициенты в разложении Фурье.</p>
+
+      <p>MP3 использует Фурье. Алгоритм сжатия выбрасывает частоты, которые человек не слышит — и сохраняет только важные синусоиды<em class="fn">3</em>. Каждая музыкальная запись на телефоне — это тысячи синусоид.</p>
+
+      <p>Delta Machine — алгоритмическая музыка на Sonic Pi. Там нет нот в традиционном смысле. Есть частоты, длительности, вероятности. <code>:hz</code> — играть ноту заданной частоты. <code>use_synth :fm</code> — FM-синтез: один осциллятор модулирует другой. Это буквально Фурье в коде<em class="fn">4</em>.</p>
+
+      <p>В operator-stack трек «08 — Σ» использует оператор суммы. Звук буквально строится как сумма — Σ синусоид. Математика не вдохновляет музыку. Математика и есть музыка.</p>
+
+      <p>e<sup>iθ</sup> = cos(θ) + i · sin(θ). Формула Эйлера связывает экспоненту с синусом и косинусом. Это не случайно: комплексная экспонента — это вращение. Периодическое вращение — это колебание. Колебание — это звук. Формула Эйлера — это математика звука в одном уравнении.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Равномерная темперация закрепилась как стандарт в XIX веке. До этого сосуществовали десятки систем — среднетоновая, хорошая, чистая, мезотоническая — каждая со своим компромиссом.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Преобразование Фурье — Жозеф Фурье, «Théorie analytique de la chaleur», 1822. Изначально — для анализа теплопроводности, не музыки.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">MP3 (MPEG-1 Audio Layer III), Fraunhofer Institute, 1993. Использует модифицированное дискретное косинусное преобразование (MDCT) и психоакустическую модель.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">FM-синтез — Джон Чоунинг, Стэнфорд, 1967. Частотная модуляция одного осциллятора другим создаёт богатый тембр. Основа Yamaha DX7 (1983) и Sonic Pi <code>:fm</code>.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/euler.html">e — основание экспоненты →</a></div>
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/pi.html">π — период синуса →</a></div>
+      <div class="related-link"><span class="related-link-type">особенное</span><a href="../objects/numbers/special/imaginary.html">i — вращение в звуке →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="euler-formula.html">формула Эйлера →</a></div>
+      <div class="related-link"><span class="related-link-type">музыка</span><a href="../music/delta-machine/operator-stack.html">operator-stack →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/charts/sound.html">звук чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/polar-roses.html">полярные розы — синус в полярных →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/math-music.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
