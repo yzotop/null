@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>как обновлять убеждения — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .formula {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / bayesian</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~800 слов · 8 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Как обновлять убеждения.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">в 1763 году Томас Байес написал статью. опубликовали её посмертно. она изменила то, как мы думаем о вероятности. и до сих пор вызывает споры.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">байесовская статистика · вывод · принятие решений</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">A/B тестирование · цепи Маркова · вероятность</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">В 1763 году Томас Байес написал статью «An Essay towards solving a Problem in the Doctrine of Chances». Опубликовали посмертно. Друг Ричард Прайс нашёл рукопись и отправил её в Royal Society<em class="fn">1</em>.</p>
+
+      <p>Теорема Байеса:</p>
+
+      <div class="formula">P(A | B) = P(B | A) × P(A) / P(B)</div>
+
+      <p>Вероятность гипотезы A при наблюдении B = вероятность наблюдения B при верной A, умноженная на prior-вероятность A, делённая на общую вероятность B. Это арифметика. Теорема верна в обоих лагерях. Спор не о формуле — о том, что такое P(A).</p>
+
+      <div class="sub-h">частотная интерпретация</div>
+
+      <p>Вероятность — предел частоты при бесконечном числе испытаний. P(орёл) = 0.5 потому, что в длинной серии бросков орёл падает в половине. Проблема: как говорить о вероятности единичных событий? «Вероятность того, что Байден выиграет выборы» — бессмысленна в частотной интерпретации. Выборы не повторяются бесконечно.</p>
+
+      <div class="sub-h">байесовская интерпретация</div>
+
+      <p>Вероятность — степень уверенности рационального агента. P(A) = 0.7 означает: «я готов поставить 7 против 3, что A верно». Это субъективно. Но обновляется по правилам. Prior → данные → posterior. Новые данные → снова posterior.</p>
+
+      <blockquote>Байесовская статистика — это просто здравый смысл, записанный математически. — Эдвин Джейнс, «Probability Theory: The Logic of Science», 2003</blockquote>
+
+      <div class="sub-h">пример с тестом на болезнь</div>
+
+      <p>Болезнь встречается у 1% популяции. Тест чувствительностью 99% (верно находит больных) и специфичностью 99% (верно отрицает здоровых). Тест положительный. Какова вероятность того, что вы больны?</p>
+
+      <p>Интуиция говорит: 99%. Байес говорит: считаем<em class="fn">2</em>.</p>
+
+      <div class="formula">P(болен | +) = P(+ | болен) × P(болен) / P(+)
+P(+ | болен) = 0.99
+P(болен)     = 0.01
+P(+) = 0.99 × 0.01 + 0.01 × 0.99 = 0.0198
+P(болен | +) = 0.99 × 0.01 / 0.0198 = 0.5</div>
+
+      <p>50%. Не 99%. Потому что болезнь редкая — ложноположительных почти столько же, сколько настоящих больных. Это важно для медицинской диагностики, детекторов мошенничества, спам-фильтров.</p>
+
+      <div class="sub-h">применение в A/B тестировании</div>
+
+      <p>Частотный подход: p-value. Бинарное решение. Нет prior. Байесовский подход: prior на размер эффекта из исторических данных. Например, из 100 прошлых экспериментов: средний эффект +2%, σ = 1.5%. Это prior. Запускаем тест. Получаем данные. Posterior: «эффект с вероятностью 95% между +1.2% и +3.8%».</p>
+
+      <p>Это богаче, чем «p = 0.03». Можно принимать решения с учётом неопределённости. Можно останавливать тест досрочно без накручивания ошибок. Можно обновлять posterior по мере поступления данных.</p>
+
+      <p>Байесовский A/B используют VWO, Dynamic Yield, часть Optimizely. В основе — сопряжённые prior (beta-binomial для конверсии, normal-normal для средних) и MCMC для сложных моделей<em class="fn">3</em>.</p>
+
+      <div class="sub-h">критика и ответ</div>
+
+      <p>Главная претензия — субъективность prior. Два аналитика с разными prior получат разные posterior. Ответ байесианцев: это честно — мы всегда имеем prior, частотный подход просто прячет его за «плоским» prior<em class="fn">4</em>.</p>
+
+      <p>При больших данных prior не важен. Posterior определяется данными. Prior «вымывается». При малых данных prior критичен. Именно здесь байесовский подход выигрывает — когда данных мало и нужно принимать решения.</p>
+
+      <div class="sub-h">холодный старт</div>
+
+      <p>Для маркетплейсов и аукционов это ключевое: новый продавец, новый лот, холодный старт. Исторических данных нет. Prior из похожих объектов. Posterior обновляется по первым транзакциям. Это и есть байесовский вывод в продакшне — когда «не знаем, но действовать надо» превращается в формулу.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Томас Байес — «An Essay towards solving a Problem in the Doctrine of Chances», Philosophical Transactions of the Royal Society, 1763. Опубликовано посмертно Ричардом Прайсом через 2 года после смерти Байеса.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Пример с тестом на болезнь — классика. Систематически разобран Каснером и другими как иллюстрация base-rate neglect — когнитивного искажения, описанного Канеманом и Тверски.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Beta-binomial модель для конверсии — стандарт байесовского A/B: beta-prior сопряжён с binomial likelihood, posterior вычисляется аналитически без MCMC.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Эдвин Джейнс, «Probability Theory: The Logic of Science», Cambridge, 2003 — главная книга байесовской интерпретации. Аргументирует, что вероятность — расширение логики на неопределённость.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="markov-chains.html">цепи Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="auctions.html">математика аукционов →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/monty-hall.html">парадокс Монти Холла →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/birthday.html">парадокс дней рождения →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/bayesian.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

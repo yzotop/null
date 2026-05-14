@@ -806,6 +806,13 @@
       "glyph": "¶"
     },
     {
+      "id": "es-bayesian",
+      "type": "essay",
+      "title": "Как обновлять убеждения · байесовский вывод",
+      "url": "/null/essays/bayesian.html",
+      "glyph": "¶"
+    },
+    {
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
@@ -1781,6 +1788,11 @@
     { "from": "es-ab-testing", "to": "pr-birthday" },
     { "from": "es-auctions", "to": "es-game-theory" },
     { "from": "es-auctions", "to": "es-ab-testing" },
-    { "from": "es-auctions", "to": "pr-secretary" }
+    { "from": "es-auctions", "to": "pr-secretary" },
+    { "from": "es-bayesian", "to": "es-ab-testing" },
+    { "from": "es-bayesian", "to": "es-markov" },
+    { "from": "es-bayesian", "to": "es-auctions" },
+    { "from": "es-bayesian", "to": "pr-monty" },
+    { "from": "es-bayesian", "to": "pr-birthday" }
   ]
 }
