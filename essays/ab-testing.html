@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>почему p &lt; 0.05 — плохой порог — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .formula {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin: 8px 0;
+    line-height: 1.6;
+  }
+  .errors-table {
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  .errors-table th, .errors-table td {
+    border: 1px solid #ddd;
+    padding: 8px 14px;
+    text-align: left;
+    color: #111;
+  }
+  .errors-table th { background: #f0ede8; font-weight: 500; color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .errors-table td.lbl { background: #f7f6f2; color: #555; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / ab-testing</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~800 слов · 8 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Почему p &lt; 0.05 — плохой порог.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">в 1925 году Рональд Фишер предложил 0.05 как удобный порог. он сам предупреждал, что это не правило. с тех пор это правило.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">статистика · эксперименты · принятие решений</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">вероятность · цепи Маркова · теория игр</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">В 2015 году журнал <em>Basic and Applied Social Psychology</em> запретил публикацию p-value<em class="fn">3</em>. Полностью. Все статьи без p-value. Это был радикальный ответ на кризис воспроизводимости: большинство опубликованных результатов не воспроизводятся.</p>
+
+      <p>Что такое p-value? Это вероятность получить результат не менее экстремальный, чем наблюдаемый, при условии, что нулевая гипотеза верна. Не вероятность, что гипотеза верна. Не вероятность, что результат случаен. Именно то, что написано выше — и ничего другого.</p>
+
+      <p>Фишер предложил порог 0.05 в 1925 году в «Statistical Methods for Research Workers»: «удобно принять вероятность 1/20 как стандарт». Он имел в виду один из возможных порогов для конкретной задачи — не универсальный закон природы<em class="fn">1</em>.</p>
+
+      <div class="sub-h">два типа ошибок</div>
+
+      <table class="errors-table">
+        <tr><th></th><th>H₀ верна</th><th>H₀ неверна</th></tr>
+        <tr><td class="lbl">отвергли</td><td>ошибка I рода (α)</td><td>правильно</td></tr>
+        <tr><td class="lbl">не отвергли</td><td>правильно</td><td>ошибка II рода (β)</td></tr>
+      </table>
+
+      <p><strong>Ошибка первого рода (α)</strong> — отвергнуть нулевую гипотезу, когда она верна. Ложноположительный результат. «Нашли эффект, которого нет». Порог α = 0.05 означает: в 5% случаев мы будем ошибаться так.</p>
+
+      <p><strong>Ошибка второго рода (β)</strong> — не отвергнуть нулевую гипотезу, когда она неверна. Ложноотрицательный результат. «Не нашли эффект, который есть». Мощность теста = 1 − β. Стандарт — 0.8.</p>
+
+      <p>Проблема: большинство A/B тестов настраивают α, но игнорируют β. Тест с α = 0.05 и мощностью 0.4 бесполезен — он пропускает 60% реальных эффектов. И если такой тест «находит» эффект, это с высокой вероятностью ложная находка.</p>
+
+      <blockquote>Использование p &lt; 0.05 как порога для публикации привело к тому, что литература заполнена ложноположительными результатами. — Джон Иоаннидис, «Why Most Published Research Findings Are False», 2005</blockquote>
+
+      <div class="sub-h">теорема Байеса объясняет почему</div>
+
+      <p>Положительная предсказательная ценность теста:</p>
+
+      <div class="formula">PPV = (чувствительность × prevalence) / (чувствительность × prevalence + FPR × (1 − prevalence))</div>
+
+      <p>Если реальных эффектов среди тестируемых гипотез мало (prevalence = 0.1), мощность 0.8 и α = 0.05:</p>
+
+      <div class="formula">PPV = (0.8 × 0.1) / (0.8 × 0.1 + 0.05 × 0.9) = 0.08 / 0.125 = 0.64</div>
+
+      <p>64% «значимых» результатов — настоящие. 36% — ложные находки<em class="fn">2</em>. В A/B тестировании это конкретные деньги. Команда запускает фичу потому, что «тест показал +2.3% конверсии, p = 0.04». Фича не работает. Откат. Потери.</p>
+
+      <div class="sub-h">множественные сравнения</div>
+
+      <p>Если тестировать 20 гипотез одновременно при α = 0.05 — в среднем одна будет «значимой» по чистой случайности. Поправка Бонферрони: делить α на количество тестов. 20 тестов → порог 0.05 / 20 = 0.0025.</p>
+
+      <div class="sub-h">размер эффекта важнее p-value</div>
+
+      <p>Cohen's d, relative uplift, CATE — вопрос не «есть ли эффект», а «насколько он большой». Статистически значимый эффект может быть экономически незначимым. +0.01% конверсии при p = 0.001 — это победа?</p>
+
+      <div class="sub-h">практические рекомендации</div>
+
+      <p><strong>1. Считать размер выборки заранее.</strong> Определить минимальный детектируемый эффект (MDE). При каком реальном эффекте вам важно его найти? Считать n из α, β, MDE — до запуска теста.</p>
+
+      <p><strong>2. Фиксировать горизонт теста.</strong> Не останавливать тест, как только p &lt; 0.05. Peek problem: при постоянном мониторинге p-value блуждает. Решение — sequential testing (e-values, always-valid p-values)<em class="fn">4</em>.</p>
+
+      <p><strong>3. Байесовский подход вместо частотного.</strong> Prior на размер эффекта из исторических данных. Posterior-распределение вместо бинарного решения. «Эффект с вероятностью 89% между +1% и +4%» лучше, чем «p = 0.04».</p>
+
+      <p><strong>4. Множественные метрики.</strong> Не оптимизировать одну метрику — смотреть guardrail metrics. Если конверсия выросла, а retention упала — это победа?</p>
+
+      <p>p-value — инструмент. Хороший инструмент. Проблема не в нём — в автоматическом применении одного порога для всех задач без понимания механики.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Рональд Фишер, «Statistical Methods for Research Workers» (1925). Порог 0.05 был введён как «удобный», не как универсальный стандарт. Фишер позже критиковал его догматическое применение.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Джон Иоаннидис, «Why Most Published Research Findings Are False», PLOS Medicine, 2005 — одна из самых цитируемых статей в истории науки.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Запрет p-value в Basic and Applied Social Psychology — 2015 год, редактор Дэвид Trafimow. Прецедент: первый рецензируемый журнал, отказавшийся от p-value.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Peek problem и sequential testing: e-values (Grünwald, de Heide, Koolen, Shafer, 2020), always-valid confidence intervals, mSPRT (Johari, Pekelis, Walsh, Optimizely, 2017).</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="game-theory.html">теория игр — равновесие и стратегия →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="pseudorandom.html">случайность которой нет →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="markov-chains.html">цепи Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/birthday.html">парадокс дней рождения →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/numbers/types/natural.html">натуральные числа →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/ab-testing.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

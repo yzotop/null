@@ -792,6 +792,13 @@
       "glyph": "¶"
     },
     {
+      "id": "es-ab-testing",
+      "type": "essay",
+      "title": "Почему p < 0.05 — плохой порог",
+      "url": "/null/essays/ab-testing.html",
+      "glyph": "¶"
+    },
+    {
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
@@ -1761,6 +1768,9 @@
     { "from": "vi-fourier", "to": "imaginary" },
     { "from": "vi-fourier", "to": "es-math-music" },
     { "from": "vi-fourier", "to": "ch-sound" },
-    { "from": "alph-math", "to": "transcendental" }
+    { "from": "alph-math", "to": "transcendental" },
+    { "from": "es-ab-testing", "to": "es-game-theory" },
+    { "from": "es-ab-testing", "to": "es-markov" },
+    { "from": "es-ab-testing", "to": "pr-birthday" }
   ]
 }
