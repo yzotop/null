@@ -1760,6 +1760,7 @@
     { "from": "vi-fourier", "to": "pi" },
     { "from": "vi-fourier", "to": "imaginary" },
     { "from": "vi-fourier", "to": "es-math-music" },
-    { "from": "vi-fourier", "to": "ch-sound" }
+    { "from": "vi-fourier", "to": "ch-sound" },
+    { "from": "alph-math", "to": "transcendental" }
   ]
 }
