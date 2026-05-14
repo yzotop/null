@@ -799,6 +799,13 @@
       "glyph": "¶"
     },
     {
+      "id": "es-auctions",
+      "type": "essay",
+      "title": "Математика аукционов",
+      "url": "/null/essays/auctions.html",
+      "glyph": "¶"
+    },
+    {
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
@@ -1771,6 +1778,9 @@
     { "from": "alph-math", "to": "transcendental" },
     { "from": "es-ab-testing", "to": "es-game-theory" },
     { "from": "es-ab-testing", "to": "es-markov" },
-    { "from": "es-ab-testing", "to": "pr-birthday" }
+    { "from": "es-ab-testing", "to": "pr-birthday" },
+    { "from": "es-auctions", "to": "es-game-theory" },
+    { "from": "es-auctions", "to": "es-ab-testing" },
+    { "from": "es-auctions", "to": "pr-secretary" }
   ]
 }

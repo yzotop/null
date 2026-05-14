@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>математика аукционов — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .case {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  .case .lbl { color: #c44a32; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / auctions</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~800 слов · 8 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Математика аукционов.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">в 1961 году Уильям Викри доказал теорему. аукцион второй цены — где победитель платит не свою ставку, а вторую по величине — заставляет всех говорить правду. это редкое свойство в экономике.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">механизм-дизайн · теория игр · маркетплейсы</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">теория игр · Nash · маркетплейсы</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">В 1961 году Уильям Викри доказал теорему. Нобелевская премия за неё пришла в 1996 году. За три дня до церемонии Викри умер<em class="fn">1</em>.</p>
+
+      <div class="sub-h">первая цена</div>
+
+      <p>Аукцион первой цены: победитель платит свою ставку. Стратегия — занижать. Если ваша оценка товара 100, ставить 100 невыгодно — купите по максимуму. Лучше поставить 70. Или 80. Зависит от конкурентов. Равновесие есть, но оно зависит от распределения оценок других участников. Говорить правду невыгодно.</p>
+
+      <div class="sub-h">вторая цена · Викри</div>
+
+      <p>Аукцион второй цены: победитель платит вторую по величине ставку. Стратегия — ставить ровно свою оценку.</p>
+
+      <p>Доказательство. Пусть ваша оценка товара — v. Вы ставите b. Вторая максимальная ставка — p.</p>
+
+      <div class="case">
+        <span class="lbl">случай 1: b &gt; p (вы выиграли).</span><br>
+        платите p &lt; v. прибыль = v − p &gt; 0.<br>
+        если бы b' &lt; p — проиграли. прибыль = 0.<br>
+        если бы b' &gt; b — выиграли, заплатили те же p.<br>
+        оптимально: b = v.
+      </div>
+
+      <div class="case">
+        <span class="lbl">случай 2: b &lt; p (вы проиграли).</span><br>
+        прибыль = 0.<br>
+        если бы b' &gt; p — выиграли, заплатили p &gt; v.<br>
+        прибыль = v − p &lt; 0. хуже.<br>
+        оптимально: b = v.
+      </div>
+
+      <p>В обоих случаях доминирующая стратегия — ставить честную оценку. Не зависит от ставок других. Это называется dominant strategy incentive compatibility (DSIC).</p>
+
+      <blockquote>Аукцион второй цены — одна из немногих экономических конструкций, где честность является доминирующей стратегией. Это красиво и редко. — Эл Рот, Нобелевская лекция, 2012</blockquote>
+
+      <div class="sub-h">теорема эквивалентности выручки</div>
+
+      <p>При определённых условиях (независимые оценки, симметричные участники) аукцион первой и второй цены дают продавцу одинаковую ожидаемую выручку. Это неинтуитивно: кажется, что первая цена выгоднее. Но в равновесии первой цены участники занижают ставки ровно настолько, чтобы выручка сравнялась.</p>
+
+      <div class="sub-h">реальные аукционы</div>
+
+      <p>Google AdWords использовал обобщённый аукцион второй цены (GSP). Не совсем Викри — честность не гарантирована — но приближение, которое работало на практике. В 2019 Google перешёл на unified first-price auction. Почему? Прозрачность для рекламодателей и header bidding сделали GSP уязвимым<em class="fn">3</em>.</p>
+
+      <p>Combinatorial auctions — когда лоты взаимосвязаны. Авиакомпании хотят купить пары слотов (взлёт + посадка). Одиночный слот бесполезен. Нужен пакет. VCG-механизм (Викри–Кларк–Гровс) обобщает аукцион Викри на любые комбинаторные структуры. Каждый участник платит внешний эффект, который он наносит другим. Честность сохраняется. Вычислительная сложность взрывается<em class="fn">2</em>.</p>
+
+      <div class="sub-h">маркетплейсы и matching</div>
+
+      <p>Аукционы на маркетплейсах — особый случай. Двусторонний рынок: продавцы и покупатели. Платформа оптимизирует и за продавца, и за покупателя одновременно. Matching markets: задача не максимизировать выручку, а найти стабильное паросочетание (алгоритм Гейла–Шепли)<em class="fn">4</em>.</p>
+
+      <div class="sub-h">резервная цена и проклятие победителя</div>
+
+      <p>Резервная цена — минимальная цена продажи. В аукционе Викри оптимальная резервная цена выше нуля даже если хранение товара бесплатно. Это нарушает эффективность, но увеличивает выручку продавца. Компромисс между эффективностью и доходом — фундаментальная тема механизм-дизайна.</p>
+
+      <p>Информационная асимметрия — главная проблема. Участники знают свою оценку, но не знают чужую. Проклятие победителя: в аукционах с общей стоимостью (нефтяные права, M&amp;A) победитель систематически переплачивает. Выиграл тот, кто переоценил — в среднем. Рациональный участник должен дисконтировать свою оценку до того, как сделает ставку.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Уильям Викри, «Counterspeculation, Auctions, and Competitive Sealed Tenders», Journal of Finance, 1961. Нобелевская премия по экономике 1996. Викри умер от сердечного приступа за 3 дня до церемонии.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">VCG-механизм: Викри (1961), Кларк (1971), Гровс (1973). Обобщение на комбинаторные аукционы. NP-сложен в общем случае, требует аппроксимаций на практике.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Google перешёл с GSP на first-price auction в 2019 году. Причины: header bidding и необходимость прозрачности — рекламодатели не могли понять, сколько на самом деле платят.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Алгоритм Гейла–Шепли (1962) — stable matching. Нобелевская премия по экономике Ллойду Шепли и Элвину Роту (2012) — за теорию стабильных распределений и практический рынок-дизайн.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="game-theory.html">теория игр →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="pseudorandom.html">случайность которой нет →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/secretary.html">парадокс невесты →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/numbers/types/natural.html">натуральные числа →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/auctions.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
