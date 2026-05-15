@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>математика двусторонних рынков — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .formula {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / two-sided-markets</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~800 слов · 8 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Математика двусторонних рынков.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">обычный рынок — один тип участников. двусторонний — два типа, которые нужны друг другу. продавцы нужны покупателям. покупатели нужны продавцам. платформа монетизирует обе стороны одновременно. это не бизнес-модель — это математическая структура.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">механизм-дизайн · платформы · сетевые эффекты</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">математика аукционов · теория игр · байесовский вывод</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Обычный рынок продаёт товар. Двусторонний рынок — это платформа, которая сводит две группы. Airbnb: хосты и гости. Uber: водители и пассажиры. App Store: разработчики и пользователи. У всех общая математическая структура.</p>
+
+      <div class="sub-h">сетевые эффекты</div>
+
+      <p>Прямые сетевые эффекты: больше пользователей → ценнее для каждого. Телефон бесполезен, если он один. WhatsApp ценен, потому что там все.</p>
+
+      <p>Косвенные сетевые эффекты: одна сторона выигрывает от роста другой. Больше водителей Uber → меньше ожидание для пассажиров. Больше пассажиров → больше заработок для водителей. Это двусторонний петлевой эффект — growth loop.</p>
+
+      <div class="sub-h">модель Роше–Тироля</div>
+
+      <p>Модель Роше–Тироля (2003, Нобелевская премия Тироля 2014)<em class="fn">1</em><em class="fn">2</em>: платформа выбирает цены p<sub>B</sub> для покупателей и p<sub>S</sub> для продавцов. Суммарная цена p = p<sub>B</sub> + p<sub>S</sub> фиксирована спросом. Но распределение между сторонами важно.</p>
+
+      <p>Оптимальное ценообразование:</p>
+
+      <div class="formula">p_B − c_B = (1 − 1/|ε_B|) × (p − c)
+p_S − c_S = (1 − 1/|ε_S|) × (p − c)</div>
+
+      <p>где ε<sub>B</sub> и ε<sub>S</sub> — эластичности спроса каждой стороны. Более эластичная сторона платит меньше. Часто одна сторона субсидируется за счёт другой.</p>
+
+      <blockquote>Платформа не владеет ресурсами — она создаёт условия, при которых другие создают ценность друг для друга. — Жан Тироль, Нобелевская лекция, 2014</blockquote>
+
+      <div class="sub-h">примеры асимметричного ценообразования</div>
+
+      <p>Ночные клубы: женщины входят бесплатно — мужчины платят. Женщины эластичнее по цене (больше опций вечером). Мужчины менее эластичны, если женщины уже пришли. Adobe Reader бесплатен — Acrobat Pro платный. Читатели субсидируются за счёт создателей документов.</p>
+
+      <div class="sub-h">проблема курицы и яйца</div>
+
+      <p>Каждая сторона ждёт другую. Никто не приходит первым. Как запустить маркетплейс с нуля?</p>
+
+      <ol>
+        <li><strong>Fake it till you make it</strong> — Airbnb вручную создавали предложение, делая профессиональные фото хостов.</li>
+        <li><strong>Субсидировать дефицитную сторону</strong> — Uber платил водителям гарантированный заработок в новых городах.</li>
+        <li><strong>Начать с однородного рынка</strong> — eBay начал с коллекционеров, где один человек мог быть и продавцом, и покупателем.</li>
+        <li><strong>Использовать существующую сеть</strong> — PayPal встроился в eBay.</li>
+      </ol>
+
+      <div class="sub-h">unit economics × 2</div>
+
+      <p>Классическая unit economics считается на одну транзакцию. На маркетплейсе — на обе стороны. LTV покупателя зависит от качества продавцов. LTV продавца зависит от объёма покупателей. Это система уравнений — не одно число.</p>
+
+      <div class="sub-h">matching quality</div>
+
+      <p>Отдельная задача оптимизации. Не просто свести продавца и покупателя — найти лучшую пару из возможных. Алгоритм Гейла–Шепли даёт стабильное паросочетание: никто не захочет поменять партнёра, если оба согласны<em class="fn">3</em>. Это основа матчинга на рынке труда, аренды жилья, медицинских резидентур.</p>
+
+      <div class="sub-h">take rate и multi-homing</div>
+
+      <p>Take rate — комиссия платформы. Не просто процент от транзакции. Оптимальная take rate зависит от эластичностей, конкуренции с другими платформами, multi-homing (возможности участников быть на нескольких платформах)<em class="fn">4</em>.</p>
+
+      <p>Если продавцы multi-home (на Wildberries и Ozon одновременно) — их эластичность высокая, комиссию не поднять. Если покупатели single-home (лояльны одной платформе) — платформа может субсидировать продавцов за счёт покупателей.</p>
+
+      <div class="sub-h">данные как актив</div>
+
+      <p>Платформа видит все транзакции обеих сторон. Это информационное преимущество перед любым участником. Amazon знает, какие товары продаются лучше, до того, как продавцы сами это поняли. Это порождает конфликт интересов — и регуляторные вопросы.</p>
+
+      <p>Двусторонние рынки не оптимизируются одной метрикой. GMV, take rate, NPS продавцов, NPS покупателей, matching quality, liquidity — всё одновременно. Это многокритериальная оптимизация. И это делает их математически интереснее, чем любой односторонний бизнес.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Роше, Тироль — «Platform Competition in Two-Sided Markets», Journal of the European Economic Association, 2003. Основополагающая работа по математике двусторонних рынков.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Нобелевская премия по экономике 2014, Жан Тироль — «за анализ рыночной власти и регулирования».</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Алгоритм Гейла–Шепли — Дэвид Гейл и Ллойд Шепли, «College Admissions and the Stability of Marriage», American Mathematical Monthly, 1962.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Multi-homing и конкуренция платформ — Mark Armstrong, «Competition in Two-Sided Markets», RAND Journal of Economics, 2006.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="auctions.html">математика аукционов →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="game-theory.html">теория игр →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/secretary.html">задача о невесте →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/two-sided-markets.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

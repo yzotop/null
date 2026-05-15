@@ -820,6 +820,13 @@
       "glyph": "¶"
     },
     {
+      "id": "es-two-sided",
+      "type": "essay",
+      "title": "Математика двусторонних рынков",
+      "url": "/null/essays/two-sided-markets.html",
+      "glyph": "¶"
+    },
+    {
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
@@ -1804,6 +1811,11 @@
     { "from": "es-llm-eval", "to": "es-ab-testing" },
     { "from": "es-llm-eval", "to": "es-bayesian" },
     { "from": "es-llm-eval", "to": "es-auctions" },
-    { "from": "es-llm-eval", "to": "pvsnp" }
+    { "from": "es-llm-eval", "to": "pvsnp" },
+    { "from": "es-two-sided", "to": "es-auctions" },
+    { "from": "es-two-sided", "to": "es-game-theory" },
+    { "from": "es-two-sided", "to": "es-ab-testing" },
+    { "from": "es-two-sided", "to": "es-bayesian" },
+    { "from": "es-two-sided", "to": "pr-secretary" }
   ]
 }
