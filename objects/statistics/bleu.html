@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BLEU — null/objects/statistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / statistics / BLEU</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:48px;font-family:'JetBrains Mono',monospace;color:#111;letter-spacing:0;">BLEU</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">статистика · №004</div>
+      <div class="obj-title">BLEU score</div>
+      <div class="obj-subtitle">bilingual evaluation understudy · n-gram overlap · метрика качества текста</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">расшифровка</td><td class="v">Bilingual Evaluation Understudy</td></tr>
+    <tr><td class="k">тип</td><td class="v">автоматическая метрика · reference-based</td></tr>
+    <tr><td class="k">ввели</td><td class="v">Papineni et al. · ACL · 2002</td></tr>
+    <tr><td class="k">диапазон</td><td class="v">0.0 — 1.0 (или 0–100%)</td></tr>
+    <tr><td class="k">формула</td><td class="v mono">BLEU = BP × exp(Σ wₙ · log pₙ) · BP = brevity penalty · pₙ = n-gram precision</td></tr>
+    <tr><td class="k">применение</td><td class="v">машинный перевод · суммаризация · генерация текста</td></tr>
+    <tr><td class="k">ограничения</td><td class="v">не учитывает семантику · чувствителен к порядку слов</td></tr>
+    <tr><td class="k">связано</td><td class="v">LLM eval · Cohen's κ · размер эффекта</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~400 слов · 3 мин</div>
+    <h2 class="essay-title">Считаем совпадения <em>n-грамм</em>.</h2>
+    <p class="essay-lead">самая используемая метрика для оценки текстовых моделей.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">BLEU — самая используемая метрика для оценки текстовых моделей. Идея простая: насколько n-граммы (последовательности из n слов) в сгенерированном тексте совпадают с эталонным переводом?</p>
+
+        <p>Пример:</p>
+        <p class="mono" style="margin:6px 0;">
+          эталон:   «the cat is on the mat»<br>
+          гипотеза: «the cat the cat on the mat»
+        </p>
+
+        <p>1-gram precision: 6/7 совпадений (но «the cat» повторяется). С clip: не более 2 раз «the» (столько в эталоне). Precision = 5/7.</p>
+
+        <p>BLEU считает 1-gram, 2-gram, 3-gram, 4-gram precision и усредняет логарифмически. Brevity penalty штрафует за слишком короткие ответы<em class="fn">1</em>.</p>
+
+        <blockquote>BLEU не понимает смысл — только форму. «Кошка сидит на мате» и «мат сидит на кошке» для BLEU могут быть одинаковы.</blockquote>
+
+        <p>BLEU от 0 до 1. Выше — лучше. На практике для машинного перевода: BLEU &gt; 0.6 — отличное качество, 0.3–0.6 — приемлемое, &lt; 0.3 — плохое.</p>
+
+        <p>Ограничения: BLEU не понимает смысл — только форму. Синонимы не засчитываются: «автомобиль» ≠ «машина». Высокий BLEU не всегда коррелирует с человеческой оценкой.</p>
+
+        <p>Альтернативы: ROUGE (для суммаризации)<em class="fn">2</em> · BERTScore (семантическое сходство через эмбеддинги)<em class="fn">3</em> · METEOR (учитывает синонимы) · chrF (символьные n-граммы).</p>
+
+        <p>Несмотря на ограничения, BLEU остаётся стандартом де-факто — потому что воспроизводим, быстр и легко сравнивать между работами.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">Papineni et al. — «BLEU: a Method for Automatic Evaluation of Machine Translation», ACL, 2002. Одна из самых цитируемых статей NLP.</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">ROUGE (Chin-Yew Lin, 2004) — аналог для суммаризации, Recall-Oriented Understudy for Gisting Evaluation.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">BERTScore (Zhang et al., 2020) — семантическое сходство через эмбеддинги BERT. Лучше коррелирует с human eval, но дороже считать.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/llm-eval.html">оценка LLM →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="cohens-kappa.html">каппа Коэна →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="elo.html">рейтинг Elo →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="effect-size.html">размер эффекта →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/statistics/bleu.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
