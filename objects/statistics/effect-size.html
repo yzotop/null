@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>размер эффекта — null/objects/statistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / statistics / effect size</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:88px;"><em style="font-family:'Times New Roman',Georgia,serif;font-style:italic;">d</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">статистика · №003</div>
+      <div class="obj-title">размер эффекта</div>
+      <div class="obj-subtitle">Cohen's d · насколько велик эффект · важнее, чем p-value</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">d (Cohen's d) · r · η² · relative uplift</td></tr>
+    <tr><td class="k">определение</td><td class="v">стандартизованная мера величины различия между группами</td></tr>
+    <tr><td class="k">ввёл</td><td class="v">Jacob Cohen · «Statistical Power Analysis» · 1988</td></tr>
+    <tr><td class="k">формула</td><td class="v mono">d = (μ₁ − μ₂) / σ<sub>pooled</sub></td></tr>
+    <tr><td class="k">интерпретация</td><td class="v">d ≈ 0.2 малый · 0.5 средний · 0.8 большой</td></tr>
+    <tr><td class="k">связано</td><td class="v">p-value · мощность теста · A/B тестирование</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~400 слов · 3 мин</div>
+    <h2 class="essay-title">Большой ли <em>эффект</em>?</h2>
+    <p class="essay-lead">p-value говорит, есть ли эффект. размер эффекта — насколько он большой.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">p-value отвечает на вопрос «есть ли эффект?». Размер эффекта — на вопрос «насколько он большой?». Второй вопрос важнее для принятия решений.</p>
+
+        <p>При большой выборке любой эффект значим. Конверсия выросла с 10.000% до 10.001%. p &lt; 0.001. Статистически значимо. Практически — нет.</p>
+
+        <p>Cohen's d — стандартизованная разница средних:</p>
+
+        <p class="mono" style="margin:6px 0 10px 0;">d = (μ₁ − μ₂) / σ<sub>pooled</sub></p>
+
+        <p>Стандартизация позволяет сравнивать эффекты разных масштабов. d = 0.5 — «средняя» разница независимо от единиц измерения<em class="fn">1</em>.</p>
+
+        <blockquote>p-value без размера эффекта — половина ответа. Часто худшая половина.</blockquote>
+
+        <p>Для конверсий чаще используют relative uplift: uplift = (p₁ − p₀) / p₀. Для дисперсионного анализа — η² = SS<sub>between</sub> / SS<sub>total</sub>: доля дисперсии, объяснённая фактором.</p>
+
+        <p>Минимальный детектируемый эффект (MDE) — важнейший параметр планирования A/B-теста. Какой реальный эффект вам важно найти? Из MDE, α и мощности (1 − β) вычисляется нужный n. Без MDE размер выборки невозможно рассчитать<em class="fn">2</em>.</p>
+
+        <p>Практическое правило: считай размер эффекта всегда. Рядом с p-value. Как обязательный параметр отчёта. «Конверсия выросла на 0.3 п.п. (d = 0.15, p = 0.02)» — намного информативнее, чем просто «p = 0.02».</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">Jacob Cohen — «Statistical Power Analysis for the Behavioral Sciences», 2nd ed., 1988. Ввёл стандарт интерпретации d.</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">Пороги Cohen — 0.2 / 0.5 / 0.8 — условные ориентиры для поведенческих наук. В других областях (физика, биология) могут отличаться.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="p-value.html">p-value →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="confidence-interval.html">доверительный интервал →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/confidence-interval.html">доверительный интервал →</a></div>
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/p-value.html">p-value →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/statistics/effect-size.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

@@ -827,6 +827,27 @@
       "glyph": "¶"
     },
     {
+      "id": "st-pvalue",
+      "type": "statistic",
+      "title": "p-value",
+      "url": "/null/objects/statistics/p-value.html",
+      "glyph": "p"
+    },
+    {
+      "id": "st-ci",
+      "type": "statistic",
+      "title": "доверительный интервал",
+      "url": "/null/objects/statistics/confidence-interval.html",
+      "glyph": "[─]"
+    },
+    {
+      "id": "st-effect",
+      "type": "statistic",
+      "title": "размер эффекта",
+      "url": "/null/objects/statistics/effect-size.html",
+      "glyph": "d"
+    },
+    {
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
@@ -1816,6 +1837,14 @@
     { "from": "es-two-sided", "to": "es-game-theory" },
     { "from": "es-two-sided", "to": "es-ab-testing" },
     { "from": "es-two-sided", "to": "es-bayesian" },
-    { "from": "es-two-sided", "to": "pr-secretary" }
+    { "from": "es-two-sided", "to": "pr-secretary" },
+    { "from": "st-pvalue", "to": "es-ab-testing" },
+    { "from": "st-pvalue", "to": "es-bayesian" },
+    { "from": "st-ci",     "to": "es-ab-testing" },
+    { "from": "st-ci",     "to": "es-bayesian" },
+    { "from": "st-effect", "to": "es-ab-testing" },
+    { "from": "st-pvalue", "to": "st-ci" },
+    { "from": "st-pvalue", "to": "st-effect" },
+    { "from": "st-ci",     "to": "st-effect" }
   ]
 }

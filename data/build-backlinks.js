@@ -29,7 +29,8 @@ const TYPE_RU = {
   alphabet:   'алфавит',
   numeral:    'нумерация',
   book:       'книга',
-  coordinate: 'координаты'
+  coordinate: 'координаты',
+  statistic:  'статистика'
 };
 
 const data = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'links.json'), 'utf8'));
@@ -50,7 +51,7 @@ const urlToFs = (url) => {
 const renderBacklinks = (sourceIds) => {
   if (sourceIds.size === 0) return null;
   // sort by type order, then by title
-  const typeOrder = ['constant','type','special','theorem','hypothesis','operator','problem','curious','music','essay','visual','chart','alphabet','numeral','book','coordinate'];
+  const typeOrder = ['constant','type','special','theorem','hypothesis','operator','problem','curious','statistic','music','essay','visual','chart','alphabet','numeral','book','coordinate'];
   const list = [...sourceIds].map(id => byId[id]).filter(Boolean).sort((a, b) => {
     const ta = typeOrder.indexOf(a.type), tb = typeOrder.indexOf(b.type);
     if (ta !== tb) return ta - tb;
