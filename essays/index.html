@@ -8,6 +8,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles/main.css">
+<style>
+  .essay-section-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 14px 0;
+  }
+  .essay-section-divider {
+    border: none;
+    border-top: 1px solid #e8e8e4;
+    margin: 32px 0;
+  }
+  .essay-item .tag.applied { color: #2c5fb6; }
+</style>
 </head>
 <body>
 
@@ -26,7 +42,9 @@
 
 <main class="container">
   <h1 class="page-title">архив</h1>
-  <div class="page-sub">хронологически · новое сверху · ссылки ведут к эссе на странице объекта</div>
+  <div class="page-sub">математика · эксперименты · платформы · история · теория</div>
+
+  <div class="essay-section-label" style="margin-top: 28px;">// прикладное · эксперименты · платформы</div>
 
   <div class="essay-list">
 
@@ -36,7 +54,7 @@
         Математика двусторонних рынков
         <span class="sub">маркетплейсы · сетевые эффекты · chicken-and-egg · take rate</span>
       </span>
-      <span class="tag">stats · design</span>
+      <span class="tag applied">stats · design</span>
     </a>
 
     <a class="essay-item" href="llm-eval.html">
@@ -45,7 +63,7 @@
         Как измерить то, чего нет
         <span class="sub">оценка LLM · human eval · LLM-as-judge · онлайн vs офлайн</span>
       </span>
-      <span class="tag">stats · LLM</span>
+      <span class="tag applied">stats · LLM</span>
     </a>
 
     <a class="essay-item" href="bayesian.html">
@@ -54,7 +72,7 @@
         Как обновлять убеждения
         <span class="sub">теорема Байеса · prior и posterior · A/B тестирование · холодный старт</span>
       </span>
-      <span class="tag">stats</span>
+      <span class="tag applied">stats</span>
     </a>
 
     <a class="essay-item" href="auctions.html">
@@ -63,7 +81,7 @@
         Математика аукционов
         <span class="sub">аукцион Викри · VCG · теорема эквивалентности выручки · маркетплейсы</span>
       </span>
-      <span class="tag">stats · design</span>
+      <span class="tag applied">stats · design</span>
     </a>
 
     <a class="essay-item" href="ab-testing.html">
@@ -72,7 +90,24 @@
         Почему p &lt; 0.05 — плохой порог
         <span class="sub">A/B тестирование · ошибки I и II рода · мощность · размер эффекта</span>
       </span>
-      <span class="tag">stats</span>
+      <span class="tag applied">stats</span>
+    </a>
+
+  </div>
+
+  <hr class="essay-section-divider">
+
+  <div class="essay-section-label">// математика · теория · история</div>
+
+  <div class="essay-list">
+
+    <a class="essay-item" href="proof.html">
+      <span class="date">2026.05</span>
+      <span class="ttl">
+        Что такое доказательство
+        <span class="sub">от греков до компьютера · четырёхцветная теорема · граница знания</span>
+      </span>
+      <span class="tag">phil</span>
     </a>
 
     <a class="essay-item" href="infinity-paradoxes.html">
@@ -93,24 +128,6 @@
       <span class="tag">math · music</span>
     </a>
 
-    <a class="essay-item" href="proof.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Что такое доказательство
-        <span class="sub">от греков до компьютера · четырёхцветная теорема · граница знания</span>
-      </span>
-      <span class="tag">phil</span>
-    </a>
-
-    <a class="essay-item" href="markov-chains.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Будущее зависит только от настоящего
-        <span class="sub">цепи Маркова · случайные блуждания · PageRank · MCMC</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
-
     <a class="essay-item" href="game-theory.html">
       <span class="date">2026.05</span>
       <span class="ttl">
@@ -120,20 +137,11 @@
       <span class="tag">math</span>
     </a>
 
-    <a class="essay-item" href="primes-mystery.html">
+    <a class="essay-item" href="markov-chains.html">
       <span class="date">2026.05</span>
       <span class="ttl">
-        Тайна простых чисел
-        <span class="sub">атомы математики · бесконечны · непредсказуемы · в основе RSA</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
-
-    <a class="essay-item" href="infinity-types.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Бесконечностей много
-        <span class="sub">счётная и несчётная · отель Гильберта · континуум-гипотеза</span>
+        Будущее зависит только от настоящего
+        <span class="sub">цепи Маркова · случайные блуждания · PageRank · MCMC</span>
       </span>
       <span class="tag">math</span>
     </a>
@@ -147,76 +155,22 @@
       <span class="tag">history</span>
     </a>
 
-    <a class="essay-item" href="pseudorandom.html">
-      <span class="date">2026.04</span>
+    <a class="essay-item" href="infinity-types.html">
+      <span class="date">2026.05</span>
       <span class="ttl">
-        Случайность, которой нет
-        <span class="sub">seed определяет всё · детерминизм, притворяющийся хаосом</span>
+        Бесконечностей много
+        <span class="sub">счётная и несчётная · отель Гильберта · континуум-гипотеза</span>
       </span>
-      <span class="tag">essays</span>
+      <span class="tag">math</span>
     </a>
 
-    <a class="essay-item" href="fibonacci-nature.html">
-      <span class="date">2026.04</span>
+    <a class="essay-item" href="primes-mystery.html">
+      <span class="date">2026.05</span>
       <span class="ttl">
-        Фибоначчи в природе — и почему не совсем
-        <span class="sub">подсолнух не знает математики · он знает, как расти эффективно</span>
+        Тайна простых чисел
+        <span class="sub">атомы математики · бесконечны · непредсказуемы · в основе RSA</span>
       </span>
-      <span class="tag">essays</span>
-    </a>
-
-    <a class="essay-item" href="rsa-primes.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Замок из простых чисел
-        <span class="sub">RSA · асимметрия факторизации · и что будет с квантовым компьютером</span>
-      </span>
-      <span class="tag">essays</span>
-    </a>
-
-    <a class="essay-item" href="zfc-independence.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Математика, которую нельзя доказать
-        <span class="sub">независимые от ZFC утверждения · аксиома выбора · гипотеза континуума</span>
-      </span>
-      <span class="tag">essays</span>
-    </a>
-
-    <a class="essay-item" href="millennium-problems.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Семь задач. Семь миллионов долларов.
-        <span class="sub">проблемы тысячелетия · одна решена · шесть нет</span>
-      </span>
-      <span class="tag">essays</span>
-    </a>
-
-    <a class="essay-item" href="hilbert-godel.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Что Гёдель сказал Гильберту
-        <span class="sub">как рухнула мечта об идеальной математической машине</span>
-      </span>
-      <span class="tag">essays</span>
-    </a>
-
-    <a class="essay-item" href="deck-of-cards.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Колода которой не было
-        <span class="sub">52! и почему каждая перемешанная колода уникальна в истории вселенной</span>
-      </span>
-      <span class="tag">essays</span>
-    </a>
-
-    <a class="essay-item" href="pi-in-gaussian.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Почему π прячется в колоколе Гаусса
-        <span class="sub">нормальное распределение и окружности — что их связывает</span>
-      </span>
-      <span class="tag">essays</span>
+      <span class="tag">math</span>
     </a>
 
     <a class="essay-item" href="euler-formula.html">
@@ -225,16 +179,34 @@
         Пять чисел. Одно уравнение.
         <span class="sub">e<sup>iπ</sup>+1=0 — формула Эйлера и почему она красива</span>
       </span>
-      <span class="tag">essays</span>
+      <span class="tag">math</span>
     </a>
 
-    <a class="essay-item" href="invented-or-discovered.html">
+    <a class="essay-item" href="rsa-primes.html">
       <span class="date">2026.04</span>
       <span class="ttl">
-        Математика изобретена или открыта?
-        <span class="sub">философский вопрос без ответа · и почему он важен</span>
+        Замок из простых чисел
+        <span class="sub">RSA · асимметрия факторизации · и что будет с квантовым компьютером</span>
       </span>
-      <span class="tag">essays</span>
+      <span class="tag">math</span>
+    </a>
+
+    <a class="essay-item" href="zfc-independence.html">
+      <span class="date">2026.04</span>
+      <span class="ttl">
+        Математика, которую нельзя доказать
+        <span class="sub">независимые от ZFC утверждения · аксиома выбора · гипотеза континуума</span>
+      </span>
+      <span class="tag">math</span>
+    </a>
+
+    <a class="essay-item" href="hilbert-godel.html">
+      <span class="date">2026.04</span>
+      <span class="ttl">
+        Что Гёдель сказал Гильберту
+        <span class="sub">как рухнула мечта об идеальной математической машине</span>
+      </span>
+      <span class="tag">phil</span>
     </a>
 
     <a class="essay-item" href="infinity.html">
@@ -243,7 +215,34 @@
         Бесконечность — не число
         <span class="sub">∞ не стоит на числовой прямой. она устроена иначе.</span>
       </span>
-      <span class="tag">essays</span>
+      <span class="tag">math</span>
+    </a>
+
+    <a class="essay-item" href="pseudorandom.html">
+      <span class="date">2026.04</span>
+      <span class="ttl">
+        Случайность, которой нет
+        <span class="sub">seed определяет всё · детерминизм, притворяющийся хаосом</span>
+      </span>
+      <span class="tag">math</span>
+    </a>
+
+    <a class="essay-item" href="fibonacci-nature.html">
+      <span class="date">2026.04</span>
+      <span class="ttl">
+        Фибоначчи в природе — и почему не совсем
+        <span class="sub">подсолнух не знает математики · он знает, как расти эффективно</span>
+      </span>
+      <span class="tag">math</span>
+    </a>
+
+    <a class="essay-item" href="deck-of-cards.html">
+      <span class="date">2026.04</span>
+      <span class="ttl">
+        Колода которой не было
+        <span class="sub">52! и почему каждая перемешанная колода уникальна в истории вселенной</span>
+      </span>
+      <span class="tag">math</span>
     </a>
 
     <a class="essay-item" href="zero-point-nine.html">
@@ -252,7 +251,34 @@
         0.999… равно единице
         <span class="sub">это не приближение. это доказанный факт.</span>
       </span>
-      <span class="tag">essays</span>
+      <span class="tag">math</span>
+    </a>
+
+    <a class="essay-item" href="millennium-problems.html">
+      <span class="date">2026.04</span>
+      <span class="ttl">
+        Семь задач. Семь миллионов долларов.
+        <span class="sub">проблемы тысячелетия · одна решена · шесть нет</span>
+      </span>
+      <span class="tag">math</span>
+    </a>
+
+    <a class="essay-item" href="pi-in-gaussian.html">
+      <span class="date">2026.04</span>
+      <span class="ttl">
+        Почему π прячется в колоколе Гаусса
+        <span class="sub">нормальное распределение и окружности — что их связывает</span>
+      </span>
+      <span class="tag">math</span>
+    </a>
+
+    <a class="essay-item" href="invented-or-discovered.html">
+      <span class="date">2026.04</span>
+      <span class="ttl">
+        Математика изобретена или открыта?
+        <span class="sub">философский вопрос без ответа · и почему он важен</span>
+      </span>
+      <span class="tag">phil</span>
     </a>
 
     <a class="essay-item" href="../objects/numbers/constants/pi.html#essay">
