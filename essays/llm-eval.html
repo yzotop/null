@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>как измерить то чего нет — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .frame {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 12px 16px;
+    margin: 10px 0;
+    line-height: 1.8;
+  }
+  .frame ol { margin: 0; padding-left: 22px; }
+  .frame li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / llm-eval</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~800 слов · 8 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Как измерить то, чего нет.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">у задачи сложения есть правильный ответ. у задачи «напиши хорошее письмо» — нет. оценка LLM — это проблема измерения качества, когда качество субъективно, многомерно и контекстуально.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">оценка LLM · метрики качества · эксперименты</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">A/B тестирование · байесовский вывод · аукционы</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">У задачи сложения есть правильный ответ. 2 + 2 = 4. Модель ответила 4 — правильно. 5 — неправильно. Это автоматическая оценка. Легко масштабировать. У задачи «объясни квантовую механику пятилетнему ребёнку» нет единственного правильного ответа. Один ответ точнее. Другой понятнее. Третий короче. Какой лучше — зависит от цели. Это фундаментальная проблема оценки LLM.</p>
+
+      <div class="sub-h">автоматические метрики</div>
+
+      <p>BLEU (2002) — насколько n-граммы совпадают с эталоном<em class="fn">1</em>. ROUGE — для суммаризации. F1 по токенам — для QA. Проблема: метрики коррелируют с качеством на простых задачах и перестают работать на сложных. Модель может получить высокий BLEU, написав шаблонный ответ. Модель может получить низкий BLEU, написав лучший ответ — другими словами.</p>
+
+      <div class="sub-h">human evaluation — золотой стандарт</div>
+
+      <p>Люди оценивают ответы: 1–5, попарное сравнение, аннотация ошибок. Дорого. Медленно. Не воспроизводимо. Inter-annotator agreement (IAA) — мера согласия аннотаторов: каппа Коэна, альфа Криппендорфа<em class="fn">4</em>. Если аннотаторы не согласны друг с другом — непонятно, чему учить модель.</p>
+
+      <p>Попарное сравнение лучше абсолютных оценок. «A лучше B» надёжнее, чем «A = 4». Рейтинговые системы: Elo (из шахмат), Bradley–Terry модель. LMSYS Chatbot Arena — тысячи пользователей сравнивают модели<em class="fn">2</em>. Проблема: coverage bias. Люди задают удобные задачи. Трудные edge-cases недопредставлены.</p>
+
+      <blockquote>Не всё, что измеримо, важно. Не всё, что важно, измеримо. — приписывается Эйнштейну (реально — Уильям Брюс Кэмерон, 1963)</blockquote>
+
+      <div class="sub-h">LLM-as-judge</div>
+
+      <p>Использовать сильную модель для оценки слабой. GPT-4 оценивает ответы GPT-3.5. Быстро. Дёшево. Масштабируемо. Проблемы<em class="fn">3</em>:</p>
+
+      <ul>
+        <li><strong>position bias</strong> — модель предпочитает первый ответ;</li>
+        <li><strong>verbosity bias</strong> — длинные ответы кажутся лучше;</li>
+        <li><strong>self-enhancement bias</strong> — модель предпочитает свои ответы;</li>
+        <li><strong>calibration</strong> — насколько оценки судьи коррелируют с human eval?</li>
+      </ul>
+
+      <p>Это измеримо. Meta-evaluation: сравнить LLM-judge с human judge — correlation, rank correlation (Spearman), agreement rate. Хороший LLM-judge воспроизводит human eval на 80–85%.</p>
+
+      <div class="sub-h">продуктовые метрики</div>
+
+      <p>Для продуктовых фич специфика другая. Не «какая модель лучше», а «эта фича помогает пользователю?». Proxy-метрики: completion rate, edit distance после генерации, time-to-action, user rating (thumbs up/down). Проблема суррогатных метрик: оптимизируешь прокси — теряешь цель. Модель научилась генерировать короткие ответы — completion rate вырос, качество упало.</p>
+
+      <div class="sub-h">онлайн vs офлайн</div>
+
+      <p>Офлайн: бенчмарки, фиксированные датасеты. Воспроизводимо. Быстро. Онлайн: A/B-тест с реальными пользователями. Медленно. Дорого. Истинно. Разрыв между офлайн и онлайн — постоянная проблема. Модель побеждает на бенчмарке — проигрывает в проде.</p>
+
+      <div class="sub-h">практический фреймворк</div>
+
+      <div class="frame">
+        <ol>
+          <li>определить задачу чётко: что значит «хорошо» для этой фичи;</li>
+          <li>собрать evaluation set из реальных пользовательских запросов (не синтетических);</li>
+          <li>установить baseline — текущая модель, правило или human performance;</li>
+          <li>выбрать метрики: автоматические + человеческая валидация подмножества;</li>
+          <li>измерить inter-annotator agreement; если &lt; 0.6 — задача не определена;</li>
+          <li>LLM-judge как ускоритель — но валидировать на human eval регулярно;</li>
+          <li>онлайн-эксперимент как финальный арбитр.</li>
+        </ol>
+      </div>
+
+      <p>Нет идеального способа оценить LLM. Есть набор несовершенных инструментов. Задача — комбинировать их так, чтобы решение было лучше, чем каждый по отдельности. Это и есть измерение того, чего нет.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">BLEU (Bilingual Evaluation Understudy) — Papineni et al., ACL, 2002. До сих пор стандарт для машинного перевода, несмотря на известные ограничения.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">LMSYS Chatbot Arena, UC Berkeley, 2023. Более 1 млн оценок. Elo-рейтинг на основе попарных сравнений реальных пользователей.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">«Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena» — Zheng et al., NeurIPS, 2023. Систематизирует bias-проблемы LLM-as-judge.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Каппа Коэна — Jacob Cohen, 1960. Мера согласия аннотаторов с поправкой на случайность. κ &gt; 0.8 — отличное согласие, κ &lt; 0.4 — слабое.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="auctions.html">математика аукционов →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="pseudorandom.html">случайность которой нет →</a></div>
+      <div class="related-link"><span class="related-link-type">гипотеза</span><a href="../objects/ideas/hypotheses/pvsnp.html">P vs NP →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/llm-eval.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
