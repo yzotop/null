@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>корреляция — не причинность — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .formula {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / causality</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~800 слов · 8 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Корреляция — не причинность.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">мороженое и утопления коррелируют. продажи мороженого не вызывают утопления. жара вызывает и то, и другое. разница между корреляцией и причинностью — это разница между наблюдением и пониманием.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">каузальный вывод · эксперименты · econometrics</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">A/B тестирование · байесовский вывод · теория игр</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Мороженое и утопления коррелируют. Чем больше продаётся мороженого — тем больше людей тонет. Запретить мороженое? Абсурд. Жара вызывает и то, и другое. Это конфаундер — смешивающая переменная.</p>
+
+      <p>Корреляция говорит: X и Y движутся вместе. Причинность говорит: изменение X вызывает изменение Y. Это фундаментально разные утверждения. И большинство данных в бизнесе — наблюдательные. Мы не контролируем, кто что делает.</p>
+
+      <div class="sub-h">золотой стандарт — A/B</div>
+
+      <p>Рандомизированный эксперимент устраняет все конфаундеры. Случайное назначение в группы делает их сопоставимыми «в среднем». Разница в исходах = причинный эффект.</p>
+
+      <p>Но A/B-тест не всегда возможен. Нельзя рандомизировать курение для изучения рака. Нельзя рандомизировать цены, если конкуренты видят эксперимент. Нельзя рандомизировать страны для изучения политик. Тогда — квазиэксперименты.</p>
+
+      <div class="sub-h">difference-in-differences</div>
+
+      <p>Идея: есть группа, которая получила «лечение» (treatment), и группа, которая не получила (control). До и после.</p>
+
+      <div class="formula">эффект = (treatment_after − treatment_before) − (control_after − control_before)</div>
+
+      <p>Классика: Card и Krueger (1994). Нью-Джерси поднял минимальную зарплату — Пенсильвания не подняла. Занятость в фастфуде в NJ vs PA до и после. Вывод: повышение минимальной зарплаты не снизило занятость. Нобелевская премия Дэвиду Карду — 2021<em class="fn">1</em>.</p>
+
+      <p>Ключевое допущение DiD — параллельные тренды. В отсутствие treatment группы двигались бы параллельно. Это непроверяемо прямо — но проверяется на исторических данных.</p>
+
+      <blockquote>Большие данные — это большая возможность найти большие корреляции и сделать большие причинные ошибки. — Гэри Кинг, Гарвард</blockquote>
+
+      <div class="sub-h">инструментальные переменные</div>
+
+      <p>Нужна переменная Z, которая (1) влияет на X (relevance), (2) влияет на Y только через X (exclusion restriction), (3) не коррелирует с конфаундерами (exogeneity).</p>
+
+      <p>Пример: влияние образования на доход. Проблема: умные люди и больше учатся, и больше зарабатывают. Инструмент — квартал рождения (Angrist, Krueger 1991)<em class="fn">2</em>. Дети, рождённые в начале года, идут в школу позже и получают меньше образования из-за законов об обязательном посещении. Квартал рождения влияет на образование, но не на доход напрямую. Двухшаговый МНК (2SLS): первый шаг — предсказать X через Z, второй — регрессия Y на предсказанный X.</p>
+
+      <div class="sub-h">regression discontinuity</div>
+
+      <p>Если назначение в treatment определяется порогом — вблизи порога treatment и control почти идентичны. Студенты с GPA ≥ 3.5 получают стипендию. Студент с 3.49 и 3.51 — практически одинаковые. Разница в исходах вблизи порога = причинный эффект стипендии.</p>
+
+      <p>В tech: пользователи, которые ровно перешли порог активности и получили уведомление, vs те, кто не перешёл. Новые пользователи, попавшие в когорту с новым onboarding по дате регистрации.</p>
+
+      <div class="sub-h">синтетический контроль</div>
+
+      <p>Для единичных случаев. Одна страна, один регион принял политику. Нет контрольной группы. Строим «синтетическую» контрольную — взвешенную комбинацию других регионов, которая воспроизводит тренды treatment до интервенции. После — смотрим расхождение. Abadie, Diamond, Hainmueller (2010)<em class="fn">3</em>.</p>
+
+      <div class="sub-h">причинные графы</div>
+
+      <p>DAG (directed acyclic graph) — формальный язык для записи причинных предположений. Узлы — переменные. Рёбра — причинные связи. DAG показывает, что нужно контролировать (backdoor paths), что нельзя контролировать (collider bias), какой инструмент подходит. Джудеа Перл — «Книга почему» (2018)<em class="fn">4</em>.</p>
+
+      <p>В продуктовой аналитике это значит: не доверять наблюдательным корреляциям без каузальной модели. «Пользователи, которые используют фичу X, удерживаются лучше» — может быть потому, что хорошие пользователи и используют X, и удерживаются. Нужен эксперимент или квазиэксперимент.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Card, Krueger — «Minimum Wages and Employment», AER, 1994. Классическая работа DiD. Нобелевская премия Дэвиду Карду — 2021 (за «эмпирический вклад в экономику труда»).</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Angrist, Krueger — «Does Compulsory School Attendance Affect Schooling and Earnings?», QJE, 1991. Классика инструментальных переменных. Нобелевская премия Ангристу — 2021.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Abadie, Diamond, Hainmueller — «Synthetic Control Methods for Comparative Case Studies», JASA, 2010. Метод синтетического контроля.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Judea Pearl, Dana Mackenzie — «The Book of Why», 2018. Популярное изложение do-calculus и формализации причинного вывода через DAG.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="two-sided-markets.html">двусторонние рынки →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="game-theory.html">теория игр →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/markov.html">цепи Маркова →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/causality.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

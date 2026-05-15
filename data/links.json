@@ -827,6 +827,13 @@
       "glyph": "¶"
     },
     {
+      "id": "es-causality",
+      "type": "essay",
+      "title": "Корреляция — не причинность",
+      "url": "/null/essays/causality.html",
+      "glyph": "¶"
+    },
+    {
       "id": "vi-ab-calc",
       "type": "visual",
       "title": "A/B калькулятор",
@@ -1855,6 +1862,10 @@
     { "from": "st-ci",     "to": "st-effect" },
     { "from": "vi-ab-calc", "to": "es-ab-testing" },
     { "from": "vi-ab-calc", "to": "st-pvalue" },
-    { "from": "vi-ab-calc", "to": "st-effect" }
+    { "from": "vi-ab-calc", "to": "st-effect" },
+    { "from": "es-causality", "to": "es-ab-testing" },
+    { "from": "es-causality", "to": "es-bayesian" },
+    { "from": "es-causality", "to": "es-two-sided" },
+    { "from": "es-causality", "to": "es-game-theory" }
   ]
 }
