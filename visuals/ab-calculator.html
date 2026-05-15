@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A/B калькулятор — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  .ab-wrap { max-width: 800px; }
+  .ab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 20px;
+  }
+  .ab-cell { background: #f7f6f2; padding: 18px 20px; }
+  .ab-cell-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .ab-row { display: flex; align-items: center; gap: 10px; }
+  .ab-val {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 22px;
+    color: #111;
+    min-width: 62px;
+  }
+  .ab-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  input[type=range] {
+    flex: 1;
+    accent-color: #111;
+  }
+  select {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #111;
+    padding: 6px 8px;
+    flex: 1;
+    cursor: pointer;
+  }
+
+  .ab-results {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 20px;
+  }
+  .ab-stat { background: #f7f6f2; padding: 16px 18px; }
+  .ab-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .ab-stat-val {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 28px;
+    color: #111;
+    line-height: 1;
+  }
+  .ab-stat-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    margin-top: 4px;
+  }
+  .ab-stat-val.warn { color: #e67e22; }
+  .ab-stat-val.good { color: #1a7a4a; }
+
+  .ab-chart-wrap {
+    border: 1.5px solid #111;
+    background: #f7f6f2;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+  }
+  #distChart { display: block; width: 100%; height: 160px; }
+
+  .ab-formula {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #555;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    border-left: 2px solid #ddd;
+    line-height: 1.6;
+  }
+  .ab-interpretation {
+    border: 1px solid #e8e8e4;
+    padding: 16px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+  .ab-interpretation strong { color: #111; font-weight: 500; }
+
+  .ab-note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 14px;
+    color: #888;
+    line-height: 1.7;
+    max-width: 620px;
+    margin: 20px 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / ab-calculator</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №020</div>
+    <div class="ttl">A/B калькулятор</div>
+    <div class="lead">размер выборки · мощность теста · Cohen's h. введи параметры — получи план эксперимента.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="ab-wrap">
+
+    <div class="ab-grid">
+      <div class="ab-cell">
+        <div class="ab-cell-label">// базовая конверсия (p₀)</div>
+        <div class="ab-row">
+          <input type="range" id="p0" min="1" max="50" value="10" step="1">
+          <span class="ab-val" id="p0v">10%</span>
+        </div>
+        <div class="ab-hint">текущая конверсия контрольной группы</div>
+      </div>
+      <div class="ab-cell">
+        <div class="ab-cell-label">// минимальный эффект (MDE)</div>
+        <div class="ab-row">
+          <input type="range" id="mde" min="1" max="50" value="10" step="1">
+          <span class="ab-val" id="mdev">+10%</span>
+        </div>
+        <div class="ab-hint">относительное изменение, которое важно найти</div>
+      </div>
+      <div class="ab-cell">
+        <div class="ab-cell-label">// уровень значимости α</div>
+        <div class="ab-row">
+          <select id="alpha">
+            <option value="0.05">0.05 · стандарт</option>
+            <option value="0.01">0.01 · строгий</option>
+            <option value="0.10">0.10 · мягкий</option>
+          </select>
+        </div>
+        <div class="ab-hint">вероятность ошибки первого рода</div>
+      </div>
+      <div class="ab-cell">
+        <div class="ab-cell-label">// мощность теста (1 − β)</div>
+        <div class="ab-row">
+          <select id="power">
+            <option value="0.80">0.80 · стандарт</option>
+            <option value="0.90">0.90 · высокая</option>
+            <option value="0.95">0.95 · очень высокая</option>
+          </select>
+        </div>
+        <div class="ab-hint">вероятность найти реальный эффект</div>
+      </div>
+    </div>
+
+    <div class="ab-results">
+      <div class="ab-stat">
+        <div class="ab-stat-label">// выборка / группа</div>
+        <div class="ab-stat-val" id="r-n">—</div>
+        <div class="ab-stat-sub">пользователей</div>
+      </div>
+      <div class="ab-stat">
+        <div class="ab-stat-label">// итого в тесте</div>
+        <div class="ab-stat-val" id="r-total">—</div>
+        <div class="ab-stat-sub">обе группы</div>
+      </div>
+      <div class="ab-stat">
+        <div class="ab-stat-label">// ожидаемая B</div>
+        <div class="ab-stat-val" id="r-p1">—</div>
+        <div class="ab-stat-sub">конверсия теста</div>
+      </div>
+      <div class="ab-stat">
+        <div class="ab-stat-label">// Cohen's h</div>
+        <div class="ab-stat-val" id="r-h">—</div>
+        <div class="ab-stat-sub"><span id="r-hlab">—</span> эффект</div>
+      </div>
+    </div>
+
+    <div class="ab-chart-wrap">
+      <canvas id="distChart"></canvas>
+    </div>
+
+    <div class="ab-formula">
+      n = (z<sub>α/2</sub> + z<sub>β</sub>)² × (p₀(1−p₀) + p₁(1−p₁)) / (p₁ − p₀)²
+    </div>
+
+    <div class="ab-interpretation" id="interpretation">—</div>
+
+  </div>
+
+  <hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+  <div class="ab-note">
+    «формула предполагает двусторонний тест для двух пропорций. MDE — минимальный обнаруживаемый эффект, относительное изменение. мощность 0.8 означает: в 80% случаев тест найдёт реальный эффект. Cohen's h &lt; 0.2 — малый эффект · 0.2–0.5 — средний · &gt; 0.5 — большой.»
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/p-value.html">p-value →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/effect-size.html">размер эффекта →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="benford.html">закон Бенфорда →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/ab-calculator.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(() => {
+  const ALPHA_Z = { '0.05': 1.96, '0.01': 2.576, '0.10': 1.645 };
+  const POWER_Z = { '0.80': 0.842, '0.90': 1.282, '0.95': 1.645 };
+
+  function normPDF(x) {
+    return Math.exp(-0.5 * x * x) / Math.sqrt(2 * Math.PI);
+  }
+
+  let chart = null;
+
+  function updateChart(p0, p1, n) {
+    const se0 = Math.sqrt(p0 * (1 - p0) / n);
+    const diff = p1 - p0;
+    const shift = se0 > 0 ? diff / se0 : 0;
+    const xs = Array.from({ length: 160 }, (_, i) => -5 + i * (10 / 160));
+    const d0 = xs.map(x => normPDF(x));
+    const d1 = xs.map(x => normPDF(x - shift));
+    const labels = xs.map(x => (p0 + x * se0).toFixed(4));
+
+    if (chart) {
+      chart.data.labels = labels;
+      chart.data.datasets[0].data = d0;
+      chart.data.datasets[1].data = d1;
+      chart.update('none');
+    } else {
+      chart = new Chart(document.getElementById('distChart'), {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [
+            {
+              label: 'контроль A',
+              data: d0,
+              borderColor: '#2c5fb6',
+              borderWidth: 1.5,
+              fill: true,
+              backgroundColor: 'rgba(44,95,182,0.08)',
+              pointRadius: 0,
+              tension: 0.4
+            },
+            {
+              label: 'тест B',
+              data: d1,
+              borderColor: '#c44a32',
+              borderWidth: 1.5,
+              fill: true,
+              backgroundColor: 'rgba(196,74,50,0.08)',
+              pointRadius: 0,
+              tension: 0.4
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              align: 'end',
+              labels: {
+                font: { family: "'JetBrains Mono', monospace", size: 10 },
+                boxWidth: 10,
+                color: '#888'
+              }
+            },
+            tooltip: { enabled: false }
+          },
+          scales: {
+            x: { display: false },
+            y: { display: false, beginAtZero: true }
+          },
+          animation: { duration: 150 }
+        }
+      });
+    }
+  }
+
+  function calc() {
+    const p0 = parseInt(document.getElementById('p0').value, 10) / 100;
+    const mde = parseInt(document.getElementById('mde').value, 10) / 100;
+    const alphaKey = document.getElementById('alpha').value;
+    const powerKey = document.getElementById('power').value;
+    const za2 = ALPHA_Z[alphaKey] || 1.96;
+    const zb  = POWER_Z[powerKey] || 0.842;
+
+    const p1raw = p0 * (1 + mde);
+    const p1 = Math.min(0.9999, p1raw);
+
+    const denom = Math.pow(p1 - p0, 2);
+    const n = Math.ceil(
+      Math.pow(za2 + zb, 2) *
+      (p0 * (1 - p0) + p1 * (1 - p1)) /
+      (denom > 0 ? denom : 1e-12)
+    );
+    const total = n * 2;
+
+    const h = Math.abs(2 * Math.asin(Math.sqrt(p1)) - 2 * Math.asin(Math.sqrt(p0)));
+    const hLabel = h < 0.2 ? 'малый' : h < 0.5 ? 'средний' : 'большой';
+    const hClass = h < 0.2 ? 'warn' : h >= 0.5 ? 'good' : '';
+
+    document.getElementById('p0v').textContent = Math.round(p0 * 100) + '%';
+    document.getElementById('mdev').textContent = '+' + Math.round(mde * 100) + '%';
+    document.getElementById('r-n').textContent = n.toLocaleString('ru');
+    document.getElementById('r-total').textContent = total.toLocaleString('ru');
+    document.getElementById('r-p1').textContent = (p1 * 100).toFixed(2) + '%';
+    const hEl = document.getElementById('r-h');
+    hEl.textContent = h.toFixed(3);
+    hEl.className = 'ab-stat-val ' + hClass;
+    document.getElementById('r-hlab').textContent = hLabel;
+
+    const days = Math.ceil(n / 500);
+
+    let warn;
+    if (h < 0.1)
+      warn = '⚠ очень маленький эффект — нужна огромная выборка. стоит ли запускать тест?';
+    else if (n > 100000)
+      warn = '⚠ большая выборка. проверь: действительно ли нужно найти такой маленький эффект?';
+    else if (n < 1000)
+      warn = '✓ небольшая выборка — тест можно запустить быстро.';
+    else
+      warn = '✓ адекватный размер теста.';
+
+    document.getElementById('interpretation').innerHTML =
+      `n = <strong>${n.toLocaleString('ru')}</strong> пользователей на группу · <strong>${total.toLocaleString('ru')}</strong> итого.<br>` +
+      `при трафике 500/день — тест займёт ~<strong>${days} дней</strong>.<br>` +
+      `ожидаемая конверсия B: <strong>${(p1 * 100).toFixed(2)}%</strong> (baseline ${(p0 * 100).toFixed(0)}% + MDE ${Math.round(mde * 100)}%).<br>` +
+      warn;
+
+    updateChart(p0, p1, n);
+  }
+
+  ['p0', 'mde', 'alpha', 'power'].forEach(id => {
+    document.getElementById(id).addEventListener('input', calc);
+    document.getElementById(id).addEventListener('change', calc);
+  });
+
+  calc();
+})();
+</script>
+
+</body>
+</html>

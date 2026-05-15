@@ -827,6 +827,13 @@
       "glyph": "¶"
     },
     {
+      "id": "vi-ab-calc",
+      "type": "visual",
+      "title": "A/B калькулятор",
+      "url": "/null/visuals/ab-calculator.html",
+      "glyph": "α"
+    },
+    {
       "id": "st-pvalue",
       "type": "statistic",
       "title": "p-value",
@@ -1845,6 +1852,9 @@
     { "from": "st-effect", "to": "es-ab-testing" },
     { "from": "st-pvalue", "to": "st-ci" },
     { "from": "st-pvalue", "to": "st-effect" },
-    { "from": "st-ci",     "to": "st-effect" }
+    { "from": "st-ci",     "to": "st-effect" },
+    { "from": "vi-ab-calc", "to": "es-ab-testing" },
+    { "from": "vi-ab-calc", "to": "st-pvalue" },
+    { "from": "vi-ab-calc", "to": "st-effect" }
   ]
 }
