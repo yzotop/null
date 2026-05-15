@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>математика рекламного аукциона — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .formula {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / adtech</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~800 слов · 8 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Математика рекламного аукциона.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">каждый раз когда вы открываете страницу с рекламой — за доли секунды проходит аукцион. участвуют десятки рекламодателей. победитель платит не свою ставку. всё это происходит за 100 миллисекунд.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">ad-tech · programmatic · аукционы · монетизация</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">математика аукционов · двусторонние рынки · A/B</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Каждый раз, когда вы открываете страницу с рекламой, за доли секунды проходит аукцион. Это Real-Time Bidding (RTB). Издатель отправляет bid request с данными об аудитории. DSP (demand-side platforms) рекламодателей получают запрос. Каждая DSP оценивает ценность показа и отправляет ставку. SSP (supply-side platform) собирает ставки, определяет победителя. Победитель получает показ. Всё — за 100–150 миллисекунд.</p>
+
+      <div class="sub-h">второй цены → first price</div>
+
+      <p>Исторически — аукцион второй цены (Викри). Победитель платит вторую по величине ставку плюс один цент. Это стимулирует честные ставки: выгодно ставить ровно свою оценку CPM. Теоретически.</p>
+
+      <p>На практике first-price аукционы стали стандартом с 2019 года. Google Ad Manager, The Trade Desk, большинство крупных SSP перешли<em class="fn">1</em>. Причина: header bidding создал асимметрию информации — покупатели видели floor price через множество параллельных аукционов и занижали ставки. Second price перестал быть честным. First price прозрачнее: ставишь то, что готов заплатить. Но требует bid shading — алгоритмического занижения ставки, чтобы не переплатить<em class="fn">2</em><em class="fn">3</em>.</p>
+
+      <div class="sub-h">CPM vs CPC vs CPA</div>
+
+      <p>Три модели ценообразования. CPM (cost per mille) — за тысячу показов. CPC (cost per click) — за клик. CPA (cost per action) — за конверсию.</p>
+
+      <p>Рекламодатель хочет CPA — платить только за результат. Издатель хочет CPM — гарантированный доход за показ. CPC — компромисс. Математически платформа переводит всё в eCPM (effective cost per mille) для сравнения в аукционе:</p>
+
+      <div class="formula">eCPM_CPC = CPC × CTR × 1000
+eCPM_CPA = CPA × CVR × CTR × 1000</div>
+
+      <p>CTR (click-through rate) и CVR (conversion rate) предсказываются моделью для каждой пары «объявление × аудитория». Качество предсказания — ключевое конкурентное преимущество платформы.</p>
+
+      <blockquote>Рекламный аукцион — это самый быстрый финансовый рынок в мире. Миллиарды транзакций в секунду. Каждая занимает меньше времени, чем моргание глаза.</blockquote>
+
+      <div class="sub-h">Дзен и параллельные аукционы</div>
+
+      <p>Монетизация через рекламную сеть — два аукциона одновременно: (1) аукцион за трафик — сколько показов получает каждый контент; (2) аукцион за рекламу — кто показывается в этих слотах.</p>
+
+      <p>Tension: больше рекламы → больше revenue → хуже retention. Меньше рекламы → лучше retention → меньше revenue. Оптимальная плотность рекламы — задача многокритериальной оптимизации. Одна метрика не работает.</p>
+
+      <div class="sub-h">ad load optimization</div>
+
+      <p>Для каждого пользователя и сессии — оптимальное число рекламных показов:</p>
+
+      <div class="formula">max(revenue)  s.t.  retention ≥ threshold
+или   max(revenue − λ × retention_loss)</div>
+
+      <p>λ — штраф за потерю retention. Параметр, который устанавливает бизнес. Перетягивание в любую сторону — потеря денег: краткосрочной (мало рекламы) или долгосрочной (отток).</p>
+
+      <div class="sub-h">viewability и brand safety</div>
+
+      <p>Viewability — реклама должна быть видна не менее 50% пикселей в течение ≥ 1 секунды<em class="fn">4</em>. Brand safety — реклама не показывается рядом с нежелательным контентом. Оба ограничения снижают inventory, но повышают eCPM.</p>
+
+      <div class="sub-h">frequency capping</div>
+
+      <p>Ограничение числа показов одному пользователю. Без cap: пользователь видит одно объявление 50 раз и наступает баннерная слепота. Оптимальная частота — задача для анализа кривой reach/frequency. Обычно 3–7 контактов для awareness-кампаний.</p>
+
+      <div class="sub-h">двусторонний рынок</div>
+
+      <p>LTV рекламодателя ≠ LTV конечного пользователя. На рекламной платформе два клиента: рекламодатели платят деньги, пользователи дают внимание. Продукт — посредник между ними. Оптимизация должна учитывать обе стороны. Это и делает ad-tech математически интересным: двусторонний рынок, где обе стороны имеют разные метрики успеха.</p>
+
+      <div class="sub-h">programmatic guaranteed</div>
+
+      <p>Прямые сделки с гарантированным объёмом. Рекламодатель покупает N показов конкретной аудитории по фиксированной цене. Конкурирует с открытым аукционом через unified pricing. Приоритет: PG → private marketplace → open auction. Если PG не может быть выполнен — показывается следующий по приоритету.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Переход на first-price auction — Google Ad Manager, 2019. Следом — большинство крупных SSP (Index Exchange, Rubicon, OpenX, PubMatic).</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Header bidding — технология ~2015 года как ответ на монополию Google AdX. Позволяет параллельно отправлять запросы нескольким SSP до вызова основного ad server.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Bid shading — алгоритмическое занижение ставки в first-price auction. Оценивает «справедливую» цену на основе исторических данных о clearing price.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">MRC стандарт viewability: ≥ 50% пикселей видны ≥ 1 секунду для дисплея, ≥ 50% пикселей видны ≥ 2 секунды для видео.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="auctions.html">математика аукционов →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="two-sided-markets.html">двусторонние рынки →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="causality.html">каузальность →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/adtech.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

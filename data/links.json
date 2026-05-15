@@ -834,6 +834,13 @@
       "glyph": "¶"
     },
     {
+      "id": "es-adtech",
+      "type": "essay",
+      "title": "Математика рекламного аукциона",
+      "url": "/null/essays/adtech.html",
+      "glyph": "¶"
+    },
+    {
       "id": "vi-ab-calc",
       "type": "visual",
       "title": "A/B калькулятор",
@@ -1866,6 +1873,10 @@
     { "from": "es-causality", "to": "es-ab-testing" },
     { "from": "es-causality", "to": "es-bayesian" },
     { "from": "es-causality", "to": "es-two-sided" },
-    { "from": "es-causality", "to": "es-game-theory" }
+    { "from": "es-causality", "to": "es-game-theory" },
+    { "from": "es-adtech", "to": "es-auctions" },
+    { "from": "es-adtech", "to": "es-two-sided" },
+    { "from": "es-adtech", "to": "es-ab-testing" },
+    { "from": "es-adtech", "to": "es-causality" }
   ]
 }
