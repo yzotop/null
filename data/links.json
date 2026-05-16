@@ -841,6 +841,13 @@
       "glyph": "¶"
     },
     {
+      "id": "es-unit-econ",
+      "type": "essay",
+      "title": "Юнит-экономика",
+      "url": "/null/essays/unit-economics.html",
+      "glyph": "¶"
+    },
+    {
       "id": "vi-ab-calc",
       "type": "visual",
       "title": "A/B калькулятор",
@@ -1905,6 +1912,11 @@
     { "from": "st-kappa", "to": "es-llm-eval" },
     { "from": "st-kappa", "to": "st-pvalue" },
     { "from": "st-elo",   "to": "es-llm-eval" },
-    { "from": "st-elo",   "to": "es-auctions" }
+    { "from": "st-elo",   "to": "es-auctions" },
+    { "from": "es-unit-econ", "to": "es-two-sided" },
+    { "from": "es-unit-econ", "to": "es-ab-testing" },
+    { "from": "es-unit-econ", "to": "es-auctions" },
+    { "from": "es-unit-econ", "to": "es-adtech" },
+    { "from": "es-unit-econ", "to": "es-bayesian" }
   ]
 }

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>юнит-экономика — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .formula {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  .cohort-table {
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    margin: 12px 0;
+    width: 100%;
+    max-width: 560px;
+  }
+  .cohort-table th, .cohort-table td {
+    border: 1px solid #ddd;
+    padding: 6px 10px;
+    text-align: center;
+    color: #111;
+  }
+  .cohort-table th { background: #f0ede8; color: #555; font-weight: 500; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .cohort-table td:first-child { background: #f7f6f2; color: #555; font-weight: 500; text-align: left; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / unit-economics</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~800 слов · 8 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Юнит-экономика.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">юнит-экономика — это финансовая модель одной единицы бизнеса. одного пользователя. одной сделки. если юнит прибыльный — масштабирование имеет смысл. если убыточный — масштабирование убивает бизнес быстрее.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">юнит-экономика · финансы · продуктовая аналитика</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">двусторонние рынки · A/B тестирование · аукционы</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Юнит-экономика — это финансовая модель одной единицы. Для subscription-бизнеса — один пользователь. Для маркетплейса — одна транзакция или один продавец. Для рекламной платформы — одна кампания.</p>
+
+      <div class="sub-h">LTV и CAC</div>
+
+      <p>LTV (Lifetime Value) — сколько прибыли приносит один пользователь за всё время жизни в продукте. Простая формула:</p>
+
+      <div class="formula">LTV = ARPU × Gross Margin × (1 / Churn Rate)</div>
+
+      <p>ARPU = средняя выручка на пользователя в период. Gross Margin = маржа после прямых затрат. 1/Churn = средняя продолжительность жизни пользователя.</p>
+
+      <p>При ARPU = 500 руб/мес, GM = 60%, Churn = 5%/мес:</p>
+
+      <div class="formula">LTV = 500 × 0.6 × (1 / 0.05) = 6 000 руб</div>
+
+      <p>CAC (Customer Acquisition Cost) — сколько стоит привлечь одного пользователя:</p>
+
+      <div class="formula">CAC = (Маркетинг + Продажи) / число новых пользователей за период</div>
+
+      <p>Правило: LTV / CAC &gt; 3 — здоровый бизнес. LTV / CAC &lt; 1 — каждый пользователь убыточен. Период окупаемости CAC &lt; 12 месяцев — стандарт для SaaS<em class="fn">1</em>.</p>
+
+      <div class="sub-h">contribution margin</div>
+
+      <p>CM = Выручка − Переменные затраты. Это не прибыль — это вклад в покрытие постоянных затрат. CM &gt; 0 означает: единица бизнеса вносит вклад. Даже при общем убытке CM &gt; 0 оправдывает продолжение операций — каждый новый юнит уменьшает убыток<em class="fn">4</em>.</p>
+
+      <blockquote>Если вы не можете объяснить юнит-экономику на салфетке — вы не понимаете свой бизнес. — венчурная мудрость, источник неизвестен</blockquote>
+
+      <div class="sub-h">когортный анализ</div>
+
+      <p>Когорта = группа пользователей с одинаковым временем старта (месяц регистрации, первая покупка, первый заказ). Зачем когорты? Агрегированные метрики врут. Retention 60% может означать: (а) все когорты стабильны на 60%; (б) старые когорты отличные (80%+), новые плохие (40%). При росте бизнеса новые когорты разбавляют статистику<em class="fn">3</em>.</p>
+
+      <table class="cohort-table">
+        <tr><th>когорта</th><th>M0</th><th>M1</th><th>M2</th><th>M3</th><th>M6</th><th>M12</th></tr>
+        <tr><td>Янв 2024</td><td>100%</td><td>65%</td><td>52%</td><td>45%</td><td>38%</td><td>30%</td></tr>
+        <tr><td>Фев 2024</td><td>100%</td><td>63%</td><td>51%</td><td>44%</td><td>36%</td><td>—</td></tr>
+        <tr><td>Мар 2024</td><td>100%</td><td>68%</td><td>55%</td><td>48%</td><td>—</td><td>—</td></tr>
+      </table>
+
+      <p>Если М1 retention растёт от когорты к когорте — продукт улучшается. Если падает — деградация или изменение качества трафика.</p>
+
+      <div class="sub-h">LTV через когорты</div>
+
+      <p>LTV через когорты точнее формульного. Для каждой когорты считаем накопленную выручку за M1, M2, …, M12. Строим кривую. Экстраполируем на lifetime. Методы: степенной закон, экспоненциальное сглаживание, BG/NBD-модель (Pareto/NBD) для транзакционных данных<em class="fn">2</em>.</p>
+
+      <div class="sub-h">contribution на маркетплейсе</div>
+
+      <p>Сложнее, потому что нужно учесть обе стороны:</p>
+
+      <div class="formula">CM = GMV × Take Rate − Cost of GMV (платёжки · логистика · поддержка)
+       − Marketing Cost (субсидии продавцам + привлечение покупателей)</div>
+
+      <p>Единица = транзакция или пара продавец/покупатель за период.</p>
+
+      <div class="sub-h">от юнита к PnL</div>
+
+      <p>Bottom-up финансовая модель:</p>
+
+      <ol>
+        <li>считаем CM на юнит;</li>
+        <li>умножаем на объём (DAU, транзакции, GMV);</li>
+        <li>вычитаем постоянные затраты (команда, инфра, офис);</li>
+        <li>получаем EBITDA.</li>
+      </ol>
+
+      <p>Полезна для планирования найма, оценки unit payback, сценарного анализа («что если churn вырастет на 2%»).</p>
+
+      <p>Финансовый бэкграунд в продуктовой аналитике даёт одно: понимание, что за каждой метрикой стоит денежный поток. Retention × 2 — это не просто красивый график. Это удвоение LTV и, соответственно, допустимого CAC.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">LTV/CAC ratio &gt; 3 — эмпирическое правило SaaS-индустрии. Популяризировано Дэвидом Скоком (Matrix Partners) в серии «SaaS Metrics 2.0».</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">BG/NBD (Beta-Geometric / Negative Binomial Distribution) — Fader, Hardie, Lee (2005). Вероятностная модель LTV для транзакционных данных.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Когортный анализ как стандарт retention — популяризирован Эндрю Ченом и growth-командой Andreessen Horowitz в 2010-е.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Contribution Margin vs Gross Margin: CM учитывает все переменные затраты (включая поддержку, платёжки), GM — только COGS. Для tech-компаний часто совпадают.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="two-sided-markets.html">двусторонние рынки →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="auctions.html">математика аукционов →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="adtech.html">ad-tech →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">байесовский вывод →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/unit-economics.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
