@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>спираль Фибоначчи — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .fib-controls {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .fib-ctrl-group { display: flex; align-items: center; gap: 10px; }
+  .fib-ctrl-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    min-width: 60px;
+  }
+  .fib-ctrl-val {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #111;
+    min-width: 78px;
+  }
+  input[type=range] { accent-color: #111; width: 140px; }
+
+  .fib-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 20px;
+  }
+  .fib-stat { background: #f7f6f2; padding: 14px 18px; }
+  .fib-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .fib-stat-val {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #111;
+    line-height: 1;
+  }
+  .fib-stat-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    margin-top: 4px;
+  }
+
+  #fibCanvas { display: block; width: 100%; border: 1.5px solid #111; background: #f7f6f2; }
+
+  .fib-note {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin: 20px 0 28px 0;
+  }
+  .fib-note-cell { background: #f7f6f2; padding: 18px 20px; }
+  .fib-note-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .fib-note-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / fibonacci-spiral</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №021</div>
+    <div class="ttl">спираль Фибоначчи</div>
+    <div class="lead">золотой угол 137.508°. сдвинь слайдер — паттерн рассыплется. именно этот угол использует природа.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="fib-controls">
+    <div class="fib-ctrl-group">
+      <span class="fib-ctrl-label">семян</span>
+      <input type="range" id="fibSeeds" min="50" max="2000" value="500" step="10">
+      <span class="fib-ctrl-val" id="fibSeedsV">500</span>
+    </div>
+    <div class="fib-ctrl-group">
+      <span class="fib-ctrl-label">угол</span>
+      <input type="range" id="fibAngle" min="130" max="150" value="137.508" step="0.001">
+      <span class="fib-ctrl-val" id="fibAngleV">137.508°</span>
+    </div>
+    <div class="fib-ctrl-group">
+      <span class="fib-ctrl-label">размер</span>
+      <input type="range" id="fibSize" min="1" max="6" value="3" step="0.5">
+      <span class="fib-ctrl-val" id="fibSizeV">3</span>
+    </div>
+  </div>
+
+  <div class="fib-stats">
+    <div class="fib-stat">
+      <div class="fib-stat-label">// золотой угол</div>
+      <div class="fib-stat-val">137.508°</div>
+      <div class="fib-stat-sub">360° × (1 − 1/φ)</div>
+    </div>
+    <div class="fib-stat">
+      <div class="fib-stat-label">// φ</div>
+      <div class="fib-stat-val">1.61803…</div>
+      <div class="fib-stat-sub">(1 + √5) / 2</div>
+    </div>
+    <div class="fib-stat">
+      <div class="fib-stat-label">// спирали</div>
+      <div class="fib-stat-val" id="fibSpirals">— / —</div>
+      <div class="fib-stat-sub">по / против часовой</div>
+    </div>
+  </div>
+
+  <canvas id="fibCanvas"></canvas>
+
+  <div class="fib-note">
+    <div class="fib-note-cell">
+      <div class="fib-note-label">// почему именно 137.508°</div>
+      <div class="fib-note-text">«золотой угол = 360° × (1 − 1/φ) = 360° × (2 − φ) ≈ 137.508°. любой другой угол создаёт секторы — некоторые направления получают больше семян. золотой угол распределяет их максимально равномерно.»</div>
+    </div>
+    <div class="fib-note-cell">
+      <div class="fib-note-label">// числа Фибоначчи в природе</div>
+      <div class="fib-note-text">«количество спиралей в подсолнухе — всегда два соседних числа Фибоначчи. 8 и 13. 13 и 21. 34 и 55. 89 и 144. это прямое следствие золотого угла.»</div>
+    </div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">константа</span><a href="../objects/numbers/constants/phi.html">φ — золотое сечение →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/numbers/types/natural.html">натуральные числа →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="polar-roses.html">полярные розы →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/fibonacci-nature.html">Фибоначчи в природе →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/fibonacci-spiral.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(() => {
+  const PHI = (1 + Math.sqrt(5)) / 2;
+  const GOLDEN_ANGLE = 360 * (1 - 1 / PHI); // ≈ 137.50776°
+  const FIB = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987];
+
+  function nearestFibPair(n) {
+    for (let i = 0; i < FIB.length - 1; i++) {
+      if (FIB[i] <= n && FIB[i + 1] > n) return [FIB[i], FIB[i + 1]];
+    }
+    return [FIB[FIB.length - 2], FIB[FIB.length - 1]];
+  }
+
+  const seedsEl  = document.getElementById('fibSeeds');
+  const angleEl  = document.getElementById('fibAngle');
+  const sizeEl   = document.getElementById('fibSize');
+  const seedsV   = document.getElementById('fibSeedsV');
+  const angleV   = document.getElementById('fibAngleV');
+  const sizeV    = document.getElementById('fibSizeV');
+  const spiralEl = document.getElementById('fibSpirals');
+  const canvas   = document.getElementById('fibCanvas');
+  const ctx      = canvas.getContext('2d');
+
+  function sizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    const W = canvas.clientWidth;
+    const H = Math.round(W * 0.72);
+    canvas.style.height = H + 'px';
+    canvas.width = Math.floor(W * dpr);
+    canvas.height = Math.floor(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function draw() {
+    const N = parseInt(seedsEl.value, 10);
+    const angleDeg = parseFloat(angleEl.value);
+    const dotSize = parseFloat(sizeEl.value);
+
+    seedsV.textContent = N;
+    angleV.textContent = angleDeg.toFixed(3) + '°';
+    sizeV.textContent  = dotSize;
+
+    const W = canvas.clientWidth;
+    const H = canvas.clientHeight;
+    ctx.fillStyle = '#f7f6f2';
+    ctx.fillRect(0, 0, W, H);
+
+    const cx = W / 2;
+    const cy = H / 2;
+    const maxR = Math.min(cx, cy) - 12;
+    const scale = maxR / Math.sqrt(N);
+    const angleRad = angleDeg * Math.PI / 180;
+
+    for (let i = 0; i < N; i++) {
+      const r = scale * Math.sqrt(i);
+      const theta = i * angleRad;
+      const x = cx + r * Math.cos(theta);
+      const y = cy + r * Math.sin(theta);
+
+      const t = i / N;
+      const hue = t * 280 + 40;
+      const alpha = 0.55 + 0.45 * t;
+      const radius = dotSize * (0.4 + 0.6 * Math.sqrt(t));
+
+      ctx.beginPath();
+      ctx.arc(x, y, Math.max(0.5, radius), 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${Math.round(hue)},55%,38%,${alpha.toFixed(2)})`;
+      ctx.fill();
+    }
+
+    // visible spiral arms — pair of adjacent Fibonacci numbers near √N
+    const [lo, hi] = nearestFibPair(Math.round(Math.sqrt(N) * 1.5));
+    spiralEl.textContent = lo + ' / ' + hi;
+    spiralEl.style.color = Math.abs(angleDeg - GOLDEN_ANGLE) < 0.05 ? '#1a7a4a' : '#111';
+  }
+
+  [seedsEl, angleEl, sizeEl].forEach(el => el.addEventListener('input', draw));
+
+  sizeCanvas();
+  draw();
+
+  let rt;
+  window.addEventListener('resize', () => {
+    clearTimeout(rt);
+    rt = setTimeout(() => { sizeCanvas(); draw(); }, 120);
+  });
+})();
+</script>
+
+</body>
+</html>

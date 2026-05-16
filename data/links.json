@@ -855,6 +855,20 @@
       "glyph": "α"
     },
     {
+      "id": "vi-polar-roses",
+      "type": "visual",
+      "title": "полярные розы",
+      "url": "/null/visuals/polar-roses.html",
+      "glyph": "✿"
+    },
+    {
+      "id": "vi-fibonacci",
+      "type": "visual",
+      "title": "спираль Фибоначчи",
+      "url": "/null/visuals/fibonacci-spiral.html",
+      "glyph": "φ"
+    },
+    {
       "id": "st-pvalue",
       "type": "statistic",
       "title": "p-value",
@@ -1917,6 +1931,9 @@
     { "from": "es-unit-econ", "to": "es-ab-testing" },
     { "from": "es-unit-econ", "to": "es-auctions" },
     { "from": "es-unit-econ", "to": "es-adtech" },
-    { "from": "es-unit-econ", "to": "es-bayesian" }
+    { "from": "es-unit-econ", "to": "es-bayesian" },
+    { "from": "vi-fibonacci", "to": "phi" },
+    { "from": "vi-fibonacci", "to": "natural" },
+    { "from": "vi-fibonacci", "to": "vi-polar-roses" }
   ]
 }
