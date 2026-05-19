@@ -875,6 +875,10 @@
       "url": "/null/visuals/ev-calculator.html",
       "glyph": "E[X]"
     },
+    { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
+    { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
+    { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
+    { "id": "math-ramanujan", "type": "mathematician", "title": "Сриниваса Рамануджан", "url": "/null/objects/mathematicians/ramanujan.html", "glyph": "∞" },
     {
       "id": "st-cuped",
       "type": "statistic",
@@ -2053,6 +2057,21 @@
     { "from": "vi-cuped", "to": "st-cuped" },
     { "from": "vi-cuped", "to": "st-var" },
     { "from": "vi-cuped", "to": "es-ab-testing" },
-    { "from": "vi-cuped", "to": "vi-normal" }
+    { "from": "vi-cuped", "to": "vi-normal" },
+    { "from": "math-cantor",    "to": "aleph0" },
+    { "from": "math-cantor",    "to": "cantor" },
+    { "from": "math-cantor",    "to": "godel" },
+    { "from": "math-gauss",     "to": "integer" },
+    { "from": "math-gauss",     "to": "bk-gauss" },
+    { "from": "math-euler",     "to": "euler" },
+    { "from": "math-euler",     "to": "imaginary" },
+    { "from": "math-euler",     "to": "pi" },
+    { "from": "math-euler",     "to": "bk-euclid" },
+    { "from": "math-ramanujan", "to": "cu-1729" },
+    { "from": "math-ramanujan", "to": "riemann" },
+    { "from": "math-ramanujan", "to": "bk-hardy" },
+    { "from": "math-cantor",    "to": "math-gauss" },
+    { "from": "math-gauss",     "to": "math-euler" },
+    { "from": "math-euler",     "to": "math-ramanujan" }
   ]
 }
