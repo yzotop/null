@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>почему люди не максимизируют EV — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .choice {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  .choice .lbl { color: #c44a32; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / expected-utility</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~800 слов · 8 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Почему люди не максимизируют EV.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">рациональный агент максимизирует математическое ожидание. люди — нет. это не баг. это фича. и это меняет всё в дизайне продуктов и механизмов.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">поведенческая экономика · utility · принятие решений</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">EV · Kelly · теория игр · байесовский вывод</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Рациональный агент максимизирует математическое ожидание. Это аксиома классической экономики. Даниэль Бернулли в 1738 году показал, что это неверно<em class="fn">1</em>.</p>
+
+      <div class="sub-h">петербургский парадокс</div>
+
+      <p>Игра с бесконечным EV. Монетка, первый орёл на шаге n даёт 2ⁿ рублей. E[X] = ∞. За сколько вы купите участие? Большинство — за 20–30 рублей. Не за ∞.</p>
+
+      <p>Бернулли объяснил: люди максимизируют не EV, а utility. Полезность денег убывает. Логарифмически. Миллионный рубль менее ценен, чем первый. U(x) = log(x) → E[U(X)] конечен даже при E[X] = ∞.</p>
+
+      <div class="sub-h">expected utility theory</div>
+
+      <p>Это основа expected utility theory (EUT). Нейман и Моргенштерн в 1944 году аксиоматизировали: рациональный агент максимизирует E[U(X)] для некоторой функции utility U. Не E[X]<em class="fn">2</em>.</p>
+
+      <p>Но и EUT нарушается. Систематически.</p>
+
+      <div class="sub-h">парадокс Алле</div>
+
+      <p>1953 год<em class="fn">4</em>. Первая пара лотерей:</p>
+
+      <div class="choice">
+        <span class="lbl">A:</span> 1 миллион с вероятностью 1<br>
+        <span class="lbl">B:</span> 1% → 0 · 89% → 1M · 10% → 5M
+      </div>
+
+      <p>Большинство выбирают A. EV(B) &gt; EV(A). Второй вопрос тому же человеку:</p>
+
+      <div class="choice">
+        <span class="lbl">C:</span> 11% → 1M · 89% → 0<br>
+        <span class="lbl">D:</span> 10% → 5M · 90% → 0
+      </div>
+
+      <p>Большинство выбирают D. Но A + D несовместимы с A + C по EUT — нарушение аксиомы независимости. Люди переоценивают определённость. Это называется certainty effect.</p>
+
+      <blockquote>Люди не принимают решения о состояниях богатства. Они принимают решения об изменениях относительно нейтральной точки отсчёта. — Канеман, Тверски, Prospect Theory, 1979</blockquote>
+
+      <div class="sub-h">prospect theory</div>
+
+      <p>Канеман и Тверски — 1979. Нобелевская премия Канеману — 2002<em class="fn">3</em>. Три открытия:</p>
+
+      <p><strong>1. Изменения, а не уровни.</strong> Люди оценивают не богатство, а изменения. Выиграть 100 от нуля ≠ выиграть 100 от 1000. Есть reference point. Прибыль и потеря — разные функции.</p>
+
+      <p><strong>2. Loss aversion.</strong> Функция потерь круче функции прибылей. Потеря 100 рублей болит сильнее, чем радует выигрыш 100. Коэффициент ≈ 2–2.5: потеря субъективно вдвое больнее равного выигрыша.</p>
+
+      <p><strong>3. Нелинейное взвешивание вероятностей.</strong> Маленькие вероятности переоцениваются (лотереи, страхование). Большие — недооцениваются. p = 0.01 ощущается как 0.05. p = 0.99 ощущается как 0.95.</p>
+
+      <div class="sub-h">в продуктах</div>
+
+      <p><strong>Фреймирование.</strong> «Скидка 20%» vs «сэкономите 200 рублей» — разный эффект. «90% выживаемость» vs «10% смертность» — разный выбор. EV одинаков. Utility разная.</p>
+
+      <p><strong>Default effects.</strong> Opt-in vs opt-out — колоссальная разница в конверсии. Изменение default = изменение reference point. Это не манипуляция — это дизайн с учётом utility.</p>
+
+      <p><strong>Loss aversion в A/B-тестах.</strong> Пользователи болезненнее реагируют на деградацию, чем радуются улучшению той же величины. Guardrail-метрики важнее growth-метрик.</p>
+
+      <p><strong>Certainty effect в ценообразовании.</strong> Фиксированная цена часто побеждает лотерею с тем же EV. Subscription побеждает pay-per-use при высокой неопределённости.</p>
+
+      <p><strong>Аукционы.</strong> Аукцион второй цены честен для EV-максимизаторов. Но при loss aversion участники занижают ставки, чтобы избежать «сожаления победителя».</p>
+
+      <p>EV — необходимая основа. Utility — слой сверху, который объясняет реальное поведение. Хороший аналитик знает EV. Хороший продуктовый аналитик знает utility.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Даниэль Бернулли — «Specimen Theoriae Novae de Mensura Sortis», Commentarii Academiae Scientiarum Imperialis Petropolitanae, 1738. Логарифмическая utility как решение петербургского парадокса.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Нейман, Моргенштерн — «Theory of Games and Economic Behavior», 1944. Аксиоматизация expected utility theory: 4 аксиомы (completeness, transitivity, continuity, independence).</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Канеман, Тверски — «Prospect Theory: An Analysis of Decision under Risk», Econometrica, 1979. Одна из самых цитируемых статей в экономике. Нобелевская премия Канеману — 2002 (Тверски умер в 1996).</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Парадокс Алле — Морис Алле, 1953. Первое систематическое опровержение EUT на экспериментальных данных. Нобелевская премия Алле — 1988.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/ev.html">E[X] →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/kelly.html">критерий Келли →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="expected-value.html">математика решений →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="game-theory.html">теория игр →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="auctions.html">математика аукционов →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/gamblers-ruin.html">разорение игрока →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/expected-utility.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
