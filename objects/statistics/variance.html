@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>σ² — null/objects/statistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / statistics / σ²</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:56px;"><em style="font-family:'Times New Roman',Georgia,serif;font-style:italic;">σ²</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">статистика · №008</div>
+      <div class="obj-title">дисперсия</div>
+      <div class="obj-subtitle">variance · разброс вокруг EV · цена неопределённости</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">σ² (дисперсия) · σ (стандартное отклонение)</td></tr>
+    <tr><td class="k">определение</td><td class="v mono">Var(X) = E[(X − E[X])²] = E[X²] − (E[X])²</td></tr>
+    <tr><td class="k">свойства</td><td class="v mono">Var(aX) = a²·Var(X) · Var(X + Y) = Var(X) + Var(Y) при независимости</td></tr>
+    <tr><td class="k">связано</td><td class="v">EV · CLT · A/B тестирование · CUPED</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~400 слов · 3 мин</div>
+    <h2 class="essay-title">EV одинаковый. <em>Жизнь</em> разная.</h2>
+    <p class="essay-lead">дисперсия определяет, сколько нужно выборки в A/B-тесте.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Два варианта: A — +100 с вероятностью 1, EV = 100. B — +10 000 с вероятностью 1% и 0 с вероятностью 99%, EV = 100. EV одинаковый. Дисперсия разная.</p>
+
+        <p>Var(A) = 0. Var(B) = 0.01 × (10000 − 100)² + 0.99 × (100)² ≈ 990 000.</p>
+
+        <p>Дисперсия — это средний квадрат отклонения от EV. Показывает, насколько результаты разбросаны вокруг среднего<em class="fn">1</em>.</p>
+
+        <blockquote>Дисперсия метрики определяет нужный размер выборки A/B-теста. Вдвое снизить σ² — вдвое меньше пользователей.</blockquote>
+
+        <p>В A/B-тестировании дисперсия метрики определяет нужный размер выборки. Формула sample size: n ∝ σ² / δ², где δ — минимальный эффект, который хотим найти. Вдвое снизить σ² → вдвое меньше нужно пользователей.</p>
+
+        <p>CUPED (Controlled-experiment Using Pre-Experiment Data): используем данные до эксперимента, чтобы снизить σ². Если ρ(pre, post) = 0.5 — дисперсия снижается на 25%. Меньше дисперсия → быстрее находим эффект<em class="fn">2</em>.</p>
+
+        <p>Закон больших чисел: при n → ∞ выборочное среднее сходится к EV. Дисперсия среднего = σ²/n → 0. Именно поэтому A/B-тест работает: при достаточном n случайный шум усредняется и виден реальный эффект.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">Формула вычисления: Var(X) = E[X²] − (E[X])². Удобнее для расчётов, чем определение через отклонение.</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">CUPED — Deng et al., KDD, 2013, Microsoft. Техника снижения дисперсии в онлайн-экспериментах через ковариаты pre-period.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">Var(X + Y) = Var(X) + Var(Y) только при независимости. При зависимости добавляется 2 · Cov(X, Y).</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="ev.html">математическое ожидание →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="clt.html">центральная предельная теорема →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="p-value.html">p-value →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/ab-testing.html">A/B тестирование →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/kelly.html">критерий Келли →</a></div>
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/ev.html">математическое ожидание E[X] →</a></div>
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/clt.html">центральная предельная теорема →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/statistics/variance.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

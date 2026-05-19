@@ -911,6 +911,34 @@
       "glyph": "Elo"
     },
     {
+      "id": "st-ev",
+      "type": "statistic",
+      "title": "математическое ожидание E[X]",
+      "url": "/null/objects/statistics/ev.html",
+      "glyph": "E[X]"
+    },
+    {
+      "id": "st-var",
+      "type": "statistic",
+      "title": "дисперсия σ²",
+      "url": "/null/objects/statistics/variance.html",
+      "glyph": "σ²"
+    },
+    {
+      "id": "st-clt",
+      "type": "statistic",
+      "title": "центральная предельная теорема",
+      "url": "/null/objects/statistics/clt.html",
+      "glyph": "N"
+    },
+    {
+      "id": "st-kelly",
+      "type": "statistic",
+      "title": "критерий Келли",
+      "url": "/null/objects/statistics/kelly.html",
+      "glyph": "f*"
+    },
+    {
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
@@ -1934,6 +1962,21 @@
     { "from": "es-unit-econ", "to": "es-bayesian" },
     { "from": "vi-fibonacci", "to": "phi" },
     { "from": "vi-fibonacci", "to": "natural" },
-    { "from": "vi-fibonacci", "to": "vi-polar-roses" }
+    { "from": "vi-fibonacci", "to": "vi-polar-roses" },
+    { "from": "st-ev",    "to": "st-var" },
+    { "from": "st-ev",    "to": "st-kelly" },
+    { "from": "st-ev",    "to": "pr-gamblers" },
+    { "from": "st-ev",    "to": "pr-monty" },
+    { "from": "st-ev",    "to": "es-game-theory" },
+    { "from": "st-ev",    "to": "es-auctions" },
+    { "from": "st-var",   "to": "st-ev" },
+    { "from": "st-var",   "to": "st-clt" },
+    { "from": "st-var",   "to": "es-ab-testing" },
+    { "from": "st-clt",   "to": "st-ev" },
+    { "from": "st-clt",   "to": "st-var" },
+    { "from": "st-clt",   "to": "st-pvalue" },
+    { "from": "st-kelly", "to": "st-ev" },
+    { "from": "st-kelly", "to": "st-var" },
+    { "from": "st-kelly", "to": "pr-gamblers" }
   ]
 }

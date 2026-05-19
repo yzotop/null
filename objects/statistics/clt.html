@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLT — null/objects/statistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / statistics / CLT</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:64px;"><em style="font-family:'Times New Roman',Georgia,serif;font-style:italic;">N</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">статистика · №009</div>
+      <div class="obj-title">центральная предельная теорема</div>
+      <div class="obj-subtitle">CLT · почему нормальное распределение везде · основа статистики</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">CLT (Central Limit Theorem)</td></tr>
+    <tr><td class="k">формулировка</td><td class="v">при n → ∞ сумма независимых одинаково распределённых случайных величин → N(nμ, nσ²)</td></tr>
+    <tr><td class="k">условия</td><td class="v">независимость · конечные μ и σ²</td></tr>
+    <tr><td class="k">ввели</td><td class="v">Муавр · 1733 · Лаплас · 1812 · Ляпунов · 1901</td></tr>
+    <tr><td class="k">связано</td><td class="v">EV · дисперсия · p-value · нормальное распределение</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~400 слов · 3 мин</div>
+    <h2 class="essay-title">Почему нормальное распределение <em>везде</em>.</h2>
+    <p class="essay-lead">сумма многих независимых факторов всегда стремится к нормальному распределению.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Рост людей, ошибки измерений, доходности активов — всё приблизительно нормально распределено. Почему? Потому что это суммы многих независимых факторов. Центральная предельная теорема (CLT) объясняет это.</p>
+
+        <p>Формально: возьми n независимых одинаково распределённых случайных величин X₁, X₂, …, Xₙ с E[X] = μ и Var(X) = σ². Их сумма S<sub>n</sub> при n → ∞ стремится к N(nμ, nσ²). Среднее x̄ = S<sub>n</sub>/n стремится к N(μ, σ²/n)<em class="fn">1</em><em class="fn">2</em>.</p>
+
+        <blockquote>Что поразительно: исходное распределение не важно. Равномерное, экспоненциальное, биномиальное — не важно. Сумма всё равно будет нормальной.</blockquote>
+
+        <p>Практически: уже при n = 30 приближение хорошее для большинства распределений. Для очень скошенных нужно больше.</p>
+
+        <p>В A/B-тестировании CLT — это причина, по которой работают t-тесты. Мы не знаем распределение конверсии пользователя. Но среднее по выборке нормально при достаточном n. Поэтому можно строить доверительные интервалы и p-value.</p>
+
+        <p>CLT объясняет, почему EV + дисперсия — достаточные характеристики для больших выборок. Нормальное распределение полностью определяется двумя параметрами: μ и σ².</p>
+
+        <p>Важное исключение: CLT не работает для распределений с бесконечной дисперсией — например, для распределения Коши<em class="fn">3</em>. Там среднее не стабилизируется, сколько данных ни собирай.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">Де Муавр, 1733 — первая версия CLT для биномиального распределения (теорема Муавра–Лапласа).</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">Александр Ляпунов, 1901 — строгое доказательство в общем случае (условие Ляпунова на третьи моменты).</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">CLT не работает для распределений с бесконечной дисперсией (например, распределение Коши). Среднее n наблюдений Коши имеет то же распределение Коши — не сходится к нормальному.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="ev.html">математическое ожидание →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="variance.html">дисперсия →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="p-value.html">p-value →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="confidence-interval.html">доверительный интервал →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/ab-testing.html">A/B тестирование →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/variance.html">дисперсия σ² →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/statistics/clt.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

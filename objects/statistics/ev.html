@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E[X] — null/objects/statistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / statistics / E[X]</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:48px;"><em style="font-family:'Times New Roman',Georgia,serif;font-style:italic;">E[X]</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">статистика · №007</div>
+      <div class="obj-title">математическое ожидание</div>
+      <div class="obj-subtitle">expected value · взвешенная сумма исходов · основа рационального решения</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">E[X] или μ</td></tr>
+    <tr><td class="k">определение</td><td class="v mono">E[X] = Σ xᵢ · P(xᵢ) для дискретных · ∫ x · f(x) dx для непрерывных</td></tr>
+    <tr><td class="k">ввёл</td><td class="v">Христиан Гюйгенс · 1657 · «De Ratiociniis in Ludo Aleae»</td></tr>
+    <tr><td class="k">свойства</td><td class="v mono">E[aX + b] = a·E[X] + b · E[X + Y] = E[X] + E[Y] (всегда)</td></tr>
+    <tr><td class="k">связано</td><td class="v">дисперсия · CLT · Kelly criterion · utility</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~400 слов · 3 мин</div>
+    <h2 class="essay-title">Сколько стоит решение <em>в среднем</em>.</h2>
+    <p class="essay-lead">средний результат, если повторять решение бесконечно много раз.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Математическое ожидание — это средний результат, если повторять решение бесконечно много раз.</p>
+
+        <p>Монетка: орёл даёт +100, решка −100. E[X] = 0.5 × 100 + 0.5 × (−100) = 0. Честная игра. Долгосрочно не выиграешь и не проиграешь.</p>
+
+        <p>Казино: рулетка, ставка на красное. Выигрыш 1:1, но 18 красных из 37 (есть зеро). E[X] = (18/37) × 1 + (19/37) × (−1) = −1/37 ≈ −0.027. Каждая ставка теряет 2.7% в среднем. Казино богатеет. Всегда.</p>
+
+        <p>Положительный EV → делай. Отрицательный EV → не делай (если только не страхуешь риск).</p>
+
+        <blockquote>Линейность E[X + Y] = E[X] + E[Y] не требует независимости. Это одно из самых полезных свойств в теории вероятностей.</blockquote>
+
+        <p>Линейность — ключевое свойство: E[X + Y] = E[X] + E[Y] всегда, даже если X и Y зависимы<em class="fn">3</em>. Это делает EV удобным инструментом для сложных систем.</p>
+
+        <p>Но EV — не всё. Два варианта с одинаковым EV могут сильно отличаться: +100 с вероятностью 1 vs +10 000 с вероятностью 1%. EV одинаков. Но большинство людей выберут первое. Это variance — дисперсия. И expected utility — не EV.</p>
+
+        <p>В продукте EV это: ожидаемый прирост метрики от фичи = Σ P(сценарий) × Δ-метрика(сценарий) — взвешенное по вероятностям изменение. A/B-тест проверяет: реальный EV положительный?</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">Гюйгенс — «De Ratiociniis in Ludo Aleae», 1657. Первая формализация математического ожидания.</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">Паскаль и Ферма — переписка 1654 года, задача о разделе ставок. Предшественник теории EV.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">Линейность E[X + Y] = E[X] + E[Y] не требует независимости. Одно из самых полезных свойств в теории вероятностей.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="variance.html">дисперсия →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="kelly.html">критерий Келли →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../ideas/problems/gamblers-ruin.html">разорение игрока →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../ideas/problems/monty-hall.html">Монти Холл →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/game-theory.html">теория игр →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/auctions.html">математика аукционов →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/variance.html">дисперсия σ² →</a></div>
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/kelly.html">критерий Келли →</a></div>
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/clt.html">центральная предельная теорема →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/statistics/ev.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
