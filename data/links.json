@@ -883,6 +883,13 @@
       "glyph": "φ"
     },
     {
+      "id": "vi-normal",
+      "type": "visual",
+      "title": "нормальное распределение",
+      "url": "/null/visuals/normal-distribution.html",
+      "glyph": "N"
+    },
+    {
       "id": "st-pvalue",
       "type": "statistic",
       "title": "p-value",
@@ -2005,6 +2012,11 @@
     { "from": "es-eu", "to": "es-ev" },
     { "from": "es-eu", "to": "es-game-theory" },
     { "from": "es-eu", "to": "es-auctions" },
-    { "from": "es-eu", "to": "pr-gamblers" }
+    { "from": "es-eu", "to": "pr-gamblers" },
+    { "from": "vi-normal", "to": "st-clt" },
+    { "from": "vi-normal", "to": "st-var" },
+    { "from": "vi-normal", "to": "st-ev" },
+    { "from": "vi-normal", "to": "es-ab-testing" },
+    { "from": "vi-normal", "to": "vi-ab-calc" }
   ]
 }

@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>нормальное распределение — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  .nd-controls {
+    display: flex; gap: 24px; flex-wrap: wrap; align-items: center;
+    margin-bottom: 20px;
+  }
+  .nd-group { display: flex; align-items: center; gap: 10px; }
+  .nd-label {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: #111;
+    min-width: 24px;
+  }
+  .nd-val {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #111;
+    min-width: 56px;
+  }
+  input[type=range] { accent-color: #111; width: 130px; }
+  .nd-check-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    letter-spacing: .06em;
+    display: flex; align-items: center; gap: 6px;
+    cursor: pointer;
+  }
+
+  .nd-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 20px;
+  }
+  .nd-stat { background: #f7f6f2; padding: 14px 18px; }
+  .nd-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .nd-stat-val {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #111;
+    line-height: 1;
+  }
+  .nd-stat-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    margin-top: 4px;
+  }
+
+  .nd-chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    margin-bottom: 8px;
+    border: 1.5px solid #111;
+    background: #f7f6f2;
+    padding: 10px 12px;
+  }
+  #ndChart { width: 100% !important; height: 100% !important; }
+
+  .nd-legend {
+    display: flex;
+    gap: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .nd-legend .sw { display:inline-block; width:14px; height:8px; vertical-align:middle; margin-right:4px; }
+
+  .nd-zones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 24px;
+  }
+  .nd-zone {
+    background: #f7f6f2;
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .nd-zone-pct {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 28px;
+    color: #111;
+    line-height: 1;
+  }
+  .nd-zone-range {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .06em;
+    margin-top: 6px;
+  }
+  .nd-zone-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    margin-top: 4px;
+  }
+
+  .nd-note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+    max-width: 620px;
+    margin: 20px 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / normal-distribution</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №022</div>
+    <div class="ttl">нормальное распределение</div>
+    <div class="lead">μ сдвигает центр. σ меняет ширину. ±1σ содержит 68% данных. ±2σ — 95%. ±3σ — 99.7%.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="nd-controls">
+    <div class="nd-group">
+      <span class="nd-label">μ</span>
+      <input type="range" id="muSlider" min="-3" max="3" value="0" step="0.1">
+      <span class="nd-val" id="muVal">0.0</span>
+    </div>
+    <div class="nd-group">
+      <span class="nd-label">σ</span>
+      <input type="range" id="sigSlider" min="0.3" max="3" value="1" step="0.1">
+      <span class="nd-val" id="sigVal">1.0</span>
+    </div>
+    <label class="nd-check-label">
+      <input type="checkbox" id="showZones" checked>
+      <span>// показать σ-зоны</span>
+    </label>
+  </div>
+
+  <div class="nd-stats">
+    <div class="nd-stat">
+      <div class="nd-stat-label">// среднее μ</div>
+      <div class="nd-stat-val" id="muOut">0.00</div>
+      <div class="nd-stat-sub">центр распределения</div>
+    </div>
+    <div class="nd-stat">
+      <div class="nd-stat-label">// σ std</div>
+      <div class="nd-stat-val" id="sigOut">1.00</div>
+      <div class="nd-stat-sub">стандартное отклонение</div>
+    </div>
+    <div class="nd-stat">
+      <div class="nd-stat-label">// дисперсия σ²</div>
+      <div class="nd-stat-val" id="varOut">1.00</div>
+      <div class="nd-stat-sub">Var(X) = σ²</div>
+    </div>
+    <div class="nd-stat">
+      <div class="nd-stat-label">// пик f(μ)</div>
+      <div class="nd-stat-val" id="peakOut">0.399</div>
+      <div class="nd-stat-sub">1 / (σ · √2π)</div>
+    </div>
+  </div>
+
+  <div class="nd-chart-wrap">
+    <canvas id="ndChart"></canvas>
+  </div>
+
+  <div class="nd-legend">
+    <span><span class="sw" style="background:#2c5fb6;height:2px;"></span> f(x) — плотность</span>
+    <span><span class="sw" style="background:repeating-linear-gradient(to right,#c44a32 0 4px,transparent 4px 8px);height:2px;"></span> μ — среднее</span>
+    <span><span class="sw" style="background:rgba(44,95,182,0.22);"></span> ±1σ</span>
+    <span><span class="sw" style="background:rgba(44,95,182,0.13);"></span> ±2σ</span>
+    <span><span class="sw" style="background:rgba(44,95,182,0.07);"></span> ±3σ</span>
+  </div>
+
+  <div class="nd-zones">
+    <div class="nd-zone">
+      <div class="nd-zone-pct">68.3%</div>
+      <div class="nd-zone-range">μ ± 1σ</div>
+      <div class="nd-zone-label">в 68 случаях из 100</div>
+    </div>
+    <div class="nd-zone">
+      <div class="nd-zone-pct">95.4%</div>
+      <div class="nd-zone-range">μ ± 2σ</div>
+      <div class="nd-zone-label">основа доверительных интервалов</div>
+    </div>
+    <div class="nd-zone">
+      <div class="nd-zone-pct">99.7%</div>
+      <div class="nd-zone-range">μ ± 3σ</div>
+      <div class="nd-zone-label">правило трёх сигма</div>
+    </div>
+  </div>
+
+  <hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+  <div class="nd-note">
+    «нормальное распределение N(μ, σ²). полностью определяется двумя параметрами. по центральной предельной теореме среднее большой выборки всегда нормально, независимо от исходного распределения.»
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/clt.html">центральная предельная теорема →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/variance.html">дисперсия →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/ev.html">EV → математическое ожидание</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="ab-calculator.html">A/B калькулятор →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/normal-distribution.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(() => {
+  function normPDF(x, mu, sigma) {
+    return Math.exp(-0.5 * Math.pow((x - mu) / sigma, 2)) / (sigma * Math.sqrt(2 * Math.PI));
+  }
+
+  const muSlider  = document.getElementById('muSlider');
+  const sigSlider = document.getElementById('sigSlider');
+  const zonesCb   = document.getElementById('showZones');
+  const muVal     = document.getElementById('muVal');
+  const sigVal    = document.getElementById('sigVal');
+  const muOut     = document.getElementById('muOut');
+  const sigOut    = document.getElementById('sigOut');
+  const varOut    = document.getElementById('varOut');
+  const peakOut   = document.getElementById('peakOut');
+
+  // Fixed x-axis range (so user sees movement of μ)
+  const X_MIN = -7, X_MAX = 7;
+  const N = 200;
+  const xs = Array.from({ length: N + 1 }, (_, i) => X_MIN + (i / N) * (X_MAX - X_MIN));
+  const labels = xs.map(x => x.toFixed(2));
+
+  const ZONE_COLORS = {
+    s1: 'rgba(44,95,182,0.22)',
+    s2: 'rgba(44,95,182,0.13)',
+    s3: 'rgba(44,95,182,0.07)'
+  };
+
+  function buildDatasets(mu, sigma, showZones) {
+    const main = xs.map(x => normPDF(x, mu, sigma));
+
+    const datasets = [];
+
+    if (showZones) {
+      // Build 3 zone series: each is normPDF if x within ±kσ else null
+      const zone = (k) => xs.map(x => Math.abs(x - mu) <= k * sigma ? normPDF(x, mu, sigma) : null);
+      datasets.push({
+        label: '±3σ', data: zone(3), fill: 'origin',
+        backgroundColor: ZONE_COLORS.s3, borderColor: 'transparent',
+        pointRadius: 0, tension: 0, spanGaps: false, order: 5
+      });
+      datasets.push({
+        label: '±2σ', data: zone(2), fill: 'origin',
+        backgroundColor: ZONE_COLORS.s2, borderColor: 'transparent',
+        pointRadius: 0, tension: 0, spanGaps: false, order: 4
+      });
+      datasets.push({
+        label: '±1σ', data: zone(1), fill: 'origin',
+        backgroundColor: ZONE_COLORS.s1, borderColor: 'transparent',
+        pointRadius: 0, tension: 0, spanGaps: false, order: 3
+      });
+    }
+
+    // μ vertical dashed line — approximated as a near-vertical line via single-point dataset
+    // Better: build two-point line dataset on a separate scale. Use main scale with min->0, max->peak.
+    const peak = normPDF(mu, mu, sigma);
+    const muLine = xs.map(x => {
+      // map values right at μ index
+      return Math.abs(x - mu) < ((X_MAX - X_MIN) / N) / 2 ? peak : null;
+    });
+    datasets.push({
+      label: 'μ', data: muLine, fill: false,
+      borderColor: '#c44a32', borderDash: [4, 3], borderWidth: 1.5,
+      pointRadius: 0, tension: 0, spanGaps: false, order: 2
+    });
+
+    datasets.push({
+      label: 'f(x)', data: main, fill: false,
+      borderColor: '#2c5fb6', borderWidth: 1.8,
+      pointRadius: 0, tension: 0.25, order: 1
+    });
+
+    return datasets;
+  }
+
+  const ctx = document.getElementById('ndChart').getContext('2d');
+  const chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets: buildDatasets(0, 1, true) },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: { duration: 100 },
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: false }
+      },
+      scales: {
+        x: {
+          type: 'linear',
+          min: X_MIN, max: X_MAX,
+          ticks: {
+            color: '#888',
+            font: { family: "'JetBrains Mono', monospace", size: 10 },
+            stepSize: 1
+          },
+          grid: { color: '#ececec' }
+        },
+        y: {
+          beginAtZero: true,
+          max: 1.4,
+          ticks: {
+            color: '#888',
+            font: { family: "'JetBrains Mono', monospace", size: 10 }
+          },
+          grid: { color: '#ececec' }
+        }
+      }
+    }
+  });
+
+  // Need numeric x for "linear" scale — convert labels to numeric data points
+  chart.data.labels = xs;
+  function rebuild(mu, sigma, showZones) {
+    chart.data.datasets = buildDatasets(mu, sigma, showZones);
+    // dynamic y-max so peak fits
+    const peak = normPDF(mu, mu, sigma);
+    chart.options.scales.y.max = Math.max(0.6, peak * 1.15);
+    chart.update('none');
+  }
+
+  function update() {
+    const mu = parseFloat(muSlider.value);
+    const sigma = parseFloat(sigSlider.value);
+    const showZones = zonesCb.checked;
+
+    muVal.textContent  = mu.toFixed(1);
+    sigVal.textContent = sigma.toFixed(1);
+    muOut.textContent  = mu.toFixed(2);
+    sigOut.textContent = sigma.toFixed(2);
+    varOut.textContent = (sigma * sigma).toFixed(2);
+    peakOut.textContent = (1 / (sigma * Math.sqrt(2 * Math.PI))).toFixed(3);
+
+    rebuild(mu, sigma, showZones);
+  }
+
+  muSlider.addEventListener('input', update);
+  sigSlider.addEventListener('input', update);
+  zonesCb.addEventListener('change', update);
+
+  // initial
+  update();
+})();
+</script>
+
+</body>
+</html>
