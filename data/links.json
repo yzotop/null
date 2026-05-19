@@ -869,6 +869,13 @@
       "glyph": "α"
     },
     {
+      "id": "vi-ev-calc",
+      "type": "visual",
+      "title": "калькулятор EV",
+      "url": "/null/visuals/ev-calculator.html",
+      "glyph": "E[X]"
+    },
+    {
       "id": "vi-polar-roses",
       "type": "visual",
       "title": "полярные розы",
@@ -2017,6 +2024,12 @@
     { "from": "vi-normal", "to": "st-var" },
     { "from": "vi-normal", "to": "st-ev" },
     { "from": "vi-normal", "to": "es-ab-testing" },
-    { "from": "vi-normal", "to": "vi-ab-calc" }
+    { "from": "vi-normal", "to": "vi-ab-calc" },
+    { "from": "vi-ev-calc", "to": "st-ev" },
+    { "from": "vi-ev-calc", "to": "st-var" },
+    { "from": "vi-ev-calc", "to": "st-kelly" },
+    { "from": "vi-ev-calc", "to": "es-ev" },
+    { "from": "vi-ev-calc", "to": "vi-ab-calc" },
+    { "from": "vi-ev-calc", "to": "pr-gamblers" }
   ]
 }

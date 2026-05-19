@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>калькулятор EV — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  .ev-wrap { max-width: 800px; }
+
+  .ev-presets {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .ev-preset-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .06em;
+    padding: 5px 14px;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #888;
+    cursor: pointer;
+    transition: all .1s;
+  }
+  .ev-preset-btn:hover { border-color: #111; color: #111; }
+  .ev-preset-btn.on { border-color: #111; background: #111; color: #f7f6f2; }
+
+  .ev-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1.5px solid #111;
+    margin-bottom: 16px;
+  }
+  .ev-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    background: #f0ede8;
+  }
+  .ev-table td { padding: 4px 6px; border-bottom: 0.5px solid #f0ede8; }
+  .ev-table tr:last-child td { border-bottom: none; }
+  .ev-table input {
+    width: 100%;
+    border: 0.5px solid #ddd;
+    background: #f7f6f2;
+    color: #111;
+    padding: 7px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    box-sizing: border-box;
+  }
+  .ev-table input:focus { outline: none; border-color: #111; }
+  .del-btn {
+    background: transparent;
+    border: none;
+    color: #bbb;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 8px;
+  }
+  .del-btn:hover { color: #c44a32; }
+
+  .add-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .08em;
+    color: #bbb;
+    border: 1px dashed #ddd;
+    background: transparent;
+    padding: 8px 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: all .1s;
+  }
+  .add-btn:hover { border-color: #111; color: #111; }
+
+  .ev-warn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #e67e22;
+    border: 1px solid #e67e22;
+    padding: 8px 14px;
+    margin-bottom: 16px;
+    display: none;
+  }
+
+  .ev-results {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 20px;
+  }
+  .ev-stat { background: #f7f6f2; padding: 14px 18px; }
+  .ev-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .ev-stat-val {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 28px;
+    color: #111;
+    line-height: 1;
+  }
+  .ev-stat-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    margin-top: 4px;
+  }
+  .ev-stat-val.pos { color: #1a7a4a; }
+  .ev-stat-val.neg { color: #c44a32; }
+
+  .ev-chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 8px;
+  }
+
+  .ev-legend {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    margin-bottom: 24px;
+    line-height: 1.7;
+  }
+  .ev-legend .sw-pos { color: #1a7a4a; }
+  .ev-legend .sw-neg { color: #c44a32; }
+
+  .ev-note {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-bottom: 32px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / ev-calculator</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №023</div>
+    <div class="ttl">калькулятор EV</div>
+    <div class="lead">добавь исходы и вероятности — получи математическое ожидание. зелёный вклад — положительный. красный — отрицательный.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="ev-wrap">
+
+    <div class="ev-presets">
+      <button class="ev-preset-btn on" data-preset="coin">монетка</button>
+      <button class="ev-preset-btn" data-preset="casino">рулетка</button>
+      <button class="ev-preset-btn" data-preset="startup">стартап</button>
+      <button class="ev-preset-btn" data-preset="kelly">Kelly пример</button>
+    </div>
+
+    <table class="ev-table">
+      <thead>
+        <tr>
+          <th style="width:40%">// исход</th>
+          <th style="width:25%">// значение</th>
+          <th style="width:25%">// вероятность</th>
+          <th style="width:10%"></th>
+        </tr>
+      </thead>
+      <tbody id="ev-rows"></tbody>
+    </table>
+
+    <button class="add-btn" id="add-row">+ добавить исход</button>
+
+    <div class="ev-warn" id="ev-warn"></div>
+
+    <div class="ev-results">
+      <div class="ev-stat">
+        <div class="ev-stat-label">// E[X]</div>
+        <div class="ev-stat-val" id="r-ev">—</div>
+        <div class="ev-stat-sub">математическое ожидание</div>
+      </div>
+      <div class="ev-stat">
+        <div class="ev-stat-label">// σ²</div>
+        <div class="ev-stat-val" id="r-var">—</div>
+        <div class="ev-stat-sub">дисперсия</div>
+      </div>
+      <div class="ev-stat">
+        <div class="ev-stat-label">// σ</div>
+        <div class="ev-stat-val" id="r-sd">—</div>
+        <div class="ev-stat-sub">стандартное отклонение</div>
+      </div>
+      <div class="ev-stat">
+        <div class="ev-stat-label">// Σp</div>
+        <div class="ev-stat-val" id="r-sump">—</div>
+        <div class="ev-stat-sub">сумма вероятностей</div>
+      </div>
+    </div>
+
+    <div class="ev-chart-wrap">
+      <canvas id="evChart"></canvas>
+    </div>
+
+    <div class="ev-legend">
+      <span class="sw-pos">■</span> зелёный = положительный вклад (p × x &gt; 0)<br>
+      <span class="sw-neg">■</span> красный = отрицательный вклад (p × x &lt; 0)
+    </div>
+
+  </div>
+
+  <hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+  <div class="ev-note">
+    «E[X] = Σ xᵢ × P(xᵢ) — взвешенная сумма всех исходов.
+     положительный EV — необходимое условие хорошего решения.
+     дисперсия σ² показывает насколько результаты разбросаны.
+     Kelly criterion: оптимальная ставка = (bp − q) / b.»
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/ev.html">E[X] →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/variance.html">дисперсия →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/kelly.html">Kelly criterion →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/expected-value.html">математика решений →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="ab-calculator.html">A/B калькулятор →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/gamblers-ruin.html">разорение игрока →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/ev-calculator.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(() => {
+  const PRESETS = {
+    coin: [
+      {label:'орёл', val:100, prob:0.5},
+      {label:'решка', val:-100, prob:0.5}
+    ],
+    casino: [
+      {label:'красное (выигрыш)', val:100, prob:18/37},
+      {label:'красное (проигрыш)', val:-100, prob:19/37}
+    ],
+    startup: [
+      {label:'большой успех', val:10000, prob:0.05},
+      {label:'умеренный успех', val:2000, prob:0.2},
+      {label:'безубыток', val:0, prob:0.35},
+      {label:'частичная потеря', val:-500, prob:0.25},
+      {label:'полная потеря', val:-1000, prob:0.15}
+    ],
+    kelly: [
+      {label:'победа', val:200, prob:0.6},
+      {label:'поражение', val:-100, prob:0.4}
+    ]
+  };
+
+  let rows = PRESETS.coin.map(r => ({...r}));
+  let chart = null;
+
+  const tbody = document.getElementById('ev-rows');
+  const warn = document.getElementById('ev-warn');
+
+  function fmt(x, d=2) {
+    if (!isFinite(x)) return '—';
+    if (Math.abs(x) >= 1000) return x.toLocaleString('ru', {maximumFractionDigits: d});
+    return x.toFixed(d);
+  }
+
+  function render() {
+    tbody.innerHTML = '';
+    rows.forEach((r, i) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><input type="text" data-i="${i}" data-k="label" value="${r.label.replace(/"/g,'&quot;')}"></td>
+        <td><input type="number" data-i="${i}" data-k="val" value="${r.val}" step="any"></td>
+        <td><input type="number" data-i="${i}" data-k="prob" value="${r.prob}" step="0.01" min="0" max="1"></td>
+        <td style="text-align:center;"><button class="del-btn" data-del="${i}" title="удалить">×</button></td>
+      `;
+      tbody.appendChild(tr);
+    });
+    calc();
+  }
+
+  function calc() {
+    let sumP = 0, ev = 0;
+    rows.forEach(r => {
+      const p = +r.prob || 0;
+      const x = +r.val || 0;
+      sumP += p;
+      ev += p * x;
+    });
+    let variance = 0;
+    rows.forEach(r => {
+      const p = +r.prob || 0;
+      const x = +r.val || 0;
+      variance += p * (x - ev) * (x - ev);
+    });
+    const sd = Math.sqrt(variance);
+
+    const evEl = document.getElementById('r-ev');
+    evEl.textContent = fmt(ev);
+    evEl.className = 'ev-stat-val ' + (ev > 0.001 ? 'pos' : ev < -0.001 ? 'neg' : '');
+
+    document.getElementById('r-var').textContent = fmt(variance);
+    document.getElementById('r-sd').textContent = fmt(sd);
+
+    const sumPEl = document.getElementById('r-sump');
+    sumPEl.textContent = sumP.toFixed(3);
+    const diff = Math.abs(sumP - 1);
+    sumPEl.className = 'ev-stat-val ' + (diff < 0.001 ? 'pos' : 'neg');
+
+    if (diff >= 0.001) {
+      warn.style.display = 'block';
+      warn.textContent = `⚠ сумма вероятностей = ${sumP.toFixed(3)}, должна быть 1.000. нормируй значения.`;
+    } else {
+      warn.style.display = 'none';
+    }
+
+    updateChart();
+  }
+
+  function updateChart() {
+    const labels = rows.map(r => r.label || '—');
+    const contribs = rows.map(r => (+r.prob || 0) * (+r.val || 0));
+    const bgs = contribs.map(c => c >= 0 ? 'rgba(26,122,74,0.7)' : 'rgba(196,74,50,0.7)');
+    const borders = contribs.map(c => c >= 0 ? '#1a7a4a' : '#c44a32');
+
+    if (chart) {
+      chart.data.labels = labels;
+      chart.data.datasets[0].data = contribs;
+      chart.data.datasets[0].backgroundColor = bgs;
+      chart.data.datasets[0].borderColor = borders;
+      chart.update('none');
+    } else {
+      chart = new Chart(document.getElementById('evChart'), {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: 'вклад p × x',
+            data: contribs,
+            backgroundColor: bgs,
+            borderColor: borders,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => 'вклад: ' + fmt(ctx.parsed.y)
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: {
+                font: { family: "'JetBrains Mono', monospace", size: 9 },
+                color: '#888'
+              },
+              grid: { display: false }
+            },
+            y: {
+              ticks: {
+                font: { family: "'JetBrains Mono', monospace", size: 9 },
+                color: '#bbb'
+              },
+              grid: { color: '#eee' }
+            }
+          },
+          animation: { duration: 150 }
+        }
+      });
+    }
+  }
+
+  tbody.addEventListener('input', e => {
+    const t = e.target;
+    const i = +t.dataset.i;
+    const k = t.dataset.k;
+    if (k === undefined || isNaN(i)) return;
+    if (k === 'label') rows[i].label = t.value;
+    else rows[i][k] = parseFloat(t.value);
+    calc();
+  });
+
+  tbody.addEventListener('click', e => {
+    const t = e.target;
+    if (t.dataset.del !== undefined) {
+      rows.splice(+t.dataset.del, 1);
+      render();
+    }
+  });
+
+  document.getElementById('add-row').addEventListener('click', () => {
+    rows.push({label: 'новый исход', val: 0, prob: 0});
+    render();
+  });
+
+  document.querySelectorAll('.ev-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.ev-preset-btn').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      rows = PRESETS[btn.dataset.preset].map(r => ({...r}));
+      render();
+    });
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
