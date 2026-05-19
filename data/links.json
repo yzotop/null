@@ -841,6 +841,13 @@
       "glyph": "¶"
     },
     {
+      "id": "es-ev",
+      "type": "essay",
+      "title": "Математика решений · EV",
+      "url": "/null/essays/expected-value.html",
+      "glyph": "¶"
+    },
+    {
       "id": "es-unit-econ",
       "type": "essay",
       "title": "Юнит-экономика",
@@ -1977,6 +1984,14 @@
     { "from": "st-clt",   "to": "st-pvalue" },
     { "from": "st-kelly", "to": "st-ev" },
     { "from": "st-kelly", "to": "st-var" },
-    { "from": "st-kelly", "to": "pr-gamblers" }
+    { "from": "st-kelly", "to": "pr-gamblers" },
+    { "from": "es-ev", "to": "st-ev" },
+    { "from": "es-ev", "to": "st-kelly" },
+    { "from": "es-ev", "to": "es-game-theory" },
+    { "from": "es-ev", "to": "es-auctions" },
+    { "from": "es-ev", "to": "es-ab-testing" },
+    { "from": "es-ev", "to": "es-bayesian" },
+    { "from": "es-ev", "to": "pr-gamblers" },
+    { "from": "es-ev", "to": "pr-monty" }
   ]
 }

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>математика решений — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .formula {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / expected-value</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · ~800 слов · 8 мин · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Математика решений.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">у каждого решения есть математическое ожидание. казино это знает. рынки это знают. продуктовые команды — часто нет.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">EV · принятие решений · статистика</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">EV · дисперсия · Kelly · теория игр · аукционы · A/B</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">У каждого решения есть математическое ожидание. E[X] = Σ x<sub>i</sub> × P(x<sub>i</sub>). Взвешенная сумма всех возможных исходов по их вероятностям. Это не прогноз конкретного результата — средний результат, если делать это решение много раз.</p>
+
+      <div class="sub-h">казино</div>
+
+      <p>Казино понимает EV лучше всех. Рулетка: 18 красных из 37. E[ставка на красное] = (18/37) × 1 + (19/37) × (−1) = −0.027. Минус 2.7 копейки с каждого рубля. При миллионе ставок казино забирает 27 000 рублей. Не потому что везёт. Потому что EV отрицательный.</p>
+
+      <p>Положительный EV — необходимое условие хорошего решения. Но не достаточное.</p>
+
+      <div class="sub-h">петербургский парадокс</div>
+
+      <p>1738 год, Даниэль Бернулли. Игра: монетка, первый орёл на шаге n даёт 2ⁿ рублей<em class="fn">1</em>.</p>
+
+      <div class="formula">E[X] = Σ (1/2ⁿ) × 2ⁿ = Σ 1 = ∞</div>
+
+      <p>Бесконечный EV. Сколько заплатить за участие? Большинство людей говорят: 20–30 рублей. Не больше.</p>
+
+      <p>Бернулли объяснил: люди максимизируют не EV, а utility. Полезность денег убывает: +1000 рублей богачу менее ценны, чем бедняку. Логарифмическая utility. Это основа expected utility theory и критерия Келли.</p>
+
+      <blockquote>Результат — плохой учитель. Он заставляет умных людей думать, что они непобедимы, а невезучих — что они некомпетентны. — Энни Дьюк, «Thinking in Bets», 2018</blockquote>
+
+      <div class="sub-h">Келли</div>
+
+      <p>Келли 1956: оптимальная доля капитала для ставки — f* = (bp − q) / b<em class="fn">2</em>. При положительном EV ставить всё — путь к разорению. При первой неудаче теряешь всё навсегда. Келли балансирует EV и дисперсию.</p>
+
+      <div class="sub-h">теория игр</div>
+
+      <p>EV — основа равновесия Нэша. Оптимальная стратегия в смешанных стратегиях — та, при которой противник безразличен между своими стратегиями. То есть его EV одинаков при любом выборе. Нэш: рациональные игроки максимизируют свой EV с учётом стратегий других.</p>
+
+      <p>Аукцион Викри: ставить честную оценку = EV-оптимально. Если ваша оценка товара v, EV любой другой ставки ≤ EV(v). Это dominant strategy именно потому, что максимизирует EV независимо от действий других.</p>
+
+      <div class="sub-h">A/B и байесовский подход</div>
+
+      <p>В A/B-тестировании каждая фича — ставка с EV:</p>
+
+      <div class="formula">EV(фича) = P(гипотеза верна) × E[эффект | верна] − P(гипотеза неверна) × E[потери | неверна]</div>
+
+      <p>p-value отвечает: совместимы ли данные с EV = 0? Но не отвечает: каков реальный EV? Байесовский подход даёт posterior на EV — не бинарное решение.</p>
+
+      <div class="sub-h">разорение игрока</div>
+
+      <p>Классическая ловушка EV-мышления. Честная игра: EV = 0 при каждой ставке. Но если ставишь фиксированную долю до нуля — разоришься с вероятностью 1. Конечный капитал плюс дисперсия — разорение. Бесконечный горизонт плюс отрицательная дисперсия — проблема.</p>
+
+      <div class="sub-h">платформы</div>
+
+      <p>Двусторонние рынки: платформа максимизирует общий EV. EV для покупателя + EV для продавца + EV для платформы. Механизм ценообразования Роше–Тироля — это распределение общего EV между сторонами.</p>
+
+      <div class="sub-h">практика</div>
+
+      <p>Прежде чем принять решение — явно назови: (1) возможные исходы; (2) вероятность каждого; (3) ценность каждого; (4) EV = Σ P × V.</p>
+
+      <p>Это не гарантия правильного решения. Это гарантия, что решение принято осознанно. Плохой исход при правильном EV — не ошибка. Хороший исход при неправильном EV — не успех<em class="fn">3</em><em class="fn">4</em>.</p>
+
+      <p>Различие между качеством решения и качеством исхода — главный урок EV-мышления.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Петербургский парадокс — задача Николая Бернулли (1713). Решение через логарифмическую полезность — Даниэль Бернулли, Commentarii Academiae Scientiarum Imperialis Petropolitanae, 1738.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Kelly criterion — John L. Kelly Jr., Bell Labs, 1956. Максимизирует E[log(wealth)] — долгосрочный рост капитала.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">«Thinking in Bets» — Annie Duke, 2018. Применение EV-мышления к решениям в условиях неопределённости.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">«Resulting» (оценка решения по исходу) — главная когнитивная ошибка в условиях неопределённости. Термин Annie Duke.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/ev.html">E[X] — математическое ожидание →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/variance.html">дисперсия →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/kelly.html">критерий Келли →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="game-theory.html">теория игр →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="auctions.html">математика аукционов →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/gamblers-ruin.html">разорение игрока →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/monty-hall.html">Монти Холл →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/expected-value.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
