@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CUPED — null/objects/statistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / statistics / CUPED</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:64px;"><em style="font-family:'Times New Roman',Georgia,serif;font-style:italic;">θ</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">статистика · №011</div>
+      <div class="obj-title">CUPED</div>
+      <div class="obj-subtitle">Controlled-experiment Using Pre-Experiment Data · снижение дисперсии · быстрее находить эффект</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">расшифровка</td><td class="v">Controlled-experiment Using Pre-Experiment Data</td></tr>
+    <tr><td class="k">тип</td><td class="v">техника снижения дисперсии · A/B тестирование</td></tr>
+    <tr><td class="k">ввели</td><td class="v">Deng, Xu, Kohavi, Walker · Microsoft · KDD · 2013</td></tr>
+    <tr><td class="k">формула</td><td class="v mono">Y_cuped = Y_post − θ × Y_pre<br>θ = Cov(Y_post, Y_pre) / Var(Y_pre)<br>Var(Y_cuped) = σ²_post × (1 − ρ²)</td></tr>
+    <tr><td class="k">эффект</td><td class="v mono">ρ = 0.6 → дисперсия −36% · выборка −36%<br>ρ = 0.8 → дисперсия −64% · выборка −64%</td></tr>
+    <tr><td class="k">требования</td><td class="v">данные до эксперимента (pre-period) · та же или коррелирующая метрика</td></tr>
+    <tr><td class="k">применение</td><td class="v">Booking.com · Airbnb · Microsoft · Яндекс · любой A/B с историей</td></tr>
+    <tr><td class="k">связано</td><td class="v">дисперсия · A/B тестирование · p-value · EV</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~500 слов · 3 мин</div>
+    <h2 class="essay-title">Как ускорить A/B тест <em>не добавляя</em> пользователей.</h2>
+    <p class="essay-lead">размер выборки зависит от дисперсии. снизь дисперсию — нужно меньше пользователей.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Размер выборки в A/B тесте зависит от дисперсии метрики. n ∝ σ² / δ². Вдвое снизить дисперсию = вдвое меньше нужно пользователей. CUPED делает именно это — используя данные до эксперимента.</p>
+
+        <p>Идея: у каждого пользователя есть поведение до теста. Это поведение коррелирует с поведением во время теста. Если пользователь активен до теста — скорее всего активен и во время. Эта корреляция — «шум», который можно убрать.</p>
+
+        <p>Скорректированная метрика: Y_cuped = Y_post − θ × Y_pre, где θ = Cov(Y_post, Y_pre) / Var(Y_pre). θ — оптимальный коэффициент<em class="fn">2</em>. Он минимизирует дисперсию скорректированной метрики. При θ = 0 — обычный A/B. При оптимальном θ — дисперсия снижается в (1 − ρ²) раз.</p>
+
+        <blockquote>E[Y_cuped] = E[Y_post]. Математическое ожидание не меняется — только дисперсия снижается. Тест остаётся несмещённым.</blockquote>
+
+        <p>Ключевое свойство: E[Y_cuped] = E[Y_post]. Математическое ожидание не меняется. Только дисперсия снижается. Это значит: тест по-прежнему несмещён. CUPED не искажает результат — только делает его точнее.</p>
+
+        <p>Практически: ρ = 0.5 → дисперсия −25% · на 25% меньше пользователей. ρ = 0.6 → дисперсия −36%. ρ = 0.7 → дисперсия −49% · почти вдвое быстрее. ρ = 0.8 → дисперсия −64% · в 2.8× быстрее. Для большинства продуктовых метрик ρ между 0.4 и 0.7. Это даёт 20–50% ускорение при той же мощности теста.</p>
+
+        <p>Что брать как pre-period? Та же метрика за предыдущий период — идеально. Другая коррелирующая метрика — тоже работает. Важно: pre-period должен быть до рандомизации. Иначе нарушается causality.</p>
+
+        <p>CUPED — частный случай более общего метода ANCOVA (analysis of covariance)<em class="fn">3</em>. Но CUPED проще в реализации и интерпретации. Booking.com, Airbnb, Microsoft, Netflix используют CUPED или его варианты как стандарт.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">Deng, Xu, Kohavi, Walker · «Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data» · KDD · 2013 · Microsoft.</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">Var(Y_cuped) = σ²(1−ρ²) достигается при оптимальном θ. При любом другом θ дисперсия выше.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">ANCOVA (Analysis of Covariance) — более общий статистический метод. CUPED эквивалентен ANCOVA с одним ковариатом.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="variance.html">дисперсия →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="p-value.html">p-value →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="effect-size.html">размер эффекта →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../../visuals/ab-calculator.html">A/B калькулятор →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../../visuals/cuped.html">CUPED визуал →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/cuped.html">CUPED визуал →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/statistics/cuped.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

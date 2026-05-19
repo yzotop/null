@@ -876,6 +876,20 @@
       "glyph": "E[X]"
     },
     {
+      "id": "st-cuped",
+      "type": "statistic",
+      "title": "CUPED",
+      "url": "/null/objects/statistics/cuped.html",
+      "glyph": "θ"
+    },
+    {
+      "id": "vi-cuped",
+      "type": "visual",
+      "title": "CUPED визуал",
+      "url": "/null/visuals/cuped.html",
+      "glyph": "θ"
+    },
+    {
       "id": "vi-polar-roses",
       "type": "visual",
       "title": "полярные розы",
@@ -2030,6 +2044,15 @@
     { "from": "vi-ev-calc", "to": "st-kelly" },
     { "from": "vi-ev-calc", "to": "es-ev" },
     { "from": "vi-ev-calc", "to": "vi-ab-calc" },
-    { "from": "vi-ev-calc", "to": "pr-gamblers" }
+    { "from": "vi-ev-calc", "to": "pr-gamblers" },
+    { "from": "st-cuped", "to": "st-var" },
+    { "from": "st-cuped", "to": "st-pvalue" },
+    { "from": "st-cuped", "to": "es-ab-testing" },
+    { "from": "st-cuped", "to": "vi-cuped" },
+    { "from": "st-cuped", "to": "vi-ab-calc" },
+    { "from": "vi-cuped", "to": "st-cuped" },
+    { "from": "vi-cuped", "to": "st-var" },
+    { "from": "vi-cuped", "to": "es-ab-testing" },
+    { "from": "vi-cuped", "to": "vi-normal" }
   ]
 }
