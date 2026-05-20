@@ -878,6 +878,8 @@
     { "id": "vi-bayes", "type": "visual", "title": "теорема Байеса", "url": "/null/visuals/bayes.html", "glyph": "P" },
     { "id": "math-turing",  "type": "mathematician", "title": "Алан Тьюринг",   "url": "/null/objects/mathematicians/turing.html",  "glyph": "01" },
     { "id": "math-riemann", "type": "mathematician", "title": "Бернхард Риман", "url": "/null/objects/mathematicians/riemann.html", "glyph": "ζ" },
+    { "id": "math-newton",  "type": "mathematician", "title": "Исаак Ньютон",   "url": "/null/objects/mathematicians/newton.html",  "glyph": "∫" },
+    { "id": "math-hilbert", "type": "mathematician", "title": "Давид Гильберт", "url": "/null/objects/mathematicians/hilbert.html", "glyph": "?" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2089,6 +2091,15 @@
     { "from": "math-riemann", "to": "pi" },
     { "from": "math-riemann", "to": "prime" },
     { "from": "math-riemann", "to": "math-cantor" },
-    { "from": "math-turing",  "to": "math-riemann" }
+    { "from": "math-turing",  "to": "math-riemann" },
+    { "from": "math-newton",  "to": "bk-newton" },
+    { "from": "math-newton",  "to": "op-integral" },
+    { "from": "math-newton",  "to": "math-euler" },
+    { "from": "math-newton",  "to": "math-hilbert" },
+    { "from": "math-hilbert", "to": "godel" },
+    { "from": "math-hilbert", "to": "es-proof" },
+    { "from": "math-hilbert", "to": "bk-geb" },
+    { "from": "math-hilbert", "to": "math-cantor" },
+    { "from": "math-hilbert", "to": "math-turing" }
   ]
 }
