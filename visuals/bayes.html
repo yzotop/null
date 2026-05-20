@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>теорема Байеса — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .bayes-wrap { max-width: 800px; }
+
+  .bayes-section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin: 0 0 12px 0;
+  }
+
+  .bayes-scenarios {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .bayes-sc-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .06em;
+    padding: 5px 14px;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #888;
+    cursor: pointer;
+    transition: all .1s;
+  }
+  .bayes-sc-btn:hover { border-color: #111; color: #111; }
+  .bayes-sc-btn.on { border-color: #111; background: #111; color: #f7f6f2; }
+
+  .bayes-ctrl {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .bayes-ctrl-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    letter-spacing: .04em;
+    min-width: 260px;
+  }
+  .bayes-ctrl-val {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #111;
+    min-width: 44px;
+    text-align: right;
+  }
+  input[type=range] { accent-color: #111; flex: 1; }
+
+  .bayes-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin: 24px 0 20px 0;
+  }
+  .bayes-stat { background: #f7f6f2; padding: 14px 18px; }
+  .bayes-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .bayes-stat-val {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1;
+    color: #111;
+  }
+  .bayes-stat-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    margin-top: 4px;
+  }
+
+  .bayes-dots {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+  .bayes-dot {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transition: background .15s;
+  }
+  .bayes-dot.tp { background: #2c5fb6; }
+  .bayes-dot.fn { background: #a8c4e8; }
+  .bayes-dot.fp { background: #c44a32; }
+  .bayes-dot.tn { background: #f0ede8; border: 1px solid #ddd; }
+
+  .bayes-legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  .bayes-legend-item { display: flex; align-items: center; gap: 5px; }
+  .bayes-legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  .bayes-insight {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    line-height: 1.7;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border-left: 2px solid #ddd;
+    color: #888;
+  }
+  .bayes-insight.warn {
+    border-color: #c44a32;
+    color: #c44a32;
+    background: #fdf5f3;
+  }
+  .bayes-insight.good {
+    border-color: #1a7a4a;
+    color: #1a7a4a;
+    background: #f3faf6;
+  }
+
+  .bayes-flow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .bayes-flow-box {
+    background: #f0ede8;
+    padding: 10px 14px;
+    text-align: center;
+    min-width: 80px;
+  }
+  .bayes-flow-val {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: #111;
+    line-height: 1;
+  }
+  .bayes-flow-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    margin-top: 4px;
+    letter-spacing: .04em;
+  }
+  .bayes-flow-op {
+    font-family: 'Times New Roman', serif;
+    font-size: 20px;
+    color: #888;
+  }
+  .bayes-flow-box.result { background: #f0ede8; border: 1.5px solid #1a7a4a; }
+  .bayes-flow-box.result .bayes-flow-val { color: #1a7a4a; }
+
+  .bayes-formula {
+    background: #f0ede8;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    border-left: 2px solid #111;
+  }
+  .bayes-formula-main {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: #111;
+    margin-bottom: 6px;
+  }
+  .bayes-formula-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #888;
+    line-height: 1.8;
+  }
+
+  .bayes-terms {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 20px;
+    margin-bottom: 20px;
+  }
+  .bayes-term-sym {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #111;
+    white-space: nowrap;
+    padding: 4px 0;
+    border-bottom: 0.5px solid #f0ede8;
+  }
+  .bayes-term-def {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    padding: 4px 0;
+    border-bottom: 0.5px solid #f0ede8;
+    line-height: 1.6;
+  }
+
+  .bayes-props {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1.5px solid #111;
+    margin-bottom: 32px;
+  }
+  .bayes-prop {
+    display: flex;
+    gap: 16px;
+    padding: 14px 18px;
+    border-bottom: 0.5px solid #ddd;
+    align-items: flex-start;
+  }
+  .bayes-prop:last-child { border-bottom: none; }
+  .bayes-prop-num {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #c44a32;
+    min-width: 20px;
+  }
+  .bayes-prop-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #555;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / bayes</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №025</div>
+    <div class="ttl">теорема Байеса</div>
+    <div class="lead">prior × likelihood → posterior. каждая точка — 1% популяции.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="bayes-wrap">
+
+    <div class="bayes-section-label">// сценарии</div>
+    <div class="bayes-scenarios" id="bayesScenarios"></div>
+
+    <div class="bayes-section-label">// параметры</div>
+    <div class="bayes-ctrl">
+      <span class="bayes-ctrl-lbl" id="bayesPriorLbl">P(H) — prior</span>
+      <input type="range" id="bayesPrior" min="1" max="60" step="1" value="5">
+      <span class="bayes-ctrl-val" id="bayesPriorVal">5%</span>
+    </div>
+    <div class="bayes-ctrl">
+      <span class="bayes-ctrl-lbl" id="bayesSensLbl">P(+|H) — sensitivity</span>
+      <input type="range" id="bayesSens" min="50" max="99" step="1" value="90">
+      <span class="bayes-ctrl-val" id="bayesSensVal">90%</span>
+    </div>
+    <div class="bayes-ctrl">
+      <span class="bayes-ctrl-lbl" id="bayesFprLbl">P(+|¬H) — FPR</span>
+      <input type="range" id="bayesFpr" min="1" max="50" step="1" value="9">
+      <span class="bayes-ctrl-val" id="bayesFprVal">9%</span>
+    </div>
+
+    <div class="bayes-stats">
+      <div class="bayes-stat">
+        <div class="bayes-stat-label">// prior P(H)</div>
+        <div class="bayes-stat-val" id="bayesPriorOut" style="color:#2c5fb6;">—</div>
+        <div class="bayes-stat-sub">до наблюдения</div>
+      </div>
+      <div class="bayes-stat">
+        <div class="bayes-stat-label">// posterior P(H|+)</div>
+        <div class="bayes-stat-val" id="bayesPostP" style="color:#1a7a4a;">—</div>
+        <div class="bayes-stat-sub">тест положительный</div>
+      </div>
+      <div class="bayes-stat">
+        <div class="bayes-stat-label">// posterior P(H|−)</div>
+        <div class="bayes-stat-val" id="bayesPostN" style="color:#c44a32;">—</div>
+        <div class="bayes-stat-sub">тест отрицательный</div>
+      </div>
+    </div>
+
+    <div class="bayes-section-label">// 100 точек = 100% популяции</div>
+    <div class="bayes-dots" id="bayesDots"></div>
+    <div class="bayes-legend">
+      <div class="bayes-legend-item"><span class="bayes-legend-dot" style="background:#2c5fb6;"></span> TP — H верна, тест +</div>
+      <div class="bayes-legend-item"><span class="bayes-legend-dot" style="background:#a8c4e8;"></span> FN — H верна, тест −</div>
+      <div class="bayes-legend-item"><span class="bayes-legend-dot" style="background:#c44a32;"></span> FP — H ложна, тест +</div>
+      <div class="bayes-legend-item"><span class="bayes-legend-dot" style="background:#f0ede8;border:1px solid #ddd;"></span> TN — H ложна, тест −</div>
+    </div>
+
+    <div class="bayes-insight" id="bayesInsight">—</div>
+
+    <div class="bayes-section-label">// вычисление шаг за шагом</div>
+    <div class="bayes-flow">
+      <div class="bayes-flow-box">
+        <div class="bayes-flow-val" id="flowPrior">—</div>
+        <div class="bayes-flow-lbl">P(H)</div>
+      </div>
+      <span class="bayes-flow-op">×</span>
+      <div class="bayes-flow-box">
+        <div class="bayes-flow-val" id="flowSens">—</div>
+        <div class="bayes-flow-lbl">P(+|H)</div>
+      </div>
+      <span class="bayes-flow-op">÷</span>
+      <div class="bayes-flow-box">
+        <div class="bayes-flow-val" id="flowPE">—</div>
+        <div class="bayes-flow-lbl">P(+)</div>
+      </div>
+      <span class="bayes-flow-op">=</span>
+      <div class="bayes-flow-box result">
+        <div class="bayes-flow-val" id="flowPost">—</div>
+        <div class="bayes-flow-lbl">P(H|+)</div>
+      </div>
+    </div>
+
+    <div class="bayes-section-label">// формула</div>
+    <div class="bayes-formula">
+      <div class="bayes-formula-main">P(H|E) = P(E|H) × P(H) / P(E)</div>
+      <div class="bayes-formula-sub">
+        P(E) = P(E|H)×P(H) + P(E|¬H)×P(¬H)<br>
+        posterior = likelihood × prior / нормировка
+      </div>
+    </div>
+
+    <div class="bayes-section-label">// обозначения</div>
+    <div class="bayes-terms">
+      <div class="bayes-term-sym">P(H)</div>
+      <div class="bayes-term-def">prior — вероятность гипотезы до наблюдения</div>
+      <div class="bayes-term-sym">P(E|H)</div>
+      <div class="bayes-term-def">likelihood — вероятность E при верной H</div>
+      <div class="bayes-term-sym">P(H|E)</div>
+      <div class="bayes-term-def">posterior — вероятность H после наблюдения E</div>
+      <div class="bayes-term-sym">P(E)</div>
+      <div class="bayes-term-def">нормировочная константа = P(E|H)×P(H) + P(E|¬H)×P(¬H)</div>
+      <div class="bayes-term-sym">P(¬H)</div>
+      <div class="bayes-term-def">вероятность отрицания H = 1 − P(H)</div>
+      <div class="bayes-term-sym">LR</div>
+      <div class="bayes-term-def">likelihood ratio = P(E|H) / P(E|¬H) — сила свидетельства</div>
+    </div>
+
+    <div class="bayes-section-label">// ключевые свойства</div>
+    <div class="bayes-props">
+      <div class="bayes-prop">
+        <span class="bayes-prop-num">1</span>
+        <span class="bayes-prop-text">posterior одного наблюдения становится prior для следующего. байесовское обновление последовательно и инкрементально.</span>
+      </div>
+      <div class="bayes-prop">
+        <span class="bayes-prop-num">2</span>
+        <span class="bayes-prop-text">низкий prior убивает posterior даже при отличном тесте. это base rate fallacy — самая частая ошибка интерпретации.</span>
+      </div>
+      <div class="bayes-prop">
+        <span class="bayes-prop-num">3</span>
+        <span class="bayes-prop-text">LR > 1 — свидетельство в пользу H. LR < 1 — против H. LR = 1 — нейтральное свидетельство.</span>
+      </div>
+      <div class="bayes-prop">
+        <span class="bayes-prop-num">4</span>
+        <span class="bayes-prop-text">p-value ≠ P(H|данные). байесовский подход даёт P(H|данные) напрямую. частотный подход этого не умеет.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/p-value.html">p-value →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/confidence-interval.html">доверительный интервал →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="ab-calculator.html">A/B калькулятор →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="normal-distribution.html">нормальное распределение →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/bayes.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(() => {
+  const SCENARIOS = [
+    {id:'disease',label:'тест на болезнь',prior:5,sens:90,fpr:9,
+     lP:'P(H) — распространённость болезни',
+     lS:'P(+|H) — чувствительность теста',
+     lF:'P(+|¬H) — ложноположительные'},
+    {id:'spam',label:'спам-фильтр',prior:30,sens:95,fpr:2,
+     lP:'P(H) — доля спама в почте',
+     lS:'P(+|H) — спам распознан верно',
+     lF:'P(+|¬H) — письмо как спам'},
+    {id:'ab',label:'A/B тест',prior:20,sens:80,fpr:5,
+     lP:'P(H) — % тестов с реальным эффектом',
+     lS:'P(+|H) — мощность 1−β',
+     lF:'P(+|¬H) — уровень значимости α'},
+    {id:'covid',label:'COVID тест',prior:2,sens:97,fpr:3,
+     lP:'P(H) — заражённость в популяции',
+     lS:'P(+|H) — чувствительность',
+     lF:'P(+|¬H) — ложноположительные'},
+  ];
+
+  let activeId = 'disease';
+
+  const elPrior = document.getElementById('bayesPrior');
+  const elSens  = document.getElementById('bayesSens');
+  const elFpr   = document.getElementById('bayesFpr');
+  const dotsEl  = document.getElementById('bayesDots');
+
+  // build dot grid once
+  for (let i = 0; i < 100; i++) {
+    const d = document.createElement('div');
+    d.className = 'bayes-dot';
+    dotsEl.appendChild(d);
+  }
+  const dotNodes = [...dotsEl.children];
+
+  // build scenario buttons
+  const scWrap = document.getElementById('bayesScenarios');
+  SCENARIOS.forEach(s => {
+    const b = document.createElement('button');
+    b.className = 'bayes-sc-btn' + (s.id === activeId ? ' on' : '');
+    b.textContent = s.label;
+    b.addEventListener('click', () => loadScenario(s.id));
+    b.dataset.id = s.id;
+    scWrap.appendChild(b);
+  });
+
+  function loadScenario(id) {
+    const s = SCENARIOS.find(x => x.id === id);
+    if (!s) return;
+    activeId = id;
+    elPrior.value = s.prior;
+    elSens.value  = s.sens;
+    elFpr.value   = s.fpr;
+    document.getElementById('bayesPriorLbl').textContent = s.lP;
+    document.getElementById('bayesSensLbl').textContent  = s.lS;
+    document.getElementById('bayesFprLbl').textContent   = s.lF;
+    [...scWrap.children].forEach(b => b.classList.toggle('on', b.dataset.id === id));
+    update();
+  }
+
+  const pct = x => (x * 100).toFixed(1) + '%';
+
+  function update() {
+    const prior = parseInt(elPrior.value, 10) / 100;
+    const sens  = parseInt(elSens.value, 10) / 100;
+    const fpr   = parseInt(elFpr.value, 10) / 100;
+
+    document.getElementById('bayesPriorVal').textContent = parseInt(elPrior.value, 10) + '%';
+    document.getElementById('bayesSensVal').textContent  = parseInt(elSens.value, 10) + '%';
+    document.getElementById('bayesFprVal').textContent   = parseInt(elFpr.value, 10) + '%';
+
+    const pE    = sens * prior + fpr * (1 - prior);
+    const postP = pE > 0 ? (sens * prior) / pE : 0;
+    const postN = (1 - pE) > 0 ? ((1 - sens) * prior) / (1 - pE) : 0;
+    const lr    = fpr > 0 ? sens / fpr : 999;
+
+    document.getElementById('bayesPriorOut').textContent = pct(prior);
+    document.getElementById('bayesPostP').textContent    = pct(postP);
+    document.getElementById('bayesPostN').textContent    = pct(postN);
+
+    // dots
+    const N = 100;
+    const nH  = Math.round(prior * N);
+    const nTP = Math.round(sens * nH);
+    const nFN = nH - nTP;
+    const nFP = Math.round(fpr * (N - nH));
+    const nTN = N - nTP - nFN - nFP;
+
+    dotNodes.forEach((d, i) => {
+      let cls = 'bayes-dot ';
+      if (i < nTP) cls += 'tp';
+      else if (i < nTP + nFN) cls += 'fn';
+      else if (i < nTP + nFN + nFP) cls += 'fp';
+      else cls += 'tn';
+      d.className = cls;
+    });
+
+    // flow
+    document.getElementById('flowPrior').textContent = pct(prior);
+    document.getElementById('flowSens').textContent  = pct(sens);
+    document.getElementById('flowPE').textContent    = pct(pE);
+    document.getElementById('flowPost').textContent  = pct(postP);
+
+    // insight
+    const ins = document.getElementById('bayesInsight');
+    if (postP < 0.5) {
+      ins.className = 'bayes-insight warn';
+      ins.innerHTML = `⚠ при положительном тесте P(H|+) = <strong>${pct(postP)}</strong> — меньше 50%. ` +
+        `несмотря на чувствительность ${parseInt(elSens.value,10)}%, низкий prior (${parseInt(elPrior.value,10)}%) ` +
+        `означает что положительный результат чаще ложный. это base rate fallacy. LR = ${lr.toFixed(1)}.`;
+    } else if (postP >= 0.9) {
+      ins.className = 'bayes-insight good';
+      ins.innerHTML = `✓ P(H|+) = <strong>${pct(postP)}</strong> — положительный тест почти достоверен. ` +
+        `prior ${parseInt(elPrior.value,10)}% и сила свидетельства LR = ${lr.toFixed(1)} дают высокий posterior.`;
+    } else {
+      ins.className = 'bayes-insight';
+      ins.innerHTML = `P(H|+) = <strong>${pct(postP)}</strong>. положительный тест поднял уверенность ` +
+        `с ${pct(prior)} до ${pct(postP)}. LR = ${lr.toFixed(1)} — свидетельство ` +
+        (lr > 1 ? 'в пользу H' : lr < 1 ? 'против H' : 'нейтральное') + '.';
+    }
+  }
+
+  [elPrior, elSens, elFpr].forEach(el => el.addEventListener('input', () => {
+    update();
+  }));
+
+  loadScenario('disease');
+})();
+</script>
+
+</body>
+</html>
