@@ -881,6 +881,7 @@
     { "id": "math-newton",  "type": "mathematician", "title": "Исаак Ньютон",   "url": "/null/objects/mathematicians/newton.html",  "glyph": "∫" },
     { "id": "math-hilbert", "type": "mathematician", "title": "Давид Гильберт", "url": "/null/objects/mathematicians/hilbert.html", "glyph": "?" },
     { "id": "math-poincare", "type": "mathematician", "title": "Анри Пуанкаре", "url": "/null/objects/mathematicians/poincare.html", "glyph": "∞" },
+    { "id": "es-game-theory-full", "type": "essay", "title": "Теория игр · полная", "url": "/null/essays/game-theory-full.html", "glyph": "¶" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2107,6 +2108,11 @@
     { "from": "math-poincare", "to": "es-proof" },
     { "from": "math-poincare", "to": "math-riemann" },
     { "from": "math-poincare", "to": "math-hilbert" },
-    { "from": "math-poincare", "to": "math-euler" }
+    { "from": "math-poincare", "to": "math-euler" },
+    { "from": "es-game-theory-full", "to": "es-auctions" },
+    { "from": "es-game-theory-full", "to": "es-two-sided" },
+    { "from": "es-game-theory-full", "to": "es-ev" },
+    { "from": "es-game-theory-full", "to": "es-bayesian" },
+    { "from": "es-game-theory-full", "to": "es-game-theory" }
   ]
 }
