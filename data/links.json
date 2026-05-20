@@ -876,6 +876,8 @@
       "glyph": "E[X]"
     },
     { "id": "vi-bayes", "type": "visual", "title": "теорема Байеса", "url": "/null/visuals/bayes.html", "glyph": "P" },
+    { "id": "math-turing",  "type": "mathematician", "title": "Алан Тьюринг",   "url": "/null/objects/mathematicians/turing.html",  "glyph": "01" },
+    { "id": "math-riemann", "type": "mathematician", "title": "Бернхард Риман", "url": "/null/objects/mathematicians/riemann.html", "glyph": "ζ" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2078,6 +2080,15 @@
     { "from": "vi-bayes", "to": "es-ab-testing" },
     { "from": "vi-bayes", "to": "st-pvalue" },
     { "from": "vi-bayes", "to": "vi-ab-calc" },
-    { "from": "vi-bayes", "to": "vi-normal" }
+    { "from": "vi-bayes", "to": "vi-normal" },
+    { "from": "math-turing",  "to": "pvsnp" },
+    { "from": "math-turing",  "to": "godel" },
+    { "from": "math-turing",  "to": "es-proof" },
+    { "from": "math-turing",  "to": "math-cantor" },
+    { "from": "math-riemann", "to": "riemann" },
+    { "from": "math-riemann", "to": "pi" },
+    { "from": "math-riemann", "to": "prime" },
+    { "from": "math-riemann", "to": "math-cantor" },
+    { "from": "math-turing",  "to": "math-riemann" }
   ]
 }
