@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>турниры Аксельрода — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  .axel-wrap { max-width: 800px; }
+
+  .axel-section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin: 32px 0 14px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+
+  .axel-quote {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #111;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    max-width: 660px;
+  }
+  .axel-prose {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+    max-width: 640px;
+    margin-bottom: 20px;
+  }
+
+  .axel-matrix {
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .axel-matrix th {
+    background: #f0ede8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    padding: 10px 20px;
+    border: 0.5px solid #ddd;
+    font-weight: 400;
+    letter-spacing: .06em;
+  }
+  .axel-matrix td {
+    padding: 12px 20px;
+    border: 0.5px solid #ddd;
+    text-align: center;
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 16px;
+  }
+  .axel-matrix td.nash { border: 2px solid #c44a32; color: #c44a32; }
+  .axel-matrix td.best { background: #f3faf6; color: #1a7a4a; }
+  .axel-matrix td.lbl  { background: #f0ede8; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #888; font-style: normal; text-align: right; }
+
+  .axel-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .axel-note-small {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+
+  .axel-participants {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1.5px solid #111;
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
+  .axel-participants th {
+    background: #f0ede8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #888;
+    padding: 8px 14px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .axel-participants td {
+    padding: 8px 14px;
+    border-bottom: 0.5px solid #f0ede8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #555;
+  }
+  .axel-participants tr:last-child td { border-bottom: none; }
+  .axel-participants td.rank { color: #bbb; width: 30px; }
+  .axel-participants td.strategy { color: #111; font-weight: 500; }
+  .axel-participants td.winner { color: #1a7a4a; font-weight: 500; }
+  .axel-participants tr.winner-row td { background: #f3faf6; }
+
+  .axel-results { margin-bottom: 24px; }
+  .axel-result-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .axel-result-rank {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: #bbb;
+    min-width: 20px;
+    text-align: right;
+  }
+  .axel-result-rank.first { color: #1a7a4a; }
+  .axel-result-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #555;
+    min-width: 160px;
+  }
+  .axel-result-bar-wrap {
+    height: 8px;
+    background: #e8e8e4;
+    flex: 1;
+  }
+  .axel-result-bar {
+    height: 8px;
+    background: #2c5fb6;
+    transition: width .4s;
+  }
+  .axel-result-bar.win { background: #1a7a4a; }
+  .axel-result-score {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    min-width: 44px;
+    text-align: right;
+  }
+
+  .axel-props {
+    border: 1.5px solid #111;
+    margin-bottom: 24px;
+  }
+  .axel-prop {
+    display: flex;
+    gap: 20px;
+    padding: 14px 18px;
+    border-bottom: 0.5px solid #e8e8e4;
+    align-items: flex-start;
+  }
+  .axel-prop:last-child { border-bottom: none; }
+  .axel-prop-num {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: #c44a32;
+    min-width: 24px;
+  }
+  .axel-prop-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: #111;
+    margin-bottom: 4px;
+  }
+  .axel-prop-desc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    line-height: 1.6;
+  }
+
+  .axel-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 20px;
+  }
+  .axel-stat { background: #f7f6f2; padding: 14px 18px; }
+  .axel-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .axel-stat-val {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 28px;
+    color: #111;
+    line-height: 1;
+  }
+  .axel-stat-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    margin-top: 4px;
+  }
+
+  .axel-evo-ctrl {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .axel-evo-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .axel-evo-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    min-width: 160px;
+  }
+  .axel-evo-val {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #111;
+    min-width: 44px;
+  }
+  input[type=range] { accent-color: #111; }
+  .axel-run-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .08em;
+    padding: 8px 18px;
+    border: 1.5px solid #111;
+    background: #111;
+    color: #f7f6f2;
+    cursor: pointer;
+  }
+  .axel-run-btn:hover { background: #333; }
+  .axel-chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    margin-bottom: 24px;
+  }
+
+  .axel-conclusion {
+    border-left: 2px solid #c44a32;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    background: #fdf5f3;
+  }
+  .axel-conclusion .lead {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+  }
+  .axel-conclusion ol {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #888;
+    line-height: 1.9;
+    margin: 12px 0;
+    padding-left: 20px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / axelrod</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №026</div>
+    <div class="ttl">турниры Аксельрода</div>
+    <div class="lead">1980–1981 · как кооперация победила предательство. два компьютерных турнира которые изменили теорию игр.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="axel-wrap">
+
+    <div class="axel-section-label">// контекст · 1979</div>
+    <div class="axel-quote">«Как возникает кооперация между эгоистичными агентами если нет никакой внешней власти которая принуждает к честности?»</div>
+    <div class="axel-prose">
+      1979 год. Роберт Аксельрод — профессор политологии Мичиганского университета — задаёт этот вопрос. Холодная война. Гонка вооружений. Ядерный тупик. Он решает найти ответ через компьютерный эксперимент. Пригласить учёных. Устроить турнир. И посмотреть какая стратегия выживет.
+    </div>
+
+    <div class="axel-section-label">// формат · повторяющаяся дилемма заключённого</div>
+    <table class="axel-matrix">
+      <tr>
+        <th></th>
+        <th>оппонент: C</th>
+        <th>оппонент: D</th>
+      </tr>
+      <tr>
+        <td class="lbl">ты: C</td>
+        <td class="best">3 / 3</td>
+        <td>0 / 5</td>
+      </tr>
+      <tr>
+        <td class="lbl">ты: D</td>
+        <td>5 / 0</td>
+        <td class="nash">1 / 1</td>
+      </tr>
+    </table>
+    <div class="axel-note">
+      200 раундов · round-robin · каждый против каждого<br>
+      C = cooperate · D = defect<br>
+      NE = оба предают (1/1) · красная рамка<br>
+      Парето-оптимум = оба кооперируют (3/3) · зелёный фон<br>
+      бенчмарк взаимной кооперации = 600 очков за 200 раундов
+    </div>
+
+    <div class="axel-section-label">// турнир 1 · март 1980 · 14 стратегий</div>
+    <div class="axel-prose">
+      Аксельрод разослал приглашения специалистам по теории игр. 14 FORTRAN-программ пришли по почте — из психологии, экономики, политологии, математики, социологии. Его ассистент Джефф Пиннонен написал код турнира. Программы отнесли в вычислительный центр. Ждали overnight пока мэйнфрейм обрабатывал данные.
+    </div>
+    <table class="axel-participants">
+      <tr>
+        <th>#</th>
+        <th>стратегия</th>
+        <th>автор</th>
+        <th>дисциплина</th>
+      </tr>
+      <tr class="winner-row">
+        <td class="rank">1</td>
+        <td class="winner">Tit-for-Tat</td>
+        <td>Анатолий Рапопорт</td>
+        <td>математика/психология · Торонто · 504.5</td>
+      </tr>
+      <tr><td class="rank">2</td><td class="strategy">Tideman and Chieruzzi</td><td>Т. Тайдман и П. Кьеруцци</td><td>политология · Корнелл</td></tr>
+      <tr><td class="rank">3</td><td class="strategy">Nydegger</td><td>Руди Нидеггер</td><td>психология</td></tr>
+      <tr><td class="rank">4</td><td class="strategy">Grofman</td><td>Бернард Грофман</td><td>политология</td></tr>
+      <tr><td class="rank">5</td><td class="strategy">Shubik</td><td>Мартин Шубик</td><td>экономика · Йель</td></tr>
+      <tr><td class="rank">6</td><td class="strategy">Stein and Rapoport</td><td>Штейн и А. Рапопорт</td><td>математика</td></tr>
+      <tr><td class="rank">7</td><td class="strategy">Grudger (Grim Trigger)</td><td>Джеймс Фридман</td><td>экономика</td></tr>
+      <tr><td class="rank">8</td><td class="strategy">Davis</td><td>Мортон Дэвис</td><td>математика</td></tr>
+      <tr><td class="rank">9</td><td class="strategy">Graaskamp</td><td>Джим Граскамп</td><td>—</td></tr>
+      <tr><td class="rank">10</td><td class="strategy">Downing</td><td>Лесли Даунинг</td><td>психология</td></tr>
+      <tr><td class="rank">11</td><td class="strategy">Feld</td><td>Скотт Фелд</td><td>социология</td></tr>
+      <tr><td class="rank">12</td><td class="strategy">Joss</td><td>Иоганн Йосс</td><td>математика</td></tr>
+      <tr><td class="rank">13</td><td class="strategy">Tullock</td><td>Гордон Таллок</td><td>экономика/политология</td></tr>
+      <tr><td class="rank">14</td><td class="strategy">Anonymous</td><td>неизвестен</td><td>—</td></tr>
+      <tr><td class="rank">—</td><td class="strategy">RANDOM</td><td>Аксельрод (baseline)</td><td>—</td></tr>
+    </table>
+    <div class="axel-note-small">
+      * TfT отправлена единственной 4-строчной программой. все сложные стратегии — ниже в рейтинге.
+    </div>
+
+    <div class="axel-section-label">// результаты · турнир 1</div>
+    <div class="axel-results">
+      <div class="axel-result-row">
+        <span class="axel-result-rank first">1</span>
+        <span class="axel-result-name">Tit-for-Tat</span>
+        <span class="axel-result-bar-wrap"><span class="axel-result-bar win" style="width:84.1%;"></span></span>
+        <span class="axel-result-score">504.5</span>
+      </div>
+      <div class="axel-result-row">
+        <span class="axel-result-rank">2</span>
+        <span class="axel-result-name">Tideman &amp; Chieruzzi</span>
+        <span class="axel-result-bar-wrap"><span class="axel-result-bar" style="width:83.4%;"></span></span>
+        <span class="axel-result-score">500.4</span>
+      </div>
+      <div class="axel-result-row">
+        <span class="axel-result-rank">3</span>
+        <span class="axel-result-name">Nydegger</span>
+        <span class="axel-result-bar-wrap"><span class="axel-result-bar" style="width:83.2%;"></span></span>
+        <span class="axel-result-score">499.4</span>
+      </div>
+      <div class="axel-result-row">
+        <span class="axel-result-rank">4</span>
+        <span class="axel-result-name">Grofman</span>
+        <span class="axel-result-bar-wrap"><span class="axel-result-bar" style="width:81.3%;"></span></span>
+        <span class="axel-result-score">487.5</span>
+      </div>
+      <div class="axel-result-row">
+        <span class="axel-result-rank">5</span>
+        <span class="axel-result-name">Shubik</span>
+        <span class="axel-result-bar-wrap"><span class="axel-result-bar" style="width:80.5%;"></span></span>
+        <span class="axel-result-score">482.7</span>
+      </div>
+      <div class="axel-result-row">
+        <span class="axel-result-rank">6</span>
+        <span class="axel-result-name">Stein &amp; Rapoport</span>
+        <span class="axel-result-bar-wrap"><span class="axel-result-bar" style="width:79.9%;"></span></span>
+        <span class="axel-result-score">479.7</span>
+      </div>
+      <div class="axel-result-row">
+        <span class="axel-result-rank">—</span>
+        <span class="axel-result-name">Always Defect (худший)</span>
+        <span class="axel-result-bar-wrap"><span class="axel-result-bar" style="width:66.9%;background:#c44a32;"></span></span>
+        <span class="axel-result-score">401.2</span>
+      </div>
+    </div>
+    <div class="axel-note">
+      отрыв TfT от второго места: 4.1 очка<br>
+      бенчмарк взаимной кооперации: 600 очков<br>
+      бенчмарк взаимной дефекции: 200 очков
+    </div>
+
+    <div class="axel-section-label">// четыре свойства победы</div>
+    <div class="axel-props">
+      <div class="axel-prop">
+        <span class="axel-prop-num">1</span>
+        <div>
+          <div class="axel-prop-title">добрая</div>
+          <div class="axel-prop-desc">никогда не предаёт первой. не провоцирует эскалацию без причины.</div>
+        </div>
+      </div>
+      <div class="axel-prop">
+        <span class="axel-prop-num">2</span>
+        <div>
+          <div class="axel-prop-title">наказывающая</div>
+          <div class="axel-prop-desc">немедленно отвечает на предательство. нельзя эксплуатировать безнаказанно.</div>
+        </div>
+      </div>
+      <div class="axel-prop">
+        <span class="axel-prop-num">3</span>
+        <div>
+          <div class="axel-prop-title">прощающая</div>
+          <div class="axel-prop-desc">после наказания возвращается к кооперации. не застревает в бесконечной войне.</div>
+        </div>
+      </div>
+      <div class="axel-prop">
+        <span class="axel-prop-num">4</span>
+        <div>
+          <div class="axel-prop-title">прозрачная</div>
+          <div class="axel-prop-desc">оппонент легко понимает логику. можно выстроить взаимную кооперацию.</div>
+        </div>
+      </div>
+    </div>
+    <div class="axel-quote" style="font-size:15px;color:#666;">«самая короткая программа турнира оказалась самой успешной. сложность не помогла никому.» — Роберт Аксельрод · анализ турнира · 1980</div>
+
+    <div class="axel-section-label">// турнир 2 · 1981 · 62 стратегии</div>
+    <div class="axel-stats-grid">
+      <div class="axel-stat">
+        <div class="axel-stat-label">// участников</div>
+        <div class="axel-stat-val">62</div>
+        <div class="axel-stat-sub">+48 от первого</div>
+      </div>
+      <div class="axel-stat">
+        <div class="axel-stat-label">// стран</div>
+        <div class="axel-stat-val">6</div>
+        <div class="axel-stat-sub">США · Канада · Британия · Норвегия · Швейцария · Н. Зеландия</div>
+      </div>
+      <div class="axel-stat">
+        <div class="axel-stat-label">// победитель</div>
+        <div class="axel-stat-val">TfT</div>
+        <div class="axel-stat-sub">снова Рапопорт</div>
+      </div>
+      <div class="axel-stat">
+        <div class="axel-stat-label">// публикация</div>
+        <div class="axel-stat-val" style="font-size:22px;">Science</div>
+        <div class="axel-stat-sub">1981 с У. Гамильтоном</div>
+      </div>
+    </div>
+    <div class="axel-prose">
+      Аксельрод разместил объявления в журналах для любителей компьютеров — Personal Computing и других. Он открыто сообщил что TfT победил в первом турнире и объяснил почему. Поставил цель: побить TfT. Среди 62 участников — профессора, студенты и 10-летний вундеркинд. Уильям Гамильтон — эволюционный биолог, основатель теории инклюзивной приспособленности — присоединился к анализу. Результат: TfT победил снова. Вместе они опубликовали работу в Science. Это сделало результаты известными всему миру.
+    </div>
+
+    <div class="axel-section-label">// эволюция · репликаторная динамика</div>
+    <div class="axel-prose">
+      После турниров Аксельрод запустил симуляцию. Стратегии «размножались» пропорционально приспособленности. Через 1000 поколений TfT лидировала с темпом роста 0.05%/поколение. Always Defect вымирала — когда кооператоры исчезали, ей не с кем было взаимодействовать кроме себя.
+    </div>
+    <div class="axel-evo-ctrl">
+      <div class="axel-evo-group">
+        <span class="axel-evo-lbl">// поколений</span>
+        <input type="range" id="evoGen" min="10" max="100" step="1" value="40">
+        <span class="axel-evo-val" id="evoGenV">40</span>
+      </div>
+      <div class="axel-evo-group">
+        <span class="axel-evo-lbl">// старт TfT %</span>
+        <input type="range" id="evoTft" min="5" max="50" step="1" value="20">
+        <span class="axel-evo-val" id="evoTftV">20%</span>
+      </div>
+      <button class="axel-run-btn" id="evoRun">▶ запустить</button>
+    </div>
+    <div class="axel-chart-wrap">
+      <canvas id="evoChart"></canvas>
+    </div>
+
+    <div class="axel-section-label">// три условия кооперации</div>
+    <div class="axel-conclusion">
+      <div class="lead">кооперация возможна без центральной власти. три необходимых условия:</div>
+      <ol>
+        <li>игра повторяется — есть завтра</li>
+        <li>игроки ценят будущее — «тень будущего» достаточно длинна</li>
+        <li>игроки узнают друг друга — репутация работает</li>
+      </ol>
+      <div class="lead">предательство оптимально один раз. кооперация оптимальна всегда — если есть завтра.</div>
+    </div>
+
+    <div class="axel-note-small" style="margin-bottom:24px;">
+      ¹ Axelrod R. · «Effective Choice in the Prisoner's Dilemma» · Journal of Conflict Resolution · 24(1) · 1980<br>
+      ² Axelrod R. · «More Effective Choice in the Prisoner's Dilemma» · Journal of Conflict Resolution · 24(3) · 1980<br>
+      ³ Axelrod R., Hamilton W.D. · «The Evolution of Cooperation» · Science · 211 · 1981<br>
+      ⁴ Имена участников: Axelrod Python Library документация · axelrod.readthedocs.io
+    </div>
+
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/game-theory-full.html">теория игр (полная) →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/auctions.html">математика аукционов →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/two-sided-markets.html">двусторонние рынки →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="markov.html">цепи Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/poincare.html">Пуанкаре →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/axelrod.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(() => {
+  // --- репликаторная динамика ---
+  // payoff matrix (row vs col): C=cooperate, D=defect → R=3, T=5, S=0, P=1
+  const R = 3, T = 5, S = 0, P = 1;
+
+  // стратегии: один матч = 200 раундов, средний выигрыш за раунд против каждой
+  // моделируем поведение через долю кооперации в матче пары стратегий
+  const STRATS = [
+    { id: 'tft',  name: 'Tit-for-Tat',      color: '#1a7a4a' },
+    { id: 'grim', name: 'Grim Trigger',     color: '#b7950b' },
+    { id: 'pav',  name: 'Pavlov',           color: '#8e44ad' },
+    { id: 'alld', name: 'Always Defect',    color: '#c44a32' },
+    { id: 'allc', name: 'Always Cooperate', color: '#888' },
+    { id: 'rand', name: 'Random',           color: '#bbb' },
+  ];
+
+  const ROUNDS = 200;
+
+  // симуляция матча между двумя стратегиями → [scoreA, scoreB] суммарно за ROUNDS
+  function playMatch(a, b) {
+    let lastA = 'C', lastB = 'C';
+    let sa = 0, sb = 0;
+    let aGrimBroken = false, bGrimBroken = false;
+    let prevPayoffA = R, prevPayoffB = R;
+    for (let r = 0; r < ROUNDS; r++) {
+      const moveA = decide(a, r, lastB, aGrimBroken, prevPayoffA, lastA);
+      const moveB = decide(b, r, lastA, bGrimBroken, prevPayoffB, lastB);
+      if (a === 'grim' && lastB === 'D') aGrimBroken = true;
+      if (b === 'grim' && lastA === 'D') bGrimBroken = true;
+      let pa, pb;
+      if (moveA === 'C' && moveB === 'C') { pa = R; pb = R; }
+      else if (moveA === 'C' && moveB === 'D') { pa = S; pb = T; }
+      else if (moveA === 'D' && moveB === 'C') { pa = T; pb = S; }
+      else { pa = P; pb = P; }
+      sa += pa; sb += pb;
+      prevPayoffA = pa; prevPayoffB = pb;
+      lastA = moveA; lastB = moveB;
+    }
+    return [sa, sb];
+  }
+
+  function decide(strat, round, oppLast, grimBroken, myPrevPayoff, myLast) {
+    switch (strat) {
+      case 'tft':  return round === 0 ? 'C' : oppLast;
+      case 'grim': return grimBroken ? 'D' : 'C';
+      case 'pav':  // win-stay lose-shift
+        if (round === 0) return 'C';
+        return (myPrevPayoff >= R) ? myLast : (myLast === 'C' ? 'D' : 'C');
+      case 'alld': return 'D';
+      case 'allc': return 'C';
+      case 'rand': return Math.random() < 0.5 ? 'C' : 'D';
+      default:     return 'C';
+    }
+  }
+
+  // средняя выплата стратегии i против j за раунд
+  function avgPayoff(i, j) {
+    const [sa] = playMatch(STRATS[i].id, STRATS[j].id);
+    return sa / ROUNDS;
+  }
+
+  let chart = null;
+
+  function run() {
+    const generations = parseInt(document.getElementById('evoGen').value, 10);
+    const tftStart = parseInt(document.getElementById('evoTft').value, 10) / 100;
+
+    const n = STRATS.length;
+    // начальная популяция: TfT = tftStart, остальное равномерно
+    let pop = new Array(n).fill((1 - tftStart) / (n - 1));
+    pop[0] = tftStart;
+
+    // матрица средних выплат (фиксируем один раз)
+    const M = [];
+    for (let i = 0; i < n; i++) {
+      M[i] = [];
+      for (let j = 0; j < n; j++) M[i][j] = avgPayoff(i, j);
+    }
+
+    const history = STRATS.map(() => []);
+    for (let g = 0; g <= generations; g++) {
+      for (let i = 0; i < n; i++) history[i].push(pop[i] * 100);
+      // fitness
+      const fit = new Array(n).fill(0);
+      let avg = 0;
+      for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) fit[i] += pop[j] * M[i][j];
+        avg += pop[i] * fit[i];
+      }
+      // репликатор
+      const next = new Array(n);
+      let sum = 0;
+      for (let i = 0; i < n; i++) {
+        next[i] = avg > 0 ? pop[i] * fit[i] / avg : pop[i];
+        sum += next[i];
+      }
+      for (let i = 0; i < n; i++) pop[i] = next[i] / sum;
+    }
+
+    const labels = Array.from({ length: generations + 1 }, (_, i) => i);
+    const datasets = STRATS.map((s, i) => ({
+      label: s.name,
+      data: history[i],
+      borderColor: s.color,
+      backgroundColor: s.color,
+      borderWidth: 1.5,
+      pointRadius: 0,
+      tension: 0.3,
+    }));
+
+    if (chart) {
+      chart.data.labels = labels;
+      chart.data.datasets = datasets;
+      chart.update();
+    } else {
+      chart = new Chart(document.getElementById('evoChart'), {
+        type: 'line',
+        data: { labels, datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'nearest', intersect: false },
+          plugins: {
+            legend: {
+              display: true,
+              position: 'bottom',
+              labels: {
+                font: { family: "'JetBrains Mono', monospace", size: 9 },
+                color: '#888',
+                boxWidth: 10,
+                padding: 8,
+              },
+            },
+            tooltip: {
+              callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + '%' },
+            },
+          },
+          scales: {
+            x: {
+              title: { display: true, text: 'поколение', font: { family: "'JetBrains Mono', monospace", size: 9 }, color: '#bbb' },
+              ticks: { font: { family: "'JetBrains Mono', monospace", size: 8 }, color: '#bbb', maxTicksLimit: 10 },
+              grid: { display: false },
+            },
+            y: {
+              title: { display: true, text: '% популяции', font: { family: "'JetBrains Mono', monospace", size: 9 }, color: '#bbb' },
+              ticks: { font: { family: "'JetBrains Mono', monospace", size: 8 }, color: '#bbb' },
+              grid: { color: '#eee' },
+              min: 0,
+            },
+          },
+          animation: { duration: 300 },
+        },
+      });
+    }
+  }
+
+  document.getElementById('evoGen').addEventListener('input', e => {
+    document.getElementById('evoGenV').textContent = e.target.value;
+  });
+  document.getElementById('evoTft').addEventListener('input', e => {
+    document.getElementById('evoTftV').textContent = e.target.value + '%';
+  });
+  document.getElementById('evoRun').addEventListener('click', run);
+
+  run();
+})();
+</script>
+
+</body>
+</html>

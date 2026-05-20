@@ -882,6 +882,7 @@
     { "id": "math-hilbert", "type": "mathematician", "title": "Давид Гильберт", "url": "/null/objects/mathematicians/hilbert.html", "glyph": "?" },
     { "id": "math-poincare", "type": "mathematician", "title": "Анри Пуанкаре", "url": "/null/objects/mathematicians/poincare.html", "glyph": "∞" },
     { "id": "es-game-theory-full", "type": "essay", "title": "Теория игр · полная", "url": "/null/essays/game-theory-full.html", "glyph": "¶" },
+    { "id": "vi-axelrod", "type": "visual", "title": "турниры Аксельрода", "url": "/null/visuals/axelrod.html", "glyph": "↔" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2113,6 +2114,11 @@
     { "from": "es-game-theory-full", "to": "es-two-sided" },
     { "from": "es-game-theory-full", "to": "es-ev" },
     { "from": "es-game-theory-full", "to": "es-bayesian" },
-    { "from": "es-game-theory-full", "to": "es-game-theory" }
+    { "from": "es-game-theory-full", "to": "es-game-theory" },
+    { "from": "vi-axelrod", "to": "es-game-theory-full" },
+    { "from": "vi-axelrod", "to": "es-game-theory" },
+    { "from": "vi-axelrod", "to": "es-auctions" },
+    { "from": "vi-axelrod", "to": "vi-markov" },
+    { "from": "vi-axelrod", "to": "math-poincare" }
   ]
 }
