@@ -880,6 +880,7 @@
     { "id": "math-riemann", "type": "mathematician", "title": "Бернхард Риман", "url": "/null/objects/mathematicians/riemann.html", "glyph": "ζ" },
     { "id": "math-newton",  "type": "mathematician", "title": "Исаак Ньютон",   "url": "/null/objects/mathematicians/newton.html",  "glyph": "∫" },
     { "id": "math-hilbert", "type": "mathematician", "title": "Давид Гильберт", "url": "/null/objects/mathematicians/hilbert.html", "glyph": "?" },
+    { "id": "math-poincare", "type": "mathematician", "title": "Анри Пуанкаре", "url": "/null/objects/mathematicians/poincare.html", "glyph": "∞" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2100,6 +2101,12 @@
     { "from": "math-hilbert", "to": "es-proof" },
     { "from": "math-hilbert", "to": "bk-geb" },
     { "from": "math-hilbert", "to": "math-cantor" },
-    { "from": "math-hilbert", "to": "math-turing" }
+    { "from": "math-hilbert", "to": "math-turing" },
+    { "from": "math-poincare", "to": "riemann" },
+    { "from": "math-poincare", "to": "godel" },
+    { "from": "math-poincare", "to": "es-proof" },
+    { "from": "math-poincare", "to": "math-riemann" },
+    { "from": "math-poincare", "to": "math-hilbert" },
+    { "from": "math-poincare", "to": "math-euler" }
   ]
 }
