@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Парадоксы вероятности — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .case {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  .case .lbl { color: #c44a32; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / парадоксы вероятности</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · математика · ~8 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Парадоксы вероятности.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">вероятность — область где интуиция врёт особенно уверенно. не потому что люди глупы. потому что мозг не создан для вероятностного мышления. четыре задачи которые ломают интуицию.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">вероятность · парадоксы · интуиция</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">байесовский вывод · задача Монти Холл · парадоксы бесконечности</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Вероятность — область где интуиция врёт особенно уверенно. Не потому что люди глупы. Потому что мозг эволюционировал не для вероятностного мышления. Вот четыре задачи которые это доказывают.</p>
+
+      <div class="sub-h">парадокс дней рождения</div>
+
+      <p>В комнате 23 человека. Какова вероятность что у двух из них одинаковый день рождения?</p>
+
+      <p>Интуиция говорит: мало. 23 человека из 365 дней — около 6%. Правильный ответ: 50.7%<em class="fn">1</em>.</p>
+
+      <p>Почему? Мы считаем не пары человек/день — а пары человек/человек. 23 человека дают C(23,2) = 253 пары. Для каждой пары — вероятность совпадения 1/365.</p>
+
+      <div class="case">
+        <span class="lbl">P(нет совпадений)</span> = (364/365) × (363/365) × … × (343/365) ≈ 0.493.<br>
+        <span class="lbl">P(есть совпадение)</span> ≈ 0.507.
+      </div>
+
+      <p>При 70 людях вероятность совпадения &gt; 99.9%. Интуиция думала о паре «я и кто-то». Математика считает все пары.</p>
+
+      <div class="sub-h">парадокс Монти Холла</div>
+
+      <p>Три двери. За одной — автомобиль. За двумя — козы. Вы выбираете дверь 1. Ведущий (знающий где автомобиль) открывает дверь 3 — там коза. Менять выбор на дверь 2 или остаться?</p>
+
+      <p>Интуиция: без разницы. 50/50. Правильный ответ: менять. Вероятность при смене — 2/3<em class="fn">2</em>.</p>
+
+      <p>Почему? Ведущий не случайно открывает дверь. Он знает где автомобиль и всегда открывает дверь с козой. Это информация которая меняет вероятности.</p>
+
+      <div class="case">
+        <span class="lbl">автомобиль за дверью 1 (1/3)</span> — смена проигрывает.<br>
+        <span class="lbl">автомобиль за дверью 2 или 3 (2/3)</span> — смена выигрывает.<br>
+        ведущий всегда откроет оставшуюся козью дверь. смена выигрывает в 2/3 случаев.
+      </div>
+
+      <p>Когда Мэрилин вос Савант опубликовала этот ответ в 1990 году она получила тысячи писем от математиков и профессоров с требованием признать ошибку. Все они ошибались.</p>
+
+      <div class="sub-h">парадокс Симпсона</div>
+
+      <p>Больница A: вылечила 800 из 1000 тяжёлых и 900 из 1000 лёгких. Больница B: вылечила 400 из 500 тяжёлых и 800 из 1000 лёгких.</p>
+
+      <div class="case">
+        <span class="lbl">агрегат</span> A = 1700/2000 = 85% · B = 1200/1500 = 80%. A лучше? Нет.<br>
+        <span class="lbl">тяжёлые</span> A = 80% · B = 80% — одинаково.<br>
+        <span class="lbl">лёгкие</span> A = 90% · B = 80% — A лучше.
+      </div>
+
+      <p>Но агрегированно можно получить обратный результат если одна больница принимает больше тяжёлых пациентов.</p>
+
+      <p>Парадокс Симпсона<em class="fn">3</em>: агрегированный тренд может противоречить трендам в каждой подгруппе. Это происходит когда конфаундер (тяжесть болезни) коррелирует и с группой и с исходом.</p>
+
+      <blockquote>В данных о зарплатах, лечении, спорте — Симпсон встречается регулярно. Прежде чем делать вывод из агрегата — проверь подгруппы.</blockquote>
+
+      <div class="sub-h">парадокс Бертрана</div>
+
+      <p>В круге радиуса 1 случайно выбирается хорда. Какова вероятность что хорда длиннее стороны вписанного равностороннего треугольника (длина = √3)?</p>
+
+      <p>Жозеф Бертран в 1889 году дал три правильных ответа<em class="fn">4</em>: 1/2, 1/3 и 1/4 — в зависимости от того что значит «случайно выбрать хорду».</p>
+
+      <div class="case">
+        <span class="lbl">равномерный выбор середины хорды</span> → 1/4.<br>
+        <span class="lbl">равномерный выбор угла и расстояния</span> → 1/3.<br>
+        <span class="lbl">равномерный выбор конечных точек</span> → 1/2.
+      </div>
+
+      <p>Три разных ответа — все верные. Потому что «случайно» не определено однозначно. Вопрос поставлен неправильно.</p>
+
+      <p>Парадокс Бертрана учит: вероятность не существует без вероятностного пространства. «Случайный» объект требует точного распределения. Без него вопрос лишён смысла.</p>
+
+      <div class="sub-h">что общего</div>
+
+      <p>Все четыре парадокса об одном: интуиция считает неправильные объекты. День рождения — пары, не одиночки. Монти Холл — информация, не симметрия. Симпсон — подгруппы, не агрегат. Бертран — распределение, не «случайность».</p>
+
+      <p>Лечение — осознать что именно ты считаешь. Нарисовать. Написать формально. Вероятность не терпит небрежности.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Парадокс дней рождения впервые сформулирован Ричардом фон Мизесом · 1939. При n=23 вероятность совпадения ≈ 50.7%.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Задача Монти Холла · Стив Селвин · American Statistician · 1975 · Мэрилин вос Савант · Parade Magazine · 1990.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Парадокс Симпсона · Э. Х. Симпсон · Journal of the Royal Statistical Society · 1951 · первый формальный анализ.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Парадокс Бертрана · Жозеф Бертран · «Calcul des probabilités» · 1889.</span>
+      </div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «вероятность — наиболее важная концепция в современной науке особенно потому что никто не имеет ни малейшего представления о том что она означает.»<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— Бертран Рассел</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/monty-hall.html">Монти Холл →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/birthday.html">день рождения →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="infinity-paradoxes.html">парадоксы бесконечности →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="pseudorandom.html">случайность →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/bayes.html">теорема Байеса →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/probability-paradoxes.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
