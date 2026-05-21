@@ -369,8 +369,8 @@ table.meta td.v.mono { font-family: var(--font-mono); font-size: 12px; }
   margin-bottom: 4px;
 }
 .essay-margin .note .t {
-  font-family: var(--font-text);
-  font-style: italic;
+  font-family: var(--font-body);
+  font-style: normal;
   font-size: 11px;
   color: #888;
   line-height: 1.55;
