@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>закон больших чисел — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  .lln-wrap { max-width: 800px; }
+
+  .lln-controls {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .lln-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lln-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    min-width: 140px;
+  }
+  .lln-val {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #111;
+    min-width: 44px;
+  }
+  input[type=range] { accent-color: #111; flex: 1; }
+
+  .lln-mode-btns {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .lln-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .06em;
+    padding: 6px 14px;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #888;
+    cursor: pointer;
+    transition: all .1s;
+  }
+  .lln-btn:hover { border-color: #111; color: #111; }
+  .lln-btn.on { border-color: #111; background: #111; color: #f7f6f2; }
+
+  .lln-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 20px;
+  }
+  .lln-stat { background: #f7f6f2; padding: 14px 18px; }
+  .lln-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .lln-stat-val {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #111;
+    line-height: 1;
+  }
+  .lln-stat-val.good { color: #1a7a4a; }
+  .lln-stat-val.warn { color: #e67e22; }
+
+  .lln-chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    margin-bottom: 8px;
+  }
+
+  .lln-legend {
+    display: flex;
+    gap: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .lln-legend-item { display: flex; align-items: center; gap: 6px; }
+  .lln-swatch { width: 18px; height: 0; border-top: 2px solid #2c5fb6; }
+  .lln-swatch.ev { border-top: 2px dashed #c44a32; }
+
+  .lln-insight {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    line-height: 1.7;
+    padding: 12px 16px;
+    border-left: 2px solid #ddd;
+    margin-bottom: 32px;
+  }
+
+  .lln-note {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-bottom: 32px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / law-of-large-numbers</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №027</div>
+    <div class="ttl">закон больших чисел</div>
+    <div class="lead">при n→∞ выборочное среднее сходится к E[X]. нажми «играть» и наблюдай.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="lln-wrap">
+
+    <div class="lln-mode-btns">
+      <button class="lln-btn on" id="modeCoin" data-mode="coin">монетка (0/1)</button>
+      <button class="lln-btn" id="modeDice" data-mode="dice">кубик (1–6)</button>
+      <button class="lln-btn" id="modeCustom" data-mode="custom">диапазон 0–10</button>
+      <button class="lln-btn" id="llnReset">↺ сброс</button>
+      <button class="lln-btn" id="llnPlay">▶ играть</button>
+    </div>
+
+    <div class="lln-controls">
+      <div class="lln-group">
+        <span class="lln-label" id="llnProbLabel">вероятность p</span>
+        <input type="range" id="llnProb" min="1" max="99" step="1" value="50">
+        <span class="lln-val" id="llnProbV">50%</span>
+      </div>
+      <div class="lln-group">
+        <span class="lln-label">скорость</span>
+        <input type="range" id="llnSpeed" min="1" max="10" step="1" value="3">
+        <span class="lln-val" id="llnSpeedV">3</span>
+      </div>
+    </div>
+
+    <div class="lln-stats">
+      <div class="lln-stat">
+        <div class="lln-stat-label">// бросков n</div>
+        <div class="lln-stat-val" id="llnN">0</div>
+      </div>
+      <div class="lln-stat">
+        <div class="lln-stat-label">// среднее x̄</div>
+        <div class="lln-stat-val" id="llnMean">—</div>
+      </div>
+      <div class="lln-stat">
+        <div class="lln-stat-label">// E[X]</div>
+        <div class="lln-stat-val good" id="llnEv">—</div>
+      </div>
+      <div class="lln-stat">
+        <div class="lln-stat-label">// |x̄ − E[X]|</div>
+        <div class="lln-stat-val" id="llnDev">—</div>
+      </div>
+    </div>
+
+    <div class="lln-chart-wrap">
+      <canvas id="llnChart"></canvas>
+    </div>
+
+    <div class="lln-legend">
+      <div class="lln-legend-item"><span class="lln-swatch"></span> выборочное среднее x̄</div>
+      <div class="lln-legend-item"><span class="lln-swatch ev"></span> E[X] математическое ожидание</div>
+    </div>
+
+    <div class="lln-insight" id="llnInsight">нажми «играть» чтобы начать симуляцию.</div>
+
+  </div>
+
+  <hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+  <div class="lln-note">
+    «закон больших чисел (ЗБЧ): при независимых одинаково распределённых
+     случайных величинах X₁, X₂, … выборочное среднее
+     x̄ₙ = (X₁ + … + Xₙ)/n сходится к E[X] при n→∞.
+     слабый ЗБЧ: сходимость по вероятности (Хинчин · 1929).
+     сильный ЗБЧ: сходимость почти наверное (Колмогоров · 1930).»
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/clt.html">CLT →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/variance.html">дисперсия →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/ev.html">E[X] →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/kolmogorov.html">Колмогоров →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="normal-distribution.html">нормальное распределение →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="ab-calculator.html">A/B калькулятор →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/law-of-large-numbers.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(() => {
+  const probEl  = document.getElementById('llnProb');
+  const speedEl = document.getElementById('llnSpeed');
+
+  const MODES = {
+    coin: {
+      ev: () => parseInt(probEl.value, 10) / 100,
+      sample: () => Math.random() < parseInt(probEl.value, 10) / 100 ? 1 : 0,
+      ymin: () => -0.1,
+      ymax: () => 1.1,
+      probLabel: 'вероятность p'
+    },
+    dice: {
+      ev: () => 3.5,
+      sample: () => Math.floor(Math.random() * 6) + 1,
+      ymin: () => 1,
+      ymax: () => 6,
+      probLabel: '(кубик — p не используется)'
+    },
+    custom: {
+      ev: () => parseInt(probEl.value, 10) / 100 * 10,
+      sample: () => Math.random() < parseInt(probEl.value, 10) / 100 ? 10 : 0,
+      ymin: () => -0.5,
+      ymax: () => 10.5,
+      probLabel: 'вероятность p'
+    }
+  };
+
+  let mode = 'coin';
+  let chart = null;
+  let n = 0, sum = 0;
+  let means = [], ns = [];
+  let playing = false;
+  let timer = null;
+
+  function destroyChart() {
+    if (chart) { chart.destroy(); chart = null; }
+  }
+
+  function buildChart() {
+    const m = MODES[mode];
+    destroyChart();
+    chart = new Chart(document.getElementById('llnChart'), {
+      type: 'line',
+      data: {
+        labels: ns,
+        datasets: [
+          {
+            label: 'x̄',
+            data: means,
+            borderColor: '#2c5fb6',
+            borderWidth: 1.5,
+            fill: false,
+            pointRadius: 0,
+            tension: 0
+          },
+          {
+            label: 'E[X]',
+            data: [],
+            borderColor: '#c44a32',
+            borderWidth: 1.5,
+            borderDash: [6, 4],
+            fill: false,
+            pointRadius: 0
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        plugins: { legend: { display: false }, tooltip: { enabled: false } },
+        scales: {
+          x: {
+            type: 'linear',
+            ticks: { font: { family: "'JetBrains Mono', monospace", size: 8 }, color: '#bbb', maxTicksLimit: 8 },
+            grid: { display: false }
+          },
+          y: {
+            min: m.ymin(),
+            max: m.ymax(),
+            ticks: { font: { family: "'JetBrains Mono', monospace", size: 8 }, color: '#bbb' },
+            grid: { color: '#eee' }
+          }
+        }
+      }
+    });
+  }
+
+  function reset() {
+    stop();
+    n = 0; sum = 0; means = []; ns = [];
+    buildChart();
+    updateStats();
+    document.getElementById('llnInsight').textContent = 'нажми «играть» чтобы начать симуляцию.';
+  }
+
+  function setMode(m) {
+    mode = m;
+    ['coin', 'dice', 'custom'].forEach(k => {
+      document.getElementById('mode' + k.charAt(0).toUpperCase() + k.slice(1)).classList.toggle('on', k === m);
+    });
+    document.getElementById('llnProbLabel').textContent = MODES[m].probLabel;
+    reset();
+  }
+
+  function step(times) {
+    const m = MODES[mode];
+    for (let i = 0; i < times; i++) {
+      sum += m.sample();
+      n++;
+      // запоминаем не каждую точку при больших n — прореживаем
+      if (n <= 200 || n % Math.ceil(n / 200) === 0) {
+        means.push(sum / n);
+        ns.push(n);
+      }
+    }
+    // финальная точка
+    if (ns[ns.length - 1] !== n) {
+      means.push(sum / n);
+      ns.push(n);
+    }
+    const ev = m.ev();
+    chart.data.labels = ns;
+    chart.data.datasets[0].data = means;
+    chart.data.datasets[1].data = [{ x: ns[0], y: ev }, { x: n, y: ev }];
+    chart.options.scales.y.min = m.ymin();
+    chart.options.scales.y.max = m.ymax();
+    chart.update('none');
+    updateStats();
+  }
+
+  function updateStats() {
+    const m = MODES[mode];
+    const ev = m.ev();
+    const mean = n > 0 ? sum / n : null;
+    document.getElementById('llnN').textContent = n.toLocaleString('ru');
+    document.getElementById('llnMean').textContent = mean === null ? '—' : mean.toFixed(4);
+    document.getElementById('llnEv').textContent = ev.toFixed(4);
+
+    const devEl = document.getElementById('llnDev');
+    if (mean === null) {
+      devEl.textContent = '—';
+      devEl.className = 'lln-stat-val';
+    } else {
+      const dev = Math.abs(mean - ev);
+      devEl.textContent = dev.toFixed(4);
+      devEl.className = 'lln-stat-val ' + (dev < 0.01 ? 'good' : dev < 0.05 ? 'warn' : '');
+      updateInsight(dev);
+    }
+  }
+
+  function updateInsight(dev) {
+    const el = document.getElementById('llnInsight');
+    if (n < 20) {
+      el.textContent = 'слишком мало — среднее прыгает.';
+    } else if (dev > 0.1) {
+      el.textContent = 'отклонение ' + dev.toFixed(3) + ' — среднее ещё далеко.';
+    } else if (dev > 0.01) {
+      el.textContent = 'отклонение ' + dev.toFixed(3) + ' — сходится, продолжай.';
+    } else {
+      el.textContent = 'отклонение ' + dev.toFixed(4) + ' — закон больших чисел в действии.';
+    }
+  }
+
+  function loop() {
+    if (!playing) return;
+    const speed = parseInt(speedEl.value, 10);
+    step(10 * speed);
+    if (n >= 100000) { stop(); return; }
+    const delay = 120 - speed * 10;
+    timer = setTimeout(loop, Math.max(20, delay));
+  }
+
+  function stop() {
+    playing = false;
+    if (timer) { clearTimeout(timer); timer = null; }
+    document.getElementById('llnPlay').textContent = '▶ играть';
+  }
+
+  function togglePlay() {
+    if (playing) {
+      stop();
+    } else {
+      playing = true;
+      document.getElementById('llnPlay').textContent = '⏸ пауза';
+      loop();
+    }
+  }
+
+  // events
+  document.getElementById('modeCoin').addEventListener('click', () => setMode('coin'));
+  document.getElementById('modeDice').addEventListener('click', () => setMode('dice'));
+  document.getElementById('modeCustom').addEventListener('click', () => setMode('custom'));
+  document.getElementById('llnReset').addEventListener('click', reset);
+  document.getElementById('llnPlay').addEventListener('click', togglePlay);
+
+  probEl.addEventListener('input', () => {
+    document.getElementById('llnProbV').textContent = probEl.value + '%';
+    if (chart) updateStats();
+  });
+  speedEl.addEventListener('input', () => {
+    document.getElementById('llnSpeedV').textContent = speedEl.value;
+  });
+
+  reset();
+})();
+</script>
+
+</body>
+</html>

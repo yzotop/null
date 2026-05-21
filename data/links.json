@@ -887,6 +887,7 @@
     { "id": "es-markov-deep", "type": "essay", "title": "Андрей Марков и Евгений Онегин", "url": "/null/essays/markov-deep.html", "glyph": "¶" },
     { "id": "es-prob-paradox", "type": "essay", "title": "Парадоксы вероятности", "url": "/null/essays/probability-paradoxes.html", "glyph": "¶" },
     { "id": "es-kolmogorov", "type": "essay", "title": "Колмогоров и случайность", "url": "/null/essays/kolmogorov.html", "glyph": "¶" },
+    { "id": "vi-lln", "type": "visual", "title": "закон больших чисел", "url": "/null/visuals/law-of-large-numbers.html", "glyph": "x̄" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2144,6 +2145,11 @@
     { "from": "es-kolmogorov", "to": "es-markov-deep" },
     { "from": "es-kolmogorov", "to": "th-markov" },
     { "from": "es-kolmogorov", "to": "math-turing" },
-    { "from": "es-kolmogorov", "to": "math-hilbert" }
+    { "from": "es-kolmogorov", "to": "math-hilbert" },
+    { "from": "vi-lln", "to": "st-clt" },
+    { "from": "vi-lln", "to": "st-var" },
+    { "from": "vi-lln", "to": "st-ev" },
+    { "from": "vi-lln", "to": "es-kolmogorov" },
+    { "from": "vi-lln", "to": "vi-normal" }
   ]
 }
