@@ -109,8 +109,8 @@ a { color: inherit; text-decoration: none; }
 .topbar nav {
   display: flex;
   gap: 22px;
-  font-family: var(--font-text);
-  font-size: 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
   color: #555;
 }
 .topbar nav a:hover { color: var(--accent-red); }
