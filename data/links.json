@@ -906,6 +906,7 @@
     { "id": "es-gambling",    "type": "essay", "title": "Как азартные игры породили математику", "url": "/null/essays/gambling-math.html",  "glyph": "¶" },
     { "id": "es-five-lett",   "type": "essay", "title": "Пять писем 1654 года",                  "url": "/null/essays/five-letters.html",    "glyph": "¶" },
     { "id": "es-monte-carlo", "type": "essay", "title": "От пасьянса к атомной бомбе",           "url": "/null/essays/monte-carlo.html",     "glyph": "¶" },
+    { "id": "math-fermat", "type": "mathematician", "title": "Пьер де Ферма", "url": "/null/objects/mathematicians/fermat.html", "glyph": "xⁿ" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2267,6 +2268,13 @@
     { "from": "es-monte-carlo", "to": "th-markov" },
     { "from": "es-monte-carlo", "to": "st-clt" },
     { "from": "es-monte-carlo", "to": "vi-gamblers" },
-    { "from": "es-monte-carlo", "to": "math-laplace" }
+    { "from": "es-monte-carlo", "to": "math-laplace" },
+    { "from": "math-fermat", "to": "math-pascal" },
+    { "from": "math-fermat", "to": "math-euler" },
+    { "from": "math-fermat", "to": "math-riemann" },
+    { "from": "math-fermat", "to": "es-five-lett" },
+    { "from": "math-fermat", "to": "es-gambling" },
+    { "from": "math-fermat", "to": "vi-gamblers" },
+    { "from": "math-pascal", "to": "math-fermat" }
   ]
 }
