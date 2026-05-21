@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>anchoring effect — null/objects/statistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / statistics / anchoring</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:56px;font-family:'Times New Roman',Georgia,serif;color:#111;">⚓</div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">статистика · №014</div>
+      <div class="obj-title">anchoring effect</div>
+      <div class="obj-subtitle">первое число искажает все оценки · якорь · Тверски и Канеман · 1974</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v">anchoring bias · якорный эффект</td></tr>
+    <tr><td class="k">открыли</td><td class="v">Тверски, Канеман · «Judgment under Uncertainty» · Science · 1974</td></tr>
+    <tr><td class="k">механизм</td><td class="v">первое число задаёт reference point · оценки корректируются недостаточно</td></tr>
+    <tr><td class="k">сила</td><td class="v">влияет даже на экспертов · даже при случайном якоре</td></tr>
+    <tr><td class="k">применение</td><td class="v">переговоры · ценообразование · оценка активов · A/B тесты</td></tr>
+    <tr><td class="k">связано</td><td class="v">когнитивные искажения · две системы · loss aversion</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~400 слов · 3 мин</div>
+    <h2 class="essay-title">Первое число решает <em>всё</em>.</h2>
+    <p class="essay-lead">случайное число с колеса рулетки систематически сдвигает последующие оценки.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Тверски и Канеман в 1974 году провели эксперимент<em class="fn">1</em>. Крутили колесо рулетки (результат 10 или 65 — случайный). Затем спрашивали: сколько процентов африканских стран в ООН? Группа с 65 давала оценки значительно выше группы с 10. Случайное число. Никакой связи. Систематическое влияние.</p>
+
+        <p>Это anchoring: первое число (якорь) искажает последующие оценки. Независимо от того связан ли якорь с вопросом.</p>
+
+        <p>Механизм: два пути. 1. Insufficient adjustment: люди начинают с якоря и корректируют недостаточно — останавливаются как только ответ кажется «достаточно разумным». 2. Selective accessibility<em class="fn">3</em>: якорь активирует совместимую информацию в памяти — делая высокие/низкие оценки более доступными.</p>
+
+        <p>Якорение в переговорах: первое предложение — якорь для всех последующих. Кто называет цену первым задаёт рамку. Высокое первое предложение → финальная цена выше даже после торга. Это используют риэлторы, продавцы, юристы.</p>
+
+        <blockquote>Зачёркнутая цена в e-commerce — якорь. «Было 5000, стало 3000» — якорь 5000 делает 3000 выгодной. Даже если «было 5000» никогда не было реальной ценой.</blockquote>
+
+        <p>В аналитике: прошлый результат — якорь для оценки нового. Q3 был +15% → Q4 с +8% кажется провалом. Q3 был −5% → Q4 с +8% кажется победой. Один и тот же Q4.</p>
+
+        <p>Anchoring влияет даже на экспертов: риэлторы подвержены ему так же как студенты<em class="fn">2</em>.</p>
+
+        <p>Как снизить влияние: генерировать counter-anchors — активно думать об альтернативных значениях. Задать вопрос «от чего независит правильный ответ». Собирать независимые оценки до обсуждения. Pre-mortem: что если наш якорь принципиально неверен?</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">Tversky, Kahneman · «Judgment under Uncertainty: Heuristics and Biases» · Science · 185 · 1974 · классическая работа по когнитивным искажениям.</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">Anchoring у экспертов: Northcraft, Neale · «Experts, Amateurs, and Real Estate» · Organizational Behavior · 1987 · риэлторы также подвержены якорению как и студенты.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">Механизм selective accessibility: Strack, Mussweiler · «Explaining the Enigmatic Anchoring Effect» · JPSP · 1997.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/cognitive-biases.html">когнитивные искажения →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/two-systems.html">две системы →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/nudge.html">nudge →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="loss-aversion.html">loss aversion →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="availability.html">availability →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/availability.html">availability heuristic →</a></div>
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/loss-aversion.html">loss aversion →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/statistics/anchoring.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

@@ -894,6 +894,9 @@
     { "id": "es-cog-biases",     "type": "essay", "title": "Когнитивные искажения", "url": "/null/essays/cognitive-biases.html", "glyph": "¶" },
     { "id": "es-nudge",          "type": "essay", "title": "Nudge",                 "url": "/null/essays/nudge.html",            "glyph": "¶" },
     { "id": "es-prospect",       "type": "essay", "title": "Prospect Theory",       "url": "/null/essays/prospect-theory.html",  "glyph": "¶" },
+    { "id": "st-loss-av",   "type": "statistic", "title": "loss aversion",         "url": "/null/objects/statistics/loss-aversion.html", "glyph": "λ" },
+    { "id": "st-anchor",    "type": "statistic", "title": "anchoring effect",       "url": "/null/objects/statistics/anchoring.html",     "glyph": "⚓" },
+    { "id": "st-avail",     "type": "statistic", "title": "availability heuristic", "url": "/null/objects/statistics/availability.html",  "glyph": "?" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2186,6 +2189,21 @@
     { "from": "es-prospect",    "to": "es-two-systems" },
     { "from": "es-prospect",    "to": "es-cog-biases" },
     { "from": "es-prospect",    "to": "es-nudge" },
-    { "from": "es-prospect",    "to": "es-auctions" }
+    { "from": "es-prospect",    "to": "es-auctions" },
+    { "from": "st-loss-av", "to": "es-prospect" },
+    { "from": "st-loss-av", "to": "es-eu" },
+    { "from": "st-loss-av", "to": "es-nudge" },
+    { "from": "st-loss-av", "to": "st-ev" },
+    { "from": "st-loss-av", "to": "st-anchor" },
+    { "from": "st-anchor",  "to": "es-cog-biases" },
+    { "from": "st-anchor",  "to": "es-two-systems" },
+    { "from": "st-anchor",  "to": "es-nudge" },
+    { "from": "st-anchor",  "to": "st-loss-av" },
+    { "from": "st-anchor",  "to": "st-avail" },
+    { "from": "st-avail",   "to": "es-cog-biases" },
+    { "from": "st-avail",   "to": "es-two-systems" },
+    { "from": "st-avail",   "to": "es-bayesian" },
+    { "from": "st-avail",   "to": "st-anchor" },
+    { "from": "st-avail",   "to": "st-loss-av" }
   ]
 }
