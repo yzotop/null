@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prospect Theory — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .case {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  .case .lbl { color: #c44a32; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / prospect theory</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · поведенческая экономика · ~7 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Prospect Theory.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">в 1979 году Канеман и Тверски предложили модель. она объясняла то что expected utility не могла: почему люди страхуют и играют в лотерею одновременно. почему потеря 100 рублей болит сильнее чем радует выигрыш 100.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">поведенческая экономика · риск · полезность</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">expected utility · EV · две системы · искажения</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">В 1979 году Канеман и Тверски опубликовали «Prospect Theory: An Analysis of Decision under Risk» в Econometrica<em class="fn">1</em>. Одна из самых цитируемых статей в экономике за всю историю.</p>
+
+      <div class="sub-h">1 · reference dependence</div>
+
+      <p>Люди оценивают не абсолютные исходы — а изменения. Относительно reference point — нейтральной точки. Выиграть 1000 рублей когда ожидал 500 — радость. Выиграть 1000 рублей когда ожидал 2000 — разочарование. Одинаковый исход. Разное ощущение.</p>
+
+      <p>Reference point — обычно текущее состояние. Но может быть ожиданием, нормой, прошлым результатом. В продукте: пользователь сравнивает с прошлой версией. Регресс воспринимается острее чем отсутствие прогресса.</p>
+
+      <div class="sub-h">2 · loss aversion</div>
+
+      <p>Функция ценности несимметрична. Крутизна в области потерь выше чем в области выигрышей. Коэффициент λ ≈ 2.25: потеря X болит как выигрыш 2.25X<em class="fn">2</em>.</p>
+
+      <div class="case">
+        <span class="lbl">v(x)</span> = x^α если x ≥ 0<br>
+        <span class="lbl">v(x)</span> = −λ × |x|^α если x &lt; 0<br>
+        α ≈ 0.88, λ ≈ 2.25
+      </div>
+
+      <p>Практически: люди отвергают пари 50/50 выиграть 120 vs потерять 100. EV = +10 рублей. Но потеря 100 воспринимается как −225 утилиты. Поэтому пари кажется невыгодным.</p>
+
+      <p>В продукте: «потеряете 20% эффективности» работает сильнее чем «сохраните 20% эффективности» даже если это одно и то же.</p>
+
+      <div class="sub-h">3 · probability weighting</div>
+
+      <p>Люди не воспринимают вероятности линейно. Маленькие вероятности переоцениваются. Большие — недооцениваются<em class="fn">3</em>.</p>
+
+      <div class="case">
+        <span class="lbl">w(0.01) ≈ 0.05</span> — 1% воспринимается как 5%<br>
+        <span class="lbl">w(0.50) ≈ 0.42</span> — 50% воспринимается как 42%<br>
+        <span class="lbl">w(0.99) ≈ 0.91</span> — 99% воспринимается как 91%
+      </div>
+
+      <p>Это объясняет одновременное страхование и лотерею. Страхование: маленькая вероятность большой потери. Потеря воспринимается ещё острее (loss aversion). Вероятность переоценивается (probability weighting). → покупают страховку даже с отрицательным EV.</p>
+
+      <p>Лотерея: маленькая вероятность большого выигрыша. Вероятность переоценивается. Мечта о выигрыше добавляет utility. → покупают лотерею даже с отрицательным EV.</p>
+
+      <div class="sub-h">четыре квадранта принятия решений</div>
+
+      <p>Высокая вероятность выигрыша → избегают риска (берут гарантию). Низкая вероятность выигрыша → ищут риск (лотерея). Высокая вероятность потери → ищут риск (избегают гарантированной потери). Низкая вероятность потери → избегают риска (страхование)<em class="fn">4</em>.</p>
+
+      <blockquote>Это объясняет поведение на финансовых рынках, в суде, в переговорах. И в дизайне продуктов.</blockquote>
+
+      <p>Prospect theory vs expected utility: EUT предполагает что люди максимизируют E[U(wealth)]. PT: люди максимизируют взвешенную ценность изменений с нелинейными весами вероятностей. PT точнее описывает реальное поведение. EUT точнее описывает нормативный идеал.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Канеман, Тверски · «Prospect Theory: An Analysis of Decision under Risk» · Econometrica · 47(2) · 1979 · более 100 000 цитирований.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Параметры функции ценности: α ≈ 0.88, λ ≈ 2.25 · Tversky, Kahneman · «Advances in Prospect Theory» · 1992.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Функция весов вероятностей: Prelec · «The Probability Weighting Function» · Econometrica · 1998.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Четыре квадранта: Канеман · «Thinking, Fast and Slow» · глава 29 · «The Fourfold Pattern» · 2011.</span>
+      </div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «потери ощущаются примерно вдвое острее чем эквивалентные выигрыши.»<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— Канеман, Тверски · Prospect Theory · 1979</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="expected-utility.html">expected utility →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="expected-value.html">математика решений →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="two-systems.html">две системы →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="cognitive-biases.html">когнитивные искажения →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="nudge.html">nudge →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="auctions.html">математика аукционов →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/prospect-theory.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
