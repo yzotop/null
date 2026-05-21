@@ -883,6 +883,8 @@
     { "id": "math-poincare", "type": "mathematician", "title": "Анри Пуанкаре", "url": "/null/objects/mathematicians/poincare.html", "glyph": "∞" },
     { "id": "es-game-theory-full", "type": "essay", "title": "Теория игр · полная", "url": "/null/essays/game-theory-full.html", "glyph": "¶" },
     { "id": "vi-axelrod", "type": "visual", "title": "турниры Аксельрода", "url": "/null/visuals/axelrod.html", "glyph": "↔" },
+    { "id": "th-markov", "type": "theorem", "title": "цепь Маркова", "url": "/null/objects/ideas/theorems/markov.html", "glyph": "P" },
+    { "id": "es-markov-deep", "type": "essay", "title": "Андрей Марков и Евгений Онегин", "url": "/null/essays/markov-deep.html", "glyph": "¶" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2119,6 +2121,15 @@
     { "from": "vi-axelrod", "to": "es-game-theory" },
     { "from": "vi-axelrod", "to": "es-auctions" },
     { "from": "vi-axelrod", "to": "vi-markov" },
-    { "from": "vi-axelrod", "to": "math-poincare" }
+    { "from": "vi-axelrod", "to": "math-poincare" },
+    { "from": "th-markov",      "to": "es-markov" },
+    { "from": "th-markov",      "to": "vi-markov" },
+    { "from": "th-markov",      "to": "pr-gamblers" },
+    { "from": "th-markov",      "to": "es-bayesian" },
+    { "from": "es-markov-deep", "to": "th-markov" },
+    { "from": "es-markov-deep", "to": "es-markov" },
+    { "from": "es-markov-deep", "to": "vi-markov" },
+    { "from": "es-markov-deep", "to": "es-bayesian" },
+    { "from": "es-markov-deep", "to": "pr-gamblers" }
   ]
 }

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Андрей Марков и «Евгений Онегин» — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / марков</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · математика · ~8 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Андрей Марков и «Евгений Онегин».</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">в 1906 году русский математик взял поэму Пушкина и начал считать буквы. не ради литературы. ради доказательства теоремы.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">история математики · вероятность · цепи Маркова</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">цепи Маркова · вероятность · случайность · PageRank</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">В 1906 году Андрей Марков взял первые 20 000 букв «Евгения Онегина» и начал считать<em class="fn">1</em>. Сколько гласных. Сколько согласных. И главное — как они чередуются.</p>
+
+      <p>Марков был втянут в математический спор. Его коллега Павел Некрасов утверждал: закон больших чисел работает только для независимых случайных событий. Монетки. Кости. Независимые броски.</p>
+
+      <p>Но в природе почти ничего не независимо. Если сегодня дождь — завтра тоже вероятнее дождь. Если текущий звук гласный — следующий скорее согласный. Некрасов говорил: тогда закон больших чисел неприменим.</p>
+
+      <p>Марков решил доказать что это неверно<em class="fn">2</em>. Он показал что закон больших чисел работает и для зависимых событий — если зависимость имеет специфическую структуру. Структуру которую теперь называют марковским свойством.</p>
+
+      <p>Марковское свойство: будущее зависит только от настоящего. P(Xₙ₊₁ | X₀, X₁, …, Xₙ) = P(Xₙ₊₁ | Xₙ). Вся история — не важна. Только текущее состояние.</p>
+
+      <p>В «Евгении Онегине» это работает так: вероятность следующей буквы быть гласной зависит от того гласная ли текущая — но не от того что было раньше. Марков посчитал эти вероятности вручную. Первые 20 000 букв. Без компьютера.</p>
+
+      <p>Результат: переходная матрица. Гласная → гласная: 0.128. Гласная → согласная: 0.872. Согласная → гласная: 0.663. Согласная → согласная: 0.337.</p>
+
+      <p>Стационарное распределение: ~43% гласных. В русском языке — около 43%. Совпадение подтвердило теорию. Из этой задачи выросла вся теория марковских цепей. Случайные процессы с памятью длиной 1.</p>
+
+      <p>Марковские цепи описывают: погоду (сегодняшняя погода → завтрашняя), очереди (текущая длина → следующая), броуновское движение (текущая позиция → следующая), цены активов (текущая цена → следующая).</p>
+
+      <p>PageRank<em class="fn">3</em> — марковская цепь на миллиардах страниц. Ларри Пейдж в 1998 году построил граф интернета. Страницы — состояния. Ссылки — переходы. Случайный серфер кликает по ссылкам. PageRank страницы = вероятность оказаться на ней в стационарном распределении. Google стоит $2 трлн. В основе — матрица переходов.</p>
+
+      <p>MCMC — Markov Chain Monte Carlo<em class="fn">4</em>. Как сэмплировать из сложного вероятностного распределения? Построить марковскую цепь со нужным стационарным распределением. Запустить цепь. Записывать состояния. Алгоритм Метрополиса-Гастингса 1953 года — изобретён в Лос-Аламосе для ядерных расчётов. Сегодня MCMC — основа байесовской статистики и обучения языковых моделей.</p>
+
+      <p>Скрытые марковские модели (HMM): состояния скрыты, наблюдаем только выходы. Голосовые помощники. Распознавание речи. Биоинформатика. Финансовые аномалии.</p>
+
+      <blockquote>«Я прошу причислить меня к отлучённым — как закоренелого безбожника.» — Андрей Марков, письмо в Синод, 1912</blockquote>
+
+      <p>Марков умер в 1922 году. Он не знал про PageRank и языковые модели. Но когда в 1913 году церковь отлучила Льва Толстого, Марков — атеист — попросил отлучить и его. Спор с Некрасовым имел и религиозный подтекст: Некрасов использовал независимость событий как аргумент для свободы воли. Марков опровергал и математику и теологию одновременно.</p>
+
+      <p>Цепь Маркова — математический объект. Но история её создания — вполне человеческая. Спор об идеях. Упрямство. Поэзия. 20 000 букв посчитанных вручную.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Марков · «Распространение закона больших чисел на зависимые случаи» · 1906 · анализ «Евгения Онегина».</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Спор Маркова и Некрасова · см. Brian Hayes · «First Links in the Markov Chain» · American Scientist · 2013.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">PageRank · Брин, Пейдж · «The Anatomy of a Large-Scale Hypertextual Web Search Engine» · 1998.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Метрополис и др. · «Equation of State Calculations by Fast Computing Machines» · Journal of Chemical Physics · 1953.</span>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/ideas/theorems/markov.html">цепь Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/markov.html">цепи Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="pseudorandom.html">случайность →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/poincare.html">Пуанкаре →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../objects/ideas/problems/gamblers-ruin.html">разорение игрока →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/markov-deep.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

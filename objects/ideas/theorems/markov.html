@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>цепь Маркова — null/objects/theorems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / ideas / theorems / Марков</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:64px;"><em style="font-family:'Times New Roman',Georgia,serif;font-style:italic;">P</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">теорема · №005</div>
+      <div class="obj-title">цепь Маркова</div>
+      <div class="obj-subtitle">марковское свойство · стационарное распределение · эргодичность</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">{Xₙ} — последовательность случайных величин</td></tr>
+    <tr><td class="k">свойство</td><td class="v mono">P(Xₙ₊₁ = s | X₀…Xₙ) = P(Xₙ₊₁ = s | Xₙ)</td></tr>
+    <tr><td class="k">ввёл</td><td class="v">Андрей Марков · 1906 · анализ «Евгения Онегина»</td></tr>
+    <tr><td class="k">типы</td><td class="v">дискретная · непрерывная · однородная · неоднородная</td></tr>
+    <tr><td class="k">ключевые</td><td class="v">стационарное распределение · эргодичность · период · возвратность</td></tr>
+    <tr><td class="k">применение</td><td class="v">PageRank · MCMC · NLP · очереди · физика · финансы</td></tr>
+    <tr><td class="k">связано</td><td class="v">вероятность · случайность · цепи Маркова (эссе)</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~500 слов · 4 мин</div>
+    <h2 class="essay-title">Будущее зависит только от <em>настоящего</em>.</h2>
+    <p class="essay-lead">цепь Маркова — процесс у которого нет памяти. следующее состояние определяется только текущим.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Цепь Маркова — процесс у которого нет памяти. Следующее состояние определяется только текущим. Не предыдущими. Не историей. Только сейчас.</p>
+
+        <p>Формально — марковское свойство: P(Xₙ₊₁ = s | X₀, X₁, …, Xₙ) = P(Xₙ₊₁ = s | Xₙ).</p>
+
+        <p>Андрей Марков сформулировал это в 1906 году<em class="fn">1</em>. Он анализировал чередование гласных и согласных в «Евгении Онегине» Пушкина. Хотел показать что закон больших чисел работает не только для независимых событий — но и для зависимых.</p>
+
+        <p>Матрица переходов P: Pᵢⱼ = P(Xₙ₊₁ = j | Xₙ = i). Каждая строка суммируется в 1. Для погоды: солн→солн 0.8, солн→дождь 0.2, дождь→солн 0.4, дождь→дождь 0.6.</p>
+
+        <p>Стационарное распределение π<em class="fn">2</em>: π = πP, где π₁ + π₂ + … = 1. Распределение при котором цепь «успокаивается». Для погодной цепи: π = (0.667, 0.333). 67% времени солнечно — независимо от начального состояния.</p>
+
+        <blockquote>Эргодичность: если из любого состояния можно попасть в любое другое — цепь эргодична. Она «забывает» начало. Только структура переходов определяет долгосрочное поведение.</blockquote>
+
+        <p>PageRank<em class="fn">3</em> — цепь Маркова на графе интернета. Страницы = состояния. Ссылки = переходы. Случайный пользователь кликает по ссылкам. PageRank = стационарное распределение этой цепи. Важная страница = страница где пользователь проводит больше всего времени в пределе.</p>
+
+        <p>MCMC (Markov Chain Monte Carlo)<em class="fn">4</em>: хочешь сэмплировать из сложного распределения π — построй цепь Маркова со стационарным распределением π. Запусти цепь достаточно долго. Состояния цепи = сэмплы из π. Это основа байесовского вывода и обучения нейросетей.</p>
+
+        <p>Случайное блуждание — простейшая цепь. На прямой: шаг вправо или влево с вероятностью 0.5. Теорема Пойа: в 1D и 2D блуждание возвращается в начало с вероятностью 1. В 3D и выше — не обязательно.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">Андрей Марков · «Распространение закона больших чисел на зависимые величины» · 1906 · анализ «Евгения Онегина».</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">Стационарное распределение существует и единственно для эргодических (неразложимых, апериодических) цепей.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">PageRank · Брин, Пейдж · 1998 · демпфирующий коэффициент 0.85 добавлен для сходимости.</span>
+        </div>
+        <div class="note">
+          <span class="n">[4]</span>
+          <span class="t">Алгоритм Метрополиса-Гастингса · 1953 · первый MCMC алгоритм · создан для ядерного оружия.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../../essays/markov-chains.html">цепи Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../../../visuals/markov.html">цепи Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../problems/gamblers-ruin.html">разорение игрока →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../../numbers/types/natural.html">натуральные числа →</a></div>
+      <div class="related-link"><span class="related-link-type">гипотеза</span><a href="../hypotheses/riemann.html">гипотеза Римана →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/markov-deep.html">Андрей Марков и Евгений Онегин →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/ideas/theorems/markov.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
