@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пять писем 1654 года — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / пять писем</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · математика · история · ~10 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Пять писем 1654 года.</h1>
+    <p style="font-family: var(--font-text); font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">летом 1654 года два математика обменялись пятью письмами. они решали задачу игрока. не знали что изобретают новую науку.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">история математики · вероятность · Паскаль и Ферма</td></tr>
+    <tr><td class="k">читать</td><td class="v">~10 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">азартные игры · Монте-Карло · EV</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Шевалье де Мере был игроком. Образованным, любопытным, дружившим с математиками. В 1654 году он обратился к Паскалю с двумя вопросами.</p>
+
+      <p>Первый вопрос: задача о кубиках. Сколько бросков одного кубика нужно чтобы вероятность хотя бы одной шестёрки превысила 50%? Де Мере знал ответ: 4 броска. P(хотя бы одна шестёрка за 4 броска) = 1 − (5/6)⁴ ≈ 0.518.</p>
+
+      <p>По аналогии он решил: для двух кубиков и двойной шестёрки нужно 24 броска (в 6 раз больше, потому что 6² = 36). Но опыт показывал что 24 броска недостаточно. Де Мере проигрывал там где ожидал выигрывать. Он не понимал почему.</p>
+
+      <p>Правильный ответ: 25 бросков<em class="fn">1</em>. P(двойная шестёрка за 24 броска) = 1 − (35/36)²⁴ ≈ 0.491. Чуть меньше 50%. При 25 бросках — 0.506. Чуть больше. Аналогия с одним кубиком не работает. Де Мере был достаточно умён чтобы это заметить и обратиться к математику.</p>
+
+      <p>Второй вопрос — задача о разделе ставок. Задача о прерванной игре. Два игрока соревнуются. Первый кто наберёт n очков — победит. Игра прервана. Как справедливо разделить ставки?</p>
+
+      <p>Например: нужно 3 победы. Игра прервана при счёте 2:1. Первый игрок выигрывает если победит в следующей партии. Второй игрок выигрывает только если победит в двух следующих. Как делить деньги?</p>
+
+      <p>Паскаль написал Ферма. Началась переписка<em class="fn">2</em>. Пять писем. Июль-октябрь 1654 года.</p>
+
+      <p>Метод Ферма<em class="fn">3</em>: перечислить все возможные исходы. Если бы играли ещё 2 партии (максимум что нужно): ПП — первый выигрывает (победил в 1-й); ПВ — первый выигрывает (победил в 1-й); ВП — первый выигрывает (победил во 2-й); ВВ — второй выигрывает. Первый выигрывает в 3 случаях из 4. Ему причитается 3/4 от ставок.</p>
+
+      <p>Метод Паскаля: рекуррентные рассуждения через треугольник. Если впереди 1 партия и счёт равный — каждому причитается 1/2. Если один выигрывает при любом исходе — ему причитается всё. Паскаль строил решение через комбинаторику.</p>
+
+      <blockquote>«Ваш последний ответ удовлетворил меня совершенно. Я восхищаюсь вашим методом — особенно потому что понимаю его хорошо. Он ваш собственный и ничем не похож на мой, но приходит к тому же.» — Паскаль, письмо Ферма</blockquote>
+
+      <p>Что было новым: до этой переписки математики считали только реализовавшиеся события. Паскаль и Ферма начали считать возможные будущие исходы. Вероятность события определяется тем что могло бы произойти — не только тем что произошло. Это фундаментальный сдвиг.</p>
+
+      <p>Гюйгенс прочитал о переписке (не видел самих писем). За несколько недель воссоздал результаты самостоятельно. Опубликовал в 1657 году. Ввёл понятие математического ожидания. Его книга стала первым учебником по теории вероятностей.</p>
+
+      <p>Осенью 1654 года Паскаль пережил мистический опыт. «Ночь огня» — 23 ноября<em class="fn">4</em>. Два часа религиозного экстаза. После этого он почти не занимался математикой. Переключился на теологию. Переписка с Ферма — последняя его математическая работа.</p>
+
+      <p>Пять писем за три месяца. Игрок задал вопрос. Математики ответили. Из этого выросла теория вероятностей которая лежит в основе страхования, финансов, машинного обучения и квантовой механики.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Задача де Мере о двух кубиках: расчёт показывает P(двойная 6 за 24 броска) ≈ 0.4914 &lt; 0.5 · P(за 25 бросков) ≈ 0.5055 &gt; 0.5.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Пять писем · июль–октябрь 1654 · MacTutor History of Mathematics (St Andrews) · вводное письмо Паскаля не сохранилось.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Метод Ферма — полное перечисление · метод Паскаля — комбинаторика через треугольник · оба верны · доказали независимо.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">«Ночь огня» Паскаля · 23 ноября 1654 · через несколько недель после последнего письма Ферма.</span>
+      </div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «ваш последний ответ удовлетворил меня совершенно. я восхищаюсь вашим методом. он ваш собственный — но приходит к тому же.»<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— Блез Паскаль · письмо Ферма · 1654</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="gambling-math.html">как игры породили математику →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="monte-carlo.html">Монте-Карло →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="probability-paradoxes.html">парадоксы вероятностей →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/ev.html">EV →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/pascal.html">Паскаль →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/bernoulli.html">Бернулли →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/probability-gamblers.html">лудоманы →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/gambling-math.html">Как азартные игры породили математику →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/monte-carlo.html">От пасьянса к атомной бомбе →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/five-letters.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

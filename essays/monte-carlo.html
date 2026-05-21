@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>От пасьянса к атомной бомбе — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / монте-карло</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · математика · история · ~10 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">От пасьянса к атомной бомбе.</h1>
+    <p style="font-family: var(--font-text); font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">1946 год. математик лежит в больнице после операции на мозге. от скуки играет в пасьянс. и придумывает метод который изменит науку.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">история математики · Монте-Карло · Лос-Аламос</td></tr>
+    <tr><td class="k">читать</td><td class="v">~10 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">азартные игры · пять писем · Колмогоров · цепь Маркова</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Станислав Улам в 1946 году перенёс операцию на мозге. Энцефалит. Тяжёлое восстановление. От скуки он раскладывал пасьянс «Канфилд».</p>
+
+      <p>Пасьянс «Канфилд»: 52 карты, сложная раскладка. Улам хотел знать: какова вероятность что пасьянс сойдётся? Комбинаторический расчёт невозможен — слишком много вариантов. Но можно сыграть сто раз и посчитать.</p>
+
+      <p>Улам подумал<em class="fn">1</em>: если можно так считать вероятность пасьянса — можно так же считать любой интеграл. Любую сложную задачу где аналитического решения нет. Запусти случайные числа. Считай результаты. Повторяй достаточно много раз. Ответ сойдётся к правильному по закону больших чисел.</p>
+
+      <p>Улам написал письмо Джону фон Нейману. Фон Нейман немедленно понял значение идеи. В Лос-Аламосе шли работы над водородной бомбой. Нужно было моделировать нейтронную диффузию — как нейтроны движутся через делящееся вещество. Уравнения слишком сложны для аналитического решения. Метод Улама подходил идеально.</p>
+
+      <p>Николас Метрополис — физик в Лос-Аламосе — реализовал метод на компьютере ENIAC. Ему нужно было название для секретных отчётов. Дядя Улама регулярно проигрывался в казино Монте-Карло. Метрополис предложил: Монте-Карло. Лучшее название в истории науки.</p>
+
+      <p>Статья «Equation of State Calculations by Fast Computing Machines» опубликована в 1953 году<em class="fn">2</em>. Авторы: Метрополис, Розенблут (двое), Теллер (двое). Улама нет среди авторов — его вклад был устным. Это алгоритм Метрополиса-Гастингса<em class="fn">3</em>. Одна из самых цитируемых статей в истории физики.</p>
+
+      <p>Идея метода: хочешь вычислить площадь произвольной фигуры. Вписываешь её в прямоугольник. Случайно бросаешь точки в прямоугольник. Считаешь сколько попало внутрь фигуры. Площадь фигуры ≈ площадь прямоугольника × доля попавших.</p>
+
+      <blockquote>Чем больше точек — тем точнее. Ошибка убывает как 1/√n. 10 000 точек — точность ~1%. 1 000 000 точек — точность ~0.1%.</blockquote>
+
+      <p>Метод Монте-Карло работает для любой размерности. Аналитические методы интегрирования теряют точность в высоких размерностях. Монте-Карло — нет. В 100-мерном пространстве всё то же самое. Это делает его незаменимым в физике частиц, финансах, машинном обучении.</p>
+
+      <p>MCMC — Markov Chain Monte Carlo. Если хочешь сэмплировать из сложного распределения — строишь цепь Маркова со стационарным распределением π. Запускаешь. Записываешь состояния. Это и есть сэмплы из π. Основа байесовской статистики. Основа обучения нейросетей.</p>
+
+      <p>Применения сегодня: физика частиц — симуляция столкновений в CERN. Финансы — оценка деривативов, VaR, симуляция портфелей. Климатология — модели атмосферы. Медицина — клинические испытания, дозирование. Компьютерная графика — рейтрейсинг (каждый пиксель Pixar). Машинное обучение — dropout, вариационные автоэнкодеры.</p>
+
+      <p>Улам выздоровел. Вернулся в Лос-Аламос. Вместе с Теллером — отец водородной бомбы. Вместе с Паском — первый клеточный автомат. Написал автобиографию «Adventures of a Mathematician». Про пасьянс там тоже есть.</p>
+
+      <p>Метрополис умер в 1999-м. Улам — в 1984-м. Казино в Монако работает до сих пор<em class="fn">4</em>.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Улам · «Adventures of a Mathematician» · 1976 · описание идеи Монте-Карло через пасьянс.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Metropolis et al. · «Equation of State Calculations by Fast Computing Machines» · Journal of Chemical Physics · 1953 · первая публикация метода.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Алгоритм Метрополиса-Гастингса · 1953/1970 · основа современного MCMC.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Казино в Монте-Карло открыто в 1863 году · построено по инициативе принца Карла III Монакского.</span>
+      </div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «я предположил что более практичным будет сыграть в карты много раз и просто подсчитать сколько раз выигрышные раскладки получаются в каждом варианте.»<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— Станислав Улам · Adventures of a Mathematician · 1976</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="gambling-math.html">как игры породили математику →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="five-letters.html">пять писем 1654 года →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="kolmogorov.html">Колмогоров →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/ideas/theorems/markov.html">цепь Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/clt.html">CLT →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/probability-gamblers.html">лудоманы →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/laplace.html">Лаплас →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/gambling-math.html">Как азартные игры породили математику →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/five-letters.html">Пять писем 1654 года →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/monte-carlo.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

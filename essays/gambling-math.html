@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как азартные игры породили математику — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / азартные игры</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · математика · история · ~10 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Как азартные игры породили математику.</h1>
+    <p style="font-family: var(--font-text); font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">теория вероятностей — единственная наука которую строили чтобы выигрывать в казино. в итоге доказали что казино выигрывает всегда.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">история математики · вероятность · хронология</td></tr>
+    <tr><td class="k">читать</td><td class="v">~10 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">пять писем · Монте-Карло · Колмогоров · EV</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Кардано в XVI веке был профессиональным игроком в кости. Проигрывал. Выигрывал. Снова проигрывал. И начал считать.</p>
+
+      <p>Если у кости шесть граней — вероятность любой = 1/6. Если бросаешь два раза — вероятность хотя бы одной шестёрки не равна 2/6. Кардано понял это. P(хотя бы одна шестёрка) = 1 − P(ни одной) = 1 − (5/6)² = 11/36.</p>
+
+      <p>«Liber de Ludo Aleae» — «Книга об игре в кости»<em class="fn">1</em>. Написана около 1560 года. Опубликована в 1663-м — через 87 лет. Первый математический анализ азартных игр. Кардано ввёл понятие равновозможных исходов. Это основа классического определения вероятности.</p>
+
+      <p>1654 год. Шевалье де Мере — французский аристократ и игрок — написал письмо Паскалю. Две задачи. Первая: сколько раз надо бросить два кубика чтобы шансы получить двойную шестёрку стали больше 50%? Де Мере думал что 24 раза — по аналогии с одним кубиком. Это неверно. Нужно 25.</p>
+
+      <p>Вторая задача сложнее: как делить ставки если игра прервана до конца? Паскаль написал Ферма<em class="fn">2</em>. Пять писем. Лето 1654 года. Из этой переписки выросла теория вероятностей.</p>
+
+      <p>Паскаль решал через треугольник — комбинаторику. Ферма — через перечисление исходов. Разные методы. Одинаковые ответы. Они не знали что изобретают новую науку. Они решали конкретную задачу игрока.</p>
+
+      <p>Гюйгенс услышал о переписке. В 1657 году опубликовал «De Ratiociniis in Ludo Aleae»<em class="fn">3</em>. «О вычислениях в азартных играх». Ввёл понятие математического ожидания — EV. Первый учебник по теории вероятностей. Написан для игроков.</p>
+
+      <p>Якоб Бернулли восемь лет писал «Ars Conjectandi». Умер в 1705-м не завершив. В книге — закон больших чисел. При n→∞ относительная частота → вероятность. Казино при достаточном числе ставок получает ровно тот процент который заложен в правилах. Дисперсия сглаживается. Ожидание реализуется. Теорема которая математически обосновала игорный бизнес — написана математиком который изучал азартные игры.</p>
+
+      <p>Де Муавр — эмигрант из Франции в Лондоне. Зарабатывал консультациями: аристократы платили ему за вычисление шансов в кофейнях. В 1718 году — «The Doctrine of Chances»<em class="fn">4</em>. «Учение о шансах». Три издания при жизни. В нём — нормальное распределение как аппроксимация биномиального. Де Муавр открыл колокол считая вероятности для игроков.</p>
+
+      <p>Лаплас в 1812 году систематизировал всё. «Théorie analytique des probabilités». Байес, Бернулли, де Муавр — всё в одной книге. И применил к реальным задачам: демография, юриспруденция. Впервые вероятности вышли за пределы азартных игр. «Вероятность — это здравый смысл, сведённый к вычислению».</p>
+
+      <blockquote>Колмогоров в 1933 году поставил точку. Три аксиомы. Вся теория вероятностей из них. Больше не нужно говорить об игральных костях.</blockquote>
+
+      <p>Вероятность — абстрактная мера на σ-алгебре. Путь занял 370 лет. От Кардано считающего шансы в кости — до Колмогорова строящего аксиоматику.</p>
+
+      <p>Ирония: казино использует всё это. House edge на рулетке — 2.7%. На слот-машинах — 5–15%. ЗБЧ гарантирует: при достаточном числе игроков казино получит ровно свои проценты. Математика которую строили чтобы выигрывать доказала что выиграть нельзя.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Кардано · Liber de Ludo Aleae · ~1560 · опубликована 1663 · первый анализ вероятностей через равновозможные исходы.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Переписка Паскаль-Ферма · 5 писем · лето 1654 · задача о разделе ставок · основа теории вероятностей.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Гюйгенс · De Ratiociniis in Ludo Aleae · 1657 · первое определение математического ожидания EV.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Де Муавр · The Doctrine of Chances · 1718 · нормальное распределение впервые описано для игровых задач.</span>
+      </div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «вероятность — это здравый смысл, сведённый к вычислению.»<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— Пьер-Симон Лаплас · 1812</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="five-letters.html">пять писем 1654 года →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="monte-carlo.html">Монте-Карло →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="kolmogorov.html">Колмогоров →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="probability-paradoxes.html">парадоксы вероятностей →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/ev.html">EV →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/clt.html">CLT →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/probability-gamblers.html">лудоманы →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/pascal.html">Паскаль →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/bernoulli.html">Бернулли →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/laplace.html">Лаплас →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/monte-carlo.html">От пасьянса к атомной бомбе →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/five-letters.html">Пять писем 1654 года →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/gambling-math.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
