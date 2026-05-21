@@ -886,6 +886,7 @@
     { "id": "th-markov", "type": "theorem", "title": "цепь Маркова", "url": "/null/objects/ideas/theorems/markov.html", "glyph": "P" },
     { "id": "es-markov-deep", "type": "essay", "title": "Андрей Марков и Евгений Онегин", "url": "/null/essays/markov-deep.html", "glyph": "¶" },
     { "id": "es-prob-paradox", "type": "essay", "title": "Парадоксы вероятности", "url": "/null/essays/probability-paradoxes.html", "glyph": "¶" },
+    { "id": "es-kolmogorov", "type": "essay", "title": "Колмогоров и случайность", "url": "/null/essays/kolmogorov.html", "glyph": "¶" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2136,6 +2137,13 @@
     { "from": "es-prob-paradox", "to": "pr-birthday" },
     { "from": "es-prob-paradox", "to": "es-bayesian" },
     { "from": "es-prob-paradox", "to": "es-inf-paradox" },
-    { "from": "es-prob-paradox", "to": "vi-bayes" }
+    { "from": "es-prob-paradox", "to": "vi-bayes" },
+    { "from": "es-kolmogorov", "to": "es-prob-paradox" },
+    { "from": "es-kolmogorov", "to": "es-bayesian" },
+    { "from": "es-kolmogorov", "to": "es-proof" },
+    { "from": "es-kolmogorov", "to": "es-markov-deep" },
+    { "from": "es-kolmogorov", "to": "th-markov" },
+    { "from": "es-kolmogorov", "to": "math-turing" },
+    { "from": "es-kolmogorov", "to": "math-hilbert" }
   ]
 }

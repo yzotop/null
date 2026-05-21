@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Колмогоров и случайность — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .case {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  .case .lbl { color: #c44a32; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / колмогоров</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · математика · история · ~8 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Колмогоров и случайность.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">в 1933 году советский математик написал тонкую книгу. он формализовал вероятность за 60 страниц. то что философы спорили веками — стало аксиомами. и ещё он спросил: что значит быть по-настоящему случайным?</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">история математики · вероятность · сложность Колмогорова</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">вероятность · цепи Маркова · парадоксы · информация</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">В 1933 году Андрей Николаевич Колмогоров опубликовал «Grundbegriffe der Wahrscheinlichkeitsrechnung» — «Основные понятия теории вероятностей»<em class="fn">1</em>. Тонкая книга. 60 страниц на немецком. Она закрыла вопрос который мучил математиков 300 лет: что такое вероятность формально?</p>
+
+      <div class="sub-h">три определения до Колмогорова</div>
+
+      <p>До Колмогорова было несколько конкурирующих определений. Классическое: вероятность = благоприятные исходы / все исходы. Работает только для симметричных ситуаций. Частотное: вероятность = предел частоты при бесконечных повторениях. Не применимо к единичным событиям. Субъективное: вероятность = степень уверенности. Слишком расплывчато для строгой математики.</p>
+
+      <div class="sub-h">три аксиомы</div>
+
+      <p>Колмогоров предложил аксиоматический подход. Вероятность — функция P на σ-алгебре событий:</p>
+
+      <div class="case">
+        <span class="lbl">1.</span> P(A) ≥ 0 для любого события A<br>
+        <span class="lbl">2.</span> P(Ω) = 1 — вероятность всего пространства равна 1<br>
+        <span class="lbl">3.</span> P(A ∪ B) = P(A) + P(B) если A и B несовместны
+      </div>
+
+      <p>Три аксиомы. Из них выводится вся теория вероятностей. Условная вероятность. Независимость. Математическое ожидание. Закон больших чисел. Центральная предельная теорема. Всё — из трёх аксиом.</p>
+
+      <p>Колмогоров не говорил что такое вероятность физически. Он говорил как с ней работать математически. Это и есть сила аксиоматического подхода.</p>
+
+      <div class="sub-h">человек</div>
+
+      <p>Колмогоров был советским математиком. Родился в 1903 году. Умер в 1987. Работал в МГУ 60 лет. Его интересы: теория вероятностей, математическая логика, топология, теория функций, гидродинамика, педагогика. В 1941 году объяснил турбулентность. В 1954 году — устойчивость солнечной системы (КАМ-теория)<em class="fn">4</em>. Один из самых широких математиков XX века.</p>
+
+      <p>Но самый странный его вопрос — про случайность.</p>
+
+      <div class="sub-h">что значит быть случайным</div>
+
+      <p>Что значит что последовательность случайна? Возьми монетку. Подбрось 100 раз. Запиши результат: 0100110101001110010101101001... Случайна ли она?</p>
+
+      <p>Интуитивно: случайная последовательность не имеет паттернов. Но любая конкретная последовательность имеет вероятность (1/2)¹⁰⁰ — такую же как ОООООООО...О (100 орлов подряд). Все последовательности одинаково вероятны. Так что же делает одну «случайной» а другую — нет?</p>
+
+      <div class="sub-h">сложность Колмогорова</div>
+
+      <p>В 1960-х Колмогоров предложил ответ<em class="fn">2</em>: случайность через сложность. Колмогоровская сложность строки s — это длина кратчайшей программы которая её генерирует.</p>
+
+      <div class="case">
+        <span class="lbl">K(s)</span> = min{ |p| : U(p) = s }<br>
+        где U — универсальная машина Тьюринга.
+      </div>
+
+      <p>100 орлов подряд: программа «напечатай 100 орлов» — короткая. K мала. Строка не случайна. Случайная последовательность: кратчайшая программа — сама эта последовательность. K ≈ длина строки. Строка несжимаема.</p>
+
+      <blockquote>Случайность = несжимаемость = отсутствие паттернов.</blockquote>
+
+      <p>Проблема: K невычислима<em class="fn">3</em>. Нельзя написать программу которая считает K(s) для любой s. Это следствие теоремы Гёделя и задачи остановки Тьюринга. Случайность определена точно — но неопределяема алгоритмически.</p>
+
+      <p>Мы можем приближать K: gzip, bzip2, LZ77 — все алгоритмы сжатия ищут паттерны и убирают их. Хорошо сжимается → малая K → не случайно. Не сжимается → большая K → скорее всего случайно.</p>
+
+      <div class="sub-h">где это работает</div>
+
+      <p>Это применяется в криптографии: хороший генератор случайных чисел производит несжимаемые последовательности. В тестировании программного обеспечения. В машинном обучении: MDL (minimum description length) — модель которая сжимает данные лучше — обобщает лучше.</p>
+
+      <p>Колмогоров дал математике два подарка. Первый: строгое основание теории вероятностей. Второй: определение случайности через информацию.</p>
+
+      <p>Оба — через простоту и минимальность. Три аксиомы. Кратчайшая программа. Это его стиль.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Колмогоров · «Grundbegriffe der Wahrscheinlichkeitsrechnung» · Springer · 1933 · русский перевод «Основные понятия теории вероятностей» · 1936.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Колмогоровская сложность · независимо предложена Колмогоровым (1965), Соломоновым (1964), Чейтином (1966) · иногда называется AIT — Algorithmic Information Theory.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Невычислимость K: доказывается сведением к задаче остановки · если бы K была вычислима, можно было бы решить Halting Problem.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">КАМ-теория (Колмогоров–Арнольд–Мозер) · 1954 · устойчивость квазипериодических движений в гамильтоновых системах.</span>
+      </div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «вероятность — это мера нашего незнания а не свойство мира.»<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— Андрей Колмогоров</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="probability-paradoxes.html">парадоксы вероятности →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="proof.html">что такое доказательство →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="markov-deep.html">цепи Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/ideas/theorems/markov.html">цепь Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/turing.html">Тьюринг →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/hilbert.html">Гильберт →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/kolmogorov.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
