@@ -897,6 +897,7 @@
     { "id": "st-loss-av",   "type": "statistic", "title": "loss aversion",         "url": "/null/objects/statistics/loss-aversion.html", "glyph": "λ" },
     { "id": "st-anchor",    "type": "statistic", "title": "anchoring effect",       "url": "/null/objects/statistics/anchoring.html",     "glyph": "⚓" },
     { "id": "st-avail",     "type": "statistic", "title": "availability heuristic", "url": "/null/objects/statistics/availability.html",  "glyph": "?" },
+    { "id": "vi-gamblers", "type": "visual", "title": "лудоманы и математика", "url": "/null/visuals/probability-gamblers.html", "glyph": "⚀" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2204,6 +2205,11 @@
     { "from": "st-avail",   "to": "es-two-systems" },
     { "from": "st-avail",   "to": "es-bayesian" },
     { "from": "st-avail",   "to": "st-anchor" },
-    { "from": "st-avail",   "to": "st-loss-av" }
+    { "from": "st-avail",   "to": "st-loss-av" },
+    { "from": "vi-gamblers", "to": "es-kolmogorov" },
+    { "from": "vi-gamblers", "to": "es-prob-paradox" },
+    { "from": "vi-gamblers", "to": "st-ev" },
+    { "from": "vi-gamblers", "to": "st-clt" },
+    { "from": "vi-gamblers", "to": "math-gauss" }
   ]
 }

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>лудоманы которые построили математику — null/visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .gamblers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    background: #ddd;
+    border: 1.5px solid #111;
+    margin-bottom: 32px;
+  }
+  .gambler-card {
+    background: #f7f6f2;
+    padding: 20px 18px 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  .gambler-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #c44a32;
+    margin-bottom: 10px;
+  }
+  .gambler-glyph {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 1;
+    color: #111;
+    margin-bottom: 8px;
+  }
+  .gambler-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: #111;
+    margin-bottom: 6px;
+  }
+  .gambler-game {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #888;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .gambler-discovery {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #2c5fb6;
+    line-height: 1.6;
+    border-left: 2px solid #2c5fb6;
+    padding-left: 8px;
+    margin-bottom: 10px;
+  }
+  .gambler-book {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #1a7a4a;
+    line-height: 1.6;
+    border-left: 2px solid #1a7a4a;
+    padding-left: 8px;
+    margin-bottom: 10px;
+  }
+  .gambler-meme {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-size: 11px;
+    color: #555;
+    line-height: 1.6;
+    border-top: 0.5px solid #e0ddd8;
+    padding-top: 10px;
+    margin-top: auto;
+  }
+
+  .gamblers-timeline {
+    border: 1.5px solid #111;
+    margin-bottom: 32px;
+  }
+  .timeline-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #bbb;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    border-bottom: 0.5px solid #ddd;
+  }
+  .timeline-row {
+    display: flex;
+    gap: 0;
+    border-bottom: 0.5px solid #f0ede8;
+  }
+  .timeline-row:last-child { border-bottom: none; }
+  .timeline-year {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #c44a32;
+    padding: 10px 16px;
+    min-width: 100px;
+    border-right: 0.5px solid #f0ede8;
+  }
+  .timeline-event {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #555;
+    padding: 10px 16px;
+    line-height: 1.5;
+  }
+  .gamblers-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #bbb;
+    line-height: 1.7;
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / probability-gamblers</div>
+
+<main class="container">
+<article>
+
+  <header class="visual-header">
+    <div class="num">визуал · №028</div>
+    <div class="ttl">лудоманы которые построили математику</div>
+    <div class="lead">теория вероятностей выросла из азартных игр. пять математиков · пять игр · пять открытий.</div>
+  </header>
+
+  <hr class="section-divider">
+
+  <div class="gamblers-grid">
+
+    <div class="gambler-card">
+      <div class="gambler-year">~1560</div>
+      <div class="gambler-glyph">⚀</div>
+      <div class="gambler-name">Джероламо Кардано</div>
+      <div class="gambler-game">кости · профессиональный игрок · проигрывал и выигрывал всю жизнь</div>
+      <div class="gambler-discovery">первый математический анализ вероятностей · ввёл понятие равновозможных исходов · заложил основу классического определения</div>
+      <div class="gambler-book">Liber de Ludo Aleae · «Книга об игре в кости» · ~1560 · опубликована посмертно в 1663 — через 100 лет</div>
+      <div class="gambler-meme">писал трактат чтобы перестать проигрывать. случайно основал теорию вероятностей.</div>
+    </div>
+
+    <div class="gambler-card">
+      <div class="gambler-year">1654</div>
+      <div class="gambler-glyph">♟</div>
+      <div class="gambler-name">Паскаль &amp; Ферма</div>
+      <div class="gambler-game">переписка из-за вопроса шевалье де Мере — игрока и друга Паскаля. задача о разделе ставок при прерванной игре</div>
+      <div class="gambler-discovery">комбинаторика · треугольник Паскаля · формула вероятности суммы очков · первые строгие вычисления вероятностей</div>
+      <div class="gambler-book">не книга — 7 писем 1654 года. из них выросла вся теория вероятностей XVII века</div>
+      <div class="gambler-meme">друг-игрок написал математику письмо с жалобой на несправедливые правила. через 7 писем появилась новая наука.</div>
+    </div>
+
+    <div class="gambler-card">
+      <div class="gambler-year">1713</div>
+      <div class="gambler-glyph">∑</div>
+      <div class="gambler-name">Якоб Бернулли</div>
+      <div class="gambler-game">карты · кости · анализ азартных игр как основной метод</div>
+      <div class="gambler-discovery">закон больших чисел · теорема Бернулли: при n→∞ относительная частота → p. первое строгое доказательство ЗБЧ</div>
+      <div class="gambler-book">Ars Conjectandi · «Искусство предположений» · 1713 · опубликована посмертно братом · 8 лет после смерти</div>
+      <div class="gambler-meme">доказал что при достаточном числе бросков казино выигрывает всегда. игорный бизнес этого не знал — Бернулли не рекламировал.</div>
+    </div>
+
+    <div class="gambler-card">
+      <div class="gambler-year">1718</div>
+      <div class="gambler-glyph">∫</div>
+      <div class="gambler-name">Абрахам де Муавр</div>
+      <div class="gambler-game">кофейни Лондона · профессиональный консультант игроков · зарабатывал вычислением шансов для аристократов</div>
+      <div class="gambler-discovery">нормальное распределение как аппроксимация биномиального · центральная предельная теорема (предварительная версия) · формула де Муавра в комплексных числах</div>
+      <div class="gambler-book">The Doctrine of Chances · «Учение о шансах» · 1718 · посвящена Ньютону · три издания при жизни</div>
+      <div class="gambler-meme">предсказал дату собственной смерти математически. замечал что спит на 15 минут дольше каждый день. экстраполировал. не ошибся.</div>
+    </div>
+
+    <div class="gambler-card">
+      <div class="gambler-year">1946–1953</div>
+      <div class="gambler-glyph">☢</div>
+      <div class="gambler-name">Станислав Улам &amp; Николас Метрополис</div>
+      <div class="gambler-game">пасьянс «Канфилд» · Улам считал вероятности выхода лёжа в больнице после операции</div>
+      <div class="gambler-discovery">метод Монте-Карло · случайная выборка для численного интегрирования · основа современного симулирования · применён для ядерной бомбы</div>
+      <div class="gambler-book">«Equation of State Calculations by Fast Computing Machines» · LANL · 1953 · засекречена · позже открыта</div>
+      <div class="gambler-meme">назвали метод в честь казино в Монако где дядя Улама регулярно проигрывался. лучшее название в истории науки.</div>
+    </div>
+
+  </div>
+
+  <hr style="border:none;border-top:1px solid #ddd;margin:24px 0;">
+
+  <div class="gamblers-timeline">
+    <div class="timeline-title">// хронология · от игр к науке</div>
+    <div class="timeline-row"><div class="timeline-year">~1560</div><div class="timeline-event">Кардано считает вероятности в игре в кости</div></div>
+    <div class="timeline-row"><div class="timeline-year">1654</div><div class="timeline-event">Паскаль и Ферма решают задачу разделения ставок</div></div>
+    <div class="timeline-row"><div class="timeline-year">1657</div><div class="timeline-event">Гюйгенс формализует EV в «De Ratiociniis in Ludo Aleae»</div></div>
+    <div class="timeline-row"><div class="timeline-year">1713</div><div class="timeline-event">Бернулли доказывает закон больших чисел</div></div>
+    <div class="timeline-row"><div class="timeline-year">1718</div><div class="timeline-event">де Муавр открывает нормальное распределение</div></div>
+    <div class="timeline-row"><div class="timeline-year">1812</div><div class="timeline-event">Лаплас систематизирует всё в «Теории вероятностей»</div></div>
+    <div class="timeline-row"><div class="timeline-year">1933</div><div class="timeline-event">Колмогоров даёт аксиоматику — игры больше не нужны</div></div>
+    <div class="timeline-row"><div class="timeline-year">1953</div><div class="timeline-event">Улам называет Монте-Карло в честь казино</div></div>
+  </div>
+
+  <div class="gamblers-note">
+    «теория вероятностей — единственная наука которую построили чтобы выигрывать в казино и в итоге доказали что казино всегда выигрывает.»
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/kolmogorov.html">Колмогоров →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/probability-paradoxes.html">парадоксы вероятностей →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/expected-value.html">математика решений →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/ev.html">E[X] →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/clt.html">CLT →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/gauss.html">Гаусс →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/probability-gamblers.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
