@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "null-static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8848", "--directory", "/Users/involute/projects/public"],
+      "port": 8848
+    }
+  ]
+}
