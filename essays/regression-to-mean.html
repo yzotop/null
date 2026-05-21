@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Регрессия к среднему — null/essays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+  .case {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #111;
+    background: #f0ede8;
+    padding: 10px 14px;
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  .case .lbl { color: #c44a32; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / регрессия к среднему</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · статистика · ловушки · ~8 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-serif); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Регрессия к среднему.</h1>
+    <p style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">лучший игрок сезона в следующем играет хуже. худший студент после дополнительных занятий улучшается. новый CEO после провального квартала показывает рост. это не заслуга и не вина. это математика.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">статистика · ошибки интерпретации · каузальность</td></tr>
+    <tr><td class="k">читать</td><td class="v">~8 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">A/B тестирование · каузальность · байесовский вывод · EV</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Фрэнсис Гальтон в 1886 году изучал рост отцов и сыновей<em class="fn">1</em>. Он ожидал что высокие отцы будут иметь высоких сыновей. Так и было — но не полностью. Сыновья очень высоких отцов были выше среднего, но не такими высокими как отцы. Сыновья очень низких отцов были ниже среднего, но не такими низкими как отцы. Гальтон назвал это «regression towards mediocrity». Сегодня — регрессия к среднему.</p>
+
+      <div class="sub-h">механизм</div>
+
+      <p>Механизм прост. Любой экстремальный результат — это сигнал плюс шум. Очень высокий рост отца = генетика (сигнал) + случайность (шум). У сына будет та же генетика — но его собственный шум. В среднем шум сына не совпадёт с шумом отца. Результат ближе к среднему.</p>
+
+      <p>Формально: если X и Y коррелируют с ρ &lt; 1, то для экстремального X предсказанное Y:</p>
+
+      <div class="case">
+        <span class="lbl">Ŷ</span> = μ_Y + ρ × σ_Y/σ_X × (X − μ_X)<br>
+        <span class="lbl">ρ = 1</span> идеальное предсказание, нет регрессии.<br>
+        <span class="lbl">ρ = 0</span> предсказание = среднее, максимальная регрессия.<br>
+        <span class="lbl">ρ = 0.5</span> экстремум регрессирует к среднему наполовину.
+      </div>
+
+      <div class="sub-h">ловушка аналитика</div>
+
+      <p>Команда плохо работала в Q3 — менеджер провёл тренинг. В Q4 команда работала лучше. Вывод: тренинг помог. Возможно. Но возможно — регрессия к среднему. Q3 был экстремально плохим не только из-за реальных проблем но и из-за случайного шума. Q4 был бы лучше и без тренинга.</p>
+
+      <p>Это называется regression to the mean fallacy. Мы видим вмешательство → улучшение и приписываем улучшение вмешательству. Но корреляция и каузальность — разные вещи.</p>
+
+      <div class="sub-h">спорт</div>
+
+      <p>Обложка Sports Illustrated: игрок на пике формы. Следующий сезон — хуже. «Проклятие обложки Sports Illustrated»<em class="fn">2</em>. Никакого проклятия. Регрессия к среднему. На обложку попадают в момент экстремального пика. Экстремум + регрессия = следующий результат ближе к среднему.</p>
+
+      <div class="sub-h">медицина</div>
+
+      <p>Пациент идёт к врачу когда ему плохо — в момент экстремума. После лечения ему лучше. Плацебо-эффект частично — регрессия к среднему. Поэтому нужны контрольные группы. Рандомизированный эксперимент нейтрализует регрессию.</p>
+
+      <div class="sub-h">продуктовая аналитика</div>
+
+      <p>Смотришь на когорту с худшим retention. Запускаешь специальную кампанию для них. Retention вырастает. Это retention вырос потому что кампания помогла? Или потому что ты выбрал экстремально плохую когорту и она в любом случае вернулась бы ближе к среднему?</p>
+
+      <blockquote>Канеман про регрессию: пилоты которых хвалили — ухудшались, которых ругали — улучшались. Иллюзия что наказание работает лучше поощрения. На самом деле — регрессия.<em class="fn">3</em></blockquote>
+
+      <div class="sub-h">как отличить регрессию от реального эффекта</div>
+
+      <p>1. Контрольная группа — сравни с когортой которая не получила кампанию. 2. Рандомизация — назначай случайно, не по результату. 3. Длинная история — посмотри как вела себя когорта до вмешательства. 4. Размер выборки — маленькая выборка = большой шум = больше регрессии<em class="fn">4</em>.</p>
+
+      <p>Регрессия к среднему — не баг статистики. Это математическое следствие того что мир шумный. Шум случаен. Случайность в среднем нейтральна. Экстремумы содержат больше шума чем обычные наблюдения. Поэтому следующее наблюдение ближе к среднему.</p>
+
+      <p>Понимание этого делает аналитика честным. Прежде чем приписать улучшение своим действиям — спроси: а не было ли хуже просто потому что был шум?</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Фрэнсис Гальтон · «Regression towards Mediocrity in Hereditary Stature» · Journal of the Anthropological Institute · 1886.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Проклятие обложки Sports Illustrated — популярный пример · объяснение через регрессию к среднему у Хорна · 1998.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Канеман про регрессию: пилоты которых хвалили ухудшались, которых ругали — улучшались. Иллюзия что наказание работает лучше поощрения. На самом деле — регрессия.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Формула: при ρ между X и Y — Ŷ = μ_Y + ρ(σ_Y/σ_X)(X−μ_X). При ρ=1 нет регрессии. При ρ=0 — максимальная регрессия к μ_Y.</span>
+      </div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-serif); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «регрессия к среднему — самая распространённая и наименее понятая закономерность в статистике.»<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— Даниэль Канеман · «Думай медленно, решай быстро» · 2011</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="causality.html">каузальность →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="probability-paradoxes.html">парадоксы вероятности →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/variance.html">дисперсия →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/effect-size.html">размер эффекта →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/regression-to-mean.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

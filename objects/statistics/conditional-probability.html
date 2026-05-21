@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>условная вероятность — null/objects/statistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / statistics / условная вероятность</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:48px;"><em style="font-family:'Times New Roman',Georgia,serif;font-style:italic;">P(A|B)</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">статистика · №012</div>
+      <div class="obj-title">условная вероятность</div>
+      <div class="obj-subtitle">P(A|B) · обновление убеждений · теорема Байеса · независимость</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">P(A|B) — вероятность A при условии B</td></tr>
+    <tr><td class="k">определение</td><td class="v mono">P(A|B) = P(A ∩ B) / P(B) при P(B) > 0</td></tr>
+    <tr><td class="k">ввёл</td><td class="v">Томас Байес · 1763 · формализовано Колмогоровым · 1933</td></tr>
+    <tr><td class="k">свойства</td><td class="v mono">P(A|B) ≠ P(B|A) в общем случае<br>P(A|B) = P(A) ↔ A и B независимы<br>P(A|B) + P(Aᶜ|B) = 1</td></tr>
+    <tr><td class="k">связано</td><td class="v">теорема Байеса · независимость · вероятность</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~400 слов · 3 мин</div>
+    <h2 class="essay-title">Вероятность с учётом того что <em>уже знаешь</em>.</h2>
+    <p class="essay-lead">новая информация меняет вероятность. P(дождь) = 0.3, но P(дождь | облачно) = 0.6.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Безусловная вероятность: P(дождь завтра) = 0.3. Условная вероятность: P(дождь завтра | сегодня облачно) = 0.6. Новая информация меняет вероятность.</p>
+
+        <p>Формально: P(A|B) = P(A ∩ B) / P(B).</p>
+
+        <p>Пример. Кубик. P(чётное) = 1/2. P(чётное | выпало &gt; 3) = P({4,6}) / P({4,5,6}) = (2/6)/(3/6) = 2/3. Условие сузило пространство элементарных исходов.</p>
+
+        <p>Ключевое: P(A|B) ≠ P(B|A). P(болен | тест +) ≠ P(тест + | болен). Эта путаница называется transpose fallacy или prosecutor's fallacy<em class="fn">2</em>. В суде: ДНК совпало у 1 из 1000 — это P(совпадение | невиновен) = 0.001. Но P(невиновен | совпадение) может быть совсем другим. Зависит от prior — сколько людей вообще под подозрением.</p>
+
+        <blockquote>Независимость: A и B независимы если P(A|B) = P(A) — знание B не меняет вероятность A. Эквивалентно: P(A ∩ B) = P(A) × P(B).</blockquote>
+
+        <p>Броски монеты независимы. Дождь и продажи зонтиков — нет.</p>
+
+        <p>Теорема Байеса — следствие: P(A|B) = P(B|A) × P(A) / P(B). Это формула обновления убеждений. Prior P(A) × likelihood P(B|A) → posterior P(A|B).</p>
+
+        <p>Полная вероятность: P(B) = Σᵢ P(B|Aᵢ) × P(Aᵢ). Разбить на сценарии, взвесить по вероятностям.</p>
+
+        <p>Условная вероятность — основа: байесовской статистики · машинного обучения · теории решений · медицинской диагностики. Всё что учитывает контекст — использует её.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">Определение через условие введено Колмогоровым · «Grundbegriffe der Wahrscheinlichkeitsrechnung» · 1933.</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">Transpose fallacy (prosecutor's fallacy) · систематически встречается в судебных делах · подробно у Томпсона и Шумана · 1987.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">Независимость событий: P(A∩B)=P(A)P(B) не означает независимость случайных величин (это сильнее).</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="p-value.html">p-value →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="ev.html">EV →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/probability-paradoxes.html">парадоксы вероятности →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../../visuals/bayes.html">теорема Байеса →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/statistics/conditional-probability.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

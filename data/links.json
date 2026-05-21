@@ -888,6 +888,8 @@
     { "id": "es-prob-paradox", "type": "essay", "title": "Парадоксы вероятности", "url": "/null/essays/probability-paradoxes.html", "glyph": "¶" },
     { "id": "es-kolmogorov", "type": "essay", "title": "Колмогоров и случайность", "url": "/null/essays/kolmogorov.html", "glyph": "¶" },
     { "id": "vi-lln", "type": "visual", "title": "закон больших чисел", "url": "/null/visuals/law-of-large-numbers.html", "glyph": "x̄" },
+    { "id": "st-condprob", "type": "statistic", "title": "условная вероятность P(A|B)", "url": "/null/objects/statistics/conditional-probability.html", "glyph": "P(A|B)" },
+    { "id": "es-regression", "type": "essay", "title": "Регрессия к среднему", "url": "/null/essays/regression-to-mean.html", "glyph": "¶" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2150,6 +2152,16 @@
     { "from": "vi-lln", "to": "st-var" },
     { "from": "vi-lln", "to": "st-ev" },
     { "from": "vi-lln", "to": "es-kolmogorov" },
-    { "from": "vi-lln", "to": "vi-normal" }
+    { "from": "vi-lln", "to": "vi-normal" },
+    { "from": "st-condprob",  "to": "es-bayesian" },
+    { "from": "st-condprob",  "to": "es-prob-paradox" },
+    { "from": "st-condprob",  "to": "vi-bayes" },
+    { "from": "st-condprob",  "to": "st-pvalue" },
+    { "from": "es-regression","to": "es-ab-testing" },
+    { "from": "es-regression","to": "es-causality" },
+    { "from": "es-regression","to": "es-bayesian" },
+    { "from": "es-regression","to": "es-prob-paradox" },
+    { "from": "es-regression","to": "st-var" },
+    { "from": "es-regression","to": "st-effect" }
   ]
 }
