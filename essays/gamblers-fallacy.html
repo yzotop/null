@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ошибка игрока — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h { font-family: var(--font-mono); font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; margin: 26px 0 10px 0; border-top: 1px solid #ddd; padding-top: 14px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / ошибка игрока</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · статистика · ловушки · ~6 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Ошибка игрока.</h1>
+    <p style="font-family: var(--font-text); font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">после десяти орлов подряд кажется что решка вот-вот выпадет. монета так не думает. у неё нет памяти.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">вероятность · когнитивные ошибки · независимость событий</td></tr>
+    <tr><td class="k">читать</td><td class="v">~6 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">парадоксы вероятностей · искажения · базовая частота · ЗБЧ</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">В августе 1913 года в казино Монте-Карло на рулетке выпало чёрное 26 раз подряд<em class="fn">1</em>. После каждого следующего чёрного игроки всё активнее ставили на красное. Казалось — красное «должно» выпасть. Казино заработало состояние. Красное не было должно ничего.</p>
+
+      <p>Это называется ошибкой игрока — Gambler's Fallacy<em class="fn">2</em>. Вера в то что прошлые независимые события влияют на вероятность будущих.</p>
+
+      <div class="sub-h">почему монета не помнит</div>
+
+      <p>Монета не знает что выпало до этого. У неё нет памяти. Нет истории. Каждый бросок — независимое событие. P(орёл | последние 10 бросков орёл) = P(орёл) = 0.5. Прошлое не меняет вероятность. Совсем.</p>
+
+      <p>Откуда берётся ошибка? Мозг видит паттерн — 10 орлов подряд. И ожидает «выравнивания». Это интуиция о законе больших чисел — применённая неправильно.</p>
+
+      <blockquote>ЗБЧ говорит: при n→∞ доля орлов → 0.5. Это не значит что после 10 орлов следующие 10 должны быть решками. Математика выравнивается не через компенсацию а через разбавление.<em class="fn">4</em></blockquote>
+
+      <p>10 орлов «растворятся» в тысячах последующих бросков.</p>
+
+      <div class="sub-h">Монте-Карло 1913</div>
+
+      <p>Тот вечер в Монте-Карло стал учебниковым примером. Вероятность чёрного 26 раз подряд — около 1 из 66 миллионов. Редкое событие. Но не невозможное. При достаточном числе рулеток работающих достаточно долго — такое случится. Когда случилось — игроки увидели сигнал там где был шум. И заплатили за это.</p>
+
+      <div class="sub-h">обратная ошибка игрока</div>
+
+      <p>Есть и зеркальная версия. «Горячая рука» — hot hand fallacy. Баскетболист забил пять бросков подряд. Кажется он «в ударе» — следующий тоже попадёт.</p>
+
+      <p>Исследование Гиловича, Валлоне и Тверски 1985 года показало<em class="fn">3</em>: в баскетболе горячей руки нет. Серии попаданий — случайный шум. Вероятность следующего броска не зависит от предыдущих.</p>
+
+      <p>Но здесь важен контекст. Для монеты — независимость точная. Для человека — возможна реальная зависимость: усталость, концентрация, форма дня. Нужно проверять данными, не интуицией.</p>
+
+      <div class="sub-h">в аналитике</div>
+
+      <p>A/B тест. Три недели подряд — отрицательный результат. «Пора выиграть» — нет. Следующий тест не знает про предыдущие три. Каждый тест — независимое событие.</p>
+
+      <p>Акции. Компания падает пять дней подряд. «Должна отскочить» — не должна. Рынок не помнит прошлых дней (в краткосрочной перспективе). Конверсия. Три дня низкая конверсия. «Завтра выровняется» — может да, может нет. Зависит от того случайный это шум или что-то сломалось. Именно поэтому нужна гипотеза о причине — а не ожидание «выравнивания».</p>
+
+      <p>Ошибка игрока опасна потому что маскируется под разумное ожидание. «После чёрного должно быть красное» звучит логично. «После плохого квартала должен быть хороший» — тоже. Иногда это регрессия к среднему — реальный эффект. Иногда это просто ошибка игрока.</p>
+
+      <p>Разница: есть ли механизм связи между событиями? Монета — нет. Усталый спортсмен — есть. Независимый A/B тест — нет. Сезонность в бизнесе — есть. Всегда спрашивай: почему следующее событие должно зависеть от предыдущего? Если ответа нет — это ошибка игрока.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note"><span class="n">[1]</span><span class="t">Монте-Карло 1913 · конкретная дата и детали задокументированы в истории казино Монте-Карло · 26 чёрных подряд · вероятность ≈ (18/37)²⁶ ≈ 1/136 миллионов с учётом зеро на европейской рулетке.</span></div>
+      <div class="note"><span class="n">[2]</span><span class="t">Gambler's Fallacy · Тверски, Канеман · «Belief in the Law of Small Numbers» · Psychological Bulletin · 1971.</span></div>
+      <div class="note"><span class="n">[3]</span><span class="t">Hot hand fallacy · Gilovich, Vallone, Tversky · «The Hot Hand in Basketball» · Cognitive Psychology · 1985 · позже оспорено Miller & Sanjurjo 2018 — статистический артефакт.</span></div>
+      <div class="note"><span class="n">[4]</span><span class="t">Разбавление vs компенсация · ЗБЧ работает через разбавление редких событий в большой выборке · не через «выравнивающие» броски.</span></div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «монета не знает что она выпала орлом десять раз подряд.»<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— народная мудрость теории вероятностей</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="probability-paradoxes.html">парадоксы вероятностей →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="cognitive-biases.html">когнитивные искажения →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="base-rate.html">ошибка базовой частоты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="regression-to-mean.html">регрессия к среднему →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="good-decisions.html">хорошие решения →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/clt.html">закон больших чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/law-of-large-numbers.html">ЗБЧ →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/gamblers-fallacy.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
