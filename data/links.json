@@ -909,6 +909,7 @@
     { "id": "math-fermat", "type": "mathematician", "title": "Пьер де Ферма", "url": "/null/objects/mathematicians/fermat.html", "glyph": "xⁿ" },
     { "id": "es-games-math", "type": "essay", "title": "Игры которые построили математику", "url": "/null/essays/games-and-math.html", "glyph": "¶" },
     { "id": "es-good-dec", "type": "essay", "title": "Хорошие решения с плохими исходами", "url": "/null/essays/good-decisions.html", "glyph": "¶" },
+    { "id": "es-base-rate", "type": "essay", "title": "Ошибка базовой частоты", "url": "/null/essays/base-rate.html", "glyph": "¶" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2293,6 +2294,13 @@
     { "from": "es-good-dec", "to": "es-cog-biases" },
     { "from": "es-good-dec", "to": "es-regression" },
     { "from": "es-good-dec", "to": "es-ev" },
-    { "from": "es-good-dec", "to": "es-two-systems" }
+    { "from": "es-good-dec", "to": "es-two-systems" },
+    { "from": "es-base-rate", "to": "es-bayesian" },
+    { "from": "es-base-rate", "to": "es-prob-paradox" },
+    { "from": "es-base-rate", "to": "es-cog-biases" },
+    { "from": "es-base-rate", "to": "es-ab-testing" },
+    { "from": "es-base-rate", "to": "es-good-dec" },
+    { "from": "es-base-rate", "to": "st-condprob" },
+    { "from": "es-base-rate", "to": "vi-bayes" }
   ]
 }

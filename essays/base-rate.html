@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ошибка базовой частоты — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h { font-family: var(--font-mono); font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; margin: 26px 0 10px 0; border-top: 1px solid #ddd; padding-top: 14px; }
+  .case { font-family: var(--font-mono); font-size: 12px; color: #111; background: #f0ede8; padding: 10px 14px; margin: 8px 0; line-height: 1.7; }
+  .case .lbl { color: #c44a32; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / базовая частота</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · статистика · ловушки · ~7 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Ошибка базовой частоты.</h1>
+    <p style="font-family: var(--font-text); font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">тест на рак положительный. вероятность что ты болен — не 95%. большинство врачей дают неверный ответ. потому что игнорируют базовую частоту.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">вероятность · байесовский вывод · когнитивные ошибки</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">байесовский вывод · условная вероятность · искажения · A/B</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Тест на редкую болезнь. Точность теста — 95%: если болен, тест положительный в 95% случаев. Ложноположительных — 5%: если здоров, тест всё равно положительный в 5% случаев. Болезнь встречается у 1 человека из 1000.</p>
+
+      <p>Тест положительный. Какова вероятность что ты болен? Большинство людей говорят: около 95%. Правильный ответ: около 1.9%<em class="fn">1</em>.</p>
+
+      <div class="case">
+        <span class="lbl">100 000 человек:</span> больных 100, здоровых 99 900.<br>
+        у больных: 95 положительных (верно), 5 пропущено.<br>
+        у здоровых: 4 995 положительных (ложно), 94 905 верно.<br>
+        всего положительных: 95 + 4 995 = 5 090. реально больных: 95.<br>
+        <span class="lbl">P(болен | тест +)</span> = 95 / 5 090 ≈ 1.9%.
+      </div>
+
+      <p>Тест с точностью 95% даёт правильный диагноз лишь в 2 случаях из 100 при редкой болезни. Это не баг теста. Это математика.</p>
+
+      <div class="sub-h">почему интуиция врёт</div>
+
+      <p>Мозг фокусируется на точности теста — 95%. И игнорирует базовую частоту — 0.1%. Это называется base rate neglect<em class="fn">2</em>. Мы видим конкретный случай (положительный тест) и забываем про популяцию (насколько редка болезнь).</p>
+
+      <p>Теорема Байеса говорит что нельзя: P(болен | тест+) = P(тест+ | болен) × P(болен) / P(тест+). Prior — базовая частота болезни — входит в формулу обязательно. Без него ответ неверен.</p>
+
+      <p>Канеман и Тверски показали в 1970-х: даже когда людям явно дают базовую частоту — они её недооценивают. Конкретная история всегда перевешивает статистику. Это availability heuristic + base rate neglect вместе.</p>
+
+      <div class="sub-h">prosecutor's fallacy</div>
+
+      <p>В суде: ДНК обвиняемого совпало с уликой. Вероятность случайного совпадения — 1 из миллиона. Прокурор говорит: вероятность невиновности — 1 из миллиона. Это ошибка<em class="fn">3</em>.</p>
+
+      <p>P(совпадение ДНК | невиновен) = 1/1 000 000. Но нас интересует P(невиновен | совпадение ДНК). Это разные вещи. Если в городе миллион людей — ожидаемо одно случайное совпадение ДНК среди невиновных. Вероятность что обвиняемый виновен зависит от всех остальных улик — prior до теста ДНК.</p>
+
+      <blockquote>Люди сидят в тюрьме из-за этой ошибки. Суды её совершают регулярно.</blockquote>
+
+      <div class="sub-h">в продуктовой аналитике</div>
+
+      <p>Метрика выросла на 15% после запуска фичи. p-value = 0.03. Статистически значимо. Запускаем? Подожди. Какова базовая частота того что наши гипотезы вообще верны? Если мы тестируем случайные идеи — может 10%. Тогда даже при p &lt; 0.05 большинство значимых результатов — ложноположительные<em class="fn">4</em>.</p>
+
+      <p>Это та же логика что с тестом на болезнь. P(гипотеза верна | p &lt; 0.05) зависит от prior — насколько обоснована гипотеза до теста. Именно поэтому важно: формулировать гипотезу до теста — не после. Оценивать prior обоснованность идеи. Реплицировать важные результаты. Не запускать 20 тестов и брать лучший. Иначе ты лечишь здоровых людей.</p>
+
+      <div class="sub-h">как использовать base rate</div>
+
+      <p>1. Найди референсный класс. К какой группе относится этот случай? Какова базовая частота события в этой группе? 2. Обнови prior на конкретные данные. Теорема Байеса: prior × likelihood = posterior. Конкретные данные меняют оценку — но не заменяют базовую частоту. 3. Не давай конкретной истории перевесить статистику популяции. Один яркий кейс — не доказательство. Он обновляет prior. Немного.</p>
+
+      <p>Тест на редкую болезнь положительный — это повод для дополнительного обследования. Не повод для паники. Вероятность болезни выросла с 0.1% до 1.9%. Всё ещё маловероятно. Base rate — это якорь. Конкретные данные его двигают. Но не отменяют.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note"><span class="n">[1]</span><span class="t">Задача про тест на болезнь · Casscells, Schoenberger, Graboys · «Interpretation by physicians of clinical laboratory results» · New England Journal of Medicine · 1978 · только 18% врачей дали верный ответ.</span></div>
+      <div class="note"><span class="n">[2]</span><span class="t">Base rate neglect · Kahneman, Tversky · «On the psychology of prediction» · Psychological Review · 1973.</span></div>
+      <div class="note"><span class="n">[3]</span><span class="t">Prosecutor's fallacy · Thompson, Schumann · «Interpretation of Statistical Evidence in Criminal Trials» · Law and Human Behavior · 1987.</span></div>
+      <div class="note"><span class="n">[4]</span><span class="t">Базовая частота в A/B тестах · связана с концепцией prior в байесовском A/B тестировании · Andrew Gelman · «Bayesian Data Analysis» · Chapman & Hall · 2013.</span></div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «если вы не знаете базовую частоту — вы не знаете ничего.»<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— Даниэль Канеман · адаптация</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="probability-paradoxes.html">парадоксы вероятностей →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="cognitive-biases.html">когнитивные искажения →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="good-decisions.html">хорошие решения →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/conditional-probability.html">условная вероятность →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/bayes.html">Байес →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/base-rate.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
