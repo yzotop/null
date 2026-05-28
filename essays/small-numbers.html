@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Закон малых чисел — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h { font-family: var(--font-mono); font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; margin: 26px 0 10px 0; border-top: 1px solid #ddd; padding-top: 14px; }
+  .case { font-family: var(--font-mono); font-size: 12px; color: #111; background: #f0ede8; padding: 10px 14px; margin: 8px 0; line-height: 1.7; }
+  .case .lbl { color: #c44a32; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / закон малых чисел</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · статистика · ловушки · ~6 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Закон малых чисел.</h1>
+    <p style="font-family: var(--font-text); font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">три успеха подряд — это паттерн или случайность? мозг говорит паттерн. статистика говорит — недостаточно данных.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">вероятность · выборка · когнитивные ошибки · статистика</td></tr>
+    <tr><td class="k">читать</td><td class="v">~6 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">ошибка игрока · базовая частота · A/B · регрессия</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Канеман и Тверски в 1971 году описали когнитивную ошибку которую назвали «вера в закон малых чисел»<em class="fn">1</em>.</p>
+
+      <p>Люди ведут себя так как будто маленькая выборка должна быть такой же репрезентативной как большая. Как будто 3 из 5 — это то же самое что 300 из 500. Это не так.</p>
+
+      <div class="sub-h">дисперсия и размер выборки</div>
+
+      <p>Монетка. 10 бросков. Выпало 8 орлов. Кажется странным. Монетка нечестная? Вероятность получить 8+ орлов из 10 при честной монетке: около 5.5%. Редко — но не невероятно.</p>
+
+      <p>Та же монетка. 1000 бросков. Выпало 800 орлов. Вероятность: практически ноль. Монетка почти наверняка нечестная. Один и тот же «перекос» — 80% орлов. Разный вывод — потому что разный размер выборки.</p>
+
+      <div class="case">
+        <span class="lbl">стандартная ошибка пропорции:</span> σ = √(p(1−p)/n)<em class="fn">4</em><br>
+        при n=10: σ ≈ 0.158 — разброс огромный.<br>
+        при n=1000: σ ≈ 0.016 — разброс маленький.
+      </div>
+
+      <p>Маленькая выборка — большая дисперсия. Экстремальные результаты нормальны и ожидаемы. Не потому что что-то особенное. Просто потому что данных мало.</p>
+
+      <div class="sub-h">кластеры рака</div>
+
+      <p>В маленьком городе внезапно много случаев рака. Жители требуют расследования — завод? вода? излучение? Часто ответ другой: случайный кластер<em class="fn">2</em>. При достаточном числе маленьких городов в некоторых из них заболеваемость будет выше среднего — просто по законам случайности.</p>
+
+      <p>Это не значит что расследовать не нужно. Это значит что маленькая выборка создаёт кластеры которые выглядят как паттерны но являются шумом. Тверски и Канеман назвали это «законом малых чисел» по аналогии с законом больших чисел — но с иронией. Никакого закона нет. Есть только иллюзия паттерна.</p>
+
+      <div class="sub-h">лучшие школы — маленькие школы</div>
+
+      <p>Билл Гейтс и фонд Gates Foundation в 2000-х инвестировали миллиарды в создание маленьких школ<em class="fn">3</em>. Исследование показало: среди лучших школ США непропорционально много маленьких. Вывод казался очевидным: маленький размер = качество. Личное внимание. Сплочённость. Гибкость.</p>
+
+      <blockquote>Проблема: среди худших школ тоже непропорционально много маленьких. Просто об этом не написали в отчёте.</blockquote>
+
+      <p>Маленькие школы — высокая дисперсия результатов. Большие школы — результаты ближе к среднему. Закон малых чисел в действии. Фонд потратил более $2 млрд прежде чем это поняли.</p>
+
+      <div class="sub-h">в продуктовой аналитике</div>
+
+      <p>Новая фича. Первые три дня — конверсия +20%. Срочно масштабируем? Три дня — маленькая выборка. При высокой дисперсии ежедневной конверсии три хороших дня подряд — вполне вероятный шум.</p>
+
+      <p>Правило: чем меньше выборка — тем больше должен быть эффект чтобы быть значимым. При n=100 нужен эффект ~20% чтобы быть уверенным. При n=10 000 достаточно эффекта ~2%. Именно поэтому в A/B тестах считают минимальный размер выборки до запуска — а не смотрят на результат когда надоело ждать.</p>
+
+      <div class="sub-h">как защититься</div>
+
+      <p>Считай размер выборки до — не после. Определи минимальный детектируемый эффект. Посчитай сколько нужно данных. Дождись.</p>
+
+      <p>Смотри на доверительный интервал — не только на точечную оценку. 3 из 5 = 60% [15%, 95%]. 300 из 500 = 60% [55.7%, 64.2%]. Одна и та же точка. Разные интервалы.</p>
+
+      <p>Задавай вопрос: а каков был бы результат если бы эффекта не было? Мог ли случайный шум объяснить то что я вижу? Три успеха подряд — это данные. Но не достаточно данных чтобы делать выводы. Продолжай собирать.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note"><span class="n">[1]</span><span class="t">Канеман, Тверски · «Belief in the Law of Small Numbers» · Psychological Bulletin · 76(2) · 1971 · первое описание ошибки.</span></div>
+      <div class="note"><span class="n">[2]</span><span class="t">Кластеры рака · Gawande A. · «The Cancer Cluster Myth» · New Yorker · 1999 · случайные кластеры vs реальные причины.</span></div>
+      <div class="note"><span class="n">[3]</span><span class="t">Маленькие школы · Wainer H., Zwerling H.L. · «Evidence That Smaller Schools Do Not Improve Student Achievement» · Phi Delta Kappan · 2006 · Gates Foundation пересмотрел программу в 2009.</span></div>
+      <div class="note"><span class="n">[4]</span><span class="t">Стандартная ошибка пропорции · σ = √(p(1-p)/n) · при p=0.5 и n=10 σ≈0.158 · при n=1000 σ≈0.016.</span></div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «нам нужно больше данных» — это не уклонение от ответа. это единственно честный ответ когда выборка мала.<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— адаптация</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="gamblers-fallacy.html">ошибка игрока →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="base-rate.html">ошибка базовой частоты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="regression-to-mean.html">регрессия к среднему →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="probability-paradoxes.html">парадоксы вероятностей →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/p-value.html">p-value →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/law-of-large-numbers.html">ЗБЧ →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/small-numbers.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

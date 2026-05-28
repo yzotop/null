@@ -911,6 +911,7 @@
     { "id": "es-good-dec", "type": "essay", "title": "Хорошие решения с плохими исходами", "url": "/null/essays/good-decisions.html", "glyph": "¶" },
     { "id": "es-base-rate", "type": "essay", "title": "Ошибка базовой частоты", "url": "/null/essays/base-rate.html", "glyph": "¶" },
     { "id": "es-gamb-fall", "type": "essay", "title": "Ошибка игрока", "url": "/null/essays/gamblers-fallacy.html", "glyph": "¶" },
+    { "id": "es-small-num", "type": "essay", "title": "Закон малых чисел", "url": "/null/essays/small-numbers.html", "glyph": "¶" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2309,6 +2310,13 @@
     { "from": "es-gamb-fall", "to": "es-regression" },
     { "from": "es-gamb-fall", "to": "es-good-dec" },
     { "from": "es-gamb-fall", "to": "st-clt" },
-    { "from": "es-gamb-fall", "to": "vi-lln" }
+    { "from": "es-gamb-fall", "to": "vi-lln" },
+    { "from": "es-small-num", "to": "es-gamb-fall" },
+    { "from": "es-small-num", "to": "es-base-rate" },
+    { "from": "es-small-num", "to": "es-regression" },
+    { "from": "es-small-num", "to": "es-ab-testing" },
+    { "from": "es-small-num", "to": "es-prob-paradox" },
+    { "from": "es-small-num", "to": "st-pvalue" },
+    { "from": "es-small-num", "to": "vi-lln" }
   ]
 }
