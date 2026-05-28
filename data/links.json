@@ -914,6 +914,7 @@
     { "id": "es-small-num", "type": "essay", "title": "Закон малых чисел", "url": "/null/essays/small-numbers.html", "glyph": "¶" },
     { "id": "es-benford", "type": "essay", "title": "Закон Бенфорда", "url": "/null/essays/benford.html", "glyph": "¶" },
     { "id": "es-clt", "type": "essay", "title": "Центральная предельная теорема", "url": "/null/essays/clt.html", "glyph": "¶" },
+    { "id": "es-simpson", "type": "essay", "title": "Парадокс Симпсона", "url": "/null/essays/simpson.html", "glyph": "¶" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2335,6 +2336,14 @@
     { "from": "es-clt", "to": "st-var" },
     { "from": "es-clt", "to": "vi-normal" },
     { "from": "es-clt", "to": "math-laplace" },
-    { "from": "es-clt", "to": "math-gauss" }
+    { "from": "es-clt", "to": "math-gauss" },
+    { "from": "es-simpson", "to": "es-base-rate" },
+    { "from": "es-simpson", "to": "es-cog-biases" },
+    { "from": "es-simpson", "to": "es-ab-testing" },
+    { "from": "es-simpson", "to": "es-regression" },
+    { "from": "es-simpson", "to": "es-prob-paradox" },
+    { "from": "es-simpson", "to": "es-good-dec" },
+    { "from": "es-simpson", "to": "st-pvalue" },
+    { "from": "es-simpson", "to": "st-condprob" }
   ]
 }

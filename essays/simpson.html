@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Парадокс Симпсона — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h { font-family: var(--font-mono); font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; margin: 26px 0 10px 0; border-top: 1px solid #ddd; padding-top: 14px; }
+  .case { font-family: var(--font-mono); font-size: 12px; color: #111; background: #f0ede8; padding: 10px 14px; margin: 8px 0; line-height: 1.7; }
+  .case .lbl { color: #c44a32; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / парадокс Симпсона</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · статистика · ловушки · ~7 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Парадокс Симпсона.</h1>
+    <p style="font-family: var(--font-text); font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">лечение А лучше лечения Б в каждой подгруппе. но хуже в целом. это не ошибка в данных. это парадокс Симпсона.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">статистика · каузальность · агрегация · ловушки анализа</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">базовая частота · искажения · A/B · каузальность</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">В 1973 году Калифорнийский университет Беркли обвинили в дискриминации женщин при поступлении<em class="fn">1</em>. Данные казались убедительными: мужчин принимали в 44% случаев, женщин — в 35%.</p>
+
+      <p>Исследователи изучили данные по факультетам. И обнаружили нечто странное. На большинстве факультетов женщин принимали с такой же или более высокой вероятностью чем мужчин. Как может агрегированная статистика показывать дискриминацию когда каждая подгруппа её не показывает? Это парадокс Симпсона.</p>
+
+      <div class="sub-h">механизм</div>
+
+      <p>Объяснение Беркли: женщины чаще подавали на конкурентные факультеты — английский, история, где процент принятых низкий для всех. Мужчины чаще подавали на менее конкурентные — инженерные, где процент принятых высокий для всех. Агрегированная статистика смешивала две разные популяции. Конфаундер — выбор факультета — коррелировал и с полом и с вероятностью принятия.</p>
+
+      <div class="case">
+        <span class="lbl">P(принят | мужчина)</span> &gt; P(принят | женщина)<br>
+        <span class="lbl">НО</span> P(принят | мужчина, факультет X) ≤ P(принят | женщина, факультет X)<br>
+        для каждого факультета X.
+      </div>
+
+      <p>Оба утверждения верны одновременно. Это не противоречие в данных. Это математический факт при неравномерном распределении по подгруппам.</p>
+
+      <div class="sub-h">медицина · камни в почках</div>
+
+      <p>Классический медицинский пример — исследование 1986 года<em class="fn">2</em>. Два метода лечения камней в почках.</p>
+
+      <div class="case">
+        <span class="lbl">Метод A</span> малые: 93% (81/87) · крупные: 73% (192/263)<br>
+        <span class="lbl">Метод B</span> малые: 87% (234/270) · крупные: 69% (55/80)<br>
+        A лучше в обеих подгруппах.<br>
+        <span class="lbl">агрегат</span> A: 78% (273/350) · B: 83% (289/350) — B выглядит лучше.
+      </div>
+
+      <p>Почему? Конфаундер — тяжесть случая. Врачи чаще назначали более серьёзный метод A пациентам с крупными камнями. Крупные камни лечатся хуже — независимо от метода. Это и перевернуло агрегированную статистику.</p>
+
+      <div class="sub-h">конфаундер — ключ</div>
+
+      <p>Парадокс Симпсона возникает когда: есть переменная (конфаундер) которая коррелирует и с группой и с исходом, и группы неравномерно распределены по конфаундеру<em class="fn">3</em>. Без конфаундера — парадокса нет. Найди конфаундер — поймёшь реальную картину.</p>
+
+      <blockquote>Это делает парадокс Симпсона прямым аргументом за контролируемый эксперимент: рандомизация устраняет конфаундеры по определению. Именно поэтому A/B тест мощнее ретроспективного анализа.</blockquote>
+
+      <div class="sub-h">в продуктовой аналитике</div>
+
+      <p>Метрика retention выросла после редизайна. Смотришь детально: у новых пользователей упала, у старых — выросла. Но новых пользователей после редизайна стало больше. Они «перевесили» в агрегате. Агрегированный retention вырос. Retention для каждой когорты упал или не изменился. Парадокс Симпсона.</p>
+
+      <p>Другой пример: конверсия в целом по сайту выросла. По каналам привлечения — упала в каждом. Просто изменился микс каналов: стало больше органики с высокой конверсией.</p>
+
+      <p>Правило: всегда сегментируй. Агрегированная метрика — это начало анализа, не его конец. Спрашивай: у кого выросло? у кого упало? что изменилось в составе групп?</p>
+
+      <div class="sub-h">как защититься</div>
+
+      <p>1. Найди потенциальные конфаундеры — переменные которые могут коррелировать и с группой и с исходом. 2. Стратифицируй — смотри на результаты внутри однородных подгрупп. 3. Рандомизируй — если возможно. Случайное назначение разрывает связь между конфаундером и группой<em class="fn">4</em>.</p>
+
+      <p>Парадокс Симпсона — не баг статистики. Это сигнал что в данных есть структура которую ты ещё не увидел.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note"><span class="n">[1]</span><span class="t">Беркли 1973 · Bickel P.J., Hammel E.A., O'Connell J.W. · «Sex Bias in Graduate Admissions: Data from Berkeley» · Science · 187 · 1975 · классический пример парадокса Симпсона.</span></div>
+      <div class="note"><span class="n">[2]</span><span class="t">Камни в почках · Charig C.R. et al. · «Comparison of treatment of renal calculi» · British Medical Journal · 292 · 1986.</span></div>
+      <div class="note"><span class="n">[3]</span><span class="t">Симпсон Э.Х. · «The Interpretation of Interaction in Contingency Tables» · Journal of the Royal Statistical Society · 1951 · формальное описание парадокса.</span></div>
+      <div class="note"><span class="n">[4]</span><span class="t">Pearl J., Mackenzie D. · «The Book of Why» · Basic Books · 2018 · каузальный анализ и парадокс Симпсона.</span></div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «агрегированные данные скрывают больше чем показывают.»<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— адаптация из Judea Pearl · The Book of Why · 2018</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="base-rate.html">ошибка базовой частоты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="cognitive-biases.html">когнитивные искажения →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="regression-to-mean.html">регрессия к среднему →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="probability-paradoxes.html">парадоксы вероятностей →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="good-decisions.html">хорошие решения →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/p-value.html">p-value →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/conditional-probability.html">условная вероятность →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/simpson.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
