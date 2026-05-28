@@ -915,6 +915,7 @@
     { "id": "es-benford", "type": "essay", "title": "Закон Бенфорда", "url": "/null/essays/benford.html", "glyph": "¶" },
     { "id": "es-clt", "type": "essay", "title": "Центральная предельная теорема", "url": "/null/essays/clt.html", "glyph": "¶" },
     { "id": "es-simpson", "type": "essay", "title": "Парадокс Симпсона", "url": "/null/essays/simpson.html", "glyph": "¶" },
+    { "id": "math-demoivre", "type": "mathematician", "title": "Абрахам де Муавр", "url": "/null/objects/mathematicians/demoivre.html", "glyph": "∫" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2344,6 +2345,14 @@
     { "from": "es-simpson", "to": "es-prob-paradox" },
     { "from": "es-simpson", "to": "es-good-dec" },
     { "from": "es-simpson", "to": "st-pvalue" },
-    { "from": "es-simpson", "to": "st-condprob" }
+    { "from": "es-simpson", "to": "st-condprob" },
+    { "from": "math-demoivre", "to": "math-bernoulli" },
+    { "from": "math-demoivre", "to": "math-laplace" },
+    { "from": "math-demoivre", "to": "math-gauss" },
+    { "from": "math-demoivre", "to": "math-euler" },
+    { "from": "math-demoivre", "to": "es-clt" },
+    { "from": "math-demoivre", "to": "es-gambling" },
+    { "from": "math-demoivre", "to": "vi-normal" },
+    { "from": "math-demoivre", "to": "vi-gamblers" }
   ]
 }
