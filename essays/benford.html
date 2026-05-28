@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Закон Бенфорда — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h { font-family: var(--font-mono); font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; margin: 26px 0 10px 0; border-top: 1px solid #ddd; padding-top: 14px; }
+  .case { font-family: var(--font-mono); font-size: 12px; color: #111; background: #f0ede8; padding: 10px 14px; margin: 8px 0; line-height: 1.7; }
+  .case .lbl { color: #c44a32; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / закон Бенфорда</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · статистика · парадоксы · ~6 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Закон Бенфорда.</h1>
+    <p style="font-family: var(--font-text); font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">в реальных данных первая цифра числа — не случайна. единица встречается в 30% случаев. девятка — в 5%. это используют для поиска мошенников.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">статистика · распределения · детектирование аномалий</td></tr>
+    <tr><td class="k">читать</td><td class="v">~6 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">нормальное распределение · парадоксы вероятностей · A/B</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">В 1881 году астроном Саймон Ньюком заметил странную вещь<em class="fn">1</em>. Первые страницы логарифмических таблиц были значительно более потрёпаны чем последние. Люди чаще искали числа начинающиеся с 1 чем числа начинающиеся с 9.</p>
+
+      <p>В 1938 году физик Фрэнк Бенфорд проверил это на 20 229 реальных числах<em class="fn">2</em> из совершенно разных источников: площади рек, числа из журнала Reader's Digest, молекулярные веса, данные переписи населения, бейсбольная статистика.</p>
+
+      <p>Результат был одинаковым везде. Первая цифра распределена неравномерно. Единица встречается в ~30% случаев. Двойка — в ~17.6%. И так далее по убывающей. Девятка — лишь в ~4.6%.</p>
+
+      <div class="case">
+        <span class="lbl">P(d) = log₁₀(1 + 1/d)</span> где d — первая цифра от 1 до 9.<br>
+        P(1) = log₁₀(2) ≈ 0.301<br>
+        P(2) = log₁₀(3/2) ≈ 0.176<br>
+        P(9) = log₁₀(10/9) ≈ 0.046
+      </div>
+
+      <div class="sub-h">почему так происходит</div>
+
+      <p>Интуиция: если числа растут экспоненциально — они проводят больше времени в начале каждого порядка. Деньги на счету: начинаешь с $1000. Чтобы дойти до $2000 — нужно вырасти на 100%. Чтобы с $2000 дойти до $3000 — ещё 50%. С $9000 до $10000 — всего 11%.</p>
+
+      <p>При любом темпе роста счёт проводит больше времени с ведущей цифрой 1 чем с ведущей цифрой 9. Закон Бенфорда работает для данных которые: охватывают несколько порядков величины, не ограничены искусственно, являются результатом мультипликативных процессов.</p>
+
+      <p>Цены акций, численность населения, длины рек, финансовые транзакции — всё это подчиняется закону Бенфорда. Телефонные номера, PIN-коды, рост людей — не подчиняются. Они ограничены.</p>
+
+      <div class="sub-h">детектор лжи для бухгалтеров</div>
+
+      <p>Если данные должны подчиняться закону Бенфорда — но не подчиняются — это красный флаг. Мошенники при фальсификации данных обычно выбирают «случайные» числа. Но интуитивно «случайные» числа распределены равномерно по первым цифрам. Закон Бенфорда — нет.</p>
+
+      <p>IRS (налоговая служба США) использует анализ Бенфорда для выявления фальсификаций в налоговых декларациях с 1990-х годов. В 1995 году Марк Ниграни<em class="fn">3</em> — бухгалтер и статистик — разработал специфические тесты на основе закона Бенфорда для аудиторских проверок. Сейчас это стандарт индустрии.</p>
+
+      <blockquote>Выборы в Иране 2009 года — анализ Бенфорда показал аномалии в официальных результатах. Финансовая отчётность Enron — распределение первых цифр отличалось от ожидаемого.<em class="fn">4</em></blockquote>
+
+      <p>Греческие данные для вступления в еврозону — подозрительно равномерное распределение.</p>
+
+      <div class="sub-h">ограничения</div>
+
+      <p>Закон Бенфорда — не универсален. Он не работает для: данных с ограниченным диапазоном (рост людей 150–200 см), данных равномерно распределённых (номера лотерейных билетов), данных специально округлённых (зарплаты кратные 1000), маленьких выборок.</p>
+
+      <p>Аномалия по Бенфорду — не доказательство мошенничества. Это сигнал для более глубокого изучения. Как положительный тест — повод для расследования, не приговор.</p>
+
+      <div class="sub-h">в данных продукта</div>
+
+      <p>Суммы транзакций в e-commerce должны подчиняться закону Бенфорда. Если нет — возможно: тестовые транзакции не убраны, данные обрезаны по какому-то порогу, или что-то нестандартное в бизнес-логике.</p>
+
+      <p>Количество действий пользователей в день — тоже кандидат для проверки. Равномерное распределение первых цифр может означать синтетические данные или боты. Простая проверка: сгруппируй по первой цифре. Сравни с теоретическим распределением Бенфорда. Это занимает пять минут в SQL. И иногда находит очень интересные вещи.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note"><span class="n">[1]</span><span class="t">Ньюком С. · «Note on the Frequency of Use of the Different Digits in Natural Numbers» · American Journal of Mathematics · 1881.</span></div>
+      <div class="note"><span class="n">[2]</span><span class="t">Бенфорд Ф. · «The Law of Anomalous Numbers» · Proceedings of the American Philosophical Society · 78(4) · 1938 · 20 229 наблюдений из 20 источников.</span></div>
+      <div class="note"><span class="n">[3]</span><span class="t">Ниграни М. · «Digital Analysis Using Benford's Law» · Global Audit Publications · 2000 · стандарт аудиторского анализа на основе закона Бенфорда.</span></div>
+      <div class="note"><span class="n">[4]</span><span class="t">Выборы в Иране 2009 · Mebane W.R. · «Note on the Presidential Election in Iran, June 2009» · University of Michigan · 2009.</span></div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «аномалия в первой цифре — это не доказательство. это приглашение к вопросу.»<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— Марк Ниграни · Digital Analysis Using Benford's Law · 2000</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="small-numbers.html">закон малых чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="probability-paradoxes.html">парадоксы вероятностей →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="base-rate.html">ошибка базовой частоты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/clt.html">нормальное распределение →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/normal-distribution.html">нормальное распределение →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/benford.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

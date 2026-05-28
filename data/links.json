@@ -912,6 +912,7 @@
     { "id": "es-base-rate", "type": "essay", "title": "Ошибка базовой частоты", "url": "/null/essays/base-rate.html", "glyph": "¶" },
     { "id": "es-gamb-fall", "type": "essay", "title": "Ошибка игрока", "url": "/null/essays/gamblers-fallacy.html", "glyph": "¶" },
     { "id": "es-small-num", "type": "essay", "title": "Закон малых чисел", "url": "/null/essays/small-numbers.html", "glyph": "¶" },
+    { "id": "es-benford", "type": "essay", "title": "Закон Бенфорда", "url": "/null/essays/benford.html", "glyph": "¶" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2317,6 +2318,12 @@
     { "from": "es-small-num", "to": "es-ab-testing" },
     { "from": "es-small-num", "to": "es-prob-paradox" },
     { "from": "es-small-num", "to": "st-pvalue" },
-    { "from": "es-small-num", "to": "vi-lln" }
+    { "from": "es-small-num", "to": "vi-lln" },
+    { "from": "es-benford", "to": "es-small-num" },
+    { "from": "es-benford", "to": "es-prob-paradox" },
+    { "from": "es-benford", "to": "es-base-rate" },
+    { "from": "es-benford", "to": "es-ab-testing" },
+    { "from": "es-benford", "to": "st-clt" },
+    { "from": "es-benford", "to": "vi-normal" }
   ]
 }
