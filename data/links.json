@@ -913,6 +913,7 @@
     { "id": "es-gamb-fall", "type": "essay", "title": "Ошибка игрока", "url": "/null/essays/gamblers-fallacy.html", "glyph": "¶" },
     { "id": "es-small-num", "type": "essay", "title": "Закон малых чисел", "url": "/null/essays/small-numbers.html", "glyph": "¶" },
     { "id": "es-benford", "type": "essay", "title": "Закон Бенфорда", "url": "/null/essays/benford.html", "glyph": "¶" },
+    { "id": "es-clt", "type": "essay", "title": "Центральная предельная теорема", "url": "/null/essays/clt.html", "glyph": "¶" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2324,6 +2325,16 @@
     { "from": "es-benford", "to": "es-base-rate" },
     { "from": "es-benford", "to": "es-ab-testing" },
     { "from": "es-benford", "to": "st-clt" },
-    { "from": "es-benford", "to": "vi-normal" }
+    { "from": "es-benford", "to": "vi-normal" },
+    { "from": "es-clt", "to": "es-small-num" },
+    { "from": "es-clt", "to": "es-gamb-fall" },
+    { "from": "es-clt", "to": "es-ab-testing" },
+    { "from": "es-clt", "to": "es-kolmogorov" },
+    { "from": "es-clt", "to": "es-gambling" },
+    { "from": "es-clt", "to": "st-clt" },
+    { "from": "es-clt", "to": "st-var" },
+    { "from": "es-clt", "to": "vi-normal" },
+    { "from": "es-clt", "to": "math-laplace" },
+    { "from": "es-clt", "to": "math-gauss" }
   ]
 }

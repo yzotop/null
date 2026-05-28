@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Центральная предельная теорема — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h { font-family: var(--font-mono); font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; margin: 26px 0 10px 0; border-top: 1px solid #ddd; padding-top: 14px; }
+  .case { font-family: var(--font-mono); font-size: 12px; color: #111; background: #f0ede8; padding: 10px 14px; margin: 8px 0; line-height: 1.7; }
+  .case .lbl { color: #c44a32; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / ЦПТ</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · математика · статистика · ~7 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Центральная предельная теорема.</h1>
+    <p style="font-family: var(--font-text); font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">сложи достаточно случайных величин — и получишь нормальное распределение. неважно какое у них исходное распределение. это самый удивительный факт в статистике.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">статистика · вероятность · распределения</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">нормальное распределение · ЗБЧ · A/B · де Муавр</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Брось один кубик. Распределение равномерное — каждое значение от 1 до 6 с вероятностью 1/6. Никакого колокола.</p>
+
+      <p>Брось два кубика. Сложи. Уже не равномерное — семёрка выпадает чаще единицы. Треугольное распределение. Брось десять кубиков. Сложи. Почти идеальный колокол. Брось сто кубиков. Сложи. Нормальное распределение.</p>
+
+      <p>Исходные кубики не изменились — по-прежнему равномерные от 1 до 6. Но их сумма стремится к нормальному распределению. Это и есть центральная предельная теорема.</p>
+
+      <div class="sub-h">формально</div>
+
+      <p>Пусть X₁, X₂, …, Xₙ — независимые одинаково распределённые случайные величины с конечным математическим ожиданием μ и дисперсией σ².</p>
+
+      <div class="case">
+        <span class="lbl">при n→∞:</span><br>
+        (X₁ + X₂ + … + Xₙ − nμ) / (σ√n) → N(0, 1)
+      </div>
+
+      <p>Стандартизованная сумма сходится к стандартному нормальному распределению. Независимо от исходного распределения X. Три условия: независимость, одинаковое распределение, конечная дисперсия. При их выполнении — колокол неизбежен.</p>
+
+      <div class="sub-h">история</div>
+
+      <p>Первый намёк — де Муавр в 1733 году<em class="fn">1</em>. Он заметил что биномиальное распределение при большом n приближается к колоколу. Считал шансы для игроков. Нашёл нормальное распределение.</p>
+
+      <p>Лаплас в 1812 году обобщил результат<em class="fn">2</em>. Гаусс применил к ошибкам измерений в астрономии. Строгое доказательство — Ляпунов в 1901 году<em class="fn">3</em>. Окончательная общая форма — Линдеберг в 1922-м<em class="fn">4</em>. Почти 200 лет от первого наблюдения до строгого доказательства.</p>
+
+      <div class="sub-h">почему колокол везде</div>
+
+      <p>Рост человека — сумма тысяч генетических и средовых факторов. Каждый малый и независимый. ЦПТ предсказывает: нормальное распределение. Так и есть. Ошибки измерений — сумма множества мелких независимых источников погрешности. Нормальное распределение.</p>
+
+      <p>IQ тесты, давление крови, урожайность, размер листьев, время реакции — всё что является суммой многих малых независимых факторов подчиняется ЦПТ.</p>
+
+      <blockquote>Это объясняет почему нормальное распределение так часто встречается в природе. Не потому что природа любит колокол. Потому что природа складывает много малых случайностей.</blockquote>
+
+      <div class="sub-h">что ЦПТ не говорит</div>
+
+      <p>ЦПТ — про суммы и средние. Не про всё подряд. Доходности финансовых активов — не нормальные. У них тяжёлые хвосты: экстремальные события случаются чаще чем предсказывает нормальное распределение. Это называется fat tails. Taleb написал про это книгу.</p>
+
+      <p>Размер городов, богатство людей, число ссылок на веб-страницы — степенные распределения. Не нормальные. ЦПТ не применима когда дисперсия бесконечна. Знать когда ЦПТ работает — так же важно как знать что она работает.</p>
+
+      <div class="sub-h">почему это важно для аналитика</div>
+
+      <p>A/B тесты работают потому что ЦПТ. Среднее по выборке — нормально распределено при достаточном n даже если исходные данные нет. Поэтому можно строить доверительные интервалы и считать p-value. Это фундамент частотной статистики. Без ЦПТ не было бы t-теста, z-теста, доверительных интервалов в том виде в каком они есть.</p>
+
+      <p>Правило большого пальца: n ≥ 30 обычно достаточно для нормального приближения. Но при скошенных распределениях — нужно больше. При бинарных метриках с низкой конверсией — нужно существенно больше.</p>
+
+      <p>Каждый раз когда смотришь на доверительный интервал — ты пользуешься результатом де Муавра, Лапласа, Гаусса и Ляпунова. Они считали кубики и ошибки измерений. Результат лежит в основе современной статистики.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note"><span class="n">[1]</span><span class="t">де Муавр · «Approximatio ad Summam Terminorum Binomii» · 1733 · первое наблюдение нормального приближения к биномиальному распределению.</span></div>
+      <div class="note"><span class="n">[2]</span><span class="t">Лаплас · «Théorie analytique des probabilités» · 1812 · первое общее утверждение ЦПТ.</span></div>
+      <div class="note"><span class="n">[3]</span><span class="t">Ляпунов А.М. · «Nouvelle forme du théorème sur la limite de probabilité» · 1901 · строгое доказательство с условием Ляпунова.</span></div>
+      <div class="note"><span class="n">[4]</span><span class="t">Линдеберг Я.В. · 1922 · наиболее общие условия ЦПТ · условие Линдеберга: слабее условия Ляпунова.</span></div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «центральная предельная теорема — это теорема которая объясняет почему статистика вообще работает.»<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— адаптация из учебников математической статистики</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="small-numbers.html">закон малых чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="gamblers-fallacy.html">ошибка игрока →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="kolmogorov.html">Колмогоров →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="gambling-math.html">как игры породили математику →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/clt.html">CLT →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/variance.html">дисперсия →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/normal-distribution.html">нормальное распределение →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/demoivre.html">де Муавр →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/laplace.html">Лаплас →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/gauss.html">Гаусс →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/clt.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
