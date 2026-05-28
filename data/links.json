@@ -916,6 +916,7 @@
     { "id": "es-clt", "type": "essay", "title": "Центральная предельная теорема", "url": "/null/essays/clt.html", "glyph": "¶" },
     { "id": "es-simpson", "type": "essay", "title": "Парадокс Симпсона", "url": "/null/essays/simpson.html", "glyph": "¶" },
     { "id": "math-demoivre", "type": "mathematician", "title": "Абрахам де Муавр", "url": "/null/objects/mathematicians/demoivre.html", "glyph": "∫" },
+    { "id": "math-huygens", "type": "mathematician", "title": "Христиан Гюйгенс", "url": "/null/objects/mathematicians/huygens.html", "glyph": "E[X]" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2353,6 +2354,15 @@
     { "from": "math-demoivre", "to": "es-clt" },
     { "from": "math-demoivre", "to": "es-gambling" },
     { "from": "math-demoivre", "to": "vi-normal" },
-    { "from": "math-demoivre", "to": "vi-gamblers" }
+    { "from": "math-demoivre", "to": "vi-gamblers" },
+    { "from": "math-huygens", "to": "math-pascal" },
+    { "from": "math-huygens", "to": "math-bernoulli" },
+    { "from": "math-huygens", "to": "math-demoivre" },
+    { "from": "math-huygens", "to": "math-laplace" },
+    { "from": "math-huygens", "to": "es-five-lett" },
+    { "from": "math-huygens", "to": "es-gambling" },
+    { "from": "math-huygens", "to": "es-clt" },
+    { "from": "math-huygens", "to": "st-ev" },
+    { "from": "math-huygens", "to": "vi-gamblers" }
   ]
 }
