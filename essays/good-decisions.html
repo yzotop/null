@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Хорошие решения с плохими исходами — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .sub-h {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px 0;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / хорошие решения</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · статистика · решения · ~7 минут · 2026.05</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">Хорошие решения с плохими исходами.</h1>
+    <p style="font-family: var(--font-text); font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">правильное решение может дать плохой результат. плохое решение может дать хороший результат. если оценивать решения по исходам — учишься неправильному.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">теория решений · вероятность · поведенческие ошибки</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">EV · prospect theory · A/B тестирование · искажения</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Представь: ты в покере. В руках туз-туз. Противник ставит олл-ин до флопа. Ты колируешь. Правильно. Противник открывает 7-2 — худшая рука в покере. Выпадает 7-7-2. Он выигрывает.</p>
+
+      <p>Ты принял правильное решение. Получил плохой исход. Это не неудача. Это дисперсия.</p>
+
+      <p>В покере это называется resulting<em class="fn">1</em> — ошибка оценивать качество решения по качеству исхода. Новичок после такой раздачи думает: «зря заколировал». Профессионал думает: «колл был верным, продолжаю».</p>
+
+      <p>Разрыв между качеством решения и качеством исхода<em class="fn">2</em> — один из самых важных концептов в аналитике. И один из самых недооценённых.</p>
+
+      <div class="sub-h">EV и дистанция</div>
+
+      <p>EV — математическое ожидание. Средний результат если повторять решение бесконечно много раз. E[X] = Σ xᵢ × P(xᵢ). Каждое отдельное событие — это выборка из распределения. Одна точка ничего не говорит о качестве решения. Нужна дистанция.</p>
+
+      <p>Пример: инвестируешь в стартап. 90% вероятность потерять всё. 10% вероятность получить 20x. EV = 0.1 × 20 − 0.9 × 1 = 2 − 0.9 = +1.1x. Положительный EV. Правильная инвестиция. В 90% случаев ты потеряешь деньги. Это не значит что решение было неверным.</p>
+
+      <p>Венчурный фонд делает 100 таких ставок. 10 выстреливают. 90 умирают. Портфель растёт. ЗБЧ работает<em class="fn">3</em>. Один инвестор делает одну такую ставку. Скорее всего теряет деньги. Это тоже не значит что решение было неверным. Просто дистанция слишком короткая чтобы судить.</p>
+
+      <div class="sub-h">resulting в продукте</div>
+
+      <p>A/B тест. Гипотеза обоснована данными. Размер выборки достаточный. p-value &lt; 0.05. Запускаешь фичу. Метрика падает.</p>
+
+      <p>Resulting-мышление: «гипотеза была неверной». Правильное мышление: «один исход из распределения. проверь external validity. проверь implementation. посмотри на долгосрочные данные».</p>
+
+      <p>Обратный случай опаснее. Плохая гипотеза. Маленькая выборка. Метрика выросла. Resulting-мышление: «отличная фича, масштабируем». Правильное мышление: «возможно ложноположительный результат. нужна валидация».</p>
+
+      <p>В 2011 году Facebook запустил алгоритм показа новостей оптимизированный на engagement. Метрики росли квартал за кварталом. Хорошие исходы. Каждый отдельный тест — успех. Долгосрочный эффект на поведение пользователей — другой разговор.</p>
+
+      <div class="sub-h">медицина</div>
+
+      <p>Врач назначает лечение с 70% вероятностью успеха. Пациент умирает. Врач принял правильное решение. Именно поэтому в медицине существуют протоколы. Не потому что врачи не умеют думать. Потому что один исход — не доказательство. Нужна статистика по тысячам пациентов.</p>
+
+      <blockquote>Resulting в медицине убивает. Врач видит что нестандартное лечение помогло одному пациенту — и начинает применять его всем. Это и есть обучение на плохих данных.</blockquote>
+
+      <div class="sub-h">как думать правильно</div>
+
+      <p>Разделить два вопроса: 1. Было ли решение верным с учётом информации доступной в момент решения? 2. Каким оказался исход? Только первый вопрос позволяет учиться. Второй вопрос — просто факт реализовавшейся случайности.</p>
+
+      <p>Инструменты. Pre-mortem<em class="fn">4</em>: до принятия решения спроси «что должно произойти чтобы это решение оказалось неверным». Это отделяет качество решения от везения.</p>
+
+      <p>Процессный учёт: записывай не только исходы но и логику решения в момент принятия. Через полгода сравни логику с тем что произошло.</p>
+
+      <p>Достаточная дистанция: не оценивай стратегию по одному кварталу. не оценивай гипотезу по одному тесту. не оценивай инвестора по одной сделке.</p>
+
+      <p>Байесовское обновление: новый исход — это новые данные для обновления prior. Не революция. Эволюция.</p>
+
+      <p>Казино понимает это лучше большинства аналитиков. House edge рулетки — 2.7%. Казино не выигрывает каждую ставку. Казино выигрывает на дистанции — потому что делает достаточно ставок чтобы дисперсия усреднилась.</p>
+
+      <p>Хорошее мышление работает так же. Принимай решения с положительным EV. Принимай их достаточно много раз. Не оценивай каждое по исходу. Смотри на распределение.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note">
+        <span class="n">[1]</span>
+        <span class="t">Resulting · термин из покерной культуры · популяризирован Энни Дьюк — профессиональным игроком в покер и поведенческим аналитиком · «Thinking in Bets» · Portfolio/Penguin · 2018.</span>
+      </div>
+      <div class="note">
+        <span class="n">[2]</span>
+        <span class="t">Разрыв решение/исход · связан с luck vs skill decomposition · Michael Mauboussin · «The Success Equation» · HBR Press · 2012.</span>
+      </div>
+      <div class="note">
+        <span class="n">[3]</span>
+        <span class="t">Дисперсия и EV · при положительном EV и высокой дисперсии нужна большая выборка для статистически значимого результата · именно поэтому венчурные фонды диверсифицируют портфели.</span>
+      </div>
+      <div class="note">
+        <span class="n">[4]</span>
+        <span class="t">Pre-mortem · Gary Klein · «Performing a Project Premortem» · Harvard Business Review · 2007.</span>
+      </div>
+    </aside>
+  </div>
+
+  <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">
+    «качество решения должно оцениваться по процессу который привёл к нему — а не по его исходу.»<br>
+    <span style="font-style: normal; font-size: 12px; color: #888; font-family: var(--font-mono);">— Энни Дьюк · Thinking in Bets · 2018</span>
+  </blockquote>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/ev.html">EV →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="prospect-theory.html">prospect theory →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="cognitive-biases.html">когнитивные искажения →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="regression-to-mean.html">регрессия к среднему →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="expected-value.html">математика решений →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="two-systems.html">две системы →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/good-decisions.html</span>
+  <a href="../man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

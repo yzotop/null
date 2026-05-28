@@ -908,6 +908,7 @@
     { "id": "es-monte-carlo", "type": "essay", "title": "От пасьянса к атомной бомбе",           "url": "/null/essays/monte-carlo.html",     "glyph": "¶" },
     { "id": "math-fermat", "type": "mathematician", "title": "Пьер де Ферма", "url": "/null/objects/mathematicians/fermat.html", "glyph": "xⁿ" },
     { "id": "es-games-math", "type": "essay", "title": "Игры которые построили математику", "url": "/null/essays/games-and-math.html", "glyph": "¶" },
+    { "id": "es-good-dec", "type": "essay", "title": "Хорошие решения с плохими исходами", "url": "/null/essays/good-decisions.html", "glyph": "¶" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2285,6 +2286,13 @@
     { "from": "es-games-math", "to": "vi-gamblers" },
     { "from": "es-games-math", "to": "math-pascal" },
     { "from": "es-games-math", "to": "math-bernoulli" },
-    { "from": "es-games-math", "to": "math-fermat" }
+    { "from": "es-games-math", "to": "math-fermat" },
+    { "from": "es-good-dec", "to": "st-ev" },
+    { "from": "es-good-dec", "to": "es-prospect" },
+    { "from": "es-good-dec", "to": "es-ab-testing" },
+    { "from": "es-good-dec", "to": "es-cog-biases" },
+    { "from": "es-good-dec", "to": "es-regression" },
+    { "from": "es-good-dec", "to": "es-ev" },
+    { "from": "es-good-dec", "to": "es-two-systems" }
   ]
 }
