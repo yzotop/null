@@ -922,6 +922,7 @@
     { "id": "es-poker-bayes",   "type": "essay", "title": "Байес за столом",                   "url": "/null/essays/poker-bayes.html",   "glyph": "¶" },
     { "id": "es-poker-exploit", "type": "essay", "title": "Эксплойт против равновесия",        "url": "/null/essays/poker-exploit.html", "glyph": "¶" },
     { "id": "es-poker-solvers", "type": "essay", "title": "До солверов. Что мы потеряли",      "url": "/null/essays/poker-solvers.html", "glyph": "¶" },
+    { "id": "es-poker-glossary", "type": "essay", "title": "Глоссарий покера и его математики", "url": "/null/objects/poker-glossary.html", "glyph": "♠" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2393,6 +2394,16 @@
     { "from": "es-poker-exploit", "to": "es-good-dec" },
     { "from": "es-poker-solvers", "to": "es-poker-basics" },
     { "from": "es-poker-solvers", "to": "es-poker-exploit" },
-    { "from": "es-poker-solvers", "to": "es-proof" }
+    { "from": "es-poker-solvers", "to": "es-proof" },
+    { "from": "es-poker-glossary", "to": "es-poker-basics" },
+    { "from": "es-poker-glossary", "to": "es-poker-kelly" },
+    { "from": "es-poker-glossary", "to": "es-poker-bayes" },
+    { "from": "es-poker-glossary", "to": "es-poker-exploit" },
+    { "from": "es-poker-glossary", "to": "es-poker-solvers" },
+    { "from": "es-poker-glossary", "to": "st-ev" },
+    { "from": "es-poker-glossary", "to": "es-ev" },
+    { "from": "es-poker-glossary", "to": "phi" },
+    { "from": "es-poker-glossary", "to": "es-bayesian" },
+    { "from": "es-poker-glossary", "to": "es-game-theory-full" }
   ]
 }
