@@ -925,6 +925,7 @@
     { "id": "es-poker-glossary", "type": "essay", "title": "Глоссарий покера и его математики", "url": "/null/objects/poker-glossary.html", "glyph": "♠" },
     { "id": "es-games-train", "type": "essay", "title": "Игры которые тренируют машины", "url": "/null/essays/games-that-train-machines.html", "glyph": "¶" },
     { "id": "gt-nash", "type": "gametheory", "title": "равновесие Нэша", "url": "/null/objects/game-theory/nash-equilibrium.html", "glyph": "σ*" },
+    { "id": "gt-minimax", "type": "gametheory", "title": "теорема о минимаксе", "url": "/null/objects/game-theory/minimax.html", "glyph": "max−min" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2423,6 +2424,14 @@
     { "from": "es-game-theory", "to": "gt-nash" },
     { "from": "es-game-theory-full", "to": "gt-nash" },
     { "from": "es-poker-exploit", "to": "gt-nash" },
-    { "from": "es-poker-glossary", "to": "gt-nash" }
+    { "from": "es-poker-glossary", "to": "gt-nash" },
+    { "from": "gt-minimax", "to": "gt-nash" },
+    { "from": "gt-nash", "to": "gt-minimax" },
+    { "from": "gt-minimax", "to": "st-ev" },
+    { "from": "gt-minimax", "to": "es-game-theory-full" },
+    { "from": "gt-minimax", "to": "es-poker-exploit" },
+    { "from": "gt-minimax", "to": "es-poker-basics" },
+    { "from": "gt-minimax", "to": "es-games-train" },
+    { "from": "gt-minimax", "to": "es-poker-glossary" }
   ]
 }

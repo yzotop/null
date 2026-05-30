@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>max−min — null/objects/game-theory</title>
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / game-theory / max−min</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:36px;letter-spacing:-0.01em;"><em style="font-family:'Old Standard TT',Georgia,serif;font-style:italic;">max−min</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">game-theory · №002</div>
+      <div class="obj-title">теорема о минимаксе</div>
+      <div class="obj-subtitle">minimax · минимизируй свой максимально возможный проигрыш</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">max min = min max</td></tr>
+    <tr><td class="k">определение</td><td class="v">в антагонистической игре двух лиц существует пара стратегий, гарантирующих каждому наилучший из худших исходов; величина этой гарантии для обоих совпадает</td></tr>
+    <tr><td class="k">ввёл</td><td class="v">Джон фон Нейман · 1928 · «Zur Theorie der Gesellschaftsspiele»</td></tr>
+    <tr><td class="k">свойства</td><td class="v">верна для конечных игр двух лиц с нулевой суммой · в смешанных стратегиях минимум всегда достигается · частный случай равновесия Нэша</td></tr>
+    <tr><td class="k">связано</td><td class="v">равновесие Нэша · смешанная стратегия · дилемма заключённого · GTO</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~470 слов · 4 мин</div>
+    <h2 class="essay-title">Лучший из худших <em>исходов</em>.</h2>
+    <p class="essay-lead">защитная стратегия: не «как выиграть больше», а «как сделать так, чтобы худшее было не так плохо».</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Минимакс — про игру, где интересы строго противоположны: что выигрывает один, ровно то проигрывает другой. Покер один на один, шахматы, делёж — антагонистические игры с нулевой суммой. В такой игре фон Нейман задал вопрос наоборот: не «какой ход принесёт максимум», а «какой ход гарантирует, что мой максимальный возможный проигрыш будет наименьшим».</p>
+
+        <p>Логика такая. Для каждой своей стратегии посмотри на худшее, что может случиться, если соперник ответит идеально против тебя. Получишь набор «худших исходов» — по одному на каждую твою стратегию. Минимакс говорит: выбери ту стратегию, у которой худший исход наименее плох. Ты не гонишься за лучшим — ты страхуешься от наихудшего.</p>
+
+        <p>Удивительное в теореме фон Неймана (1928) вот что: в антагонистической игре двух лиц эта осторожная, оборонительная величина для одного игрока в точности равна такой же осторожной величине для другого<em class="fn">1</em>. Максимум из минимумов одного равен минимуму из максимумов другого: <code>max min = min max</code>. Есть единственное число — цена игры — и пара стратегий, которые её гарантируют обоим. Точка, где обе обороны встречаются.</p>
+
+        <blockquote>Рандомизация — не трюк, а математическая необходимость. В чистых стратегиях седловой точки может не быть; в смешанных она существует всегда.</blockquote>
+
+        <p>Но есть тонкость, без которой теорема не работает. Если разрешены только чистые ходы (всегда делай одно и то же), такой точки может не быть. Она появляется, только если разрешить <strong>смешанные стратегии</strong> — играть по вероятностям, рандомизируя ходы. Камень-ножницы-бумага: любой предсказуемый выбор бьётся, а вот «каждое с вероятностью 1/3» нельзя проэксплуатировать. Это и есть минимаксная стратегия игры, и существует она только в смешанном виде<em class="fn">2</em>.</p>
+
+        <p>Через 22 года Джон Нэш обобщил это на любое число игроков и на игры, где интересы не строго противоположны. Равновесие Нэша — потомок минимакса; а для антагонистических игр двух лиц они совпадают<em class="fn">3</em>. Минимакс — это теория игр в зачаточной, самой чистой форме: два врага, ноль доверия, оборона как оптимум.</p>
+
+        <p>В покере минимакс — это душа GTO. Стратегия равновесия не пытается обыграть соперника — она гарантирует, что соперник не обыграет тебя, как бы хорошо ни играл. Лучший из худших исходов: ты неуязвим, но и не максимизируешь против слабого. Поэтому профи, садясь против сильного незнакомца, играет минимакс (защита), а против слабого — отклоняется (атака).</p>
+
+        <p>И тот же скелет — далеко за играми. «Минимизируй максимальный убыток» — это робастная оптимизация в инженерии, худший сценарий в риск-менеджменте, антифрод, дизайн систем, которые должны держать удар при любом поведении среды. Везде, где нельзя предположить, что противник или мир будут добры, минимакс отвечает: готовься к худшему ответу и сделай его терпимым.</p>
+
+        <p>Фон Нейман искал, как не проиграть. Получил математику гарантированной безопасности — и с неё началась вся теория игр.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">John von Neumann · «Zur Theorie der Gesellschaftsspiele» · Mathematische Annalen · 1928. Первое доказательство теоремы о минимаксе для игр двух лиц с нулевой суммой.</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">Минимаксное решение существует в смешанных стратегиях (распределениях вероятностей над ходами); в чистых стратегиях седловая точка может отсутствовать.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">John Nash · 1950 · обобщение на n игроков и игры с ненулевой суммой. Для антагонистических игр двух лиц равновесие Нэша совпадает с минимаксом фон Неймана.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="nash-equilibrium.html">равновесие Нэша →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><span style="color:#999;">дилемма заключённого → <em style="color:#bbb;">скоро</em></span></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../statistics/ev.html">математическое ожидание →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/poker-exploit.html">Эксплойт против равновесия →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/game-theory-full.html">теория игр →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/games-that-train-machines.html">Игры которые тренируют машины →</a></div>
+      <div class="related-link"><span class="related-link-type">глоссарий</span><a href="../poker-glossary.html#gl-minimax">минимакс →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">теория игр</span><a href="/null/objects/game-theory/nash-equilibrium.html">равновесие Нэша →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/game-theory/minimax.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
