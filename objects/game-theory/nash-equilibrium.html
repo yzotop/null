@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>σ* — null/objects/game-theory</title>
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / game-theory / σ*</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:48px;"><em style="font-family:'Old Standard TT',Georgia,serif;font-style:italic;">σ*</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">game-theory · №001</div>
+      <div class="obj-title">равновесие Нэша</div>
+      <div class="obj-subtitle">Nash equilibrium · профиль стратегий, от которого невыгодно отклоняться в одиночку</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">σ* или (s₁*, …, sₙ*)</td></tr>
+    <tr><td class="k">определение</td><td class="v">профиль стратегий, в котором ни один игрок не может увеличить свой выигрыш, изменив только свою стратегию</td></tr>
+    <tr><td class="k">ввёл</td><td class="v">Джон Нэш · 1950 · «Equilibrium Points in N-Person Games»</td></tr>
+    <tr><td class="k">свойства</td><td class="v">существует для любой конечной игры (в смешанных стратегиях) · для игр двух лиц с нулевой суммой совпадает с минимаксом</td></tr>
+    <tr><td class="k">связано</td><td class="v">минимакс · дилемма заключённого · смешанная стратегия · GTO</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~480 слов · 4 мин</div>
+    <h2 class="essay-title">Точка, из которой невыгодно уходить.</h2>
+    <p class="essay-lead">равновесие — это не лучший исход. это исход, который никто не станет менять в одиночку.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Равновесие Нэша — набор стратегий всех игроков, при котором ни одному не выгодно менять свою стратегию, пока остальные не меняют свои. Каждый играет лучший ответ на то, что делают другие. Поэтому никто не хочет двигаться — и система застывает.</p>
+
+        <p>Классический пример — дилемма заключённого. Двое могут молчать или предать. Если молчат оба — обоим хорошо (по году тюрьмы). Но каждому по отдельности выгоднее предать: что бы ни сделал второй, предательство даёт меньший срок лично тебе. Поэтому единственное равновесие — оба предают, и оба получают по три года. Хуже, чем если бы молчали.</p>
+
+        <p>Это и есть главная мысль про равновесие: <strong>оно стабильно, но не обязательно хорошо.</strong> Точка, из которой невыгодно уходить поодиночке, может быть плохой для всех сразу. «Стабильное» и «оптимальное» — разные слова.</p>
+
+        <blockquote>Нэш описал не то, как игроки <em>должны</em> играть. Он описал, где они неизбежно застрянут.</blockquote>
+
+        <p>Нэш в 1950 году доказал то, что сделало понятие универсальным: в любой конечной игре существует хотя бы одно равновесие — если разрешить смешанные стратегии, то есть игру по вероятностям, а не по одному фиксированному ходу<em class="fn">1</em>. Доказательство опиралось на теорему о неподвижной точке: всегда есть конфигурация, которая отображается сама в себя. Это превратило теорию игр из набора частных случаев в общую науку и принесло Нэшу Нобелевскую премию по экономике в 1994 году<em class="fn">2</em>.</p>
+
+        <p>Частный случай был известен раньше. Для антагонистических игр двух лиц — где выигрыш одного есть проигрыш другого — равновесие совпадает с минимаксом фон Неймана (1928): минимизируй свой максимально возможный проигрыш<em class="fn">3</em>. Нэш обобщил это на любое число игроков и на игры, где интересы не строго противоположны, а частично совпадают.</p>
+
+        <p>В покере равновесие Нэша носит имя GTO — game theory optimal. Игрок, играющий равновесие, неуязвим: его нельзя обыграть на дистанции, что бы ни делал соперник. Но ровно поэтому он и не максимизирует прибыль против слабого соперника — равновесие защищает, а не атакует. Чтобы выжать максимум, приходится сознательно уходить из равновесия и становиться уязвимым. Этот размен — отдельная история.</p>
+
+        <p>За пределами игр равновесие Нэша описывает любую устойчивую конкурентную ситуацию, где односторонний шаг невыгоден: ценовые войны (никто не поднимает цену первым), гонку вооружений (никто не разоружается первым), переполненные дороги (никто не выигрывает, сменив маршрут в одиночку). Везде, где много участников оптимизируют каждый своё, система сползает в равновесие — и оно часто хуже того, чего можно было бы достичь сообща.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">John Nash · «Equilibrium Points in N-Person Games» · Proceedings of the National Academy of Sciences · 1950. Доказательство существования через теорему о неподвижной точке (Какутани).</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">Нобелевская премия по экономике 1994 — Нэш, Харсаньи, Зельтен — за анализ равновесий в теории некооперативных игр.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">John von Neumann · теорема о минимаксе · 1928. Равновесие для антагонистических игр двух лиц — частный случай равновесия Нэша.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><span style="color:#999;">минимакс → <em style="color:#bbb;">скоро</em></span></div>
+      <div class="related-link"><span class="related-link-type">задача</span><span style="color:#999;">дилемма заключённого → <em style="color:#bbb;">скоро</em></span></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../statistics/ev.html">математическое ожидание →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/game-theory-full.html">теория игр →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/poker-exploit.html">Эксплойт против равновесия →</a></div>
+      <div class="related-link"><span class="related-link-type">глоссарий</span><a href="../poker-glossary.html#gl-nash">GTO, равновесие Нэша →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/objects/poker-glossary.html">Глоссарий покера и его математики →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/game-theory.html">Математика предательства · теория игр →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/poker-basics.html">Покер. Как профи считают в голове →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/game-theory-full.html">Теория игр · полная →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/poker-exploit.html">Эксплойт против равновесия →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/game-theory/nash-equilibrium.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

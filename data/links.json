@@ -924,6 +924,7 @@
     { "id": "es-poker-solvers", "type": "essay", "title": "До солверов. Что мы потеряли",      "url": "/null/essays/poker-solvers.html", "glyph": "¶" },
     { "id": "es-poker-glossary", "type": "essay", "title": "Глоссарий покера и его математики", "url": "/null/objects/poker-glossary.html", "glyph": "♠" },
     { "id": "es-games-train", "type": "essay", "title": "Игры которые тренируют машины", "url": "/null/essays/games-that-train-machines.html", "glyph": "¶" },
+    { "id": "gt-nash", "type": "gametheory", "title": "равновесие Нэша", "url": "/null/objects/game-theory/nash-equilibrium.html", "glyph": "σ*" },
     { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
     { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
     { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
@@ -2413,6 +2414,15 @@
     { "from": "es-games-train", "to": "es-poker-bayes" },
     { "from": "es-games-train", "to": "es-poker-solvers" },
     { "from": "es-poker-bayes", "to": "es-games-train" },
-    { "from": "es-poker-solvers", "to": "es-games-train" }
+    { "from": "es-poker-solvers", "to": "es-games-train" },
+    { "from": "gt-nash", "to": "st-ev" },
+    { "from": "gt-nash", "to": "es-game-theory-full" },
+    { "from": "gt-nash", "to": "es-poker-exploit" },
+    { "from": "gt-nash", "to": "es-poker-glossary" },
+    { "from": "es-poker-basics", "to": "gt-nash" },
+    { "from": "es-game-theory", "to": "gt-nash" },
+    { "from": "es-game-theory-full", "to": "gt-nash" },
+    { "from": "es-poker-exploit", "to": "gt-nash" },
+    { "from": "es-poker-glossary", "to": "gt-nash" }
   ]
 }
