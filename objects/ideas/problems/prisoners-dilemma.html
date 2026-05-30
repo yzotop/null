@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>дилемма заключённого — null/objects/problems</title>
+<link rel="stylesheet" href="../../../styles/main.css">
+<style>
+  .payoff {
+    margin: 28px auto;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .payoff td, .payoff th {
+    border: 1px solid #ddd;
+    padding: 10px 16px;
+    text-align: center;
+    color: #333;
+  }
+  .payoff th { background: #f0ede8; color: #888; font-weight: 500; letter-spacing: .04em; }
+  .payoff .eq { color: var(--accent-red); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / ideas / problems / дилемма заключённого</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:38px;letter-spacing:-0.02em;"><em style="font-family:'Old Standard TT',Georgia,serif;font-style:italic;">(D,D)</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">задача · теория игр</div>
+      <div class="obj-title">дилемма заключённого</div>
+      <div class="obj-subtitle">prisoner's dilemma · рациональность каждого ведёт к худшему для всех</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">(D, D) — оба предают</td></tr>
+    <tr><td class="k">определение</td><td class="v">игра, где предательство выгоднее молчания при любом ходе соперника, но взаимное молчание лучше взаимного предательства для обоих</td></tr>
+    <tr><td class="k">сформулировал</td><td class="v">Меррилл Флад и Мелвин Дрешер · 1950 · RAND; формулировку-историю придумал Альберт Такер</td></tr>
+    <tr><td class="k">свойства</td><td class="v">единственное равновесие Нэша — взаимное предательство · оно хуже кооперативного исхода для обоих · в повторённой игре кооперация может стать устойчивой</td></tr>
+    <tr><td class="k">связано</td><td class="v">равновесие Нэша · минимакс · теория игр · око за око</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~460 слов · 4 мин</div>
+    <h2 class="essay-title">Когда умные проигрывают <em>вместе</em>.</h2>
+    <p class="essay-lead">самая известная игра в мире. показывает, что «разумно для каждого» и «хорошо для всех» — разные вещи.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Двух подельников взяли и развели по камерам. Каждому предлагают сделку: сдай напарника. Расклад такой. Молчат оба — по году каждому (улик мало). Один сдаёт, другой молчит — стукач выходит на свободу, молчун получает десять лет. Сдают оба — по три года.</p>
+
+        <table class="payoff">
+          <tr><th></th><th>B молчит (C)</th><th>B предаёт (D)</th></tr>
+          <tr><th>A молчит (C)</th><td>−1, −1</td><td>−10, 0</td></tr>
+          <tr><th>A предаёт (D)</th><td>0, −10</td><td class="eq">−3, −3 ← (D,D)</td></tr>
+        </table>
+
+        <p>Теперь рассуждай за одного. Что бы ни делал напарник, тебе выгоднее предать. Если он молчит — предав, ты выходишь на свободу вместо года. Если он предаёт — предав, ты получаешь три года вместо десяти. Предательство выигрывает в обоих случаях. Так же думает второй. Оба предают — оба получают по три года. Хотя, промолчав, отделались бы годом.</p>
+
+        <p>Вот в чём укус: <strong>каждый поступил безупречно рационально, и вместе они пришли к исходу, который хуже для обоих.</strong> Это не ошибка игроков. Предать — действительно лучший индивидуальный ход. Плохой исход встроен в саму структуру игры.</p>
+
+        <blockquote>Умные, эгоистичные и совершенно рациональные участники способны дружно прийти туда, куда никто из них не хотел.</blockquote>
+
+        <p>На языке теории игр (D, D) — взаимное предательство — это единственное равновесие Нэша<em class="fn">1</em>. Точка, из которой ни одному невыгодно уходить в одиночку: если ты вдруг замолчишь, а напарник продолжит предавать, тебе станет только хуже. Стабильно — и при этом коллективно провально. Дилемма заключённого стала каноническим доказательством того, что равновесие и оптимум — разные вещи.</p>
+
+        <p>И она повсюду, как только присмотришься. Гонка вооружений: обеим странам лучше разоружиться, но каждой по отдельности выгоднее вооружаться — и обе вооружаются. Реклама конкурентов: всем дешевле не тратиться, но каждый боится уступить — и все жгут бюджеты. Переэксплуатация общего ресурса, допинг в спорте, ценовые войны — всюду один скелет: индивидуальная рациональность выедает общее благо.</p>
+
+        <p>Но есть выход, и он красив. Всё меняется, если игра не одна, а повторяется много раз и игроки встретятся снова. Тогда предательство сегодня аукнется местью завтра, и кооперация становится рационально устойчивой. В 1980-м Роберт Аксельрод устроил турнир компьютерных стратегий для повторённой дилеммы. Победила самая простая — «око за око»: начни с доверия, дальше повторяй последний ход соперника<em class="fn">2</em>. Дружелюбная (не предаёт первой), но не наивная (мстит сразу), и отходчивая (прощает после возврата к кооперации). Будущее, в котором придётся встретиться снова, превращает врагов в партнёров — без всякого альтруизма, на чистой математике.</p>
+
+        <p>Это и есть мост к покеру и к жизни. Разовая сделка с незнакомцем и многолетние отношения — структурно разные игры, даже если ставки одинаковы. В первой рационально предать. Во второй — сотрудничать. Тень будущего меняет всё.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Игру придумали Меррилл Флад и Мелвин Дрешер в RAND в 1950; «тюремную» формулировку и название дал Альберт Такер. (D, D) — доминирующее равновесие.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Robert Axelrod · «The Evolution of Cooperation» · 1984. Турниры повторённой дилеммы; победа стратегии tit-for-tat («око за око»).</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../../game-theory/nash-equilibrium.html">равновесие Нэша →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../../game-theory/minimax.html">минимакс →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="monty-hall.html">парадокс Монти Холла →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../../essays/game-theory.html">Математика предательства →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../../essays/game-theory-full.html">теория игр →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../../essays/poker-exploit.html">Эксплойт против равновесия →</a></div>
+      <div class="related-link"><span class="related-link-type">глоссарий</span><a href="../../poker-glossary.html#gl-nash">равновесие Нэша →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">теория игр</span><a href="/null/objects/game-theory/nash-equilibrium.html">равновесие Нэша →</a></div>
+      <div class="related-link"><span class="related-link-type">теория игр</span><a href="/null/objects/game-theory/minimax.html">теорема о минимаксе →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/ideas/problems/prisoners-dilemma.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

@@ -232,6 +232,13 @@
       "glyph": "∅"
     },
     {
+      "id": "pr-prisoners",
+      "type": "problem",
+      "title": "дилемма заключённого",
+      "url": "/null/objects/ideas/problems/prisoners-dilemma.html",
+      "glyph": "(D,D)"
+    },
+    {
       "id": "es-zero-nine",
       "type": "essay",
       "title": "0.999… = 1",
@@ -2432,6 +2439,15 @@
     { "from": "gt-minimax", "to": "es-poker-exploit" },
     { "from": "gt-minimax", "to": "es-poker-basics" },
     { "from": "gt-minimax", "to": "es-games-train" },
-    { "from": "gt-minimax", "to": "es-poker-glossary" }
+    { "from": "gt-minimax", "to": "es-poker-glossary" },
+    { "from": "pr-prisoners", "to": "gt-nash" },
+    { "from": "pr-prisoners", "to": "gt-minimax" },
+    { "from": "gt-nash", "to": "pr-prisoners" },
+    { "from": "gt-minimax", "to": "pr-prisoners" },
+    { "from": "pr-prisoners", "to": "pr-monty" },
+    { "from": "pr-prisoners", "to": "es-game-theory" },
+    { "from": "pr-prisoners", "to": "es-game-theory-full" },
+    { "from": "pr-prisoners", "to": "es-poker-exploit" },
+    { "from": "pr-prisoners", "to": "es-poker-glossary" }
   ]
 }
