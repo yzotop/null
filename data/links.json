@@ -4933,6 +4933,18 @@
     {
       "from": "es-markov",
       "to": "es-markov-deep"
+    },
+    {
+      "from": "th-markov",
+      "to": "es-markov-deep"
+    },
+    {
+      "from": "es-markov",
+      "to": "th-markov"
+    },
+    {
+      "from": "vi-markov",
+      "to": "th-markov"
     }
   ]
 }
