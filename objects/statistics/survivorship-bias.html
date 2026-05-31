@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>▣ — null/objects/statistics</title>
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / statistics / ▣</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:52px;"><em style="font-family:'Old Standard TT',Georgia,serif;font-style:italic;">▣</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">статистика · №020</div>
+      <div class="obj-title">ошибка выжившего</div>
+      <div class="obj-subtitle">survivorship bias · мы старательно изучаем тех, кто дошёл, и не замечаем тех, кого уже нет</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">видимое ≠ вся выборка</td></tr>
+    <tr><td class="k">определение</td><td class="v">систематическая ошибка от анализа только «выживших» объектов при невидимости отсеявшихся</td></tr>
+    <tr><td class="k">прославил</td><td class="v">Абрахам Вальд · 1943</td></tr>
+    <tr><td class="k">свойства</td><td class="v">искажает любую выборку с отсевом · тем опаснее, чем незаметнее пропавшие · лечится вопросом «кого здесь нет?»</td></tr>
+    <tr><td class="k">связано</td><td class="v">дисперсия · размер эффекта · условная вероятность · база</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~450 слов · 4 мин</div>
+    <h2 class="essay-title">Бронируй там, где дыр <em>нет</em>.</h2>
+    <p class="essay-lead">самая коварная ошибка в работе с данными: делать выводы по тем, кто дошёл до тебя, забыв про тех, кто не дошёл.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Вторая мировая. Американская авиация хочет усилить броню бомбардировщиков, но броня тяжёлая — нельзя бронировать всё. Военные осматривают вернувшиеся самолёты, наносят на схему пробоины и видят: больше всего дыр на крыльях и фюзеляже, меньше — на двигателях. Логичный вывод: бронируй крылья и фюзеляж, там попадают чаще.</p>
+
+        <p>Математик Абрахам Вальд сказал: ровно наоборот<em class="fn">1</em>. Бронировать надо двигатели — там, где у вернувшихся самолётов пробоин почти нет. Потому что осматривают только тех, кто <strong>вернулся</strong>. Самолёты, получившие попадание в двигатель, не долетели обратно — их просто нет в выборке. Отсутствие пробоин на двигателях у выживших означает не что туда не попадают, а что попадание туда смертельно. Дыры на вернувшихся — это карта мест, куда можно получить и выжить.</p>
+
+        <p>В этом вся ошибка выжившего: ты видишь только тех, кто прошёл фильтр, и судишь по ним обо всех — хотя самое важное часто скрыто в тех, кто фильтр не прошёл и потому невидим.</p>
+
+        <blockquote>Самые важные данные — те, которых нет в таблице.</blockquote>
+
+        <p>И она повсюду, стоит присмотреться. «Бросившие университет основали Apple и Microsoft — значит, бросай универ» — но мы видим Джобса и Гейтса и не видим миллионы бросивших, которые ничего не основали. «Старые дома такие крепкие, не то что нынешние» — плохие старые дома давно снесли, до нас дошли только лучшие. «Вот стратегия фондов, которые обыграли рынок» — закрывшиеся фонды исчезли из статистики, и средняя доходность «выживших» завышена. Советы миллиардеров, мемуары успешных, рейтинги — почти всё это выборки, очищенные от провала.</p>
+
+        <p>Для аналитика это бьёт прямо в данные. Анализируешь активных пользователей — но ушедшие (те, кто и есть главный сигнал проблемы) в выборку не попали. Смотришь на клиентов, доживших до года, и хвалишь продукт — а отвалившиеся на первой неделе молча исчезли. Когортный анализ без учёта отсева систематически рисует картину розовее реальности.</p>
+
+        <p>Связь с базовой частотой прямая: и там, и там мозг работает с тем, что видно, и слеп к тому, чего в поле зрения нет. Выжившие — яркие и доступные; погибшие — отсутствуют, а значит, для интуиции их как будто и не было.</p>
+
+        <p>Что делать. Перед любым выводом по выборке спроси один вопрос: <strong>кого здесь нет?</strong> Кто отсеялся до того, как попал в мои данные? Где те, для кого это не сработало? Если у тебя только истории успеха — у тебя нет данных, у тебя есть выжившие. Чтобы понять, что убивает самолёты, надо смотреть не на дыры вернувшихся, а на тех, кто не вернулся.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Абрахам Вальд · Statistical Research Group, 1943. Анализ уязвимости самолётов; вывод о бронировании зон без видимых пробоин у вернувшихся машин — хрестоматийный пример survivorship bias.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="variance.html">дисперсия →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="base-rate-neglect.html">ошибка базовой частоты →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="effect-size.html">размер эффекта →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="conditional-probability.html">условная вероятность →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/hindsight-bias.html">ретроспективное искажение →</a></div>
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/confirmation-bias.html">склонность к подтверждению →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/statistics/survivorship-bias.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
