@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P(H) — null/objects/statistics</title>
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / statistics / P(H)</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:42px;"><em style="font-family:'Old Standard TT',Georgia,serif;font-style:italic;">P(H)</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">статистика · №018</div>
+      <div class="obj-title">ошибка базовой частоты</div>
+      <div class="obj-subtitle">base rate neglect · мы цепляемся за яркую улику и забываем спросить, насколько редка сама гипотеза</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">P(H) — априорная вероятность гипотезы (база)</td></tr>
+    <tr><td class="k">определение</td><td class="v">систематическая недооценка базовой частоты события при оценке его вероятности по конкретной улике</td></tr>
+    <tr><td class="k">ввёл</td><td class="v">Канеман и Тверски · 1973</td></tr>
+    <tr><td class="k">свойства</td><td class="v">усиливается яркостью улики · родственна transpose fallacy · лечится теоремой Байеса</td></tr>
+    <tr><td class="k">связано</td><td class="v">условная вероятность · теорема Байеса · availability · размер эффекта</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~470 слов · 4 мин</div>
+    <h2 class="essay-title">Тест точен на 99%. Ты, скорее всего, <em>здоров</em>.</h2>
+    <p class="essay-lead">самая дорогая ошибка в медицине, найме и аналитике: оценивать улику и забывать, насколько редко то, что она якобы доказывает.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Классическая задача. Болезнь есть у одного человека из тысячи. Тест на неё точен на 99%: почти не ошибается. У тебя тест положительный. Какова вероятность, что ты действительно болен?</p>
+
+        <p>Интуиция кричит: 99%. Правильный ответ: около 9%.</p>
+
+        <p>Посчитаем на тысяче человек. Болен — один, тест его, скорее всего, поймает: одно верное срабатывание. Здоровы — 999, и тест ошибается на 1% из них: примерно десять ложных срабатываний. Итого положительных тестов одиннадцать, а болен из них один. Один из одиннадцати — это ~9%<em class="fn">1</em>.</p>
+
+        <p>Что произошло с интуицией? Она вцепилась в точность теста — 99% — и полностью проигнорировала базу: болезнь редкая, один на тысячу. Когда событие очень редкое, даже отличный тест даёт больше ложных тревог, чем настоящих находок, просто потому что здоровых несопоставимо больше. База решает исход — а её-то мозг и выбрасывает.</p>
+
+        <blockquote>Яркая деталь убедительна. Редкость — решает.</blockquote>
+
+        <p>Канеман и Тверски показали это в 1973-м на другой задаче<em class="fn">2</em>. Людям давали описание: «Том — аккуратный, любит порядок, интересуется системами». Кто он вероятнее — библиотекарь или фермер? Почти все говорили «библиотекарь»: описание похоже на стереотип. Но фермеров в выборке было в разы больше — и это перевешивало похожесть. Описание (яркая улика) забивало базу (сколько вообще таких людей). Чем живее портрет, тем сильнее игнорируется частота.</p>
+
+        <p>Формально правильный ответ даёт теорема Байеса: чтобы получить вероятность гипотезы при улике, надо домножить правдоподобие улики на априорную вероятность гипотезы — на ту самую базу. Игнорировать базу — значит выкинуть из формулы Байеса целый множитель. Это родственник другой ошибки, transpose fallacy: путать «вероятность улики при болезни» с «вероятностью болезни при улике». Это разные числа, и разводит их именно база<em class="fn">3</em>.</p>
+
+        <p>Почему мозг так делает? Конкретная яркая улика ощутима — её видно, она цепляет. Абстрактная частота «один на тысячу» — бесцветная и легко вылетает из головы. Тот же механизм, что в эвристике доступности: что ярче, то и кажется вероятнее.</p>
+
+        <p>Цена ошибки реальна. Скрининг редких болезней даёт лавину ложных диагнозов — поэтому массово тестировать здоровых опасно. Профайлинг по приметам ловит в основном невиновных, потому что их подавляюще больше. В найме «он же вылитый наш человек» перевешивает статистику успеха. В покере новичок боится редкой сильной руки соперника, забыв, что в его диапазоне она почти невозможна.</p>
+
+        <p>Что делать. Прежде чем поверить яркой улике, спроси: насколько часто встречается то, что она доказывает? Если событие редкое — даже сильное свидетельство оставляет его маловероятным. Всегда начинай с базы, и только потом двигай её уликами. Это и есть мышление по Байесу.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Точные числа зависят от формулировки; суть в том, что при редком событии ложные срабатывания численно забивают истинные. Формально — прямое применение теоремы Байеса.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Kahneman &amp; Tversky · 1973 · задача о профессии по описанию личности: описание (улика) вытесняет базовую частоту.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">Transpose fallacy / prosecutor's fallacy: P(улика | гипотеза) ≠ P(гипотеза | улика). Подробнее — объект «условная вероятность».</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="conditional-probability.html">условная вероятность →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="availability.html">availability heuristic →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="effect-size.html">размер эффекта →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/poker-bayes.html">Байес за столом →</a></div>
+      <div class="related-link"><span class="related-link-type">глоссарий</span><a href="../poker-glossary.html#gl-range">диапазон, prior →</a></div>
+    </div>
+  </section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/statistics/base-rate-neglect.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

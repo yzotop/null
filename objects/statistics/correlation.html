@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>r — null/objects/statistics</title>
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / statistics / r</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:48px;"><em style="font-family:'Old Standard TT',Georgia,serif;font-style:italic;">r</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">статистика · №016</div>
+      <div class="obj-title">корреляция</div>
+      <div class="obj-subtitle">correlation · насколько две величины движутся вместе — и почему это не значит, что одна вызывает другую</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">r (Пирсон) · ρ (Спирмен) · −1 ≤ r ≤ 1</td></tr>
+    <tr><td class="k">определение</td><td class="v mono">r = cov(X, Y) / (σₓ · σᵧ)</td></tr>
+    <tr><td class="k">ввёл</td><td class="v">Фрэнсис Гальтон · 1888; формализовал Карл Пирсон · 1896</td></tr>
+    <tr><td class="k">свойства</td><td class="v">ловит только линейную связь · симметрична · безразмерна · из неё не следует причинность</td></tr>
+    <tr><td class="k">связано</td><td class="v">дисперсия · условная вероятность · регрессия к среднему · размер эффекта</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~470 слов · 4 мин</div>
+    <h2 class="essay-title">Движутся вместе — не значит <em>связаны</em>.</h2>
+    <p class="essay-lead">корреляция измеряет, насколько две величины меняются согласованно. и почти всегда её читают неправильно.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Коэффициент корреляции r — это одно число от −1 до +1. Плюс единица: когда одна величина растёт, другая растёт идеально пропорционально. Минус единица: одна растёт — другая так же ровно падает. Ноль: линейной связи нет. Считается просто — это ковариация двух величин, нормированная на их разбросы<em class="fn">1</em>: насколько они колеблются вместе, поделённое на то, насколько каждая колеблется сама по себе.</p>
+
+        <p>Звучит безобидно. Но в этом числе спрятаны три ловушки, на которых горят даже профессионалы.</p>
+
+        <p><strong>Первая: r ловит только прямую линию.</strong> Коэффициент Пирсона видит линейную связь и слеп ко всему остальному. Можно построить идеальную параболу — связь очевидная, жёсткая, детерминированная — а r будет около нуля. Знаменитый квартет Энскомба: четыре набора данных с одинаковыми r, средними и дисперсиями, но на графике они выглядят совершенно по-разному — облако, кривая, прямая с одним выбросом. Мораль: <strong>сначала рисуй график, потом считай r</strong>. Одно число прячет форму<em class="fn">2</em>.</p>
+
+        <p><strong>Вторая, главная: корреляция — не причинность.</strong> То, что две величины движутся вместе, не значит, что одна вызывает другую. Возможны минимум четыре объяснения: A вызывает B; B вызывает A; их обоих вызывает скрытое C; или это вообще случайное совпадение. Классика: летом растут и продажи мороженого, и число утоплений. Корреляция высокая. Но мороженое не топит людей — обе величины гонит вверх жара. Жара здесь — скрытая третья переменная, confounder, и именно она создаёт иллюзию связи между мороженым и водой.</p>
+
+        <blockquote>Корреляция отвечает на вопрос «связаны ли?». На вопрос «вызывает ли?» она не отвечает никогда. Спутать их — самая дорогая ошибка в анализе данных.</blockquote>
+
+        <p><strong>Третья: совпадение масштабируется.</strong> Если перебрать достаточно много пар величин, какие-то скоррелируют сильно просто случайно. Есть целая коллекция абсурдных корреляций — потребление сыра и смерти от запутывания в простынях, число фильмов с Николасом Кейджем и утопления в бассейнах. Числа реальны, r высокий, смысла ноль. Чем больше переменных перебираешь, тем больше ложных связей всплывёт<em class="fn">3</em>.</p>
+
+        <p>Почему мозг так легко принимает корреляцию за причину? Потому что видеть причинно-следственные связи — древний инстинкт выживания: «зашуршало → хищник → беги». Эволюции было выгоднее ложно увидеть причину там, где её нет, чем пропустить настоящую. Мы унаследовали машину, которая лепит причинность на любую согласованность, — и теперь читаем ею дашборды.</p>
+
+        <p>Что с этим делать. Корреляция — это повод копать, а не вывод. Нашёл связь — спроси: что может быть скрытой третьей переменной? в какую сторону стрелка? а если это просто шум на большом переборе? Установить причину можно по сути одним способом — вмешаться: рандомизированный эксперимент, A/B-тест, где ты сам меняешь причину и смотришь на следствие. Поэтому A/B-тест и есть золотой стандарт: он превращает «движутся вместе» в «одно вызывает другое».</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">r = cov(X, Y) / (σₓ · σᵧ). Коэффициент Пирсона измеряет линейную связь; Спирмен (ρ) работает с рангами и ловит любую монотонную связь.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Квартет Энскомба · Francis Anscombe · 1973: четыре датасета с почти идентичными статистиками, но радикально разными графиками. Аргумент в пользу визуализации до расчёта.</span></div>
+        <div class="note"><span class="n">[3]</span><span class="t">Spurious correlations · подборка Тайлера Вигена. На большом числе сравнений сильные корреляции возникают случайно — связано с проблемой множественных сравнений.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="variance.html">дисперсия →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="conditional-probability.html">условная вероятность →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="regression-to-mean.html">регрессия к среднему →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="effect-size.html">размер эффекта →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/causality.html">причинность →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/regression-to-mean.html">регрессия к среднему →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/statistics/correlation.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

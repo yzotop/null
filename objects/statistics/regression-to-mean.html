@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>→x̄ — null/objects/statistics</title>
+<link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / statistics / →x̄</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:44px;"><em style="font-family:'Old Standard TT',Georgia,serif;font-style:italic;">→x̄</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">статистика · №017</div>
+      <div class="obj-title">регрессия к среднему</div>
+      <div class="obj-subtitle">regression to the mean · после рекордно плохого почти всегда идёт улучшение, после рекордно хорошего — откат; это не причина, а арифметика случайности</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">→x̄ (стягивание к среднему)</td></tr>
+    <tr><td class="k">определение</td><td class="v">экстремальные измерения при повторе склонны оказаться ближе к среднему, потому что часть экстремума была удачей, а удача не повторяется</td></tr>
+    <tr><td class="k">ввёл</td><td class="v">Фрэнсис Гальтон · 1886 · отсюда само слово «регрессия»</td></tr>
+    <tr><td class="k">свойства</td><td class="v">проявляется везде, где есть случайность · тем сильнее, чем слабее связь между повторами · порождает ложные причинные истории</td></tr>
+    <tr><td class="k">связано</td><td class="v">корреляция · дисперсия · ЦПТ · loss aversion</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~470 слов · 4 мин</div>
+    <h2 class="essay-title">После рекорда всегда <em>откат</em>.</h2>
+    <p class="essay-lead">самое недооценённое явление в статистике. оно везде — и почти всегда его принимают за что-то другое.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Любой результат — это смесь двух частей: настоящего уровня и случайного шума. Когда ты наблюдаешь экстремум — рекордно высокий или рекордно низкий результат — это почти наверняка совпадение двух вещей сразу: высокий настоящий уровень <em>и</em> удачный шум в ту же сторону. При следующем замере настоящий уровень останется, а шум — нет, он отыграет назад. Результат сдвинется к среднему. Не потому что что-то изменилось. Потому что удача не повторяется по заказу.</p>
+
+        <p>Слово ввёл Гальтон в 1886-м. Он измерял рост родителей и детей: у очень высоких родителей дети в среднем выше нормы — но ниже родителей, ближе к среднему. У очень низких — наоборот. Гальтон назвал это «регрессией к посредственности». Из этой работы родилась заодно и корреляция: r измеряет, насколько сильно повтор тянет к среднему<em class="fn">1</em>.</p>
+
+        <p>А дальше — главное, ради чего этот объект существует. Регрессия к среднему постоянно маскируется под причинно-следственную связь, и мозг радостно покупается.</p>
+
+        <p>Канеман рассказывал про инструкторов ВВС<em class="fn">2</em>. Они заметили: похвалишь курсанта за отличный полёт — следующий хуже; отругаешь за ужасный — следующий лучше. Вывод инструкторов: похвала расслабляет, наказание мобилизует. Вывод неверный. Отличный полёт был верхним выбросом — за ним откат к среднему в любом случае, хвали не хвали. Ужасный был нижним — за ним улучшение независимо от ругани. Инструкторы приписали причину тому, что было чистой регрессией. И, что хуже, выучили ложный урок: «наказание работает».</p>
+
+        <blockquote>Регрессия к среднему — это тишина после шума, которую вечно принимают за чей-то голос.</blockquote>
+
+        <p>Эта ловушка повсюду. «Проклятие обложки»: спортсмен попадает на обложку журнала на пике формы (мастерство плюс везение) — дальше закономерный спад, который называют проклятием. Новое лекарство «помогает»: его начинают принимать в худший момент болезни — а после худшего почти всегда легчает само. Компания меняет CEO после провального года — следующий год лучше, и заслугу приписывают новому боссу. Везде один скелет: к экстремуму подгоняют героя или причину, хотя сработала статистика.</p>
+
+        <p>Связь с искажениями прямая. Мы видим причину там, где есть только откат, потому что мозг не выносит случайности — ему нужна история с действующим лицом. «Стало лучше после X» почти всегда читается как «X помог», даже если X был гомеопатией, а помогло время.</p>
+
+        <p>Что делать. Перед тем как объяснять улучшение после провала (или спад после успеха) чьей-то заслугой или виной — спроси: а не вернулось ли всё просто к среднему? Если меришь что-то на экстремуме, жди отката и не записывай его в эффект. В A/B и аналитике: не запускай изменение в ответ на разовый выброс метрики — следующая точка и так подтянется, и ты припишешь это своему вмешательству.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note"><span class="n">[1]</span><span class="t">Francis Galton · «Regression Towards Mediocrity in Hereditary Stature» · 1886. Рост детей относительно родителей; здесь же зарождается понятие корреляции.</span></div>
+        <div class="note"><span class="n">[2]</span><span class="t">Daniel Kahneman · «Thinking, Fast and Slow» · 2011. Пример с инструкторами ВВС; Канеман называл понимание регрессии к среднему одним из главных своих статистических озарений.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="correlation.html">корреляция →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="variance.html">дисперсия →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="clt.html">центральная предельная теорема →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="loss-aversion.html">loss aversion →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/correlation.html">корреляция →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/statistics/regression-to-mean.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
