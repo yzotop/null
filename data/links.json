@@ -882,84 +882,552 @@
       "url": "/null/visuals/ev-calculator.html",
       "glyph": "E[X]"
     },
-    { "id": "vi-bayes", "type": "visual", "title": "теорема Байеса", "url": "/null/visuals/bayes.html", "glyph": "P" },
-    { "id": "math-turing",  "type": "mathematician", "title": "Алан Тьюринг",   "url": "/null/objects/mathematicians/turing.html",  "glyph": "01" },
-    { "id": "math-riemann", "type": "mathematician", "title": "Бернхард Риман", "url": "/null/objects/mathematicians/riemann.html", "glyph": "ζ" },
-    { "id": "math-newton",  "type": "mathematician", "title": "Исаак Ньютон",   "url": "/null/objects/mathematicians/newton.html",  "glyph": "∫" },
-    { "id": "math-hilbert", "type": "mathematician", "title": "Давид Гильберт", "url": "/null/objects/mathematicians/hilbert.html", "glyph": "?" },
-    { "id": "math-poincare", "type": "mathematician", "title": "Анри Пуанкаре", "url": "/null/objects/mathematicians/poincare.html", "glyph": "∞" },
-    { "id": "es-game-theory-full", "type": "essay", "title": "Теория игр · полная", "url": "/null/essays/game-theory-full.html", "glyph": "¶" },
-    { "id": "vi-axelrod", "type": "visual", "title": "турниры Аксельрода", "url": "/null/visuals/axelrod.html", "glyph": "↔" },
-    { "id": "vi-lorenz",  "type": "visual", "title": "аттрактор Лоренца", "url": "/null/visuals/lorenz.html", "glyph": "∞" },
-    { "id": "vi-mult-circle", "type": "visual", "title": "умножение на окружности", "url": "/null/visuals/multiplication-circle.html", "glyph": "⊙" },
-    { "id": "vi-prime-scatter", "type": "visual", "title": "простые в координатах остатков", "url": "/null/visuals/prime-scatter.html", "glyph": "ℙ" },
-    { "id": "vi-symbols", "type": "visual", "title": "символы математики", "url": "/null/visuals/symbols.html", "glyph": "∑" },
-    { "id": "mu-prime-drone", "type": "music", "title": "Prime Drone", "url": "/null/music/prime-drone.html", "glyph": "♪" },
-    { "id": "th-markov", "type": "theorem", "title": "цепь Маркова", "url": "/null/objects/ideas/theorems/markov.html", "glyph": "P" },
-    { "id": "es-markov-deep", "type": "essay", "title": "Андрей Марков и Евгений Онегин", "url": "/null/essays/markov-deep.html", "glyph": "¶" },
-    { "id": "es-prob-paradox", "type": "essay", "title": "Парадоксы вероятности", "url": "/null/essays/probability-paradoxes.html", "glyph": "¶" },
-    { "id": "es-kolmogorov", "type": "essay", "title": "Колмогоров и случайность", "url": "/null/essays/kolmogorov.html", "glyph": "¶" },
-    { "id": "vi-lln", "type": "visual", "title": "закон больших чисел", "url": "/null/visuals/law-of-large-numbers.html", "glyph": "x̄" },
-    { "id": "st-condprob", "type": "statistic", "title": "условная вероятность P(A|B)", "url": "/null/objects/statistics/conditional-probability.html", "glyph": "P(A|B)" },
-    { "id": "es-regression", "type": "essay", "title": "Регрессия к среднему", "url": "/null/essays/regression-to-mean.html", "glyph": "¶" },
-    { "id": "es-two-systems",    "type": "essay", "title": "Две системы",           "url": "/null/essays/two-systems.html",      "glyph": "¶" },
-    { "id": "es-cog-biases",     "type": "essay", "title": "Когнитивные искажения", "url": "/null/essays/cognitive-biases.html", "glyph": "¶" },
-    { "id": "es-nudge",          "type": "essay", "title": "Nudge",                 "url": "/null/essays/nudge.html",            "glyph": "¶" },
-    { "id": "es-prospect",       "type": "essay", "title": "Prospect Theory",       "url": "/null/essays/prospect-theory.html",  "glyph": "¶" },
-    { "id": "st-loss-av",   "type": "statistic", "title": "loss aversion",         "url": "/null/objects/statistics/loss-aversion.html", "glyph": "λ" },
-    { "id": "st-anchor",    "type": "statistic", "title": "anchoring effect",       "url": "/null/objects/statistics/anchoring.html",     "glyph": "⚓" },
-    { "id": "st-avail",     "type": "statistic", "title": "availability heuristic", "url": "/null/objects/statistics/availability.html",  "glyph": "?" },
-    { "id": "st-corr",      "type": "statistic", "title": "корреляция",             "url": "/null/objects/statistics/correlation.html",   "glyph": "r" },
-    { "id": "st-rtm",       "type": "statistic", "title": "регрессия к среднему",   "url": "/null/objects/statistics/regression-to-mean.html", "glyph": "→x̄" },
-    { "id": "st-brn",       "type": "statistic", "title": "ошибка базовой частоты", "url": "/null/objects/statistics/base-rate-neglect.html", "glyph": "P(H)" },
-    { "id": "st-gf",        "type": "statistic", "title": "ошибка игрока",          "url": "/null/objects/statistics/gamblers-fallacy.html", "glyph": "½" },
-    { "id": "st-surv",      "type": "statistic", "title": "ошибка выжившего",       "url": "/null/objects/statistics/survivorship-bias.html", "glyph": "▣" },
-    { "id": "st-confirm",   "type": "statistic", "title": "склонность к подтверждению", "url": "/null/objects/statistics/confirmation-bias.html", "glyph": "✓" },
-    { "id": "st-sunk",      "type": "statistic", "title": "невозвратные затраты",   "url": "/null/objects/statistics/sunk-cost.html",         "glyph": "⊗" },
-    { "id": "st-hind",      "type": "statistic", "title": "ретроспективное искажение", "url": "/null/objects/statistics/hindsight-bias.html",  "glyph": "⟲" },
-    { "id": "st-frame",     "type": "statistic", "title": "эффект формулировки",    "url": "/null/objects/statistics/framing-effect.html",    "glyph": "[ ]" },
-    { "id": "vi-gamblers", "type": "visual", "title": "лудоманы и математика", "url": "/null/visuals/probability-gamblers.html", "glyph": "⚀" },
-    { "id": "math-lobachevsky", "type": "mathematician", "title": "Николай Лобачевский", "url": "/null/objects/mathematicians/lobachevsky.html", "glyph": "∦" },
-    { "id": "math-perelman",    "type": "mathematician", "title": "Григорий Перельман",  "url": "/null/objects/mathematicians/perelman.html",    "glyph": "∞" },
-    { "id": "math-pascal",      "type": "mathematician", "title": "Блез Паскаль",        "url": "/null/objects/mathematicians/pascal.html",      "glyph": "Δ" },
-    { "id": "math-bernoulli",   "type": "mathematician", "title": "Якоб Бернулли",       "url": "/null/objects/mathematicians/bernoulli.html",   "glyph": "e" },
-    { "id": "math-laplace",     "type": "mathematician", "title": "Пьер-Симон Лаплас",   "url": "/null/objects/mathematicians/laplace.html",    "glyph": "P" },
-    { "id": "es-gambling",    "type": "essay", "title": "Как азартные игры породили математику", "url": "/null/essays/gambling-math.html",  "glyph": "¶" },
-    { "id": "es-five-lett",   "type": "essay", "title": "Пять писем 1654 года",                  "url": "/null/essays/five-letters.html",    "glyph": "¶" },
-    { "id": "es-monte-carlo", "type": "essay", "title": "От пасьянса к атомной бомбе",           "url": "/null/essays/monte-carlo.html",     "glyph": "¶" },
-    { "id": "math-fermat", "type": "mathematician", "title": "Пьер де Ферма", "url": "/null/objects/mathematicians/fermat.html", "glyph": "xⁿ" },
-    { "id": "es-games-math", "type": "essay", "title": "Игры которые построили математику", "url": "/null/essays/games-and-math.html", "glyph": "¶" },
-    { "id": "es-good-dec", "type": "essay", "title": "Хорошие решения с плохими исходами", "url": "/null/essays/good-decisions.html", "glyph": "¶" },
-    { "id": "es-base-rate", "type": "essay", "title": "Ошибка базовой частоты", "url": "/null/essays/base-rate.html", "glyph": "¶" },
-    { "id": "es-gamb-fall", "type": "essay", "title": "Ошибка игрока", "url": "/null/essays/gamblers-fallacy.html", "glyph": "¶" },
-    { "id": "es-small-num", "type": "essay", "title": "Закон малых чисел", "url": "/null/essays/small-numbers.html", "glyph": "¶" },
-    { "id": "es-benford", "type": "essay", "title": "Закон Бенфорда", "url": "/null/essays/benford.html", "glyph": "¶" },
-    { "id": "es-clt", "type": "essay", "title": "Центральная предельная теорема", "url": "/null/essays/clt.html", "glyph": "¶" },
-    { "id": "es-simpson", "type": "essay", "title": "Парадокс Симпсона", "url": "/null/essays/simpson.html", "glyph": "¶" },
-    { "id": "math-demoivre", "type": "mathematician", "title": "Абрахам де Муавр", "url": "/null/objects/mathematicians/demoivre.html", "glyph": "∫" },
-    { "id": "math-huygens", "type": "mathematician", "title": "Христиан Гюйгенс", "url": "/null/objects/mathematicians/huygens.html", "glyph": "E[X]" },
-    { "id": "es-poker-basics",  "type": "essay", "title": "Покер. Как профи считают в голове", "url": "/null/essays/poker-basics.html",  "glyph": "¶" },
-    { "id": "es-poker-kelly",   "type": "essay", "title": "Критерий Келли. Сколько ставить",   "url": "/null/essays/poker-kelly.html",   "glyph": "¶" },
-    { "id": "es-poker-bayes",   "type": "essay", "title": "Байес за столом",                   "url": "/null/essays/poker-bayes.html",   "glyph": "¶" },
-    { "id": "es-poker-exploit", "type": "essay", "title": "Эксплойт против равновесия",        "url": "/null/essays/poker-exploit.html", "glyph": "¶" },
-    { "id": "es-poker-solvers", "type": "essay", "title": "До солверов. Что мы потеряли",      "url": "/null/essays/poker-solvers.html", "glyph": "¶" },
-    { "id": "es-poker-glossary", "type": "essay", "title": "Глоссарий покера и его математики", "url": "/null/objects/poker-glossary.html", "glyph": "♠" },
-    { "id": "es-games-train", "type": "essay", "title": "Игры которые тренируют машины", "url": "/null/essays/games-that-train-machines.html", "glyph": "¶" },
-    { "id": "es-uncertainty-knight", "type": "essay", "title": "Риск против неизвестности", "url": "/null/essays/uncertainty-knight.html", "glyph": "¶" },
-    { "id": "es-ergodicity", "type": "essay", "title": "Эргодичность. Почему среднее вам не достанется", "url": "/null/essays/ergodicity.html", "glyph": "¶" },
-    { "id": "es-black-swan", "type": "essay", "title": "Чёрный лебедь. Почему редкое решает", "url": "/null/essays/black-swan.html", "glyph": "¶" },
-    { "id": "es-antifragile", "type": "essay", "title": "Антихрупкость. Что делать с тем, чего не знаешь", "url": "/null/essays/antifragile.html", "glyph": "¶" },
-    { "id": "es-decisions-distance", "type": "essay", "title": "Решения на дистанции", "url": "/null/essays/decisions-distance.html", "glyph": "¶" },
-    { "id": "es-optionality", "type": "essay", "title": "Опциональность. Ценность открытых дверей", "url": "/null/essays/optionality.html", "glyph": "¶" },
-    { "id": "es-skin-in-the-game", "type": "essay", "title": "Шкура на кону. Почему рискующий знает больше", "url": "/null/essays/skin-in-the-game.html", "glyph": "¶" },
-    { "id": "es-via-negativa", "type": "essay", "title": "Via negativa. Сила вычитания", "url": "/null/essays/via-negativa.html", "glyph": "¶" },
-    { "id": "es-flaneur", "type": "essay", "title": "Фланёр. Как жить, не зная будущего", "url": "/null/essays/flaneur.html", "glyph": "¶" },
-    { "id": "gt-nash", "type": "gametheory", "title": "равновесие Нэша", "url": "/null/objects/game-theory/nash-equilibrium.html", "glyph": "σ*" },
-    { "id": "gt-minimax", "type": "gametheory", "title": "теорема о минимаксе", "url": "/null/objects/game-theory/minimax.html", "glyph": "max−min" },
-    { "id": "math-cantor",    "type": "mathematician", "title": "Георг Кантор",        "url": "/null/objects/mathematicians/cantor.html",    "glyph": "ℵ" },
-    { "id": "math-gauss",     "type": "mathematician", "title": "Карл Фридрих Гаусс",  "url": "/null/objects/mathematicians/gauss.html",     "glyph": "ℤ" },
-    { "id": "math-euler",     "type": "mathematician", "title": "Леонард Эйлер",        "url": "/null/objects/mathematicians/euler.html",     "glyph": "e" },
-    { "id": "math-ramanujan", "type": "mathematician", "title": "Сриниваса Рамануджан", "url": "/null/objects/mathematicians/ramanujan.html", "glyph": "∞" },
+    {
+      "id": "vi-bayes",
+      "type": "visual",
+      "title": "теорема Байеса",
+      "url": "/null/visuals/bayes.html",
+      "glyph": "P"
+    },
+    {
+      "id": "math-turing",
+      "type": "mathematician",
+      "title": "Алан Тьюринг",
+      "url": "/null/objects/mathematicians/turing.html",
+      "glyph": "01"
+    },
+    {
+      "id": "math-riemann",
+      "type": "mathematician",
+      "title": "Бернхард Риман",
+      "url": "/null/objects/mathematicians/riemann.html",
+      "glyph": "ζ"
+    },
+    {
+      "id": "math-newton",
+      "type": "mathematician",
+      "title": "Исаак Ньютон",
+      "url": "/null/objects/mathematicians/newton.html",
+      "glyph": "∫"
+    },
+    {
+      "id": "math-hilbert",
+      "type": "mathematician",
+      "title": "Давид Гильберт",
+      "url": "/null/objects/mathematicians/hilbert.html",
+      "glyph": "?"
+    },
+    {
+      "id": "math-poincare",
+      "type": "mathematician",
+      "title": "Анри Пуанкаре",
+      "url": "/null/objects/mathematicians/poincare.html",
+      "glyph": "∞"
+    },
+    {
+      "id": "es-game-theory-full",
+      "type": "essay",
+      "title": "Теория игр · полная",
+      "url": "/null/essays/game-theory-full.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "vi-axelrod",
+      "type": "visual",
+      "title": "турниры Аксельрода",
+      "url": "/null/visuals/axelrod.html",
+      "glyph": "↔"
+    },
+    {
+      "id": "vi-lorenz",
+      "type": "visual",
+      "title": "аттрактор Лоренца",
+      "url": "/null/visuals/lorenz.html",
+      "glyph": "∞"
+    },
+    {
+      "id": "vi-mult-circle",
+      "type": "visual",
+      "title": "умножение на окружности",
+      "url": "/null/visuals/multiplication-circle.html",
+      "glyph": "⊙"
+    },
+    {
+      "id": "vi-prime-scatter",
+      "type": "visual",
+      "title": "простые в координатах остатков",
+      "url": "/null/visuals/prime-scatter.html",
+      "glyph": "ℙ"
+    },
+    {
+      "id": "vi-symbols",
+      "type": "visual",
+      "title": "символы математики",
+      "url": "/null/visuals/symbols.html",
+      "glyph": "∑"
+    },
+    {
+      "id": "mu-prime-drone",
+      "type": "music",
+      "title": "Prime Drone",
+      "url": "/null/music/prime-drone.html",
+      "glyph": "♪"
+    },
+    {
+      "id": "th-markov",
+      "type": "theorem",
+      "title": "цепь Маркова",
+      "url": "/null/objects/ideas/theorems/markov.html",
+      "glyph": "P"
+    },
+    {
+      "id": "es-markov-deep",
+      "type": "essay",
+      "title": "Андрей Марков и Евгений Онегин",
+      "url": "/null/essays/markov-deep.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-prob-paradox",
+      "type": "essay",
+      "title": "Парадоксы вероятности",
+      "url": "/null/essays/probability-paradoxes.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-kolmogorov",
+      "type": "essay",
+      "title": "Колмогоров и случайность",
+      "url": "/null/essays/kolmogorov.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "vi-lln",
+      "type": "visual",
+      "title": "закон больших чисел",
+      "url": "/null/visuals/law-of-large-numbers.html",
+      "glyph": "x̄"
+    },
+    {
+      "id": "st-condprob",
+      "type": "statistic",
+      "title": "условная вероятность P(A|B)",
+      "url": "/null/objects/statistics/conditional-probability.html",
+      "glyph": "P(A|B)"
+    },
+    {
+      "id": "es-regression",
+      "type": "essay",
+      "title": "Регрессия к среднему",
+      "url": "/null/essays/regression-to-mean.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-two-systems",
+      "type": "essay",
+      "title": "Две системы",
+      "url": "/null/essays/two-systems.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-cog-biases",
+      "type": "essay",
+      "title": "Когнитивные искажения",
+      "url": "/null/essays/cognitive-biases.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-nudge",
+      "type": "essay",
+      "title": "Nudge",
+      "url": "/null/essays/nudge.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-prospect",
+      "type": "essay",
+      "title": "Prospect Theory",
+      "url": "/null/essays/prospect-theory.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "st-loss-av",
+      "type": "statistic",
+      "title": "loss aversion",
+      "url": "/null/objects/statistics/loss-aversion.html",
+      "glyph": "λ"
+    },
+    {
+      "id": "st-anchor",
+      "type": "statistic",
+      "title": "anchoring effect",
+      "url": "/null/objects/statistics/anchoring.html",
+      "glyph": "⚓"
+    },
+    {
+      "id": "st-avail",
+      "type": "statistic",
+      "title": "availability heuristic",
+      "url": "/null/objects/statistics/availability.html",
+      "glyph": "?"
+    },
+    {
+      "id": "st-corr",
+      "type": "statistic",
+      "title": "корреляция",
+      "url": "/null/objects/statistics/correlation.html",
+      "glyph": "r"
+    },
+    {
+      "id": "st-rtm",
+      "type": "statistic",
+      "title": "регрессия к среднему",
+      "url": "/null/objects/statistics/regression-to-mean.html",
+      "glyph": "→x̄"
+    },
+    {
+      "id": "st-brn",
+      "type": "statistic",
+      "title": "ошибка базовой частоты",
+      "url": "/null/objects/statistics/base-rate-neglect.html",
+      "glyph": "P(H)"
+    },
+    {
+      "id": "st-gf",
+      "type": "statistic",
+      "title": "ошибка игрока",
+      "url": "/null/objects/statistics/gamblers-fallacy.html",
+      "glyph": "½"
+    },
+    {
+      "id": "st-surv",
+      "type": "statistic",
+      "title": "ошибка выжившего",
+      "url": "/null/objects/statistics/survivorship-bias.html",
+      "glyph": "▣"
+    },
+    {
+      "id": "st-confirm",
+      "type": "statistic",
+      "title": "склонность к подтверждению",
+      "url": "/null/objects/statistics/confirmation-bias.html",
+      "glyph": "✓"
+    },
+    {
+      "id": "st-sunk",
+      "type": "statistic",
+      "title": "невозвратные затраты",
+      "url": "/null/objects/statistics/sunk-cost.html",
+      "glyph": "⊗"
+    },
+    {
+      "id": "st-hind",
+      "type": "statistic",
+      "title": "ретроспективное искажение",
+      "url": "/null/objects/statistics/hindsight-bias.html",
+      "glyph": "⟲"
+    },
+    {
+      "id": "st-frame",
+      "type": "statistic",
+      "title": "эффект формулировки",
+      "url": "/null/objects/statistics/framing-effect.html",
+      "glyph": "[ ]"
+    },
+    {
+      "id": "vi-gamblers",
+      "type": "visual",
+      "title": "лудоманы и математика",
+      "url": "/null/visuals/probability-gamblers.html",
+      "glyph": "⚀"
+    },
+    {
+      "id": "math-lobachevsky",
+      "type": "mathematician",
+      "title": "Николай Лобачевский",
+      "url": "/null/objects/mathematicians/lobachevsky.html",
+      "glyph": "∦"
+    },
+    {
+      "id": "math-perelman",
+      "type": "mathematician",
+      "title": "Григорий Перельман",
+      "url": "/null/objects/mathematicians/perelman.html",
+      "glyph": "∞"
+    },
+    {
+      "id": "math-pascal",
+      "type": "mathematician",
+      "title": "Блез Паскаль",
+      "url": "/null/objects/mathematicians/pascal.html",
+      "glyph": "Δ"
+    },
+    {
+      "id": "math-bernoulli",
+      "type": "mathematician",
+      "title": "Якоб Бернулли",
+      "url": "/null/objects/mathematicians/bernoulli.html",
+      "glyph": "e"
+    },
+    {
+      "id": "math-laplace",
+      "type": "mathematician",
+      "title": "Пьер-Симон Лаплас",
+      "url": "/null/objects/mathematicians/laplace.html",
+      "glyph": "P"
+    },
+    {
+      "id": "es-gambling",
+      "type": "essay",
+      "title": "Как азартные игры породили математику",
+      "url": "/null/essays/gambling-math.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-five-lett",
+      "type": "essay",
+      "title": "Пять писем 1654 года",
+      "url": "/null/essays/five-letters.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-monte-carlo",
+      "type": "essay",
+      "title": "От пасьянса к атомной бомбе",
+      "url": "/null/essays/monte-carlo.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "math-fermat",
+      "type": "mathematician",
+      "title": "Пьер де Ферма",
+      "url": "/null/objects/mathematicians/fermat.html",
+      "glyph": "xⁿ"
+    },
+    {
+      "id": "es-games-math",
+      "type": "essay",
+      "title": "Игры которые построили математику",
+      "url": "/null/essays/games-and-math.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-good-dec",
+      "type": "essay",
+      "title": "Хорошие решения с плохими исходами",
+      "url": "/null/essays/good-decisions.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-base-rate",
+      "type": "essay",
+      "title": "Ошибка базовой частоты",
+      "url": "/null/essays/base-rate.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-gamb-fall",
+      "type": "essay",
+      "title": "Ошибка игрока",
+      "url": "/null/essays/gamblers-fallacy.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-small-num",
+      "type": "essay",
+      "title": "Закон малых чисел",
+      "url": "/null/essays/small-numbers.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-benford",
+      "type": "essay",
+      "title": "Закон Бенфорда",
+      "url": "/null/essays/benford.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-clt",
+      "type": "essay",
+      "title": "Центральная предельная теорема",
+      "url": "/null/essays/clt.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-simpson",
+      "type": "essay",
+      "title": "Парадокс Симпсона",
+      "url": "/null/essays/simpson.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "math-demoivre",
+      "type": "mathematician",
+      "title": "Абрахам де Муавр",
+      "url": "/null/objects/mathematicians/demoivre.html",
+      "glyph": "∫"
+    },
+    {
+      "id": "math-huygens",
+      "type": "mathematician",
+      "title": "Христиан Гюйгенс",
+      "url": "/null/objects/mathematicians/huygens.html",
+      "glyph": "E[X]"
+    },
+    {
+      "id": "es-poker-basics",
+      "type": "essay",
+      "title": "Покер. Как профи считают в голове",
+      "url": "/null/essays/poker-basics.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-poker-kelly",
+      "type": "essay",
+      "title": "Критерий Келли. Сколько ставить",
+      "url": "/null/essays/poker-kelly.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-poker-bayes",
+      "type": "essay",
+      "title": "Байес за столом",
+      "url": "/null/essays/poker-bayes.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-poker-exploit",
+      "type": "essay",
+      "title": "Эксплойт против равновесия",
+      "url": "/null/essays/poker-exploit.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-poker-solvers",
+      "type": "essay",
+      "title": "До солверов. Что мы потеряли",
+      "url": "/null/essays/poker-solvers.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-poker-glossary",
+      "type": "essay",
+      "title": "Глоссарий покера и его математики",
+      "url": "/null/objects/poker-glossary.html",
+      "glyph": "♠"
+    },
+    {
+      "id": "es-games-train",
+      "type": "essay",
+      "title": "Игры которые тренируют машины",
+      "url": "/null/essays/games-that-train-machines.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-uncertainty-knight",
+      "type": "essay",
+      "title": "Риск против неизвестности",
+      "url": "/null/essays/uncertainty-knight.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-ergodicity",
+      "type": "essay",
+      "title": "Эргодичность. Почему среднее вам не достанется",
+      "url": "/null/essays/ergodicity.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-black-swan",
+      "type": "essay",
+      "title": "Чёрный лебедь. Почему редкое решает",
+      "url": "/null/essays/black-swan.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-antifragile",
+      "type": "essay",
+      "title": "Антихрупкость. Что делать с тем, чего не знаешь",
+      "url": "/null/essays/antifragile.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-decisions-distance",
+      "type": "essay",
+      "title": "Решения на дистанции",
+      "url": "/null/essays/decisions-distance.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-optionality",
+      "type": "essay",
+      "title": "Опциональность. Ценность открытых дверей",
+      "url": "/null/essays/optionality.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-skin-in-the-game",
+      "type": "essay",
+      "title": "Шкура на кону. Почему рискующий знает больше",
+      "url": "/null/essays/skin-in-the-game.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-via-negativa",
+      "type": "essay",
+      "title": "Via negativa. Сила вычитания",
+      "url": "/null/essays/via-negativa.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-flaneur",
+      "type": "essay",
+      "title": "Фланёр. Как жить, не зная будущего",
+      "url": "/null/essays/flaneur.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "gt-nash",
+      "type": "gametheory",
+      "title": "равновесие Нэша",
+      "url": "/null/objects/game-theory/nash-equilibrium.html",
+      "glyph": "σ*"
+    },
+    {
+      "id": "gt-minimax",
+      "type": "gametheory",
+      "title": "теорема о минимаксе",
+      "url": "/null/objects/game-theory/minimax.html",
+      "glyph": "max−min"
+    },
+    {
+      "id": "math-cantor",
+      "type": "mathematician",
+      "title": "Георг Кантор",
+      "url": "/null/objects/mathematicians/cantor.html",
+      "glyph": "ℵ"
+    },
+    {
+      "id": "math-gauss",
+      "type": "mathematician",
+      "title": "Карл Фридрих Гаусс",
+      "url": "/null/objects/mathematicians/gauss.html",
+      "glyph": "ℤ"
+    },
+    {
+      "id": "math-euler",
+      "type": "mathematician",
+      "title": "Леонард Эйлер",
+      "url": "/null/objects/mathematicians/euler.html",
+      "glyph": "e"
+    },
+    {
+      "id": "math-ramanujan",
+      "type": "mathematician",
+      "title": "Сриниваса Рамануджан",
+      "url": "/null/objects/mathematicians/ramanujan.html",
+      "glyph": "∞"
+    },
     {
       "id": "st-cuped",
       "type": "statistic",
@@ -1973,618 +2441,2509 @@
       "from": "es-primes",
       "to": "es-rsa"
     },
-    { "from": "vi-coordinates", "to": "pi" },
-    { "from": "vi-coordinates", "to": "imaginary" },
-    { "from": "vi-coordinates", "to": "bk-descartes" },
-    { "from": "coord-cart",    "to": "bk-descartes" },
-    { "from": "coord-cart",    "to": "vi-coordinates" },
-    { "from": "coord-cart",    "to": "alph-latin" },
-    { "from": "coord-polar",   "to": "pi" },
-    { "from": "coord-polar",   "to": "vi-coordinates" },
-    { "from": "coord-complex", "to": "imaginary" },
-    { "from": "coord-complex", "to": "es-euler-formula" },
-    { "from": "coord-complex", "to": "vi-coordinates" },
-    { "from": "coord-complex", "to": "bk-gauss" },
-    { "from": "integer",  "to": "natural" },
-    { "from": "integer",  "to": "zero" },
-    { "from": "integer",  "to": "op-mod" },
-    { "from": "integer",  "to": "es-infinity-types" },
-    { "from": "rational", "to": "integer" },
-    { "from": "rational", "to": "real" },
-    { "from": "rational", "to": "sqrt2" },
-    { "from": "rational", "to": "es-infinity-types" },
-    { "from": "real",     "to": "rational" },
-    { "from": "real",     "to": "complex" },
-    { "from": "real",     "to": "pi" },
-    { "from": "real",     "to": "euler" },
-    { "from": "real",     "to": "sqrt2" },
-    { "from": "real",     "to": "es-infinity-types" },
-    { "from": "sqrt2",    "to": "bk-euclid" },
-    { "from": "sqrt2",    "to": "es-infinity-types" },
-    { "from": "vi-benford", "to": "prime" },
-    { "from": "vi-benford", "to": "natural" },
-    { "from": "vi-benford", "to": "vi-ulam" },
-    { "from": "es-game-theory", "to": "pr-monty" },
-    { "from": "es-game-theory", "to": "pr-gamblers" },
-    { "from": "es-game-theory", "to": "es-rsa" },
-    { "from": "es-markov", "to": "pr-gamblers" },
-    { "from": "es-markov", "to": "es-game-theory" },
-    { "from": "es-markov", "to": "vi-markov" },
-    { "from": "vi-markov", "to": "es-markov" },
-    { "from": "vi-markov", "to": "pr-gamblers" },
-    { "from": "es-proof", "to": "godel" },
-    { "from": "es-proof", "to": "bk-euclid" },
-    { "from": "es-proof", "to": "bk-geb" },
-    { "from": "es-proof", "to": "es-rsa" },
-    { "from": "es-math-music", "to": "euler" },
-    { "from": "es-math-music", "to": "pi" },
-    { "from": "es-math-music", "to": "imaginary" },
-    { "from": "es-math-music", "to": "mu-opstack" },
-    { "from": "es-math-music", "to": "ch-sound" },
-    { "from": "es-inf-paradox", "to": "aleph0" },
-    { "from": "es-inf-paradox", "to": "cantor" },
-    { "from": "es-inf-paradox", "to": "es-infinity" },
-    { "from": "es-inf-paradox", "to": "es-zfc" },
-    { "from": "es-inf-paradox", "to": "bk-geb" },
-    { "from": "vi-prime-polar", "to": "prime" },
-    { "from": "vi-prime-polar", "to": "vi-ulam" },
-    { "from": "vi-prime-polar", "to": "es-primes" },
-    { "from": "vi-sorting", "to": "natural" },
-    { "from": "vi-sorting", "to": "op-mod" },
-    { "from": "vi-fourier", "to": "pi" },
-    { "from": "vi-fourier", "to": "imaginary" },
-    { "from": "vi-fourier", "to": "es-math-music" },
-    { "from": "vi-fourier", "to": "ch-sound" },
-    { "from": "alph-math", "to": "transcendental" },
-    { "from": "es-ab-testing", "to": "es-game-theory" },
-    { "from": "es-ab-testing", "to": "es-markov" },
-    { "from": "es-ab-testing", "to": "pr-birthday" },
-    { "from": "es-auctions", "to": "es-game-theory" },
-    { "from": "es-auctions", "to": "es-ab-testing" },
-    { "from": "es-auctions", "to": "pr-secretary" },
-    { "from": "es-bayesian", "to": "es-ab-testing" },
-    { "from": "es-bayesian", "to": "es-markov" },
-    { "from": "es-bayesian", "to": "es-auctions" },
-    { "from": "es-bayesian", "to": "pr-monty" },
-    { "from": "es-bayesian", "to": "pr-birthday" },
-    { "from": "es-llm-eval", "to": "es-ab-testing" },
-    { "from": "es-llm-eval", "to": "es-bayesian" },
-    { "from": "es-llm-eval", "to": "es-auctions" },
-    { "from": "es-llm-eval", "to": "pvsnp" },
-    { "from": "es-two-sided", "to": "es-auctions" },
-    { "from": "es-two-sided", "to": "es-game-theory" },
-    { "from": "es-two-sided", "to": "es-ab-testing" },
-    { "from": "es-two-sided", "to": "es-bayesian" },
-    { "from": "es-two-sided", "to": "pr-secretary" },
-    { "from": "st-pvalue", "to": "es-ab-testing" },
-    { "from": "st-pvalue", "to": "es-bayesian" },
-    { "from": "st-ci",     "to": "es-ab-testing" },
-    { "from": "st-ci",     "to": "es-bayesian" },
-    { "from": "st-effect", "to": "es-ab-testing" },
-    { "from": "st-pvalue", "to": "st-ci" },
-    { "from": "st-pvalue", "to": "st-effect" },
-    { "from": "st-ci",     "to": "st-effect" },
-    { "from": "vi-ab-calc", "to": "es-ab-testing" },
-    { "from": "vi-ab-calc", "to": "st-pvalue" },
-    { "from": "vi-ab-calc", "to": "st-effect" },
-    { "from": "es-causality", "to": "es-ab-testing" },
-    { "from": "es-causality", "to": "es-bayesian" },
-    { "from": "es-causality", "to": "es-two-sided" },
-    { "from": "es-causality", "to": "es-game-theory" },
-    { "from": "es-adtech", "to": "es-auctions" },
-    { "from": "es-adtech", "to": "es-two-sided" },
-    { "from": "es-adtech", "to": "es-ab-testing" },
-    { "from": "es-adtech", "to": "es-causality" },
-    { "from": "st-bleu",  "to": "es-llm-eval" },
-    { "from": "st-bleu",  "to": "st-kappa" },
-    { "from": "st-bleu",  "to": "st-elo" },
-    { "from": "st-kappa", "to": "es-llm-eval" },
-    { "from": "st-kappa", "to": "st-pvalue" },
-    { "from": "st-elo",   "to": "es-llm-eval" },
-    { "from": "st-elo",   "to": "es-auctions" },
-    { "from": "es-unit-econ", "to": "es-two-sided" },
-    { "from": "es-unit-econ", "to": "es-ab-testing" },
-    { "from": "es-unit-econ", "to": "es-auctions" },
-    { "from": "es-unit-econ", "to": "es-adtech" },
-    { "from": "es-unit-econ", "to": "es-bayesian" },
-    { "from": "vi-fibonacci", "to": "phi" },
-    { "from": "vi-fibonacci", "to": "natural" },
-    { "from": "vi-fibonacci", "to": "vi-polar-roses" },
-    { "from": "st-ev",    "to": "st-var" },
-    { "from": "st-ev",    "to": "st-kelly" },
-    { "from": "st-ev",    "to": "pr-gamblers" },
-    { "from": "st-ev",    "to": "pr-monty" },
-    { "from": "st-ev",    "to": "es-game-theory" },
-    { "from": "st-ev",    "to": "es-auctions" },
-    { "from": "st-var",   "to": "st-ev" },
-    { "from": "st-var",   "to": "st-clt" },
-    { "from": "st-var",   "to": "es-ab-testing" },
-    { "from": "st-clt",   "to": "st-ev" },
-    { "from": "st-clt",   "to": "st-var" },
-    { "from": "st-clt",   "to": "st-pvalue" },
-    { "from": "st-kelly", "to": "st-ev" },
-    { "from": "st-kelly", "to": "st-var" },
-    { "from": "st-kelly", "to": "pr-gamblers" },
-    { "from": "es-ev", "to": "st-ev" },
-    { "from": "es-ev", "to": "st-kelly" },
-    { "from": "es-ev", "to": "es-game-theory" },
-    { "from": "es-ev", "to": "es-auctions" },
-    { "from": "es-ev", "to": "es-ab-testing" },
-    { "from": "es-ev", "to": "es-bayesian" },
-    { "from": "es-ev", "to": "pr-gamblers" },
-    { "from": "es-ev", "to": "pr-monty" },
-    { "from": "es-eu", "to": "st-ev" },
-    { "from": "es-eu", "to": "st-kelly" },
-    { "from": "es-eu", "to": "es-ev" },
-    { "from": "es-eu", "to": "es-game-theory" },
-    { "from": "es-eu", "to": "es-auctions" },
-    { "from": "es-eu", "to": "pr-gamblers" },
-    { "from": "vi-normal", "to": "st-clt" },
-    { "from": "vi-normal", "to": "st-var" },
-    { "from": "vi-normal", "to": "st-ev" },
-    { "from": "vi-normal", "to": "es-ab-testing" },
-    { "from": "vi-normal", "to": "vi-ab-calc" },
-    { "from": "vi-ev-calc", "to": "st-ev" },
-    { "from": "vi-ev-calc", "to": "st-var" },
-    { "from": "vi-ev-calc", "to": "st-kelly" },
-    { "from": "vi-ev-calc", "to": "es-ev" },
-    { "from": "vi-ev-calc", "to": "vi-ab-calc" },
-    { "from": "vi-ev-calc", "to": "pr-gamblers" },
-    { "from": "st-cuped", "to": "st-var" },
-    { "from": "st-cuped", "to": "st-pvalue" },
-    { "from": "st-cuped", "to": "es-ab-testing" },
-    { "from": "st-cuped", "to": "vi-cuped" },
-    { "from": "st-cuped", "to": "vi-ab-calc" },
-    { "from": "vi-cuped", "to": "st-cuped" },
-    { "from": "vi-cuped", "to": "st-var" },
-    { "from": "vi-cuped", "to": "es-ab-testing" },
-    { "from": "vi-cuped", "to": "vi-normal" },
-    { "from": "math-cantor",    "to": "aleph0" },
-    { "from": "math-cantor",    "to": "cantor" },
-    { "from": "math-cantor",    "to": "godel" },
-    { "from": "math-gauss",     "to": "integer" },
-    { "from": "math-gauss",     "to": "bk-gauss" },
-    { "from": "math-euler",     "to": "euler" },
-    { "from": "math-euler",     "to": "imaginary" },
-    { "from": "math-euler",     "to": "pi" },
-    { "from": "math-euler",     "to": "bk-euclid" },
-    { "from": "math-ramanujan", "to": "cu-1729" },
-    { "from": "math-ramanujan", "to": "riemann" },
-    { "from": "math-ramanujan", "to": "bk-hardy" },
-    { "from": "math-cantor",    "to": "math-gauss" },
-    { "from": "math-gauss",     "to": "math-euler" },
-    { "from": "math-euler",     "to": "math-ramanujan" },
-    { "from": "vi-bayes", "to": "es-bayesian" },
-    { "from": "vi-bayes", "to": "es-ab-testing" },
-    { "from": "vi-bayes", "to": "st-pvalue" },
-    { "from": "vi-bayes", "to": "vi-ab-calc" },
-    { "from": "vi-bayes", "to": "vi-normal" },
-    { "from": "math-turing",  "to": "pvsnp" },
-    { "from": "math-turing",  "to": "godel" },
-    { "from": "math-turing",  "to": "es-proof" },
-    { "from": "math-turing",  "to": "math-cantor" },
-    { "from": "math-riemann", "to": "riemann" },
-    { "from": "math-riemann", "to": "pi" },
-    { "from": "math-riemann", "to": "prime" },
-    { "from": "math-riemann", "to": "math-cantor" },
-    { "from": "math-turing",  "to": "math-riemann" },
-    { "from": "math-newton",  "to": "bk-newton" },
-    { "from": "math-newton",  "to": "op-integral" },
-    { "from": "math-newton",  "to": "math-euler" },
-    { "from": "math-newton",  "to": "math-hilbert" },
-    { "from": "math-hilbert", "to": "godel" },
-    { "from": "math-hilbert", "to": "es-proof" },
-    { "from": "math-hilbert", "to": "bk-geb" },
-    { "from": "math-hilbert", "to": "math-cantor" },
-    { "from": "math-hilbert", "to": "math-turing" },
-    { "from": "math-poincare", "to": "riemann" },
-    { "from": "math-poincare", "to": "godel" },
-    { "from": "math-poincare", "to": "es-proof" },
-    { "from": "math-poincare", "to": "math-riemann" },
-    { "from": "math-poincare", "to": "math-hilbert" },
-    { "from": "math-poincare", "to": "math-euler" },
-    { "from": "es-game-theory-full", "to": "es-auctions" },
-    { "from": "es-game-theory-full", "to": "es-two-sided" },
-    { "from": "es-game-theory-full", "to": "es-ev" },
-    { "from": "es-game-theory-full", "to": "es-bayesian" },
-    { "from": "es-game-theory-full", "to": "es-game-theory" },
-    { "from": "vi-axelrod", "to": "es-game-theory-full" },
-    { "from": "vi-axelrod", "to": "es-game-theory" },
-    { "from": "vi-axelrod", "to": "es-auctions" },
-    { "from": "vi-axelrod", "to": "vi-markov" },
-    { "from": "vi-axelrod", "to": "math-poincare" },
-    { "from": "th-markov",      "to": "es-markov" },
-    { "from": "th-markov",      "to": "vi-markov" },
-    { "from": "th-markov",      "to": "pr-gamblers" },
-    { "from": "th-markov",      "to": "es-bayesian" },
-    { "from": "es-markov-deep", "to": "th-markov" },
-    { "from": "es-markov-deep", "to": "es-markov" },
-    { "from": "es-markov-deep", "to": "vi-markov" },
-    { "from": "es-markov-deep", "to": "es-bayesian" },
-    { "from": "es-markov-deep", "to": "pr-gamblers" },
-    { "from": "es-prob-paradox", "to": "pr-monty" },
-    { "from": "es-prob-paradox", "to": "pr-birthday" },
-    { "from": "es-prob-paradox", "to": "es-bayesian" },
-    { "from": "es-prob-paradox", "to": "es-inf-paradox" },
-    { "from": "es-prob-paradox", "to": "vi-bayes" },
-    { "from": "es-kolmogorov", "to": "es-prob-paradox" },
-    { "from": "es-kolmogorov", "to": "es-bayesian" },
-    { "from": "es-kolmogorov", "to": "es-proof" },
-    { "from": "es-kolmogorov", "to": "es-markov-deep" },
-    { "from": "es-kolmogorov", "to": "th-markov" },
-    { "from": "es-kolmogorov", "to": "math-turing" },
-    { "from": "es-kolmogorov", "to": "math-hilbert" },
-    { "from": "vi-lln", "to": "st-clt" },
-    { "from": "vi-lln", "to": "st-var" },
-    { "from": "vi-lln", "to": "st-ev" },
-    { "from": "vi-lln", "to": "es-kolmogorov" },
-    { "from": "vi-lln", "to": "vi-normal" },
-    { "from": "st-condprob",  "to": "es-bayesian" },
-    { "from": "st-condprob",  "to": "es-prob-paradox" },
-    { "from": "st-condprob",  "to": "vi-bayes" },
-    { "from": "st-condprob",  "to": "st-pvalue" },
-    { "from": "es-regression","to": "es-ab-testing" },
-    { "from": "es-regression","to": "es-causality" },
-    { "from": "es-regression","to": "es-bayesian" },
-    { "from": "es-regression","to": "es-prob-paradox" },
-    { "from": "es-regression","to": "st-var" },
-    { "from": "es-regression","to": "st-effect" },
-    { "from": "es-two-systems", "to": "es-eu" },
-    { "from": "es-two-systems", "to": "es-cog-biases" },
-    { "from": "es-two-systems", "to": "es-nudge" },
-    { "from": "es-two-systems", "to": "es-regression" },
-    { "from": "es-cog-biases",  "to": "es-two-systems" },
-    { "from": "es-cog-biases",  "to": "es-eu" },
-    { "from": "es-cog-biases",  "to": "es-nudge" },
-    { "from": "es-cog-biases",  "to": "es-ab-testing" },
-    { "from": "es-cog-biases",  "to": "es-bayesian" },
-    { "from": "es-nudge",       "to": "es-two-systems" },
-    { "from": "es-nudge",       "to": "es-cog-biases" },
-    { "from": "es-nudge",       "to": "es-eu" },
-    { "from": "es-nudge",       "to": "es-ab-testing" },
-    { "from": "es-nudge",       "to": "es-two-sided" },
-    { "from": "es-prospect",    "to": "es-eu" },
-    { "from": "es-prospect",    "to": "es-ev" },
-    { "from": "es-prospect",    "to": "es-two-systems" },
-    { "from": "es-prospect",    "to": "es-cog-biases" },
-    { "from": "es-prospect",    "to": "es-nudge" },
-    { "from": "es-prospect",    "to": "es-auctions" },
-    { "from": "st-loss-av", "to": "es-prospect" },
-    { "from": "st-loss-av", "to": "es-eu" },
-    { "from": "st-loss-av", "to": "es-nudge" },
-    { "from": "st-loss-av", "to": "st-ev" },
-    { "from": "st-loss-av", "to": "st-anchor" },
-    { "from": "st-anchor",  "to": "es-cog-biases" },
-    { "from": "st-anchor",  "to": "es-two-systems" },
-    { "from": "st-anchor",  "to": "es-nudge" },
-    { "from": "st-anchor",  "to": "st-loss-av" },
-    { "from": "st-anchor",  "to": "st-avail" },
-    { "from": "st-avail",   "to": "es-cog-biases" },
-    { "from": "st-avail",   "to": "es-two-systems" },
-    { "from": "st-avail",   "to": "es-bayesian" },
-    { "from": "st-avail",   "to": "st-anchor" },
-    { "from": "st-avail",   "to": "st-loss-av" },
-    { "from": "vi-gamblers", "to": "es-kolmogorov" },
-    { "from": "vi-gamblers", "to": "es-prob-paradox" },
-    { "from": "vi-gamblers", "to": "st-ev" },
-    { "from": "vi-gamblers", "to": "st-clt" },
-    { "from": "vi-gamblers", "to": "math-gauss" },
-    { "from": "math-lobachevsky", "to": "math-riemann" },
-    { "from": "math-lobachevsky", "to": "math-gauss" },
-    { "from": "math-lobachevsky", "to": "math-hilbert" },
-    { "from": "math-lobachevsky", "to": "math-poincare" },
-    { "from": "math-perelman",    "to": "math-poincare" },
-    { "from": "math-perelman",    "to": "math-riemann" },
-    { "from": "math-perelman",    "to": "math-hilbert" },
-    { "from": "math-pascal",      "to": "math-bernoulli" },
-    { "from": "math-pascal",      "to": "st-ev" },
-    { "from": "math-pascal",      "to": "es-ev" },
-    { "from": "math-pascal",      "to": "vi-gamblers" },
-    { "from": "math-bernoulli",   "to": "math-pascal" },
-    { "from": "math-bernoulli",   "to": "math-euler" },
-    { "from": "math-bernoulli",   "to": "math-gauss" },
-    { "from": "math-bernoulli",   "to": "st-clt" },
-    { "from": "math-bernoulli",   "to": "vi-lln" },
-    { "from": "math-bernoulli",   "to": "vi-gamblers" },
-    { "from": "math-laplace",     "to": "math-gauss" },
-    { "from": "math-laplace",     "to": "math-bernoulli" },
-    { "from": "math-laplace",     "to": "math-pascal" },
-    { "from": "math-laplace",     "to": "math-poincare" },
-    { "from": "math-laplace",     "to": "st-clt" },
-    { "from": "math-laplace",     "to": "st-condprob" },
-    { "from": "math-laplace",     "to": "es-kolmogorov" },
-    { "from": "es-gambling",    "to": "es-five-lett" },
-    { "from": "es-gambling",    "to": "es-monte-carlo" },
-    { "from": "es-gambling",    "to": "es-kolmogorov" },
-    { "from": "es-gambling",    "to": "es-prob-paradox" },
-    { "from": "es-gambling",    "to": "st-ev" },
-    { "from": "es-gambling",    "to": "st-clt" },
-    { "from": "es-gambling",    "to": "vi-gamblers" },
-    { "from": "es-gambling",    "to": "math-pascal" },
-    { "from": "es-gambling",    "to": "math-bernoulli" },
-    { "from": "es-gambling",    "to": "math-laplace" },
-    { "from": "es-five-lett",   "to": "es-gambling" },
-    { "from": "es-five-lett",   "to": "es-monte-carlo" },
-    { "from": "es-five-lett",   "to": "es-prob-paradox" },
-    { "from": "es-five-lett",   "to": "st-ev" },
-    { "from": "es-five-lett",   "to": "math-pascal" },
-    { "from": "es-five-lett",   "to": "math-bernoulli" },
-    { "from": "es-five-lett",   "to": "vi-gamblers" },
-    { "from": "es-monte-carlo", "to": "es-gambling" },
-    { "from": "es-monte-carlo", "to": "es-five-lett" },
-    { "from": "es-monte-carlo", "to": "es-kolmogorov" },
-    { "from": "es-monte-carlo", "to": "es-bayesian" },
-    { "from": "es-monte-carlo", "to": "th-markov" },
-    { "from": "es-monte-carlo", "to": "st-clt" },
-    { "from": "es-monte-carlo", "to": "vi-gamblers" },
-    { "from": "es-monte-carlo", "to": "math-laplace" },
-    { "from": "math-fermat", "to": "math-pascal" },
-    { "from": "math-fermat", "to": "math-euler" },
-    { "from": "math-fermat", "to": "math-riemann" },
-    { "from": "math-fermat", "to": "es-five-lett" },
-    { "from": "math-fermat", "to": "es-gambling" },
-    { "from": "math-fermat", "to": "vi-gamblers" },
-    { "from": "math-pascal", "to": "math-fermat" },
-    { "from": "es-games-math", "to": "es-gambling" },
-    { "from": "es-games-math", "to": "es-five-lett" },
-    { "from": "es-games-math", "to": "es-monte-carlo" },
-    { "from": "es-games-math", "to": "es-game-theory" },
-    { "from": "es-games-math", "to": "es-kolmogorov" },
-    { "from": "es-games-math", "to": "vi-gamblers" },
-    { "from": "es-games-math", "to": "math-pascal" },
-    { "from": "es-games-math", "to": "math-bernoulli" },
-    { "from": "es-games-math", "to": "math-fermat" },
-    { "from": "es-good-dec", "to": "st-ev" },
-    { "from": "es-good-dec", "to": "es-prospect" },
-    { "from": "es-good-dec", "to": "es-ab-testing" },
-    { "from": "es-good-dec", "to": "es-cog-biases" },
-    { "from": "es-good-dec", "to": "es-regression" },
-    { "from": "es-good-dec", "to": "es-ev" },
-    { "from": "es-good-dec", "to": "es-two-systems" },
-    { "from": "es-base-rate", "to": "es-bayesian" },
-    { "from": "es-base-rate", "to": "es-prob-paradox" },
-    { "from": "es-base-rate", "to": "es-cog-biases" },
-    { "from": "es-base-rate", "to": "es-ab-testing" },
-    { "from": "es-base-rate", "to": "es-good-dec" },
-    { "from": "es-base-rate", "to": "st-condprob" },
-    { "from": "es-base-rate", "to": "vi-bayes" },
-    { "from": "es-gamb-fall", "to": "es-prob-paradox" },
-    { "from": "es-gamb-fall", "to": "es-cog-biases" },
-    { "from": "es-gamb-fall", "to": "es-base-rate" },
-    { "from": "es-gamb-fall", "to": "es-regression" },
-    { "from": "es-gamb-fall", "to": "es-good-dec" },
-    { "from": "es-gamb-fall", "to": "st-clt" },
-    { "from": "es-gamb-fall", "to": "vi-lln" },
-    { "from": "es-small-num", "to": "es-gamb-fall" },
-    { "from": "es-small-num", "to": "es-base-rate" },
-    { "from": "es-small-num", "to": "es-regression" },
-    { "from": "es-small-num", "to": "es-ab-testing" },
-    { "from": "es-small-num", "to": "es-prob-paradox" },
-    { "from": "es-small-num", "to": "st-pvalue" },
-    { "from": "es-small-num", "to": "vi-lln" },
-    { "from": "es-benford", "to": "es-small-num" },
-    { "from": "es-benford", "to": "es-prob-paradox" },
-    { "from": "es-benford", "to": "es-base-rate" },
-    { "from": "es-benford", "to": "es-ab-testing" },
-    { "from": "es-benford", "to": "st-clt" },
-    { "from": "es-benford", "to": "vi-normal" },
-    { "from": "es-clt", "to": "es-small-num" },
-    { "from": "es-clt", "to": "es-gamb-fall" },
-    { "from": "es-clt", "to": "es-ab-testing" },
-    { "from": "es-clt", "to": "es-kolmogorov" },
-    { "from": "es-clt", "to": "es-gambling" },
-    { "from": "es-clt", "to": "st-clt" },
-    { "from": "es-clt", "to": "st-var" },
-    { "from": "es-clt", "to": "vi-normal" },
-    { "from": "es-clt", "to": "math-laplace" },
-    { "from": "es-clt", "to": "math-gauss" },
-    { "from": "es-simpson", "to": "es-base-rate" },
-    { "from": "es-simpson", "to": "es-cog-biases" },
-    { "from": "es-simpson", "to": "es-ab-testing" },
-    { "from": "es-simpson", "to": "es-regression" },
-    { "from": "es-simpson", "to": "es-prob-paradox" },
-    { "from": "es-simpson", "to": "es-good-dec" },
-    { "from": "es-simpson", "to": "st-pvalue" },
-    { "from": "es-simpson", "to": "st-condprob" },
-    { "from": "math-demoivre", "to": "math-bernoulli" },
-    { "from": "math-demoivre", "to": "math-laplace" },
-    { "from": "math-demoivre", "to": "math-gauss" },
-    { "from": "math-demoivre", "to": "math-euler" },
-    { "from": "math-demoivre", "to": "es-clt" },
-    { "from": "math-demoivre", "to": "es-gambling" },
-    { "from": "math-demoivre", "to": "vi-normal" },
-    { "from": "math-demoivre", "to": "vi-gamblers" },
-    { "from": "math-huygens", "to": "math-pascal" },
-    { "from": "math-huygens", "to": "math-bernoulli" },
-    { "from": "math-huygens", "to": "math-demoivre" },
-    { "from": "math-huygens", "to": "math-laplace" },
-    { "from": "math-huygens", "to": "es-five-lett" },
-    { "from": "math-huygens", "to": "es-gambling" },
-    { "from": "math-huygens", "to": "es-clt" },
-    { "from": "math-huygens", "to": "st-ev" },
-    { "from": "math-huygens", "to": "vi-gamblers" },
-    { "from": "es-poker-basics", "to": "es-poker-kelly" },
-    { "from": "es-poker-basics", "to": "es-poker-bayes" },
-    { "from": "es-poker-basics", "to": "es-poker-exploit" },
-    { "from": "es-poker-basics", "to": "es-poker-solvers" },
-    { "from": "es-poker-basics", "to": "es-ev" },
-    { "from": "es-poker-basics", "to": "es-game-theory-full" },
-    { "from": "es-poker-basics", "to": "es-good-dec" },
-    { "from": "es-poker-basics", "to": "es-games-math" },
-    { "from": "es-poker-kelly", "to": "es-poker-basics" },
-    { "from": "es-poker-kelly", "to": "es-ev" },
-    { "from": "es-poker-kelly", "to": "es-good-dec" },
-    { "from": "es-poker-kelly", "to": "es-games-math" },
-    { "from": "es-poker-kelly", "to": "st-ev" },
-    { "from": "es-poker-bayes", "to": "es-poker-basics" },
-    { "from": "es-poker-bayes", "to": "es-poker-exploit" },
-    { "from": "es-poker-bayes", "to": "es-bayesian" },
-    { "from": "es-poker-bayes", "to": "es-base-rate" },
-    { "from": "es-poker-exploit", "to": "es-poker-basics" },
-    { "from": "es-poker-exploit", "to": "es-poker-kelly" },
-    { "from": "es-poker-exploit", "to": "es-game-theory" },
-    { "from": "es-poker-exploit", "to": "es-game-theory-full" },
-    { "from": "es-poker-exploit", "to": "es-good-dec" },
-    { "from": "es-poker-solvers", "to": "es-poker-basics" },
-    { "from": "es-poker-solvers", "to": "es-poker-exploit" },
-    { "from": "es-poker-solvers", "to": "es-proof" },
-    { "from": "es-poker-glossary", "to": "es-poker-basics" },
-    { "from": "es-poker-glossary", "to": "es-poker-kelly" },
-    { "from": "es-poker-glossary", "to": "es-poker-bayes" },
-    { "from": "es-poker-glossary", "to": "es-poker-exploit" },
-    { "from": "es-poker-glossary", "to": "es-poker-solvers" },
-    { "from": "es-poker-glossary", "to": "st-ev" },
-    { "from": "es-poker-glossary", "to": "es-ev" },
-    { "from": "es-poker-glossary", "to": "phi" },
-    { "from": "es-poker-glossary", "to": "es-bayesian" },
-    { "from": "es-poker-glossary", "to": "es-game-theory-full" },
-    { "from": "es-games-train", "to": "es-games-math" },
-    { "from": "es-games-train", "to": "es-monte-carlo" },
-    { "from": "es-games-train", "to": "es-game-theory-full" },
-    { "from": "es-games-train", "to": "es-poker-basics" },
-    { "from": "es-games-train", "to": "es-poker-bayes" },
-    { "from": "es-games-train", "to": "es-poker-solvers" },
-    { "from": "es-poker-bayes", "to": "es-games-train" },
-    { "from": "es-poker-solvers", "to": "es-games-train" },
-    { "from": "gt-nash", "to": "st-ev" },
-    { "from": "gt-nash", "to": "es-game-theory-full" },
-    { "from": "gt-nash", "to": "es-poker-exploit" },
-    { "from": "gt-nash", "to": "es-poker-glossary" },
-    { "from": "es-poker-basics", "to": "gt-nash" },
-    { "from": "es-game-theory", "to": "gt-nash" },
-    { "from": "es-game-theory-full", "to": "gt-nash" },
-    { "from": "es-poker-exploit", "to": "gt-nash" },
-    { "from": "es-poker-glossary", "to": "gt-nash" },
-    { "from": "gt-minimax", "to": "gt-nash" },
-    { "from": "gt-nash", "to": "gt-minimax" },
-    { "from": "gt-minimax", "to": "st-ev" },
-    { "from": "gt-minimax", "to": "es-game-theory-full" },
-    { "from": "gt-minimax", "to": "es-poker-exploit" },
-    { "from": "gt-minimax", "to": "es-poker-basics" },
-    { "from": "gt-minimax", "to": "es-games-train" },
-    { "from": "gt-minimax", "to": "es-poker-glossary" },
-    { "from": "pr-prisoners", "to": "gt-nash" },
-    { "from": "pr-prisoners", "to": "gt-minimax" },
-    { "from": "gt-nash", "to": "pr-prisoners" },
-    { "from": "gt-minimax", "to": "pr-prisoners" },
-    { "from": "pr-prisoners", "to": "pr-monty" },
-    { "from": "pr-prisoners", "to": "es-game-theory" },
-    { "from": "pr-prisoners", "to": "es-game-theory-full" },
-    { "from": "pr-prisoners", "to": "es-poker-exploit" },
-    { "from": "pr-prisoners", "to": "es-poker-glossary" },
-    { "from": "st-corr", "to": "st-var" },
-    { "from": "st-corr", "to": "st-condprob" },
-    { "from": "st-corr", "to": "st-effect" },
-    { "from": "st-corr", "to": "st-rtm" },
-    { "from": "st-corr", "to": "es-causality" },
-    { "from": "st-rtm", "to": "st-corr" },
-    { "from": "st-rtm", "to": "st-var" },
-    { "from": "st-rtm", "to": "st-clt" },
-    { "from": "st-rtm", "to": "st-loss-av" },
-    { "from": "st-brn", "to": "st-condprob" },
-    { "from": "st-brn", "to": "st-avail" },
-    { "from": "st-brn", "to": "st-effect" },
-    { "from": "st-brn", "to": "es-poker-bayes" },
-    { "from": "st-brn", "to": "es-poker-glossary" },
-    { "from": "st-gf", "to": "st-clt" },
-    { "from": "st-gf", "to": "st-condprob" },
-    { "from": "st-gf", "to": "pr-gamblers" },
-    { "from": "st-gf", "to": "st-avail" },
-    { "from": "st-surv", "to": "st-var" },
-    { "from": "st-surv", "to": "st-brn" },
-    { "from": "st-surv", "to": "st-effect" },
-    { "from": "st-surv", "to": "st-condprob" },
-    { "from": "st-confirm", "to": "st-condprob" },
-    { "from": "st-confirm", "to": "st-surv" },
-    { "from": "st-confirm", "to": "st-avail" },
-    { "from": "st-confirm", "to": "es-poker-bayes" },
-    { "from": "st-sunk", "to": "st-ev" },
-    { "from": "st-sunk", "to": "st-loss-av" },
-    { "from": "st-sunk", "to": "st-frame" },
-    { "from": "st-sunk", "to": "es-good-dec" },
-    { "from": "st-hind", "to": "es-good-dec" },
-    { "from": "st-hind", "to": "st-condprob" },
-    { "from": "st-hind", "to": "st-surv" },
-    { "from": "st-hind", "to": "es-poker-glossary" },
-    { "from": "st-frame", "to": "st-loss-av" },
-    { "from": "st-frame", "to": "st-anchor" },
-    { "from": "st-frame", "to": "st-ev" },
-    { "from": "st-frame", "to": "st-sunk" },
-    { "from": "es-uncertainty-knight", "to": "es-ergodicity" },
-    { "from": "es-uncertainty-knight", "to": "es-black-swan" },
-    { "from": "es-uncertainty-knight", "to": "st-ev" },
-    { "from": "es-uncertainty-knight", "to": "es-poker-basics" },
-    { "from": "es-ergodicity", "to": "es-uncertainty-knight" },
-    { "from": "es-ergodicity", "to": "es-black-swan" },
-    { "from": "es-ergodicity", "to": "es-antifragile" },
-    { "from": "es-ergodicity", "to": "es-poker-kelly" },
-    { "from": "es-ergodicity", "to": "pr-gamblers" },
-    { "from": "es-ergodicity", "to": "st-ev" },
-    { "from": "es-black-swan", "to": "es-uncertainty-knight" },
-    { "from": "es-black-swan", "to": "es-ergodicity" },
-    { "from": "es-black-swan", "to": "es-antifragile" },
-    { "from": "es-black-swan", "to": "st-surv" },
-    { "from": "es-black-swan", "to": "st-condprob" },
-    { "from": "es-antifragile", "to": "es-uncertainty-knight" },
-    { "from": "es-antifragile", "to": "es-ergodicity" },
-    { "from": "es-antifragile", "to": "es-black-swan" },
-    { "from": "es-antifragile", "to": "es-poker-kelly" },
-    { "from": "es-decisions-distance", "to": "es-poker-basics" },
-    { "from": "es-decisions-distance", "to": "es-poker-kelly" },
-    { "from": "es-decisions-distance", "to": "es-poker-bayes" },
-    { "from": "es-decisions-distance", "to": "es-poker-exploit" },
-    { "from": "es-decisions-distance", "to": "es-poker-solvers" },
-    { "from": "es-decisions-distance", "to": "es-uncertainty-knight" },
-    { "from": "es-decisions-distance", "to": "es-ergodicity" },
-    { "from": "es-decisions-distance", "to": "es-black-swan" },
-    { "from": "es-decisions-distance", "to": "es-antifragile" },
-    { "from": "es-decisions-distance", "to": "pr-gamblers" },
-    { "from": "es-decisions-distance", "to": "pr-prisoners" },
-    { "from": "es-decisions-distance", "to": "st-ev" },
-    { "from": "es-poker-basics", "to": "es-decisions-distance" },
-    { "from": "es-poker-kelly", "to": "es-decisions-distance" },
-    { "from": "es-poker-bayes", "to": "es-decisions-distance" },
-    { "from": "es-poker-exploit", "to": "es-decisions-distance" },
-    { "from": "es-poker-solvers", "to": "es-decisions-distance" },
-    { "from": "es-uncertainty-knight", "to": "es-decisions-distance" },
-    { "from": "es-ergodicity", "to": "es-decisions-distance" },
-    { "from": "es-black-swan", "to": "es-decisions-distance" },
-    { "from": "es-antifragile", "to": "es-decisions-distance" },
-    { "from": "es-optionality", "to": "es-skin-in-the-game" },
-    { "from": "es-optionality", "to": "es-antifragile" },
-    { "from": "es-optionality", "to": "es-decisions-distance" },
-    { "from": "es-optionality", "to": "es-games-train" },
-    { "from": "es-skin-in-the-game", "to": "es-optionality" },
-    { "from": "es-skin-in-the-game", "to": "es-via-negativa" },
-    { "from": "es-skin-in-the-game", "to": "es-decisions-distance" },
-    { "from": "es-skin-in-the-game", "to": "es-black-swan" },
-    { "from": "es-via-negativa", "to": "es-skin-in-the-game" },
-    { "from": "es-via-negativa", "to": "es-flaneur" },
-    { "from": "es-via-negativa", "to": "es-antifragile" },
-    { "from": "es-via-negativa", "to": "es-decisions-distance" },
-    { "from": "es-flaneur", "to": "es-via-negativa" },
-    { "from": "es-flaneur", "to": "es-optionality" },
-    { "from": "es-flaneur", "to": "es-antifragile" },
-    { "from": "es-flaneur", "to": "es-decisions-distance" },
-    { "from": "es-decisions-distance", "to": "es-optionality" },
-    { "from": "es-decisions-distance", "to": "es-skin-in-the-game" },
-    { "from": "es-decisions-distance", "to": "es-via-negativa" },
-    { "from": "es-decisions-distance", "to": "es-flaneur" },
-    { "from": "vi-lorenz", "to": "th-markov" },
-    { "from": "vi-lorenz", "to": "es-markov" },
-    { "from": "vi-lorenz", "to": "es-monte-carlo" },
-    { "from": "vi-mult-circle", "to": "prime" },
-    { "from": "vi-mult-circle", "to": "natural" },
-    { "from": "vi-mult-circle", "to": "coord-polar" },
-    { "from": "vi-prime-scatter", "to": "prime" },
-    { "from": "vi-prime-scatter", "to": "vi-prime-polar" },
-    { "from": "vi-prime-scatter", "to": "vi-prime-field" },
-    { "from": "vi-prime-scatter", "to": "es-primes" },
-    { "from": "vi-symbols", "to": "alph-math" },
-    { "from": "vi-symbols", "to": "alph-greek" },
-    { "from": "vi-symbols", "to": "alph-fraktur" },
-    { "from": "mu-prime-drone", "to": "prime" },
-    { "from": "mu-prime-drone", "to": "es-primes" },
-    { "from": "mu-prime-drone", "to": "mu-constants" }
+    {
+      "from": "vi-coordinates",
+      "to": "pi"
+    },
+    {
+      "from": "vi-coordinates",
+      "to": "imaginary"
+    },
+    {
+      "from": "vi-coordinates",
+      "to": "bk-descartes"
+    },
+    {
+      "from": "coord-cart",
+      "to": "bk-descartes"
+    },
+    {
+      "from": "coord-cart",
+      "to": "vi-coordinates"
+    },
+    {
+      "from": "coord-cart",
+      "to": "alph-latin"
+    },
+    {
+      "from": "coord-polar",
+      "to": "pi"
+    },
+    {
+      "from": "coord-polar",
+      "to": "vi-coordinates"
+    },
+    {
+      "from": "coord-complex",
+      "to": "imaginary"
+    },
+    {
+      "from": "coord-complex",
+      "to": "es-euler-formula"
+    },
+    {
+      "from": "coord-complex",
+      "to": "vi-coordinates"
+    },
+    {
+      "from": "coord-complex",
+      "to": "bk-gauss"
+    },
+    {
+      "from": "integer",
+      "to": "natural"
+    },
+    {
+      "from": "integer",
+      "to": "zero"
+    },
+    {
+      "from": "integer",
+      "to": "op-mod"
+    },
+    {
+      "from": "integer",
+      "to": "es-infinity-types"
+    },
+    {
+      "from": "rational",
+      "to": "integer"
+    },
+    {
+      "from": "rational",
+      "to": "real"
+    },
+    {
+      "from": "rational",
+      "to": "sqrt2"
+    },
+    {
+      "from": "rational",
+      "to": "es-infinity-types"
+    },
+    {
+      "from": "real",
+      "to": "rational"
+    },
+    {
+      "from": "real",
+      "to": "complex"
+    },
+    {
+      "from": "real",
+      "to": "pi"
+    },
+    {
+      "from": "real",
+      "to": "euler"
+    },
+    {
+      "from": "real",
+      "to": "sqrt2"
+    },
+    {
+      "from": "real",
+      "to": "es-infinity-types"
+    },
+    {
+      "from": "sqrt2",
+      "to": "bk-euclid"
+    },
+    {
+      "from": "sqrt2",
+      "to": "es-infinity-types"
+    },
+    {
+      "from": "vi-benford",
+      "to": "prime"
+    },
+    {
+      "from": "vi-benford",
+      "to": "natural"
+    },
+    {
+      "from": "vi-benford",
+      "to": "vi-ulam"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "pr-monty"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "es-rsa"
+    },
+    {
+      "from": "es-markov",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "es-markov",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-markov",
+      "to": "vi-markov"
+    },
+    {
+      "from": "vi-markov",
+      "to": "es-markov"
+    },
+    {
+      "from": "vi-markov",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "es-proof",
+      "to": "godel"
+    },
+    {
+      "from": "es-proof",
+      "to": "bk-euclid"
+    },
+    {
+      "from": "es-proof",
+      "to": "bk-geb"
+    },
+    {
+      "from": "es-proof",
+      "to": "es-rsa"
+    },
+    {
+      "from": "es-math-music",
+      "to": "euler"
+    },
+    {
+      "from": "es-math-music",
+      "to": "pi"
+    },
+    {
+      "from": "es-math-music",
+      "to": "imaginary"
+    },
+    {
+      "from": "es-math-music",
+      "to": "mu-opstack"
+    },
+    {
+      "from": "es-math-music",
+      "to": "ch-sound"
+    },
+    {
+      "from": "es-inf-paradox",
+      "to": "aleph0"
+    },
+    {
+      "from": "es-inf-paradox",
+      "to": "cantor"
+    },
+    {
+      "from": "es-inf-paradox",
+      "to": "es-infinity"
+    },
+    {
+      "from": "es-inf-paradox",
+      "to": "es-zfc"
+    },
+    {
+      "from": "es-inf-paradox",
+      "to": "bk-geb"
+    },
+    {
+      "from": "vi-prime-polar",
+      "to": "prime"
+    },
+    {
+      "from": "vi-prime-polar",
+      "to": "vi-ulam"
+    },
+    {
+      "from": "vi-prime-polar",
+      "to": "es-primes"
+    },
+    {
+      "from": "vi-sorting",
+      "to": "natural"
+    },
+    {
+      "from": "vi-sorting",
+      "to": "op-mod"
+    },
+    {
+      "from": "vi-fourier",
+      "to": "pi"
+    },
+    {
+      "from": "vi-fourier",
+      "to": "imaginary"
+    },
+    {
+      "from": "vi-fourier",
+      "to": "es-math-music"
+    },
+    {
+      "from": "vi-fourier",
+      "to": "ch-sound"
+    },
+    {
+      "from": "alph-math",
+      "to": "transcendental"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "es-markov"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "pr-birthday"
+    },
+    {
+      "from": "es-auctions",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-auctions",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-auctions",
+      "to": "pr-secretary"
+    },
+    {
+      "from": "es-bayesian",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-bayesian",
+      "to": "es-markov"
+    },
+    {
+      "from": "es-bayesian",
+      "to": "es-auctions"
+    },
+    {
+      "from": "es-bayesian",
+      "to": "pr-monty"
+    },
+    {
+      "from": "es-bayesian",
+      "to": "pr-birthday"
+    },
+    {
+      "from": "es-llm-eval",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-llm-eval",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-llm-eval",
+      "to": "es-auctions"
+    },
+    {
+      "from": "es-llm-eval",
+      "to": "pvsnp"
+    },
+    {
+      "from": "es-two-sided",
+      "to": "es-auctions"
+    },
+    {
+      "from": "es-two-sided",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-two-sided",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-two-sided",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-two-sided",
+      "to": "pr-secretary"
+    },
+    {
+      "from": "st-pvalue",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "st-pvalue",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "st-ci",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "st-ci",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "st-effect",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "st-pvalue",
+      "to": "st-ci"
+    },
+    {
+      "from": "st-pvalue",
+      "to": "st-effect"
+    },
+    {
+      "from": "st-ci",
+      "to": "st-effect"
+    },
+    {
+      "from": "vi-ab-calc",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "vi-ab-calc",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "vi-ab-calc",
+      "to": "st-effect"
+    },
+    {
+      "from": "es-causality",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-causality",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-causality",
+      "to": "es-two-sided"
+    },
+    {
+      "from": "es-causality",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-adtech",
+      "to": "es-auctions"
+    },
+    {
+      "from": "es-adtech",
+      "to": "es-two-sided"
+    },
+    {
+      "from": "es-adtech",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-adtech",
+      "to": "es-causality"
+    },
+    {
+      "from": "st-bleu",
+      "to": "es-llm-eval"
+    },
+    {
+      "from": "st-bleu",
+      "to": "st-kappa"
+    },
+    {
+      "from": "st-bleu",
+      "to": "st-elo"
+    },
+    {
+      "from": "st-kappa",
+      "to": "es-llm-eval"
+    },
+    {
+      "from": "st-kappa",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "st-elo",
+      "to": "es-llm-eval"
+    },
+    {
+      "from": "st-elo",
+      "to": "es-auctions"
+    },
+    {
+      "from": "es-unit-econ",
+      "to": "es-two-sided"
+    },
+    {
+      "from": "es-unit-econ",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-unit-econ",
+      "to": "es-auctions"
+    },
+    {
+      "from": "es-unit-econ",
+      "to": "es-adtech"
+    },
+    {
+      "from": "es-unit-econ",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "vi-fibonacci",
+      "to": "phi"
+    },
+    {
+      "from": "vi-fibonacci",
+      "to": "natural"
+    },
+    {
+      "from": "vi-fibonacci",
+      "to": "vi-polar-roses"
+    },
+    {
+      "from": "st-ev",
+      "to": "st-var"
+    },
+    {
+      "from": "st-ev",
+      "to": "st-kelly"
+    },
+    {
+      "from": "st-ev",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "st-ev",
+      "to": "pr-monty"
+    },
+    {
+      "from": "st-ev",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "st-ev",
+      "to": "es-auctions"
+    },
+    {
+      "from": "st-var",
+      "to": "st-ev"
+    },
+    {
+      "from": "st-var",
+      "to": "st-clt"
+    },
+    {
+      "from": "st-var",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "st-clt",
+      "to": "st-ev"
+    },
+    {
+      "from": "st-clt",
+      "to": "st-var"
+    },
+    {
+      "from": "st-clt",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "st-kelly",
+      "to": "st-ev"
+    },
+    {
+      "from": "st-kelly",
+      "to": "st-var"
+    },
+    {
+      "from": "st-kelly",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "es-ev",
+      "to": "st-ev"
+    },
+    {
+      "from": "es-ev",
+      "to": "st-kelly"
+    },
+    {
+      "from": "es-ev",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-ev",
+      "to": "es-auctions"
+    },
+    {
+      "from": "es-ev",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-ev",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-ev",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "es-ev",
+      "to": "pr-monty"
+    },
+    {
+      "from": "es-eu",
+      "to": "st-ev"
+    },
+    {
+      "from": "es-eu",
+      "to": "st-kelly"
+    },
+    {
+      "from": "es-eu",
+      "to": "es-ev"
+    },
+    {
+      "from": "es-eu",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-eu",
+      "to": "es-auctions"
+    },
+    {
+      "from": "es-eu",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "vi-normal",
+      "to": "st-clt"
+    },
+    {
+      "from": "vi-normal",
+      "to": "st-var"
+    },
+    {
+      "from": "vi-normal",
+      "to": "st-ev"
+    },
+    {
+      "from": "vi-normal",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "vi-normal",
+      "to": "vi-ab-calc"
+    },
+    {
+      "from": "vi-ev-calc",
+      "to": "st-ev"
+    },
+    {
+      "from": "vi-ev-calc",
+      "to": "st-var"
+    },
+    {
+      "from": "vi-ev-calc",
+      "to": "st-kelly"
+    },
+    {
+      "from": "vi-ev-calc",
+      "to": "es-ev"
+    },
+    {
+      "from": "vi-ev-calc",
+      "to": "vi-ab-calc"
+    },
+    {
+      "from": "vi-ev-calc",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "st-cuped",
+      "to": "st-var"
+    },
+    {
+      "from": "st-cuped",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "st-cuped",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "st-cuped",
+      "to": "vi-cuped"
+    },
+    {
+      "from": "st-cuped",
+      "to": "vi-ab-calc"
+    },
+    {
+      "from": "vi-cuped",
+      "to": "st-cuped"
+    },
+    {
+      "from": "vi-cuped",
+      "to": "st-var"
+    },
+    {
+      "from": "vi-cuped",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "vi-cuped",
+      "to": "vi-normal"
+    },
+    {
+      "from": "math-cantor",
+      "to": "aleph0"
+    },
+    {
+      "from": "math-cantor",
+      "to": "cantor"
+    },
+    {
+      "from": "math-cantor",
+      "to": "godel"
+    },
+    {
+      "from": "math-gauss",
+      "to": "integer"
+    },
+    {
+      "from": "math-gauss",
+      "to": "bk-gauss"
+    },
+    {
+      "from": "math-euler",
+      "to": "euler"
+    },
+    {
+      "from": "math-euler",
+      "to": "imaginary"
+    },
+    {
+      "from": "math-euler",
+      "to": "pi"
+    },
+    {
+      "from": "math-euler",
+      "to": "bk-euclid"
+    },
+    {
+      "from": "math-ramanujan",
+      "to": "cu-1729"
+    },
+    {
+      "from": "math-ramanujan",
+      "to": "riemann"
+    },
+    {
+      "from": "math-ramanujan",
+      "to": "bk-hardy"
+    },
+    {
+      "from": "math-cantor",
+      "to": "math-gauss"
+    },
+    {
+      "from": "math-gauss",
+      "to": "math-euler"
+    },
+    {
+      "from": "math-euler",
+      "to": "math-ramanujan"
+    },
+    {
+      "from": "vi-bayes",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "vi-bayes",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "vi-bayes",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "vi-bayes",
+      "to": "vi-ab-calc"
+    },
+    {
+      "from": "vi-bayes",
+      "to": "vi-normal"
+    },
+    {
+      "from": "math-turing",
+      "to": "pvsnp"
+    },
+    {
+      "from": "math-turing",
+      "to": "godel"
+    },
+    {
+      "from": "math-turing",
+      "to": "es-proof"
+    },
+    {
+      "from": "math-turing",
+      "to": "math-cantor"
+    },
+    {
+      "from": "math-riemann",
+      "to": "riemann"
+    },
+    {
+      "from": "math-riemann",
+      "to": "pi"
+    },
+    {
+      "from": "math-riemann",
+      "to": "prime"
+    },
+    {
+      "from": "math-riemann",
+      "to": "math-cantor"
+    },
+    {
+      "from": "math-turing",
+      "to": "math-riemann"
+    },
+    {
+      "from": "math-newton",
+      "to": "bk-newton"
+    },
+    {
+      "from": "math-newton",
+      "to": "op-integral"
+    },
+    {
+      "from": "math-newton",
+      "to": "math-euler"
+    },
+    {
+      "from": "math-newton",
+      "to": "math-hilbert"
+    },
+    {
+      "from": "math-hilbert",
+      "to": "godel"
+    },
+    {
+      "from": "math-hilbert",
+      "to": "es-proof"
+    },
+    {
+      "from": "math-hilbert",
+      "to": "bk-geb"
+    },
+    {
+      "from": "math-hilbert",
+      "to": "math-cantor"
+    },
+    {
+      "from": "math-hilbert",
+      "to": "math-turing"
+    },
+    {
+      "from": "math-poincare",
+      "to": "riemann"
+    },
+    {
+      "from": "math-poincare",
+      "to": "godel"
+    },
+    {
+      "from": "math-poincare",
+      "to": "es-proof"
+    },
+    {
+      "from": "math-poincare",
+      "to": "math-riemann"
+    },
+    {
+      "from": "math-poincare",
+      "to": "math-hilbert"
+    },
+    {
+      "from": "math-poincare",
+      "to": "math-euler"
+    },
+    {
+      "from": "es-game-theory-full",
+      "to": "es-auctions"
+    },
+    {
+      "from": "es-game-theory-full",
+      "to": "es-two-sided"
+    },
+    {
+      "from": "es-game-theory-full",
+      "to": "es-ev"
+    },
+    {
+      "from": "es-game-theory-full",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-game-theory-full",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "vi-axelrod",
+      "to": "es-game-theory-full"
+    },
+    {
+      "from": "vi-axelrod",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "vi-axelrod",
+      "to": "es-auctions"
+    },
+    {
+      "from": "vi-axelrod",
+      "to": "vi-markov"
+    },
+    {
+      "from": "vi-axelrod",
+      "to": "math-poincare"
+    },
+    {
+      "from": "th-markov",
+      "to": "es-markov"
+    },
+    {
+      "from": "th-markov",
+      "to": "vi-markov"
+    },
+    {
+      "from": "th-markov",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "th-markov",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-markov-deep",
+      "to": "th-markov"
+    },
+    {
+      "from": "es-markov-deep",
+      "to": "es-markov"
+    },
+    {
+      "from": "es-markov-deep",
+      "to": "vi-markov"
+    },
+    {
+      "from": "es-markov-deep",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-markov-deep",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "es-prob-paradox",
+      "to": "pr-monty"
+    },
+    {
+      "from": "es-prob-paradox",
+      "to": "pr-birthday"
+    },
+    {
+      "from": "es-prob-paradox",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-prob-paradox",
+      "to": "es-inf-paradox"
+    },
+    {
+      "from": "es-prob-paradox",
+      "to": "vi-bayes"
+    },
+    {
+      "from": "es-kolmogorov",
+      "to": "es-prob-paradox"
+    },
+    {
+      "from": "es-kolmogorov",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-kolmogorov",
+      "to": "es-proof"
+    },
+    {
+      "from": "es-kolmogorov",
+      "to": "es-markov-deep"
+    },
+    {
+      "from": "es-kolmogorov",
+      "to": "th-markov"
+    },
+    {
+      "from": "es-kolmogorov",
+      "to": "math-turing"
+    },
+    {
+      "from": "es-kolmogorov",
+      "to": "math-hilbert"
+    },
+    {
+      "from": "vi-lln",
+      "to": "st-clt"
+    },
+    {
+      "from": "vi-lln",
+      "to": "st-var"
+    },
+    {
+      "from": "vi-lln",
+      "to": "st-ev"
+    },
+    {
+      "from": "vi-lln",
+      "to": "es-kolmogorov"
+    },
+    {
+      "from": "vi-lln",
+      "to": "vi-normal"
+    },
+    {
+      "from": "st-condprob",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "st-condprob",
+      "to": "es-prob-paradox"
+    },
+    {
+      "from": "st-condprob",
+      "to": "vi-bayes"
+    },
+    {
+      "from": "st-condprob",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "es-regression",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-regression",
+      "to": "es-causality"
+    },
+    {
+      "from": "es-regression",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-regression",
+      "to": "es-prob-paradox"
+    },
+    {
+      "from": "es-regression",
+      "to": "st-var"
+    },
+    {
+      "from": "es-regression",
+      "to": "st-effect"
+    },
+    {
+      "from": "es-two-systems",
+      "to": "es-eu"
+    },
+    {
+      "from": "es-two-systems",
+      "to": "es-cog-biases"
+    },
+    {
+      "from": "es-two-systems",
+      "to": "es-nudge"
+    },
+    {
+      "from": "es-two-systems",
+      "to": "es-regression"
+    },
+    {
+      "from": "es-cog-biases",
+      "to": "es-two-systems"
+    },
+    {
+      "from": "es-cog-biases",
+      "to": "es-eu"
+    },
+    {
+      "from": "es-cog-biases",
+      "to": "es-nudge"
+    },
+    {
+      "from": "es-cog-biases",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-cog-biases",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-nudge",
+      "to": "es-two-systems"
+    },
+    {
+      "from": "es-nudge",
+      "to": "es-cog-biases"
+    },
+    {
+      "from": "es-nudge",
+      "to": "es-eu"
+    },
+    {
+      "from": "es-nudge",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-nudge",
+      "to": "es-two-sided"
+    },
+    {
+      "from": "es-prospect",
+      "to": "es-eu"
+    },
+    {
+      "from": "es-prospect",
+      "to": "es-ev"
+    },
+    {
+      "from": "es-prospect",
+      "to": "es-two-systems"
+    },
+    {
+      "from": "es-prospect",
+      "to": "es-cog-biases"
+    },
+    {
+      "from": "es-prospect",
+      "to": "es-nudge"
+    },
+    {
+      "from": "es-prospect",
+      "to": "es-auctions"
+    },
+    {
+      "from": "st-loss-av",
+      "to": "es-prospect"
+    },
+    {
+      "from": "st-loss-av",
+      "to": "es-eu"
+    },
+    {
+      "from": "st-loss-av",
+      "to": "es-nudge"
+    },
+    {
+      "from": "st-loss-av",
+      "to": "st-ev"
+    },
+    {
+      "from": "st-loss-av",
+      "to": "st-anchor"
+    },
+    {
+      "from": "st-anchor",
+      "to": "es-cog-biases"
+    },
+    {
+      "from": "st-anchor",
+      "to": "es-two-systems"
+    },
+    {
+      "from": "st-anchor",
+      "to": "es-nudge"
+    },
+    {
+      "from": "st-anchor",
+      "to": "st-loss-av"
+    },
+    {
+      "from": "st-anchor",
+      "to": "st-avail"
+    },
+    {
+      "from": "st-avail",
+      "to": "es-cog-biases"
+    },
+    {
+      "from": "st-avail",
+      "to": "es-two-systems"
+    },
+    {
+      "from": "st-avail",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "st-avail",
+      "to": "st-anchor"
+    },
+    {
+      "from": "st-avail",
+      "to": "st-loss-av"
+    },
+    {
+      "from": "vi-gamblers",
+      "to": "es-kolmogorov"
+    },
+    {
+      "from": "vi-gamblers",
+      "to": "es-prob-paradox"
+    },
+    {
+      "from": "vi-gamblers",
+      "to": "st-ev"
+    },
+    {
+      "from": "vi-gamblers",
+      "to": "st-clt"
+    },
+    {
+      "from": "vi-gamblers",
+      "to": "math-gauss"
+    },
+    {
+      "from": "math-lobachevsky",
+      "to": "math-riemann"
+    },
+    {
+      "from": "math-lobachevsky",
+      "to": "math-gauss"
+    },
+    {
+      "from": "math-lobachevsky",
+      "to": "math-hilbert"
+    },
+    {
+      "from": "math-lobachevsky",
+      "to": "math-poincare"
+    },
+    {
+      "from": "math-perelman",
+      "to": "math-poincare"
+    },
+    {
+      "from": "math-perelman",
+      "to": "math-riemann"
+    },
+    {
+      "from": "math-perelman",
+      "to": "math-hilbert"
+    },
+    {
+      "from": "math-pascal",
+      "to": "math-bernoulli"
+    },
+    {
+      "from": "math-pascal",
+      "to": "st-ev"
+    },
+    {
+      "from": "math-pascal",
+      "to": "es-ev"
+    },
+    {
+      "from": "math-pascal",
+      "to": "vi-gamblers"
+    },
+    {
+      "from": "math-bernoulli",
+      "to": "math-pascal"
+    },
+    {
+      "from": "math-bernoulli",
+      "to": "math-euler"
+    },
+    {
+      "from": "math-bernoulli",
+      "to": "math-gauss"
+    },
+    {
+      "from": "math-bernoulli",
+      "to": "st-clt"
+    },
+    {
+      "from": "math-bernoulli",
+      "to": "vi-lln"
+    },
+    {
+      "from": "math-bernoulli",
+      "to": "vi-gamblers"
+    },
+    {
+      "from": "math-laplace",
+      "to": "math-gauss"
+    },
+    {
+      "from": "math-laplace",
+      "to": "math-bernoulli"
+    },
+    {
+      "from": "math-laplace",
+      "to": "math-pascal"
+    },
+    {
+      "from": "math-laplace",
+      "to": "math-poincare"
+    },
+    {
+      "from": "math-laplace",
+      "to": "st-clt"
+    },
+    {
+      "from": "math-laplace",
+      "to": "st-condprob"
+    },
+    {
+      "from": "math-laplace",
+      "to": "es-kolmogorov"
+    },
+    {
+      "from": "es-gambling",
+      "to": "es-five-lett"
+    },
+    {
+      "from": "es-gambling",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-gambling",
+      "to": "es-kolmogorov"
+    },
+    {
+      "from": "es-gambling",
+      "to": "es-prob-paradox"
+    },
+    {
+      "from": "es-gambling",
+      "to": "st-ev"
+    },
+    {
+      "from": "es-gambling",
+      "to": "st-clt"
+    },
+    {
+      "from": "es-gambling",
+      "to": "vi-gamblers"
+    },
+    {
+      "from": "es-gambling",
+      "to": "math-pascal"
+    },
+    {
+      "from": "es-gambling",
+      "to": "math-bernoulli"
+    },
+    {
+      "from": "es-gambling",
+      "to": "math-laplace"
+    },
+    {
+      "from": "es-five-lett",
+      "to": "es-gambling"
+    },
+    {
+      "from": "es-five-lett",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-five-lett",
+      "to": "es-prob-paradox"
+    },
+    {
+      "from": "es-five-lett",
+      "to": "st-ev"
+    },
+    {
+      "from": "es-five-lett",
+      "to": "math-pascal"
+    },
+    {
+      "from": "es-five-lett",
+      "to": "math-bernoulli"
+    },
+    {
+      "from": "es-five-lett",
+      "to": "vi-gamblers"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "es-gambling"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "es-five-lett"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "es-kolmogorov"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "th-markov"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "st-clt"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "vi-gamblers"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "math-laplace"
+    },
+    {
+      "from": "math-fermat",
+      "to": "math-pascal"
+    },
+    {
+      "from": "math-fermat",
+      "to": "math-euler"
+    },
+    {
+      "from": "math-fermat",
+      "to": "math-riemann"
+    },
+    {
+      "from": "math-fermat",
+      "to": "es-five-lett"
+    },
+    {
+      "from": "math-fermat",
+      "to": "es-gambling"
+    },
+    {
+      "from": "math-fermat",
+      "to": "vi-gamblers"
+    },
+    {
+      "from": "math-pascal",
+      "to": "math-fermat"
+    },
+    {
+      "from": "es-games-math",
+      "to": "es-gambling"
+    },
+    {
+      "from": "es-games-math",
+      "to": "es-five-lett"
+    },
+    {
+      "from": "es-games-math",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-games-math",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-games-math",
+      "to": "es-kolmogorov"
+    },
+    {
+      "from": "es-games-math",
+      "to": "vi-gamblers"
+    },
+    {
+      "from": "es-games-math",
+      "to": "math-pascal"
+    },
+    {
+      "from": "es-games-math",
+      "to": "math-bernoulli"
+    },
+    {
+      "from": "es-games-math",
+      "to": "math-fermat"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "st-ev"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "es-prospect"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "es-cog-biases"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "es-regression"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "es-ev"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "es-two-systems"
+    },
+    {
+      "from": "es-base-rate",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-base-rate",
+      "to": "es-prob-paradox"
+    },
+    {
+      "from": "es-base-rate",
+      "to": "es-cog-biases"
+    },
+    {
+      "from": "es-base-rate",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-base-rate",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-base-rate",
+      "to": "st-condprob"
+    },
+    {
+      "from": "es-base-rate",
+      "to": "vi-bayes"
+    },
+    {
+      "from": "es-gamb-fall",
+      "to": "es-prob-paradox"
+    },
+    {
+      "from": "es-gamb-fall",
+      "to": "es-cog-biases"
+    },
+    {
+      "from": "es-gamb-fall",
+      "to": "es-base-rate"
+    },
+    {
+      "from": "es-gamb-fall",
+      "to": "es-regression"
+    },
+    {
+      "from": "es-gamb-fall",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-gamb-fall",
+      "to": "st-clt"
+    },
+    {
+      "from": "es-gamb-fall",
+      "to": "vi-lln"
+    },
+    {
+      "from": "es-small-num",
+      "to": "es-gamb-fall"
+    },
+    {
+      "from": "es-small-num",
+      "to": "es-base-rate"
+    },
+    {
+      "from": "es-small-num",
+      "to": "es-regression"
+    },
+    {
+      "from": "es-small-num",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-small-num",
+      "to": "es-prob-paradox"
+    },
+    {
+      "from": "es-small-num",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "es-small-num",
+      "to": "vi-lln"
+    },
+    {
+      "from": "es-benford",
+      "to": "es-small-num"
+    },
+    {
+      "from": "es-benford",
+      "to": "es-prob-paradox"
+    },
+    {
+      "from": "es-benford",
+      "to": "es-base-rate"
+    },
+    {
+      "from": "es-benford",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-benford",
+      "to": "st-clt"
+    },
+    {
+      "from": "es-benford",
+      "to": "vi-normal"
+    },
+    {
+      "from": "es-clt",
+      "to": "es-small-num"
+    },
+    {
+      "from": "es-clt",
+      "to": "es-gamb-fall"
+    },
+    {
+      "from": "es-clt",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-clt",
+      "to": "es-kolmogorov"
+    },
+    {
+      "from": "es-clt",
+      "to": "es-gambling"
+    },
+    {
+      "from": "es-clt",
+      "to": "st-clt"
+    },
+    {
+      "from": "es-clt",
+      "to": "st-var"
+    },
+    {
+      "from": "es-clt",
+      "to": "vi-normal"
+    },
+    {
+      "from": "es-clt",
+      "to": "math-laplace"
+    },
+    {
+      "from": "es-clt",
+      "to": "math-gauss"
+    },
+    {
+      "from": "es-simpson",
+      "to": "es-base-rate"
+    },
+    {
+      "from": "es-simpson",
+      "to": "es-cog-biases"
+    },
+    {
+      "from": "es-simpson",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-simpson",
+      "to": "es-regression"
+    },
+    {
+      "from": "es-simpson",
+      "to": "es-prob-paradox"
+    },
+    {
+      "from": "es-simpson",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-simpson",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "es-simpson",
+      "to": "st-condprob"
+    },
+    {
+      "from": "math-demoivre",
+      "to": "math-bernoulli"
+    },
+    {
+      "from": "math-demoivre",
+      "to": "math-laplace"
+    },
+    {
+      "from": "math-demoivre",
+      "to": "math-gauss"
+    },
+    {
+      "from": "math-demoivre",
+      "to": "math-euler"
+    },
+    {
+      "from": "math-demoivre",
+      "to": "es-clt"
+    },
+    {
+      "from": "math-demoivre",
+      "to": "es-gambling"
+    },
+    {
+      "from": "math-demoivre",
+      "to": "vi-normal"
+    },
+    {
+      "from": "math-demoivre",
+      "to": "vi-gamblers"
+    },
+    {
+      "from": "math-huygens",
+      "to": "math-pascal"
+    },
+    {
+      "from": "math-huygens",
+      "to": "math-bernoulli"
+    },
+    {
+      "from": "math-huygens",
+      "to": "math-demoivre"
+    },
+    {
+      "from": "math-huygens",
+      "to": "math-laplace"
+    },
+    {
+      "from": "math-huygens",
+      "to": "es-five-lett"
+    },
+    {
+      "from": "math-huygens",
+      "to": "es-gambling"
+    },
+    {
+      "from": "math-huygens",
+      "to": "es-clt"
+    },
+    {
+      "from": "math-huygens",
+      "to": "st-ev"
+    },
+    {
+      "from": "math-huygens",
+      "to": "vi-gamblers"
+    },
+    {
+      "from": "es-poker-basics",
+      "to": "es-poker-kelly"
+    },
+    {
+      "from": "es-poker-basics",
+      "to": "es-poker-bayes"
+    },
+    {
+      "from": "es-poker-basics",
+      "to": "es-poker-exploit"
+    },
+    {
+      "from": "es-poker-basics",
+      "to": "es-poker-solvers"
+    },
+    {
+      "from": "es-poker-basics",
+      "to": "es-ev"
+    },
+    {
+      "from": "es-poker-basics",
+      "to": "es-game-theory-full"
+    },
+    {
+      "from": "es-poker-basics",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-poker-basics",
+      "to": "es-games-math"
+    },
+    {
+      "from": "es-poker-kelly",
+      "to": "es-poker-basics"
+    },
+    {
+      "from": "es-poker-kelly",
+      "to": "es-ev"
+    },
+    {
+      "from": "es-poker-kelly",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-poker-kelly",
+      "to": "es-games-math"
+    },
+    {
+      "from": "es-poker-kelly",
+      "to": "st-ev"
+    },
+    {
+      "from": "es-poker-bayes",
+      "to": "es-poker-basics"
+    },
+    {
+      "from": "es-poker-bayes",
+      "to": "es-poker-exploit"
+    },
+    {
+      "from": "es-poker-bayes",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-poker-bayes",
+      "to": "es-base-rate"
+    },
+    {
+      "from": "es-poker-exploit",
+      "to": "es-poker-basics"
+    },
+    {
+      "from": "es-poker-exploit",
+      "to": "es-poker-kelly"
+    },
+    {
+      "from": "es-poker-exploit",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-poker-exploit",
+      "to": "es-game-theory-full"
+    },
+    {
+      "from": "es-poker-exploit",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-poker-solvers",
+      "to": "es-poker-basics"
+    },
+    {
+      "from": "es-poker-solvers",
+      "to": "es-poker-exploit"
+    },
+    {
+      "from": "es-poker-solvers",
+      "to": "es-proof"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "es-poker-basics"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "es-poker-kelly"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "es-poker-bayes"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "es-poker-exploit"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "es-poker-solvers"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "st-ev"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "es-ev"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "phi"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "es-game-theory-full"
+    },
+    {
+      "from": "es-games-train",
+      "to": "es-games-math"
+    },
+    {
+      "from": "es-games-train",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-games-train",
+      "to": "es-game-theory-full"
+    },
+    {
+      "from": "es-games-train",
+      "to": "es-poker-basics"
+    },
+    {
+      "from": "es-games-train",
+      "to": "es-poker-bayes"
+    },
+    {
+      "from": "es-games-train",
+      "to": "es-poker-solvers"
+    },
+    {
+      "from": "es-poker-bayes",
+      "to": "es-games-train"
+    },
+    {
+      "from": "es-poker-solvers",
+      "to": "es-games-train"
+    },
+    {
+      "from": "gt-nash",
+      "to": "st-ev"
+    },
+    {
+      "from": "gt-nash",
+      "to": "es-game-theory-full"
+    },
+    {
+      "from": "gt-nash",
+      "to": "es-poker-exploit"
+    },
+    {
+      "from": "gt-nash",
+      "to": "es-poker-glossary"
+    },
+    {
+      "from": "es-poker-basics",
+      "to": "gt-nash"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "gt-nash"
+    },
+    {
+      "from": "es-game-theory-full",
+      "to": "gt-nash"
+    },
+    {
+      "from": "es-poker-exploit",
+      "to": "gt-nash"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "gt-nash"
+    },
+    {
+      "from": "gt-minimax",
+      "to": "gt-nash"
+    },
+    {
+      "from": "gt-nash",
+      "to": "gt-minimax"
+    },
+    {
+      "from": "gt-minimax",
+      "to": "st-ev"
+    },
+    {
+      "from": "gt-minimax",
+      "to": "es-game-theory-full"
+    },
+    {
+      "from": "gt-minimax",
+      "to": "es-poker-exploit"
+    },
+    {
+      "from": "gt-minimax",
+      "to": "es-poker-basics"
+    },
+    {
+      "from": "gt-minimax",
+      "to": "es-games-train"
+    },
+    {
+      "from": "gt-minimax",
+      "to": "es-poker-glossary"
+    },
+    {
+      "from": "pr-prisoners",
+      "to": "gt-nash"
+    },
+    {
+      "from": "pr-prisoners",
+      "to": "gt-minimax"
+    },
+    {
+      "from": "gt-nash",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "gt-minimax",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "pr-prisoners",
+      "to": "pr-monty"
+    },
+    {
+      "from": "pr-prisoners",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "pr-prisoners",
+      "to": "es-game-theory-full"
+    },
+    {
+      "from": "pr-prisoners",
+      "to": "es-poker-exploit"
+    },
+    {
+      "from": "pr-prisoners",
+      "to": "es-poker-glossary"
+    },
+    {
+      "from": "st-corr",
+      "to": "st-var"
+    },
+    {
+      "from": "st-corr",
+      "to": "st-condprob"
+    },
+    {
+      "from": "st-corr",
+      "to": "st-effect"
+    },
+    {
+      "from": "st-corr",
+      "to": "st-rtm"
+    },
+    {
+      "from": "st-corr",
+      "to": "es-causality"
+    },
+    {
+      "from": "st-rtm",
+      "to": "st-corr"
+    },
+    {
+      "from": "st-rtm",
+      "to": "st-var"
+    },
+    {
+      "from": "st-rtm",
+      "to": "st-clt"
+    },
+    {
+      "from": "st-rtm",
+      "to": "st-loss-av"
+    },
+    {
+      "from": "st-brn",
+      "to": "st-condprob"
+    },
+    {
+      "from": "st-brn",
+      "to": "st-avail"
+    },
+    {
+      "from": "st-brn",
+      "to": "st-effect"
+    },
+    {
+      "from": "st-brn",
+      "to": "es-poker-bayes"
+    },
+    {
+      "from": "st-brn",
+      "to": "es-poker-glossary"
+    },
+    {
+      "from": "st-gf",
+      "to": "st-clt"
+    },
+    {
+      "from": "st-gf",
+      "to": "st-condprob"
+    },
+    {
+      "from": "st-gf",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "st-gf",
+      "to": "st-avail"
+    },
+    {
+      "from": "st-surv",
+      "to": "st-var"
+    },
+    {
+      "from": "st-surv",
+      "to": "st-brn"
+    },
+    {
+      "from": "st-surv",
+      "to": "st-effect"
+    },
+    {
+      "from": "st-surv",
+      "to": "st-condprob"
+    },
+    {
+      "from": "st-confirm",
+      "to": "st-condprob"
+    },
+    {
+      "from": "st-confirm",
+      "to": "st-surv"
+    },
+    {
+      "from": "st-confirm",
+      "to": "st-avail"
+    },
+    {
+      "from": "st-confirm",
+      "to": "es-poker-bayes"
+    },
+    {
+      "from": "st-sunk",
+      "to": "st-ev"
+    },
+    {
+      "from": "st-sunk",
+      "to": "st-loss-av"
+    },
+    {
+      "from": "st-sunk",
+      "to": "st-frame"
+    },
+    {
+      "from": "st-sunk",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "st-hind",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "st-hind",
+      "to": "st-condprob"
+    },
+    {
+      "from": "st-hind",
+      "to": "st-surv"
+    },
+    {
+      "from": "st-hind",
+      "to": "es-poker-glossary"
+    },
+    {
+      "from": "st-frame",
+      "to": "st-loss-av"
+    },
+    {
+      "from": "st-frame",
+      "to": "st-anchor"
+    },
+    {
+      "from": "st-frame",
+      "to": "st-ev"
+    },
+    {
+      "from": "st-frame",
+      "to": "st-sunk"
+    },
+    {
+      "from": "es-uncertainty-knight",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "es-uncertainty-knight",
+      "to": "es-black-swan"
+    },
+    {
+      "from": "es-uncertainty-knight",
+      "to": "st-ev"
+    },
+    {
+      "from": "es-uncertainty-knight",
+      "to": "es-poker-basics"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "es-uncertainty-knight"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "es-black-swan"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "es-antifragile"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "es-poker-kelly"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "st-ev"
+    },
+    {
+      "from": "es-black-swan",
+      "to": "es-uncertainty-knight"
+    },
+    {
+      "from": "es-black-swan",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "es-black-swan",
+      "to": "es-antifragile"
+    },
+    {
+      "from": "es-black-swan",
+      "to": "st-surv"
+    },
+    {
+      "from": "es-black-swan",
+      "to": "st-condprob"
+    },
+    {
+      "from": "es-antifragile",
+      "to": "es-uncertainty-knight"
+    },
+    {
+      "from": "es-antifragile",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "es-antifragile",
+      "to": "es-black-swan"
+    },
+    {
+      "from": "es-antifragile",
+      "to": "es-poker-kelly"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-poker-basics"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-poker-kelly"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-poker-bayes"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-poker-exploit"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-poker-solvers"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-uncertainty-knight"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-black-swan"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-antifragile"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "st-ev"
+    },
+    {
+      "from": "es-poker-basics",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-poker-kelly",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-poker-bayes",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-poker-exploit",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-poker-solvers",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-uncertainty-knight",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-black-swan",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-antifragile",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-optionality",
+      "to": "es-skin-in-the-game"
+    },
+    {
+      "from": "es-optionality",
+      "to": "es-antifragile"
+    },
+    {
+      "from": "es-optionality",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-optionality",
+      "to": "es-games-train"
+    },
+    {
+      "from": "es-skin-in-the-game",
+      "to": "es-optionality"
+    },
+    {
+      "from": "es-skin-in-the-game",
+      "to": "es-via-negativa"
+    },
+    {
+      "from": "es-skin-in-the-game",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-skin-in-the-game",
+      "to": "es-black-swan"
+    },
+    {
+      "from": "es-via-negativa",
+      "to": "es-skin-in-the-game"
+    },
+    {
+      "from": "es-via-negativa",
+      "to": "es-flaneur"
+    },
+    {
+      "from": "es-via-negativa",
+      "to": "es-antifragile"
+    },
+    {
+      "from": "es-via-negativa",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-flaneur",
+      "to": "es-via-negativa"
+    },
+    {
+      "from": "es-flaneur",
+      "to": "es-optionality"
+    },
+    {
+      "from": "es-flaneur",
+      "to": "es-antifragile"
+    },
+    {
+      "from": "es-flaneur",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-optionality"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-skin-in-the-game"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-via-negativa"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-flaneur"
+    },
+    {
+      "from": "vi-lorenz",
+      "to": "th-markov"
+    },
+    {
+      "from": "vi-lorenz",
+      "to": "es-markov"
+    },
+    {
+      "from": "vi-lorenz",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "vi-mult-circle",
+      "to": "prime"
+    },
+    {
+      "from": "vi-mult-circle",
+      "to": "natural"
+    },
+    {
+      "from": "vi-mult-circle",
+      "to": "coord-polar"
+    },
+    {
+      "from": "vi-prime-scatter",
+      "to": "prime"
+    },
+    {
+      "from": "vi-prime-scatter",
+      "to": "vi-prime-polar"
+    },
+    {
+      "from": "vi-prime-scatter",
+      "to": "vi-prime-field"
+    },
+    {
+      "from": "vi-prime-scatter",
+      "to": "es-primes"
+    },
+    {
+      "from": "vi-symbols",
+      "to": "alph-math"
+    },
+    {
+      "from": "vi-symbols",
+      "to": "alph-greek"
+    },
+    {
+      "from": "vi-symbols",
+      "to": "alph-fraktur"
+    },
+    {
+      "from": "mu-prime-drone",
+      "to": "prime"
+    },
+    {
+      "from": "mu-prime-drone",
+      "to": "es-primes"
+    },
+    {
+      "from": "mu-prime-drone",
+      "to": "mu-constants"
+    },
+    {
+      "from": "st-ev",
+      "to": "es-ev"
+    },
+    {
+      "from": "st-kelly",
+      "to": "es-poker-kelly"
+    },
+    {
+      "from": "es-poker-kelly",
+      "to": "st-kelly"
+    },
+    {
+      "from": "st-brn",
+      "to": "es-base-rate"
+    },
+    {
+      "from": "es-base-rate",
+      "to": "st-brn"
+    },
+    {
+      "from": "st-clt",
+      "to": "es-clt"
+    },
+    {
+      "from": "st-gf",
+      "to": "es-gamb-fall"
+    },
+    {
+      "from": "es-gamb-fall",
+      "to": "st-gf"
+    },
+    {
+      "from": "st-rtm",
+      "to": "es-regression"
+    },
+    {
+      "from": "es-regression",
+      "to": "st-rtm"
+    },
+    {
+      "from": "pr-simpson",
+      "to": "es-simpson"
+    },
+    {
+      "from": "es-simpson",
+      "to": "pr-simpson"
+    },
+    {
+      "from": "es-prospect",
+      "to": "st-loss-av"
+    }
   ]
 }

@@ -833,3 +833,23 @@ table.meta td.v.mono { font-family: var(--font-mono); font-size: 12px; }
   .essay-item .tag { display: none; }
   .footer { padding: 12px 16px; flex-direction: column; gap: 4px; }
 }
+
+/* перекрёстная плашка объект ↔ эссе */
+.xref {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #888;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid #ddd;
+  border-left: 2px solid var(--accent-red);
+  padding: 10px 14px;
+  margin: 20px 0;
+  display: block;
+  text-decoration: none;
+}
+.xref:hover { background: #f7f6f2; border-left-color: #111; }
+.xref .xref-label { color: #bbb; margin-right: 6px; }
+.xref .xref-title { color: #111; text-transform: none; letter-spacing: 0; font-family: var(--font-text); font-size: 15px; font-style: italic; }
+.xref .xref-arrow { color: var(--accent-red); margin-left: 4px; }
+
