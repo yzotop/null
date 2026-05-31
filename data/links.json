@@ -925,13 +925,6 @@
       "glyph": "∞"
     },
     {
-      "id": "es-game-theory-full",
-      "type": "essay",
-      "title": "Теория игр · полная",
-      "url": "/null/essays/game-theory-full.html",
-      "glyph": "¶"
-    },
-    {
       "id": "vi-axelrod",
       "type": "visual",
       "title": "турниры Аксельрода",
@@ -3282,28 +3275,20 @@
       "to": "math-euler"
     },
     {
-      "from": "es-game-theory-full",
+      "from": "es-game-theory",
       "to": "es-auctions"
     },
     {
-      "from": "es-game-theory-full",
+      "from": "es-game-theory",
       "to": "es-two-sided"
     },
     {
-      "from": "es-game-theory-full",
+      "from": "es-game-theory",
       "to": "es-ev"
     },
     {
-      "from": "es-game-theory-full",
+      "from": "es-game-theory",
       "to": "es-bayesian"
-    },
-    {
-      "from": "es-game-theory-full",
-      "to": "es-game-theory"
-    },
-    {
-      "from": "vi-axelrod",
-      "to": "es-game-theory-full"
     },
     {
       "from": "vi-axelrod",
@@ -4183,7 +4168,7 @@
     },
     {
       "from": "es-poker-basics",
-      "to": "es-game-theory-full"
+      "to": "es-game-theory"
     },
     {
       "from": "es-poker-basics",
@@ -4243,10 +4228,6 @@
     },
     {
       "from": "es-poker-exploit",
-      "to": "es-game-theory-full"
-    },
-    {
-      "from": "es-poker-exploit",
       "to": "es-good-dec"
     },
     {
@@ -4299,7 +4280,7 @@
     },
     {
       "from": "es-poker-glossary",
-      "to": "es-game-theory-full"
+      "to": "es-game-theory"
     },
     {
       "from": "es-games-train",
@@ -4311,7 +4292,7 @@
     },
     {
       "from": "es-games-train",
-      "to": "es-game-theory-full"
+      "to": "es-game-theory"
     },
     {
       "from": "es-games-train",
@@ -4339,7 +4320,7 @@
     },
     {
       "from": "gt-nash",
-      "to": "es-game-theory-full"
+      "to": "es-game-theory"
     },
     {
       "from": "gt-nash",
@@ -4355,10 +4336,6 @@
     },
     {
       "from": "es-game-theory",
-      "to": "gt-nash"
-    },
-    {
-      "from": "es-game-theory-full",
       "to": "gt-nash"
     },
     {
@@ -4383,7 +4360,7 @@
     },
     {
       "from": "gt-minimax",
-      "to": "es-game-theory-full"
+      "to": "es-game-theory"
     },
     {
       "from": "gt-minimax",
@@ -4424,10 +4401,6 @@
     {
       "from": "pr-prisoners",
       "to": "es-game-theory"
-    },
-    {
-      "from": "pr-prisoners",
-      "to": "es-game-theory-full"
     },
     {
       "from": "pr-prisoners",
