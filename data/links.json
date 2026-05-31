@@ -1005,7 +1005,7 @@
       "id": "st-condprob",
       "type": "statistic",
       "title": "условная вероятность P(A|B)",
-      "url": "/null/objects/statistics/conditional-probability.html",
+      "url": "/null/objects/statistics/probability/conditional-probability.html",
       "glyph": "P(A|B)"
     },
     {
@@ -1047,84 +1047,84 @@
       "id": "st-loss-av",
       "type": "statistic",
       "title": "loss aversion",
-      "url": "/null/objects/statistics/loss-aversion.html",
+      "url": "/null/objects/statistics/biases/loss-aversion.html",
       "glyph": "λ"
     },
     {
       "id": "st-anchor",
       "type": "statistic",
       "title": "anchoring effect",
-      "url": "/null/objects/statistics/anchoring.html",
+      "url": "/null/objects/statistics/biases/anchoring.html",
       "glyph": "⚓"
     },
     {
       "id": "st-avail",
       "type": "statistic",
       "title": "availability heuristic",
-      "url": "/null/objects/statistics/availability.html",
+      "url": "/null/objects/statistics/biases/availability.html",
       "glyph": "?"
     },
     {
       "id": "st-corr",
       "type": "statistic",
       "title": "корреляция",
-      "url": "/null/objects/statistics/correlation.html",
+      "url": "/null/objects/statistics/measures/correlation.html",
       "glyph": "r"
     },
     {
       "id": "st-rtm",
       "type": "statistic",
       "title": "регрессия к среднему",
-      "url": "/null/objects/statistics/regression-to-mean.html",
+      "url": "/null/objects/statistics/measures/regression-to-mean.html",
       "glyph": "→x̄"
     },
     {
       "id": "st-brn",
       "type": "statistic",
       "title": "ошибка базовой частоты",
-      "url": "/null/objects/statistics/base-rate-neglect.html",
+      "url": "/null/objects/statistics/biases/base-rate-neglect.html",
       "glyph": "P(H)"
     },
     {
       "id": "st-gf",
       "type": "statistic",
       "title": "ошибка игрока",
-      "url": "/null/objects/statistics/gamblers-fallacy.html",
+      "url": "/null/objects/statistics/biases/gamblers-fallacy.html",
       "glyph": "½"
     },
     {
       "id": "st-surv",
       "type": "statistic",
       "title": "ошибка выжившего",
-      "url": "/null/objects/statistics/survivorship-bias.html",
+      "url": "/null/objects/statistics/biases/survivorship-bias.html",
       "glyph": "▣"
     },
     {
       "id": "st-confirm",
       "type": "statistic",
       "title": "склонность к подтверждению",
-      "url": "/null/objects/statistics/confirmation-bias.html",
+      "url": "/null/objects/statistics/biases/confirmation-bias.html",
       "glyph": "✓"
     },
     {
       "id": "st-sunk",
       "type": "statistic",
       "title": "невозвратные затраты",
-      "url": "/null/objects/statistics/sunk-cost.html",
+      "url": "/null/objects/statistics/biases/sunk-cost.html",
       "glyph": "⊗"
     },
     {
       "id": "st-hind",
       "type": "statistic",
       "title": "ретроспективное искажение",
-      "url": "/null/objects/statistics/hindsight-bias.html",
+      "url": "/null/objects/statistics/biases/hindsight-bias.html",
       "glyph": "⟲"
     },
     {
       "id": "st-frame",
       "type": "statistic",
       "title": "эффект формулировки",
-      "url": "/null/objects/statistics/framing-effect.html",
+      "url": "/null/objects/statistics/biases/framing-effect.html",
       "glyph": "[ ]"
     },
     {
@@ -1425,7 +1425,7 @@
       "id": "st-cuped",
       "type": "statistic",
       "title": "CUPED",
-      "url": "/null/objects/statistics/cuped.html",
+      "url": "/null/objects/statistics/inference/cuped.html",
       "glyph": "θ"
     },
     {
@@ -1460,70 +1460,70 @@
       "id": "st-pvalue",
       "type": "statistic",
       "title": "p-value",
-      "url": "/null/objects/statistics/p-value.html",
+      "url": "/null/objects/statistics/inference/p-value.html",
       "glyph": "p"
     },
     {
       "id": "st-ci",
       "type": "statistic",
       "title": "доверительный интервал",
-      "url": "/null/objects/statistics/confidence-interval.html",
+      "url": "/null/objects/statistics/inference/confidence-interval.html",
       "glyph": "[─]"
     },
     {
       "id": "st-effect",
       "type": "statistic",
       "title": "размер эффекта",
-      "url": "/null/objects/statistics/effect-size.html",
+      "url": "/null/objects/statistics/inference/effect-size.html",
       "glyph": "d"
     },
     {
       "id": "st-bleu",
       "type": "statistic",
       "title": "BLEU score",
-      "url": "/null/objects/statistics/bleu.html",
+      "url": "/null/objects/statistics/measures/bleu.html",
       "glyph": "BLEU"
     },
     {
       "id": "st-kappa",
       "type": "statistic",
       "title": "каппа Коэна",
-      "url": "/null/objects/statistics/cohens-kappa.html",
+      "url": "/null/objects/statistics/measures/cohens-kappa.html",
       "glyph": "κ"
     },
     {
       "id": "st-elo",
       "type": "statistic",
       "title": "рейтинг Elo",
-      "url": "/null/objects/statistics/elo.html",
+      "url": "/null/objects/statistics/measures/elo.html",
       "glyph": "Elo"
     },
     {
       "id": "st-ev",
       "type": "statistic",
       "title": "математическое ожидание E[X]",
-      "url": "/null/objects/statistics/ev.html",
+      "url": "/null/objects/statistics/probability/ev.html",
       "glyph": "E[X]"
     },
     {
       "id": "st-var",
       "type": "statistic",
       "title": "дисперсия σ²",
-      "url": "/null/objects/statistics/variance.html",
+      "url": "/null/objects/statistics/probability/variance.html",
       "glyph": "σ²"
     },
     {
       "id": "st-clt",
       "type": "statistic",
       "title": "центральная предельная теорема",
-      "url": "/null/objects/statistics/clt.html",
+      "url": "/null/objects/statistics/probability/clt.html",
       "glyph": "N"
     },
     {
       "id": "st-kelly",
       "type": "statistic",
       "title": "критерий Келли",
-      "url": "/null/objects/statistics/kelly.html",
+      "url": "/null/objects/statistics/probability/kelly.html",
       "glyph": "f*"
     },
     {

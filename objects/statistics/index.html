@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>статистика — null/objects</title>
 <link rel="stylesheet" href="../../styles/main.css">
-<style>
-  .group-label { font-family: var(--font-mono); font-size: 9px; color: #bbb; text-transform: uppercase; letter-spacing: 0.12em; margin: 32px 0 12px 0; }
-  .group-label:first-of-type { margin-top: 20px; }
-</style>
 </head>
 <body>
 
@@ -25,338 +21,57 @@
 </header>
 <div class="breadcrumb">/null / objects / statistics</div>
 
-<main class="container wide">
+<main class="container">
   <h1 class="page-title">статистика</h1>
-  <div class="page-sub">24 объекта · измерение · вероятность · связь · искажения</div>
+  <div class="page-sub">24 объекта · 4 подкатегории · вероятность · вывод · меры · искажения</div>
 
-  <div class="group-label">// измерение и оценка</div>
   <div class="cards">
 
-
-    <a class="card" href="p-value.html">
+    <a class="card" href="probability/">
       <div class="card-head">
-        <span class="card-tag">статистика · №001</span>
+        <span class="card-tag">подкатегория · §01</span>
+        <span class="card-arrow">→</span>
+      </div>
+      <div class="card-glyph"><em>P</em></div>
+      <div class="card-title">вероятность</div>
+      <div class="card-desc">условная вероятность · EV · дисперсия · CLT · Kelly. язык случая.</div>
+      <div class="card-num">5 объектов</div>
+    </a>
+
+    <a class="card" href="inference/">
+      <div class="card-head">
+        <span class="card-tag">подкатегория · §02</span>
         <span class="card-arrow">→</span>
       </div>
       <div class="card-glyph"><em>p</em></div>
-      <div class="card-title">p-value</div>
-      <div class="card-desc">вероятность получить результат не менее экстремальный, если нулевая гипотеза верна. не то, что думают.</div>
-      <div class="card-num">гипотезы · Fisher · 1925</div>
+      <div class="card-title">вывод</div>
+      <div class="card-desc">p-value · CI · effect size · CUPED. инструменты гипотез и оценки.</div>
+      <div class="card-num">4 объекта</div>
     </a>
 
-
-
-    <a class="card" href="confidence-interval.html">
+    <a class="card" href="measures/">
       <div class="card-head">
-        <span class="card-tag">статистика · №002</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph">[─]</div>
-      <div class="card-title">доверительный интервал</div>
-      <div class="card-desc">интервал, который с вероятностью 95% содержит истинный параметр. тоже не то, что думают.</div>
-      <div class="card-num">Neyman · 1937 · интервальная оценка</div>
-    </a>
-
-
-
-    <a class="card" href="effect-size.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №003</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>d</em></div>
-      <div class="card-title">размер эффекта</div>
-      <div class="card-desc">насколько велик эффект. важнее, чем p-value. Cohen's d · relative uplift · η².</div>
-      <div class="card-num">Cohen · 1988 · практическая значимость</div>
-    </a>
-
-
-
-    <a class="card" href="bleu.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №004</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph" style="font-family:'JetBrains Mono',monospace;font-size:38px;letter-spacing:0;">BLEU</div>
-      <div class="card-title">BLEU score</div>
-      <div class="card-desc">n-gram overlap · метрика качества текста · стандарт NLP.</div>
-      <div class="card-num">Papineni · 2002 · machine translation</div>
-    </a>
-
-
-
-    <a class="card" href="cohens-kappa.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №005</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>κ</em></div>
-      <div class="card-title">каппа Коэна</div>
-      <div class="card-desc">согласие аннотаторов с поправкой на случайность. κ &lt; 0.4 — задача плохо определена.</div>
-      <div class="card-num">Cohen · 1960 · annotation quality</div>
-    </a>
-
-
-
-    <a class="card" href="elo.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №006</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>Elo</em></div>
-      <div class="card-title">рейтинг Elo</div>
-      <div class="card-desc">рейтинг через попарные сравнения. основа LMSYS Chatbot Arena.</div>
-      <div class="card-num">Elo · 1960 · LLM ranking</div>
-    </a>
-
-
-
-    <a class="card" href="clt.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №009</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>N</em></div>
-      <div class="card-title">центральная предельная теорема</div>
-      <div class="card-desc">почему нормальное распределение везде · основа t-теста.</div>
-      <div class="card-num">Муавр · Лаплас · Ляпунов</div>
-    </a>
-
-
-
-    <a class="card" href="cuped.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №011</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>θ</em></div>
-      <div class="card-title">CUPED</div>
-      <div class="card-desc">снижение дисперсии через pre-experiment данные. ρ = 0.6 → на 36% меньше выборки.</div>
-      <div class="card-num">Deng et al. · Microsoft · KDD · 2013</div>
-    </a>
-
-
-
-    <a class="card" href="conditional-probability.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №012</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>P(A|B)</em></div>
-      <div class="card-title">условная вероятность</div>
-      <div class="card-desc">вероятность A при условии B. P(A|B) ≠ P(B|A) — transpose fallacy.</div>
-      <div class="card-num">Байес · 1763 · Колмогоров · 1933</div>
-    </a>
-
-  </div>
-
-  <div class="group-label">// вероятность и риск</div>
-  <div class="cards">
-
-
-    <a class="card" href="ev.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №007</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>E[X]</em></div>
-      <div class="card-title">математическое ожидание</div>
-      <div class="card-desc">взвешенная сумма исходов · основа рационального решения.</div>
-      <div class="card-num">Гюйгенс · 1657 · expected value</div>
-    </a>
-
-
-
-    <a class="card" href="variance.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №008</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>σ²</em></div>
-      <div class="card-title">дисперсия</div>
-      <div class="card-desc">разброс вокруг EV · цена неопределённости · CUPED.</div>
-      <div class="card-num">σ²/n → 0 · A/B sample size</div>
-    </a>
-
-
-
-    <a class="card" href="kelly.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №010</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>f*</em></div>
-      <div class="card-title">критерий Келли</div>
-      <div class="card-desc">оптимальный размер ставки при положительном EV. EV + variance вместе.</div>
-      <div class="card-num">Kelly · Bell Labs · 1956</div>
-    </a>
-
-  </div>
-
-  <div class="group-label">// связь переменных</div>
-  <div class="cards">
-
-
-    <a class="card" href="correlation.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №016</span>
+        <span class="card-tag">подкатегория · §03</span>
         <span class="card-arrow">→</span>
       </div>
       <div class="card-glyph"><em>r</em></div>
-      <div class="card-title">корреляция</div>
-      <div class="card-desc">движутся вместе ≠ связаны. r ловит линию, не причину.</div>
-      <div class="card-num">Гальтон · 1888 · Пирсон · 1896</div>
+      <div class="card-title">меры</div>
+      <div class="card-desc">корреляция · регрессия к среднему · BLEU · κ · Elo. количества связи и качества.</div>
+      <div class="card-num">5 объектов</div>
     </a>
 
-
-
-    <a class="card" href="regression-to-mean.html">
+    <a class="card" href="biases/">
       <div class="card-head">
-        <span class="card-tag">статистика · №017</span>
+        <span class="card-tag">подкатегория · §04</span>
         <span class="card-arrow">→</span>
       </div>
-      <div class="card-glyph"><em>→x̄</em></div>
-      <div class="card-title">регрессия к среднему</div>
-      <div class="card-desc">после экстремума идёт откат. почти всегда принимают за причину.</div>
-      <div class="card-num">Гальтон · 1886</div>
+      <div class="card-glyph"><em>λ</em></div>
+      <div class="card-title">искажения</div>
+      <div class="card-desc">loss aversion · anchoring · availability · base-rate · gambler · survivorship · confirmation · sunk-cost · hindsight · framing.</div>
+      <div class="card-num">10 объектов</div>
     </a>
 
   </div>
-
-  <div class="group-label">// когнитивные искажения</div>
-  <div class="cards">
-
-
-    <a class="card" href="loss-aversion.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №013</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em style="color:#c44a32;">λ</em></div>
-      <div class="card-title">loss aversion</div>
-      <div class="card-desc">потери болят вдвое сильнее выигрышей. λ ≈ 2.25.</div>
-      <div class="card-num">Канеман · Тверски · 1979</div>
-    </a>
-
-
-
-    <a class="card" href="anchoring.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №014</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>⚓</em></div>
-      <div class="card-title">anchoring effect</div>
-      <div class="card-desc">первое число искажает все последующие оценки. даже случайный якорь влияет.</div>
-      <div class="card-num">Тверски · Канеман · Science · 1974</div>
-    </a>
-
-
-
-    <a class="card" href="availability.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №015</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>?</em></div>
-      <div class="card-title">availability heuristic</div>
-      <div class="card-desc">легко вспоминается = кажется вероятным. яркость ≠ частота.</div>
-      <div class="card-num">Тверски · Канеман · 1973</div>
-    </a>
-
-
-
-    <a class="card" href="base-rate-neglect.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №018</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>P(H)</em></div>
-      <div class="card-title">ошибка базовой частоты</div>
-      <div class="card-desc">тест точен на 99% — а ты, скорее всего, здоров. забываем базу.</div>
-      <div class="card-num">Канеман · Тверски · 1973</div>
-    </a>
-
-
-
-    <a class="card" href="gamblers-fallacy.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №019</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>½</em></div>
-      <div class="card-title">ошибка игрока</div>
-      <div class="card-desc">монета не помнит. полоса не «назрела». Монте-Карло 1913.</div>
-      <div class="card-num">gambler's fallacy</div>
-    </a>
-
-
-
-    <a class="card" href="survivorship-bias.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №020</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>▣</em></div>
-      <div class="card-title">ошибка выжившего</div>
-      <div class="card-desc">бронируй там, где дыр нет. Вальд · 1943. кого здесь нет?</div>
-      <div class="card-num">survivorship bias</div>
-    </a>
-
-
-
-    <a class="card" href="confirmation-bias.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №021</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>✓</em></div>
-      <div class="card-title">склонность к подтверждению</div>
-      <div class="card-desc">ищем только за, не ищем против. Уэйсон · 2-4-6 · 1960.</div>
-      <div class="card-num">confirmation bias</div>
-    </a>
-
-
-
-    <a class="card" href="sunk-cost.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №022</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>⊗</em></div>
-      <div class="card-title">невозвратные затраты</div>
-      <div class="card-desc">смотри только вперёд. эффект Конкорда. прошлое уже потрачено.</div>
-      <div class="card-num">sunk cost fallacy</div>
-    </a>
-
-
-
-    <a class="card" href="hindsight-bias.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №023</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>⟲</em></div>
-      <div class="card-title">ретроспективное искажение</div>
-      <div class="card-desc">«я так и знал» — задним числом. Фишхофф · 1975. дневник решений.</div>
-      <div class="card-num">hindsight bias</div>
-    </a>
-
-
-
-    <a class="card" href="framing-effect.html">
-      <div class="card-head">
-        <span class="card-tag">статистика · №024</span>
-        <span class="card-arrow">→</span>
-      </div>
-      <div class="card-glyph"><em>[ ]</em></div>
-      <div class="card-title">эффект формулировки</div>
-      <div class="card-desc">те же числа, другая рамка — другой выбор. азиатская болезнь · 1981.</div>
-      <div class="card-num">framing effect</div>
-    </a>
-
-  </div>
-
 </main>
 
 <footer class="footer">
