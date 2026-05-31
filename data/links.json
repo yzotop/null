@@ -4929,6 +4929,10 @@
     {
       "from": "es-eu",
       "to": "es-ergodicity"
+    },
+    {
+      "from": "es-markov",
+      "to": "es-markov-deep"
     }
   ]
 }
