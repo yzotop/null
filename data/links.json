@@ -4944,6 +4944,18 @@
     {
       "from": "es-prospect",
       "to": "st-loss-av"
+    },
+    {
+      "from": "es-ev",
+      "to": "es-eu"
+    },
+    {
+      "from": "es-eu",
+      "to": "es-poker-kelly"
+    },
+    {
+      "from": "es-eu",
+      "to": "es-ergodicity"
     }
   ]
 }
