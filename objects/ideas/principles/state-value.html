@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>V — null/objects/principles</title>
+<link rel="stylesheet" href="../../../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / ideas / principles / V</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:64px;"><em style="font-family:'Old Standard TT',Georgia,serif;font-style:italic;">V</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">принцип · №002</div>
+      <div class="obj-title">ценность состояния</div>
+      <div class="obj-subtitle">опциональность · уравнение Беллмана</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">обозначение</td><td class="v mono">V(s) — ценность состояния s</td></tr>
+    <tr><td class="k">формула</td><td class="v mono">V(s) = maxₐ [ r(s,a) + γ · Σ p(s′|s,a) · V(s′) ] · Беллман, 1957</td></tr>
+    <tr><td class="k">идея</td><td class="v">ценность состояния = лучшее, что из него достижимо. держать опции открытыми = держать V высоким</td></tr>
+    <tr><td class="k">мост</td><td class="v">финансовые опционы → реальные опционы → обучение с подкреплением</td></tr>
+    <tr><td class="k">связано</td><td class="v">обратимость · опциональность · игры тренируют машины · решения на дистанции</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">эссе · ~490 слов · 5 мин</div>
+    <h2 class="essay-title">Чего стоит <em>выбор</em>.</h2>
+    <p class="essay-lead">иметь выбор ценно само по себе — даже не пользуясь им. у этого банального наблюдения есть точная математическая форма. её зовут уравнением Беллмана.</p>
+
+    <div class="essay">
+      <div class="essay-body">
+        <p class="first">Опцион в финансах — право, но не обязанность купить или продать по заранее известной цене. Платишь премию за право; не сложилось — просто не пользуешься. Выплата опциона выпукла<em class="fn">1</em>: убыток ограничен премией, прибыль — нет. Из-за этой выпуклости опцион ценен даже без всякого прогноза: чем больше неопределённости, тем дороже право выбрать потом.</p>
+
+        <p>Реальная жизнь полна таких прав. Навык, который может пригодиться. Знакомство, которое однажды откроет дверь. Сбережения, дающие свободу уйти. Каждое — опцион: стоит чего-то держать его открытым, даже если воспользуешься редко.</p>
+
+        <p>Ричард Беллман в 1957 году придал этому точную форму<em class="fn">2</em>. Ценность состояния V(s) — это не то, что ты получаешь здесь и сейчас, а лучшее, что из этого состояния вообще достижимо в будущем. Состояние, из которого открыто много хороших ходов, ценно само по себе — даже если ты сделаешь лишь один. Уравнение Беллмана считает эту ценность рекурсивно: ценность сейчас = лучшая немедленная награда плюс ценность того состояния, куда ты попадёшь.</p>
+
+        <p>Это и есть опциональность, записанная формулой. «Держи двери открытыми» на языке Беллмана звучит как «выбирай действия, ведущие в состояния с высоким V». Открытые двери — это и есть высокая ценность состояния.</p>
+
+        <p>И отсюда тянется мост, которого не ждёшь. На уравнении Беллмана стоит всё обучение с подкреплением<em class="fn">3</em>. Когда AlphaGo оценивает позицию, она оценивает V — ценность состояния доски: не сиюминутный счёт, а то, что из позиции достижимо при наилучшей игре. Машина, обыгравшая человека в го, делает ровно то, что Талеб советует человеку под неопределённостью: ценит не ход, а позицию; держит опции; идёт туда, откуда открыто больше хорошего.</p>
+
+        <blockquote>ценность состояния — это не то, что в нём есть, а то, что из него достижимо.</blockquote>
+
+        <p>Свести: выбор стоит чего-то даже неиспользованный. Опциональность — это высокая V. Беги от состояний, которые её обнуляют — необратимое, разорение, — и плати за те, что её держат. Так считает Беллман, так играет AlphaGo, так живёт фланёр.</p>
+      </div>
+
+      <aside class="essay-margin">
+        <div class="note">
+          <span class="n">[1]</span>
+          <span class="t">Выпуклость выплаты — выигрыш растёт быстрее риска; основа того, почему неопределённость повышает ценность опциона.</span>
+        </div>
+        <div class="note">
+          <span class="n">[2]</span>
+          <span class="t">Richard Bellman · «Dynamic Programming» · 1957. Уравнение Беллмана — рекурсивная связь ценности состояния с ценностью последующих состояний.</span>
+        </div>
+        <div class="note">
+          <span class="n">[3]</span>
+          <span class="t">Обучение с подкреплением оценивает V(s) или Q(s,a); AlphaGo (DeepMind, 2016) — value-сеть приближает V для позиций го.</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../../essays/optionality.html">Опциональность →</a></div>
+      <div class="related-link"><span class="related-link-type">принцип</span><a href="reversibility.html">обратимость →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../../essays/games-that-train-machines.html">Игры которые тренируют машины →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../../essays/decisions-distance.html">Решения на дистанции →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">принцип</span><a href="/null/objects/ideas/principles/reversibility.html">обратимость →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/optionality.html">Опциональность. Ценность открытых дверей →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/decisions-distance.html">Решения на дистанции →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/ideas/principles/state-value.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

@@ -1567,6 +1567,20 @@
       "title": "вещественные числа ℝ",
       "url": "/null/objects/numbers/types/real.html",
       "glyph": "ℝ"
+    },
+    {
+      "id": "princ-reversibility",
+      "type": "principle",
+      "title": "обратимость",
+      "url": "/null/objects/ideas/principles/reversibility.html",
+      "glyph": "⇄"
+    },
+    {
+      "id": "princ-state-value",
+      "type": "principle",
+      "title": "ценность состояния",
+      "url": "/null/objects/ideas/principles/state-value.html",
+      "glyph": "V"
     }
   ],
   "edges": [
@@ -4945,6 +4959,54 @@
     {
       "from": "vi-markov",
       "to": "th-markov"
+    },
+    {
+      "from": "princ-reversibility",
+      "to": "princ-state-value"
+    },
+    {
+      "from": "princ-state-value",
+      "to": "princ-reversibility"
+    },
+    {
+      "from": "princ-reversibility",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "princ-reversibility",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "princ-reversibility",
+      "to": "es-black-swan"
+    },
+    {
+      "from": "princ-reversibility",
+      "to": "es-flaneur"
+    },
+    {
+      "from": "princ-state-value",
+      "to": "es-optionality"
+    },
+    {
+      "from": "princ-state-value",
+      "to": "es-games-train"
+    },
+    {
+      "from": "princ-state-value",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "princ-reversibility"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "princ-state-value"
+    },
+    {
+      "from": "es-optionality",
+      "to": "princ-state-value"
     }
   ]
 }
