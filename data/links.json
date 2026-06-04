@@ -5247,6 +5247,94 @@
     {
       "from": "es-causality",
       "to": "bk-huff"
+    },
+    {
+      "from": "es-invented",
+      "to": "godel"
+    },
+    {
+      "from": "godel",
+      "to": "es-invented"
+    },
+    {
+      "from": "es-invented",
+      "to": "bk-geb"
+    },
+    {
+      "from": "bk-geb",
+      "to": "es-invented"
+    },
+    {
+      "from": "es-invented",
+      "to": "natural"
+    },
+    {
+      "from": "natural",
+      "to": "es-invented"
+    },
+    {
+      "from": "es-zero-nine",
+      "to": "es-infinity"
+    },
+    {
+      "from": "es-infinity",
+      "to": "es-zero-nine"
+    },
+    {
+      "from": "es-zero-nine",
+      "to": "es-infinity-types"
+    },
+    {
+      "from": "es-infinity-types",
+      "to": "es-zero-nine"
+    },
+    {
+      "from": "es-zero-nine",
+      "to": "real"
+    },
+    {
+      "from": "real",
+      "to": "es-zero-nine"
+    },
+    {
+      "from": "one",
+      "to": "natural"
+    },
+    {
+      "from": "natural",
+      "to": "one"
+    },
+    {
+      "from": "one",
+      "to": "zero"
+    },
+    {
+      "from": "zero",
+      "to": "one"
+    },
+    {
+      "from": "one",
+      "to": "prime"
+    },
+    {
+      "from": "prime",
+      "to": "one"
+    },
+    {
+      "from": "vi-triangles",
+      "to": "vi-pascal"
+    },
+    {
+      "from": "vi-pascal",
+      "to": "vi-triangles"
+    },
+    {
+      "from": "pr-monty",
+      "to": "vi-monty"
+    },
+    {
+      "from": "es-causality",
+      "to": "st-corr"
     }
   ]
 }
