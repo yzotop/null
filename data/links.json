@@ -144,56 +144,56 @@
       "id": "op-mod",
       "type": "operator",
       "title": "mod",
-      "url": "/null/objects/operators/mod.html",
+      "url": "/null/objects/notation/operators/mod.html",
       "glyph": "mod"
     },
     {
       "id": "op-floor",
       "type": "operator",
       "title": "floor и ceiling",
-      "url": "/null/objects/operators/floor-ceiling.html",
+      "url": "/null/objects/notation/operators/floor-ceiling.html",
       "glyph": "⌊⌋"
     },
     {
       "id": "op-xor",
       "type": "operator",
       "title": "XOR",
-      "url": "/null/objects/operators/xor.html",
+      "url": "/null/objects/notation/operators/xor.html",
       "glyph": "⊕"
     },
     {
       "id": "op-nabla",
       "type": "operator",
       "title": "набла",
-      "url": "/null/objects/operators/nabla.html",
+      "url": "/null/objects/notation/operators/nabla.html",
       "glyph": "∇"
     },
     {
       "id": "op-factorial",
       "type": "operator",
       "title": "факториал",
-      "url": "/null/objects/operators/factorial.html",
+      "url": "/null/objects/notation/operators/factorial.html",
       "glyph": "!"
     },
     {
       "id": "op-sum",
       "type": "operator",
       "title": "сумма",
-      "url": "/null/objects/operators/sum.html",
+      "url": "/null/objects/notation/operators/sum.html",
       "glyph": "∑"
     },
     {
       "id": "op-integral",
       "type": "operator",
       "title": "интеграл",
-      "url": "/null/objects/operators/integral.html",
+      "url": "/null/objects/notation/operators/integral.html",
       "glyph": "∫"
     },
     {
       "id": "op-partial",
       "type": "operator",
       "title": "частная производная",
-      "url": "/null/objects/operators/partial.html",
+      "url": "/null/objects/notation/operators/partial.html",
       "glyph": "∂"
     },
     {
@@ -571,35 +571,35 @@
       "id": "alph-greek",
       "type": "alphabet",
       "title": "греческий алфавит",
-      "url": "/null/objects/alphabets/greek.html",
+      "url": "/null/objects/notation/alphabets/greek.html",
       "glyph": "Ω"
     },
     {
       "id": "alph-math",
       "type": "alphabet",
       "title": "математические символы",
-      "url": "/null/objects/alphabets/math-symbols.html",
+      "url": "/null/objects/notation/alphabets/math-symbols.html",
       "glyph": "ℕ"
     },
     {
       "id": "alph-latin",
       "type": "alphabet",
       "title": "латинский алфавит",
-      "url": "/null/objects/alphabets/latin.html",
+      "url": "/null/objects/notation/alphabets/latin.html",
       "glyph": "x"
     },
     {
       "id": "alph-hebrew",
       "type": "alphabet",
       "title": "еврейский алфавит",
-      "url": "/null/objects/alphabets/hebrew.html",
+      "url": "/null/objects/notation/alphabets/hebrew.html",
       "glyph": "ℵ"
     },
     {
       "id": "alph-fraktur",
       "type": "alphabet",
       "title": "готический алфавит",
-      "url": "/null/objects/alphabets/fraktur.html",
+      "url": "/null/objects/notation/alphabets/fraktur.html",
       "glyph": "𝔄"
     },
     {
@@ -1306,7 +1306,7 @@
       "id": "es-poker-glossary",
       "type": "essay",
       "title": "Глоссарий покера и его математики",
-      "url": "/null/objects/poker-glossary.html",
+      "url": "/null/essays/poker-glossary.html",
       "glyph": "♠"
     },
     {
@@ -1530,21 +1530,21 @@
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
-      "url": "/null/objects/coordinates/cartesian.html",
+      "url": "/null/objects/notation/coordinates/cartesian.html",
       "glyph": "(x,y)"
     },
     {
       "id": "coord-polar",
       "type": "coordinate",
       "title": "полярные координаты",
-      "url": "/null/objects/coordinates/polar.html",
+      "url": "/null/objects/notation/coordinates/polar.html",
       "glyph": "(r,θ)"
     },
     {
       "id": "coord-complex",
       "type": "coordinate",
       "title": "комплексная плоскость",
-      "url": "/null/objects/coordinates/complex-plane.html",
+      "url": "/null/objects/notation/coordinates/complex-plane.html",
       "glyph": "x+yi"
     },
     {
