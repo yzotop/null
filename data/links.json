@@ -1588,6 +1588,20 @@
       "title": "два алфавита",
       "url": "/null/essays/two-alphabets.html",
       "glyph": "αa"
+    },
+    {
+      "id": "math-pearson",
+      "type": "mathematician",
+      "title": "Карл Пирсон",
+      "url": "/null/objects/mathematicians/pearson.html",
+      "glyph": "r"
+    },
+    {
+      "id": "math-fisher",
+      "type": "mathematician",
+      "title": "Рональд Фишер",
+      "url": "/null/objects/mathematicians/fisher.html",
+      "glyph": "F"
     }
   ],
   "edges": [
@@ -5062,6 +5076,62 @@
     {
       "from": "es-causality",
       "to": "es-two-alphabets"
+    },
+    {
+      "from": "math-pearson",
+      "to": "math-fisher"
+    },
+    {
+      "from": "math-fisher",
+      "to": "math-pearson"
+    },
+    {
+      "from": "math-pearson",
+      "to": "es-two-alphabets"
+    },
+    {
+      "from": "es-two-alphabets",
+      "to": "math-pearson"
+    },
+    {
+      "from": "math-fisher",
+      "to": "es-two-alphabets"
+    },
+    {
+      "from": "es-two-alphabets",
+      "to": "math-fisher"
+    },
+    {
+      "from": "math-pearson",
+      "to": "st-corr"
+    },
+    {
+      "from": "st-corr",
+      "to": "math-pearson"
+    },
+    {
+      "from": "math-pearson",
+      "to": "es-causality"
+    },
+    {
+      "from": "es-causality",
+      "to": "math-pearson"
+    },
+    {
+      "from": "math-fisher",
+      "to": "st-var"
+    },
+    {
+      "from": "st-var",
+      "to": "math-fisher"
+    },
+    {
+      "from": "math-fisher",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "st-pvalue",
+      "to": "math-fisher"
     }
   ]
 }
