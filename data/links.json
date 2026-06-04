@@ -1602,6 +1602,41 @@
       "title": "Рональд Фишер",
       "url": "/null/objects/mathematicians/fisher.html",
       "glyph": "F"
+    },
+    {
+      "id": "es-popularizers",
+      "type": "essay",
+      "title": "те, кто открыл числа",
+      "url": "/null/essays/popularizers.html",
+      "glyph": "‽"
+    },
+    {
+      "id": "bk-perelman",
+      "type": "book",
+      "title": "Занимательная математика",
+      "url": "/null/books/perelman-zanimatelnaya.html",
+      "glyph": "?"
+    },
+    {
+      "id": "bk-gardner",
+      "type": "book",
+      "title": "Mathematical Games",
+      "url": "/null/books/gardner-mathematical-games.html",
+      "glyph": "⬡"
+    },
+    {
+      "id": "bk-kordemsky",
+      "type": "book",
+      "title": "Математическая смекалка",
+      "url": "/null/books/kordemsky-smekalka.html",
+      "glyph": "⊞"
+    },
+    {
+      "id": "bk-huff",
+      "type": "book",
+      "title": "How to Lie with Statistics",
+      "url": "/null/books/huff-lie-with-statistics.html",
+      "glyph": "%"
     }
   ],
   "edges": [
@@ -5132,6 +5167,86 @@
     {
       "from": "st-pvalue",
       "to": "math-fisher"
+    },
+    {
+      "from": "bk-perelman",
+      "to": "es-popularizers"
+    },
+    {
+      "from": "es-popularizers",
+      "to": "bk-perelman"
+    },
+    {
+      "from": "bk-gardner",
+      "to": "es-popularizers"
+    },
+    {
+      "from": "es-popularizers",
+      "to": "bk-gardner"
+    },
+    {
+      "from": "bk-kordemsky",
+      "to": "es-popularizers"
+    },
+    {
+      "from": "es-popularizers",
+      "to": "bk-kordemsky"
+    },
+    {
+      "from": "bk-huff",
+      "to": "es-popularizers"
+    },
+    {
+      "from": "es-popularizers",
+      "to": "bk-huff"
+    },
+    {
+      "from": "es-popularizers",
+      "to": "es-two-alphabets"
+    },
+    {
+      "from": "es-two-alphabets",
+      "to": "es-popularizers"
+    },
+    {
+      "from": "es-popularizers",
+      "to": "math-fisher"
+    },
+    {
+      "from": "math-fisher",
+      "to": "es-popularizers"
+    },
+    {
+      "from": "es-popularizers",
+      "to": "es-causality"
+    },
+    {
+      "from": "es-causality",
+      "to": "es-popularizers"
+    },
+    {
+      "from": "es-popularizers",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "st-pvalue",
+      "to": "es-popularizers"
+    },
+    {
+      "from": "bk-huff",
+      "to": "math-fisher"
+    },
+    {
+      "from": "math-fisher",
+      "to": "bk-huff"
+    },
+    {
+      "from": "bk-huff",
+      "to": "es-causality"
+    },
+    {
+      "from": "es-causality",
+      "to": "bk-huff"
     }
   ]
 }
