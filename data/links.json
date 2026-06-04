@@ -1637,6 +1637,13 @@
       "title": "How to Lie with Statistics",
       "url": "/null/books/huff-lie-with-statistics.html",
       "glyph": "%"
+    },
+    {
+      "id": "es-bookshelf",
+      "type": "essay",
+      "title": "книжная полка",
+      "url": "/null/essays/bookshelf.html",
+      "glyph": "∫"
     }
   ],
   "edges": [
@@ -5335,6 +5342,30 @@
     {
       "from": "es-causality",
       "to": "st-corr"
+    },
+    {
+      "from": "es-bookshelf",
+      "to": "es-popularizers"
+    },
+    {
+      "from": "es-popularizers",
+      "to": "es-bookshelf"
+    },
+    {
+      "from": "es-bookshelf",
+      "to": "es-two-alphabets"
+    },
+    {
+      "from": "es-two-alphabets",
+      "to": "es-bookshelf"
+    },
+    {
+      "from": "es-bookshelf",
+      "to": "st-ev"
+    },
+    {
+      "from": "st-ev",
+      "to": "es-bookshelf"
     }
   ]
 }
