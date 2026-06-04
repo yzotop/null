@@ -1644,6 +1644,34 @@
       "title": "книжная полка",
       "url": "/null/essays/bookshelf.html",
       "glyph": "∫"
+    },
+    {
+      "id": "bk-kiselyov",
+      "type": "book",
+      "title": "Элементарная геометрия",
+      "url": "/null/books/kiselyov.html",
+      "glyph": "△"
+    },
+    {
+      "id": "bk-fikhtengolts",
+      "type": "book",
+      "title": "Курс Фихтенгольца",
+      "url": "/null/books/fikhtengolts.html",
+      "glyph": "∂∫"
+    },
+    {
+      "id": "bk-demidovich",
+      "type": "book",
+      "title": "Сборник Демидовича",
+      "url": "/null/books/demidovich.html",
+      "glyph": "Σ"
+    },
+    {
+      "id": "bk-wentzel",
+      "type": "book",
+      "title": "Теория вероятностей · Вентцель",
+      "url": "/null/books/wentzel.html",
+      "glyph": "ℙ"
     }
   ],
   "edges": [
@@ -5366,6 +5394,78 @@
     {
       "from": "st-ev",
       "to": "es-bookshelf"
+    },
+    {
+      "from": "bk-kiselyov",
+      "to": "es-bookshelf"
+    },
+    {
+      "from": "es-bookshelf",
+      "to": "bk-kiselyov"
+    },
+    {
+      "from": "bk-fikhtengolts",
+      "to": "es-bookshelf"
+    },
+    {
+      "from": "es-bookshelf",
+      "to": "bk-fikhtengolts"
+    },
+    {
+      "from": "bk-demidovich",
+      "to": "es-bookshelf"
+    },
+    {
+      "from": "es-bookshelf",
+      "to": "bk-demidovich"
+    },
+    {
+      "from": "bk-wentzel",
+      "to": "es-bookshelf"
+    },
+    {
+      "from": "es-bookshelf",
+      "to": "bk-wentzel"
+    },
+    {
+      "from": "bk-demidovich",
+      "to": "bk-fikhtengolts"
+    },
+    {
+      "from": "bk-fikhtengolts",
+      "to": "bk-demidovich"
+    },
+    {
+      "from": "bk-wentzel",
+      "to": "st-ev"
+    },
+    {
+      "from": "st-ev",
+      "to": "bk-wentzel"
+    },
+    {
+      "from": "bk-fikhtengolts",
+      "to": "op-integral"
+    },
+    {
+      "from": "op-integral",
+      "to": "bk-fikhtengolts"
+    },
+    {
+      "from": "bk-fikhtengolts",
+      "to": "op-partial"
+    },
+    {
+      "from": "op-partial",
+      "to": "bk-fikhtengolts"
+    },
+    {
+      "from": "bk-kiselyov",
+      "to": "pythagoras"
+    },
+    {
+      "from": "pythagoras",
+      "to": "bk-kiselyov"
     }
   ]
 }
