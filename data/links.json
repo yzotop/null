@@ -1581,6 +1581,13 @@
       "title": "ценность состояния",
       "url": "/null/objects/ideas/principles/state-value.html",
       "glyph": "V"
+    },
+    {
+      "id": "es-two-alphabets",
+      "type": "essay",
+      "title": "два алфавита",
+      "url": "/null/essays/two-alphabets.html",
+      "glyph": "αa"
     }
   ],
   "edges": [
@@ -5007,6 +5014,54 @@
     {
       "from": "es-optionality",
       "to": "princ-state-value"
+    },
+    {
+      "from": "es-two-alphabets",
+      "to": "st-corr"
+    },
+    {
+      "from": "st-corr",
+      "to": "es-two-alphabets"
+    },
+    {
+      "from": "es-two-alphabets",
+      "to": "st-var"
+    },
+    {
+      "from": "st-var",
+      "to": "es-two-alphabets"
+    },
+    {
+      "from": "es-two-alphabets",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "st-pvalue",
+      "to": "es-two-alphabets"
+    },
+    {
+      "from": "es-two-alphabets",
+      "to": "alph-greek"
+    },
+    {
+      "from": "alph-greek",
+      "to": "es-two-alphabets"
+    },
+    {
+      "from": "es-two-alphabets",
+      "to": "alph-latin"
+    },
+    {
+      "from": "alph-latin",
+      "to": "es-two-alphabets"
+    },
+    {
+      "from": "es-two-alphabets",
+      "to": "es-causality"
+    },
+    {
+      "from": "es-causality",
+      "to": "es-two-alphabets"
     }
   ]
 }
