@@ -1672,6 +1672,34 @@
       "title": "Теория вероятностей · Вентцель",
       "url": "/null/books/wentzel.html",
       "glyph": "ℙ"
+    },
+    {
+      "id": "math-kiselyov",
+      "type": "mathematician",
+      "title": "Андрей Киселёв",
+      "url": "/null/objects/mathematicians/kiselyov.html",
+      "glyph": "К"
+    },
+    {
+      "id": "math-fikhtengolts",
+      "type": "mathematician",
+      "title": "Григорий Фихтенгольц",
+      "url": "/null/objects/mathematicians/fikhtengolts.html",
+      "glyph": "Ф"
+    },
+    {
+      "id": "math-demidovich",
+      "type": "mathematician",
+      "title": "Борис Демидович",
+      "url": "/null/objects/mathematicians/demidovich.html",
+      "glyph": "Д"
+    },
+    {
+      "id": "math-wentzel",
+      "type": "mathematician",
+      "title": "Елена Вентцель",
+      "url": "/null/objects/mathematicians/wentzel.html",
+      "glyph": "В"
     }
   ],
   "edges": [
@@ -5466,6 +5494,94 @@
     {
       "from": "pythagoras",
       "to": "bk-kiselyov"
+    },
+    {
+      "from": "math-kiselyov",
+      "to": "bk-kiselyov"
+    },
+    {
+      "from": "bk-kiselyov",
+      "to": "math-kiselyov"
+    },
+    {
+      "from": "math-kiselyov",
+      "to": "es-bookshelf"
+    },
+    {
+      "from": "es-bookshelf",
+      "to": "math-kiselyov"
+    },
+    {
+      "from": "math-fikhtengolts",
+      "to": "bk-fikhtengolts"
+    },
+    {
+      "from": "bk-fikhtengolts",
+      "to": "math-fikhtengolts"
+    },
+    {
+      "from": "math-fikhtengolts",
+      "to": "es-bookshelf"
+    },
+    {
+      "from": "es-bookshelf",
+      "to": "math-fikhtengolts"
+    },
+    {
+      "from": "math-demidovich",
+      "to": "bk-demidovich"
+    },
+    {
+      "from": "bk-demidovich",
+      "to": "math-demidovich"
+    },
+    {
+      "from": "math-demidovich",
+      "to": "es-bookshelf"
+    },
+    {
+      "from": "es-bookshelf",
+      "to": "math-demidovich"
+    },
+    {
+      "from": "math-wentzel",
+      "to": "bk-wentzel"
+    },
+    {
+      "from": "bk-wentzel",
+      "to": "math-wentzel"
+    },
+    {
+      "from": "math-wentzel",
+      "to": "es-bookshelf"
+    },
+    {
+      "from": "es-bookshelf",
+      "to": "math-wentzel"
+    },
+    {
+      "from": "math-wentzel",
+      "to": "math-fikhtengolts"
+    },
+    {
+      "from": "math-fikhtengolts",
+      "to": "math-wentzel"
+    },
+    {
+      "from": "math-demidovich",
+      "to": "math-fikhtengolts"
+    },
+    {
+      "from": "math-fikhtengolts",
+      "to": "math-demidovich"
+    },
+    {
+      "from": "math-wentzel",
+      "to": "st-ev"
+    },
+    {
+      "from": "st-ev",
+      "to": "math-wentzel"
     }
   ]
 }
