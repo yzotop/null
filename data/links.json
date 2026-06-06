@@ -1700,6 +1700,13 @@
       "title": "Елена Вентцель",
       "url": "/null/objects/mathematicians/wentzel.html",
       "glyph": "В"
+    },
+    {
+      "id": "es-poker-distance",
+      "type": "essay",
+      "title": "Тренажёр дистанции",
+      "url": "/null/essays/poker-distance.html",
+      "glyph": "♠"
     }
   ],
   "edges": [
@@ -5582,6 +5589,42 @@
     {
       "from": "st-ev",
       "to": "math-wentzel"
+    },
+    {
+      "from": "es-poker-distance",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-poker-distance",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "es-poker-distance",
+      "to": "st-kelly"
+    },
+    {
+      "from": "es-poker-distance",
+      "to": "st-ev"
+    },
+    {
+      "from": "es-poker-distance",
+      "to": "princ-reversibility"
+    },
+    {
+      "from": "es-poker-distance",
+      "to": "es-poker-glossary"
+    },
+    {
+      "from": "es-poker-distance",
+      "to": "st-var"
+    },
+    {
+      "from": "es-poker-distance",
+      "to": "st-clt"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-poker-distance"
     }
   ]
 }
