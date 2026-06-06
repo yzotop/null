@@ -1707,6 +1707,13 @@
       "title": "Тренажёр дистанции",
       "url": "/null/essays/poker-distance.html",
       "glyph": "♠"
+    },
+    {
+      "id": "es-mult-table",
+      "type": "essay",
+      "title": "Таблица умножения",
+      "url": "/null/essays/multiplication-table.html",
+      "glyph": "×"
     }
   ],
   "edges": [
@@ -5625,6 +5632,34 @@
     {
       "from": "es-decisions-distance",
       "to": "es-poker-distance"
+    },
+    {
+      "from": "es-mult-table",
+      "to": "es-two-alphabets"
+    },
+    {
+      "from": "es-mult-table",
+      "to": "ns-babylon"
+    },
+    {
+      "from": "es-mult-table",
+      "to": "ns-decimal"
+    },
+    {
+      "from": "es-mult-table",
+      "to": "ns-mayan"
+    },
+    {
+      "from": "es-mult-table",
+      "to": "vi-mult-circle"
+    },
+    {
+      "from": "es-mult-table",
+      "to": "op-sum"
+    },
+    {
+      "from": "es-two-alphabets",
+      "to": "es-mult-table"
     }
   ]
 }
