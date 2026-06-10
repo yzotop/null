@@ -5909,6 +5909,70 @@
     {
       "from": "math-tversky",
       "to": "math-kahneman"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-eu"
+    },
+    {
+      "from": "es-eu",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-ev"
+    },
+    {
+      "from": "es-ev",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-poker-glossary"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-cog-biases"
+    },
+    {
+      "from": "es-cog-biases",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-two-systems"
+    },
+    {
+      "from": "es-two-systems",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-prospect"
+    },
+    {
+      "from": "es-prospect",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-small-num"
+    },
+    {
+      "from": "es-small-num",
+      "to": "es-oshibki-po-pravilam"
     }
   ]
 }

@@ -6,18 +6,38 @@
 <title>архив — null/essays</title>
 <link rel="stylesheet" href="../styles/main.css">
 <style>
-  .essay-section-label {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: #bbb;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin: 0 0 14px 0;
+  .essay-section-header {
+    margin-top: 48px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #dcd9d0;
   }
-  .essay-section-divider {
-    border: none;
-    border-top: 1px solid #e8e8e4;
-    margin: 32px 0;
+  .essay-section-header:first-of-type {
+    margin-top: 28px;
+  }
+  .essay-section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #111;
+    text-transform: lowercase;
+    letter-spacing: 0.12em;
+    margin: 0;
+  }
+  .essay-section-mark {
+    display: block;
+    width: 3px;
+    height: 14px;
+    background: #c44a32;
+    flex-shrink: 0;
+  }
+  .essay-section-count {
+    margin-left: auto;
+    color: #888;
+    font-size: 10px;
+    letter-spacing: 0.08em;
   }
   .essay-item .tag.applied { color: #2c5fb6; }
 </style>
@@ -41,7 +61,13 @@
   <h1 class="page-title">архив</h1>
   <div class="page-sub">математика · эксперименты · платформы · история · теория</div>
 
-  <div class="essay-section-label" style="margin-top: 28px;">// синтез · капстоун</div>
+  <div class="essay-section-header">
+    <div class="essay-section-label">
+      <span class="essay-section-mark" aria-hidden="true"></span>
+      <span class="essay-section-text">// синтез · капстоун</span>
+      <span class="essay-section-count">01</span>
+    </div>
+  </div>
 
   <div class="essay-list">
 
@@ -56,7 +82,13 @@
 
   </div>
 
-  <div class="essay-section-label" style="margin-top: 28px;">// серия · решения под неопределённостью</div>
+  <div class="essay-section-header">
+    <div class="essay-section-label">
+      <span class="essay-section-mark" aria-hidden="true"></span>
+      <span class="essay-section-text">// серия · решения под неопределённостью</span>
+      <span class="essay-section-count">04</span>
+    </div>
+  </div>
 
   <div class="essay-list">
 
@@ -98,7 +130,13 @@
 
   </div>
 
-  <div class="essay-section-label" style="margin-top: 28px;">// серия · жизнь под неопределённостью</div>
+  <div class="essay-section-header">
+    <div class="essay-section-label">
+      <span class="essay-section-mark" aria-hidden="true"></span>
+      <span class="essay-section-text">// серия · жизнь под неопределённостью</span>
+      <span class="essay-section-count">04</span>
+    </div>
+  </div>
 
   <div class="essay-list">
 
@@ -140,7 +178,13 @@
 
   </div>
 
-  <div class="essay-section-label" style="margin-top: 28px;">// серия · покер как способ думать</div>
+  <div class="essay-section-header">
+    <div class="essay-section-label">
+      <span class="essay-section-mark" aria-hidden="true"></span>
+      <span class="essay-section-text">// серия · покер как способ думать</span>
+      <span class="essay-section-count">07</span>
+    </div>
+  </div>
 
   <div class="essay-list">
 
@@ -189,24 +233,6 @@
       <span class="tag">игры · история</span>
     </a>
 
-    <a class="essay-item" href="oshibki-po-pravilam.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        ошибки по правилам.
-        <span class="sub">Канеман · Тверски · искажения · теория перспектив · Система 1 / 2</span>
-      </span>
-      <span class="tag">психология · решения</span>
-    </a>
-
-    <a class="essay-item" href="terminal.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        терминал.
-        <span class="sub">телетайп · Unix · VT100 · облако · ASCII</span>
-      </span>
-      <span class="tag">вычисления · история</span>
-    </a>
-
     <a class="essay-item" href="poker-distance.html">
       <span class="date">2026.06</span>
       <span class="ttl">
@@ -227,7 +253,13 @@
 
   </div>
 
-  <div class="essay-section-label" style="margin-top: 28px;">// прикладное · эксперименты · платформы</div>
+  <div class="essay-section-header">
+    <div class="essay-section-label">
+      <span class="essay-section-mark" aria-hidden="true"></span>
+      <span class="essay-section-text">// прикладное · эксперименты · платформы</span>
+      <span class="essay-section-count">23</span>
+    </div>
+  </div>
 
   <div class="essay-list">
 
@@ -319,6 +351,15 @@
         <span class="sub">Система 1 и 2 · быстрое и медленное мышление</span>
       </span>
       <span class="tag applied">поведенческая экономика</span>
+    </a>
+
+    <a class="essay-item" href="oshibki-po-pravilam.html">
+      <span class="date">2026.06</span>
+      <span class="ttl">
+        ошибки по правилам.
+        <span class="sub">Канеман · Тверски · искажения · теория перспектив · Система 1 / 2</span>
+      </span>
+      <span class="tag applied">психология · решения</span>
     </a>
 
     <a class="essay-item" href="regression-to-mean.html">
@@ -431,9 +472,13 @@
 
   </div>
 
-  <hr class="essay-section-divider">
-
-  <div class="essay-section-label">// математика · теория · история</div>
+  <div class="essay-section-header">
+    <div class="essay-section-label">
+      <span class="essay-section-mark" aria-hidden="true"></span>
+      <span class="essay-section-text">// математика · теория · история</span>
+      <span class="essay-section-count">33</span>
+    </div>
+  </div>
 
   <div class="essay-list">
 
@@ -536,6 +581,15 @@
       <span class="tag">образование · история</span>
     </a>
 
+    <a class="essay-item" href="terminal.html">
+      <span class="date">2026.06</span>
+      <span class="ttl">
+        терминал.
+        <span class="sub">телетайп · Unix · VT100 · облако · ASCII</span>
+      </span>
+      <span class="tag">вычисления · история</span>
+    </a>
+
     <a class="essay-item" href="probability-paradoxes.html">
       <span class="date">2026.05</span>
       <span class="ttl">
@@ -579,15 +633,6 @@
         <span class="sub">почему октава это 2:1 · Фурье · темперация · Delta Machine</span>
       </span>
       <span class="tag">math · music</span>
-    </a>
-
-    <a class="essay-item" href="game-theory.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Математика предательства
-        <span class="sub">дилемма заключённого · Нэш · Аксельрод · почему кооперация побеждает</span>
-      </span>
-      <span class="tag">math</span>
     </a>
 
     <a class="essay-item" href="markov-chains.html">

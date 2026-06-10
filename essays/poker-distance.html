@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Тренажёр дистанции — null/essays</title>
 <link rel="stylesheet" href="../styles/main.css">
+<style>
+  .series { margin: 28px 0 32px 0; max-width: 620px; }
+  .series-label { font-family: var(--font-mono); font-size: 9px; color: #bbb; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
+  .series-list { font-family: var(--font-mono); font-size: 11px; color: #555; line-height: 1.9; margin: 0; padding-left: 20px; }
+  .series-list a { border-bottom: 1px solid var(--accent-red); color: #555; }
+  .series-list a:hover { color: var(--accent-red); }
+  .series-list .cur { color: #111; font-weight: 500; }
+</style>
 </head>
 <body>
 
@@ -76,6 +84,20 @@
       </div>
     </aside>
   </div>
+
+  <div class="series">
+    <div class="series-label">серия · покер как способ думать</div>
+    <ol class="series-list">
+      <li><a href="poker-basics.html">Покер. Как профи считают в голове.</a></li>
+      <li><a href="poker-kelly.html">Критерий Келли. Сколько ставить.</a></li>
+      <li><a href="poker-bayes.html">Байес за столом. Как читают оппонента.</a></li>
+      <li><a href="poker-exploit.html">Эксплойт против равновесия.</a></li>
+      <li><a href="poker-solvers.html">До солверов. Что мы потеряли.</a></li>
+      <li><span class="cur">Тренажёр дистанции.</span></li>
+      <li><a href="poker-glossary.html">— глоссарий терминов и математики</a></li>
+    </ol>
+  </div>
+  <div style="font-family: var(--font-mono); font-size: 10px; color: #888; letter-spacing: .06em; margin: -22px 0 32px 24px;">—— итог обеих серий: <a href="decisions-distance.html" style="border-bottom: 1px solid var(--accent-red); color: #888;">решения на дистанции →</a></div>
 
   <hr class="section-divider-soft">
 
