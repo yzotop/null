@@ -5706,6 +5706,38 @@
     {
       "from": "es-two-alphabets",
       "to": "es-terminal"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "es-poker-distance"
+    },
+    {
+      "from": "st-kelly",
+      "to": "es-poker-distance"
+    },
+    {
+      "from": "st-ev",
+      "to": "es-poker-distance"
+    },
+    {
+      "from": "princ-reversibility",
+      "to": "es-poker-distance"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "es-poker-distance"
+    },
+    {
+      "from": "mu-dm",
+      "to": "mu-opstack"
+    },
+    {
+      "from": "mu-bitparade",
+      "to": "op-xor"
+    },
+    {
+      "from": "op-xor",
+      "to": "mu-bitparade"
     }
   ]
 }
