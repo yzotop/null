@@ -1742,6 +1742,27 @@
       "title": "палочки непера",
       "url": "/null/visuals/napier-bones.html",
       "glyph": "▦"
+    },
+    {
+      "id": "es-oshibki-po-pravilam",
+      "type": "essay",
+      "title": "Ошибки по правилам",
+      "url": "/null/essays/oshibki-po-pravilam.html",
+      "glyph": "ƒ"
+    },
+    {
+      "id": "math-kahneman",
+      "type": "mathematician",
+      "title": "Дэниел Канеман",
+      "url": "/null/objects/mathematicians/kahneman.html",
+      "glyph": "K"
+    },
+    {
+      "id": "math-tversky",
+      "type": "mathematician",
+      "title": "Амос Тверски",
+      "url": "/null/objects/mathematicians/tversky.html",
+      "glyph": "T"
     }
   ],
   "edges": [
@@ -5808,6 +5829,86 @@
     {
       "from": "op-sum",
       "to": "vi-napier"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-gamb-fall"
+    },
+    {
+      "from": "es-gamb-fall",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-base-rate"
+    },
+    {
+      "from": "es-base-rate",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-simpson"
+    },
+    {
+      "from": "es-simpson",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-black-swan"
+    },
+    {
+      "from": "es-black-swan",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-antifragile"
+    },
+    {
+      "from": "es-antifragile",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "math-kahneman"
+    },
+    {
+      "from": "math-kahneman",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "math-tversky"
+    },
+    {
+      "from": "math-tversky",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "math-kahneman",
+      "to": "math-tversky"
+    },
+    {
+      "from": "math-tversky",
+      "to": "math-kahneman"
     }
   ]
 }
