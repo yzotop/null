@@ -1728,6 +1728,20 @@
       "title": "терминал",
       "url": "/null/visuals/terminal.html",
       "glyph": "▮"
+    },
+    {
+      "id": "vi-pythagoras",
+      "type": "visual",
+      "title": "сетка пифагора",
+      "url": "/null/visuals/pythagoras-grid.html",
+      "glyph": "⊞"
+    },
+    {
+      "id": "vi-napier",
+      "type": "visual",
+      "title": "палочки непера",
+      "url": "/null/visuals/napier-bones.html",
+      "glyph": "▦"
     }
   ],
   "edges": [
@@ -5738,6 +5752,62 @@
     {
       "from": "op-xor",
       "to": "mu-bitparade"
+    },
+    {
+      "from": "vi-pythagoras",
+      "to": "es-mult-table"
+    },
+    {
+      "from": "es-mult-table",
+      "to": "vi-pythagoras"
+    },
+    {
+      "from": "vi-napier",
+      "to": "es-mult-table"
+    },
+    {
+      "from": "es-mult-table",
+      "to": "vi-napier"
+    },
+    {
+      "from": "vi-pythagoras",
+      "to": "vi-napier"
+    },
+    {
+      "from": "vi-napier",
+      "to": "vi-pythagoras"
+    },
+    {
+      "from": "vi-pythagoras",
+      "to": "vi-mult-circle"
+    },
+    {
+      "from": "vi-mult-circle",
+      "to": "vi-pythagoras"
+    },
+    {
+      "from": "vi-napier",
+      "to": "vi-mult-circle"
+    },
+    {
+      "from": "vi-mult-circle",
+      "to": "vi-napier"
+    },
+    {
+      "from": "vi-pythagoras",
+      "to": "ns-babylon"
+    },
+    {
+      "from": "ns-babylon",
+      "to": "vi-pythagoras"
+    },
+    {
+      "from": "vi-napier",
+      "to": "op-sum"
+    },
+    {
+      "from": "op-sum",
+      "to": "vi-napier"
     }
   ]
 }

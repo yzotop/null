@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Палочки Непера — null/visuals</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .viz-napier { max-width: 680px; }
+  .viz-napier .label{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;color:#8c8a83;margin-bottom:14px;}
+  .viz-napier h1{font-family:'Old Standard TT',Georgia,serif;font-style:italic;font-weight:400;font-size:46px;line-height:1;
+    letter-spacing:-.01em;margin-bottom:10px;}
+  .viz-napier h1 em{color:var(--accent-red);}
+  .viz-napier .sub{font-size:16px;line-height:1.5;color:#444;max-width:540px;margin-bottom:26px;}
+  .viz-napier .controls{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;margin-bottom:26px;
+    padding-bottom:20px;border-bottom:1px solid var(--border);}
+  .viz-napier .ctl-lbl{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:#8c8a83;
+    display:block;margin-bottom:7px;}
+  .viz-napier input#multiplicand{font-family:var(--font-mono);font-size:20px;width:130px;padding:7px 10px;
+    background:transparent;border:1px solid var(--ink);color:var(--ink);}
+  .viz-napier .seg{display:flex;flex-wrap:wrap;border:1px solid var(--ink);}
+  .viz-napier .seg button{font-family:var(--font-mono);font-size:13px;background:transparent;color:var(--ink);
+    border:0;border-right:1px solid var(--ink);padding:6px 11px;cursor:pointer;line-height:1;}
+  .viz-napier .seg button:last-child{border-right:0;}
+  .viz-napier .seg button.on{background:var(--accent-red);border-color:var(--accent-red);color:#fff;}
+  .viz-napier .board{display:flex;justify-content:center;margin:8px 0 8px;overflow-x:auto;padding-bottom:4px;}
+  .viz-napier table.rods{border-collapse:collapse;}
+  .viz-napier table.rods td,.viz-napier table.rods th{width:56px;height:56px;padding:0;text-align:center;position:relative;
+    border:1px solid var(--border);}
+  .viz-napier table.rods th{font-family:'Old Standard TT',Georgia,serif;font-style:italic;font-size:22px;background:#efece4;color:var(--ink);}
+  .viz-napier .indexcol{width:40px !important;background:#efece4;font-family:var(--font-mono);font-size:15px;color:#8c8a83;}
+  .viz-napier .indexcol.activerow{background:var(--accent-red);color:#fff;}
+  .viz-napier .rodcell{position:relative;}
+  .viz-napier .rodcell svg{position:absolute;inset:0;width:100%;height:100%;}
+  .viz-napier .rodcell .tens,.viz-napier .rodcell .ones{position:absolute;font-family:var(--font-mono);font-size:15px;color:#2a2a2a;}
+  .viz-napier .rodcell .tens{top:5px;left:8px;}
+  .viz-napier .rodcell .ones{bottom:5px;right:8px;}
+  .viz-napier tr.activerow .rodcell{background:rgba(196,74,50,.12);}
+  .viz-napier tr.activerow .rodcell .tens,.viz-napier tr.activerow .rodcell .ones{color:var(--accent-red);font-weight:500;}
+  .viz-napier .diag{stroke:var(--border);stroke-width:1;}
+  .viz-napier tr.activerow .diag{stroke:var(--accent-red);}
+  .viz-napier .result{margin-top:26px;padding-top:20px;border-top:1px solid var(--border);}
+  .viz-napier .result .k{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:#8c8a83;margin-bottom:12px;}
+  .viz-napier .stripes{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin-bottom:16px;}
+  .viz-napier .stripe{display:flex;flex-direction:column;align-items:center;font-family:var(--font-mono);min-width:46px;}
+  .viz-napier .stripe .digits{font-size:13px;color:#8c8a83;line-height:1.35;text-align:center;}
+  .viz-napier .stripe .sum{margin-top:6px;font-size:22px;color:var(--ink);border-top:1px solid var(--ink);
+    padding-top:5px;width:100%;text-align:center;}
+  .viz-napier .stripe .carry{font-size:11px;color:var(--accent-red);height:14px;}
+  .viz-napier .answer{font-family:'Old Standard TT',Georgia,serif;font-style:italic;font-size:30px;margin-top:6px;}
+  .viz-napier .answer b{color:var(--accent-red);font-style:italic;}
+  .viz-napier .note{font-size:14px;line-height:1.6;color:#555;margin-top:24px;padding-top:18px;border-top:1px solid var(--border);}
+  .viz-napier .note .k{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:#8c8a83;display:block;margin-bottom:6px;}
+  .viz-napier .note b{color:var(--ink);font-weight:500;}
+  .viz-napier .meta-foot{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;color:#8c8a83;margin-top:26px;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / палочки непера</div>
+
+<main class="container">
+<article>
+
+  <div class="viz-napier" style="margin-top: 8px;">
+    <div class="label">визуал · №030 · числа · счётная машина</div>
+    <h1>палочки <em>непера</em>.</h1>
+    <div class="sub">1617 год. Таблица умножения, разрезанная на стержни. Набери множимое —
+      выложатся стержни; выбери множитель — и произведение собирается сложением по диагоналям.
+      Умножение в столбик становится простым чтением таблицы.</div>
+
+    <div class="controls">
+      <div>
+        <span class="ctl-lbl">множимое</span>
+        <input id="multiplicand" type="text" inputmode="numeric" value="3925" maxlength="6">
+      </div>
+      <div>
+        <span class="ctl-lbl">множитель</span>
+        <div class="seg" id="multiplierSeg"></div>
+      </div>
+    </div>
+
+    <div class="board" id="board"></div>
+
+    <div class="result">
+      <div class="k">сложение по диагоналям · справа налево, перенос десятков</div>
+      <div class="stripes" id="stripes"></div>
+      <div class="answer" id="answer"></div>
+    </div>
+
+    <div class="note">
+      <span class="k">как это работает</span>
+      Каждый <b>стержень</b> — столбец таблицы умножения для одной цифры, где клетка разбита
+      диагональю: десятки сверху, единицы снизу. Берёшь строку множителя и складываешь числа,
+      попавшие в одну <b>диагональную полосу</b>, справа налево, перенося десятки. Это и есть
+      умножение в столбик — только все произведения уже посчитаны заранее. Та же механика — в
+      <b>решётчатом умножении</b>.
+    </div>
+
+    <div class="meta-foot">джон непер · 1617</div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/multiplication-table.html">таблица умножения →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="pythagoras-grid.html">сетка Пифагора →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="multiplication-circle.html">умножение на окружности →</a></div>
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="../objects/notation/operators/sum.html">сумма Σ →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">оператор</span><a href="/null/objects/notation/operators/sum.html">сумма →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/multiplication-table.html">Таблица умножения →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/pythagoras-grid.html">сетка пифагора →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/multiplication-circle.html">умножение на окружности →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/napier-bones.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+const input=document.getElementById('multiplicand');
+const board=document.getElementById('board');
+const seg=document.getElementById('multiplierSeg');
+const stripesEl=document.getElementById('stripes');
+const answerEl=document.getElementById('answer');
+let mult=3925, multiplier=6;
+
+for(let m=2;m<=9;m++){
+  const b=document.createElement('button'); b.textContent=m; b.dataset.m=m;
+  if(m===multiplier) b.classList.add('on');
+  seg.appendChild(b);
+}
+seg.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  multiplier=+b.dataset.m;
+  [...seg.children].forEach(x=>x.classList.toggle('on', x===b));
+  render();
+});
+input.addEventListener('input',()=>{
+  const v=input.value.replace(/\D/g,'').slice(0,6);
+  input.value=v; mult=v===''?0:parseInt(v,10); render();
+});
+
+function digits(n){ return String(n).split('').map(Number); }
+
+function render(){
+  const ds=digits(mult||0);
+  let h='<table class="rods"><tr><th class="indexcol">×</th>';
+  ds.forEach(d=>h+=`<th>${d}</th>`); h+='</tr>';
+  for(let row=1;row<=9;row++){
+    const act=row===multiplier?' activerow':'';
+    h+=`<tr class="${act.trim()}"><td class="indexcol${row===multiplier?' activerow':''}">${row}</td>`;
+    ds.forEach(d=>{
+      const p=d*row, t=Math.floor(p/10), o=p%10;
+      h+=`<td class="rodcell"><svg viewBox="0 0 56 56" preserveAspectRatio="none"><line class="diag" x1="56" y1="0" x2="0" y2="56"/></svg>`
+        +`<span class="tens">${t}</span><span class="ones">${o}</span></td>`;
+    });
+    h+='</tr>';
+  }
+  h+='</table>';
+  board.innerHTML=h;
+
+  const cells=ds.map(d=>{const p=d*multiplier;return {t:Math.floor(p/10),o:p%10};});
+  const n=cells.length;
+  const stripeVals=[];
+  for(let s=0;s<=n;s++){
+    let parts=[];
+    const oi=n-1-s;
+    if(oi>=0) parts.push({v:cells[oi].o, kind:'ones'});
+    const ti=n-s;
+    if(ti<=n-1 && ti>=0) parts.push({v:cells[ti].t, kind:'tens'});
+    if(parts.length) stripeVals.push(parts);
+  }
+  let carry=0; const out=[];
+  for(let s=0;s<stripeVals.length;s++){
+    const sum=stripeVals[s].reduce((a,p)=>a+p.v,0)+carry;
+    out.push({parts:stripeVals[s], raw:sum, digit:sum%10, carry});
+    carry=Math.floor(sum/10);
+  }
+  let lead=carry;
+  let sh='';
+  if(lead>0){
+    sh+=`<div class="stripe"><div class="carry">перенос</div><div class="digits">${lead}</div><div class="sum">${lead}</div></div>`;
+  }
+  for(let s=out.length-1;s>=0;s--){
+    const o=out[s];
+    const dl=o.parts.map(p=>p.v).join(' + ');
+    sh+=`<div class="stripe"><div class="carry">${o.carry>0?'+'+o.carry:''}</div>`
+      +`<div class="digits">${dl}${o.carry>0?' + '+o.carry:''}</div>`
+      +`<div class="sum">${o.digit}</div></div>`;
+  }
+  stripesEl.innerHTML=sh;
+
+  const product=(mult||0)*multiplier;
+  answerEl.innerHTML=`${mult||0} × ${multiplier} = <b>${product.toLocaleString('ru-RU')}</b>`;
+}
+
+render();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сетка Пифагора — null/visuals</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .viz-pyth { max-width: 680px; }
+  .viz-pyth .label{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:lowercase;
+    color:#8c8a83;margin-bottom:14px;}
+  .viz-pyth h1{font-family:'Old Standard TT',Georgia,serif;font-style:italic;font-weight:400;font-size:46px;line-height:1;
+    letter-spacing:-.01em;margin-bottom:10px;}
+  .viz-pyth h1 em{color:var(--accent-red);font-style:italic;}
+  .viz-pyth .sub{font-family:var(--font-text);font-size:16px;line-height:1.5;color:#444;max-width:520px;margin-bottom:26px;}
+  .viz-pyth .controls{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-bottom:22px;
+    padding-bottom:20px;border-bottom:1px solid var(--border);}
+  .viz-pyth .ctl{display:flex;align-items:center;gap:0;}
+  .viz-pyth .ctl .ctl-lbl{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:lowercase;
+    color:#8c8a83;margin-right:10px;}
+  .viz-pyth .seg{display:flex;border:1px solid var(--ink);}
+  .viz-pyth .seg button{font-family:var(--font-mono);font-size:13px;background:transparent;color:var(--ink);
+    border:0;border-right:1px solid var(--ink);padding:6px 13px;cursor:pointer;line-height:1;}
+  .viz-pyth .seg button:last-child{border-right:0;}
+  .viz-pyth .seg button.on{background:var(--ink);color:var(--paper);}
+  .viz-pyth .toggle{font-family:var(--font-mono);font-size:13px;border:1px solid var(--ink);background:transparent;
+    color:var(--ink);padding:6px 13px;cursor:pointer;line-height:1;}
+  .viz-pyth .toggle.on{background:var(--accent-red);border-color:var(--accent-red);color:#fff;}
+  .viz-pyth .gridwrap{width:100%;}
+  .viz-pyth .grid{display:grid;width:100%;border:1px solid var(--ink);user-select:none;}
+  .viz-pyth .cell{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-mono);border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+    color:#2a2a2a;background:transparent;position:relative;transition:background .08s,color .08s;}
+  .viz-pyth .cell:last-child{border-right:0;}
+  .viz-pyth .grid .hdr{font-family:'Old Standard TT',Georgia,serif;font-style:italic;color:var(--ink);background:#efece4;
+    border-color:var(--border);}
+  .viz-pyth .grid .corner{font-family:'Old Standard TT',Georgia,serif;font-style:italic;color:var(--accent-red);background:#efece4;font-size:1.1em;}
+  .viz-pyth .cell.sq{box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:500;color:var(--ink);}
+  .viz-pyth .cell.hl{background:var(--accent-red);color:#fff;box-shadow:none;z-index:2;}
+  .viz-pyth .cell.mirror{background:rgba(196,74,50,.12);color:var(--accent-red);}
+  .viz-pyth .hdr.hlh{background:var(--accent-red);color:#fff;}
+  .viz-pyth .grid.heat .cell.val{background:var(--cellbg);}
+  .viz-pyth .grid.heat .cell.hl{background:var(--accent-red);}
+  .viz-pyth .readout{font-family:var(--font-mono);font-size:15px;line-height:1.5;margin-top:22px;min-height:46px;color:var(--ink);}
+  .viz-pyth .readout .muted{color:#8c8a83;}
+  .viz-pyth .readout b{color:var(--accent-red);font-weight:500;}
+  .viz-pyth .note{font-family:var(--font-text);font-size:14px;line-height:1.6;color:#555;margin-top:20px;
+    padding-top:18px;border-top:1px solid var(--border);}
+  .viz-pyth .note .k{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:lowercase;
+    color:#8c8a83;display:block;margin-bottom:6px;}
+  .viz-pyth .note b{color:var(--ink);font-weight:500;}
+  .viz-pyth .base-tag{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;color:#8c8a83;margin-top:28px;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / сетка пифагора</div>
+
+<main class="container">
+<article>
+
+  <div class="viz-pyth" style="margin-top: 8px;">
+    <div class="label">визуал · №029 · числа · нотация</div>
+    <h1>таблица <em>пифагора</em>.</h1>
+    <div class="sub">Матрица — высшая форма таблицы умножения: ответ читается на пересечении.
+      Наведи на клетку — увидишь, что произведение симметрично относительно диагонали,
+      а сама диагональ — это квадраты.</div>
+
+    <div class="controls">
+      <div class="ctl"><span class="ctl-lbl">основание</span>
+        <div class="seg" id="baseSeg">
+          <button data-n="10" class="on">10</button>
+          <button data-n="12">12</button>
+          <button data-n="16">16</button>
+        </div>
+      </div>
+      <button class="toggle" id="heatBtn">узор произведений</button>
+    </div>
+
+    <div class="gridwrap"><div class="grid" id="grid"></div></div>
+
+    <div class="readout" id="readout"><span class="muted">Наведи на клетку, чтобы увидеть симметрию</span></div>
+
+    <div class="note" id="note">
+      <span class="k">почему так</span>
+      Это <b>матрица</b> — последняя из трёх форм. Раньше таблицу заучивали как присказку
+      («шестью восемь — сорок восемь») или читали списком; матрицей её записали в Китае на
+      бамбуке около 305 года до н.э. <b>Вавилон</b> считал в основании 60 — такая сетка была бы
+      59×59, зато треть и четверть в ней берутся без остатка. Десять — это просто пальцы.
+    </div>
+
+    <div class="base-tag" id="baseTag">основание 10 · 10×10</div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/multiplication-table.html">таблица умножения →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="napier-bones.html">палочки Непера →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="multiplication-circle.html">умножение на окружности →</a></div>
+      <div class="related-link"><span class="related-link-type">счисление</span><a href="../objects/numbers/numeral-systems/babylonian.html">вавилонское 60 →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/multiplication-table.html">Таблица умножения →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/napier-bones.html">палочки непера →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/multiplication-circle.html">умножение на окружности →</a></div>
+      <div class="related-link"><span class="related-link-type">нумерация</span><a href="/null/objects/numbers/numeral-systems/babylonian.html">вавилонская система →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/pythagoras-grid.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+const grid=document.getElementById('grid');
+const readout=document.getElementById('readout');
+const baseTag=document.getElementById('baseTag');
+let N=10, heat=false;
+const HEX="0123456789ABCDEF";
+const lab=v=> N<=10 ? String(v) : HEX[v];
+
+function buildHex(p){ return N===16 ? p.toString(16).toUpperCase() : String(p); }
+
+function build(){
+  grid.style.gridTemplateColumns=`repeat(${N+1}, 1fr)`;
+  grid.classList.toggle('heat', heat);
+  const max=N*N;
+  let html='';
+  for(let r=0;r<=N;r++){
+    for(let c=0;c<=N;c++){
+      if(r===0&&c===0){ html+=`<div class="cell corner">×</div>`; continue; }
+      if(r===0){ html+=`<div class="cell hdr" data-h="col" data-c="${c}">${lab(c)}</div>`; continue; }
+      if(c===0){ html+=`<div class="cell hdr" data-h="row" data-r="${r}">${lab(r)}</div>`; continue; }
+      const p=r*c;
+      const sq=r===c?' sq':'';
+      let bg='';
+      if(heat){ bg=`--cellbg:rgba(196,74,50,${(p/max*0.5+0.05).toFixed(3)});`; }
+      html+=`<div class="cell val${sq}" data-r="${r}" data-c="${c}" style="${bg}">${buildHex(p)}</div>`;
+    }
+  }
+  grid.innerHTML=html;
+  const fs = N<=10?17 : N<=12?15 : 12;
+  grid.querySelectorAll('.cell').forEach(el=>el.style.fontSize=fs+'px');
+  baseTag.textContent=`основание ${N} · ${N}×${N}`;
+}
+
+function clearHL(){
+  grid.querySelectorAll('.hl,.mirror,.hlh').forEach(el=>el.classList.remove('hl','mirror','hlh'));
+}
+function highlight(r,c){
+  clearHL();
+  const cell=grid.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);
+  const mir =grid.querySelector(`.cell[data-r="${c}"][data-c="${r}"]`);
+  if(cell) cell.classList.add('hl');
+  if(mir && mir!==cell) mir.classList.add('mirror');
+  grid.querySelector(`.hdr[data-h="row"][data-r="${r}"]`)?.classList.add('hlh');
+  grid.querySelector(`.hdr[data-h="col"][data-c="${c}"]`)?.classList.add('hlh');
+  if(r!==c){
+    grid.querySelector(`.hdr[data-h="row"][data-r="${c}"]`)?.classList.add('hlh');
+    grid.querySelector(`.hdr[data-h="col"][data-c="${r}"]`)?.classList.add('hlh');
+  }
+  const p=r*c;
+  const A=lab(r),B=lab(c),P=buildHex(p);
+  if(r===c){
+    readout.innerHTML=`<b>${A} × ${B} = ${P}</b> &nbsp;·&nbsp; это квадрат на диагонали: ${A}² = ${P}`;
+  }else{
+    readout.innerHTML=`<b>${A} × ${B} = ${P}</b> &nbsp;·&nbsp; <span class="muted">${B} × ${A} = ${P}</span> — то же число, зеркально через диагональ`;
+  }
+}
+
+grid.addEventListener('mouseover',e=>{
+  const t=e.target.closest('.cell.val'); if(!t) return;
+  highlight(+t.dataset.r,+t.dataset.c);
+});
+grid.addEventListener('mouseleave',()=>{
+  clearHL();
+  readout.innerHTML='<span class="muted">Наведи на клетку, чтобы увидеть симметрию</span>';
+});
+
+document.getElementById('baseSeg').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#baseSeg button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); N=+b.dataset.n; build();
+});
+document.getElementById('heatBtn').addEventListener('click',e=>{
+  heat=!heat; e.target.classList.toggle('on',heat); build();
+});
+
+build();
+</script>
+
+</body>
+</html>
