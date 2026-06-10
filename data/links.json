@@ -1714,6 +1714,20 @@
       "title": "Таблица умножения",
       "url": "/null/essays/multiplication-table.html",
       "glyph": "×"
+    },
+    {
+      "id": "es-terminal",
+      "type": "essay",
+      "title": "терминал",
+      "url": "/null/essays/terminal.html",
+      "glyph": "▮"
+    },
+    {
+      "id": "cu-terminal",
+      "type": "curious",
+      "title": "терминал",
+      "url": "/null/visuals/terminal.html",
+      "glyph": "▮"
     }
   ],
   "edges": [
@@ -5660,6 +5674,38 @@
     {
       "from": "es-two-alphabets",
       "to": "es-mult-table"
+    },
+    {
+      "from": "es-terminal",
+      "to": "cu-terminal"
+    },
+    {
+      "from": "cu-terminal",
+      "to": "es-terminal"
+    },
+    {
+      "from": "es-terminal",
+      "to": "vi-symbols"
+    },
+    {
+      "from": "vi-symbols",
+      "to": "es-terminal"
+    },
+    {
+      "from": "cu-terminal",
+      "to": "vi-symbols"
+    },
+    {
+      "from": "vi-symbols",
+      "to": "cu-terminal"
+    },
+    {
+      "from": "es-terminal",
+      "to": "es-two-alphabets"
+    },
+    {
+      "from": "es-two-alphabets",
+      "to": "es-terminal"
     }
   ]
 }

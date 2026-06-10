@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Терминал — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / терминал</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · вычисления · история · ~640 слов · 6 мин</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">терминал<em style="color: #c44a32; font-style: italic;">.</em></h1>
+    <p style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">«Терминал, 1970-е» — так подписан ASCII-робот на соседней странице. Но терминал старше и страннее компьютера: это любое устройство на конце линии связи, точка входа и выхода. Компьютерный — лишь один его вид.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">телетайп · Unix · VT100 · облако · ASCII</td></tr>
+    <tr><td class="k">читать</td><td class="v">~6 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">символы · два алфавита · текстовый интерфейс</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Первые терминалы были телеграфными. Ключ Морзе на одном конце линии, приёмник на другом, а между ними — оператор, который руками кодировал и раскодировал точки и тире. Живой кодек на конце провода. Из телеграфа выросли телетайпы: те же линии, но с клавиатурой, как у пишущей машинки.</p>
+
+      <p>Один из них, Teletype Model 33, и стал тем самым «терминалом 1970-х». На нём работали с первыми мини-компьютерами PDP — и на них же Ритчи и Томпсон писали Unix<em class="fn">1</em>. Машина была чудовищно тугой: печатать приходилось с силой, медленно, только заглавными буквами и на бумагу<em class="fn">2</em>.</p>
+
+      <p>И вот что удивительно: эта железка до сих пор живёт в твоём терминале. Команды Unix двухбуквенные — cp, rm, ls — просто потому, что на Model 33 было физически тяжело печатать<em class="fn">2</em>. Порты в Linux зовутся /dev/tty — сокращение от teletype<em class="fn">3</em>. Символы \n и \r — это буквально команды печатной машине: «перевод строки» и «возврат каретки», движение бумаги и движение каретки. А значок @ в почте выбрал в 1971-м Рэй Томлинсон — потому что он был на клавиатуре его Model 33<em class="fn">4</em>.</p>
+
+      <p>Потом бумагу сменил экран. «Стеклянные телетайпы» — видеотерминалы ADM-3 (1975), ADM-3A (1976), VT100 (1978) — печатали не на бумагу, а на электронный луч<em class="fn">5</em>. На ADM-3A Билл Джой написал редактор vi; на клавишах h, j, k, l у неё были нарисованы стрелки — поэтому в vim до сих пор двигаются именно ими<em class="fn">6</em>. А DEC VT100 стал негласным стандартом: почти любой современный терминал по сей день эмулирует именно его<em class="fn">7</em>.</p>
+
+      <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">Терминал — это не вещь, а позиция: край линии, где человек передаёт машине символы и получает символы обратно.</blockquote>
+
+      <p>Терминалы были и за пределами компьютеров. Банкомат — терминал банковской сети (первый — Лондон, 1967). Система бронирования SABRE (IBM и American Airlines, 1960) связала тысячи терминалов в первую real-time сеть. А консоли ПВО SAGE в 1950-х со световыми пистолетами были прообразом интерактивного экрана<em class="fn">8</em>.</p>
+
+      <p>Потом терминал как будто умер. Когда компьютер стал персональным — Apple II, 1977 — экран переехал внутрь корпуса: терминалу больше не к чему было подключаться, он сам стал машиной. А графический интерфейс (Xerox Alto, 1973, с мышью и окнами) похоронил текстовую консоль как массовую идею, заменив её метафорой «рабочего стола»<em class="fn">9</em>.</p>
+
+      <p>Но дальше — парадокс, замкнутый в кольцо. Терминал придумали, чтобы дотянуться до большой машины издалека. Машины уменьшились — терминал умер. Потом всё уехало в облако, и большие машины снова оказались далеко. И терминал вернулся: сегодня разработчик опять сидит в терминале, подключённом к удалённому серверу. Круг замкнулся. А ASCII-арт вроде того робота — окаменелость той же эпохи: картинки из времён, когда выходом была только сетка символов телетайпа.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note"><span class="n">[1]</span><span class="t">Unix создавали Кен Томпсон и Деннис Ритчи около 1969–1971 на мини-компьютерах PDP, используя телетайпы Teletype Model 33.</span></div>
+      <div class="note"><span class="n">[2]</span><span class="t">Model 33: 110 бод, ~10 знаков/с, только заглавные, печать на бумагу; печатать было физически тяжело — отсюда короткие двухбуквенные команды (Б. Керниган).</span></div>
+      <div class="note"><span class="n">[3]</span><span class="t">/dev/tty — сокращение от «teletype».</span></div>
+      <div class="note"><span class="n">[4]</span><span class="t">Рэй Томлинсон выбрал @ для адресов эл. почты в 1971 на клавиатуре Model 33.</span></div>
+      <div class="note"><span class="n">[5]</span><span class="t">«Стеклянные телетайпы»: ADM-3 (1975), ADM-3A (1976), DEC VT52 / VT100 (1978).</span></div>
+      <div class="note"><span class="n">[6]</span><span class="t">Билл Джой написал vi на ADM-3A; стрелки на клавишах h j k l — отсюда навигация vim.</span></div>
+      <div class="note"><span class="n">[7]</span><span class="t">DEC VT100 (1978) стал де-факто стандартом; современные терминалы эмулируют его (ANSI-коды).</span></div>
+      <div class="note"><span class="n">[8]</span><span class="t">Банкомат — Лондон, 1967; SABRE — IBM и American Airlines, 1960; SAGE — ПВО США, 1950-е.</span></div>
+      <div class="note"><span class="n">[9]</span><span class="t">Apple II — 1977; Xerox Alto — 1973 (GUI, мышь, окна).</span></div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../visuals/terminal.html">терминал →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/symbols.html">символы →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="two-alphabets.html">два алфавита →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">любопытное</span><a href="/null/visuals/terminal.html">терминал →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/two-alphabets.html">два алфавита →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/symbols.html">символы математики →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/terminal.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
