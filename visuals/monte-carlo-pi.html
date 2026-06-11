@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>π из случайных точек — null/visuals</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .viz-mcpi { max-width: 680px; }
+  .viz-mcpi .label{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:lowercase;
+    color:#8c8a83;margin-bottom:12px;}
+  .viz-mcpi h1{font-family:'Old Standard TT',Georgia,serif;font-style:italic;font-weight:400;font-size:44px;
+    line-height:1.02;margin-bottom:12px;}
+  .viz-mcpi h1 em{color:var(--accent-red);font-style:italic;}
+  .viz-mcpi .sub{font-family:var(--font-text);font-size:16px;line-height:1.5;color:#444;max-width:560px;margin-bottom:24px;}
+  .viz-mcpi .stage{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;}
+  .viz-mcpi .square{flex:0 0 auto;width:360px;max-width:100%;}
+  .viz-mcpi canvas.dart{width:100%;height:auto;border:1px solid var(--ink);display:block;background:#fbfaf7;}
+  .viz-mcpi .legend{font-family:var(--font-mono);font-size:11px;color:#8c8a83;margin-top:8px;display:flex;gap:16px;}
+  .viz-mcpi .legend i{font-style:normal;display:inline-flex;align-items:center;gap:6px;}
+  .viz-mcpi .dot{width:9px;height:9px;display:inline-block;}
+  .viz-mcpi .dot.in{background:var(--accent-red);} .viz-mcpi .dot.out{background:rgba(17,17,17,.3);}
+  .viz-mcpi .panel{flex:1 1 220px;min-width:200px;}
+  .viz-mcpi .ro{border:1px solid var(--ink);}
+  .viz-mcpi .ro .cell{padding:12px 14px;border-bottom:1px solid var(--border);}
+  .viz-mcpi .ro .cell:last-child{border-bottom:0;}
+  .viz-mcpi .ro .k{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:lowercase;color:#8c8a83;}
+  .viz-mcpi .ro .v{font-family:var(--font-mono);font-size:25px;color:var(--ink);margin-top:4px;}
+  .viz-mcpi .ro .v.ac{color:var(--accent-red);}
+  .viz-mcpi .ro .v small{font-size:14px;color:#8c8a83;}
+  .viz-mcpi .formula{font-family:var(--font-mono);font-size:13px;color:#555;margin-top:14px;line-height:1.6;}
+  .viz-mcpi .formula b{color:var(--accent-red);font-weight:500;}
+  .viz-mcpi .conv{margin-top:22px;}
+  .viz-mcpi .conv .cap{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:#8c8a83;margin-bottom:6px;}
+  .viz-mcpi canvas.cv{width:100%;height:130px;border:1px solid var(--border);display:block;background:#fbfaf7;}
+  .viz-mcpi .controls{display:flex;flex-wrap:wrap;gap:0;margin-top:18px;border:1px solid var(--ink);}
+  .viz-mcpi .controls button{flex:1 1 auto;font-family:var(--font-mono);font-size:14px;background:transparent;color:var(--ink);
+    border:0;border-right:1px solid var(--ink);padding:11px 8px;cursor:pointer;line-height:1;min-width:62px;}
+  .viz-mcpi .controls button:last-child{border-right:0;}
+  .viz-mcpi .controls button:hover{background:rgba(196,74,50,.10);}
+  .viz-mcpi .controls button.on{background:var(--accent-red);color:#fff;}
+  .viz-mcpi .controls button.reset{color:#8c8a83;}
+  .viz-mcpi .hint{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;color:#8c8a83;margin-top:26px;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / π из случайных точек</div>
+
+<main class="container">
+<article>
+
+  <div class="viz-mcpi" style="margin-top: 8px;">
+    <div class="label">визуал · №031 · монте-карло · π</div>
+    <h1>π из случайных <em>точек</em>.</h1>
+    <div class="sub">Бросай точки в квадрат наугад. Доля тех, что попали в четверть круга, равна π/4 — значит, по случайным точкам можно вычислить π. Чем больше бросков, тем точнее: закон больших чисел за работой.</div>
+
+    <div class="stage">
+      <div class="square">
+        <canvas class="dart" id="dart" width="900" height="900"></canvas>
+        <div class="legend">
+          <i><span class="dot in"></span> внутри круга</i>
+          <i><span class="dot out"></span> снаружи</i>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="ro">
+          <div class="cell"><div class="k">точек брошено</div><div class="v" id="rN">0</div></div>
+          <div class="cell"><div class="k">попало в круг</div><div class="v" id="rIn">0</div></div>
+          <div class="cell"><div class="k">оценка π</div><div class="v ac" id="rPi">—</div></div>
+          <div class="cell"><div class="k">ошибка</div><div class="v" id="rErr">—</div></div>
+        </div>
+        <div class="formula">π ≈ 4 × <b>внутри / всего</b><br>точно: π = 3.14159…</div>
+      </div>
+    </div>
+
+    <div class="conv">
+      <div class="cap">оценка π по мере роста числа точек →</div>
+      <canvas class="cv" id="conv" width="1320" height="260"></canvas>
+    </div>
+
+    <div class="controls">
+      <button data-k="1">бросить ×1</button>
+      <button data-k="100">×100</button>
+      <button data-k="1000">×1000</button>
+      <button id="auto">авто</button>
+      <button class="reset" id="reset">сброс</button>
+    </div>
+
+    <div class="hint" id="hint">случайность, считающая точное число</div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/buffon.html">игла Бюффона →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/monte-carlo.html">от пасьянса к атомной бомбе →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/simulation.html">десять тысяч турниров →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/numbers/constants/pi.html">число π →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">константа</span><a href="/null/objects/numbers/constants/pi.html">число π →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/simulation.html">Десять тысяч турниров →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/buffon.html">Игла Бюффона →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/monte-carlo.html">От пасьянса к атомной бомбе →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/monte-carlo-pi.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+const dart=document.getElementById('dart'), dctx=dart.getContext('2d');
+const conv=document.getElementById('conv'), cctx=conv.getContext('2d');
+const PI=Math.PI;
+let total=0, inside=0, hist=[], maxN=1000, auto=null;
+
+function clearDart(){
+  dctx.clearRect(0,0,dart.width,dart.height);
+  dctx.fillStyle='#fbfaf7'; dctx.fillRect(0,0,dart.width,dart.height);
+  const S=dart.width;
+  dctx.strokeStyle='#c44a32'; dctx.lineWidth=2;
+  dctx.beginPath(); dctx.arc(0, S, S, -Math.PI/2, 0, false); dctx.stroke();
+}
+function reset(){
+  total=0; inside=0; hist=[]; maxN=1000;
+  if(auto){clearInterval(auto);auto=null;document.getElementById('auto').classList.remove('on');}
+  clearDart(); updateUI(); drawConv();
+}
+function throwN(k){
+  const S=dart.width;
+  for(let i=0;i<k;i++){
+    const x=Math.random(), y=Math.random();
+    const inC = (x*x+y*y)<=1;
+    if(inC) inside++;
+    total++;
+    const px=x*S, py=S-y*S;
+    dctx.fillStyle = inC ? 'rgba(196,74,50,.72)' : 'rgba(17,17,17,.28)';
+    dctx.fillRect(px-1.4, py-1.4, 2.8, 2.8);
+  }
+  hist.push([total, 4*inside/total]);
+  if(hist.length>2200) hist=hist.filter((_,i)=>i%2===0);
+  while(total>=maxN) maxN*=10;
+  updateUI(); drawConv();
+}
+function updateUI(){
+  document.getElementById('rN').textContent=total.toLocaleString('ru-RU');
+  document.getElementById('rIn').textContent=inside.toLocaleString('ru-RU');
+  if(total){
+    const est=4*inside/total;
+    document.getElementById('rPi').innerHTML=est.toFixed(4);
+    document.getElementById('rErr').innerHTML='<small>±</small> '+Math.abs(est-PI).toFixed(4);
+  } else {
+    document.getElementById('rPi').textContent='—';
+    document.getElementById('rErr').textContent='—';
+  }
+}
+function drawConv(){
+  const W=conv.width,H=conv.height,padL=64,padR=18,padT=16,padB=34,pw=W-padL-padR,ph=H-padT-padB;
+  cctx.clearRect(0,0,W,H); cctx.fillStyle='#fbfaf7'; cctx.fillRect(0,0,W,H);
+  const yMin=2.6,yMax=3.7;
+  const xOf=n=>padL+(Math.log10(Math.max(1,n))/Math.log10(maxN))*pw;
+  const yOf=v=>padT+(1-(Math.min(yMax,Math.max(yMin,v))-yMin)/(yMax-yMin))*ph;
+  cctx.strokeStyle='#e7e4dc'; cctx.fillStyle='#8c8a83';
+  cctx.font='20px "JetBrains Mono"'; cctx.textAlign='right'; cctx.textBaseline='middle';
+  [2.6,3.0,3.4].forEach(v=>{const y=yOf(v);cctx.beginPath();cctx.moveTo(padL,y);cctx.lineTo(W-padR,y);cctx.stroke();cctx.fillText(v.toFixed(1),padL-8,y);});
+  cctx.textAlign='center'; cctx.textBaseline='top';
+  for(let e=0;Math.pow(10,e)<=maxN;e++){const n=Math.pow(10,e),x=xOf(n);
+    cctx.fillStyle='#8c8a83'; cctx.fillText(n>=1000?(n/1000)+'k':n, x, padT+ph+8);}
+  const yPi=yOf(PI);
+  cctx.save();cctx.setLineDash([7,8]);cctx.strokeStyle='#c44a32';cctx.lineWidth=1.5;
+  cctx.beginPath();cctx.moveTo(padL,yPi);cctx.lineTo(W-padR,yPi);cctx.stroke();cctx.restore();
+  cctx.fillStyle='#c44a32';cctx.font='italic 22px "IM Fell English"';cctx.textAlign='left';cctx.textBaseline='bottom';
+  cctx.fillText('π', W-padR-22, yPi-4);
+  if(hist.length){
+    cctx.strokeStyle='#111';cctx.lineWidth=2;cctx.beginPath();
+    hist.forEach((p,i)=>{const x=xOf(p[0]),y=yOf(p[1]);i?cctx.lineTo(x,y):cctx.moveTo(x,y);});
+    cctx.stroke();
+    const L=hist[hist.length-1];cctx.fillStyle='#c44a32';cctx.beginPath();cctx.arc(xOf(L[0]),yOf(L[1]),5,0,7);cctx.fill();
+  }
+}
+document.querySelectorAll('.viz-mcpi .controls button[data-k]').forEach(b=>b.addEventListener('click',()=>throwN(+b.dataset.k)));
+document.getElementById('reset').addEventListener('click',reset);
+document.getElementById('auto').addEventListener('click',e=>{
+  if(auto){clearInterval(auto);auto=null;e.target.classList.remove('on');}
+  else{e.target.classList.add('on');auto=setInterval(()=>{throwN(300);if(total>=200000){clearInterval(auto);auto=null;e.target.classList.remove('on');}},55);}
+});
+reset();
+</script>
+
+</body>
+</html>

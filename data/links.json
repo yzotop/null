@@ -1805,6 +1805,13 @@
       "title": "Игла Бюффона",
       "url": "/null/essays/buffon.html",
       "glyph": "✚"
+    },
+    {
+      "id": "vi-monte-carlo-pi",
+      "type": "visual",
+      "title": "π из случайных точек",
+      "url": "/null/visuals/monte-carlo-pi.html",
+      "glyph": "≈"
     }
   ],
   "edges": [
@@ -6263,6 +6270,38 @@
     {
       "from": "pi",
       "to": "es-buffon"
+    },
+    {
+      "from": "vi-monte-carlo-pi",
+      "to": "es-buffon"
+    },
+    {
+      "from": "es-buffon",
+      "to": "vi-monte-carlo-pi"
+    },
+    {
+      "from": "vi-monte-carlo-pi",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "vi-monte-carlo-pi"
+    },
+    {
+      "from": "vi-monte-carlo-pi",
+      "to": "es-simulation"
+    },
+    {
+      "from": "es-simulation",
+      "to": "vi-monte-carlo-pi"
+    },
+    {
+      "from": "vi-monte-carlo-pi",
+      "to": "pi"
+    },
+    {
+      "from": "pi",
+      "to": "vi-monte-carlo-pi"
     }
   ]
 }
