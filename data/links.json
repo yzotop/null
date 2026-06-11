@@ -1784,6 +1784,13 @@
       "title": "Пенальти",
       "url": "/null/essays/penalty.html",
       "glyph": "⇄"
+    },
+    {
+      "id": "es-simulation",
+      "type": "essay",
+      "title": "Десять тысяч турниров",
+      "url": "/null/essays/simulation.html",
+      "glyph": "≈"
     }
   ],
   "edges": [
@@ -6130,6 +6137,46 @@
     {
       "from": "es-pseudorandom",
       "to": "es-penalty"
+    },
+    {
+      "from": "es-simulation",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "es-simulation"
+    },
+    {
+      "from": "es-simulation",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "es-simulation"
+    },
+    {
+      "from": "es-simulation",
+      "to": "es-underdogs"
+    },
+    {
+      "from": "es-underdogs",
+      "to": "es-simulation"
+    },
+    {
+      "from": "es-simulation",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "es-simulation"
+    },
+    {
+      "from": "es-simulation",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-simulation"
     }
   ]
 }

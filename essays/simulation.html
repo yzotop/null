@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Десять тысяч турниров — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / десять тысяч турниров</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · вероятность · спорт · ~720 слов · 7 мин</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">десять тысяч турниров<em style="color: #c44a32; font-style: italic;">.</em></h1>
+    <p style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">Перед чемпионатом мира ты видишь: «Испания — 16%, Франция — 13%». Откуда эти числа? Их никто не считает руками. Компьютер играет весь турнир десятки тысяч раз и подсчитывает, кто сколько раз стал чемпионом.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">Монте-Карло · симуляция · ЧМ-2026 · эргодичность · resulting</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">Монте-Карло · эргодичность · андердоги · хорошие решения · капстоун</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Эти проценты — не мнение эксперта и не формула на салфетке. Это результат симуляции. Каждой команде задают силу — рейтинг, выведенный из истории матчей. Дальше компьютер разыгрывает каждый матч как случайное событие с вероятностями из этих рейтингов, доводит до конца все группы и плей-офф, записывает чемпиона — и повторяет десятки тысяч раз<em class="fn">1</em><em class="fn">3</em>. Доля прогонов, в которых команда взяла кубок, и есть её вероятность стать чемпионом. Шестнадцать процентов у Испании значат ровно одно: в шестнадцати симуляциях из ста победила она.</p>
+
+      <p>Это метод Монте-Карло — старый трюк: когда задачу нельзя решить формулой, её прогоняют случайными пробами и считают, как часто что выпадает<em class="fn">2</em>. Придумали его физики в Лос-Аламосе, разыгрывая блуждания нейтронов; турнирная сетка — та же история. Почему не посчитать вероятности напрямую? Потому что сетка ветвится: с кем ты сыграешь в плей-офф, зависит от того, кто выиграл соседние матчи, и число возможных путей турнира астрономическое<em class="fn">4</em>. Перебрать их нельзя, а прогнать десять тысяч случайных — можно.</p>
+
+      <p>И вот что показывает такая симуляция. Даже у явного фаворита вероятность титула невелика: у Испании те самые ~16%, меньше одной шестой. Распределение широкое и плоское, потому что чемпионство требует выиграть подряд много матчей с высокой дисперсией, а вероятности перемножаются. Больше того: почти каждая команда хоть раз да побеждает — в прогонах Opta лишь одна не взяла кубок ни разу, а сборные-аутсайдеры выигрывали по разу-два из десяти тысяч<em class="fn">5</em>. У всех ненулевой шанс. Фаворит куда вероятнее <em>не</em> станет чемпионом, чем станет.</p>
+
+      <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">Симуляция отыгрывает десять тысяч турниров. Мы проживём ровно один.</blockquote>
+
+      <p>И здесь самое важное и самое обманчивое. Компьютер даёт тебе ансамбль: десять тысяч параллельных чемпионатов. Но реальность сыграет турнир один-единственный раз. «Испания 16%» — это среднее по множеству миров, а не предсказание нашего. В нашем мире Испания либо победит, либо нет; число описывает не наш бросок, а то, как нагружены кости. Среднее по тысяче вселенных — не то же, что траектория той одной, в которой живём мы. Ровно эта ловушка — в инвестициях, в карьере, везде: путь во времени не равен среднему по ансамблю.</p>
+
+      <p>Отсюда и трезвый взгляд на сам прогноз. Когда Испания не побеждает — а это случается в 84 случаях из 100 — модель не «ошиблась». Шестнадцатипроцентный фаворит, не взявший титул, и есть ожидаемый исход. Вероятностный прогноз судят по сотне турниров (насколько он откалиброван), а не по одному. Сказать «модель дура, Испания вылетела» — это resulting: оценка по единственному исходу того, что было про распределение.</p>
+
+      <p>Так что симуляция — машина, которая проживает тысячи турниров, чтобы понять тот единственный, что достанется нам. Она не скажет, кто победит, — только насколько нагружены кости. Настоящий чемпион будет одной выборкой из этого распределения: отчасти класс, отчасти удача, и симуляция честно показывает, сколько в нём того и другого. Карта десяти тысяч миров — а прочитать нам дадут одну строку.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note"><span class="n">[1]</span><span class="t">Перед ЧМ-2026 «суперкомпьютер» Opta прогнал турнир 10–25 тысяч раз: Испания ~16%, Франция ~13%, Англия ~11%, Аргентина ~10% — даже у фаворита меньше одной шестой.</span></div>
+      <div class="note"><span class="n">[2]</span><span class="t">Метод Монте-Карло — вычисление через случайные пробы; родился в Лос-Аламосе (Улам, фон Нейман, Метрополис, 1940-е), назван в честь казино.</span></div>
+      <div class="note"><span class="n">[3]</span><span class="t">Силу команд задают рейтингом (Эло-подобным), исход матча разыгрывают вероятностно; учитывают сетку, домашнее поле, иногда котировки букмекеров. FiveThirtyEight, популяризировавший такие модели, закрылся (2023–2025); теперь этим занимаются Opta и букмекеры.</span></div>
+      <div class="note"><span class="n">[4]</span><span class="t">Сетка плей-офф ветвится: соперник зависит от прошлых исходов, путей астрономически много — аналитически не посчитать.</span></div>
+      <div class="note"><span class="n">[5]</span><span class="t">В прогонах Opta лишь Кюрасао не выиграл турнир ни разу; даже аутсайдеры брали титул хотя бы раз — у каждого ненулевой шанс.</span></div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="monte-carlo.html">От пасьянса к атомной бомбе →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ergodicity.html">Эргодичность →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="underdogs.html">Почему побеждают слабые →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="good-decisions.html">Хорошие решения с плохими исходами →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="decisions-distance.html">Решения на дистанции →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/monte-carlo.html">От пасьянса к атомной бомбе →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/underdogs.html">Почему побеждают слабые →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/decisions-distance.html">Решения на дистанции →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/good-decisions.html">Хорошие решения с плохими исходами →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/ergodicity.html">Эргодичность. Почему среднее вам не достанется →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/simulation.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
