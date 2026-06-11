@@ -1791,6 +1791,13 @@
       "title": "Десять тысяч турниров",
       "url": "/null/essays/simulation.html",
       "glyph": "≈"
+    },
+    {
+      "id": "es-elo",
+      "type": "essay",
+      "title": "Одно число",
+      "url": "/null/essays/elo.html",
+      "glyph": "Δ"
     }
   ],
   "edges": [
@@ -6177,6 +6184,46 @@
     {
       "from": "es-decisions-distance",
       "to": "es-simulation"
+    },
+    {
+      "from": "es-elo",
+      "to": "es-simulation"
+    },
+    {
+      "from": "es-simulation",
+      "to": "es-elo"
+    },
+    {
+      "from": "es-elo",
+      "to": "es-underdogs"
+    },
+    {
+      "from": "es-underdogs",
+      "to": "es-elo"
+    },
+    {
+      "from": "es-elo",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-bayesian",
+      "to": "es-elo"
+    },
+    {
+      "from": "es-elo",
+      "to": "es-llm-eval"
+    },
+    {
+      "from": "es-llm-eval",
+      "to": "es-elo"
+    },
+    {
+      "from": "es-elo",
+      "to": "es-xg"
+    },
+    {
+      "from": "es-xg",
+      "to": "es-elo"
     }
   ]
 }
