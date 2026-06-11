@@ -345,12 +345,33 @@ table.meta td.v.mono { font-family: var(--font-mono); font-size: 12px; }
   border-left: 2px solid var(--accent-red);
   padding: 4px 0 4px 18px;
   margin: 1.4em 0;
-  font-family: var(--font-text);
-  font-style: italic;
-  font-size: 22px;
-  line-height: 1.5;
-  color: #333;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #1a1a1a;
 }
+
+/* object body — readable Inter (hub/detail pages + shared intro classes) */
+.co-sub, .co-intro,
+.ns-sub, .ns-essay p,
+.intro, .history-text,
+.nota-note, .lat-fact, .why-text {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #1a1a1a;
+}
+.co-sub, .ns-sub {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #555;
+}
+.history-text { color: #555; font-size: 15px; line-height: 1.75; }
+.nota-note, .lat-fact { font-size: 15px; color: #555; }
 .essay-body em.fn {
   font-style: normal;
   color: var(--accent-red);
