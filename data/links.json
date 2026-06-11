@@ -1798,6 +1798,13 @@
       "title": "Одно число",
       "url": "/null/essays/elo.html",
       "glyph": "Δ"
+    },
+    {
+      "id": "es-buffon",
+      "type": "essay",
+      "title": "Игла Бюффона",
+      "url": "/null/essays/buffon.html",
+      "glyph": "✚"
     }
   ],
   "edges": [
@@ -6224,6 +6231,38 @@
     {
       "from": "es-xg",
       "to": "es-elo"
+    },
+    {
+      "from": "es-buffon",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "es-buffon"
+    },
+    {
+      "from": "es-buffon",
+      "to": "es-simulation"
+    },
+    {
+      "from": "es-simulation",
+      "to": "es-buffon"
+    },
+    {
+      "from": "es-buffon",
+      "to": "es-pi-gaussian"
+    },
+    {
+      "from": "es-pi-gaussian",
+      "to": "es-buffon"
+    },
+    {
+      "from": "es-buffon",
+      "to": "pi"
+    },
+    {
+      "from": "pi",
+      "to": "es-buffon"
     }
   ]
 }
