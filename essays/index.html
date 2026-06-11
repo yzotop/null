@@ -11,9 +11,10 @@
     margin-bottom: 16px;
     padding-bottom: 12px;
     border-bottom: 1px solid #dcd9d0;
+    scroll-margin-top: 24px;
   }
   .essay-section-header:first-of-type {
-    margin-top: 28px;
+    margin-top: 36px;
   }
   .essay-section-label {
     display: flex;
@@ -39,7 +40,19 @@
     font-size: 10px;
     letter-spacing: 0.08em;
   }
+  .essay-branch-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #888;
+    text-transform: lowercase;
+    letter-spacing: 0.12em;
+    margin: 22px 0 10px 0;
+  }
+  .essay-list .essay-branch-label:first-child {
+    margin-top: 0;
+  }
   .essay-item .tag.applied { color: #2c5fb6; }
+  .essay-categories { margin-top: 28px; }
 </style>
 </head>
 <body>
@@ -57,422 +70,414 @@
 </header>
 <div class="breadcrumb">/null / essays /</div>
 
-<main class="container">
+<main class="container wide">
   <h1 class="page-title">архив</h1>
-  <div class="page-sub">математика · эксперименты · платформы · история · теория</div>
+  <div class="page-sub">77 эссе · 8 категорий · решения · покер · спорт · математика</div>
 
-  <div class="essay-section-header">
+  <div class="cards essay-categories">
+
+    <a class="card" href="#s01">
+      <div class="card-head">
+        <span class="card-tag">категория · §01</span>
+        <span class="card-arrow">→</span>
+      </div>
+      <div class="card-glyph"><em>⤳</em></div>
+      <div class="card-title">решения · неопределённость</div>
+      <div class="card-desc">выбор, когда исход не виден сразу</div>
+      <div class="card-num">12 эссе</div>
+    </a>
+
+    <a class="card" href="#s02">
+      <div class="card-head">
+        <span class="card-tag">категория · §02</span>
+        <span class="card-arrow">→</span>
+      </div>
+      <div class="card-glyph"><em>♠</em></div>
+      <div class="card-title">покер</div>
+      <div class="card-desc">покер как способ думать</div>
+      <div class="card-num">07 эссе</div>
+    </a>
+
+    <a class="card" href="#s03">
+      <div class="card-head">
+        <span class="card-tag">категория · §03</span>
+        <span class="card-arrow">→</span>
+      </div>
+      <div class="card-glyph"><em>ψ</em></div>
+      <div class="card-title">поведение · искажения</div>
+      <div class="card-desc">как ошибается мышление</div>
+      <div class="card-num">11 эссе</div>
+    </a>
+
+    <a class="card" href="#s04">
+      <div class="card-head">
+        <span class="card-tag">категория · §04</span>
+        <span class="card-arrow">→</span>
+      </div>
+      <div class="card-glyph"><em>λ</em></div>
+      <div class="card-title">спорт · вероятность</div>
+      <div class="card-desc">математика футбола</div>
+      <div class="card-num">05 эссе</div>
+    </a>
+
+    <a class="card" href="#s05">
+      <div class="card-head">
+        <span class="card-tag">категория · §05</span>
+        <span class="card-arrow">→</span>
+      </div>
+      <div class="card-glyph"><em>≈</em></div>
+      <div class="card-title">случайность · симуляция</div>
+      <div class="card-desc">приручить случай</div>
+      <div class="card-num">08 эссе</div>
+    </a>
+
+    <a class="card" href="#s06">
+      <div class="card-head">
+        <span class="card-tag">категория · §06</span>
+        <span class="card-arrow">→</span>
+      </div>
+      <div class="card-glyph"><em>∑</em></div>
+      <div class="card-title">аналитика · платформы</div>
+      <div class="card-desc">математика продукта и рынков</div>
+      <div class="card-num">09 эссе</div>
+    </a>
+
+    <a class="card" href="#s07">
+      <div class="card-head">
+        <span class="card-tag">категория · §07</span>
+        <span class="card-arrow">→</span>
+      </div>
+      <div class="card-glyph"><em>∞</em></div>
+      <div class="card-title">числа · бесконечность · основания</div>
+      <div class="card-desc">чистая математика</div>
+      <div class="card-num">18 эссе</div>
+    </a>
+
+    <a class="card" href="#s08">
+      <div class="card-head">
+        <span class="card-tag">категория · §08</span>
+        <span class="card-arrow">→</span>
+      </div>
+      <div class="card-glyph"><em>⧖</em></div>
+      <div class="card-title">история · культура</div>
+      <div class="card-desc">откуда взялась математика</div>
+      <div class="card-num">10 эссе</div>
+    </a>
+
+  </div>
+
+  <div class="essay-section-header" id="s01">
     <div class="essay-section-label">
       <span class="essay-section-mark" aria-hidden="true"></span>
-      <span class="essay-section-text">// синтез · капстоун</span>
-      <span class="essay-section-count">01</span>
+      <span class="essay-section-text">// решения · неопределённость</span>
+      <span class="essay-section-count">12</span>
     </div>
   </div>
 
   <div class="essay-list">
 
+    <div class="essay-branch-label">// ветка: синтез · капстоун</div>
     <a class="essay-item" href="decisions-distance.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Решения на дистанции.
-        <span class="sub">лестница EV → Байес → Марков → Талеб → фланёр · обратимость как стержень · синтез обеих серий</span>
-      </span>
-      <span class="tag">решения · синтез</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Решения на дистанции.
+            <span class="sub">лестница EV → Байес → Марков → Талеб → фланёр · обратимость как стержень · синтез обеих серий</span>
+          </span>
+          <span class="tag">решения · синтез</span>
+        </a>
 
-  </div>
 
-  <div class="essay-section-header">
-    <div class="essay-section-label">
-      <span class="essay-section-mark" aria-hidden="true"></span>
-      <span class="essay-section-text">// серия · решения под неопределённостью</span>
-      <span class="essay-section-count">04</span>
-    </div>
-  </div>
-
-  <div class="essay-list">
-
+    <div class="essay-branch-label">// ветка: решения под неопределённостью</div>
     <a class="essay-item" href="uncertainty-knight.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Риск против неизвестности.
-        <span class="sub">Найт 1921 · два типа неопределённости · почему EV не для той задачи</span>
-      </span>
-      <span class="tag">решения · неопределённость</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Риск против неизвестности.
+            <span class="sub">Найт 1921 · два типа неопределённости · почему EV не для той задачи</span>
+          </span>
+          <span class="tag">решения · неопределённость</span>
+        </a>
 
     <a class="essay-item" href="ergodicity.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Эргодичность. Почему среднее вам не достанется.
-        <span class="sub">Питерс · среднее по времени ≠ по ансамблю · Больцман · поглощающее состояние</span>
-      </span>
-      <span class="tag">решения · вероятность</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Эргодичность. Почему среднее вам не достанется.
+            <span class="sub">Питерс · среднее по времени ≠ по ансамблю · Больцман · поглощающее состояние</span>
+          </span>
+          <span class="tag">решения · вероятность</span>
+        </a>
 
     <a class="essay-item" href="black-swan.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Чёрный лебедь. Почему редкое решает.
-        <span class="sub">Талеб · толстые хвосты · индюшка · Extremistan</span>
-      </span>
-      <span class="tag">решения · неопределённость</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Чёрный лебедь. Почему редкое решает.
+            <span class="sub">Талеб · толстые хвосты · индюшка · Extremistan</span>
+          </span>
+          <span class="tag">решения · неопределённость</span>
+        </a>
 
     <a class="essay-item" href="antifragile.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Антихрупкость. Что делать с тем, чего не знаешь.
-        <span class="sub">Талеб · штанга · выпуклость · via negativa</span>
-      </span>
-      <span class="tag">решения · стратегия</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Антихрупкость. Что делать с тем, чего не знаешь.
+            <span class="sub">Талеб · штанга · выпуклость · via negativa</span>
+          </span>
+          <span class="tag">решения · стратегия</span>
+        </a>
 
-  </div>
 
-  <div class="essay-section-header">
-    <div class="essay-section-label">
-      <span class="essay-section-mark" aria-hidden="true"></span>
-      <span class="essay-section-text">// серия · жизнь под неопределённостью</span>
-      <span class="essay-section-count">04</span>
-    </div>
-  </div>
-
-  <div class="essay-list">
-
+    <div class="essay-branch-label">// ветка: жизнь под неопределённостью</div>
     <a class="essay-item" href="optionality.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Опциональность. Ценность открытых дверей.
-        <span class="sub">реальные опционы · выпуклость · ценность состояния</span>
-      </span>
-      <span class="tag">решения · стратегия</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Опциональность. Ценность открытых дверей.
+            <span class="sub">реальные опционы · выпуклость · ценность состояния</span>
+          </span>
+          <span class="tag">решения · стратегия</span>
+        </a>
 
     <a class="essay-item" href="skin-in-the-game.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Шкура на кону. Почему рискующий знает больше.
-        <span class="sub">skin in the game · симметрия · Хаммурапи · отбор</span>
-      </span>
-      <span class="tag">решения · этика</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Шкура на кону. Почему рискующий знает больше.
+            <span class="sub">skin in the game · симметрия · Хаммурапи · отбор</span>
+          </span>
+          <span class="tag">решения · этика</span>
+        </a>
 
     <a class="essay-item" href="via-negativa.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Via negativa. Сила вычитания.
-        <span class="sub">ятрогения · асимметрия знания · убирай хрупкое</span>
-      </span>
-      <span class="tag">решения · стратегия</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Via negativa. Сила вычитания.
+            <span class="sub">ятрогения · асимметрия знания · убирай хрупкое</span>
+          </span>
+          <span class="tag">решения · стратегия</span>
+        </a>
 
     <a class="essay-item" href="flaneur.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Фланёр. Как жить, не зная будущего.
-        <span class="sub">Бодлер · Талеб · турист vs фланёр · финал дуги</span>
-      </span>
-      <span class="tag">решения · образ жизни</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Фланёр. Как жить, не зная будущего.
+            <span class="sub">Бодлер · Талеб · турист vs фланёр · финал дуги</span>
+          </span>
+          <span class="tag">решения · образ жизни</span>
+        </a>
+
+
+    <div class="essay-branch-label">// ветка: математика решений</div>
+    <a class="essay-item" href="good-decisions.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Хорошие решения с плохими исходами.
+            <span class="sub">EV на дистанции · resulting · покер · A/B тесты</span>
+          </span>
+          <span class="tag applied">статистика · решения</span>
+        </a>
+
+    <a class="essay-item" href="expected-value.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Математика решений
+            <span class="sub">EV · от казино до продукта · Kelly · петербургский парадокс</span>
+          </span>
+          <span class="tag applied">stats · decisions</span>
+        </a>
+
+    <a class="essay-item" href="expected-utility.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Почему люди не максимизируют EV
+            <span class="sub">expected utility · prospect theory · Канеман · loss aversion</span>
+          </span>
+          <span class="tag applied">stats · поведение</span>
+        </a>
 
   </div>
 
-  <div class="essay-section-header">
+  <div class="essay-section-header" id="s02">
     <div class="essay-section-label">
       <span class="essay-section-mark" aria-hidden="true"></span>
-      <span class="essay-section-text">// серия · покер как способ думать</span>
+      <span class="essay-section-text">// покер</span>
       <span class="essay-section-count">07</span>
     </div>
   </div>
 
   <div class="essay-list">
-
     <a class="essay-item" href="poker-basics.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Покер. Как профи считают в голове.
-        <span class="sub">диапазоны · матожидание · частоты блефа · солверы</span>
-      </span>
-      <span class="tag">игры · теория игр</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Покер. Как профи считают в голове.
+            <span class="sub">диапазоны · матожидание · частоты блефа · солверы</span>
+          </span>
+          <span class="tag">игры · теория игр</span>
+        </a>
 
     <a class="essay-item" href="poker-kelly.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Критерий Келли. Сколько ставить.
-        <span class="sub">управление капиталом · логарифмический рост · Bell Labs · Торп</span>
-      </span>
-      <span class="tag">игры · вероятность</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Критерий Келли. Сколько ставить.
+            <span class="sub">управление капиталом · логарифмический рост · Bell Labs · Торп</span>
+          </span>
+          <span class="tag">игры · вероятность</span>
+        </a>
 
     <a class="essay-item" href="poker-bayes.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Байес за столом. Как читают оппонента.
-        <span class="sub">обновление вероятностей · теллы · теория информации · Шеннон</span>
-      </span>
-      <span class="tag">игры · вероятность</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Байес за столом. Как читают оппонента.
+            <span class="sub">обновление вероятностей · теллы · теория информации · Шеннон</span>
+          </span>
+          <span class="tag">игры · вероятность</span>
+        </a>
 
     <a class="essay-item" href="poker-exploit.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Эксплойт против равновесия.
-        <span class="sub">GTO · отклонение от оптимума · когда математику нарушать</span>
-      </span>
-      <span class="tag">игры · теория игр</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Эксплойт против равновесия.
+            <span class="sub">GTO · отклонение от оптимума · когда математику нарушать</span>
+          </span>
+          <span class="tag">игры · теория игр</span>
+        </a>
 
     <a class="essay-item" href="poker-solvers.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        До солверов. Что мы потеряли.
-        <span class="sub">Дван · Айви · формализация мастерства · превью эпохи ИИ</span>
-      </span>
-      <span class="tag">игры · история</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            До солверов. Что мы потеряли.
+            <span class="sub">Дван · Айви · формализация мастерства · превью эпохи ИИ</span>
+          </span>
+          <span class="tag">игры · история</span>
+        </a>
 
     <a class="essay-item" href="poker-distance.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        Тренажёр дистанции.
-        <span class="sub">EV · дисперсия · разорение · покер как спортзал решений</span>
-      </span>
-      <span class="tag">решения · покер</span>
-    </a>
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            Тренажёр дистанции.
+            <span class="sub">EV · дисперсия · разорение · покер как спортзал решений</span>
+          </span>
+          <span class="tag">решения · покер</span>
+        </a>
 
     <a class="essay-item" href="poker-glossary.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Глоссарий покера и его математики.
-        <span class="sub">термины · формулы · мостики в аналитику</span>
-      </span>
-      <span class="tag">объект · справочник</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Глоссарий покера и его математики.
+            <span class="sub">термины · формулы · мостики в аналитику</span>
+          </span>
+          <span class="tag">объект · справочник</span>
+        </a>
 
   </div>
 
-  <div class="essay-section-header">
+  <div class="essay-section-header" id="s03">
     <div class="essay-section-label">
       <span class="essay-section-mark" aria-hidden="true"></span>
-      <span class="essay-section-text">// прикладное · эксперименты · платформы</span>
-      <span class="essay-section-count">23</span>
+      <span class="essay-section-text">// поведение · искажения</span>
+      <span class="essay-section-count">11</span>
     </div>
   </div>
 
   <div class="essay-list">
-
-    <a class="essay-item" href="simpson.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Парадокс Симпсона.
-        <span class="sub">агрегат лжёт · конфаундер · Berkeley · почки · когда данные обманывают</span>
-      </span>
-      <span class="tag applied">статистика · ловушки</span>
-    </a>
-
-    <a class="essay-item" href="benford.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Закон Бенфорда.
-        <span class="sub">первая цифра · мошенничество · налоговые службы · единица встречается чаще девятки</span>
-      </span>
-      <span class="tag applied">статистика · парадоксы</span>
-    </a>
-
-    <a class="essay-item" href="small-numbers.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Закон малых чисел.
-        <span class="sub">маленькая выборка · ложные паттерны · почему 3 из 5 не то же что 300 из 500</span>
-      </span>
-      <span class="tag applied">статистика · ловушки</span>
-    </a>
-
-    <a class="essay-item" href="gamblers-fallacy.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Ошибка игрока.
-        <span class="sub">монета не помнит прошлого · независимость событий · Монте-Карло 1913</span>
-      </span>
-      <span class="tag applied">статистика · ловушки</span>
-    </a>
-
-    <a class="essay-item" href="base-rate.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Ошибка базовой частоты.
-        <span class="sub">base rate neglect · тест на рак · prosecutor's fallacy</span>
-      </span>
-      <span class="tag applied">статистика · ловушки</span>
-    </a>
-
-    <a class="essay-item" href="good-decisions.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Хорошие решения с плохими исходами.
-        <span class="sub">EV на дистанции · resulting · покер · A/B тесты</span>
-      </span>
-      <span class="tag applied">статистика · решения</span>
-    </a>
-
-    <a class="essay-item" href="prospect-theory.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Prospect Theory.
-        <span class="sub">кривая ценности · loss aversion · нелинейные веса вероятностей</span>
-      </span>
-      <span class="tag applied">поведенческая экономика</span>
-    </a>
-
-    <a class="essay-item" href="nudge.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Nudge.
-        <span class="sub">архитектура выбора · default effects · Талер</span>
-      </span>
-      <span class="tag applied">поведенческая экономика</span>
-    </a>
+    <a class="essay-item" href="oshibki-po-pravilam.html">
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            ошибки по правилам.
+            <span class="sub">Канеман · Тверски · искажения · теория перспектив · Система 1 / 2</span>
+          </span>
+          <span class="tag applied">психология · решения</span>
+        </a>
 
     <a class="essay-item" href="cognitive-biases.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Когнитивные искажения.
-        <span class="sub">anchoring · availability · framing · sunk cost</span>
-      </span>
-      <span class="tag applied">поведенческая экономика</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Когнитивные искажения.
+            <span class="sub">anchoring · availability · framing · sunk cost</span>
+          </span>
+          <span class="tag applied">поведенческая экономика</span>
+        </a>
 
     <a class="essay-item" href="two-systems.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Две системы.
-        <span class="sub">Система 1 и 2 · быстрое и медленное мышление</span>
-      </span>
-      <span class="tag applied">поведенческая экономика</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Две системы.
+            <span class="sub">Система 1 и 2 · быстрое и медленное мышление</span>
+          </span>
+          <span class="tag applied">поведенческая экономика</span>
+        </a>
 
-    <a class="essay-item" href="oshibki-po-pravilam.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        ошибки по правилам.
-        <span class="sub">Канеман · Тверски · искажения · теория перспектив · Система 1 / 2</span>
-      </span>
-      <span class="tag applied">психология · решения</span>
-    </a>
+    <a class="essay-item" href="prospect-theory.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Prospect Theory.
+            <span class="sub">кривая ценности · loss aversion · нелинейные веса вероятностей</span>
+          </span>
+          <span class="tag applied">поведенческая экономика</span>
+        </a>
+
+    <a class="essay-item" href="nudge.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Nudge.
+            <span class="sub">архитектура выбора · default effects · Талер</span>
+          </span>
+          <span class="tag applied">поведенческая экономика</span>
+        </a>
+
+    <a class="essay-item" href="small-numbers.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Закон малых чисел.
+            <span class="sub">маленькая выборка · ложные паттерны · почему 3 из 5 не то же что 300 из 500</span>
+          </span>
+          <span class="tag applied">статистика · ловушки</span>
+        </a>
+
+    <a class="essay-item" href="gamblers-fallacy.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Ошибка игрока.
+            <span class="sub">монета не помнит прошлого · независимость событий · Монте-Карло 1913</span>
+          </span>
+          <span class="tag applied">статистика · ловушки</span>
+        </a>
+
+    <a class="essay-item" href="base-rate.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Ошибка базовой частоты.
+            <span class="sub">base rate neglect · тест на рак · prosecutor's fallacy</span>
+          </span>
+          <span class="tag applied">статистика · ловушки</span>
+        </a>
 
     <a class="essay-item" href="regression-to-mean.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Регрессия к среднему.
-        <span class="sub">лучший результат сменяется худшим · Гальтон · спорт · продукт</span>
-      </span>
-      <span class="tag applied">статистика · ловушки</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Регрессия к среднему.
+            <span class="sub">лучший результат сменяется худшим · Гальтон · спорт · продукт</span>
+          </span>
+          <span class="tag applied">статистика · ловушки</span>
+        </a>
 
-    <a class="essay-item" href="game-theory.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Теория игр.
-        <span class="sub">равновесие Нэша · дилемма заключённого · Аксельрод · почему кооперация побеждает</span>
-      </span>
-      <span class="tag applied">математика · теория игр</span>
-    </a>
+    <a class="essay-item" href="simpson.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Парадокс Симпсона.
+            <span class="sub">агрегат лжёт · конфаундер · Berkeley · почки · когда данные обманывают</span>
+          </span>
+          <span class="tag applied">статистика · ловушки</span>
+        </a>
 
-    <a class="essay-item" href="expected-utility.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Почему люди не максимизируют EV
-        <span class="sub">expected utility · prospect theory · Канеман · loss aversion</span>
-      </span>
-      <span class="tag applied">stats · поведение</span>
-    </a>
-
-    <a class="essay-item" href="expected-value.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Математика решений
-        <span class="sub">EV · от казино до продукта · Kelly · петербургский парадокс</span>
-      </span>
-      <span class="tag applied">stats · decisions</span>
-    </a>
-
-    <a class="essay-item" href="unit-economics.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Юнит-экономика
-        <span class="sub">LTV · CAC · contribution margin · когортный анализ · от юнита к PnL</span>
-      </span>
-      <span class="tag applied">финансы · аналитика</span>
-    </a>
-
-    <a class="essay-item" href="adtech.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Математика рекламного аукциона
-        <span class="sub">RTB · CPM/CPC/CPA · first-price · bid shading · ad load</span>
-      </span>
-      <span class="tag applied">ad-tech · аукционы</span>
-    </a>
-
-    <a class="essay-item" href="causality.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Корреляция — не причинность
-        <span class="sub">diff-in-diff · инструментальные переменные · RDD · DAG</span>
-      </span>
-      <span class="tag applied">stats · causal</span>
-    </a>
-
-    <a class="essay-item" href="two-sided-markets.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Математика двусторонних рынков
-        <span class="sub">маркетплейсы · сетевые эффекты · chicken-and-egg · take rate</span>
-      </span>
-      <span class="tag applied">stats · design</span>
-    </a>
-
-    <a class="essay-item" href="llm-eval.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Как измерить то, чего нет
-        <span class="sub">оценка LLM · human eval · LLM-as-judge · онлайн vs офлайн</span>
-      </span>
-      <span class="tag applied">stats · LLM</span>
-    </a>
-
-    <a class="essay-item" href="bayesian.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Как обновлять убеждения
-        <span class="sub">теорема Байеса · prior и posterior · A/B тестирование · холодный старт</span>
-      </span>
-      <span class="tag applied">stats</span>
-    </a>
-
-    <a class="essay-item" href="auctions.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Математика аукционов
-        <span class="sub">аукцион Викри · VCG · теорема эквивалентности выручки · маркетплейсы</span>
-      </span>
-      <span class="tag applied">stats · design</span>
-    </a>
-
-    <a class="essay-item" href="ab-testing.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Почему p &lt; 0.05 — плохой порог
-        <span class="sub">A/B тестирование · ошибки I и II рода · мощность · размер эффекта</span>
-      </span>
-      <span class="tag applied">stats</span>
-    </a>
+    <a class="essay-item" href="benford.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Закон Бенфорда.
+            <span class="sub">первая цифра · мошенничество · налоговые службы · единица встречается чаще девятки</span>
+          </span>
+          <span class="tag applied">статистика · парадоксы</span>
+        </a>
 
   </div>
 
-  <div class="essay-section-header">
+  <div class="essay-section-header" id="s04">
     <div class="essay-section-label">
       <span class="essay-section-mark" aria-hidden="true"></span>
       <span class="essay-section-text">// спорт · вероятность</span>
@@ -481,387 +486,505 @@
   </div>
 
   <div class="essay-list">
-
     <a class="essay-item" href="underdogs.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        Почему побеждают слабые.
-        <span class="sub">футбол · Пуассон · xG · плей-офф · пенальти · ЧМ-2026</span>
-      </span>
-      <span class="tag">спорт · вероятность</span>
-    </a>
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            Почему побеждают слабые.
+            <span class="sub">футбол · Пуассон · xG · плей-офф · пенальти · ЧМ-2026</span>
+          </span>
+          <span class="tag">спорт · вероятность</span>
+        </a>
 
     <a class="essay-item" href="xg.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        xG, или счёт врёт.
-        <span class="sub">ожидаемые голы · Opta · Суарес · resulting · матожидание на газоне</span>
-      </span>
-      <span class="tag">спорт · вероятность</span>
-    </a>
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            xG, или счёт врёт.
+            <span class="sub">ожидаемые голы · Opta · Суарес · resulting · матожидание на газоне</span>
+          </span>
+          <span class="tag">спорт · вероятность</span>
+        </a>
 
     <a class="essay-item" href="penalty.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        пенальти.
-        <span class="sub">минимакс · фон Нейман · смешанные стратегии · Паласиос-Уэрта</span>
-      </span>
-      <span class="tag">спорт · теория игр</span>
-    </a>
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            пенальти.
+            <span class="sub">минимакс · фон Нейман · смешанные стратегии · Паласиос-Уэрта</span>
+          </span>
+          <span class="tag">спорт · теория игр</span>
+        </a>
 
     <a class="essay-item" href="simulation.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        десять тысяч турниров.
-        <span class="sub">Монте-Карло · Opta · ЧМ-2026 · ансамбль vs одна траектория</span>
-      </span>
-      <span class="tag">спорт · вероятность</span>
-    </a>
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            десять тысяч турниров.
+            <span class="sub">Монте-Карло · Opta · ЧМ-2026 · ансамбль vs одна траектория</span>
+          </span>
+          <span class="tag">спорт · вероятность</span>
+        </a>
 
     <a class="essay-item" href="elo.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        одно число.
-        <span class="sub">рейтинг Эло · шахматы · ФИФА · байесовское обновление · LLM-арена</span>
-      </span>
-      <span class="tag">спорт · вероятность</span>
-    </a>
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            одно число.
+            <span class="sub">рейтинг Эло · шахматы · ФИФА · байесовское обновление · LLM-арена</span>
+          </span>
+          <span class="tag">спорт · вероятность</span>
+        </a>
 
   </div>
 
-  <div class="essay-section-header">
+  <div class="essay-section-header" id="s05">
     <div class="essay-section-label">
       <span class="essay-section-mark" aria-hidden="true"></span>
-      <span class="essay-section-text">// математика · теория · история</span>
-      <span class="essay-section-count">33</span>
+      <span class="essay-section-text">// случайность · симуляция</span>
+      <span class="essay-section-count">08</span>
+    </div>
+  </div>
+
+  <div class="essay-list">
+    <a class="essay-item" href="monte-carlo.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            От пасьянса к атомной бомбе.
+            <span class="sub">метод Монте-Карло · Улам · Лос-Аламос</span>
+          </span>
+          <span class="tag">математика · история</span>
+        </a>
+
+    <a class="essay-item" href="pseudorandom.html">
+          <span class="date">2026.04</span>
+          <span class="ttl">
+            Случайность, которой нет
+            <span class="sub">seed определяет всё · детерминизм, притворяющийся хаосом</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
+
+    <a class="essay-item" href="markov-chains.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Будущее зависит только от настоящего
+            <span class="sub">цепи Маркова · случайные блуждания · PageRank · MCMC</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
+
+    <a class="essay-item" href="markov-deep.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Андрей Марков и «Евгений Онегин».
+            <span class="sub">как анализ поэмы породил теорию случайных процессов</span>
+          </span>
+          <span class="tag">математика · история</span>
+        </a>
+
+    <a class="essay-item" href="kolmogorov.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Колмогоров и случайность.
+            <span class="sub">аксиоматика вероятности · сложность · что значит быть случайным</span>
+          </span>
+          <span class="tag">математика · история</span>
+        </a>
+
+    <a class="essay-item" href="probability-paradoxes.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Парадоксы вероятности.
+            <span class="sub">день рождения · Монти Холл · Симпсон · Бертран · интуиция врёт</span>
+          </span>
+          <span class="tag">математика · вероятность</span>
+        </a>
+
+    <a class="essay-item" href="clt.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Центральная предельная теорема.
+            <span class="sub">почему всё нормально · сумма случайностей · колокол из хаоса</span>
+          </span>
+          <span class="tag">математика · статистика</span>
+        </a>
+
+    <a class="essay-item" href="pi-in-gaussian.html">
+          <span class="date">2026.04</span>
+          <span class="ttl">
+            Почему π прячется в колоколе Гаусса
+            <span class="sub">нормальное распределение и окружности — что их связывает</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
+
+  </div>
+
+  <div class="essay-section-header" id="s06">
+    <div class="essay-section-label">
+      <span class="essay-section-mark" aria-hidden="true"></span>
+      <span class="essay-section-text">// аналитика · платформы</span>
+      <span class="essay-section-count">09</span>
+    </div>
+  </div>
+
+  <div class="essay-list">
+    <a class="essay-item" href="unit-economics.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Юнит-экономика
+            <span class="sub">LTV · CAC · contribution margin · когортный анализ · от юнита к PnL</span>
+          </span>
+          <span class="tag applied">финансы · аналитика</span>
+        </a>
+
+    <a class="essay-item" href="adtech.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Математика рекламного аукциона
+            <span class="sub">RTB · CPM/CPC/CPA · first-price · bid shading · ad load</span>
+          </span>
+          <span class="tag applied">ad-tech · аукционы</span>
+        </a>
+
+    <a class="essay-item" href="ab-testing.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Почему p &lt; 0.05 — плохой порог
+            <span class="sub">A/B тестирование · ошибки I и II рода · мощность · размер эффекта</span>
+          </span>
+          <span class="tag applied">stats</span>
+        </a>
+
+    <a class="essay-item" href="causality.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Корреляция — не причинность
+            <span class="sub">diff-in-diff · инструментальные переменные · RDD · DAG</span>
+          </span>
+          <span class="tag applied">stats · causal</span>
+        </a>
+
+    <a class="essay-item" href="bayesian.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Как обновлять убеждения
+            <span class="sub">теорема Байеса · prior и posterior · A/B тестирование · холодный старт</span>
+          </span>
+          <span class="tag applied">stats</span>
+        </a>
+
+    <a class="essay-item" href="two-sided-markets.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Математика двусторонних рынков
+            <span class="sub">маркетплейсы · сетевые эффекты · chicken-and-egg · take rate</span>
+          </span>
+          <span class="tag applied">stats · design</span>
+        </a>
+
+    <a class="essay-item" href="auctions.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Математика аукционов
+            <span class="sub">аукцион Викри · VCG · теорема эквивалентности выручки · маркетплейсы</span>
+          </span>
+          <span class="tag applied">stats · design</span>
+        </a>
+
+    <a class="essay-item" href="llm-eval.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Как измерить то, чего нет
+            <span class="sub">оценка LLM · human eval · LLM-as-judge · онлайн vs офлайн</span>
+          </span>
+          <span class="tag applied">stats · LLM</span>
+        </a>
+
+    <a class="essay-item" href="game-theory.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Теория игр.
+            <span class="sub">равновесие Нэша · дилемма заключённого · Аксельрод · почему кооперация побеждает</span>
+          </span>
+          <span class="tag applied">математика · теория игр</span>
+        </a>
+
+  </div>
+
+  <div class="essay-section-header" id="s07">
+    <div class="essay-section-label">
+      <span class="essay-section-mark" aria-hidden="true"></span>
+      <span class="essay-section-text">// числа · бесконечность · основания</span>
+      <span class="essay-section-count">18</span>
     </div>
   </div>
 
   <div class="essay-list">
 
-    <a class="essay-item" href="clt.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Центральная предельная теорема.
-        <span class="sub">почему всё нормально · сумма случайностей · колокол из хаоса</span>
-      </span>
-      <span class="tag">математика · статистика</span>
-    </a>
-
-    <a class="essay-item" href="games-and-math.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Игры которые построили математику.
-        <span class="sub">кости · карты · рулетка · пасьянс · покер · лотерея · нарды · шахматы</span>
-      </span>
-      <span class="tag">математика · история</span>
-    </a>
-
-    <a class="essay-item" href="games-that-train-machines.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Игры которые тренируют машины.
-        <span class="sub">Deep Blue · AlphaGo · Pluribus · AlphaStar · Cicero · self-play</span>
-      </span>
-      <span class="tag">математика · ИИ</span>
-    </a>
-
-    <a class="essay-item" href="monte-carlo.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        От пасьянса к атомной бомбе.
-        <span class="sub">метод Монте-Карло · Улам · Лос-Аламос</span>
-      </span>
-      <span class="tag">математика · история</span>
-    </a>
-
-    <a class="essay-item" href="five-letters.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Пять писем 1654 года.
-        <span class="sub">задача о разделе ставок · Паскаль и Ферма</span>
-      </span>
-      <span class="tag">математика · история</span>
-    </a>
-
-    <a class="essay-item" href="gambling-math.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Как азартные игры породили математику.
-        <span class="sub">от Кардано до Колмогорова · хронология идей</span>
-      </span>
-      <span class="tag">математика · история</span>
-    </a>
-
-    <a class="essay-item" href="kolmogorov.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Колмогоров и случайность.
-        <span class="sub">аксиоматика вероятности · сложность · что значит быть случайным</span>
-      </span>
-      <span class="tag">математика · история</span>
-    </a>
-
-    <a class="essay-item" href="two-alphabets.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        два алфавита.
-        <span class="sub">Пирсон · Фишер · латинское vs греческое · вражда редакторов</span>
-      </span>
-      <span class="tag">нотация · история</span>
-    </a>
-
-    <a class="essay-item" href="multiplication-table.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        таблица умножения.
-        <span class="sub">Вавилон 60 · Китай 305 до н.э. · Пифагор · палочки Непера</span>
-      </span>
-      <span class="tag">числа · история</span>
-    </a>
-
-    <a class="essay-item" href="popularizers.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        те, кто открыл числа.
-        <span class="sub">Перельман · Гарднер · Кордемский · Хафф · популяризация</span>
-      </span>
-      <span class="tag">популяризация · история</span>
-    </a>
-
-    <a class="essay-item" href="bookshelf.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        книжная полка.
-        <span class="sub">Киселёв · Фихтенгольц · Демидович · Вентцель · учебники СССР</span>
-      </span>
-      <span class="tag">образование · история</span>
-    </a>
-
-    <a class="essay-item" href="terminal.html">
-      <span class="date">2026.06</span>
-      <span class="ttl">
-        терминал.
-        <span class="sub">телетайп · Unix · VT100 · облако · ASCII</span>
-      </span>
-      <span class="tag">вычисления · история</span>
-    </a>
-
-    <a class="essay-item" href="probability-paradoxes.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Парадоксы вероятности.
-        <span class="sub">день рождения · Монти Холл · Симпсон · Бертран · интуиция врёт</span>
-      </span>
-      <span class="tag">математика · вероятность</span>
-    </a>
-
-    <a class="essay-item" href="markov-deep.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Андрей Марков и «Евгений Онегин».
-        <span class="sub">как анализ поэмы породил теорию случайных процессов</span>
-      </span>
-      <span class="tag">математика · история</span>
-    </a>
-
-    <a class="essay-item" href="proof.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Что такое доказательство
-        <span class="sub">от греков до компьютера · четырёхцветная теорема · граница знания</span>
-      </span>
-      <span class="tag">phil</span>
-    </a>
-
-    <a class="essay-item" href="infinity-paradoxes.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Парадоксы бесконечности
-        <span class="sub">отель Гильберта · Банах-Тарский · парадокс Рассела</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
-
-    <a class="essay-item" href="math-music.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Математика звука
-        <span class="sub">почему октава это 2:1 · Фурье · темперация · Delta Machine</span>
-      </span>
-      <span class="tag">math · music</span>
-    </a>
-
-    <a class="essay-item" href="markov-chains.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Будущее зависит только от настоящего
-        <span class="sub">цепи Маркова · случайные блуждания · PageRank · MCMC</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
-
-    <a class="essay-item" href="zero-history.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        История нуля
-        <span class="sub">тысячи лет люди считали без нуля · не потому что были глупы</span>
-      </span>
-      <span class="tag">history</span>
-    </a>
-
-    <a class="essay-item" href="infinity-types.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Бесконечностей много
-        <span class="sub">счётная и несчётная · отель Гильберта · континуум-гипотеза</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
-
+    <div class="essay-branch-label">// ветка: числа</div>
     <a class="essay-item" href="primes-mystery.html">
-      <span class="date">2026.05</span>
-      <span class="ttl">
-        Тайна простых чисел
-        <span class="sub">атомы математики · бесконечны · непредсказуемы · в основе RSA</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
-
-    <a class="essay-item" href="euler-formula.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Пять чисел. Одно уравнение.
-        <span class="sub">e<sup>iπ</sup>+1=0 — формула Эйлера и почему она красива</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
-
-    <a class="essay-item" href="rsa-primes.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Замок из простых чисел
-        <span class="sub">RSA · асимметрия факторизации · и что будет с квантовым компьютером</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
-
-    <a class="essay-item" href="zfc-independence.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Математика, которую нельзя доказать
-        <span class="sub">независимые от ZFC утверждения · аксиома выбора · гипотеза континуума</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
-
-    <a class="essay-item" href="hilbert-godel.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Что Гёдель сказал Гильберту
-        <span class="sub">как рухнула мечта об идеальной математической машине</span>
-      </span>
-      <span class="tag">phil</span>
-    </a>
-
-    <a class="essay-item" href="infinity.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Бесконечность — не число
-        <span class="sub">∞ не стоит на числовой прямой. она устроена иначе.</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
-
-    <a class="essay-item" href="pseudorandom.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Случайность, которой нет
-        <span class="sub">seed определяет всё · детерминизм, притворяющийся хаосом</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Тайна простых чисел
+            <span class="sub">атомы математики · бесконечны · непредсказуемы · в основе RSA</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
 
     <a class="essay-item" href="fibonacci-nature.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Фибоначчи в природе — и почему не совсем
-        <span class="sub">подсолнух не знает математики · он знает, как расти эффективно</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
+          <span class="date">2026.04</span>
+          <span class="ttl">
+            Фибоначчи в природе — и почему не совсем
+            <span class="sub">подсолнух не знает математики · он знает, как расти эффективно</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
 
     <a class="essay-item" href="deck-of-cards.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Колода которой не было
-        <span class="sub">52! и почему каждая перемешанная колода уникальна в истории вселенной</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
+          <span class="date">2026.04</span>
+          <span class="ttl">
+            Колода которой не было
+            <span class="sub">52! и почему каждая перемешанная колода уникальна в истории вселенной</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
+
+    <a class="essay-item" href="zero-history.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            История нуля
+            <span class="sub">тысячи лет люди считали без нуля · не потому что были глупы</span>
+          </span>
+          <span class="tag">history</span>
+        </a>
 
     <a class="essay-item" href="zero-point-nine.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        0.999… равно единице
-        <span class="sub">это не приближение. это доказанный факт.</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
+          <span class="date">2026.04</span>
+          <span class="ttl">
+            0.999… равно единице
+            <span class="sub">это не приближение. это доказанный факт.</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
+
+    <a class="essay-item" href="euler-formula.html">
+          <span class="date">2026.04</span>
+          <span class="ttl">
+            Пять чисел. Одно уравнение.
+            <span class="sub">e<sup>iπ</sup>+1=0 — формула Эйлера и почему она красива</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
+
+
+    <div class="essay-branch-label">// ветка: бесконечность · основания</div>
+    <a class="essay-item" href="infinity.html">
+          <span class="date">2026.04</span>
+          <span class="ttl">
+            Бесконечность — не число
+            <span class="sub">∞ не стоит на числовой прямой. она устроена иначе.</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
+
+    <a class="essay-item" href="infinity-types.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Бесконечностей много
+            <span class="sub">счётная и несчётная · отель Гильберта · континуум-гипотеза</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
+
+    <a class="essay-item" href="infinity-paradoxes.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Парадоксы бесконечности
+            <span class="sub">отель Гильберта · Банах-Тарский · парадокс Рассела</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
+
+    <a class="essay-item" href="zfc-independence.html">
+          <span class="date">2026.04</span>
+          <span class="ttl">
+            Математика, которую нельзя доказать
+            <span class="sub">независимые от ZFC утверждения · аксиома выбора · гипотеза континуума</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
+
+    <a class="essay-item" href="hilbert-godel.html">
+          <span class="date">2026.04</span>
+          <span class="ttl">
+            Что Гёдель сказал Гильберту
+            <span class="sub">как рухнула мечта об идеальной математической машине</span>
+          </span>
+          <span class="tag">phil</span>
+        </a>
+
+    <a class="essay-item" href="proof.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Что такое доказательство
+            <span class="sub">от греков до компьютера · четырёхцветная теорема · граница знания</span>
+          </span>
+          <span class="tag">phil</span>
+        </a>
 
     <a class="essay-item" href="millennium-problems.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Семь задач. Семь миллионов долларов.
-        <span class="sub">проблемы тысячелетия · одна решена · шесть нет</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
-
-    <a class="essay-item" href="pi-in-gaussian.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Почему π прячется в колоколе Гаусса
-        <span class="sub">нормальное распределение и окружности — что их связывает</span>
-      </span>
-      <span class="tag">math</span>
-    </a>
+          <span class="date">2026.04</span>
+          <span class="ttl">
+            Семь задач. Семь миллионов долларов.
+            <span class="sub">проблемы тысячелетия · одна решена · шесть нет</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
 
     <a class="essay-item" href="invented-or-discovered.html">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        Математика изобретена или открыта?
-        <span class="sub">философский вопрос без ответа · и почему он важен</span>
-      </span>
-      <span class="tag">phil</span>
-    </a>
+          <span class="date">2026.04</span>
+          <span class="ttl">
+            Математика изобретена или открыта?
+            <span class="sub">философский вопрос без ответа · и почему он важен</span>
+          </span>
+          <span class="tag">phil</span>
+        </a>
 
+    <a class="essay-item" href="rsa-primes.html">
+          <span class="date">2026.04</span>
+          <span class="ttl">
+            Замок из простых чисел
+            <span class="sub">RSA · асимметрия факторизации · и что будет с квантовым компьютером</span>
+          </span>
+          <span class="tag">math</span>
+        </a>
+
+
+    <div class="essay-branch-label">// ветка: эссе при объектах</div>
     <a class="essay-item" href="../objects/numbers/constants/pi.html#essay">
-      <span class="date">2026.04</span>
-      <span class="ttl">
-        О случайности числа π
-        <span class="sub">почему цифры π выглядят случайными, хотя π — самая детерминированная константа во вселенной</span>
-      </span>
-      <span class="tag">objects/pi</span>
-    </a>
+          <span class="date">2026.04</span>
+          <span class="ttl">
+            О случайности числа π
+            <span class="sub">почему цифры π выглядят случайными, хотя π — самая детерминированная константа во вселенной</span>
+          </span>
+          <span class="tag">objects/pi</span>
+        </a>
 
     <a class="essay-item" href="../objects/numbers/constants/phi.html#essay">
-      <span class="date">2026.03</span>
-      <span class="ttl">
-        Самое иррациональное число
-        <span class="sub">непрерывная дробь из одних единиц и теорема Гурвица</span>
-      </span>
-      <span class="tag">objects/phi</span>
-    </a>
+          <span class="date">2026.03</span>
+          <span class="ttl">
+            Самое иррациональное число
+            <span class="sub">непрерывная дробь из одних единиц и теорема Гурвица</span>
+          </span>
+          <span class="tag">objects/phi</span>
+        </a>
 
     <a class="essay-item" href="../objects/numbers/constants/euler.html#essay">
-      <span class="date">2026.01</span>
-      <span class="ttl">
-        Неподвижная точка дифференцирования
-        <span class="sub">e — единственное число, равное собственной производной</span>
-      </span>
-      <span class="tag">objects/euler</span>
-    </a>
+          <span class="date">2026.01</span>
+          <span class="ttl">
+            Неподвижная точка дифференцирования
+            <span class="sub">e — единственное число, равное собственной производной</span>
+          </span>
+          <span class="tag">objects/euler</span>
+        </a>
+
+  </div>
+
+  <div class="essay-section-header" id="s08">
+    <div class="essay-section-label">
+      <span class="essay-section-mark" aria-hidden="true"></span>
+      <span class="essay-section-text">// история · культура</span>
+      <span class="essay-section-count">10</span>
+    </div>
+  </div>
+
+  <div class="essay-list">
+    <a class="essay-item" href="games-and-math.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Игры которые построили математику.
+            <span class="sub">кости · карты · рулетка · пасьянс · покер · лотерея · нарды · шахматы</span>
+          </span>
+          <span class="tag">математика · история</span>
+        </a>
+
+    <a class="essay-item" href="games-that-train-machines.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Игры которые тренируют машины.
+            <span class="sub">Deep Blue · AlphaGo · Pluribus · AlphaStar · Cicero · self-play</span>
+          </span>
+          <span class="tag">математика · ИИ</span>
+        </a>
+
+    <a class="essay-item" href="five-letters.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Пять писем 1654 года.
+            <span class="sub">задача о разделе ставок · Паскаль и Ферма</span>
+          </span>
+          <span class="tag">математика · история</span>
+        </a>
+
+    <a class="essay-item" href="gambling-math.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Как азартные игры породили математику.
+            <span class="sub">от Кардано до Колмогорова · хронология идей</span>
+          </span>
+          <span class="tag">математика · история</span>
+        </a>
+
+    <a class="essay-item" href="two-alphabets.html">
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            два алфавита.
+            <span class="sub">Пирсон · Фишер · латинское vs греческое · вражда редакторов</span>
+          </span>
+          <span class="tag">нотация · история</span>
+        </a>
+
+    <a class="essay-item" href="multiplication-table.html">
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            таблица умножения.
+            <span class="sub">Вавилон 60 · Китай 305 до н.э. · Пифагор · палочки Непера</span>
+          </span>
+          <span class="tag">числа · история</span>
+        </a>
+
+    <a class="essay-item" href="popularizers.html">
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            те, кто открыл числа.
+            <span class="sub">Перельман · Гарднер · Кордемский · Хафф · популяризация</span>
+          </span>
+          <span class="tag">популяризация · история</span>
+        </a>
+
+    <a class="essay-item" href="bookshelf.html">
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            книжная полка.
+            <span class="sub">Киселёв · Фихтенгольц · Демидович · Вентцель · учебники СССР</span>
+          </span>
+          <span class="tag">образование · история</span>
+        </a>
+
+    <a class="essay-item" href="terminal.html">
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            терминал.
+            <span class="sub">телетайп · Unix · VT100 · облако · ASCII</span>
+          </span>
+          <span class="tag">вычисления · история</span>
+        </a>
+
+    <a class="essay-item" href="math-music.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Математика звука
+            <span class="sub">почему октава это 2:1 · Фурье · темперация · Delta Machine</span>
+          </span>
+          <span class="tag">math · music</span>
+        </a>
 
   </div>
 </main>
