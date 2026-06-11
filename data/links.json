@@ -1777,6 +1777,13 @@
       "title": "xG, или счёт врёт",
       "url": "/null/essays/xg.html",
       "glyph": "xG"
+    },
+    {
+      "id": "es-penalty",
+      "type": "essay",
+      "title": "Пенальти",
+      "url": "/null/essays/penalty.html",
+      "glyph": "⇄"
     }
   ],
   "edges": [
@@ -6091,6 +6098,38 @@
     {
       "from": "st-var",
       "to": "es-xg"
+    },
+    {
+      "from": "es-penalty",
+      "to": "es-underdogs"
+    },
+    {
+      "from": "es-underdogs",
+      "to": "es-penalty"
+    },
+    {
+      "from": "es-penalty",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "es-penalty"
+    },
+    {
+      "from": "es-penalty",
+      "to": "es-poker-exploit"
+    },
+    {
+      "from": "es-poker-exploit",
+      "to": "es-penalty"
+    },
+    {
+      "from": "es-penalty",
+      "to": "es-pseudorandom"
+    },
+    {
+      "from": "es-pseudorandom",
+      "to": "es-penalty"
     }
   ]
 }

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пенальти — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / пенальти</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · теория игр · спорт · ~620 слов · 6 мин</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">пенальти<em style="color: #c44a32; font-style: italic;">.</em></h1>
+    <p style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">Серия пенальти выглядит как лотерея и нервы. Но математически это одна из самых чистых игр на свете: двое выбирают сторону вслепую, и оптимально — вести себя случайно. На точке встречаются теорема фон Неймана 1928 года и нервы бьющего.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">теория игр · минимакс · смешанные стратегии · пенальти · нулевая сумма</td></tr>
+    <tr><td class="k">читать</td><td class="v">~6 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">андердоги · теория игр · GTO · псевдослучайность · фон Нейман</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Представь, что бьёшь пенальти. Если всегда бьёшь в правый угол, вратарь это выучит и будет прыгать вправо. Если всегда в левый — то же самое. Любая предсказуемость наказуема. Значит, единственный разумный план — мешать стороны, бить то туда, то сюда, без системы. Это и есть смешанная стратегия, а пенальти — её хрестоматийный пример.</p>
+
+      <p>Формально пенальти — игра с нулевой суммой: что хорошо бьющему, то плохо вратарю, и наоборот. Мяч летит к воротам примерно за треть секунды — слишком быстро, чтобы вратарь успел увидеть направление и среагировать. Поэтому оба выбирают сторону почти одновременно, вслепую, как в «камень-ножницы-бумага»<em class="fn">1</em>. В такой игре нет хорошего «всегда»: любой постоянный выбор соперник вычислит и накажет.</p>
+
+      <p>Математика говорит, что выход есть — и он один. Это смешанная стратегия равновесия: ты бьёшь в каждую сторону с определённой частотой, подобранной так, чтобы вратарю было всё равно, куда прыгать<em class="fn">3</em>. Сделав его безразличным, ты лишаешь его способа тебя переиграть. Сильная нога учитывается: в свою сторону бьёшь чаще, но не всегда — ровно настолько, чтобы перевес в точности не превратился в предсказуемость. А что такое решение вообще существует в любой антагонистической игре, доказал Джон фон Нейман ещё в 1928 году: это его минимакс-теорема, фундамент всей теории игр<em class="fn">2</em>.</p>
+
+      <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">Оптимальная стратегия здесь — не «бить сильнее» и не «бить точнее», а быть по-настоящему непредсказуемым.</blockquote>
+
+      <p>И вот самое удивительное. Экономист Игнасио Паласиос-Уэрта взял тысячи реальных пенальти и проверил: играют ли футболисты по этому равновесию? Оказалось — да, почти идеально<em class="fn">4</em>. Во-первых, вероятность гола у них одинакова, в какую сторону ни бей, — верный признак, что смесь подобрана оптимально (иначе выгоднее было бы бить чаще туда, где забивается лучше). Во-вторых — и это почти невероятно — их выборы серийно независимы: они не сваливаются в паттерны и не «чередуют» по привычке. Люди вообще плохо умеют быть случайными, но эти — умеют. Один из самых чистых случаев, когда абстрактная теорема подтвердилась на живых, потных, нервничающих людях. Тот же эффект нашли и у теннисных подач<em class="fn">5</em>.</p>
+
+      <p>Урок выходит далеко за пределы штрафной. «Веди себя случайно» — это оптимальная стратегия везде, где соперник может тебя изучить: частота блефа в покере (ровно об этом <a href="poker-exploit.html">эссе про эксплойт и GTO</a>), военная хитрость, ценовые войны, даже расписание проверок. Случайность тут не слабость и не лень, а просчитанное оружие — единственный способ, которым предсказуемое существо может стать непредсказуемым.</p>
+
+      <p>Поэтому серия пенальти — не лотерея нервов, а экзамен по теории игр, который бьющий сдаёт телом, не зная формул. На одиннадцатиметровой точке встречаются теорема фон Неймана и удар по мячу — и удар, как ни странно, почти всегда оказывается прав. А что серия всё равно похожа на лотерею — так это потому, что пенальти забивают примерно три из четырёх: класс почти не помогает, и потому она так часто решает судьбу фаворита<em class="fn">6</em>.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note"><span class="n">[1]</span><span class="t">Пенальти — игра с нулевой суммой; мяч летит ~0.3 с, ждать нельзя, поэтому бьющий и вратарь выбирают сторону почти одновременно, вслепую.</span></div>
+      <div class="note"><span class="n">[2]</span><span class="t">Минимакс-теорема: Джон фон Нейман, «Zur Theorie der Gesellschaftsspiele» (1928) — в любой игре с нулевой суммой есть устойчивое решение в смешанных стратегиях. Фундамент теории игр.</span></div>
+      <div class="note"><span class="n">[3]</span><span class="t">Равновесная смесь делает соперника безразличным к его выбору: при ней никто не может улучшить результат односторонним отклонением.</span></div>
+      <div class="note"><span class="n">[4]</span><span class="t">Игнасио Паласиос-Уэрта, «Professionals Play Minimax» (Review of Economic Studies, 2003): на реальных пенальти (i) вероятность гола одинакова по сторонам, (ii) выборы серийно независимы. Он же консультировал «Челси» перед финалом Лиги чемпионов 2008.</span></div>
+      <div class="note"><span class="n">[5]</span><span class="t">Похожий результат у теннисных подач: Уокер и Вудерс, «Minimax Play at Wimbledon» (2001).</span></div>
+      <div class="note"><span class="n">[6]</span><span class="t">Пенальти забивают примерно три из четырёх — разрыв в классе почти стирается.</span></div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="underdogs.html">Почему побеждают слабые →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="game-theory.html">Теория игр →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="poker-exploit.html">Эксплойт против равновесия →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="pseudorandom.html">Случайность, которой нет →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/game-theory.html">Математика предательства · теория игр →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/underdogs.html">Почему побеждают слабые →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/pseudorandom.html">Случайность которой нет →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/poker-exploit.html">Эксплойт против равновесия →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/penalty.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
