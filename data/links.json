@@ -1763,6 +1763,13 @@
       "title": "Амос Тверски",
       "url": "/null/objects/mathematicians/tversky.html",
       "glyph": "T"
+    },
+    {
+      "id": "es-underdogs",
+      "type": "essay",
+      "title": "Почему побеждают слабые",
+      "url": "/null/essays/underdogs.html",
+      "glyph": "λ"
     }
   ],
   "edges": [
@@ -5973,6 +5980,62 @@
     {
       "from": "es-small-num",
       "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-underdogs",
+      "to": "es-small-num"
+    },
+    {
+      "from": "es-small-num",
+      "to": "es-underdogs"
+    },
+    {
+      "from": "es-underdogs",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "es-underdogs"
+    },
+    {
+      "from": "es-underdogs",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "es-underdogs"
+    },
+    {
+      "from": "es-underdogs",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-underdogs"
+    },
+    {
+      "from": "es-underdogs",
+      "to": "es-regression"
+    },
+    {
+      "from": "es-regression",
+      "to": "es-underdogs"
+    },
+    {
+      "from": "es-underdogs",
+      "to": "st-var"
+    },
+    {
+      "from": "st-var",
+      "to": "es-underdogs"
+    },
+    {
+      "from": "es-underdogs",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "es-underdogs"
     }
   ]
 }
