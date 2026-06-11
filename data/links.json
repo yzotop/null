@@ -1812,6 +1812,13 @@
       "title": "π из случайных точек",
       "url": "/null/visuals/monte-carlo-pi.html",
       "glyph": "≈"
+    },
+    {
+      "id": "vi-galton",
+      "type": "visual",
+      "title": "доска Гальтона",
+      "url": "/null/visuals/galton-board.html",
+      "glyph": "∿"
     }
   ],
   "edges": [
@@ -6302,6 +6309,46 @@
     {
       "from": "pi",
       "to": "vi-monte-carlo-pi"
+    },
+    {
+      "from": "vi-galton",
+      "to": "es-clt"
+    },
+    {
+      "from": "es-clt",
+      "to": "vi-galton"
+    },
+    {
+      "from": "vi-galton",
+      "to": "es-regression"
+    },
+    {
+      "from": "es-regression",
+      "to": "vi-galton"
+    },
+    {
+      "from": "vi-galton",
+      "to": "vi-monte-carlo-pi"
+    },
+    {
+      "from": "vi-monte-carlo-pi",
+      "to": "vi-galton"
+    },
+    {
+      "from": "vi-galton",
+      "to": "es-buffon"
+    },
+    {
+      "from": "es-buffon",
+      "to": "vi-galton"
+    },
+    {
+      "from": "vi-galton",
+      "to": "vi-normal"
+    },
+    {
+      "from": "vi-normal",
+      "to": "vi-galton"
     }
   ]
 }
