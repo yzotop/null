@@ -1770,6 +1770,13 @@
       "title": "Почему побеждают слабые",
       "url": "/null/essays/underdogs.html",
       "glyph": "λ"
+    },
+    {
+      "id": "es-xg",
+      "type": "essay",
+      "title": "xG, или счёт врёт",
+      "url": "/null/essays/xg.html",
+      "glyph": "xG"
     }
   ],
   "edges": [
@@ -6036,6 +6043,54 @@
     {
       "from": "es-monte-carlo",
       "to": "es-underdogs"
+    },
+    {
+      "from": "es-xg",
+      "to": "es-underdogs"
+    },
+    {
+      "from": "es-underdogs",
+      "to": "es-xg"
+    },
+    {
+      "from": "es-xg",
+      "to": "es-ev"
+    },
+    {
+      "from": "es-ev",
+      "to": "es-xg"
+    },
+    {
+      "from": "es-xg",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "es-xg"
+    },
+    {
+      "from": "es-xg",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-xg"
+    },
+    {
+      "from": "es-xg",
+      "to": "es-small-num"
+    },
+    {
+      "from": "es-small-num",
+      "to": "es-xg"
+    },
+    {
+      "from": "es-xg",
+      "to": "st-var"
+    },
+    {
+      "from": "st-var",
+      "to": "es-xg"
     }
   ]
 }
