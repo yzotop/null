@@ -1840,6 +1840,13 @@
       "title": "случайное блуждание",
       "url": "/null/visuals/random-walk.html",
       "glyph": "∿"
+    },
+    {
+      "id": "es-bootstrap",
+      "type": "essay",
+      "title": "бутстрэп",
+      "url": "/null/essays/bootstrap.html",
+      "glyph": "↻"
     }
   ],
   "edges": [
@@ -6522,6 +6529,46 @@
     {
       "from": "es-monte-carlo",
       "to": "vi-random-walk"
+    },
+    {
+      "from": "es-bootstrap",
+      "to": "es-why-simulation"
+    },
+    {
+      "from": "es-why-simulation",
+      "to": "es-bootstrap"
+    },
+    {
+      "from": "es-bootstrap",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "es-bootstrap"
+    },
+    {
+      "from": "es-bootstrap",
+      "to": "es-clt"
+    },
+    {
+      "from": "es-clt",
+      "to": "es-bootstrap"
+    },
+    {
+      "from": "es-bootstrap",
+      "to": "es-small-num"
+    },
+    {
+      "from": "es-small-num",
+      "to": "es-bootstrap"
+    },
+    {
+      "from": "es-bootstrap",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "es-bootstrap"
     }
   ]
 }

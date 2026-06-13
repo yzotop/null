@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>бутстрэп — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / бутстрэп</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · статистика · симуляция · ~700 слов · 7 мин</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">бутстрэп, или как вытащить себя за <em style="color: #c44a32; font-style: italic;">шнурки</em>.</h1>
+    <p style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">у тебя одна выборка и одна оценка — скажем, среднее. но насколько ей можно верить? раньше для этого нужна была формула и предположение о распределении. бутстрэп отвечает иначе: размножь свою выборку из самой себя — и посмотри, как пляшет оценка.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">бутстрэп · Эфрон 1979 · ресэмплинг · доверительный интервал · непараметрическая статистика</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">Монте-Карло · симуляция · ЦПТ · A/B · закон малых чисел</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Ты измерил что-то на выборке: средний чек, медиану зарплаты, эффект в A/B-тесте. Получил одно число. Но если бы выборка случайно вышла чуть другой, число было бы другим — и вопрос «насколько другим?» решает всё: это и есть доверительный интервал, мера того, можно ли оценке верить. Классически на него выводят формулу — но формула почти всегда требует предположений: что данные нормальны, что оценка — среднее, что выборка большая. А если у тебя медиана, перекошенные данные и полсотни точек?</p>
+
+      <p>Бутстрэп отвечает нагло и просто: раз настоящего распределения у тебя нет, считай свою выборку лучшим, что есть, — её копией мира. И насэмплируй из неё новые выборки. Берёшь исходные n точек и тянешь из них n штук обратно — с возвращением: вытащил точку, записал, вернул, тянешь снова<em class="fn">1</em>. Какие-то наблюдения попадут дважды, какие-то не попадут вовсе — это и есть случайная вариация, которую ты имитируешь. Получается новая выборка того же размера, чуть другая. Считаешь на ней ту же оценку. Повторяешь тысячу раз.</p>
+
+      <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">Своя выборка — единственное окно в мир, который ты не видел. Бутстрэп трясёт это окно, чтобы понять, насколько дрожит вид.</blockquote>
+
+      <p>Тысяча пересэмплов — тысяча слегка разных оценок. Их разброс и есть оценка неопределённости: стандартную ошибку берёшь как разброс этого облака, а 95% доверительный интервал — попросту отсортировав тысячу значений и взяв 2.5-й и 97.5-й перцентили<em class="fn">2</em>. Никакой формулы, никакого предположения о нормальности — только сами данные и генератор случайных чисел. Метод непараметрический: он работает там, где аналитика молчит — для медианы, для перекошенных распределений, для странных составных оценок<em class="fn">3</em>.</p>
+
+      <p>Придумал это Брэдли Эфрон в 1979 году, развив более старый трюк — джекнайф, где выборку прощупывали, выбрасывая по одной точке<em class="fn">4</em>. Название — отсылка к барону Мюнхгаузену, который вытащил себя из болота за собственные волосы (по-английски — за «bootstraps», ремешки сапог): выборка сама себя вытаскивает, без внешней опоры. Звучит как жульничество, но за этим строгая идея — выборка относится к насэмпленным из неё копиям так же, как генеральная совокупность относится к выборке.</p>
+
+      <p>Бутстрэп — родной брат Монте-Карло, но с другого конца. В симуляции турнира мы выдумываем данные из модели; в бутстрэпе модели нет — мы пересэмплируем то, что уже собрали. Оба меняют сложную аналитику на грубую силу компьютера: вместо того чтобы выводить распределение оценки, мы его просто разыгрываем<em class="fn">5</em>. До 1979-го так не делали не потому, что не догадывались, а потому что не на чем было считать тысячу пересэмплов; бутстрэп — дитя дешёвого процессора.</p>
+
+      <p>В этом и красота: не нужно знать, как устроен мир, чтобы измерить, насколько ты в нём не уверен. Достаточно той горстки данных, что есть, и готовности потрясти её тысячу раз. Одна выборка молчит о своей точности — но если заставить её отвечать самой себе, она проговаривается. Вытащить себя за шнурки нельзя в физике, но в статистике — ровно так и считают неопределённость.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note"><span class="n">[1]</span><span class="t">Бутстрэп (Брэдли Эфрон, 1979): из исходной выборки размера n берут новую того же размера n — с возвращением. Часть наблюдений повторяется, часть не попадает.</span></div>
+      <div class="note"><span class="n">[2]</span><span class="t">Стандартная ошибка = разброс облака бутстрэп-оценок; 95% ДИ = 2.5-й и 97.5-й перцентили отсортированных оценок (напр. 25-е и 975-е из 1000).</span></div>
+      <div class="note"><span class="n">[3]</span><span class="t">Метод непараметрический: не требует предположений о виде распределения (нормальность и т.п.), работает для медианы, квантилей, перекошенных данных — там, где формулы нет.</span></div>
+      <div class="note"><span class="n">[4]</span><span class="t">Развитие джекнайфа (Морис Кенуй, 1949): там оценку пересчитывают, исключая по одному наблюдению. Название «bootstrap» — от «вытащить себя за ремешки сапог» (барон Мюнхгаузен).</span></div>
+      <div class="note"><span class="n">[5]</span><span class="t">Бутстрэп заменяет аналитический вывод распределения оценки вычислительным экспериментом — как и Монте-Карло; стал возможен лишь с дешёвыми вычислениями.</span></div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="why-simulation.html">почему симуляция, а не формула →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="monte-carlo.html">от пасьянса к атомной бомбе →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="clt.html">центральная предельная теорема →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="small-numbers.html">закон малых чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B-тестирование →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/small-numbers.html">Закон малых чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/monte-carlo.html">От пасьянса к атомной бомбе →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/why-simulation.html">почему симуляция, а не формула →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/ab-testing.html">Почему p < 0.05 — плохой порог →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/clt.html">Центральная предельная теорема →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/bootstrap.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
