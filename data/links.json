@@ -1819,6 +1819,13 @@
       "title": "доска Гальтона",
       "url": "/null/visuals/galton-board.html",
       "glyph": "∿"
+    },
+    {
+      "id": "vi-champion-prob",
+      "type": "visual",
+      "title": "вероятность чемпиона",
+      "url": "/null/visuals/champion-probability.html",
+      "glyph": "◇"
     }
   ],
   "edges": [
@@ -6349,6 +6356,62 @@
     {
       "from": "vi-normal",
       "to": "vi-galton"
+    },
+    {
+      "from": "vi-champion-prob",
+      "to": "es-simulation"
+    },
+    {
+      "from": "es-simulation",
+      "to": "vi-champion-prob"
+    },
+    {
+      "from": "vi-champion-prob",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "vi-champion-prob"
+    },
+    {
+      "from": "vi-champion-prob",
+      "to": "es-markov"
+    },
+    {
+      "from": "es-markov",
+      "to": "vi-champion-prob"
+    },
+    {
+      "from": "vi-champion-prob",
+      "to": "es-elo"
+    },
+    {
+      "from": "es-elo",
+      "to": "vi-champion-prob"
+    },
+    {
+      "from": "vi-champion-prob",
+      "to": "es-underdogs"
+    },
+    {
+      "from": "es-underdogs",
+      "to": "vi-champion-prob"
+    },
+    {
+      "from": "vi-champion-prob",
+      "to": "vi-monte-carlo-pi"
+    },
+    {
+      "from": "vi-monte-carlo-pi",
+      "to": "vi-champion-prob"
+    },
+    {
+      "from": "vi-champion-prob",
+      "to": "vi-galton"
+    },
+    {
+      "from": "vi-galton",
+      "to": "vi-champion-prob"
     }
   ]
 }

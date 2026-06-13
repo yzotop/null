@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>вероятность чемпиона — null/visuals</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .viz-champ { width:100%; max-width:1120px; }
+  .viz-champ .label{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:lowercase;color:#8c8a83;margin-bottom:12px;}
+  .viz-champ h1{font-family:'Old Standard TT',Georgia,serif;font-style:italic;font-weight:400;font-size:42px;line-height:1.02;margin-bottom:12px;}
+  .viz-champ h1 em{color:var(--accent-red);font-style:italic;}
+  .viz-champ .sub{font-family:var(--font-body);font-size:15px;line-height:1.5;color:#444;max-width:600px;margin-bottom:22px;}
+
+  .viz-champ .chartwrap{position:relative;}
+  .viz-champ .overlay{position:absolute;top:14px;right:14px;width:240px;background:rgba(247,246,242,.9);
+    border:1px solid var(--ink);padding:13px 15px;backdrop-filter:blur(2px);}
+  .viz-champ .overlay .ok{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:lowercase;color:#8c8a83;}
+  .viz-champ .overlay .ov{font-family:var(--font-mono);font-weight:500;font-size:38px;color:var(--accent-red);line-height:1;margin:5px 0 9px;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  .viz-champ .overlay .omc{font-family:var(--font-mono);font-size:11px;color:#555;margin-top:10px;line-height:1.5;}
+  .viz-champ .overlay .omc b{color:var(--accent-red);}
+  @media(max-width:600px){ .viz-champ .overlay{position:static;width:auto;margin-top:10px;backdrop-filter:none;} }
+  .viz-champ canvas.chart{width:100%;height:auto;border:1px solid var(--ink);background:#fbfaf7;display:block;}
+
+  .viz-champ .panels{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;align-items:start;}
+  .viz-champ .panels>div{min-width:0;}
+  .viz-champ .dist{border:1px solid var(--ink);padding:14px 16px 16px;}
+  .viz-champ .markov{border:1px solid var(--ink);}
+  .viz-champ .phd{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:lowercase;color:#8c8a83;padding:11px 16px;border-bottom:1px solid var(--border);}
+  .viz-champ .markov .hd{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:lowercase;color:#8c8a83;padding:11px 16px;border-bottom:1px solid var(--border);}
+  .viz-champ table.tmat{width:100%;border-collapse:collapse;font-family:var(--font-mono);font-size:12px;font-variant-numeric:tabular-nums;}
+  .viz-champ .tmat td,.viz-champ .tmat th{padding:6px 16px;border-bottom:1px solid #ece9e1;text-align:right;}
+  .viz-champ .tmat th{color:#8c8a83;font-weight:400;font-size:10px;text-transform:lowercase;letter-spacing:.06em;}
+  .viz-champ .tmat td:first-child,.viz-champ .tmat th:first-child{text-align:left;color:#333;}
+  .viz-champ .tmat .win{color:#3a7d44;} .viz-champ .tmat .out{color:var(--accent-red);}
+  .viz-champ .mkcell{padding:11px 16px;border-top:1px solid var(--border);}
+  .viz-champ .mkcell .k{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;color:#8c8a83;text-transform:lowercase;}
+  .viz-champ .mkcell .f{font-family:var(--font-mono);font-size:13px;color:#222;margin-top:5px;}
+  .viz-champ .mkcell .f b{color:var(--accent-red);}
+  .viz-champ .dist .dhd{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:lowercase;color:#8c8a83;margin-bottom:12px;}
+  .viz-champ #distRows{display:grid;grid-template-columns:1fr 1fr;gap:3px 22px;}
+  .viz-champ .drow{display:flex;align-items:center;gap:9px;height:19px;}
+  .viz-champ .drow .nm{font-family:var(--font-body);font-size:11.5px;width:84px;flex:0 0 84px;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .viz-champ .drow .bar{flex:1;height:8px;background:#eceae3;position:relative;overflow:hidden;}
+  .viz-champ .drow .bar i{position:absolute;left:0;top:0;bottom:0;background:#b9b4a8;transition:width .5s ease;}
+  .viz-champ .drow.spain .nm{color:var(--accent-red);font-weight:500;}
+  .viz-champ .drow.spain .bar i{background:var(--accent-red);}
+  .viz-champ .drow.dead .nm{color:#c9c5bb;}
+  .viz-champ .drow .pct{font-family:var(--font-mono);font-size:10.5px;width:38px;text-align:right;color:#555;font-variant-numeric:tabular-nums;}
+  .viz-champ .drow.spain .pct{color:var(--accent-red);}
+  @media(max-width:680px){ .viz-champ .panels{grid-template-columns:1fr;} }
+  @media(max-width:520px){ .viz-champ #distRows{grid-template-columns:1fr;} }
+  .viz-champ .brktwrap{margin-top:16px;border:1px solid var(--ink);padding:14px 16px 8px;}
+  .viz-champ .brktwrap .dhd2{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:lowercase;color:#8c8a83;margin-bottom:8px;}
+  .viz-champ canvas.brkt{width:100%;height:auto;display:block;}
+  .viz-champ .math{flex:1 1 300px;min-width:280px;border:1px solid var(--ink);}
+  .viz-champ .math .cell{padding:11px 16px;border-bottom:1px solid var(--border);}
+  .viz-champ .math .cell:last-child{border-bottom:0;}
+  .viz-champ .math .cell .k{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;color:#8c8a83;text-transform:lowercase;}
+  .viz-champ .math .cell .f{font-family:var(--font-mono);font-size:13px;color:#222;margin-top:5px;line-height:1.5;word-break:break-word;}
+  .viz-champ .math .cell .f b{color:var(--accent-red);}
+  .viz-champ .unc{height:7px;background:#eceae3;margin-top:8px;position:relative;overflow:hidden;}
+  .viz-champ .unc i{position:absolute;left:0;top:0;bottom:0;background:var(--accent-red);width:0;transition:width .4s;}
+
+  .viz-champ .log{flex:1 1 300px;min-width:280px;border:1px solid var(--ink);display:flex;flex-direction:column;}
+  .viz-champ .log .hd{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:lowercase;color:#8c8a83;padding:11px 16px;border-bottom:1px solid var(--border);}
+  .viz-champ .log .items{flex:1;overflow-y:auto;max-height:300px;}
+  .viz-champ .log .it{padding:9px 16px;border-bottom:1px solid #ece9e1;font-size:13px;line-height:1.4;}
+  .viz-champ .log .it:last-child{border-bottom:0;}
+  .viz-champ .log .it .stage{font-family:var(--font-mono);font-size:10px;color:#8c8a83;letter-spacing:.08em;}
+  .viz-champ .log .it .res{margin-top:2px;}
+  .viz-champ .log .it .d{font-family:var(--font-mono);font-size:12px;float:right;}
+  .viz-champ .log .it.up .d{color:#3a7d44;} .viz-champ .log .it.down .d{color:var(--accent-red);}
+  .viz-champ .log .it.spain{background:rgba(196,74,50,.04);}
+  .viz-champ .log .it.out .res{color:var(--accent-red);font-weight:500;}
+
+  .viz-champ .controls{display:flex;flex-wrap:wrap;gap:0;margin-top:16px;border:1px solid var(--ink);}
+  .viz-champ .controls button{flex:1 1 auto;font-family:var(--font-mono);font-size:14px;background:transparent;color:var(--ink);
+    border:0;border-right:1px solid var(--ink);padding:12px 8px;cursor:pointer;line-height:1;min-width:84px;}
+  .viz-champ .controls button:last-child{border-right:0;}
+  .viz-champ .controls button:hover{background:rgba(196,74,50,.10);}
+  .viz-champ .controls button.on{background:var(--accent-red);color:#fff;}
+  .viz-champ .controls button.reset{color:#8c8a83;}
+
+  .viz-champ .note{font-family:var(--font-mono);font-size:11px;color:#8c8a83;margin-top:14px;line-height:1.6;}
+  .viz-champ .hint{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;color:#8c8a83;margin-top:22px;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / вероятность чемпиона</div>
+
+<main class="container">
+<article>
+
+  <div class="viz-champ" style="margin-top: 8px;">
+    <div class="label">визуал · №033 · капстоун · монте-карло × марков × эло</div>
+    <h1>вероятность <em>чемпиона</em>.</h1>
+    <div class="sub">как меняется шанс Испании выиграть турнир — по ходу плей-офф. после каждого
+      матча (своего или чужого) остаток сетки симулируется методом Монте-Карло, и вероятность
+      пересчитывается. сетка — цепь Маркова: будущее зависит только от текущего состояния.</div>
+
+    <div class="chartwrap">
+      <canvas class="chart" id="chart" width="1520" height="760"></canvas>
+      <div class="overlay">
+        <div class="ok">P(Испания — чемпион)</div>
+        <div class="ov" id="mP">—</div>
+        <div class="unc"><i id="mUnc"></i></div>
+        <div class="omc" id="mMC">— симуляций</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="play">▶ играть</button>
+      <button id="step">⏭ матч</button>
+      <button id="speed">скорость: 1×</button>
+      <button class="reset" id="reset">↺ новый турнир</button>
+    </div>
+
+    <div class="brktwrap">
+      <div class="dhd2">сетка · путь Испании по верхней половине · % — шанс фаворита пройти</div>
+      <canvas class="brkt" id="brkt" width="1280" height="470"></canvas>
+    </div>
+
+    <div class="panels">
+      <div class="math">
+        <div class="phd">математика матча</div>
+        <div class="cell"><div class="k">текущий матч · эло</div><div class="f" id="mElo">—</div></div>
+        <div class="cell"><div class="k">разложение (мартингал)</div><div class="f" id="mDec">P = E · P(чемп|победа)</div></div>
+        <div class="cell"><div class="k">информация последнего матча</div><div class="f" id="mBits">— бит</div></div>
+      </div>
+
+      <div class="markov">
+        <div class="hd">цепь маркова · переходы испании</div>
+        <table class="tmat" id="tmat"></table>
+        <div class="mkcell"><div class="k">лестница выживания · произведение</div><div class="f" id="mLad">—</div></div>
+        <div class="mkcell"><div class="k">энтропия турнира · H = −Σ p·log₂p</div><div class="f" id="mEnt">— бит</div>
+          <div class="unc" style="margin-top:8px"><i id="mEntBar"></i></div></div>
+      </div>
+
+      <div class="dist">
+        <div class="dhd">распределение чемпиона · сумма = 100%</div>
+        <div id="distRows"></div>
+      </div>
+
+      <div class="log">
+        <div class="hd">хроника · эффект на вероятность</div>
+        <div class="items" id="log"></div>
+      </div>
+    </div>
+
+    <div class="note">это иллюстративная модель: встроенные рейтинги Эло + симуляция. каждый «новый
+      турнир» — другая траектория из тысяч возможных (эргодичность).</div>
+
+    <div class="hint">число, которое живёт по ходу турнира</div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/simulation.html">десять тысяч турниров →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/monte-carlo.html">от пасьянса к атомной бомбе →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/markov-chains.html">будущее зависит только от настоящего →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/elo.html">одно число →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/simulation.html">Десять тысяч турниров →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/elo.html">Одно число →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/monte-carlo.html">От пасьянса к атомной бомбе →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/underdogs.html">Почему побеждают слабые →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/markov-chains.html">Цепи Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/galton-board.html">доска Гальтона →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/monte-carlo-pi.html">π из случайных точек →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/champion-probability.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+// ── команды (slot → {name, rating}); slot0 = Испания ──
+const TEAMS=[
+  {n:'Испания',r:2050},{n:'Хорватия',r:1880},{n:'Бразилия',r:1990},{n:'Япония',r:1820},
+  {n:'Франция',r:2030},{n:'Марокко',r:1900},{n:'Англия',r:1980},{n:'США',r:1840},
+  {n:'Аргентина',r:2010},{n:'Сенегал',r:1860},{n:'Германия',r:1950},{n:'Мексика',r:1830},
+  {n:'Португалия',r:1985},{n:'Нидерланды',r:1930},{n:'Бельгия',r:1900},{n:'Корея',r:1810},
+];
+const SPAIN=0, MC=1500, FAN=34;
+const STAGES=['1/8','1/8','1/8','1/8','1/8','1/8','1/8','1/8','1/4','1/4','1/4','1/4','1/2','1/2','финал'];
+// расписание матчей: idx → {round(1..4), q, fed:[idxA,idxB] или slots}
+// round1: idx0..7 (slots 2q,2q+1); round2: idx8..11; round3: idx12..13; final idx14
+function eloWin(a,b){ return 1/(1+Math.pow(10,(TEAMS[b].r-TEAMS[a].r)/400)); }
+function play(a,b){ return Math.random()<eloWin(a,b)? a:b; }
+
+// симуляция остатка из известного состояния → чемпион
+function simChampion(k){
+  const r1=[]; for(let q=0;q<8;q++) r1[q]=(k.r1[q]!=null)?k.r1[q]:play(2*q,2*q+1);
+  const r2=[]; for(let q=0;q<4;q++) r2[q]=(k.r2[q]!=null)?k.r2[q]:play(r1[2*q],r1[2*q+1]);
+  const r3=[]; for(let q=0;q<2;q++) r3[q]=(k.r3[q]!=null)?k.r3[q]:play(r2[2*q],r2[2*q+1]);
+  return (k.fin!=null)?k.fin:play(r3[0],r3[1]);
+}
+function probSpain(k,m){ let w=0; for(let i=0;i<m;i++) if(simChampion(k)===SPAIN) w++; return {p:w/m, w, m}; }
+// один проход: чемпион + раунд вылета Испании (1=1/8…4=финал проигран, 5=чемпион)
+function simFull(k){
+  const r1=[];for(let q=0;q<8;q++)r1[q]=(k.r1[q]!=null)?k.r1[q]:play(2*q,2*q+1);
+  const r2=[];for(let q=0;q<4;q++)r2[q]=(k.r2[q]!=null)?k.r2[q]:play(r1[2*q],r1[2*q+1]);
+  const r3=[];for(let q=0;q<2;q++)r3[q]=(k.r3[q]!=null)?k.r3[q]:play(r2[2*q],r2[2*q+1]);
+  const champ=(k.fin!=null)?k.fin:play(r3[0],r3[1]);
+  let exit; if(r1[0]!==SPAIN)exit=1; else if(r2[0]!==SPAIN)exit=2; else if(r3[0]!==SPAIN)exit=3; else exit=(champ===SPAIN)?5:4;
+  return {champ,exit};
+}
+// распределение чемпиона по всем + лестница выживания Испании
+function mcAll(k,M){
+  const dist=new Array(16).fill(0), eC=[0,0,0,0,0,0];
+  for(let i=0;i<M;i++){ const {champ,exit}=simFull(k); dist[champ]++; eC[exit]++; }
+  const w=dist[SPAIN];
+  const r2=(eC[2]+eC[3]+eC[4]+eC[5])/M, r3=(eC[3]+eC[4]+eC[5])/M, r4=(eC[4]+eC[5])/M, ch=eC[5]/M;
+  return {p:w/M,w,m:M, dist:dist.map(c=>c/M), reach:{r2,r3,r4,champ:ch}};
+}
+
+// исход Испании при состоянии k → 1..4 (раунд вылета) или 5 (чемпион)
+function simSpainExit(k){
+  const r1=[]; for(let q=0;q<8;q++) r1[q]=(k.r1[q]!=null)?k.r1[q]:play(2*q,2*q+1);
+  if(r1[0]!==SPAIN) return 1;
+  const r2=[]; for(let q=0;q<4;q++) r2[q]=(k.r2[q]!=null)?k.r2[q]:play(r1[2*q],r1[2*q+1]);
+  if(r2[0]!==SPAIN) return 2;
+  const r3=[]; for(let q=0;q<2;q++) r3[q]=(k.r3[q]!=null)?k.r3[q]:play(r2[2*q],r2[2*q+1]);
+  if(r3[0]!==SPAIN) return 3;
+  const f=(k.fin!=null)?k.fin:play(r3[0],r3[1]);
+  return f===SPAIN?5:4;
+}
+
+let known, timeline, idx, spainAlive, raf, playing, speed, speeds=[1,2,4], spi=0;
+let curTeams=null, fork=null; // fork: предстоящая развилка матча Испании
+
+function freshKnown(){ return {r1:Array(8).fill(null),r2:Array(4).fill(null),r3:Array(2).fill(null),fin:null}; }
+function roundOf(i){ if(i<8)return{round:1,q:i}; if(i<12)return{round:2,q:i-8}; if(i<14)return{round:3,q:i-12}; return{round:4,q:0}; }
+function teamsOf(i,k){ // участники матча idx i (по известным победителям пред. раундов)
+  const {round,q}=roundOf(i);
+  if(round===1) return [2*q,2*q+1];
+  if(round===2) return [k.r1[2*q],k.r1[2*q+1]];
+  if(round===3) return [k.r2[2*q],k.r2[2*q+1]];
+  return [k.r3[0],k.r3[1]];
+}
+function setWinner(k,i,w){ const{round,q}=roundOf(i); if(round===1)k.r1[q]=w; else if(round===2)k.r2[q]=w; else if(round===3)k.r3[q]=w; else k.fin=w; }
+
+function reset(){
+  if(raf){clearTimeout(raf);raf=null;} playing=false; document.getElementById('play').textContent='▶ играть'; document.getElementById('play').classList.remove('on');
+  known=freshKnown(); timeline=[]; idx=0; spainAlive=true; curTeams=null;
+  const pr=mcAll(known,MC);
+  timeline.push({x:-1,p:pr.p}); // стартовая точка (до матчей)
+  document.getElementById('log').innerHTML='';
+  curTeams=teamsOf(0,known);
+  updatePanel(pr, null);
+  draw();
+}
+function stepMatch(){
+  if(idx>=15){ return false; }
+  const i=idx, {round,q}=roundOf(i), [a,b]=teamsOf(i,known);
+  const isSpain=(a===SPAIN||b===SPAIN);
+  const pBefore=timeline[timeline.length-1].p;
+  // Эло + (для матча Испании) разложение P = E·P(чемп|победа)
+  let elo=null, dec=null;
+  if(isSpain && spainAlive){
+    const opp=(a===SPAIN)?b:a, E=eloWin(SPAIN,opp);
+    const kWin=clone(known); setWinner(kWin,i,SPAIN);
+    const pWin=probSpain(kWin,MC).p;
+    elo={opp,E}; dec={E,pWin,prod:E*pWin};
+  }
+  // вероятность фактического исхода ДО матча — для бит информации
+  const [pa]=[eloWin(a,b)];
+  // разыграть
+  const w=play(a,b); setWinner(known,i,w);
+  const pOutcome=(w===a)?pa:(1-pa);
+  const bits=-Math.log2(Math.max(1e-6,pOutcome));
+  if(isSpain && w!==SPAIN) spainAlive=false;
+  const pr=mcAll(known,MC);
+  const pAfter = spainAlive? pr.p : 0;
+  timeline.push({x:i,p:pAfter,pPrev:pBefore,isSpain,round,bits,
+    pWin:(dec?dec.prod:null), forkE:(elo?elo.E:null)});
+  pushLog({round,a,b,w,isSpain,pBefore,pAfter,bits});
+  idx++;
+  curTeams = idx<15? teamsOf(idx,known): null;
+  updatePanel(pr,{isSpain,elo,dec,nextI:idx});
+  draw();
+  return idx<15;
+}
+// ожидаемый рейтинг следующего соперника Испании (среднее по симуляциям того, кто к ней выйдет)
+function expectedNextOpp(){
+  if(!spainAlive || idx>=15) return null;
+  // ближайший матч Испании с idx >= idx
+  const sMatches=[0,8,12,14].filter(m=>m>=idx);
+  if(!sMatches.length) return null;
+  const sm=sMatches[0];
+  if(sm===idx){ // соперник уже известен (следующий матч — её)
+    const [a,b]=teamsOf(idx,known); const opp=(a===SPAIN)?b:a; return {known:true,r:TEAMS[opp].r,name:TEAMS[opp].n};
+  }
+  // иначе — усредняем по симуляциям, кто выйдет на Испанию в её ближайшем матче
+  let sum=0,n=300, hist={};
+  for(let s=0;s<n;s++){
+    const k=clone(known);
+    // досимулировать раунды до соперника Испании в матче sm
+    const champ=simOppAt(k,sm);
+    sum+=TEAMS[champ].r; hist[champ]=(hist[champ]||0)+1;
+  }
+  let top=Object.keys(hist).sort((x,y)=>hist[y]-hist[x])[0];
+  return {known:false,r:Math.round(sum/n),name:TEAMS[top].n};
+}
+// кто станет соперником Испании в её матче sm (8/12/14)
+function simOppAt(k,sm){
+  const r1=[];for(let q=0;q<8;q++)r1[q]=(k.r1[q]!=null)?k.r1[q]:play(2*q,2*q+1);
+  if(sm===8) return r1[1]; // соперник в 1/4 — победитель пары 1
+  const r2=[];for(let q=0;q<4;q++)r2[q]=(k.r2[q]!=null)?k.r2[q]:play(r1[2*q],r1[2*q+1]);
+  if(sm===12) return r2[1]; // соперник в 1/2 — победитель пары r2[1]
+  const r3=[];for(let q=0;q<2;q++)r3[q]=(k.r3[q]!=null)?k.r3[q]:play(r2[2*q],r2[2*q+1]);
+  return r3[1]; // соперник в финале
+}
+function clone(k){ return {r1:k.r1.slice(),r2:k.r2.slice(),r3:k.r3.slice(),fin:k.fin}; }
+
+function pushLog({round,a,b,w,isSpain,pBefore,pAfter,bits}){
+  const d=Math.round((pAfter-pBefore)*100), st=['','1/8','1/4','1/2','финал'][round];
+  const out=(isSpain && w!==SPAIN);
+  const cls=(pAfter>=pBefore?'up':'down')+(isSpain?' spain':'')+(out?' out':'');
+  const sign=d>0?'+'+d:(''+d);
+  const txt = `${TEAMS[a].n} vs ${TEAMS[b].n} → ${TEAMS[w].n}`;
+  const box=document.getElementById('log');
+  const el=document.createElement('div'); el.className='it '+cls;
+  el.innerHTML=`<span class="d">${sign}%</span><span class="stage">${st}${isSpain?' · испания':' · параллельный'} · ${bits.toFixed(1)} бит</span>`
+    +`<div class="res">${out?'Испания выбыла — '+TEAMS[w].n+' прошла':txt}</div>`;
+  box.insertBefore(el, box.firstChild);
+}
+function updatePanel(pr,info){
+  const p=spainAlive?pr.p:0;
+  document.getElementById('mP').textContent=(p*100).toFixed(1)+'%';
+  const unc=p*(1-p)*4; document.getElementById('mUnc').style.width=(unc*100).toFixed(0)+'%';
+  document.getElementById('mMC').innerHTML=`${pr.m} симуляций · титулов Испании <b>${spainAlive?pr.w:0}</b> · P = ${spainAlive?pr.w:0}/${pr.m} <span style="color:#8c8a83">± ${(196*Math.sqrt(Math.max(0,p*(1-p))/pr.m)).toFixed(1)}%</span>`;
+  // следующий матч Эло
+  if(curTeams){
+    const [a,b]=curTeams, isS=(a===SPAIN||b===SPAIN);
+    if(isS && spainAlive){
+      const opp=(a===SPAIN)?b:a, dR=TEAMS[SPAIN].r-TEAMS[opp].r, E=eloWin(SPAIN,opp);
+      document.getElementById('mElo').innerHTML=`Испания (${TEAMS[SPAIN].r}) vs ${TEAMS[opp].n} (${TEAMS[opp].r})<br>ΔR=${dR} · E = 1/(1+10^(${(-dR)}/400)) = <b>${(E*100).toFixed(1)}%</b>`;
+      const kWin=clone(known); setWinner(kWin,idx,SPAIN); const pWin=probSpain(kWin,800).p;
+      document.getElementById('mDec').innerHTML=`P = E · P(чемп|победа)<br>= ${(E*100).toFixed(0)}% × ${(pWin*100).toFixed(0)}% = <b>${(E*pWin*100).toFixed(1)}%</b>`;
+      fork={mx:idx, E, pWin};
+    } else {
+      document.getElementById('mElo').innerHTML=`параллельный матч: ${TEAMS[a].n} vs ${TEAMS[b].n}<br>напрямую Испания не играет — но исход меняет её сетку`;
+      document.getElementById('mDec').innerHTML=`влияние через цепь Маркова:<br>состояние сетки → новый ожидаемый соперник`;
+      fork=null;
+    }
+  } else if(!spainAlive){
+    document.getElementById('mElo').innerHTML='Испания выбыла — P = 0 до конца';
+    document.getElementById('mDec').innerHTML='поглощающее состояние цепи Маркова';
+    fork=null;
+  } else {
+    document.getElementById('mElo').innerHTML='турнир сыгран';
+    document.getElementById('mDec').innerHTML = (timeline[timeline.length-1].p>0.5)?'Испания — чемпион ✓':'—';
+    fork=null;
+  }
+  // информация последнего матча
+  const bEl=document.getElementById('mBits');
+  if(bEl){
+    const last=timeline[timeline.length-1];
+    if(last && last.bits!=null && last.x>=0){
+      bEl.innerHTML=`−log₂(P исхода) = <b>${last.bits.toFixed(2)} бит</b><br><span style="color:#8c8a83">чем неожиданнее результат, тем больше</span>`;
+    } else bEl.innerHTML='— бит';
+  }
+  // распределение + лестница
+  if(pr && pr.dist) renderDist(pr.dist);
+  if(pr && pr.reach) renderLadder(pr.reach);
+  if(pr && pr.reach) renderMarkov(pr.reach, pr.dist);
+}
+function condWins(reach){
+  const cum=[1,reach.r2,reach.r3,reach.r4,reach.champ], names=['1/8','1/4','1/2','финал'], out=[];
+  [0,8,12,14].forEach((m,ri)=>{ if(m<idx) return;
+    out.push({name:names[ri], win: cum[ri+1]/Math.max(1e-9,cum[ri])});
+  });
+  return out;
+}
+function renderMarkov(reach,dist){
+  const cw=condWins(reach), t=document.getElementById('tmat');
+  if(t){
+    if(!spainAlive){ t.innerHTML='<tr><td>поглощена · вылет</td></tr>'; }
+    else{
+      let h='<tr><th>из раунда</th><th>проходит</th><th>вылет</th></tr>';
+      cw.forEach(r=> h+=`<tr><td>${r.name}</td><td class="win">${(r.win*100).toFixed(0)}%</td><td class="out">${((1-r.win)*100).toFixed(0)}%</td></tr>`);
+      h+='<tr><td style="color:#8c8a83">чемпион · вылет</td><td colspan="2" style="text-align:left;color:#8c8a83">поглощающие</td></tr>';
+      t.innerHTML=h;
+    }
+  }
+  const rEl=document.getElementById('mRounds');
+  if(rEl){ rEl.innerHTML=''; }
+  // энтропия турнира
+  let H=0; dist.forEach(p=>{ if(p>1e-9) H-=p*Math.log2(p); });
+  const eEl=document.getElementById('mEnt'), bar=document.getElementById('mEntBar');
+  if(eEl) eEl.innerHTML=`<b>${H.toFixed(2)} бит</b> <span style="color:#8c8a83">из 4.0 макс · схлопывается к 0</span>`;
+  if(bar) bar.style.width=Math.min(100,H/4*100).toFixed(0)+'%';
+}
+function renderDist(dist){
+  const box=document.getElementById('distRows'); if(!box) return;
+  const rows=dist.map((p,i)=>({i,p})).sort((a,b)=>b.p-a.p);
+  box.innerHTML = rows.map(r=>{
+    const dead = (!spainAlive && r.i===SPAIN) ? true : (r.p<0.0005);
+    const cls='drow'+(r.i===SPAIN?' spain':'')+(dead?' dead':'');
+    const pp = (r.i===SPAIN && !spainAlive)?0:r.p;
+    return `<div class="${cls}"><span class="nm">${TEAMS[r.i].n}</span>`
+      +`<span class="bar"><i style="width:${Math.min(100,pp*100).toFixed(1)}%"></i></span>`
+      +`<span class="pct">${(pp*100).toFixed(1)}%</span></div>`;
+  }).join('');
+}
+function renderLadder(reach){
+  const el=document.getElementById('mLad'); if(!el) return;
+  if(!spainAlive){ el.innerHTML='— (выбыла)'; return; }
+  // условные вероятности выиграть каждый оставшийся раунд: c = reach(next)/reach(this)
+  const cum=[1, reach.r2, reach.r3, reach.r4, reach.champ]; // reached: тек, 1/4, 1/2, финал, чемпион
+  const names=['1/8','1/4','1/2','финал'];
+  // какие раунды ещё впереди (по idx ближайших матчей Испании)
+  const remaining=[0,8,12,14].map((m,ri)=>({m,ri})).filter(o=>o.m>=idx);
+  const parts=[]; let prod=1;
+  remaining.forEach(o=>{
+    const c = cum[o.ri+1]/Math.max(1e-9,cum[o.ri]); prod*=c;
+    parts.push(`${(c*100).toFixed(0)}%`);
+  });
+  if(!parts.length){ el.innerHTML='—'; return; }
+  el.innerHTML=`P(чемп) = ${parts.join(' × ')}<br>= <b>${(prod*100).toFixed(1)}%</b> <span style="color:#8c8a83">(произведение выживаний)</span>`;
+}
+
+// ── мини-сетка: верхняя половина (путь Испании) ──
+const brkt=document.getElementById('brkt'), bx=brkt.getContext('2d');
+const nm=id=>id==null?'?':TEAMS[id].n;
+function otherHalfExpected(){
+  let sum=0,n=180;
+  for(let s=0;s<n;s++){
+    const a=[]; for(let q=4;q<8;q++) a[q-4]=(known.r1[q]!=null)?known.r1[q]:play(2*q,2*q+1);
+    const b=[]; for(let q=0;q<2;q++) b[q]=(known.r2[q+2]!=null)?known.r2[q+2]:play(a[2*q],a[2*q+1]);
+    const fin=(known.r3[1]!=null)?known.r3[1]:play(b[0],b[1]);
+    sum+=TEAMS[fin].r;
+  }
+  return Math.round(sum/n);
+}
+function drawBracket(){
+  const W2=brkt.width,H2=brkt.height; bx.clearRect(0,0,W2,H2); bx.fillStyle='#fbfaf7'; bx.fillRect(0,0,W2,H2);
+  const top=46, bot=H2-26, ys=[]; for(let i=0;i<8;i++) ys[i]=top+(bot-top)*i/7;
+  const colX=[14,300,560,820,1012];
+  // заголовки колонок
+  bx.font='19px "JetBrains Mono"'; bx.fillStyle='#8c8a83'; bx.textAlign='left'; bx.textBaseline='top';
+  ['1/8','1/4','1/2','финал'].forEach((s,i)=>bx.fillText(s,colX[i],8));
+  function teamLabel(x,y,id,sp){ bx.font=(sp?'500 ':'')+'21px Inter, system-ui'; bx.textBaseline='middle'; bx.textAlign='left';
+    bx.fillStyle = sp?'#c44a32':(id==null?'#c9c5bb':'#333'); bx.fillText(nm(id),x,y); }
+  function loser(id,q){ return known.r1[q]!=null && known.r1[q]!==id; }
+  function connect(x0,ya,yb,xTo,ymid){ bx.strokeStyle='#d8d4ca'; bx.lineWidth=1.4;
+    bx.beginPath(); bx.moveTo(x0,ya); bx.lineTo(x0+24,ya); bx.lineTo(x0+24,yb); bx.lineTo(x0,yb); bx.stroke();
+    bx.beginPath(); bx.moveTo(x0+24,ymid); bx.lineTo(xTo,ymid); bx.stroke(); return x0+24; }
+  function pct(jointX,xTo,y,a,b,decided){ if(a==null||b==null||decided) return;
+    const isSp=(a===0||b===0); const E=isSp?(a===0?eloWin(0,b):eloWin(0,a)):Math.max(eloWin(a,b),eloWin(b,a));
+    bx.font='17px "JetBrains Mono"'; bx.textAlign='center'; bx.textBaseline='bottom';
+    bx.fillStyle=isSp?'rgba(196,74,50,.9)':'#a8a499'; bx.fillText((E*100).toFixed(0)+'%',(jointX+xTo)/2,y-5); }
+
+  // col0 → col1
+  const y1=[];
+  for(let i=0;i<8;i++) teamLabel(colX[0],ys[i],i,i===0);
+  for(let j=0;j<4;j++){ y1[j]=(ys[2*j]+ys[2*j+1])/2;
+    const jx=connect(185,ys[2*j],ys[2*j+1],colX[1]-10,y1[j]);
+    pct(jx,colX[1]-10,y1[j],2*j,2*j+1,known.r1[j]!=null);
+  }
+  // col1 (QF участники) → col2
+  const y2=[];
+  for(let j=0;j<4;j++) teamLabel(colX[1],y1[j],known.r1[j],known.r1[j]===0);
+  for(let j=0;j<2;j++){ y2[j]=(y1[2*j]+y1[2*j+1])/2;
+    const jx=connect(445,y1[2*j],y1[2*j+1],colX[2]-10,y2[j]);
+    pct(jx,colX[2]-10,y2[j],known.r1[2*j],known.r1[2*j+1],known.r2[j]!=null);
+  }
+  // col2 (SF участники) → col3
+  for(let j=0;j<2;j++) teamLabel(colX[2],y2[j],known.r2[j],known.r2[j]===0);
+  const y3=(y2[0]+y2[1])/2;
+  const jx3=connect(705,y2[0],y2[1],colX[3]-10,y3);
+  pct(jx3,colX[3]-10,y3,known.r2[0],known.r2[1],known.r3[0]!=null);
+  // col3 финалист (верх. половина) → финал
+  teamLabel(colX[3],y3,known.r3[0],known.r3[0]===0);
+  bx.strokeStyle='#d8d4ca'; bx.lineWidth=1.4; bx.beginPath(); bx.moveTo(colX[3]+150,y3); bx.lineTo(colX[4]-10,y3); bx.stroke();
+  bx.font='18px "JetBrains Mono"'; bx.textAlign='left'; bx.textBaseline='middle'; bx.fillStyle='#9a968c';
+  bx.fillText('vs ниж. половина',colX[4],y3-13);
+  bx.fillStyle='#777'; bx.fillText('ожид. рейтинг ~'+otherHalfExpected(),colX[4],y3+12);
+}
+
+const cv=document.getElementById('chart'), ctx=cv.getContext('2d');
+const W=cv.width,H=cv.height,PADL=70,PADR=24,PADT=30,PADB=58;
+function xOf(i){ return PADL + ((i+1)/15)*(W-PADL-PADR); } // i: -1..14
+function yOf(p){ return PADT + (1-p)*(H-PADT-PADB); }
+function draw(){
+  ctx.clearRect(0,0,W,H); ctx.fillStyle='#fbfaf7'; ctx.fillRect(0,0,W,H);
+  // оси Y
+  ctx.strokeStyle='#e7e4dc'; ctx.fillStyle='#8c8a83'; ctx.font='22px "JetBrains Mono"'; ctx.textAlign='right'; ctx.textBaseline='middle';
+  for(let p=0;p<=1;p+=0.25){ const y=yOf(p); ctx.beginPath(); ctx.moveTo(PADL,y); ctx.lineTo(W-PADR,y); ctx.stroke(); ctx.fillText((p*100)+'%',PADL-8,y); }
+  // подписи стадий снизу
+  ctx.textAlign='center'; ctx.textBaseline='top'; ctx.fillStyle='#8c8a83'; ctx.font='20px "JetBrains Mono"';
+  [[3.5,'1/8'],[9.5,'1/4'],[12.5,'1/2'],[14,'финал']].forEach(([i,l])=>ctx.fillText(l,xOf(i),H-PADB+12));
+  ctx.strokeStyle='#ece9e1'; ctx.setLineDash([3,5]);
+  [7,11,13].forEach(i=>{ const x=xOf(i+0.5); ctx.beginPath(); ctx.moveTo(x,PADT); ctx.lineTo(x,H-PADB); ctx.stroke(); });
+  ctx.setLineDash([]);
+
+  if(!timeline.length) return;
+  // ── ступенчатые вершины (P постоянна между матчами, скачок в момент матча) ──
+  const verts=[];
+  timeline.forEach((pt,i)=>{ const x=xOf(pt.x), y=yOf(pt.p);
+    if(i===0){ verts.push([x,y]); }
+    else { verts.push([x, yOf(timeline[i-1].p)]); verts.push([x,y]); }
+  });
+  // заливка-река под ступенями
+  const y0=yOf(0);
+  ctx.beginPath(); ctx.moveTo(verts[0][0],y0);
+  verts.forEach(v=>ctx.lineTo(v[0],v[1]));
+  ctx.lineTo(verts[verts.length-1][0],y0); ctx.closePath();
+  const grd=ctx.createLinearGradient(0,PADT,0,y0);
+  grd.addColorStop(0,'rgba(196,74,50,.16)'); grd.addColorStop(1,'rgba(196,74,50,.02)');
+  ctx.fillStyle=grd; ctx.fill();
+  // ступенчатая линия
+  ctx.strokeStyle='#111'; ctx.lineWidth=3; ctx.lineJoin='round';
+  ctx.beginPath(); verts.forEach((v,i)=>i?ctx.lineTo(v[0],v[1]):ctx.moveTo(v[0],v[1])); ctx.stroke();
+
+  // ── маркеры точек ──
+  timeline.forEach(pt=>{ if(pt.x<0) return;
+    const x=xOf(pt.x),y=yOf(pt.p), big=pt.isSpain;
+    ctx.fillStyle = big? '#c44a32':'#b9b4a8';
+    ctx.beginPath(); ctx.arc(x,y,big?7:4,0,7); ctx.fill();
+    if(big){ ctx.fillStyle='rgba(255,255,255,.6)'; ctx.beginPath(); ctx.arc(x-1.6,y-1.6,2,0,7); ctx.fill(); }
+  });
+  // текущая точка + подпись (моно)
+  const L=timeline[timeline.length-1];
+  ctx.fillStyle='#111'; ctx.beginPath(); ctx.arc(xOf(L.x),yOf(L.p),5,0,7); ctx.fill();
+  ctx.fillStyle='#c44a32'; ctx.font='500 26px "JetBrains Mono"'; ctx.textAlign='left'; ctx.textBaseline='bottom';
+  ctx.fillText((L.p*100).toFixed(0)+'%', Math.min(xOf(L.x)+10,W-PADR-66), yOf(L.p)-8);
+  drawBracket();
+}
+
+// ── управление ──
+function loop(){ const more=stepMatch(); if(more && playing){ raf=setTimeout(loop, 1300/speeds[spi]); } else { playing=false; document.getElementById('play').textContent='▶ играть'; document.getElementById('play').classList.remove('on'); } }
+document.getElementById('play').addEventListener('click',e=>{
+  if(idx>=15){ reset(); }
+  playing=!playing;
+  if(playing){ e.target.textContent='⏸ пауза'; e.target.classList.add('on'); loop(); }
+  else { e.target.textContent='▶ играть'; e.target.classList.remove('on'); if(raf){clearTimeout(raf);raf=null;} }
+});
+document.getElementById('step').addEventListener('click',()=>{ if(playing)return; if(idx>=15)reset(); else stepMatch(); });
+document.getElementById('speed').addEventListener('click',e=>{ spi=(spi+1)%speeds.length; e.target.textContent='скорость: '+speeds[spi]+'×'; });
+document.getElementById('reset').addEventListener('click',reset);
+
+reset();
+</script>
+</body>
+</html>
