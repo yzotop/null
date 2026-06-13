@@ -1793,6 +1793,13 @@
       "glyph": "≈"
     },
     {
+      "id": "es-why-simulation",
+      "type": "essay",
+      "title": "почему симуляция, а не формула",
+      "url": "/null/essays/why-simulation.html",
+      "glyph": "⁂"
+    },
+    {
       "id": "es-elo",
       "type": "essay",
       "title": "Одно число",
@@ -6412,6 +6419,62 @@
     {
       "from": "vi-galton",
       "to": "vi-champion-prob"
+    },
+    {
+      "from": "es-why-simulation",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "es-why-simulation"
+    },
+    {
+      "from": "es-why-simulation",
+      "to": "es-simulation"
+    },
+    {
+      "from": "es-simulation",
+      "to": "es-why-simulation"
+    },
+    {
+      "from": "es-why-simulation",
+      "to": "es-buffon"
+    },
+    {
+      "from": "es-buffon",
+      "to": "es-why-simulation"
+    },
+    {
+      "from": "es-why-simulation",
+      "to": "vi-monte-carlo-pi"
+    },
+    {
+      "from": "vi-monte-carlo-pi",
+      "to": "es-why-simulation"
+    },
+    {
+      "from": "es-why-simulation",
+      "to": "vi-lln"
+    },
+    {
+      "from": "vi-lln",
+      "to": "es-why-simulation"
+    },
+    {
+      "from": "es-why-simulation",
+      "to": "vi-champion-prob"
+    },
+    {
+      "from": "vi-champion-prob",
+      "to": "es-why-simulation"
+    },
+    {
+      "from": "es-why-simulation",
+      "to": "vi-galton"
+    },
+    {
+      "from": "vi-galton",
+      "to": "es-why-simulation"
     }
   ]
 }

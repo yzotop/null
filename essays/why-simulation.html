@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>почему симуляция, а не формула — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / почему симуляция, а не формула</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · вероятность · симуляция · ~720 слов · 7 мин</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">почему симуляция, а не <em style="color: #c44a32; font-style: italic;">формула</em>.</h1>
+    <p style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">кажется, что бросать кости — признак того, что не умеешь решать честно. но есть огромный класс задач, где случайные пробы бьют и точную формулу, и аккуратный перебор. вопрос не в лени, а в размерности.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">проклятие размерности · Монте-Карло · симуляция · закон больших чисел</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">Монте-Карло · турнир · Бюффон · π · чемпион · ЗБЧ</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Школа приучает: у задачи есть «правильное» решение — формула, в которую подставляешь числа и получаешь ответ. Симуляция на этом фоне выглядит как жульничество: вместо того чтобы вывести ответ, мы тысячу раз бросаем кости и смотрим, что вышло в среднем. Но для огромного класса задач честная формула либо не существует, либо бесполезна — и тогда случайность оказывается не костылём, а самым умным инструментом.</p>
+
+      <p>Возьми турнир. Чтобы посчитать вероятность чемпиона точно, нужно перебрать все варианты сетки: кто кого, на каждом этапе, во всех сочетаниях. Число путей растёт как снежный ком, формулы нет, перебор бессмыслен. А симуляция берёт и разыгрывает турнир — десять тысяч раз — и просто считает доли. То же с интегралом сложной формы, с траекторией нейтрона, с ценой опциона: точное выражение либо не выводится, либо занимает том.</p>
+
+      <p>Можно возразить: ну хорошо, нет формулы — посчитаем численно, по сетке. Разобьём пространство на клетки, пройдём по всем. И вот тут вскрывается главное. В одном измерении сетка из ста точек — это сто вычислений. В двух — уже десять тысяч. В десяти измерениях сетка из ста точек на ось требует 100¹⁰ вычислений — больше, чем атомов в комнате. Это называют проклятием размерности: честный перебор дорожает экспоненциально с числом измерений<em class="fn">1</em><em class="fn">2</em>.</p>
+
+      <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">В многомерном пространстве сетка тонет, а случайные точки — нет.</blockquote>
+
+      <p>И вот фокус. Точность оценки методом Монте-Карло зависит только от числа бросков N — как 1/√N — и совершенно не зависит от размерности<em class="fn">3</em>. Сетке в десяти измерениях нужны астрономические 100¹⁰ узлов; Монте-Карло хватит тех же десяти тысяч случайных точек, что и в двумерном случае. В многомерье случайные пробы не просто удобнее — они единственный реальный способ. Поэтому ими считают всё, от физики частиц до финансов и машинного обучения, где измерений сотни.</p>
+
+      <p>Почему так выходит? Потому что Монте-Карло превращает вычисление в измерение. Вместо того чтобы обходить пространство, ты случайно тыкаешь в него точками и усредняешь — а закон больших чисел гарантирует, что среднее по случайной выборке сходится к истине<em class="fn">4</em>. Это ровно то, что делал Бюффон иглой и что показывает дождь точек, вычисляющий π: ты не выводишь ответ, ты его сэмплируешь.</p>
+
+      <p>У робастности есть цена — медлительность. Сходимость 1/√N «decelerating»: чтобы добавить один знак точности, нужно в сто раз больше проб; вчетверо больше счёта дают лишь вдвое точнее<em class="fn">5</em>. Монте-Карло — не быстрый метод, а универсальный: он почти всегда работает и почти никогда не работает быстро. Поэтому половина суперкомпьютерного времени в мире уходит ровно на него, и поэтому же придумали хитрости (квази-случайные последовательности, важностную выборку), чтобы сходимость подогнать.</p>
+
+      <p>Так что симуляция — не признак того, что ты не осилил вывод. Это признание честной границы: за определённой сложностью формула молчит, перебор захлёбывается, а случайность продолжает считать ровно с той же скоростью. Иногда самый точный способ узнать ответ — перестать его выводить и начать бросать кости. Достаточно много раз, достаточно честно — и среднее само скажет правду.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note"><span class="n">[1]</span><span class="t">Проклятие размерности: сетка из m точек на каждое измерение требует m^d вычислений — рост экспоненциальный по числу измерений d.</span></div>
+      <div class="note"><span class="n">[2]</span><span class="t">Уже при d=10 и m=100 это 100¹⁰ = 10²⁰ узлов — практически невычислимо.</span></div>
+      <div class="note"><span class="n">[3]</span><span class="t">Сеточная квадратура сходится как O(N^(−k/d)) (зависит от размерности d); Монте-Карло — O(N^(−1/2)) независимо от размерности. Поэтому в многомерье случайные пробы обыгрывают сетку.</span></div>
+      <div class="note"><span class="n">[4]</span><span class="t">Монте-Карло превращает интегрирование в статистическую оценку: усреднение по случайной выборке сходится к истинному значению по закону больших чисел.</span></div>
+      <div class="note"><span class="n">[5]</span><span class="t">Цена робастности — медленность: O(N^(−1/2)) убывает медленно, вчетверо больше вычислений дают лишь вдвое точнее. Отсюда квази-Монте-Карло и важностная выборка.</span></div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="monte-carlo.html">от пасьянса к атомной бомбе →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="simulation.html">десять тысяч турниров →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="buffon.html">игла Бюффона →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/law-of-large-numbers.html">закон больших чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/monte-carlo-pi.html">π из случайных точек →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/champion-probability.html">вероятность чемпиона →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/galton-board.html">доска Гальтона →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/simulation.html">Десять тысяч турниров →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/buffon.html">Игла Бюффона →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/monte-carlo.html">От пасьянса к атомной бомбе →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/champion-probability.html">вероятность чемпиона →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/galton-board.html">доска Гальтона →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/law-of-large-numbers.html">закон больших чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/monte-carlo-pi.html">π из случайных точек →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/why-simulation.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
