@@ -271,7 +271,7 @@
       "type": "essay",
       "title": "π в колоколе Гаусса",
       "url": "/null/essays/pi-in-gaussian.html",
-      "glyph": "¶"
+      "glyph": "ℼ"
     },
     {
       "id": "es-deck",
@@ -320,7 +320,7 @@
       "type": "essay",
       "title": "Случайность которой нет",
       "url": "/null/essays/pseudorandom.html",
-      "glyph": "¶"
+      "glyph": "⚄"
     },
     {
       "id": "vi-prime-field",
@@ -747,7 +747,7 @@
       "type": "essay",
       "title": "Цепи Маркова",
       "url": "/null/essays/markov-chains.html",
-      "glyph": "¶"
+      "glyph": "⇢"
     },
     {
       "id": "vi-markov",
@@ -978,21 +978,21 @@
       "type": "essay",
       "title": "Андрей Марков и Евгений Онегин",
       "url": "/null/essays/markov-deep.html",
-      "glyph": "¶"
+      "glyph": "✍"
     },
     {
       "id": "es-prob-paradox",
       "type": "essay",
       "title": "Парадоксы вероятности",
       "url": "/null/essays/probability-paradoxes.html",
-      "glyph": "¶"
+      "glyph": "⁇"
     },
     {
       "id": "es-kolmogorov",
       "type": "essay",
       "title": "Колмогоров и случайность",
       "url": "/null/essays/kolmogorov.html",
-      "glyph": "¶"
+      "glyph": "∁"
     },
     {
       "id": "vi-lln",
@@ -1244,7 +1244,7 @@
       "type": "essay",
       "title": "Центральная предельная теорема",
       "url": "/null/essays/clt.html",
-      "glyph": "¶"
+      "glyph": "◠"
     },
     {
       "id": "es-simpson",
@@ -6616,6 +6616,22 @@
     {
       "from": "es-bayesian",
       "to": "es-mcmc"
+    },
+    {
+      "from": "es-pseudorandom",
+      "to": "es-kolmogorov"
+    },
+    {
+      "from": "es-kolmogorov",
+      "to": "es-pseudorandom"
+    },
+    {
+      "from": "es-pseudorandom",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "es-pseudorandom"
     }
   ]
 }
