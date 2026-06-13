@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCMC — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / MCMC</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · вероятность · симуляция · ~720 слов · 7 мин</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">MCMC, или как бродить <em style="color: #c44a32; font-style: italic;">с умом</em>.</h1>
+    <p style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">обычный Монте-Карло тычет в пространство случайными точками. но что, если нужное распределение слишком сложное, чтобы тыкать наугад? тогда из точек делают цепь: блуждание, которое само стекается туда, где плотность выше. так Марков встречает Монте-Карло — буквально в названии.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">MCMC · Метрополис–Гастингс · цепи Маркова · байесовский вывод · стационарное распределение</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">Марков · Монте-Карло · случайное блуждание · симуляция · Байес</td></tr>
+  </table>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Базовый Монте-Карло прост: разбросай случайные точки равномерно и усредни. Но он работает, пока ты умеешь эти точки бросать. А чаще всего распределение, которое тебя интересует, известно лишь «с точностью до множителя»: ты можешь сказать, во сколько раз одна точка вероятнее другой, но не можешь сэмплировать из него напрямую — нормировка неизвестна, измерений сотни, форма дикая. Равномерные тычки тут бесполезны: почти все попадут туда, где плотность ничтожна.</p>
+
+      <p>Идея MCMC — Markov Chain Monte Carlo — в том, чтобы не бросать точки независимо, а пустить блуждание. Стоишь в какой-то точке, предлагаешь шаг по соседству — и решаешь, принять его или остаться. Правило приёма хитрое: если шаг ведёт туда, где плотность выше, принимаешь всегда; если ниже — принимаешь иногда, с вероятностью, равной отношению плотностей<em class="fn">2</em>. В среднем блуждание тянет вверх по плотности, но иногда спускается — поэтому не застревает в одном пике, а обходит всё распределение, задерживаясь в каждом месте ровно пропорционально его вероятности.</p>
+
+      <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">Не бросать точки в распределение, а построить блуждание, для которого это распределение — дом, куда оно всегда возвращается.</blockquote>
+
+      <p>Магия в том, что такая цепь Маркова имеет стационарное распределение — то самое, которое тебе нужно<em class="fn">1</em>. Дай ей побродить подольше — и доля времени, проведённого в каждой области, сойдётся к её вероятности. Ты не сэмплировал из распределения, ты построил процесс, для которого оно — точка равновесия, и просто подождал. Случайное блуждание из соседнего эссе тут обретает цель: его учат стекаться куда надо.</p>
+
+      <p>Придумали это там же, где и Монте-Карло, — в Лос-Аламосе. Алгоритм Метрополиса (1953) вышел из той же группы физиков атомного проекта: они моделировали жидкость в равновесии и поняли, что не нужно симулировать точную физику — достаточно построить цепь с тем же равновесным распределением и дать ей сойтись<em class="fn">3</em>. В 1970-м Гастингс обобщил метод (отсюда «Метрополис–Гастингс»), но статистики по-настоящему распробовали MCMC только после 1990-го — когда он стал главным мотором байесовского вывода<em class="fn">4</em>.</p>
+
+      <p>Сегодня MCMC — рабочая лошадь везде, где распределение слишком сложное для формулы: байесовские модели, статистическая физика, фитирование космологических данных, вероятностное программирование. Это прямой наследник всей линии: случайность (Монте-Карло), у которой память сделана марковской (шаг зависит только от текущего места), и блуждание, которому задали правильное равновесие. Цена та же, что у всякой симуляции, — нужно дать цепи время «разогреться» и убедиться, что она действительно обошла всё, а не залипла в одном углу.</p>
+
+      <p>В этом изяществе вся идея: чтобы изучить недостижимое распределение, не надо его покорять формулой. Надо построить странника, для которого оно — родина, и отпустить бродить. Достаточно долго, достаточно честно — и маршрут сам нарисует карту плотности. Марков дал блужданию правила, Монте-Карло — смысл считать по нему средние; вместе они умеют то, чего не может ни формула, ни наивный случайный тык.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note"><span class="n">[1]</span><span class="t">Цепь Маркова при мягких условиях сходится к единственному стационарному (равновесному) распределению независимо от старта. MCMC строит цепь так, чтобы это распределение было нужным целевым.</span></div>
+      <div class="note"><span class="n">[2]</span><span class="t">Правило Метрополиса: шаг в сторону большей плотности принимается всегда, в сторону меньшей — с вероятностью, равной отношению плотностей. Поэтому достаточно знать плотность с точностью до множителя (нормировка не нужна).</span></div>
+      <div class="note"><span class="n">[3]</span><span class="t">Алгоритм Метрополиса (Metropolis, Rosenbluth, Rosenbluth, Teller, Teller, 1953), Лос-Аламос — та же группа, что и Монте-Карло. Моделировали жидкость в равновесии; идея — не симулировать точную динамику, а цепь с тем же равновесным распределением.</span></div>
+      <div class="note"><span class="n">[4]</span><span class="t">У. К. Гастингс (1970) обобщил метод → Метрополис–Гастингс; Гиббс-сэмплер — частный случай (Geman & Geman, 1984). Статистики массово взяли MCMC для байесовского вывода после ~1990.</span></div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="markov-chains.html">будущее зависит только от настоящего →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="monte-carlo.html">от пасьянса к атомной бомбе →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="why-simulation.html">почему симуляция, а не формула →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/random-walk.html">случайное блуждание →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">как обновлять убеждения →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/bayesian.html">Как обновлять убеждения · байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/monte-carlo.html">От пасьянса к атомной бомбе →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/why-simulation.html">почему симуляция, а не формула →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/markov-chains.html">Цепи Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/random-walk.html">случайное блуждание →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/mcmc.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

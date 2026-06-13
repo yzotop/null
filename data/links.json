@@ -1847,6 +1847,13 @@
       "title": "бутстрэп",
       "url": "/null/essays/bootstrap.html",
       "glyph": "↻"
+    },
+    {
+      "id": "es-mcmc",
+      "type": "essay",
+      "title": "MCMC",
+      "url": "/null/essays/mcmc.html",
+      "glyph": "⇌"
     }
   ],
   "edges": [
@@ -6569,6 +6576,46 @@
     {
       "from": "es-ab-testing",
       "to": "es-bootstrap"
+    },
+    {
+      "from": "es-mcmc",
+      "to": "es-markov"
+    },
+    {
+      "from": "es-markov",
+      "to": "es-mcmc"
+    },
+    {
+      "from": "es-mcmc",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "es-mcmc"
+    },
+    {
+      "from": "es-mcmc",
+      "to": "es-why-simulation"
+    },
+    {
+      "from": "es-why-simulation",
+      "to": "es-mcmc"
+    },
+    {
+      "from": "es-mcmc",
+      "to": "vi-random-walk"
+    },
+    {
+      "from": "vi-random-walk",
+      "to": "es-mcmc"
+    },
+    {
+      "from": "es-mcmc",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-bayesian",
+      "to": "es-mcmc"
     }
   ]
 }
