@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>случайное блуждание — null/visuals</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .viz-walk { max-width: 720px; }
+  .viz-walk .label{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:lowercase;color:#8c8a83;margin-bottom:12px;}
+  .viz-walk h1{font-family:'Old Standard TT',Georgia,serif;font-style:italic;font-weight:400;font-size:44px;line-height:1.02;margin-bottom:12px;}
+  .viz-walk h1 em{color:var(--accent-red);font-style:italic;}
+  .viz-walk .sub{font-family:var(--font-body);font-size:16px;line-height:1.5;color:#444;max-width:580px;margin-bottom:22px;}
+
+  .viz-walk canvas.walk{width:100%;height:auto;border:1px solid var(--ink);background:#fbfaf7;display:block;}
+
+  .viz-walk .ro{display:flex;border:1px solid var(--ink);border-top:0;}
+  .viz-walk .ro .cell{flex:1;padding:11px 14px;border-right:1px solid var(--border);}
+  .viz-walk .ro .cell:last-child{border-right:0;}
+  .viz-walk .ro .k{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:lowercase;color:#8c8a83;}
+  .viz-walk .ro .v{font-family:var(--font-mono);font-size:21px;margin-top:4px;font-variant-numeric:tabular-nums;}
+  .viz-walk .ro .v.ac{color:var(--accent-red);}
+
+  .viz-walk .rowN{display:flex;align-items:center;gap:12px;margin-top:14px;font-family:var(--font-mono);font-size:12px;color:#8c8a83;}
+  .viz-walk .rowN input{flex:1;accent-color:var(--accent-red);}
+  .viz-walk .rowN b{color:var(--ink);font-weight:500;min-width:64px;text-align:right;}
+
+  .viz-walk .controls{display:flex;flex-wrap:wrap;gap:0;margin-top:14px;border:1px solid var(--ink);}
+  .viz-walk .controls button{flex:1 1 auto;font-family:var(--font-mono);font-size:14px;background:transparent;color:var(--ink);
+    border:0;border-right:1px solid var(--ink);padding:11px 8px;cursor:pointer;line-height:1;min-width:70px;}
+  .viz-walk .controls button:last-child{border-right:0;}
+  .viz-walk .controls button:hover{background:rgba(196,74,50,.10);}
+  .viz-walk .controls button.on{background:var(--accent-red);color:#fff;}
+  .viz-walk .controls button.reset{color:#8c8a83;}
+
+  .viz-walk .formula{font-family:var(--font-mono);font-size:13px;color:#555;margin-top:16px;line-height:1.6;}
+  .viz-walk .formula b{color:var(--accent-red);font-weight:500;}
+  .viz-walk .hint{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;color:#8c8a83;margin-top:24px;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / случайное блуждание</div>
+
+<main class="container">
+<article>
+
+  <div class="viz-walk" style="margin-top: 8px;">
+    <div class="label">визуал · №034 · случайность · √n</div>
+    <h1>случайное <em>блуждание</em>.</h1>
+    <div class="sub">на каждом шаге монетка решает: вверх или вниз. один путь — дрожащая линия без
+      смысла. но запусти сотню — и они разбегаются веером, и ширина веера растёт не как n, а как
+      √n. из чистого хаоса проступает точный закон.</div>
+
+    <canvas class="walk" id="walk" width="1440" height="760"></canvas>
+
+    <div class="ro">
+      <div class="cell"><div class="k">шагов сделано</div><div class="v" id="rStep">0</div></div>
+      <div class="cell"><div class="k">блужданий</div><div class="v" id="rN">0</div></div>
+      <div class="cell"><div class="k">типичный разброс √n</div><div class="v ac" id="rSpread">0</div></div>
+      <div class="cell"><div class="k">среднее</div><div class="v" id="rMean">0</div></div>
+    </div>
+
+    <div class="rowN">
+      <span>блужданий</span>
+      <input type="range" id="walkers" min="1" max="200" value="60" step="1">
+      <b id="walkersLab">60</b>
+    </div>
+
+    <div class="controls">
+      <button id="play">▶ запустить</button>
+      <button id="step">⏭ шаг</button>
+      <button id="one">одно блуждание</button>
+      <button class="reset" id="reset">↺ сброс</button>
+    </div>
+
+    <div class="formula">каждый шаг = ±1 по монетке · положение = сумма шагов.<br>
+      среднее остаётся 0, а типичный разброс растёт как <b>√n</b> (не как n) — корень из времени.</div>
+
+    <div class="hint">хаос с точной шириной</div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/markov-chains.html">будущее зависит только от настоящего →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/clt.html">центральная предельная теорема →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="galton-board.html">доска Гальтона →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/why-simulation.html">почему симуляция, а не формула →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/monte-carlo.html">От пасьянса к атомной бомбе →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/why-simulation.html">почему симуляция, а не формула →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/clt.html">Центральная предельная теорема →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/markov-chains.html">Цепи Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/galton-board.html">доска Гальтона →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/random-walk.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+const cv=document.getElementById('walk'), ctx=cv.getContext('2d');
+const W=cv.width,H=cv.height;
+const PADL=54, PADR=210, PADT=24, PADB=40;   // справа место под гистограмму
+const plotW=()=>W-PADL-PADR, plotH=()=>H-PADT-PADB;
+const HIST_X=()=>W-PADR+14, HIST_W=()=>PADR-28;
+
+let nWalkers=60, maxSteps=200, step=0;
+let pos=[];      // текущее положение каждого блуждания (в шагах, целое)
+let paths=[];    // история y каждого блуждания (для линий)
+let raf=null, playing=false;
+
+function reset(){
+  if(raf){cancelAnimationFrame(raf);raf=null;}
+  playing=false; setPlay(false);
+  step=0; pos=new Array(nWalkers).fill(0);
+  paths=Array.from({length:nWalkers},()=>[0]);
+  draw();
+}
+function setPlay(on){ const b=document.getElementById('play'); b.classList.toggle('on',on); b.textContent=on?'⏸ пауза':'▶ запустить'; }
+
+// масштаб Y: ±yMax шагов отображаем в высоту графика; yMax растёт как ~3√maxSteps
+function yMax(){ return Math.max(6, 3*Math.sqrt(maxSteps)); }
+function xOf(s){ return PADL + (s/maxSteps)*plotW(); }
+function yOf(v){ return PADT + plotH()/2 - (v/yMax())*(plotH()/2); }
+
+function doStep(){
+  if(step>=maxSteps) return false;
+  step++;
+  for(let i=0;i<nWalkers;i++){ pos[i]+= (Math.random()<0.5?1:-1); paths[i].push(pos[i]); }
+  draw();
+  return step<maxSteps;
+}
+
+function draw(){
+  ctx.clearRect(0,0,W,H); ctx.fillStyle='#fbfaf7'; ctx.fillRect(0,0,W,H);
+  // ось нуля
+  ctx.strokeStyle='#d8d4ca'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(PADL,yOf(0)); ctx.lineTo(PADL+plotW(),yOf(0)); ctx.stroke();
+  // теоретический коридор ±√n и ±2√n
+  ctx.fillStyle='rgba(196,74,50,.05)';
+  // ±2√n заливка
+  ctx.beginPath(); ctx.moveTo(PADL,yOf(0));
+  for(let s=0;s<=maxSteps;s+=2){ ctx.lineTo(xOf(s), yOf(2*Math.sqrt(s))); }
+  for(let s=maxSteps;s>=0;s-=2){ ctx.lineTo(xOf(s), yOf(-2*Math.sqrt(s))); }
+  ctx.closePath(); ctx.fill();
+  // ±√n линии (пунктир)
+  ctx.strokeStyle='rgba(196,74,50,.45)'; ctx.lineWidth=1.5; ctx.setLineDash([6,7]);
+  [1,-1].forEach(sgn=>{ ctx.beginPath(); for(let s=0;s<=maxSteps;s+=2){ const x=xOf(s),y=yOf(sgn*Math.sqrt(s)); s===0?ctx.moveTo(x,y):ctx.lineTo(x,y);} ctx.stroke(); });
+  ctx.setLineDash([]);
+  // подпись ±√n
+  ctx.fillStyle='rgba(196,74,50,.8)'; ctx.font='italic 24px "IM Fell English"'; ctx.textAlign='right'; ctx.textBaseline='bottom';
+  ctx.fillText('+√n', PADL+plotW()-6, yOf(Math.sqrt(maxSteps))-2);
+  ctx.textBaseline='top'; ctx.fillText('−√n', PADL+plotW()-6, yOf(-Math.sqrt(maxSteps))+2);
+
+  // траектории
+  const many=nWalkers>40;
+  paths.forEach((p,i)=>{
+    ctx.strokeStyle = many? 'rgba(17,17,17,.16)' : 'rgba(17,17,17,.5)';
+    if(nWalkers===1) ctx.strokeStyle='#111';
+    ctx.lineWidth = many?1:1.4; ctx.beginPath();
+    p.forEach((v,s)=>{ const x=xOf(s),y=yOf(v); s?ctx.lineTo(x,y):ctx.moveTo(x,y); });
+    ctx.stroke();
+  });
+  // головы блужданий
+  ctx.fillStyle='#c44a32';
+  pos.forEach(v=>{ ctx.beginPath(); ctx.arc(xOf(step), yOf(v), many?2:3, 0,7); ctx.fill(); });
+
+  drawHist();
+  updateUI();
+}
+function drawHist(){
+  const x0=HIST_X(), w=HIST_W(), top=PADT, h=plotH();
+  // рамка-разделитель
+  ctx.strokeStyle='#e2dfd6'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(x0-7,top); ctx.lineTo(x0-7,top+h); ctx.stroke();
+  ctx.fillStyle='#8c8a83'; ctx.font='17px "JetBrains Mono"'; ctx.textAlign='left'; ctx.textBaseline='top';
+  ctx.fillText('конечные', x0, top-2);
+  // бины по положению, высота по y-шкале (та же, что у графика → горизонтальные бары вправо)
+  const bin=2; // ширина бина в шагах
+  const counts={}; let mx=1;
+  pos.forEach(v=>{ const b=Math.round(v/bin)*bin; counts[b]=(counts[b]||0)+1; if(counts[b]>mx)mx=counts[b]; });
+  Object.keys(counts).forEach(b=>{ const v=+b, y=yOf(v), len=(counts[b]/mx)*(w-6);
+    ctx.fillStyle='rgba(196,74,50,.7)'; ctx.fillRect(x0, y-3, len, 6);
+  });
+  // нормаль-огибающая (теор. колокол) по той же оси
+  if(step>4){ const sd=Math.sqrt(step);
+    ctx.strokeStyle='#111'; ctx.lineWidth=1.6; ctx.beginPath();
+    for(let v=-yMax(); v<=yMax(); v+=0.5){ const dens=Math.exp(-0.5*(v/sd)*(v/sd)); const len=dens*(w-6); const x=x0+len, y=yOf(v); v===-yMax()?ctx.moveTo(x,y):ctx.lineTo(x,y);} ctx.stroke();
+  }
+}
+function updateUI(){
+  document.getElementById('rStep').textContent=step;
+  document.getElementById('rN').textContent=nWalkers;
+  document.getElementById('rSpread').textContent='±'+Math.sqrt(step).toFixed(1);
+  const m=pos.length?pos.reduce((a,b)=>a+b,0)/pos.length:0;
+  document.getElementById('rMean').textContent=m.toFixed(1);
+}
+
+function loop(){ const more=doStep(); if(more&&playing){ raf=requestAnimationFrame(loop); } else { playing=false; setPlay(false); } }
+document.getElementById('play').addEventListener('click',()=>{ if(step>=maxSteps) reset(); playing=!playing; setPlay(playing); if(playing) loop(); else if(raf){cancelAnimationFrame(raf);raf=null;} });
+document.getElementById('step').addEventListener('click',()=>{ if(playing)return; doStep(); });
+document.getElementById('one').addEventListener('click',()=>{ nWalkers=1; document.getElementById('walkers').value=1; document.getElementById('walkersLab').textContent=1; reset(); playing=true; setPlay(true); loop(); });
+document.getElementById('reset').addEventListener('click',reset);
+document.getElementById('walkers').addEventListener('input',e=>{ nWalkers=+e.target.value; document.getElementById('walkersLab').textContent=nWalkers; reset(); });
+
+reset();
+</script>
+</body>
+</html>

@@ -1833,6 +1833,13 @@
       "title": "вероятность чемпиона",
       "url": "/null/visuals/champion-probability.html",
       "glyph": "◇"
+    },
+    {
+      "id": "vi-random-walk",
+      "type": "visual",
+      "title": "случайное блуждание",
+      "url": "/null/visuals/random-walk.html",
+      "glyph": "∿"
     }
   ],
   "edges": [
@@ -6475,6 +6482,46 @@
     {
       "from": "vi-galton",
       "to": "es-why-simulation"
+    },
+    {
+      "from": "vi-random-walk",
+      "to": "es-markov"
+    },
+    {
+      "from": "es-markov",
+      "to": "vi-random-walk"
+    },
+    {
+      "from": "vi-random-walk",
+      "to": "es-clt"
+    },
+    {
+      "from": "es-clt",
+      "to": "vi-random-walk"
+    },
+    {
+      "from": "vi-random-walk",
+      "to": "vi-galton"
+    },
+    {
+      "from": "vi-galton",
+      "to": "vi-random-walk"
+    },
+    {
+      "from": "vi-random-walk",
+      "to": "es-why-simulation"
+    },
+    {
+      "from": "es-why-simulation",
+      "to": "vi-random-walk"
+    },
+    {
+      "from": "vi-random-walk",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "vi-random-walk"
     }
   ]
 }
