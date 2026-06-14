@@ -1889,6 +1889,13 @@
       "title": "плюсовое ожидание",
       "url": "/null/essays/value-betting.html",
       "glyph": "↗"
+    },
+    {
+      "id": "es-is-forecast-right",
+      "type": "essay",
+      "title": "прав ли прогноз",
+      "url": "/null/essays/is-forecast-right.html",
+      "glyph": "◎"
     }
   ],
   "edges": [
@@ -6891,6 +6898,46 @@
     {
       "from": "es-poker-kelly",
       "to": "es-value-betting"
+    },
+    {
+      "from": "es-is-forecast-right",
+      "to": "es-value-betting"
+    },
+    {
+      "from": "es-value-betting",
+      "to": "es-is-forecast-right"
+    },
+    {
+      "from": "es-is-forecast-right",
+      "to": "es-who-sets-odds"
+    },
+    {
+      "from": "es-who-sets-odds",
+      "to": "es-is-forecast-right"
+    },
+    {
+      "from": "es-is-forecast-right",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "es-is-forecast-right"
+    },
+    {
+      "from": "es-is-forecast-right",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "es-is-forecast-right"
+    },
+    {
+      "from": "es-is-forecast-right",
+      "to": "vi-galton"
+    },
+    {
+      "from": "vi-galton",
+      "to": "es-is-forecast-right"
     }
   ]
 }

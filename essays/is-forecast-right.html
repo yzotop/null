@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>прав ли прогноз — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .forecast {
+    --paper: #f7f6f2;
+    --ink: #1a1a1a;
+    --dim: #8c8a83;
+    --line: #dcd9d0;
+    --accent: #c44a32;
+    --serif: 'IM Fell English', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    width: 100%;
+    max-width: 680px;
+    margin-top: 8px;
+    font-family: var(--sans);
+    color: var(--ink);
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+  .forecast * { box-sizing: border-box; }
+
+  .forecast .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: lowercase;
+    color: var(--dim);
+    margin-bottom: 18px;
+  }
+  .forecast h1 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.04;
+    letter-spacing: -.01em;
+    margin-bottom: 20px;
+  }
+  .forecast h1 em { color: var(--accent); }
+  .forecast .lead {
+    font-size: 20px;
+    line-height: 1.55;
+    color: #444;
+    margin-bottom: 30px;
+  }
+
+  .forecast h2 {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: lowercase;
+    color: var(--accent);
+    margin: 46px 0 16px;
+  }
+  .forecast p {
+    font-size: 17px;
+    margin-bottom: 18px;
+  }
+  .forecast p.first::first-letter {
+    font-family: var(--serif);
+    font-size: 62px;
+    float: left;
+    line-height: .82;
+    padding: 6px 10px 0 0;
+    color: var(--accent);
+  }
+  .forecast em.t { font-style: italic; color: var(--accent); }
+  .forecast b { font-weight: 600; }
+
+  .forecast figure {
+    margin: 14px 0 24px;
+    border: 1px solid var(--ink);
+    background: #fff;
+  }
+  .forecast figure svg { display: block; width: 100%; height: auto; }
+  .forecast figcaption {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--dim);
+    padding: 11px 16px;
+    border-top: 1px solid var(--line);
+    letter-spacing: .02em;
+  }
+
+  .forecast .math {
+    background: #fff;
+    border: 1px solid var(--ink);
+    padding: 20px 22px;
+    margin: 10px 0 20px;
+  }
+  .forecast .math .f {
+    font-family: var(--mono);
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.6;
+    text-align: center;
+  }
+  .forecast .math .f .r { color: var(--accent); }
+  .forecast .math .w {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--dim);
+    margin-top: 12px;
+    line-height: 1.6;
+    border-top: 1px solid var(--line);
+    padding-top: 11px;
+  }
+  .forecast .math .w b { color: var(--accent); font-weight: 500; }
+
+  .forecast blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding: 6px 0 6px 22px;
+    margin: 28px 0;
+  }
+
+  .forecast .margin {
+    margin-top: 48px;
+    border-top: 1px solid var(--ink);
+    padding-top: 22px;
+  }
+  .forecast .margin .mh {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: lowercase;
+    color: var(--dim);
+    margin-bottom: 14px;
+  }
+  .forecast .margin .fn {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 11px;
+    line-height: 1.5;
+  }
+  .forecast .margin .fn .num {
+    font-family: var(--mono);
+    color: var(--accent);
+    margin-right: 8px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / прав ли прогноз</div>
+
+<main class="container">
+<article>
+
+  <div class="forecast">
+    <div class="label">эссе · вероятность · мышление · ~14 мин</div>
+    <h1>прав ли <em>прогноз</em>?</h1>
+    <div class="lead">За три эссе мы научились находить перевес и считать размер ставки по Келли. Но
+      всё это держалось на одном — на том, что твоя вероятность верна. И тут засада: как вообще понять,
+      хорош ли прогноз? Ты сказал «Бразилия победит на 70%», Бразилия проиграла — ты ошибся? Совсем не
+      обязательно. Один исход вероятность не судит. Чтобы проверить прогноз, нужен счёт — и для него
+      есть калибровка и шкала Бриера.</div>
+
+    <p class="first">Сказать «70%» и посмотреть один матч — всё равно что судить о кубике по одному
+      броску. Выпала тройка — кубик «соврал»? Нет, просто так выпало. С прогнозом то же самое:
+      единичный исход почти ничего не говорит о том, была ли вероятность честной. Оценивать прогноз —
+      или решение — по одному результату называется resulting, и это кардинальный грех вероятностного
+      мышления: хорошее решение с плохим исходом остаётся хорошим. Проверить вероятностное суждение
+      можно только на многих прогнозах. Оттого телевизионного эксперта, который ни разу не записал свою
+      вероятность числом, нельзя ни поймать на ошибке, ни похвалить, — его просто никто не считает.</p>
+
+    <h2>калибровка · сбываются ли твои семьдесят процентов</h2>
+    <p>Первый инструмент — калибровка. Прогнозист откалиброван, если из всех случаев, когда он сказал
+      «70%», событие случилось примерно в 70% из них. Собери свои прогнозы, разложи по кучкам и сверь:
+      по горизонтали — что ты обещал, по вертикали — как часто сбывалось. Идеал — диагональ. Если твои
+      «90%» сбываются лишь в семидесяти случаях из ста, ты самоуверен, и кривая проседает под
+      диагональ.<sup>[1]</sup></p>
+
+    <figure>
+      <svg viewBox="0 0 680 290" xmlns="http://www.w3.org/2000/svg">
+        <style>
+          .ax{stroke:#c9c5bb;stroke-width:1.2;}
+          .axl{font-family:'JetBrains Mono',monospace;font-size:12px;fill:#a8a499;}
+          .l{font-family:'Inter',sans-serif;font-size:13px;fill:#8c8a83;}
+          .lr{font-family:'Inter',sans-serif;font-size:13px;fill:#c44a32;}
+        </style>
+        <line class="ax" x1="200" y1="40" x2="200" y2="250"/>
+        <line class="ax" x1="200" y1="250" x2="440" y2="250"/>
+        <line x1="200" y1="250" x2="440" y2="40" stroke="#9a968c" stroke-width="1.6" stroke-dasharray="5,5"/>
+        <text x="446" y="44" class="l">идеал —</text>
+        <text x="446" y="60" class="l">диагональ</text>
+        <path d="M200 234 C 250 196, 300 150, 320 145 C 360 134, 400 96, 440 64"
+              fill="none" stroke="#c44a32" stroke-width="2.6"/>
+        <text x="446" y="120" class="lr">самоуверенность:</text>
+        <text x="446" y="136" class="lr">«90%» сбылись на 70%</text>
+        <text x="320" y="276" text-anchor="middle" class="axl">что ты обещал →</text>
+        <text x="188" y="150" text-anchor="middle" class="axl" transform="rotate(-90 188 150)">как часто сбылось →</text>
+        <text x="196" y="254" text-anchor="end" class="axl">0</text>
+        <text x="196" y="46" text-anchor="end" class="axl">100%</text>
+        <text x="440" y="266" text-anchor="middle" class="axl">100%</text>
+      </svg>
+      <figcaption>график калибровки: идеал — диагональ, кривая под ней — систематическая самоуверенность</figcaption>
+    </figure>
+
+    <p>Это, кстати, ровно та же ценность закрывающей линии из эссе про рынок: закрывающая цена
+      прекрасно откалибрована, и обыграть её — значит быть откалиброванным ещё точнее, чем вся толпа.</p>
+
+    <h2>шкала Бриера · одно честное число</h2>
+    <p>Но калибровки мало. Всегда называть базовую частоту — «дождь в среднем в 30% дней» — идеально
+      откалибровано и совершенно бесполезно: ты ни разу не сказал ничего конкретного. Нужно одно число,
+      которое награждает и за калибровку, и за решительность. Это шкала Бриера, придуманная Гленном
+      Бриером в 1950 году: средний квадрат ошибки между твоей вероятностью и исходом (1 — случилось,
+      0 — нет).<sup>[2]</sup></p>
+
+    <div class="math">
+      <div class="f">BS = (1/N) · Σ (p − y)<sup>2</sup></div>
+      <div class="f" style="margin-top:8px">три прогноза: 0.8 (сбылось) · 0.6 (нет) · 0.9 (сбылось)</div>
+      <div class="f" style="margin-top:6px">BS = ⅓·[(0.8−1)² + (0.6−0)² + (0.9−1)²] = ⅓·[0.04 + 0.36 + 0.01] = <span class="r">0.137</span></div>
+      <div class="w">ниже — лучше. больнее всего ударил средний прогноз: сказал «60%» тому, что не
+        случилось (<b>0.36</b>). уверенная ошибка штрафуется квадратом.</div>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bs-grad" x1="0" x2="1"><stop offset="0" stop-color="#c44a32"/><stop offset="1" stop-color="#d8d4ca"/></linearGradient>
+        </defs>
+        <rect x="40" y="40" width="600" height="18" fill="url(#bs-grad)"/>
+        <g font-family="JetBrains Mono,monospace" font-size="12" fill="#8c8a83">
+          <line x1="40" y1="36" x2="40" y2="62" stroke="#1a1a1a"/>
+          <text x="40" y="80" text-anchor="middle" fill="#c44a32">0</text>
+          <text x="40" y="96" text-anchor="middle">идеал</text>
+          <line x1="142" y1="36" x2="142" y2="62" stroke="#1a1a1a"/>
+          <text x="142" y="80" text-anchor="middle">0.17</text>
+          <text x="142" y="96" text-anchor="middle">суперпрогнозист</text>
+          <line x1="190" y1="36" x2="190" y2="62" stroke="#1a1a1a"/>
+          <text x="196" y="80" text-anchor="middle">0.25</text>
+          <text x="196" y="96" text-anchor="middle">наугад («50%»)</text>
+          <line x1="640" y1="36" x2="640" y2="62" stroke="#1a1a1a"/>
+          <text x="640" y="80" text-anchor="middle">1.0</text>
+          <text x="640" y="96" text-anchor="middle">уверенно неправ</text>
+        </g>
+        <text x="40" y="24" font-family="Inter,sans-serif" font-size="13" fill="#c44a32">← лучше</text>
+      </svg>
+      <figcaption>шкала Бриера: 0 — идеал, 0.25 — вечное «пятьдесят на пятьдесят», 1 — уверенная ошибка</figcaption>
+    </figure>
+
+    <p>Чем меньше — тем лучше: ноль это идеал, 0.25 — если всегда говоришь «50%» (то есть наугад),
+      единица — уверенно и мимо. И главная тонкость: шкала честная — обмануть её нельзя. Лучший балл
+      получаешь, называя ровно своё настоящее мнение; занижать или завышать ради красивой цифры
+      математически невыгодно.<sup>[3]</sup> Врать самому себе тут не окупается.</p>
+
+    <h2>суперпрогнозисты · дисциплина, а не гений</h2>
+    <p>Психолог Филип Тетлок устроил многолетние турниры прогнозов и нашёл «суперпрогнозистов» —
+      верхние пару процентов, у кого Бриер около 0.15–0.20 против примерно 0.26 у обычных
+      участников.<sup>[4]</sup> Сюрприз в том, что это не гении и не математики. Их отличает дисциплина:
+      прогнозировать числом, а не «скорее да»; часто и понемногу обновляться на новых данных; и —
+      главное — вести счёт своим прошлым прогнозам. А ещё, как и на рынке ставок, агрегат бьёт одиночку:
+      усреднение прогнозов точнее лучшего из них — та же мудрость толпы, что назначает закрывающую
+      линию.</p>
+
+    <h2>зачем это вне ставок</h2>
+    <p>Так замыкается серия. Рынок из эссе про коэффициент — это эталонно откалиброванный прогноз,
+      который ведёт счёт сам, деньгами. Перевес из прошлого эссе есть только тогда, когда твоя
+      вероятность калиброванее рыночной. А узнать это можно единственным способом — держа свой счёт по
+      Бриеру. Но самое важное здесь уже не про ставки. Почти никто не записывает свои предсказания
+      числом, поэтому никто не улучшается и не замечает, что водит себя за нос. Эксперт в телевизоре
+      никогда не ведёт счёт — оттого он всегда задним числом «прав».</p>
+
+    <blockquote>Вероятность — это обещание, которое реальность проверит. Но проверит на многих
+      попытках, а не на одной.</blockquote>
+
+    <p>Игрок, прогнозист и просто честно думающий человек делят одну дисциплину: назови число, запиши
+      его и веди счёт. Вопрос не «угадал ли я в этот раз», а «сбываются ли мои семьдесят процентов в
+      семидесяти случаях из ста». В этом вся разница между знанием и ощущением уверенности. Рынок ведёт
+      счёт автоматически — линия закрывается, деньги перетекают. За свою собственную голову счёт
+      придётся вести самому. И, пожалуй, это самый честный способ думать о будущем: не пророчествовать,
+      а ставить числа и потом смотреть, насколько ты в них был прав.</p>
+
+    <div class="margin">
+      <div class="mh">на полях</div>
+      <div class="fn"><span class="num">[1]</span>Калибровка: π(p) = P(событие | ты сказал p). Откалиброван, если π(p) ≈ p — то, чему ты дал 70%, сбывается в ~70%. График калибровки (reliability diagram): идеал — диагональ; кривая под ней — систематическая самоуверенность.</div>
+      <div class="fn"><span class="num">[2]</span>Шкала Бриера (Glenn W. Brier, 1950): BS = (1/N)·Σ(pᵢ − yᵢ)², где p — прогноз, y ∈ {0,1} — исход. Ниже лучше: 0 — идеал, 0.25 — постоянное «50%» (наугад на симметричном бинарном исходе), 1 — максимально уверенная ошибка.</div>
+      <div class="fn"><span class="num">[3]</span>Бриер — строго честное (strictly proper) правило: ожидаемый балл нельзя улучшить, называя что-либо, кроме своей настоящей оценки вероятности. Шкала также раскладывается на калибровку (reliability) и решительность (resolution): полезный прогноз бьёт базовую частоту.</div>
+      <div class="fn"><span class="num">[4]</span>Турниры Тетлока (Good Judgment Project): суперпрогнозисты (~верхние 2%) дают Бриер ~0.15–0.20 (индивидуально ~0.166) против ~0.26 у обычных; агрегирование прогнозов улучшает результат (~0.146) — мудрость толпы. Отличие — дисциплина (числовые прогнозы, частые обновления, ведение счёта), не интеллект.</div>
+    </div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="value-betting.html">плюсовое ожидание →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="who-sets-odds.html">кто назначает коэффициент →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="good-decisions.html">хорошие решения с плохими исходами →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/galton-board.html">доска Гальтона →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/who-sets-odds.html">кто назначает коэффициент →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/value-betting.html">плюсовое ожидание →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/good-decisions.html">Хорошие решения с плохими исходами →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/galton-board.html">доска Гальтона →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/is-forecast-right.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
