@@ -40,17 +40,6 @@
     font-size: 10px;
     letter-spacing: 0.08em;
   }
-  .essay-branch-label {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: #888;
-    text-transform: lowercase;
-    letter-spacing: 0.12em;
-    margin: 22px 0 10px 0;
-  }
-  .essay-list .essay-branch-label:first-child {
-    margin-top: 0;
-  }
   .essay-item .tag.applied { color: #2c5fb6; }
   .essay-categories { margin-top: 28px; }
 </style>
@@ -187,7 +176,7 @@
 
   <div class="essay-list">
 
-    <div class="essay-branch-label">// ветка: синтез · капстоун</div>
+    <div class="essay-branch-label">синтез · капстоун</div>
     <a class="essay-item" href="decisions-distance.html">
           <span class="date">2026.05</span>
           <span class="ttl">
@@ -198,7 +187,7 @@
         </a>
 
 
-    <div class="essay-branch-label">// ветка: решения под неопределённостью</div>
+    <div class="essay-branch-label">решения под неопределённостью</div>
     <a class="essay-item" href="uncertainty-knight.html">
           <span class="date">2026.05</span>
           <span class="ttl">
@@ -236,7 +225,7 @@
         </a>
 
 
-    <div class="essay-branch-label">// ветка: жизнь под неопределённостью</div>
+    <div class="essay-branch-label">жизнь под неопределённостью</div>
     <a class="essay-item" href="optionality.html">
           <span class="date">2026.05</span>
           <span class="ttl">
@@ -274,7 +263,7 @@
         </a>
 
 
-    <div class="essay-branch-label">// ветка: математика решений</div>
+    <div class="essay-branch-label">математика решений</div>
     <a class="essay-item" href="good-decisions.html">
           <span class="date">2026.05</span>
           <span class="ttl">
@@ -553,7 +542,7 @@
   </div>
 
   <div class="essay-list">
-    <div class="essay-branch-label">// ветка: зачем и что такое случайность</div>
+    <div class="essay-branch-label">зачем и что такое случайность</div>
     <a class="essay-item" href="why-simulation.html">
       <span class="date">2026.06</span>
       <span class="ttl">
@@ -590,7 +579,7 @@
           <span class="tag">математика · вероятность</span>
         </a>
 
-    <div class="essay-branch-label">// ветка: метод и история</div>
+    <div class="essay-branch-label">метод и история</div>
     <a class="essay-item" href="monte-carlo.html">
           <span class="date">2026.05</span>
           <span class="ttl">
@@ -618,7 +607,7 @@
       <span class="tag">вероятность · симуляция</span>
     </a>
 
-    <div class="essay-branch-label">// ветка: ресэмплинг · бутстрэп</div>
+    <div class="essay-branch-label">ресэмплинг · бутстрэп</div>
     <a class="essay-item" href="bootstrap.html">
       <span class="date">2026.06</span>
       <span class="ttl">
@@ -628,7 +617,7 @@
       <span class="tag">статистика · симуляция</span>
     </a>
 
-    <div class="essay-branch-label">// ветка: процессы и пределы</div>
+    <div class="essay-branch-label">процессы и пределы</div>
     <a class="essay-item" href="markov-chains.html">
           <span class="date">2026.05</span>
           <span class="ttl">
@@ -676,6 +665,8 @@
   </div>
 
   <div class="essay-list">
+    <div class="essay-branch-label">экономика платформ</div>
+
     <a class="essay-item" href="unit-economics.html">
           <span class="date">2026.05</span>
           <span class="ttl">
@@ -692,69 +683,6 @@
             <span class="sub">RTB · CPM/CPC/CPA · first-price · bid shading · ad load</span>
           </span>
           <span class="tag applied">ad-tech · аукционы</span>
-        </a>
-
-    <a class="essay-item" href="ab-testing.html">
-          <span class="date">2026.05</span>
-          <span class="ttl">
-            Почему p &lt; 0.05 — плохой порог
-            <span class="sub">A/B тестирование · ошибки I и II рода · мощность · размер эффекта</span>
-          </span>
-          <span class="tag applied">stats</span>
-        </a>
-
-    <a class="essay-item" href="forking-paths.html">
-          <span class="date">2026.06</span>
-          <span class="ttl">
-            сад расходящихся троп.
-            <span class="sub">p-hacking · peeking · множественные сравнения · Гельман-Локен</span>
-          </span>
-          <span class="tag applied">stats</span>
-        </a>
-
-    <a class="essay-item" href="replication-crisis.html">
-          <span class="date">2026.06</span>
-          <span class="ttl">
-            кризис воспроизводимости.
-            <span class="sub">Иоаннидис · базовая частота · file-drawer · p&lt;0.005 · репликация</span>
-          </span>
-          <span class="tag applied">stats</span>
-        </a>
-
-    <a class="essay-item" href="causality.html">
-          <span class="date">2026.05</span>
-          <span class="ttl">
-            Корреляция — не причинность
-            <span class="sub">diff-in-diff · инструментальные переменные · RDD · DAG</span>
-          </span>
-          <span class="tag applied">stats · causal</span>
-        </a>
-
-    <a class="essay-item" href="bayesian.html">
-          <span class="date">2026.05</span>
-          <span class="ttl">
-            Как обновлять убеждения
-            <span class="sub">теорема Байеса · prior и posterior · A/B тестирование · холодный старт</span>
-          </span>
-          <span class="tag applied">stats</span>
-        </a>
-
-    <a class="essay-item" href="bayes-four-faces.html">
-          <span class="date">2026.06</span>
-          <span class="ttl">
-            четыре лица теоремы Байеса.
-            <span class="sub">людьми · шансами · облаками · битами · хаб байесовской зоны</span>
-          </span>
-          <span class="tag applied">вероятность · аналитика</span>
-        </a>
-
-    <a class="essay-item" href="confusion-matrix.html">
-          <span class="date">2026.06</span>
-          <span class="ttl">
-            матрица ошибок.
-            <span class="sub">априор × данные ÷ фон · precision/recall · матрица 2×2 · антифрод · A/B</span>
-          </span>
-          <span class="tag applied">вероятность · аналитика</span>
         </a>
 
     <a class="essay-item" href="two-sided-markets.html">
@@ -793,6 +721,73 @@
           <span class="tag applied">математика · теория игр</span>
         </a>
 
+    <div class="essay-branch-label">причинность и эксперименты</div>
+
+    <a class="essay-item" href="causality.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Корреляция — не причинность
+            <span class="sub">diff-in-diff · инструментальные переменные · RDD · DAG</span>
+          </span>
+          <span class="tag applied">stats · causal</span>
+        </a>
+
+    <a class="essay-item" href="ab-testing.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Почему p &lt; 0.05 — плохой порог
+            <span class="sub">A/B тестирование · ошибки I и II рода · мощность · размер эффекта</span>
+          </span>
+          <span class="tag applied">stats</span>
+        </a>
+
+    <a class="essay-item" href="forking-paths.html">
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            сад расходящихся троп.
+            <span class="sub">p-hacking · peeking · множественные сравнения · Гельман-Локен</span>
+          </span>
+          <span class="tag applied">stats</span>
+        </a>
+
+    <a class="essay-item" href="replication-crisis.html">
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            кризис воспроизводимости.
+            <span class="sub">Иоаннидис · базовая частота · file-drawer · p&lt;0.005 · репликация</span>
+          </span>
+          <span class="tag applied">stats</span>
+        </a>
+
+    <div class="essay-branch-label">байесовское мышление</div>
+
+    <a class="essay-item" href="bayesian.html">
+          <span class="date">2026.05</span>
+          <span class="ttl">
+            Как обновлять убеждения
+            <span class="sub">теорема Байеса · prior и posterior · A/B тестирование · холодный старт</span>
+          </span>
+          <span class="tag applied">stats</span>
+        </a>
+
+    <a class="essay-item" href="bayes-four-faces.html">
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            четыре лица теоремы Байеса.
+            <span class="sub">людьми · шансами · облаками · битами · хаб байесовской зоны</span>
+          </span>
+          <span class="tag applied">вероятность · аналитика</span>
+        </a>
+
+    <a class="essay-item" href="confusion-matrix.html">
+          <span class="date">2026.06</span>
+          <span class="ttl">
+            матрица ошибок.
+            <span class="sub">априор × данные ÷ фон · precision/recall · матрица 2×2 · антифрод · A/B</span>
+          </span>
+          <span class="tag applied">вероятность · аналитика</span>
+        </a>
+
   </div>
 
   <div class="essay-section-header" id="s07">
@@ -805,7 +800,7 @@
 
   <div class="essay-list">
 
-    <div class="essay-branch-label">// ветка: числа</div>
+    <div class="essay-branch-label">числа</div>
     <a class="essay-item" href="primes-mystery.html">
           <span class="date">2026.05</span>
           <span class="ttl">
@@ -861,7 +856,7 @@
         </a>
 
 
-    <div class="essay-branch-label">// ветка: бесконечность · основания</div>
+    <div class="essay-branch-label">бесконечность · основания</div>
     <a class="essay-item" href="infinity.html">
           <span class="date">2026.04</span>
           <span class="ttl">
@@ -944,7 +939,7 @@
         </a>
 
 
-    <div class="essay-branch-label">// ветка: эссе при объектах</div>
+    <div class="essay-branch-label">эссе при объектах</div>
     <a class="essay-item" href="../objects/numbers/constants/pi.html#essay">
           <span class="date">2026.04</span>
           <span class="ttl">
