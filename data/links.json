@@ -1875,6 +1875,13 @@
       "title": "прав ли прогноз",
       "url": "/null/essays/is-forecast-right.html",
       "glyph": "◎"
+    },
+    {
+      "id": "vi-p-hacking",
+      "type": "visual",
+      "title": "песочница p-hacking",
+      "url": "/null/visuals/p-hacking.html",
+      "glyph": "⚗"
     }
   ],
   "edges": [
@@ -6889,6 +6896,46 @@
     {
       "from": "vi-galton",
       "to": "es-is-forecast-right"
+    },
+    {
+      "from": "vi-p-hacking",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "vi-p-hacking"
+    },
+    {
+      "from": "vi-p-hacking",
+      "to": "st-brn"
+    },
+    {
+      "from": "st-brn",
+      "to": "vi-p-hacking"
+    },
+    {
+      "from": "vi-p-hacking",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "vi-p-hacking"
+    },
+    {
+      "from": "vi-p-hacking",
+      "to": "es-small-num"
+    },
+    {
+      "from": "es-small-num",
+      "to": "vi-p-hacking"
+    },
+    {
+      "from": "vi-p-hacking",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "vi-p-hacking"
     }
   ]
 }

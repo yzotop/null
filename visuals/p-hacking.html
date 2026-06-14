@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>песочница p-hacking — null/visuals</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .phack { max-width: 720px; margin-top: 8px; line-height: 1.6; }
+  .phack .label{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:lowercase;color:#8c8a83;margin-bottom:16px;}
+  .phack h1{font-family:'IM Fell English',Georgia,serif;font-style:italic;font-weight:400;font-size:46px;line-height:1.05;margin-bottom:16px;}
+  .phack h1 em{color:var(--accent-red);font-style:italic;}
+  .phack .intro{font-family:var(--font-text);font-size:18px;color:#444;margin-bottom:26px;line-height:1.55;}
+  .phack .intro b{color:var(--ink);}
+
+  .phack .data{border:1px solid var(--ink);background:#fff;padding:20px 22px 14px;}
+  .phack .data .dhead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;}
+  .phack .data .dhead .t{font-weight:600;font-size:15px;}
+  .phack .data .dhead .same{font-family:var(--font-mono);font-size:12px;color:#8c8a83;}
+  .phack .data svg{display:block;width:100%;height:auto;}
+  .phack .data .legend{display:flex;gap:22px;font-family:var(--font-mono);font-size:12px;color:#555;margin-top:6px;flex-wrap:wrap;}
+  .phack .data .legend .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;}
+
+  .phack .score{border:1px solid var(--ink);border-top:0;background:#fff;padding:16px 22px 18px;text-align:center;}
+  .phack .score .pv{font-family:var(--font-mono);font-weight:700;font-size:52px;line-height:1;transition:color .25s;}
+  .phack .score .pv.sig{color:#3a7d44;} .phack .score .pv.nsig{color:var(--accent-red);}
+  .phack .score .verdict{font-family:var(--font-mono);font-size:14px;margin-top:8px;letter-spacing:.03em;}
+  .phack .score .verdict.sig{color:#3a7d44;} .phack .score .verdict.nsig{color:var(--accent-red);}
+  .phack .pscale{height:10px;background:linear-gradient(to right,#3a7d44 0 5%,#e8e5dd 5% 100%);position:relative;margin:14px 0 4px;border:1px solid var(--border);}
+  .phack .pscale .mark{position:absolute;top:-5px;width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:9px solid var(--ink);transform:translateX(-50%);transition:left .25s;pointer-events:none;}
+  .phack .pscale-lbl{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11px;color:#8c8a83;}
+
+  .phack .catch{font-family:var(--font-mono);font-size:13px;margin-top:14px;padding:11px 14px;border:1px dashed var(--accent-red);
+    background:rgba(196,74,50,.08);color:var(--accent-red);line-height:1.5;display:none;}
+  .phack .catch.show{display:block;}
+  .phack .catch b{font-weight:700;}
+
+  .phack .panel{border:1px solid var(--ink);border-top:0;background:#fff;padding:6px 22px 20px;margin-bottom:18px;}
+  .phack .ctl{padding:15px 0;border-bottom:1px solid var(--border);position:relative;}
+  .phack .ctl:last-child{border-bottom:0;}
+  .phack .ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .phack .ctl .name{font-weight:600;font-size:15px;}
+  .phack .ctl .val{font-family:var(--font-mono);font-size:14px;color:var(--accent-red);font-weight:700;}
+  .phack .ctl .desc{font-size:13px;color:#8c8a83;line-height:1.45;margin-top:3px;}
+  .phack input[type=range]{width:100%;margin-top:10px;accent-color:var(--accent-red);height:4px;position:relative;z-index:1;}
+  .phack .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
+  .phack button{font-family:var(--font-mono);font-size:13px;border:1px solid var(--ink);background:#f7f6f2;color:var(--ink);
+    padding:9px 15px;cursor:pointer;transition:all .15s;}
+  .phack button:hover{background:var(--ink);color:#f7f6f2;}
+  .phack button.act{background:var(--accent-red);color:#fff;border-color:var(--accent-red);}
+  .phack .toggle{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:15px;font-weight:600;}
+  .phack .toggle input{width:18px;height:18px;accent-color:var(--accent-red);cursor:pointer;flex-shrink:0;}
+
+  .phack .tries{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:13px;
+    background:#f7f6f2;border:1px solid var(--border);padding:10px 14px;margin-top:12px;gap:12px;flex-wrap:wrap;}
+  .phack .tries .n{font-weight:700;font-size:18px;color:var(--accent-red);}
+  .phack .tries .hit{color:#3a7d44;font-weight:700;}
+
+  .phack .note{font-family:var(--font-mono);font-size:13px;color:#555;background:rgba(196,74,50,.08);border-left:2px solid var(--accent-red);
+    padding:12px 16px;margin:18px 0;line-height:1.6;}
+  .phack .note b{color:var(--accent-red);}
+  .phack .viz-foot{display:flex;justify-content:space-between;align-items:baseline;margin-top:30px;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;color:#8c8a83;gap:12px;flex-wrap:wrap;}
+  .phack .viz-foot .brand{letter-spacing:.3em;color:var(--ink);} .phack .viz-foot .brand em{color:var(--accent-red);font-style:normal;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="../essays/">эссе</a>
+    <a href="./" class="active">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / visuals / песочница p-hacking</div>
+
+<main class="container">
+<article>
+
+  <div class="phack">
+    <div class="label">визуал · статистика · интерактив</div>
+    <h1>песочница <em>p-hacking</em>.</h1>
+    <div class="intro">Две кнопки — синяя и зелёная. Игроки кликают одинаково: <b>разницы между ними нет вообще</b>.
+      Внизу — данные двух групп: точки вперемешку, никакого эффекта. Задача-провокация: всё равно
+      «доказать», что одна кнопка лучше. Крути ручки и следи за двумя числами — p-value и <b>счётчиком
+      попыток</b>.</div>
+
+    <div class="data">
+      <div class="dhead"><span class="t">данные эксперимента</span><span class="same" id="same">средние почти совпадают</span></div>
+      <svg id="plot" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div class="legend">
+        <span><span class="dot" style="background:#3b6ea5"></span>группа A · плацебо</span>
+        <span><span class="dot" style="background:#c44a32"></span>группа B · «новая кнопка»</span>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="pv nsig" id="pv">0.50</div>
+      <div class="verdict nsig" id="verdict">не значимо — разницы не видно</div>
+      <div class="pscale"><div class="mark" id="mark" style="left:50%"></div></div>
+      <div class="pscale-lbl"><span>0</span><span>← порог 0.05</span><span>1.0</span></div>
+      <div class="catch" id="catch"></div>
+    </div>
+
+    <div class="panel">
+      <div class="ctl">
+        <div class="top"><span class="name">подсмотреть и добрать данных</span><span class="val" id="nval">50 / группа</span></div>
+        <div class="desc">«ещё не значимо? доберу наблюдений и проверю снова» — подглядывание (peeking).</div>
+        <input type="range" id="n" min="20" max="2000" value="50" step="10">
+      </div>
+      <div class="ctl">
+        <div class="top"><span class="name">перебрать метрики</span><span class="val" id="mval">метрика 1 из 20</span></div>
+        <div class="desc">меряешь 20 разных «успехов» (клики, время, возвраты…) и берёшь ту, где повезло.</div>
+        <input type="range" id="m" min="1" max="20" value="1" step="1">
+      </div>
+      <div class="ctl">
+        <div class="top"><span class="name">отбросить «выбросы»</span><span class="val" id="oval">0%</span></div>
+        <div class="desc">убираешь неудобные хвосты под предлогом «аномалии», пока картина не улучшится.</div>
+        <input type="range" id="o" min="0" max="20" value="0" step="1">
+      </div>
+      <div class="ctl">
+        <label class="toggle"><input type="checkbox" id="sub2"> разрезать на подгруппы</label>
+        <div class="desc">«а у женщин 25–34 из Москвы по вторникам — сработало!» срезы плодят ложные находки.</div>
+      </div>
+
+      <div class="tries">
+        <span>попыток «найти» эффект: <span class="n" id="tries">1</span></span>
+        <span id="hitlbl"></span>
+      </div>
+      <div class="btnrow" style="margin-top:12px">
+        <button type="button" id="roll">⟳ честный эксперимент заново</button>
+        <button type="button" id="hack" class="act">⚡ дожать до p &lt; 0.05</button>
+      </div>
+    </div>
+
+    <div class="note"><b>в этом и обман.</b> Данные A и B приходят из одного распределения — настоящей
+      разницы нет ни на одной ручке. Каждое движение — это просто <b>новая попытка</b> поймать эффект в
+      шуме. Сделай 20 попыток — и одна случайно даст p&lt;0.05 (это и есть смысл «5%»). Значимость,
+      выловленная перебором, — артефакт поиска, а не открытие.</div>
+
+    <div class="viz-foot"><span>p &lt; 0.05 ≠ «я прав». это «при отсутствии эффекта так редко»</span><span class="brand">n<em>u</em>ll</span></div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/ab-testing.html">почему p &lt; 0.05 — плохой порог →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/biases/base-rate-neglect.html">ошибка базовой частоты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/small-numbers.html">закон малых чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../essays/good-decisions.html">хорошие решения с плохими исходами →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/biases/base-rate-neglect.html">ошибка базовой частоты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/small-numbers.html">Закон малых чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/ab-testing.html">Почему p < 0.05 — плохой порог →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/good-decisions.html">Хорошие решения с плохими исходами →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/visuals/p-hacking.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+<script>
+(function(){
+  const el=id=>document.getElementById(id);
+  function erf(x){ const t=1/(1+0.3275911*Math.abs(x));
+    const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x);
+    return x>=0?y:-y; }
+  function ncdf(x){ return 0.5*(1+erf(x/Math.SQRT2)); }
+  function mean(a){ return a.reduce((s,x)=>s+x,0)/a.length; }
+  function varc(a,m){ return a.reduce((s,x)=>s+(x-m)*(x-m),0)/Math.max(1,(a.length-1)); }
+  function welchP(a,b){
+    const ma=mean(a),mb=mean(b),va=varc(a,ma),vb=varc(b,mb);
+    const se=Math.sqrt(va/a.length+vb/b.length);
+    if(!se) return 1;
+    const t=(mb-ma)/se;
+    return Math.max(0,Math.min(1, 2*(1-ncdf(Math.abs(t)))));
+  }
+  const METRICS=20;
+  let metricSeeds=[];
+  function reseed(){ metricSeeds=[]; for(let i=0;i<METRICS;i++) metricSeeds.push(1+Math.random()*1e6); }
+  reseed();
+  function sample(n, mi){
+    let s=metricSeeds[mi];
+    function r(){ s=(s*9301+49297)%233280; return s/233280; }
+    function rn(){ let u=0,v=0; while(!u)u=r(); while(!v)v=r(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
+    const A=[],B=[];
+    for(let i=0;i<n;i++){ A.push(50+8*rn()); B.push(50+8*rn()); }
+    return {A,B};
+  }
+  function trim(arr,pct){ if(pct<=0) return arr; const k=Math.floor(arr.length*pct/100);
+    const s=[...arr].sort((x,y)=>x-y); return s.slice(k, arr.length-k); }
+
+  const nS=el('n'), mS=el('m'), oS=el('o'), subC=el('sub2');
+  let tries=1, lastSig=false;
+
+  function build(){
+    const n=+nS.value, mi=(+mS.value)-1, op=+oS.value;
+    let {A,B}=sample(n,mi);
+    A=trim(A,op); B=trim(B,op);
+    let p=welchP(A,B), used={mi:+mS.value,n,op,sub:false};
+    if(subC.checked){
+      let best=p, bestCut=1;
+      for(let g=0; g<6; g++){
+        const cut=0.4+ (g/6)*0.4;
+        const aa=A.slice(0,Math.max(8,Math.floor(A.length*cut)));
+        const bb=B.slice(0,Math.max(8,Math.floor(B.length*cut)));
+        const pp=welchP(aa,bb); if(pp<best){best=pp;bestCut=cut;}
+      }
+      p=best; used.sub=true;
+    }
+    return {A,B,p,used,ma:mean(A),mb:mean(B)};
+  }
+
+  function draw(A,B){
+    const W=680,H=150,L=20,R=660,T=18,Bt=110;
+    const all=A.concat(B); let lo=Math.min(...all),hi=Math.max(...all); if(hi-lo<1){hi+=1;lo-=1;}
+    const x=v=>L+(v-lo)/(hi-lo)*(R-L);
+    function jitter(arr,color){
+      return arr.map(v=>{
+        const cy=T+ Math.random()*(Bt-T);
+        return `<circle cx="${x(v).toFixed(1)}" cy="${cy.toFixed(1)}" r="3.1" fill="${color}" fill-opacity="0.5"/>`;
+      }).join('');
+    }
+    const ma=mean(A), mb=mean(B);
+    const meanLine=(v,color)=>`<line x1="${x(v).toFixed(1)}" y1="${T-4}" x2="${x(v).toFixed(1)}" y2="${Bt+4}" stroke="${color}" stroke-width="2"/>`;
+    el('plot').innerHTML =
+      jitter(A,'#3b6ea5')+jitter(B,'#c44a32')+
+      meanLine(ma,'#3b6ea5')+meanLine(mb,'#c44a32')+
+      `<text x="${x(ma).toFixed(1)}" y="134" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="12" fill="#3b6ea5">A</text>`+
+      `<text x="${x(mb).toFixed(1)}" y="146" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="12" fill="#c44a32">B</text>`;
+    const gap=Math.abs(ma-mb), pooled=Math.sqrt((varc(A,ma)+varc(B,mb))/2);
+    const tail = gap < 0.35*pooled ? ' — почти совпадают' : ' — разрыв от перебора, но это шум';
+    el('same').textContent='средние: A='+ma.toFixed(1)+' · B='+mb.toFixed(1)+tail;
+  }
+
+  function render(st, countTry){
+    draw(st.A, st.B);
+    const p=st.p, sig=p<0.05;
+    el('pv').textContent=p.toFixed(p<0.0001?6:4);
+    el('pv').className='pv '+(sig?'sig':'nsig');
+    el('verdict').textContent=sig?'✓ «статистически значимо!» (но эффекта-то нет)':'не значимо — разницы не видно';
+    el('verdict').className='verdict '+(sig?'sig':'nsig');
+    el('mark').style.left=(Math.min(p,1)*100)+'%';
+    el('nval').textContent=nS.value+' / группа';
+    el('mval').textContent='метрика '+mS.value+' из 20';
+    el('oval').textContent=oS.value+'%';
+
+    if(countTry){ tries++; el('tries').textContent=tries; }
+    const c=el('catch');
+    if(sig){
+      c.className='catch show';
+      c.innerHTML='⚠ «значимость» получена с <b>'+tries+'-й попытки</b> на данных, где эффекта нет. '+
+        'это не открытие — это шум, пойманный перебором ('+describe(st.used)+').';
+      el('hitlbl').innerHTML='<span class="hit">✓ ложная находка!</span>';
+    } else {
+      c.className='catch'; el('hitlbl').innerHTML='';
+    }
+  }
+  function describe(u){
+    const parts=[];
+    if(u.mi!==1) parts.push('метрика '+u.mi);
+    if(u.n!==50) parts.push(u.n+' набл.');
+    if(u.op>0) parts.push('обрезка '+u.op+'%');
+    if(u.sub) parts.push('подгруппы');
+    return parts.length?parts.join(', '):'просто повезло';
+  }
+
+  function onTweak(){ render(build(), true); }
+  [nS,mS,oS].forEach(s=>s.addEventListener('input', onTweak));
+  subC.addEventListener('change', onTweak);
+
+  el('roll').addEventListener('click',()=>{
+    reseed(); nS.value=50; mS.value=1; oS.value=0; subC.checked=false;
+    tries=1; el('tries').textContent=1;
+    render(build(), false);
+  });
+
+  el('hack').addEventListener('click',()=>{
+    const combos=[];
+    for(let mi=1;mi<=METRICS;mi++) for(const nn of [50,120,300,800,1500]) for(const oo of [0,5,10,15]) combos.push([mi,nn,oo]);
+    let attempts=0, done=false;
+    for(const [mi,nn,oo] of combos){
+      attempts++;
+      mS.value=mi; nS.value=nn; oS.value=oo;
+      const st=build();
+      if(st.p<0.05){ tries+=attempts; el('tries').textContent=tries; render(st,false); done=true; break; }
+    }
+    if(!done){ subC.checked=true; tries+=attempts; el('tries').textContent=tries; render(build(),false); }
+  });
+
+  render(build(), false);
+})();
+</script>
+
+</body>
+</html>
