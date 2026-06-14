@@ -1882,6 +1882,13 @@
       "title": "песочница p-hacking",
       "url": "/null/visuals/p-hacking.html",
       "glyph": "⚗"
+    },
+    {
+      "id": "es-forking-paths",
+      "type": "essay",
+      "title": "сад расходящихся троп",
+      "url": "/null/essays/forking-paths.html",
+      "glyph": "⑃"
     }
   ],
   "edges": [
@@ -6936,6 +6943,46 @@
     {
       "from": "es-good-dec",
       "to": "vi-p-hacking"
+    },
+    {
+      "from": "es-forking-paths",
+      "to": "vi-p-hacking"
+    },
+    {
+      "from": "vi-p-hacking",
+      "to": "es-forking-paths"
+    },
+    {
+      "from": "es-forking-paths",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "es-forking-paths"
+    },
+    {
+      "from": "es-forking-paths",
+      "to": "st-brn"
+    },
+    {
+      "from": "st-brn",
+      "to": "es-forking-paths"
+    },
+    {
+      "from": "es-forking-paths",
+      "to": "es-small-num"
+    },
+    {
+      "from": "es-small-num",
+      "to": "es-forking-paths"
+    },
+    {
+      "from": "es-forking-paths",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "es-forking-paths"
     }
   ]
 }

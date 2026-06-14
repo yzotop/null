@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>сад расходящихся троп — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .forking {
+    --paper: #f7f6f2;
+    --ink: #1a1a1a;
+    --dim: #8c8a83;
+    --line: #dcd9d0;
+    --accent: #c44a32;
+    --serif: 'IM Fell English', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    width: 100%;
+    max-width: 680px;
+    margin-top: 8px;
+    font-family: var(--sans);
+    color: var(--ink);
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+  .forking * { box-sizing: border-box; }
+
+  .forking .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: lowercase;
+    color: var(--dim);
+    margin-bottom: 18px;
+  }
+  .forking h1 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.04;
+    letter-spacing: -.01em;
+    margin-bottom: 20px;
+  }
+  .forking h1 em { color: var(--accent); }
+  .forking .lead {
+    font-size: 20px;
+    line-height: 1.55;
+    color: #444;
+    margin-bottom: 30px;
+  }
+  .forking h2 {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: lowercase;
+    color: var(--accent);
+    margin: 46px 0 16px;
+  }
+  .forking p { font-size: 17px; margin-bottom: 18px; }
+  .forking p.first::first-letter {
+    font-family: var(--serif);
+    font-size: 62px;
+    float: left;
+    line-height: .82;
+    padding: 6px 10px 0 0;
+    color: var(--accent);
+  }
+  .forking em.t { font-style: italic; color: var(--accent); }
+  .forking b { font-weight: 600; }
+
+  .forking figure {
+    margin: 14px 0 24px;
+    border: 1px solid var(--ink);
+    background: #fff;
+  }
+  .forking figure svg { display: block; width: 100%; height: auto; }
+  .forking figcaption {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--dim);
+    padding: 11px 16px;
+    border-top: 1px solid var(--line);
+    letter-spacing: .02em;
+  }
+
+  .forking .math {
+    background: #fff;
+    border: 1px solid var(--ink);
+    padding: 20px 22px;
+    margin: 10px 0 20px;
+  }
+  .forking .math .f {
+    font-family: var(--mono);
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.6;
+    text-align: center;
+  }
+  .forking .math .f .r { color: var(--accent); }
+  .forking .math .w {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--dim);
+    margin-top: 12px;
+    line-height: 1.6;
+    border-top: 1px solid var(--line);
+    padding-top: 11px;
+  }
+  .forking .math .w b { color: var(--accent); font-weight: 500; }
+
+  .forking blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding: 6px 0 6px 22px;
+    margin: 28px 0;
+  }
+
+  .forking .plate {
+    border: 1px solid var(--ink);
+    background: #fff;
+    padding: 16px 18px;
+    margin: 22px 0;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .forking .plate .ph {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: lowercase;
+    color: var(--dim);
+    margin-bottom: 8px;
+  }
+  .forking .plate a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+  }
+
+  .forking .margin {
+    margin-top: 48px;
+    border-top: 1px solid var(--ink);
+    padding-top: 22px;
+  }
+  .forking .margin .mh {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: lowercase;
+    color: var(--dim);
+    margin-bottom: 14px;
+  }
+  .forking .margin .fn {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 11px;
+    line-height: 1.5;
+  }
+  .forking .margin .fn .num {
+    font-family: var(--mono);
+    color: var(--accent);
+    margin-right: 8px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / сад расходящихся троп</div>
+
+<main class="container">
+<article>
+
+  <div class="forking">
+    <div class="label">эссе · статистика · A/B · ~12 мин</div>
+    <h1>сад расходящихся <em>троп</em>.</h1>
+    <div class="lead">p-value обещает простую защиту: если эффекта нет, значимый результат выпадет
+      реже чем раз на двадцать. Гарантия железная — но ровно для одной заранее назначенной проверки.
+      А стоит дать себе свободу выбора — какую метрику смотреть, когда остановиться, какие выбросы
+      убрать — и пятипроцентная защита тихо рассыпается. Разберём три способа обмануться, не
+      обманывая.</div>
+
+    <p class="first">Сначала вспомним, что вообще гарантирует p. Это вероятность увидеть такой
+      результат (или ярче), <b>если эффекта нет</b>. Порог 0.05 значит: при пустой гипотезе мы ошибочно
+      закричим «нашли!» в одном случае из двадцати. Один тест — один шанс ошибиться из двадцати,
+      честно. Беда начинается, когда тестов незаметно становится много.</p>
+
+    <h2>грех первый · перебрать метрики</h2>
+    <p>Меряешь не одну метрику, а двадцать: клики, время на странице, возвраты, глубина, конверсия в
+      каждом шаге. Эффекта нет ни в одной — но каждая проверка независимо ошибается с вероятностью 5%.
+      Шанс, что <em class="t">хоть одна</em> случайно выстрелит, уже совсем другой.</p>
+
+    <div class="math">
+      <div class="f">P(хоть одна значима) = 1 − (1 − 0.05)<sup>20</sup> ≈ <span class="r">64%</span></div>
+      <div class="w">из 20 невинных метрик почти наверняка <b>одна</b> даст p&lt;0.05 случайно. берёшь её,
+        пишешь «новая кнопка повысила вовлечённость» — и ты соврал, ничего не подтасовав.</div>
+    </div>
+
+    <p>Это классика, увековеченная комиксом xkcd: учёные проверяют, вызывают ли желейки прыщи. Зелёные
+      — p&lt;0.05! Газета выходит с заголовком «зелёные желейки связаны с прыщами», а двадцать других
+      цветов, где ничего не нашли, тихо остаются за кадром.<sup>[1]</sup></p>
+
+    <h2>грех второй · подглядывать и доливать</h2>
+    <p>Запустил A/B и смотришь каждый день: «уже значимо? нет — подожду ещё». А останавливаешь ровно в
+      тот день, когда наконец загорелось зелёное. Кажется невинным — ты же просто дожидался данных. Но
+      это <b>подглядывание</b> (peeking, optional stopping), и оно раздувает ошибку само по себе:
+      p-value по ходу набора блуждает случайно, и рано или поздно <em class="t">само</em> нырнёт под
+      0.05, даже когда эффекта нет. Ты дожидаешься не правды — ты дожидаешься удобной
+      флуктуации.<sup>[2]</sup></p>
+
+    <figure>
+      <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg">
+        <style>
+          .fork-ax{stroke:#c9c5bb;stroke-width:1.2;}
+          .fork-axl{font-family:'JetBrains Mono',monospace;font-size:12px;fill:#a8a499;}
+          .fork-lbl{font-family:'Inter',sans-serif;font-size:13px;fill:#8c8a83;}
+        </style>
+        <line class="fork-ax" x1="56" y1="40" x2="640" y2="40"/>
+        <line class="fork-ax" x1="56" y1="200" x2="640" y2="200"/>
+        <line x1="56" y1="172" x2="640" y2="172" stroke="#c44a32" stroke-width="1.4" stroke-dasharray="5,4"/>
+        <text x="636" y="166" text-anchor="end" class="fork-lbl" fill="#c44a32">порог 0.05</text>
+        <text x="50" y="44" text-anchor="end" class="fork-axl">1.0</text>
+        <text x="50" y="204" text-anchor="end" class="fork-axl">0</text>
+        <path d="M60 96 C 110 70, 150 130, 190 110 C 230 92, 270 150, 310 132
+                 C 350 118, 380 188, 400 184 C 420 180, 450 120, 500 108
+                 C 550 96, 600 130, 636 120"
+              fill="none" stroke="#1a1a1a" stroke-width="2.2"/>
+        <circle cx="400" cy="184" r="6" fill="#c44a32"/>
+        <text x="400" y="222" text-anchor="middle" class="fork-lbl" fill="#c44a32">«стоп! значимо»</text>
+        <text x="60" y="226" class="fork-lbl">смотришь каждый день — p блуждает, пока не нырнёт под порог →</text>
+      </svg>
+      <figcaption>подглядывание: p по ходу теста блуждает; останови на удачном нырке — и «поймал» эффект из ничего</figcaption>
+    </figure>
+
+    <h2>грех третий · развилки, даже без злого умысла</h2>
+    <p>Самый тонкий грех — и оттого самый опасный. Даже если ты честно поставил <b>один</b> тест и
+      заглянул в данные <b>один</b> раз, обмануться всё равно можно. Потому что по дороге ты принял
+      десяток мелких решений, подсказанных самими данными: какой выброс счесть аномалией, где провести
+      границу групп, объединять ли две недели или взять одну, логарифмировать ли скошенную метрику.
+      Каждое такое решение — развилка.</p>
+    <p>Эндрю Гельман и Эрик Локен назвали это <em class="t">садом расходящихся троп</em>: даже единственный
+      анализ скрыто содержит проблему множественных сравнений, потому что <b>будь данные другими, ты
+      свернул бы иначе</b>.<sup>[3]</sup> Ты прошёл по одной тропинке сада, но веток было много — и
+      значимость, найденная на этой тропе, учитывает только её, а не весь сад. Это не подтасовка: так
+      ошибаются и добросовестные исследователи, искренне уверенные, что сделали одну честную проверку.</p>
+
+    <blockquote>Анализ чист, только если ты сделал бы его точно так же при любых других данных. Если
+      данные вели тебя за руку — развилок было много, даже когда тест один.</blockquote>
+
+    <h2>что общего · свобода ломает гарантию</h2>
+    <p>Три греха — одна болезнь под названием <b>степени свободы исследователя</b>. Пятипроцентная
+      защита p верна ровно для <em class="t">одной заранее зафиксированной</em> проверки. Любая
+      гибкость — выбор метрики, момента остановки, обработки, среза — превращает один тест в скрытую
+      россыпь тестов, и реальная доля ложных тревог взлетает с обещанных 5% куда выше.</p>
+    <p>Лечится это не формулой, а дисциплиной — причём до того, как ты увидел данные.
+      <b>Предрегистрация</b>: заранее напиши, какую метрику и какой тест смотришь, когда
+      останавливаешься, что считаешь выбросом, — и держись плана. <b>Поправки на множественность</b>
+      (Бонферрони, FDR) ужесточают порог под число проверок. <b>Разделяй разведку и подтверждение</b>:
+      рой данные сколько угодно, но гипотезу, рождённую в рытье, проверяй заново на свежих данных. Суть
+      одна — заранее лишить себя развилок, на которых так легко обмануться.<sup>[4]</sup></p>
+
+    <div class="plate">
+      <div class="ph">рядом по теме</div>
+      Поиграть в это руками можно в песочнице <a href="../visuals/p-hacking.html">p-hacking</a>: там A/B
+      без эффекта дожимается до значимости теми же ручками. А про то, почему сам порог 0.05 — слабая
+      улика, — в эссе <a href="ab-testing.html">«почему p &lt; 0.05 — плохой порог»</a>.
+    </div>
+
+    <p>Мораль, которую стоит унести: значимость — не печать истины, а узкое обещание про один-единственный
+      тест. Чем больше свободы ты дал себе после того, как заглянул в данные, тем меньше это обещание
+      стоит. Хочешь, чтобы p что-то значил, — реши всё до того, как посмотришь.</p>
+
+    <div class="margin">
+      <div class="mh">на полях</div>
+      <div class="fn"><span class="num">[1]</span>Множественные сравнения: при k независимых проверках P(хотя бы одна ложно значима) = 1−(1−α)^k; для α=0.05, k=20 → ≈64%. Иллюстрация — xkcd #882 «Significant» (зелёные желейки и прыщи): из 20 цветов один случайно даёт p&lt;0.05, и только он попадает в заголовок.</div>
+      <div class="fn"><span class="num">[2]</span>Подглядывание (optional stopping / peeking): остановка теста по достижении значимости раздувает ошибку I рода — при наборе данных p блуждает и при многократной проверке почти наверняка хоть раз нырнёт под порог. Лечится последовательными методами (alpha spending, групповые последовательные тесты) или фиксацией размера выборки заранее.</div>
+      <div class="fn"><span class="num">[3]</span>«Сад расходящихся троп» (Andrew Gelman & Eric Loken, 2013): множественные сравнения — проблема даже при единственном анализе и единственном взгляде на данные, если выбор метода зависел от данных. Условие чистоты: анализ был бы тем же при любых других данных. Контраст с осознанным p-hacking — здесь нет умысла, эффект тот же.</div>
+      <div class="fn"><span class="num">[4]</span>Лечение: предрегистрация (зафиксировать метрику, тест, правило остановки, критерии выбросов заранее), поправки на множественность (Бонферрони делит α на число тестов; FDR контролирует долю ложных открытий), разделение разведочного и подтверждающего анализа (split-sample).</div>
+    </div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/p-hacking.html">песочница p-hacking →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">почему p &lt; 0.05 — плохой порог →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/biases/base-rate-neglect.html">ошибка базовой частоты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="small-numbers.html">закон малых чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/biases/base-rate-neglect.html">ошибка базовой частоты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/small-numbers.html">Закон малых чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/ab-testing.html">Почему p < 0.05 — плохой порог →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/p-hacking.html">песочница p-hacking →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/forking-paths.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
