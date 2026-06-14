@@ -1882,6 +1882,13 @@
       "title": "кто назначает коэффициент",
       "url": "/null/essays/who-sets-odds.html",
       "glyph": "⇅"
+    },
+    {
+      "id": "es-value-betting",
+      "type": "essay",
+      "title": "плюсовое ожидание",
+      "url": "/null/essays/value-betting.html",
+      "glyph": "↗"
     }
   ],
   "edges": [
@@ -6844,6 +6851,46 @@
     {
       "from": "es-elo",
       "to": "es-who-sets-odds"
+    },
+    {
+      "from": "es-value-betting",
+      "to": "es-who-sets-odds"
+    },
+    {
+      "from": "es-who-sets-odds",
+      "to": "es-value-betting"
+    },
+    {
+      "from": "es-value-betting",
+      "to": "es-bookmaker-bayes"
+    },
+    {
+      "from": "es-bookmaker-bayes",
+      "to": "es-value-betting"
+    },
+    {
+      "from": "es-value-betting",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "es-value-betting"
+    },
+    {
+      "from": "es-value-betting",
+      "to": "vi-lln"
+    },
+    {
+      "from": "vi-lln",
+      "to": "es-value-betting"
+    },
+    {
+      "from": "es-value-betting",
+      "to": "es-poker-kelly"
+    },
+    {
+      "from": "es-poker-kelly",
+      "to": "es-value-betting"
     }
   ]
 }
