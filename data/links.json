@@ -414,17 +414,10 @@
       "glyph": "◈"
     },
     {
-      "id": "mu-dm",
-      "type": "music",
-      "title": "DELTA MACHINE",
-      "url": "/null/music/delta-machine/",
-      "glyph": "δ"
-    },
-    {
       "id": "mu-opstack",
       "type": "music",
       "title": "OPERATOR STACK",
-      "url": "/null/music/delta-machine/operator-stack.html",
+      "url": "/null/music/operator-stack.html",
       "glyph": "∑"
     },
     {
@@ -529,35 +522,28 @@
       "id": "mu-dip",
       "type": "music",
       "title": "Delta Initiation Protocol",
-      "url": "/null/music/delta-machine/delta-initiation-protocol.html",
+      "url": "/null/music/delta-initiation-protocol.html",
       "glyph": "δ"
     },
     {
       "id": "mu-8",
       "type": "music",
       "title": "8",
-      "url": "/null/music/delta-machine/8.html",
+      "url": "/null/music/8.html",
       "glyph": "8"
     },
     {
       "id": "mu-hmn",
       "type": "music",
       "title": "Happy Machine Noises",
-      "url": "/null/music/delta-machine/happy-machine-noises.html",
+      "url": "/null/music/happy-machine-noises.html",
       "glyph": "♪"
-    },
-    {
-      "id": "mu-disc-dm",
-      "type": "music",
-      "title": "DISCRETE (delta machine)",
-      "url": "/null/music/delta-machine/discrete.html",
-      "glyph": "◼"
     },
     {
       "id": "mu-imc",
       "type": "music",
       "title": "Instantaneous Momentary Calculations",
-      "url": "/null/music/delta-machine/instantaneous.html",
+      "url": "/null/music/instantaneous.html",
       "glyph": "∂"
     },
     {
@@ -958,13 +944,6 @@
       "title": "символы математики",
       "url": "/null/visuals/symbols.html",
       "glyph": "∑"
-    },
-    {
-      "id": "mu-prime-drone",
-      "type": "music",
-      "title": "Prime Drone",
-      "url": "/null/music/prime-drone.html",
-      "glyph": "♪"
     },
     {
       "id": "th-markov",
@@ -2490,18 +2469,6 @@
     {
       "from": "mu-hmn",
       "to": "mu-opstack"
-    },
-    {
-      "from": "mu-disc-dm",
-      "to": "prime"
-    },
-    {
-      "from": "mu-disc-dm",
-      "to": "twin-primes"
-    },
-    {
-      "from": "mu-disc-dm",
-      "to": "mu-discrete"
     },
     {
       "from": "mu-imc",
@@ -5184,18 +5151,6 @@
       "to": "alph-fraktur"
     },
     {
-      "from": "mu-prime-drone",
-      "to": "prime"
-    },
-    {
-      "from": "mu-prime-drone",
-      "to": "es-primes"
-    },
-    {
-      "from": "mu-prime-drone",
-      "to": "mu-constants"
-    },
-    {
       "from": "st-ev",
       "to": "es-ev"
     },
@@ -5894,10 +5849,6 @@
     {
       "from": "es-poker-glossary",
       "to": "es-poker-distance"
-    },
-    {
-      "from": "mu-dm",
-      "to": "mu-opstack"
     },
     {
       "from": "mu-bitparade",
