@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>букмекер думает по Байесу — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .bkbayes {
+    --paper: #f7f6f2;
+    --ink: #1a1a1a;
+    --dim: #8c8a83;
+    --line: #dcd9d0;
+    --accent: #c44a32;
+    --accent-soft: rgba(196, 74, 50, .07);
+    --serif: 'IM Fell English', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    width: 100%;
+    max-width: 680px;
+    margin-top: 8px;
+    font-family: var(--sans);
+    color: var(--ink);
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+  .bkbayes * { box-sizing: border-box; }
+
+  .bkbayes .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: lowercase;
+    color: var(--dim);
+    margin-bottom: 18px;
+  }
+  .bkbayes h1 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.04;
+    letter-spacing: -.01em;
+    margin-bottom: 20px;
+  }
+  .bkbayes h1 em { color: var(--accent); }
+  .bkbayes .lead {
+    font-size: 20px;
+    line-height: 1.55;
+    color: #444;
+    margin-bottom: 30px;
+  }
+
+  .bkbayes h2 {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: lowercase;
+    color: var(--accent);
+    margin: 46px 0 16px;
+  }
+  .bkbayes p {
+    font-size: 17px;
+    margin-bottom: 18px;
+  }
+  .bkbayes p.first::first-letter {
+    font-family: var(--serif);
+    font-size: 62px;
+    float: left;
+    line-height: .82;
+    padding: 6px 10px 0 0;
+    color: var(--accent);
+  }
+  .bkbayes em.t { font-style: italic; color: var(--accent); }
+  .bkbayes b { font-weight: 600; }
+
+  .bkbayes figure {
+    margin: 14px 0 24px;
+    border: 1px solid var(--ink);
+    background: #fff;
+  }
+  .bkbayes figure svg { display: block; width: 100%; height: auto; }
+  .bkbayes figcaption {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--dim);
+    padding: 11px 16px;
+    border-top: 1px solid var(--line);
+    letter-spacing: .02em;
+  }
+
+  .bkbayes .math {
+    background: #fff;
+    border: 1px solid var(--ink);
+    padding: 20px 22px;
+    margin: 10px 0 20px;
+  }
+  .bkbayes .math .f {
+    font-family: var(--mono);
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.6;
+    text-align: center;
+  }
+  .bkbayes .math .f .r { color: var(--accent); }
+  .bkbayes .math .w {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--dim);
+    margin-top: 12px;
+    line-height: 1.6;
+    border-top: 1px solid var(--line);
+    padding-top: 11px;
+  }
+  .bkbayes .math .w b { color: var(--accent); font-weight: 500; }
+
+  .bkbayes blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding: 6px 0 6px 22px;
+    margin: 28px 0;
+  }
+
+  .bkbayes .margin {
+    margin-top: 48px;
+    border-top: 1px solid var(--ink);
+    padding-top: 22px;
+  }
+  .bkbayes .margin .mh {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: lowercase;
+    color: var(--dim);
+    margin-bottom: 14px;
+  }
+  .bkbayes .margin .fn {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 11px;
+    line-height: 1.5;
+  }
+  .bkbayes .margin .fn .num {
+    font-family: var(--mono);
+    color: var(--accent);
+    margin-right: 8px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / букмекер думает по Байесу</div>
+
+<main class="container">
+<article>
+
+  <div class="bkbayes">
+    <div class="label">эссе · вероятность · рынки · ~12 мин</div>
+    <h1>букмекер думает по <em>Байесу</em>.</h1>
+    <div class="lead">Открой приложение по ходу матча — и число живёт. Бразилия повела 1:0, и её шанс
+      на победу подскочил прямо у тебя на глазах. За этим дёргающимся коэффициентом — теорема Байеса,
+      запущенная в реальном времени. Разберём, из чего именно он считается, и где честная вероятность
+      заканчивается, а начинается бизнес.</div>
+
+    <p class="first">Сразу уговор: коэффициент и вероятность — это одно и то же, просто записанное
+      по-разному. Если десятичный кэф равен 2.5, то зашитая в него вероятность — это единица, делённая
+      на кэф.</p>
+
+    <div class="math">
+      <div class="f">P ≈ 1 / кэф &nbsp;→&nbsp; 1 / 2.5 = <span class="r">0.40</span></div>
+      <div class="w">кэф 2.5 значит «букмекер оценивает это в ~40%». чем меньше кэф — тем выше его вера.</div>
+    </div>
+
+    <p>Так что весь матч букмекер, по сути, вслух произносит свою вероятность — и переписывает её
+      после каждого события. Вопрос только в том, откуда он её берёт и как пересчитывает.</p>
+
+    <h2>откуда априор · пуассон считает голы</h2>
+    <p>До свистка нужна стартовая вероятность — априор. Её даёт модель. Для футбола классика — это
+      Пуассон: предполагаем, что голы команды капают редко и независимо со средней интенсивностью λ,
+      и тогда вероятность забить ровно k мячей считается формулой.<sup>[1]</sup></p>
+
+    <div class="math">
+      <div class="f">P(k голов) = λ<sup>k</sup> · e<sup>−λ</sup> / k!</div>
+      <div class="w">пусть команда в среднем забивает <b>λ = 1.4</b> за матч. тогда:<br>
+        P(0) = e<sup>−1.4</sup> ≈ <b>25%</b> · P(1) ≈ 35% · P(2) ≈ 24% · P(3) ≈ 11%</div>
+    </div>
+
+    <p>Берёшь λ для каждой команды (из рейтингов, формы, силы соперника), перемножаешь два распределения
+      — и получаешь вероятность любого счёта, а из счетов складываешь вероятность победы, ничьей,
+      поражения. Это и есть тот самый априор, который ляжет на табло до начала.</p>
+
+    <h2>почему сумма всегда больше ста · маржа</h2>
+    <p>Теперь маленький фокус, на котором стоит вся индустрия. Сложи зашитые вероятности всех исходов —
+      и получится <b>больше</b> 100%. Это не ошибка, это навар.</p>
+
+    <div class="math">
+      <div class="f">дом 2.10 · ничья 3.40 · гости 3.80</div>
+      <div class="f" style="margin-top:8px">1/2.10 + 1/3.40 + 1/3.80 = 47.6% + 29.4% + 26.3% = <span class="r">103.3%</span></div>
+      <div class="w">лишние <b>3.3%</b> — это маржа (overround). честные вероятности дают 100%; всё, что
+        сверху, — встроенное преимущество дома.</div>
+    </div>
+
+    <p>То есть коэффициент — это не чистая вера букмекера, а его вера, ужатая на маржу в свою пользу.
+      Запомни это: дальше всё про честную вероятность, а наценка просто едет сверху.</p>
+
+    <h2>живая модель · вера, которая дышит</h2>
+    <p>Свисток — и начинается главное. Модель не стоит на месте: каждую секунду она пересчитывает λ и
+      вероятности по тому, что творится на поле. Минута, счёт, удаления, ожидаемые голы по моментам
+      (xG), территория, темп — всё это входы. Апостериор обновляется не раз, а непрерывно. В теннисе
+      число пересчитывается после каждого розыгрыша, в баскетболе — после каждого владения. Линия не
+      висит — она дышит.</p>
+
+    <figure>
+      <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+        <style>
+          .ax{stroke:#e3e0d8;stroke-width:1;}
+          .axl{font-family:'JetBrains Mono',monospace;font-size:12px;fill:#a8a499;}
+          .gl{font-family:'JetBrains Mono',monospace;font-size:12px;fill:#c44a32;}
+          .note{font-family:'Inter',sans-serif;font-size:13px;fill:#8c8a83;}
+        </style>
+        <line class="ax" x1="52" y1="40" x2="650" y2="40"/>
+        <line class="ax" x1="52" y1="120" x2="650" y2="120"/>
+        <line class="ax" x1="52" y1="200" x2="650" y2="200"/>
+        <line class="ax" x1="52" y1="260" x2="650" y2="260"/>
+        <text x="46" y="44" text-anchor="end" class="axl">100</text>
+        <text x="46" y="124" text-anchor="end" class="axl">75</text>
+        <text x="46" y="204" text-anchor="end" class="axl">50</text>
+        <text x="46" y="264" text-anchor="end" class="axl">25</text>
+        <path d="M52 212 C 110 210, 150 206, 196 202 L196 132
+                 C 240 128, 300 120, 360 116 L360 150
+                 C 410 156, 470 150, 520 140 L520 78
+                 C 560 74, 610 70, 650 66"
+              fill="none" stroke="#1a1a1a" stroke-width="2.6"/>
+        <line x1="196" y1="202" x2="196" y2="132" stroke="#c44a32" stroke-width="1.6" stroke-dasharray="3,3"/>
+        <circle cx="196" cy="132" r="5" fill="#c44a32"/>
+        <text x="201" y="126" class="gl">гол A · 30'</text>
+        <line x1="360" y1="116" x2="360" y2="150" stroke="#8c8a83" stroke-width="1.6" stroke-dasharray="3,3"/>
+        <circle cx="360" cy="150" r="5" fill="#8c8a83"/>
+        <text x="365" y="170" class="gl" fill="#8c8a83">гол B · 62'</text>
+        <line x1="520" y1="140" x2="520" y2="78" stroke="#c44a32" stroke-width="1.6" stroke-dasharray="3,3"/>
+        <circle cx="520" cy="78" r="5" fill="#c44a32"/>
+        <text x="525" y="72" class="gl">гол A · 80'</text>
+        <text x="196" y="292" text-anchor="middle" class="note" fill="#c44a32">⏸ пауза</text>
+        <text x="360" y="292" text-anchor="middle" class="note" fill="#c44a32">⏸</text>
+        <text x="520" y="292" text-anchor="middle" class="note" fill="#c44a32">⏸</text>
+        <text x="56" y="292" class="note">рутина — лёгкий дрейф · гол — прыжок</text>
+        <text x="650" y="292" text-anchor="end" class="axl">90'</text>
+      </svg>
+      <figcaption>линия P(победа A) по ходу матча: между событиями дрейфует, на голе прыгает и замирает на пересчёт</figcaption>
+    </figure>
+
+    <h2>гол · пересчёт в числах</h2>
+    <p>Вот где Байес виден буквально. До гола на 30-й минуте дом оценивали, скажем, в 45% — это шансы
+      примерно 45 к 55. Дом забивает. Модель смотрит: впереди ещё час, счёт 1:0, и пересчитывает —
+      пусть теперь 68%. Переведём оба в шансы и поделим — получим, во сколько раз гол сдвинул веру.
+      Это и есть отношение правдоподобий, сила улики.</p>
+
+    <div class="math">
+      <div class="f">шансы после = шансы до × <span class="r">LR</span></div>
+      <div class="f" style="margin-top:8px">68:32 = 45:55 × <span class="r">2.6</span></div>
+      <div class="w">гол оказался уликой силой <b>≈ 2.6×</b> в пользу победы дома. кэф при этом
+        едет с ~2.2 до ~1.47 в ту же секунду.</div>
+    </div>
+
+    <p>Почему сдвиг такой резкий? Потому что гол — <em class="t">сенсация</em>: в любую отдельную минуту
+      он маловероятен, а значит несёт много информации. Если в данный отрезок гол ждали с вероятностью
+      около 3%, то его «удивительность» — это −log₂(0.03) ≈ <b>5 бит</b>. Рутинный пас несёт почти ноль
+      бит и веру не двигает; гол приносит пять — и линия прыгает.<sup>[2]</sup> Поэтому на голе
+      приложение на пару секунд <b>замораживает</b> рынок: модель пересчитывает апостериор, прежде чем
+      пустить новый кэф.<sup>[3]</sup> Тонко, что рынок часто <b>чует гол заранее</b> — затяжное давление
+      поднимает xG, и вероятность забивающей команды ползёт вверх ещё до мяча в сетке.<sup>[4]</sup></p>
+
+    <h2>где Байес заканчивается · бизнес</h2>
+    <p>Всё, что выше, — честный пересчёт вероятности. Дальше начинается то, чего в теореме нет. Маржу
+      мы уже видели — она едет сверху. Второе — <b>баланс книги</b>: дом хочет остаться в плюсе при
+      любом исходе. До матча это делают, двигая линию, пока деньги на стороны не уравновесятся. Но в
+      лайве этот приём почти не работает: ставки идут против дома и реагируют мгновенно, поэтому линию
+      правят на лету, при перекосе просто закрывают рынок, а маржу в быстром лайве закладывают
+      побольше — на риск резких скачков.<sup>[5]</sup> Чистый байесовец считает истинную вероятность;
+      букмекер считает её же — и продаёт тебе с наценкой.</p>
+
+    <h2>где всё ломается · гонка за информацией</h2>
+    <p>Вся конструкция держится на скорости. Главный враг — задержка. Зритель на стадионе видит гол на
+      две-три секунды раньше, чем фид дойдёт до букмекера, и успевает ударить по не обновившейся линии:
+      это кортсайдинг, латентный арбитраж.<sup>[6]</sup> Ради миллисекунд площадки шлют не всю линию, а
+      только дельту изменения — экономя до 90% трафика. По сути живой беттинг — непрерывная гонка: у
+      кого свежее улика, тот и прав.</p>
+
+    <blockquote>Букмекер — это байесовец, которому ещё надо платить за аренду: он обновляет веру на
+      каждой улике, но снимает маржу и боится того, у кого глаза быстрее.</blockquote>
+
+    <p>Так что живая линия в приложении — это твоя <b>река вероятности</b> из симуляции турнира, только
+      поматчево и в реальном времени, плюс два слоя сверху. Под витриной — чистый Байес: априор от
+      Пуассона и рейтингов, апостериор, пересчитанный на каждом событии, скачок тем больше, чем
+      невероятнее улика. Кэф 1.47 на табло — это просто чья-то вера в ~68%, ужатая на маржу, которую
+      тебе продают заново каждую секунду.</p>
+
+    <div class="margin">
+      <div class="mh">на полях</div>
+      <div class="fn"><span class="num">[1]</span>Пуассоновская модель: голы редки и независимы со средней интенсивностью λ, P(k) = λ^k·e^−λ/k!. Махер (1982), уточнение Диксона–Коулза (1997). λ каждой команды → распределение счёта → вероятность исхода.</div>
+      <div class="fn"><span class="num">[2]</span>Удивительность события −log₂P в битах. Маловероятный гол несёт много бит → большой сдвиг апостериора; рутина ≈ 0 бит. Связь Байеса с теорией информации.</div>
+      <div class="fn"><span class="num">[3]</span>На голе/удалении live-площадки на пару секунд приостанавливают рынок («suspend»), пока модель пересчитывает линию.</div>
+      <div class="fn"><span class="num">[4]</span>Рынок часто предвосхищает гол: давление поднимает implied-вероятность забивающей команды ещё до гола (показано на данных Бундеслиги).</div>
+      <div class="fn"><span class="num">[5]</span>P ≈ 1/кэф; сумма по исходам > 100% — маржа (overround). В лайве баланс книги через сдвиг линии почти недоступен (ставки против дома, реакция мгновенна), поэтому правят на лету и закрывают рынок при перекосе.</div>
+      <div class="fn"><span class="num">[6]</span>Кортсайдинг / латентный арбитраж: зритель видит событие на 2–3 секунды раньше фида. Ради скорости рассылают только дельту, экономя до 90% трафика.</div>
+    </div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/champion-probability.html">вероятность чемпиона →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="elo.html">одно число · рейтинг Эло →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="xg.html">xG, или счёт врёт →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="simulation.html">десять тысяч турниров →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/law-of-large-numbers.html">закон больших чисел →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/simulation.html">Десять тысяч турниров →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/elo.html">Одно число →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/xg.html">xG, или счёт врёт →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/champion-probability.html">вероятность чемпиона →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/law-of-large-numbers.html">закон больших чисел →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/bookmaker-bayes.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

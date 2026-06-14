@@ -1868,6 +1868,13 @@
       "title": "четыре лица теоремы Байеса",
       "url": "/null/essays/bayes-four-faces.html",
       "glyph": "✦"
+    },
+    {
+      "id": "es-bookmaker-bayes",
+      "type": "essay",
+      "title": "букмекер думает по Байесу",
+      "url": "/null/essays/bookmaker-bayes.html",
+      "glyph": "÷"
     }
   ],
   "edges": [
@@ -6742,6 +6749,54 @@
     {
       "from": "vi-champion-prob",
       "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bookmaker-bayes",
+      "to": "vi-champion-prob"
+    },
+    {
+      "from": "vi-champion-prob",
+      "to": "es-bookmaker-bayes"
+    },
+    {
+      "from": "es-bookmaker-bayes",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "es-bookmaker-bayes"
+    },
+    {
+      "from": "es-bookmaker-bayes",
+      "to": "es-elo"
+    },
+    {
+      "from": "es-elo",
+      "to": "es-bookmaker-bayes"
+    },
+    {
+      "from": "es-bookmaker-bayes",
+      "to": "es-xg"
+    },
+    {
+      "from": "es-xg",
+      "to": "es-bookmaker-bayes"
+    },
+    {
+      "from": "es-bookmaker-bayes",
+      "to": "es-simulation"
+    },
+    {
+      "from": "es-simulation",
+      "to": "es-bookmaker-bayes"
+    },
+    {
+      "from": "es-bookmaker-bayes",
+      "to": "vi-lln"
+    },
+    {
+      "from": "vi-lln",
+      "to": "es-bookmaker-bayes"
     }
   ]
 }
