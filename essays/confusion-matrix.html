@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>матрица ошибок — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / матрица ошибок</div>
+
+<main class="container">
+<article>
+
+  <div style="margin-bottom: 28px;">
+    <div class="essay-label">эссе · вероятность · аналитика · ~780 слов · 7 мин</div>
+    <h1 style="font-family: var(--font-text); font-size: 44px; font-weight: normal; line-height: 1.15; max-width: 720px; margin-top: 8px;">матрица <em style="color: #c44a32; font-style: italic;">ошибок</em>.</h1>
+    <p style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #666; line-height: 1.55; max-width: 620px; margin-top: 12px;">тебе пришёл положительный тест. интуиция смотрит на его точность и делает вывод. но вывод — это не тест. это тест, наложенный на то, насколько редко то, что он ищет. и весь расчёт умещается в таблицу из четырёх клеток.</p>
+  </div>
+
+  <table class="meta" style="margin-top: 18px;">
+    <tr><td class="k">тема</td><td class="v">матрица ошибок · precision · recall · байес · базовая частота · аналитика</td></tr>
+    <tr><td class="k">читать</td><td class="v">~7 минут</td></tr>
+    <tr><td class="k">связано</td><td class="v">Байес · ошибка базовой частоты · A/B · условная вероятность · покер</td></tr>
+  </table>
+
+  <a class="xref" href="../objects/statistics/biases/base-rate-neglect.html"><span class="xref-label">// на полях → объект</span><span class="xref-title">ошибка базовой частоты · P(H)</span><span class="xref-arrow">→</span></a>
+
+  <hr class="section-divider-soft">
+
+  <div class="essay" style="margin-top: 28px;">
+    <div class="essay-body">
+      <p class="first">Любой тест — медицинский, антифрод, A/B, собеседование — даёт сигнал: сработал или нет. И первое, что хочется сделать с сигналом, — поверить ему пропорционально точности. Тест точен на 99%, сработал → я на 99% уверен. Это и есть главная ошибка: ты оцениваешь тест, а нужно оценивать гипотезу при условии теста. А гипотеза зависит не только от того, как точен прибор, но и от того, насколько редко то, что он ищет.</p>
+
+      <p>До теста у тебя уже есть два числа. Первое — априор, базовая частота: насколько вообще распространено то, что ты ищешь, ещё до всякой проверки. Болезнь у одного из тысячи, фрод у одной транзакции из десяти тысяч, реальный эффект у одной фичи из пяти. Второе — поведение теста: как часто он срабатывает на настоящем и как часто ошибается на пустом. Эти два числа — всё, что нужно. Беда в том, что интуиция держит в голове только второе и теряет первое.</p>
+
+      <p>Чтобы не терять, разложи мир на таблицу два на два — матрицу ошибок. Берёшь популяцию и делишь дважды: по правде (гипотеза верна / неверна) и по тесту (сработал / нет). Получаются четыре клетки: верный плюс (болен и пойман), ложный плюс (здоров, но тест звенит), пропуск (болен, но тест молчит), верный минус (здоров и чисто). Вся арифметика Байеса — это просто заполнение этих клеток: априор задаёт, сколько всего в каждом столбце, а поведение теста — как столбец делится между строками.</p>
+
+      <blockquote style="font-family: var(--font-text); font-style: italic; font-size: 17px; color: #555; line-height: 1.6; max-width: 620px; margin: 28px 0; border-left: 2px solid #c44a32; padding-left: 18px;">Матрица заставляет выписать знаменатель. Именно его интуиция и забывает.</blockquote>
+
+      <p>Теперь главное. Когда тест сработал, ты в строке «плюс» — и вопрос лишь в том, какую долю этой строки занимает верный плюс. P(гипотеза | плюс) = верный плюс ÷ (верный плюс + ложный плюс). Это и есть теорема Байеса, прочитанная по матрице<em class="fn">1</em>. И вот где ломается интуиция: ложных плюсов обычно много не потому, что тест плох, а потому, что пустого большинства огромно. Один процент ошибки на миллионе здоровых — это десять тысяч ложных тревог, легко перекрывающих сотню настоящих больных. Редкое событие топит точный тест<em class="fn">2</em>.</p>
+
+      <p>Отсюда вывод, который злит: одно число «точность» почти всегда врёт. Точность мешает в кучу все четыре клетки, а тебе нужны две разные дроби. Точность среди пойманных — какая часть сигналов настоящая (precision). И полнота — какую часть настоящих ты вообще поймал (recall)<em class="fn">3</em>. При одной и той же «точности теста» precision может быть и 90%, и 2% — всё решает базовая частота. Поэтому детектор фрода с гордым «99% accuracy» на редком фроде выдаёт почти один шум.</p>
+
+      <p>Апостериор одного теста становится априором для следующего — так копятся улики. Второй независимый тест умножает шансы ещё раз; на языке матрицы ты просто сужаешь строку. Поэтому несколько слабых согласованных сигналов вместе бьют сильнее одного яркого, а один яркий сигнал о редком событии всё равно оставляет тебя в сомнении<em class="fn">4</em>. Обновление мнения — не прыжок, а движение по клеткам: каждый тест сдвигает тебя на свой вес, не больше.</p>
+
+      <p>Для аналитика матрица — рабочий инструмент, а не картинка из учебника. Алерты, скоринг, антифрод, медскрининг, A/B — всюду одна и та же таблица и один и тот же провал: оптимизируют «общую точность», а живут потом в ложных тревогах. Если база редкая — проектируй на precision, считай, сколько ложных плюсов вынесет команда, и не верь ни одному «N% точности» без знаменателя.</p>
+
+      <p>Матрица ошибок — это смирение, переведённое в арифметику. Она не даёт соврать себе, что сигнал и есть истина: заставляет выписать, сколько всего вокруг, и только потом делить. Тест не сообщает тебе правду — он сдвигает твой априор на заранее известную величину. Кто держит в голове все четыре клетки, меняет мнение ровно настолько, насколько весит улика. Кто видит только ту клетку, что загорелась, — обманывается уверенно и каждый раз.</p>
+    </div>
+
+    <aside class="essay-margin">
+      <div class="note"><span class="n">[1]</span><span class="t">Теорема Байеса: P(H|E) = P(E|H)·P(H) / P(E). По матрице P(E) — вся строка сработавшего теста (верный + ложный плюс), числитель — клетка «верный плюс». Апостериор = доля верных в строке.</span></div>
+      <div class="note"><span class="n">[2]</span><span class="t">Парадокс ложноположительных / ошибка базовой частоты (Канеман и Тверски, 1973): при редком событии абсолютное число ложных срабатываний перекрывает истинные даже у точного теста.</span></div>
+      <div class="note"><span class="n">[3]</span><span class="t">Precision = верный+ / (верный+ + ложный+) — доля настоящих среди отмеченных. Recall = верный+ / (верный+ + пропуск) — доля пойманных среди настоящих. «Точность» (accuracy) смешивает все четыре клетки и при перекосе базы вводит в заблуждение.</span></div>
+      <div class="note"><span class="n">[4]</span><span class="t">Шансовая форма Байеса: апостериорные шансы = априорные шансы × отношение правдоподобий. Независимые улики перемножаются; апостериор одного теста — априор следующего.</span></div>
+    </aside>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/biases/base-rate-neglect.html">ошибка базовой частоты · P(H) →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">как обновлять убеждения →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="poker-bayes.html">байес за столом →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">A/B-тестирование →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/probability/conditional-probability.html">условная вероятность →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/biases/base-rate-neglect.html">ошибка базовой частоты →</a></div>
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/probability/conditional-probability.html">условная вероятность P(A|B) →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/poker-bayes.html">Байес за столом →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/bayesian.html">Как обновлять убеждения · байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/ab-testing.html">Почему p < 0.05 — плохой порог →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/confusion-matrix.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

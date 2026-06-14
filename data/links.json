@@ -1854,6 +1854,13 @@
       "title": "MCMC",
       "url": "/null/essays/mcmc.html",
       "glyph": "⇌"
+    },
+    {
+      "id": "es-confusion-matrix",
+      "type": "essay",
+      "title": "матрица ошибок",
+      "url": "/null/essays/confusion-matrix.html",
+      "glyph": "⊠"
     }
   ],
   "edges": [
@@ -6632,6 +6639,46 @@
     {
       "from": "es-monte-carlo",
       "to": "es-pseudorandom"
+    },
+    {
+      "from": "es-confusion-matrix",
+      "to": "st-brn"
+    },
+    {
+      "from": "st-brn",
+      "to": "es-confusion-matrix"
+    },
+    {
+      "from": "es-confusion-matrix",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-bayesian",
+      "to": "es-confusion-matrix"
+    },
+    {
+      "from": "es-confusion-matrix",
+      "to": "es-poker-bayes"
+    },
+    {
+      "from": "es-poker-bayes",
+      "to": "es-confusion-matrix"
+    },
+    {
+      "from": "es-confusion-matrix",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "es-confusion-matrix"
+    },
+    {
+      "from": "es-confusion-matrix",
+      "to": "st-condprob"
+    },
+    {
+      "from": "st-condprob",
+      "to": "es-confusion-matrix"
     }
   ]
 }
