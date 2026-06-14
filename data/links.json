@@ -1875,6 +1875,13 @@
       "title": "букмекер думает по Байесу",
       "url": "/null/essays/bookmaker-bayes.html",
       "glyph": "÷"
+    },
+    {
+      "id": "es-who-sets-odds",
+      "type": "essay",
+      "title": "кто назначает коэффициент",
+      "url": "/null/essays/who-sets-odds.html",
+      "glyph": "⇅"
     }
   ],
   "edges": [
@@ -6797,6 +6804,46 @@
     {
       "from": "vi-lln",
       "to": "es-bookmaker-bayes"
+    },
+    {
+      "from": "es-who-sets-odds",
+      "to": "es-bookmaker-bayes"
+    },
+    {
+      "from": "es-bookmaker-bayes",
+      "to": "es-who-sets-odds"
+    },
+    {
+      "from": "es-who-sets-odds",
+      "to": "vi-champion-prob"
+    },
+    {
+      "from": "vi-champion-prob",
+      "to": "es-who-sets-odds"
+    },
+    {
+      "from": "es-who-sets-odds",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "es-who-sets-odds"
+    },
+    {
+      "from": "es-who-sets-odds",
+      "to": "vi-galton"
+    },
+    {
+      "from": "vi-galton",
+      "to": "es-who-sets-odds"
+    },
+    {
+      "from": "es-who-sets-odds",
+      "to": "es-elo"
+    },
+    {
+      "from": "es-elo",
+      "to": "es-who-sets-odds"
     }
   ]
 }
