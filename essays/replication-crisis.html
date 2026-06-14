@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>кризис воспроизводимости — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .repcrisis {
+    --paper: #f7f6f2;
+    --ink: #1a1a1a;
+    --dim: #8c8a83;
+    --line: #dcd9d0;
+    --accent: #c44a32;
+    --serif: 'IM Fell English', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    width: 100%;
+    max-width: 680px;
+    margin-top: 8px;
+    font-family: var(--sans);
+    color: var(--ink);
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+  .repcrisis * { box-sizing: border-box; }
+
+  .repcrisis .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: lowercase;
+    color: var(--dim);
+    margin-bottom: 18px;
+  }
+  .repcrisis h1 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.04;
+    letter-spacing: -.01em;
+    margin-bottom: 20px;
+  }
+  .repcrisis h1 em { color: var(--accent); }
+  .repcrisis .lead {
+    font-size: 20px;
+    line-height: 1.55;
+    color: #444;
+    margin-bottom: 30px;
+  }
+  .repcrisis h2 {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: lowercase;
+    color: var(--accent);
+    margin: 46px 0 16px;
+  }
+  .repcrisis p { font-size: 17px; margin-bottom: 18px; }
+  .repcrisis p.first::first-letter {
+    font-family: var(--serif);
+    font-size: 62px;
+    float: left;
+    line-height: .82;
+    padding: 6px 10px 0 0;
+    color: var(--accent);
+  }
+  .repcrisis em.t { font-style: italic; color: var(--accent); }
+  .repcrisis b { font-weight: 600; }
+  .repcrisis a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+  }
+
+  .repcrisis figure {
+    margin: 14px 0 24px;
+    border: 1px solid var(--ink);
+    background: #fff;
+  }
+  .repcrisis figure svg { display: block; width: 100%; height: auto; }
+  .repcrisis figcaption {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--dim);
+    padding: 11px 16px;
+    border-top: 1px solid var(--line);
+    letter-spacing: .02em;
+  }
+
+  .repcrisis .math {
+    background: #fff;
+    border: 1px solid var(--ink);
+    padding: 20px 22px;
+    margin: 10px 0 20px;
+  }
+  .repcrisis .math .f {
+    font-family: var(--mono);
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.6;
+    text-align: center;
+  }
+  .repcrisis .math .f .r { color: var(--accent); }
+  .repcrisis .math .w {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--dim);
+    margin-top: 12px;
+    line-height: 1.6;
+    border-top: 1px solid var(--line);
+    padding-top: 11px;
+  }
+  .repcrisis .math .w b { color: var(--accent); font-weight: 500; }
+
+  .repcrisis blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding: 6px 0 6px 22px;
+    margin: 28px 0;
+  }
+
+  .repcrisis .plate {
+    border: 1px solid var(--ink);
+    background: #fff;
+    padding: 16px 18px;
+    margin: 22px 0;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .repcrisis .plate .ph {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: lowercase;
+    color: var(--dim);
+    margin-bottom: 8px;
+  }
+
+  .repcrisis .margin {
+    margin-top: 48px;
+    border-top: 1px solid var(--ink);
+    padding-top: 22px;
+  }
+  .repcrisis .margin .mh {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: lowercase;
+    color: var(--dim);
+    margin-bottom: 14px;
+  }
+  .repcrisis .margin .fn {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 11px;
+    line-height: 1.5;
+  }
+  .repcrisis .margin .fn .num {
+    font-family: var(--mono);
+    color: var(--accent);
+    margin-right: 8px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / кризис воспроизводимости</div>
+
+<main class="container">
+<article>
+
+  <div class="repcrisis">
+    <div class="label">эссе · статистика · наука · ~13 мин</div>
+    <h1>кризис <em>воспроизводимости</em>.</h1>
+    <div class="lead">Тысячи статей прошли рецензирование, получили p&lt;0.05 и легли в учебники. А когда
+      их попытались повторить, половина рассыпалась. И дело не в горстке мошенников: система, набитая
+      честными людьми и вооружённая «правильным» порогом, всё равно исправно производит ложные
+      открытия. Почему — объясняет одна вещь, которую ты уже знаешь: базовая частота.</div>
+
+    <p class="first">Начнём с цифры, от которой холодеет. В 2012 году биотех Amgen взялся перепроверить
+      53 знаковых доклинических исследования рака — те самые, на которые все ссылаются и от которых
+      отталкиваются. Подтвердились <b>шесть</b>.<sup>[1]</sup> Не подделки, не подлог — просто
+      результаты, которые отказались повторяться. И это не локальный позор онкологии: в психологии
+      воспроизводится меньше трети социальных работ и около половины когнитивных; по наукам о жизни
+      оценки сходятся к 10–25% надёжно повторяемого, а свежий репликационный смотр Nature 2026 года
+      вывел всё ту же безрадостную половину.<sup>[2]</sup></p>
+
+    <h2>откуда взялся диагноз</h2>
+    <p>Имя кризису дала статья 2005 года с программным заголовком: Джон Иоаннидис, <em class="t">«Почему
+      большинство опубликованных результатов ложны»</em>.<sup>[3]</sup> Её аргумент — не обличение, а
+      арифметика. При типичных для науки слабой статистической мощности, обилии проверяемых гипотез и
+      повсеместной гонке за значимостью доля ложных срабатываний в литературе попросту обязана быть
+      высокой. Десятилетием позже тот же Иоаннидис оценил, что около 85% исследовательских денег уходит
+      впустую. Цифра звучит как приговор, но за ней нет ничьего злого умысла — только математика, к
+      которой мы сейчас и подойдём.</p>
+
+    <h2>почему честный порог всё равно врёт</h2>
+    <p>Вот сердцевина всей истории. Порог p&lt;0.05 сторожит одну-единственную ошибку: ложную тревогу
+      <b>при отсутствии эффекта</b>. Но учёного — и тебя — волнует вопрос ровно обратный:
+      <em class="t">если результат значим, какова вероятность, что эффект настоящий?</em> А это уже
+      территория Байеса, и ответ здесь держит <b>базовая частота</b> — доля настоящих эффектов среди
+      всех гипотез, которые вообще берутся проверять.<sup>[4]</sup></p>
+
+    <p>Посчитаем на пальцах, как в матрице ошибок. Пусть в поле живёт лишь 10% настоящих эффектов, а
+      остальные гипотезы — пустышки; мощность теста 80%, порог 5%. Прогоним через них тысячу гипотез и
+      посмотрим, кто пройдёт сито значимости.</p>
+
+    <div class="math">
+      <div class="f">истинные: 100 → поймали 80 &nbsp;·&nbsp; пустые: 900 → ложно «значимы» 45</div>
+      <div class="f" style="margin-top:8px">P(эффект реален | значимо) = 80 / (80 + 45) ≈ <span class="r">64%</span></div>
+      <div class="w">то есть <b>каждое третье</b> «открытие» — ложное, при идеально соблюдённом пороге 0.05.
+        урони базовую частоту до 1% — и уже большинство значимых результатов окажутся пустышками.</div>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg">
+        <style>
+          .rep-lb{font-family:'Inter',sans-serif;font-size:13px;fill:#5f5f5f;}
+          .rep-num{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;}
+          .rep-cap{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;fill:#a8a499;text-transform:uppercase;}
+          .rep-ln{stroke:#c9c5bb;stroke-width:1.4;fill:none;}
+        </style>
+        <text x="84" y="28" text-anchor="middle" class="rep-cap">1000 гипотез</text>
+        <text x="318" y="28" text-anchor="middle" class="rep-cap">правда</text>
+        <text x="560" y="28" text-anchor="middle" class="rep-cap">тест «значимо»</text>
+
+        <rect x="24" y="116" width="120" height="48" fill="#f1efe9" stroke="#c9c5bb"/>
+        <text x="84" y="146" text-anchor="middle" class="rep-num" fill="#1a1a1a">1000</text>
+
+        <path class="rep-ln" d="M144 128 H210 V70 H250"/>
+        <path class="rep-ln" d="M144 152 H210 V210 H250"/>
+
+        <rect x="250" y="48" width="136" height="44" fill="#e7d6b8" stroke="#c9c5bb"/>
+        <text x="318" y="70" text-anchor="middle" class="rep-num" fill="#1a1a1a">100</text>
+        <text x="318" y="86" text-anchor="middle" class="rep-lb">эффект есть</text>
+
+        <rect x="250" y="188" width="136" height="44" fill="#f1efe9" stroke="#c9c5bb"/>
+        <text x="318" y="210" text-anchor="middle" class="rep-num" fill="#8c8a83">900</text>
+        <text x="318" y="226" text-anchor="middle" class="rep-lb">пустышки</text>
+
+        <path class="rep-ln" d="M386 70 H452"/>
+        <path class="rep-ln" d="M386 210 H452"/>
+
+        <rect x="452" y="48" width="172" height="44" fill="#3a7d44"/>
+        <text x="470" y="76" class="rep-num" fill="#fff">80</text>
+        <text x="508" y="76" class="rep-lb" fill="#fff" font-size="13">верных находок</text>
+
+        <rect x="452" y="188" width="172" height="44" fill="#c44a32"/>
+        <text x="470" y="216" class="rep-num" fill="#fff">45</text>
+        <text x="508" y="216" class="rep-lb" fill="#fff" font-size="13">ложных тревог</text>
+
+        <text x="452" y="270" class="rep-lb" fill="#c44a32" font-size="14">из 125 «значимых» 45 — пустышки → каждая третья «находка» ложна</text>
+      </svg>
+      <figcaption>при базовой частоте 10% даже честный порог 0.05 даёт треть ложных «открытий»</figcaption>
+    </figure>
+
+    <p>Теперь видно, почему всё ломается не по чьей-то вине, а системно. Наука по самой своей природе
+      охотится за смелыми, заведомо маловероятными гипотезами — то есть работает при <b>низкой базовой
+      частоте</b>, ровно там, где ложных тревог особенно много. Наложи на это три приёма из
+      <a href="forking-paths.html">сада расходящихся троп</a> — перебор
+      метрик, подглядывание, развилки, — и доля пустышек среди «находок» только растёт. А последним
+      слоем ложится <b>публикационное смещение</b>: журналы охотно печатают яркое и значимое, а
+      отрицательные результаты тихо оседают в столе.</p>
+
+    <h2>эффект ящика стола</h2>
+    <p>У этого оседания есть имя — <em class="t">file-drawer effect</em>. Представь: двадцать лабораторий
+      независимо проверили одну и ту же пустую гипотезу. Девятнадцать получили «незначимо» и убрали
+      черновик в ящик стола, а одна по чистой случайности поймала p&lt;0.05 — и опубликовалась. В
+      литературе остаётся ровно одна статья, бодро заявляющая «эффект есть!», тогда как девятнадцать её
+      молчаливых опровержений миру не видны. Так в науку просачивается шум, уцелевший по чистому
+      везению, — и выглядит он неотличимо от открытия.<sup>[5]</sup></p>
+
+    <blockquote>Значимость отвечает на вопрос «бывают ли такие данные без эффекта». А наука хочет знать
+      обратное — «есть ли эффект при таких данных». Между ними стоит базовая частота.</blockquote>
+
+    <h2>что с этим делают</h2>
+    <p>Лекарства давно известны и на вид скучны — тем и хороши. <b>Предрегистрация</b> и регистрируемые
+      отчёты: журнал решает взять работу по плану ещё до того, как получены результаты, — и тогда
+      отрицательный итог тоже выходит на свет, а не в ящик. <b>Репликация</b> становится нормой, а не
+      подвигом. <b>Данные и код</b> выкладывают открыто. Сюда же — спорное, но честное предложение
+      2017 года: семьдесят с лишним статистиков призвали ужесточить порог с 0.05 до <b>0.005</b>, с
+      «одного из двадцати» до «одного из двухсот», что примерно вдвое поднимает шанс на
+      воспроизводимость.<sup>[6]</sup> Но даже эта мера лечит симптом, а не корень: спасает не цифра
+      порога, а дисциплина мышления за ним.</p>
+
+    <div class="plate">
+      <div class="ph">рядом по теме</div>
+      Арифметика «значимо ≠ правда» — это <a href="base-rate.html">ошибка базовой частоты</a> и
+      <a href="confusion-matrix.html">матрица ошибок</a>; вопрос «во что верить после данных» —
+      <a href="bayes-four-faces.html">четыре лица теоремы Байеса</a>. Как именно жульничают со
+      значимостью — в <a href="forking-paths.html">саду расходящихся троп</a> и песочнице
+      <a href="../visuals/p-hacking.html">p-hacking</a>.
+    </div>
+
+    <p>Кризис воспроизводимости — это не сюжет про злодеев, а про метод, который отвечает не на тот
+      вопрос. Значимость меряет, насколько странны данные, если эффекта нет; а нам нужно ровно обратное —
+      насколько правдоподобен эффект, если данные такие. Перекинуть мост между этими двумя вопросами
+      может лишь то, что красной нитью прошило всю ветку, — <b>базовая частота</b>. Держи её в уме, и
+      «p&lt;0.05» перестанет звучать как «доказано», а станет тем, чем является на самом деле: слабой
+      уликой, которую ещё предстоит взвесить.</p>
+
+    <div class="margin">
+      <div class="mh">на полях</div>
+      <div class="fn"><span class="num">[1]</span>Amgen (Begley & Ellis, 2012) подтвердили лишь 6 из 53 знаковых доклинических онкоисследований. Похожий результат у Bayer (Prinz et al., 2011).</div>
+      <div class="fn"><span class="num">[2]</span>Open Science Collaboration (2015): воспроизводимо &lt;30% социальной и ~50% когнитивной психологии. По наукам о жизни оценки ~10–25%. Camerer et al. (2018): ~62% для отобранных работ в Nature/Science. Спецвыпуск Nature по воспроизводимости (2026): около половины заявлений реплицируются.</div>
+      <div class="fn"><span class="num">[3]</span>John P. A. Ioannidis, «Why Most Published Research Findings Are False» (PLoS Medicine, 2005) — одна из самых цитируемых статей в медицине; формальный байесовский аргумент о доле ложных открытий. Он же (2015): ~85% исследовательских средств расходуется впустую.</div>
+      <div class="fn"><span class="num">[4]</span>p даёт P(данные | нет эффекта), а нужен P(эффект | данные) — их связывает теорема Байеса через базовую частоту (prior). Низкая базовая частота настоящих эффектов → высокая доля ложных срабатываний среди значимых. Оценки базовой частоты для социальной психологии ~0.09.</div>
+      <div class="fn"><span class="num">[5]</span>Публикационное смещение и file-drawer effect: значимые результаты публикуются охотнее, отрицательные оседают «в столе»; это ломает самокоррекцию науки (классический пример — невозможность опубликовать репликации Бема, 2011).</div>
+      <div class="fn"><span class="num">[6]</span>Benjamin et al. «Redefine Statistical Significance» (Nature Human Behaviour, 2017; 70+ авторов): порог 0.005 вместо 0.05 для новых открытий — оценочно ~вдвое выше воспроизводимость, но p-hacking и базовую частоту это не решает. Дополняют: предрегистрация, регистрируемые отчёты, обязательные репликации, открытые данные.</div>
+    </div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="forking-paths.html">сад расходящихся троп →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="base-rate.html">ошибка базовой частоты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="confusion-matrix.html">матрица ошибок →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/p-hacking.html">песочница p-hacking →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">почему p &lt; 0.05 — плохой порог →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/confusion-matrix.html">матрица ошибок →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/base-rate.html">Ошибка базовой частоты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/ab-testing.html">Почему p < 0.05 — плохой порог →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/forking-paths.html">сад расходящихся троп →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/p-hacking.html">песочница p-hacking →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/replication-crisis.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

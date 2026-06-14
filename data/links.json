@@ -1889,6 +1889,13 @@
       "title": "сад расходящихся троп",
       "url": "/null/essays/forking-paths.html",
       "glyph": "⑃"
+    },
+    {
+      "id": "es-replication-crisis",
+      "type": "essay",
+      "title": "кризис воспроизводимости",
+      "url": "/null/essays/replication-crisis.html",
+      "glyph": "⊘"
     }
   ],
   "edges": [
@@ -6983,6 +6990,54 @@
     {
       "from": "es-bayes-faces",
       "to": "es-forking-paths"
+    },
+    {
+      "from": "es-replication-crisis",
+      "to": "es-forking-paths"
+    },
+    {
+      "from": "es-forking-paths",
+      "to": "es-replication-crisis"
+    },
+    {
+      "from": "es-replication-crisis",
+      "to": "es-base-rate"
+    },
+    {
+      "from": "es-base-rate",
+      "to": "es-replication-crisis"
+    },
+    {
+      "from": "es-replication-crisis",
+      "to": "es-confusion-matrix"
+    },
+    {
+      "from": "es-confusion-matrix",
+      "to": "es-replication-crisis"
+    },
+    {
+      "from": "es-replication-crisis",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "es-replication-crisis"
+    },
+    {
+      "from": "es-replication-crisis",
+      "to": "vi-p-hacking"
+    },
+    {
+      "from": "vi-p-hacking",
+      "to": "es-replication-crisis"
+    },
+    {
+      "from": "es-replication-crisis",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "es-replication-crisis"
     }
   ]
 }
