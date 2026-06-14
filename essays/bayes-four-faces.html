@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>четыре лица теоремы Байеса — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .bayes4 {
+    --paper: #f7f6f2;
+    --ink: #1a1a1a;
+    --dim: #8c8a83;
+    --line: #dcd9d0;
+    --accent: #c44a32;
+    --accent-soft: rgba(196, 74, 50, .07);
+    --pink: #f0cfc8;
+    --serif: 'IM Fell English', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    width: 100%;
+    max-width: 680px;
+    margin-top: 8px;
+    font-family: var(--sans);
+    color: var(--ink);
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+  .bayes4 * { box-sizing: border-box; }
+
+  .bayes4 .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: lowercase;
+    color: var(--dim);
+    margin-bottom: 18px;
+  }
+  .bayes4 h1 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.04;
+    letter-spacing: -.01em;
+    margin-bottom: 20px;
+  }
+  .bayes4 h1 em { color: var(--accent); }
+  .bayes4 .lead {
+    font-size: 20px;
+    line-height: 1.55;
+    color: #444;
+    margin-bottom: 30px;
+  }
+
+  .bayes4 h2 {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: lowercase;
+    color: var(--accent);
+    margin: 48px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .bayes4 h2 .n {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 27px;
+    color: var(--ink);
+    letter-spacing: 0;
+  }
+  .bayes4 p {
+    font-size: 17px;
+    margin-bottom: 18px;
+  }
+  .bayes4 p.first::first-letter {
+    font-family: var(--serif);
+    font-size: 62px;
+    float: left;
+    line-height: .82;
+    padding: 6px 10px 0 0;
+    color: var(--accent);
+  }
+  .bayes4 em.t { font-style: italic; color: var(--accent); }
+  .bayes4 b { font-weight: 600; }
+
+  .bayes4 .formula {
+    background: #fff;
+    border: 1px solid var(--ink);
+    padding: 24px;
+    margin: 8px 0 22px;
+    text-align: center;
+  }
+  .bayes4 .formula .f {
+    font-family: var(--mono);
+    font-size: 21px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .bayes4 .formula .f .r { color: var(--accent); }
+  .bayes4 .formula .w {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--dim);
+    margin-top: 12px;
+    letter-spacing: .02em;
+  }
+
+  .bayes4 .parts { border-top: 1px solid var(--line); margin: 6px 0 8px; }
+  .bayes4 .part {
+    display: flex;
+    gap: 16px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .bayes4 .part .sym {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 500;
+    flex: 0 0 130px;
+  }
+  .bayes4 .part .txt { font-size: 16px; color: #333; }
+  .bayes4 .part .txt b { color: var(--ink); }
+
+  .bayes4 figure {
+    margin: 12px 0 24px;
+    border: 1px solid var(--ink);
+    background: #fff;
+  }
+  .bayes4 figure svg { display: block; width: 100%; height: auto; }
+  .bayes4 figcaption {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--dim);
+    padding: 11px 16px;
+    border-top: 1px solid var(--line);
+    letter-spacing: .02em;
+  }
+
+  .bayes4 .when {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: #555;
+    background: var(--accent-soft);
+    border-left: 2px solid var(--accent);
+    padding: 11px 16px;
+    margin: 0 0 22px;
+    line-height: 1.6;
+  }
+  .bayes4 .when b { color: var(--accent); font-weight: 500; }
+
+  .bayes4 blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding: 6px 0 6px 22px;
+    margin: 28px 0;
+  }
+
+  .bayes4 .margin {
+    margin-top: 48px;
+    border-top: 1px solid var(--ink);
+    padding-top: 22px;
+  }
+  .bayes4 .margin .mh {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: lowercase;
+    color: var(--dim);
+    margin-bottom: 14px;
+  }
+  .bayes4 .margin .fn {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 11px;
+    line-height: 1.5;
+  }
+  .bayes4 .margin .fn .num {
+    font-family: var(--mono);
+    color: var(--accent);
+    margin-right: 8px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / четыре лица теоремы Байеса</div>
+
+<main class="container">
+<article>
+
+  <div class="bayes4">
+    <div class="label">эссе · вероятность · ~8 мин</div>
+    <h1>четыре лица теоремы <em>Байеса</em>.</h1>
+    <div class="lead">Формула пугает с виду: дробь, условные вероятности, P чего-то при чём-то. А внутри —
+      простая и очень человеческая мысль: как менять мнение, когда пришли новые данные, не упираясь
+      рогом и не шарахаясь от каждой новости. Смотреть на неё можно с четырёх сторон. Каждая —
+      отдельный язык, и на каждом удобно своё.</div>
+
+    <p class="first">Сначала познакомимся с формулой — без испуга. Есть гипотеза (H): то, во что мы
+      прикидываем, верить или нет. И есть улика (E): то, что мы только что узнали. Байес говорит, как
+      пересчитать одно через другое.</p>
+
+    <div class="formula">
+      <div class="f">P(<span class="r">H</span> | E) = P(E | <span class="r">H</span>) · P(<span class="r">H</span>) / P(E)</div>
+      <div class="w">во что верю теперь = насколько данные ждались × во что верил раньше / насколько данные вероятны вообще</div>
+    </div>
+
+    <p>Четыре кусочка, и каждый честно про своё:</p>
+
+    <div class="parts">
+      <div class="part"><div class="sym">P(H) · априор<br><span style="color:#8c8a83;font-size:12px">prior</span></div><div class="txt">во что ты верил <b>раньше</b>. насколько гипотеза правдоподобна сама по себе.</div></div>
+      <div class="part"><div class="sym">P(E|H) · правдоподобие<br><span style="color:#8c8a83;font-size:12px">likelihood</span></div><div class="txt"><b>если</b> гипотеза верна — насколько ожидаемо то, что ты увидел.</div></div>
+      <div class="part"><div class="sym">P(E) · нормировка<br><span style="color:#8c8a83;font-size:12px">evidence · marginal</span></div><div class="txt">насколько увиденное вероятно <b>вообще</b>, само по себе. сюда прячется подвох.</div></div>
+      <div class="part"><div class="sym">P(H|E) · апостериор<br><span style="color:#8c8a83;font-size:12px">posterior</span></div><div class="txt">во что веришь <b>теперь</b>. а завтра это станет твоим «раньше».</div></div>
+    </div>
+
+    <p>А дальше — четыре способа всё это прочитать. Один и тот же фокус, разные ракурсы.</p>
+
+    <h2><span class="n">i</span> · людьми, а не процентами</h2>
+    <p>Проще всего не запутаться, если бросить жонглировать процентами и пересчитать живых людей.
+      Болезнь редкая — один на тысячу. Возьмём тысячу человек. Болен один, тест его поймает. Но среди
+      999 здоровых прибор тоже изредка ошибётся — и наберётся полсотни ложных тревог. И вот тест
+      звякнул «плюс» у пятидесяти одного, а болен из них <b>один</b>. Около двух процентов, а не
+      девяноста девяти. Проценты это прятали — люди показали.</p>
+
+    <figure>
+      <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+        <text x="30" y="38" font-family="JetBrains Mono,monospace" font-size="13" fill="#8c8a83">из 1000 человек тест «+» получил 51:</text>
+        <g id="freq"></g>
+        <text x="30" y="232" font-family="Inter,sans-serif" font-size="15" fill="#333">
+          <tspan fill="#c44a32" font-weight="600">█ болен — 1</tspan>
+          <tspan dx="18" fill="#cf9a8e">█ ложная тревога — 50</tspan>
+        </text>
+        <text x="650" y="232" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="18" fill="#c44a32">1 из 51 ≈ 2%</text>
+      </svg>
+      <figcaption>среди «плюсов» настоящий — один: его топит толпа ложных срабатываний</figcaption>
+    </figure>
+    <div class="when"><b>когда удобно:</b> медтест, классификация, объяснять на пальцах. это та же
+      матрица ошибок 2×2, только посчитанная штуками.</div>
+
+    <h2><span class="n">ii</span> · шансы: улики просто складываются</h2>
+    <p>Тут начинается самое рабочее. Переведём вероятность в шансы — как у букмекера, «один к девяти».
+      Формула превращается в умножение: берёшь шансы до, домножаешь на <b>силу улики</b> — получаешь
+      шансы после. Сила улики — это во сколько раз увиденное вероятнее, если гипотеза верна, чем если
+      нет.</p>
+    <p>Красота в том, что весь «фон» сокращается: не нужно считать вселенную, нужно лишь сравнить две
+      версии. А улики идут одна за другой и просто перемножаются — ровно так живёт спам-фильтр: каждое
+      подозрительное слово домножает шансы, что письмо мусорное. А если взять логарифм, умножение
+      станет сложением — и улики можно складывать в столбик.</p>
+
+    <figure>
+      <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg">
+        <text x="30" y="34" font-family="JetBrains Mono,monospace" font-size="12" fill="#8c8a83" letter-spacing="1">шансы · умножение</text>
+        <rect x="30" y="48" width="118" height="46" fill="#f1efe9" stroke="#c9c5bb"/>
+        <text x="89" y="70" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="18" fill="#1a1a1a">1 : 9</text>
+        <text x="89" y="88" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#8c8a83">до</text>
+        <text x="186" y="68" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="20" fill="#c44a32">× 6</text>
+        <text x="186" y="90" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#8c8a83">сила улики</text>
+        <path d="M150 71 H164 M222 71 H236" stroke="#c9c5bb" stroke-width="1.4"/>
+        <rect x="238" y="48" width="118" height="46" fill="#c44a32"/>
+        <text x="297" y="70" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="18" fill="#fff">≈ 2 : 3</text>
+        <text x="297" y="88" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#fff">после</text>
+
+        <text x="30" y="146" font-family="JetBrains Mono,monospace" font-size="12" fill="#8c8a83" letter-spacing="1">в логарифме — то же сложением</text>
+        <rect x="30" y="160" width="150" height="40" fill="#d9d5cb"/>
+        <text x="105" y="185" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" fill="#1a1a1a">вера до</text>
+        <rect x="184" y="160" width="100" height="40" fill="#e3a698"/>
+        <text x="234" y="185" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#5a2018">+ улика 1</text>
+        <rect x="288" y="160" width="100" height="40" fill="#d98a78"/>
+        <text x="338" y="185" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#fff">+ улика 2</text>
+        <path d="M398 180 H424" stroke="#c9c5bb" stroke-width="1.4"/>
+        <rect x="428" y="160" width="160" height="40" fill="#c44a32"/>
+        <text x="508" y="185" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" fill="#fff">= вера после</text>
+        <text x="30" y="232" font-family="Inter,sans-serif" font-size="14" fill="#555">каждая улика добавляет свой вес — копи, пока не перевесит</text>
+      </svg>
+      <figcaption>шансы умножаются · в логарифме просто складываются (так ломали «Энигму»)</figcaption>
+    </figure>
+    <div class="when"><b>когда удобно:</b> копить улики, сравнивать две версии, спам-фильтр, покер — и
+      <b>футбол</b>: шансы Бразилии × насколько ничья обычна для сильных против слабых.</div>
+
+    <h2><span class="n">iii</span> · облако вместо точки</h2>
+    <p>Иногда вопрос не «да или нет», а «насколько». Насколько сильна команда. Какая на самом деле
+      конверсия у фичи. Тогда вера — не одно число, а целое облако: где-то гуще, где-то реже. Приходят
+      данные — облако <b>сжимается и сдвигается</b>. Ты не просто меняешь оценку — ты становишься в ней
+      увереннее: широкое «да кто ж знает» превращается в узкое «почти наверняка вот столько». Когда
+      посчитать руками нельзя, это облако набрасывают тысячами случайных проб — это MCMC.</p>
+
+    <figure>
+      <svg viewBox="0 0 680 230" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="190" x2="640" y2="190" stroke="#c9c5bb" stroke-width="1.2"/>
+        <path d="M60 190 C 230 190, 250 96, 360 96 C 470 96, 490 190, 630 190" fill="rgba(140,138,131,.10)" stroke="#9a968c" stroke-width="2"/>
+        <path d="M210 190 C 280 190, 286 40, 332 40 C 378 40, 384 190, 454 190" fill="rgba(196,74,50,.12)" stroke="#c44a32" stroke-width="2.4"/>
+        <path d="M470 78 C 420 64, 392 60, 360 60" fill="none" stroke="#c9c5bb" stroke-width="1.4" marker-end="url(#ar)"/>
+        <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#9a968c"/></marker></defs>
+        <text x="500" y="120" font-family="Inter,sans-serif" font-size="14" fill="#9a968c">до данных:</text>
+        <text x="500" y="138" font-family="Inter,sans-serif" font-size="14" fill="#9a968c">широкое незнание</text>
+        <text x="332" y="28" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" fill="#c44a32">после: уже и увереннее</text>
+        <text x="40" y="212" font-family="JetBrains Mono,monospace" font-size="12" fill="#8c8a83">слабее</text>
+        <text x="640" y="212" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="12" fill="#8c8a83">сильнее →</text>
+      </svg>
+      <figcaption>данные сжимают «облако веры» о неизвестной величине — и сдвигают его к правде</figcaption>
+    </figure>
+    <div class="when"><b>когда удобно:</b> оценить величину <b>с честной погрешностью</b> — конверсию
+      в A/B, силу команды, размер эффекта. облако вместо точки и есть мера неопределённости.</div>
+
+    <h2><span class="n">iv</span> · насколько это вообще новость</h2>
+    <p>Последний угол — про вес новостей. Скучное, ожидаемое событие почти ничего не сообщает и веру
+      двигать не должно. Сенсация — наоборот: несёт много информации (её и меряют в <b>битах</b>) и
+      потому разворачивает мнение сильно. Бразилия обыграла аутсайдера — так и должно быть, веришь как
+      верил. Бразилия влетела 0:4 — вот это новость, вот это меняет картину. <b>Чем невероятнее
+      случившееся, тем сильнее оно обязано тебя двигать.</b> Удивление и есть мера обновления.</p>
+
+    <figure>
+      <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg">
+        <text x="30" y="58" font-family="Inter,sans-serif" font-size="15" fill="#333">обыграли аутсайдера</text>
+        <rect x="280" y="44" width="44" height="22" fill="#cf9a8e"/>
+        <text x="334" y="61" font-family="JetBrains Mono,monospace" font-size="14" fill="#8c8a83">0.3 бит</text>
+        <text x="470" y="61" font-family="Inter,sans-serif" font-size="14" fill="#9a968c">→ вера почти не дрогнула</text>
+        <text x="30" y="138" font-family="Inter,sans-serif" font-size="15" fill="#333">влетели 0:4</text>
+        <rect x="280" y="124" width="300" height="22" fill="#c44a32"/>
+        <text x="590" y="141" font-family="JetBrains Mono,monospace" font-size="14" fill="#c44a32">4 бит</text>
+        <text x="280" y="186" font-family="Inter,sans-serif" font-size="14" fill="#c44a32">→ вот это разворачивает мнение</text>
+        <line x1="30" y1="92" x2="650" y2="92" stroke="#ece9e1" stroke-width="1"/>
+      </svg>
+      <figcaption>чем невероятнее улика, тем больше в ней бит — и тем сильнее сдвиг веры</figcaption>
+    </figure>
+    <div class="when"><b>когда удобно:</b> прикинуть, должна ли новость вообще тебя трогать. прямой мост
+      к энтропии и к «битам на матч» в симуляции турнира: сенсация = много бит = прыжок вероятности.</div>
+
+    <h2><span class="n">∴</span> · один фокус, четыре ракурса</h2>
+    <p>Всё это — не четыре теоремы, а одна, рассказанная на четырёх языках: <em class="t">людьми</em>,
+      <em class="t">шансами</em>, <em class="t">облаками</em>, <em class="t">битами</em>. Какой выбрать —
+      зависит от задачи. Медтест удобнее считать людьми. Копить улики и болеть за футбол — шансами.
+      Оценивать величину — облаками. Прикидывать вес новости — битами.</p>
+
+    <blockquote>В шансах вера складывается: прибавляй вес каждой улики, пока сумма не перевесит.</blockquote>
+
+    <p>Так, между прочим, помогли выиграть войну. В Блетчли-Парке Тьюринг и Джек Гуд взламывали
+      «Энигму» не магией, а ровно этим сложением: каждая зацепка добавляла свои <b>децибаны</b> —
+      единички веса улики, — и когда столбик дорастал до нужного, шифр считался разгаданным.<sup>[2]</sup>
+      Один децибан они отмерили как самую малую крупицу довода, которую ещё чует человеческое чутьё.
+      Выходит, Байес, шансы и информация — одна монета, просто повёрнутая разными гранями. А весь
+      навык — менять мнение ровно на вес того, что узнал. Ни упрямее, ни легковернее.</p>
+
+    <div class="margin">
+      <div class="mh">на полях</div>
+      <div class="fn"><span class="num">[1]</span>«Считать людьми» — это естественные частоты (Гигеренцер): перевод условных вероятностей в счёт «из N человек» резко облегчает байесовские задачи и гасит ошибку базовой ставки. По сути — матрица ошибок 2×2 в штуках.</div>
+      <div class="fn"><span class="num">[2]</span>Шансовая форма: шансы после = шансы до × отношение правдоподобий; «фон» сокращается, улики перемножаются. Тьюринг и И. Дж. Гуд (1940, Блетчли-Парк) ввели «бан» и «децибан» — единицы веса улики в лог-шансах — для взлома военно-морской «Энигмы» процедурой банбуризмус; в логарифме умножение становится сложением.</div>
+      <div class="fn"><span class="num">[3]</span>Непрерывный Байес: вера — это распределение, которое данные сдвигают и сужают; с удобными парами (Beta + биномиальные данные) считается аналитически, иначе сэмплирует MCMC.</div>
+      <div class="fn"><span class="num">[4]</span>Удивительность улики −log₂P(E) меряется в битах; вес улики — информация, аддитивная по независимым уликам. Так Байес смыкается с энтропией и теорией информации.</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const g = document.getElementById('freq');
+      if (!g) return;
+      const NS = 'http://www.w3.org/2000/svg';
+      const cols = 17, size = 15, gap = 6, x0 = 30, y0 = 58;
+      for (let i = 0; i < 51; i++) {
+        const r = document.createElementNS(NS, 'rect');
+        const c = i % cols, row = Math.floor(i / cols);
+        r.setAttribute('x', x0 + c * (size + gap));
+        r.setAttribute('y', y0 + row * (size + gap));
+        r.setAttribute('width', size);
+        r.setAttribute('height', size);
+        r.setAttribute('fill', i === 0 ? '#c44a32' : '#f0cfc8');
+        if (i === 0) r.setAttribute('stroke', '#a23a26');
+        g.appendChild(r);
+      }
+    })();
+  </script>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="confusion-matrix.html">матрица ошибок →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/statistics/biases/base-rate-neglect.html">ошибка базовой частоты · P(H) →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">как обновлять убеждения →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="mcmc.html">MCMC →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="poker-bayes.html">байес за столом →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="kolmogorov.html">Колмогоров и случайность →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/champion-probability.html">вероятность чемпиона →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="/null/objects/statistics/biases/base-rate-neglect.html">ошибка базовой частоты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/poker-bayes.html">Байес за столом →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/bayesian.html">Как обновлять убеждения · байесовский вывод →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/kolmogorov.html">Колмогоров и случайность →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/confusion-matrix.html">матрица ошибок →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/mcmc.html">MCMC →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/champion-probability.html">вероятность чемпиона →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/bayes-four-faces.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

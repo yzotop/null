@@ -1861,6 +1861,13 @@
       "title": "матрица ошибок",
       "url": "/null/essays/confusion-matrix.html",
       "glyph": "⊠"
+    },
+    {
+      "id": "es-bayes-faces",
+      "type": "essay",
+      "title": "четыре лица теоремы Байеса",
+      "url": "/null/essays/bayes-four-faces.html",
+      "glyph": "✦"
     }
   ],
   "edges": [
@@ -6679,6 +6686,62 @@
     {
       "from": "st-condprob",
       "to": "es-confusion-matrix"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "es-confusion-matrix"
+    },
+    {
+      "from": "es-confusion-matrix",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "st-brn"
+    },
+    {
+      "from": "st-brn",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-bayesian",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "es-mcmc"
+    },
+    {
+      "from": "es-mcmc",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "es-poker-bayes"
+    },
+    {
+      "from": "es-poker-bayes",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "es-kolmogorov"
+    },
+    {
+      "from": "es-kolmogorov",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "vi-champion-prob"
+    },
+    {
+      "from": "vi-champion-prob",
+      "to": "es-bayes-faces"
     }
   ]
 }
