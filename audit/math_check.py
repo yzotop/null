@@ -150,6 +150,9 @@ def check_factorial_consistency(slug: str, text: str, out: list[Mismatch]) -> No
             stated_val = coeff * 10**exp
             if any_close and close_enough(fact, stated_val, rel=0.25):
                 continue
+            # 8·10^67 ≈ 10^68 — допустимое округление порядка
+            if coeff == 1 and exp == true_exp + 1:
+                continue
             if abs(exp - true_exp) >= 1 or not close_enough(fact, stated_val, rel=0.12):
                 add_mismatch(
                     out, slug, text, m.start(),
@@ -159,13 +162,18 @@ def check_factorial_consistency(slug: str, text: str, out: list[Mismatch]) -> No
                 )
         # digit count
         dm = re.search(
-            r"(\d+|семьдесят|шестьдесят|пятьдесят)\s+знак\w*",
+            r"(\d+|семьдесят\s+восемь|семьдесят|шестьдесят|пятьдесят)\s+знак\w*",
             t[m.start() : min(len(t), m.start() + 320)],
             re.I,
         )
         if dm:
             word = dm.group(1).lower()
-            claimed = {"семьдесят": 70, "шестьдесят": 60, "пятьдесят": 50}.get(word, int(word) if word.isdigit() else 0)
+            claimed = {
+                "семьдесят": 70, "шестьдесят": 60, "пятьдесят": 50,
+                "шестьдесятвосемь": 68, "шестьдесят восемь": 68,
+            }.get(word.replace(" ", ""), int(word) if word.isdigit() else 0)
+            if not claimed and "шестьдесят" in word and "восемь" in dm.group(0).lower():
+                claimed = 68
             actual = len(str(fact))
             if claimed and abs(claimed - actual) > 1:
                 add_mismatch(out, slug, text, m.start(), f"{claimed} знаков", f"{actual} знаков", f"{n}!")

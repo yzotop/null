@@ -73,25 +73,25 @@ class TextExtractor(HTMLParser):
         super().__init__()
         self.parts: list[str] = []
         self._skip = 0
-        self._math_depth = 0
+        self._math_stack: list[str] = []
 
     def handle_starttag(self, tag, attrs):
         cls = dict(attrs).get("class", "")
         if tag in ("script", "style", "nav", "header", "footer"):
             self._skip += 1
-        if any(x in cls for x in ("formula", "gl-formula", "katex", "math", "gl-formula")):
-            self._math_depth += 1
-        if tag in ("code", "pre"):
-            self._math_depth += 1
+        if any(x in cls for x in ("formula", "gl-formula", "katex", "math", "f")):
+            self._math_stack.append("math")
+        elif tag in ("code", "pre"):
+            self._math_stack.append("code")
 
     def handle_endtag(self, tag):
         if tag in ("script", "style", "nav", "header", "footer") and self._skip:
             self._skip -= 1
-        if tag in ("code", "pre"):
-            self._math_depth = max(0, self._math_depth - 1)
+        if tag in ("span", "code", "pre") and self._math_stack:
+            self._math_stack.pop()
 
     def handle_data(self, data):
-        if not self._skip and self._math_depth == 0:
+        if not self._skip and not self._math_stack:
             self.parts.append(data)
 
     def text(self) -> str:
@@ -121,11 +121,36 @@ def split_sentences(text: str) -> list[str]:
     return [p.strip() for p in parts if p.strip()]
 
 
+def is_algebra_sentence(s: str) -> bool:
+    """Формульная рубка в прозе (x=0.999…, 10x=…) — не прозовый staccato."""
+    t = s.strip()
+    low = t.lower()
+    if re.search(r"(?<![а-яё])x\s*=", t, re.I):
+        return True
+    if re.search(r"\d+x\s*=", t, re.I):
+        return True
+    if re.search(r"пусть\s+\w+\s*=", low):
+        return True
+    if re.search(r"тогда\s+\d", low):
+        return True
+    if "вычитаем" in low and "=" in t:
+        return True
+    if re.search(r"слева\s+\d", low):
+        return True
+    if re.match(r"значит\s+", low) and "=" in t:
+        return True
+    if re.search(r"0\.\d+", t) and "=" in t and word_count(s) <= 6:
+        return True
+    if word_count(s) <= 3 and re.search(r"[=+\-−/·\d]", t):
+        return True
+    return False
+
+
 def staccato_prose(slug: str, html: str) -> tuple[int, float]:
     body = extract_prose_body(html)
     if len(body) < 80:
         return 0, 0.0
-    sents = split_sentences(body)
+    sents = [s for s in split_sentences(body) if not is_algebra_sentence(s)]
     lens = [word_count(s) for s in sents]
     if not lens:
         return 0, 0.0
@@ -218,11 +243,28 @@ def load_math_slugs() -> set[str]:
     return {m["slug"] for m in data.get("mismatches", [])}
 
 
-def load_factual_slugs() -> set[str]:
+def load_factual_pool() -> list[tuple[str, int]]:
+    """Slug → число утверждений из factual-worklist (для спот-чека, не тир)."""
+    if MATH_RAW.exists():
+        data = json.loads(MATH_RAW.read_text(encoding="utf-8"))
+        counts = data.get("factual_counts") or {}
+        if counts:
+            return sorted(((s, int(n)) for s, n in counts.items()), key=lambda x: (-x[1], x[0]))
     p = AUDIT / "factual-worklist.md"
     if not p.exists():
-        return set()
-    return set(re.findall(r"^## (\S+)", p.read_text(encoding="utf-8"), re.M))
+        return []
+    text = p.read_text(encoding="utf-8")
+    out: list[tuple[str, int]] = []
+    for m in re.finditer(r"^## (\S+)\s*$", text, re.M):
+        slug = m.group(1)
+        chunk = text[m.end() : text.find("\n## ", m.end()) if text.find("\n## ", m.end()) != -1 else len(text)]
+        n = len(re.findall(r"^\d+\.\s", chunk, re.M))
+        out.append((slug, n))
+    return sorted(out, key=lambda x: (-x[1], x[0]))
+
+
+def load_factual_slugs() -> set[str]:
+    return {s for s, _ in load_factual_pool()}
 
 
 def build_signals() -> list[EssaySignals]:
@@ -249,7 +291,7 @@ def build_signals() -> list[EssaySignals]:
             sig.profile.append("math×1")
 
         if slug in factual_slugs:
-            sig.factual = True
+            sig.factual = True  # только для пула спот-чека, не для тира/балла
 
         if er.get("flag_readtime") == "yes":
             sig.score += WEIGHTS["readtime"]
@@ -292,13 +334,11 @@ def build_signals() -> list[EssaySignals]:
             tag = "thin" if words < 600 else "bloated"
             sig.profile.append(f"{tag} {words}w")
 
-        if not sig.profile and not sig.factual:
+        if not sig.profile:
             continue
 
-        if sig.math or sig.factual:
+        if sig.math:
             sig.tier = 0
-            if sig.factual and not sig.profile:
-                sig.profile.append("factual-worklist")
         elif sig.score >= 4:
             sig.tier = 1
         else:
@@ -307,50 +347,52 @@ def build_signals() -> list[EssaySignals]:
         results.append(sig)
         seen.add(slug)
 
-    for slug in sorted(factual_slugs - seen):
-        if slug not in essay_rows:
-            continue
-        results.append(
-            EssaySignals(slug=slug, tier=0, factual=True, profile=["factual-worklist"])
-        )
-
     return results
 
 
-def render(signals: list[EssaySignals], all_slugs: set[str]) -> str:
+def render(
+    signals: list[EssaySignals],
+    all_slugs: set[str],
+    factual_pool: list[tuple[str, int]],
+) -> str:
     flagged = {s.slug for s in signals}
     clean = sorted(all_slugs - flagged)
 
     lines = [
         "# Revision list — очередь доработки эссе",
         "",
-        "Порядок = **триаж-балл** по доверенным сигналам (math-check, readtime/footnotes,",
-        "вы→ты, прозовая рубка, диспропорция секций, голые EN, выбросы длины).",
-        "Исключены: literacy_score, canc_count, плотность prose-flags, hunspell.",
+        "Порядок = **триаж-балл** по доверенным сигналам (essays-metrics, prose-metrics):",
+        "math-check, readtime/footnotes, вы→ты, прозовая рубка, диспропорция секций,",
+        "голые EN, выбросы длины. Исключены: literacy_score, canc_count, hunspell.",
+        "factual-worklist **не** входит в балл и тир — см. пул спот-чека ниже.",
         "Вердикт по материалу/литературности — заполняется чтением.",
         "",
         "## Тир 0 — критический",
         "",
-        "Мат-расхождение (math-check) или эссе в factual-worklist.",
+        "Только мат-расхождение (math-check) или подтверждённая концептуальная ошибка.",
         "",
     ]
 
-    t0 = sorted(
-        [s for s in signals if s.tier == 0],
-        key=lambda x: (
-            0 if x.math else 1,
-            0 if x.profile != ["factual-worklist"] else 2,
-            -x.score,
-            x.slug,
-        ),
-    )
+    t0 = sorted([s for s in signals if s.tier == 0], key=lambda x: (-x.score, x.slug))
     for s in t0:
-        prof = "; ".join(s.profile) if s.profile else ("factual-worklist" if s.factual else "")
         lines.append(
-            f"- `{s.slug}` · **{s.score}** · {prof} · "
+            f"- `{s.slug}` · **{s.score}** · {'; '.join(s.profile)} · "
             f"**вердикт (чтение): _____** · **тип правки: _____** · **статус: _____**"
         )
     if not t0:
+        lines.append("_нет_")
+
+    pool_total = sum(n for _, n in factual_pool)
+    lines.extend([
+        "",
+        f"## Пул на спот-чек ({pool_total})",
+        "",
+        "Утверждения из factual-worklist — без триаж-балла и без тира.",
+        "",
+    ])
+    for slug, n in factual_pool:
+        lines.append(f"- `{slug}` · {n}")
+    if not factual_pool:
         lines.append("_нет_")
 
     lines.extend(["", "## Тир 1 — мультисигнал (балл ≥ 4)", ""])
@@ -377,7 +419,7 @@ def render(signals: list[EssaySignals], all_slugs: set[str]) -> str:
         "",
         "## Чистые",
         "",
-        "Без доверенных сигналов (кроме попадания только в factual-worklist без math — см. тир 0).",
+        "Без доверенных сигналов (попадание только в factual-worklist не снимает с чистых).",
         "",
         ", ".join(f"`{s}`" for s in clean) or "_нет_",
         "",
@@ -389,7 +431,8 @@ def main() -> int:
     essay_rows = list(csv.DictReader(ESSAY_METRICS.open(encoding="utf-8")))
     all_slugs = {r["slug"] for r in essay_rows}
     signals = build_signals()
-    OUT.write_text(render(signals, all_slugs), encoding="utf-8")
+    factual_pool = load_factual_pool()
+    OUT.write_text(render(signals, all_slugs, factual_pool), encoding="utf-8")
     print(f"revision-list: {len(signals)} flagged, {len(all_slugs)-len({s.slug for s in signals})} clean")
     print(f"tier0={sum(1 for s in signals if s.tier==0)} tier1={sum(1 for s in signals if s.tier==1)} tier2={sum(1 for s in signals if s.tier==2)}")
     return 0
