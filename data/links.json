@@ -1952,6 +1952,13 @@
       "title": "скрытый этаж",
       "url": "/null/essays/hidden-layer.html",
       "glyph": "⊞"
+    },
+    {
+      "id": "es-gt-distance",
+      "type": "essay",
+      "title": "теория игр на дистанции",
+      "url": "/null/essays/game-theory-distance.html",
+      "glyph": "⊞"
     }
   ],
   "edges": [
@@ -7298,6 +7305,66 @@
     {
       "from": "es-oshibki-po-pravilam",
       "to": "st-confirm"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "es-gamb-fall"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "gt-zd"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "math-axelrod"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-gt-distance"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "es-gt-distance"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "es-gt-distance"
+    },
+    {
+      "from": "es-hidden-layer",
+      "to": "es-gt-distance"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "es-gt-distance"
+    },
+    {
+      "from": "math-axelrod",
+      "to": "es-gt-distance"
     }
   ]
 }
