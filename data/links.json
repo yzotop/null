@@ -1931,6 +1931,13 @@
       "title": "Мартин Новак",
       "url": "/null/objects/mathematicians/nowak.html",
       "glyph": "N"
+    },
+    {
+      "id": "es-conditions-cooperation",
+      "type": "essay",
+      "title": "условия кооперации",
+      "url": "/null/essays/conditions-for-cooperation.html",
+      "glyph": "⊞"
     }
   ],
   "edges": [
@@ -7161,6 +7168,58 @@
     {
       "from": "es-game-theory",
       "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "es-gamb-fall"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "gt-nash"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "math-nowak"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "math-axelrod"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "math-nowak",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "gt-ipd-catalog",
+      "to": "es-conditions-cooperation"
     }
   ]
 }
