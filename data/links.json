@@ -1966,6 +1966,13 @@
       "title": "доверяй, но проверяй",
       "url": "/null/essays/trust-but-verify.html",
       "glyph": "⊞"
+    },
+    {
+      "id": "es-live-next-round",
+      "type": "essay",
+      "title": "дожить до следующего раунда",
+      "url": "/null/essays/live-to-next-round.html",
+      "glyph": "⊞"
     }
   ],
   "edges": [
@@ -7424,6 +7431,62 @@
     {
       "from": "math-axelrod",
       "to": "es-trust-verify"
+    },
+    {
+      "from": "es-live-next-round",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "es-live-next-round",
+      "to": "es-gt-distance"
+    },
+    {
+      "from": "es-live-next-round",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "es-live-next-round",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-live-next-round",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "es-live-next-round",
+      "to": "es-antifragile"
+    },
+    {
+      "from": "es-live-next-round",
+      "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "es-live-next-round",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "es-live-next-round"
+    },
+    {
+      "from": "es-antifragile",
+      "to": "es-live-next-round"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "es-live-next-round"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "es-live-next-round"
+    },
+    {
+      "from": "es-skin-in-the-game",
+      "to": "es-live-next-round"
+    },
+    {
+      "from": "es-live-next-round",
+      "to": "es-skin-in-the-game"
     }
   ]
 }
