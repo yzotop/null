@@ -1980,6 +1980,13 @@
       "title": "Нассим Талеб",
       "url": "/null/objects/mathematicians/taleb.html",
       "glyph": "T"
+    },
+    {
+      "id": "es-honest-signal",
+      "type": "essay",
+      "title": "честный сигнал",
+      "url": "/null/essays/honest-signal.html",
+      "glyph": "⊞"
     }
   ],
   "edges": [
@@ -7570,6 +7577,50 @@
     {
       "from": "es-gt-distance",
       "to": "math-taleb"
+    },
+    {
+      "from": "es-honest-signal",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "es-honest-signal",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "es-honest-signal",
+      "to": "es-gt-distance"
+    },
+    {
+      "from": "es-honest-signal",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-honest-signal",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "es-honest-signal",
+      "to": "gt-nash"
+    },
+    {
+      "from": "es-honest-signal",
+      "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "es-honest-signal"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "es-honest-signal"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "es-honest-signal"
+    },
+    {
+      "from": "es-live-next-round",
+      "to": "es-honest-signal"
     }
   ]
 }
