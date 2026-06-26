@@ -3829,10 +3829,6 @@
     },
     {
       "from": "es-two-systems",
-      "to": "es-cog-biases"
-    },
-    {
-      "from": "es-two-systems",
       "to": "es-nudge"
     },
     {
@@ -3840,32 +3836,8 @@
       "to": "es-regression"
     },
     {
-      "from": "es-cog-biases",
-      "to": "es-two-systems"
-    },
-    {
-      "from": "es-cog-biases",
-      "to": "es-eu"
-    },
-    {
-      "from": "es-cog-biases",
-      "to": "es-nudge"
-    },
-    {
-      "from": "es-cog-biases",
-      "to": "es-ab-testing"
-    },
-    {
-      "from": "es-cog-biases",
-      "to": "es-bayesian"
-    },
-    {
       "from": "es-nudge",
       "to": "es-two-systems"
-    },
-    {
-      "from": "es-nudge",
-      "to": "es-cog-biases"
     },
     {
       "from": "es-nudge",
@@ -3890,10 +3862,6 @@
     {
       "from": "es-prospect",
       "to": "es-two-systems"
-    },
-    {
-      "from": "es-prospect",
-      "to": "es-cog-biases"
     },
     {
       "from": "es-prospect",
@@ -3925,10 +3893,6 @@
     },
     {
       "from": "st-anchor",
-      "to": "es-cog-biases"
-    },
-    {
-      "from": "st-anchor",
       "to": "es-two-systems"
     },
     {
@@ -3942,10 +3906,6 @@
     {
       "from": "st-anchor",
       "to": "st-avail"
-    },
-    {
-      "from": "st-avail",
-      "to": "es-cog-biases"
     },
     {
       "from": "st-avail",
@@ -4257,10 +4217,6 @@
     },
     {
       "from": "es-good-dec",
-      "to": "es-cog-biases"
-    },
-    {
-      "from": "es-good-dec",
       "to": "es-regression"
     },
     {
@@ -4281,10 +4237,6 @@
     },
     {
       "from": "es-base-rate",
-      "to": "es-cog-biases"
-    },
-    {
-      "from": "es-base-rate",
       "to": "es-ab-testing"
     },
     {
@@ -4302,10 +4254,6 @@
     {
       "from": "es-gamb-fall",
       "to": "es-prob-paradox"
-    },
-    {
-      "from": "es-gamb-fall",
-      "to": "es-cog-biases"
     },
     {
       "from": "es-gamb-fall",
@@ -4422,10 +4370,6 @@
     {
       "from": "es-simpson",
       "to": "es-base-rate"
-    },
-    {
-      "from": "es-simpson",
-      "to": "es-cog-biases"
     },
     {
       "from": "es-simpson",
@@ -6105,14 +6049,6 @@
     },
     {
       "from": "es-oshibki-po-pravilam",
-      "to": "es-cog-biases"
-    },
-    {
-      "from": "es-cog-biases",
-      "to": "es-oshibki-po-pravilam"
-    },
-    {
-      "from": "es-oshibki-po-pravilam",
       "to": "es-two-systems"
     },
     {
@@ -7322,6 +7258,46 @@
     {
       "from": "es-game-theory",
       "to": "es-hidden-layer"
+    },
+    {
+      "from": "es-nudge",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "st-anchor",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "st-avail",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-eu"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-nudge"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "st-sunk"
+    },
+    {
+      "from": "es-oshibki-po-pravilam",
+      "to": "st-confirm"
     }
   ]
 }
