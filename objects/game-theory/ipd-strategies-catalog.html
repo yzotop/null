@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>стратегии повторяющейся игры — null/objects/game-theory</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .sub-h { font-family: var(--font-mono); font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; margin: 26px 0 10px 0; border-top: 1px solid #ddd; padding-top: 14px; }
+  .strat-list { border: 1.5px solid #111; margin-bottom: 32px; }
+  .strat-item { display: flex; gap: 20px; padding: 14px 18px; border-bottom: 0.5px solid #e8e8e4; align-items: flex-start; scroll-margin-top: 80px; }
+  .strat-item:last-child { border-bottom: none; }
+  .strat-num { font-family: 'Old Standard TT', serif; font-style: italic; font-size: 18px; color: #c44a32; min-width: 24px; }
+  .strat-name { font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: #111; margin-bottom: 4px; }
+  .strat-meta { font-weight: 400; color: #888; }
+  .strat-desc { font-family: var(--font-mono); font-size: 10px; color: #888; line-height: 1.6; }
+  .fields { font-family: var(--font-mono); font-size: 10px; color: #888; line-height: 1.8; margin-top: 24px; }
+  .fields a { color: #c44a32; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / game-theory / стратегии повторяющейся игры</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header">
+    <div class="obj-glyph" style="font-size:48px;"><em style="font-family:'Old Standard TT',Georgia,serif;font-style:italic;">⊞</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">объект · справка · §10</div>
+      <div class="obj-title">стратегии повторяющейся игры</div>
+      <div class="obj-subtitle">каталог · от классики взаимности до скрытого слоя</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">тип</td><td class="v">каталог · 20 стратегий · повторяющаяся дилемма заключённого</td></tr>
+    <tr><td class="k">семейства</td><td class="v">взаимные · каратели · наивные · прощупыватели · ZD · современные · вне правил</td></tr>
+    <tr><td class="k">связано</td><td class="v">эволюция кооперации · математика предательства · дилемма заключённого</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="catalog">
+    <div class="essay-label">объект · справка · каталог · ~1200 слов · 8 мин</div>
+
+    <div class="essay" style="margin-top: 20px;">
+      <div class="essay-body">
+      <p class="first">Сразу оговорка, без которой список врёт: единого «лучшего» нет. Кто победит, зависит от среды — длины тени будущего, уровня шума, состава поля, структуры популяции. Вымогатель царит в дуэли и нищает в эволюции; око за око берёт турнир и не выигрывает ни одной схватки. Поэтому ниже — не строгий рейтинг, а каталог по семействам, от самых надёжных к самым специальным. О том, при каких условиях кто выигрывает, — в эссе «условия кооперации».</p>
+      <p>Обозначения: **память** — на сколько прошлых ходов смотрит правило.</p>
+      </div>
+    </div>
+
+  <div class="sub-h">// взаимные · ядро кооперации</div>
+  <div class="strat-list">
+    <div class="strat-item" id="tit-for-tat">
+      <span class="strat-num">1</span>
+      <div>
+        <div class="strat-name">око за око <span class="strat-meta">(tit-for-tat)</span></div>
+        <div class="strat-desc">память 1 · Рапопорт, 1980</div>
+      </div>
+    </div>
+    <div class="strat-item" id="generous-tit-for-tat">
+      <span class="strat-num">2</span>
+      <div>
+        <div class="strat-name">великодушное око за око <span class="strat-meta">(generous tit-for-tat)</span></div>
+        <div class="strat-desc">память 1 · Новак–Зигмунд, 1992</div>
+      </div>
+    </div>
+    <div class="strat-item" id="tit-for-two-tats">
+      <span class="strat-num">3</span>
+      <div>
+        <div class="strat-name">око за два ока <span class="strat-meta">(tit-for-two-tats)</span></div>
+        <div class="strat-desc">память 2 · Аксельрод, 1980</div>
+      </div>
+    </div>
+    <div class="strat-item" id="pavlov">
+      <span class="strat-num">4</span>
+      <div>
+        <div class="strat-name">Pavlov <span class="strat-meta">(win-stay, lose-shift)</span></div>
+        <div class="strat-desc">память 1 · Новак–Зигмунд, 1993</div>
+      </div>
+    </div>
+    <div class="strat-item" id="contrite-tit-for-tat">
+      <span class="strat-num">5</span>
+      <div>
+        <div class="strat-name">раскаивающееся око за око <span class="strat-meta">(contrite tit-for-tat)</span></div>
+        <div class="strat-desc">память + «репутация» · Бойд, 1989</div>
+      </div>
+    </div>
+    <div class="strat-item" id="gradual">
+      <span class="strat-num">6</span>
+      <div>
+        <div class="strat-name">постепенный <span class="strat-meta">(gradual)</span></div>
+        <div class="strat-desc">полная история · Бофис–Делаэ–Матьё, 1996</div>
+      </div>
+    </div>
+  </div>
+  <div class="sub-h">// каратели · память без прощения</div>
+  <div class="strat-list">
+    <div class="strat-item" id="grim-trigger">
+      <span class="strat-num">7</span>
+      <div>
+        <div class="strat-name">спусковой крючок <span class="strat-meta">(grim trigger / Friedman)</span></div>
+        <div class="strat-desc">полная история · Аксельрод, 1980</div>
+      </div>
+    </div>
+    <div class="strat-item" id="majority">
+      <span class="strat-num">8</span>
+      <div>
+        <div class="strat-name">строгое/мягкое большинство <span class="strat-meta">(hard/soft majority)</span></div>
+        <div class="strat-desc">полная история</div>
+      </div>
+    </div>
+  </div>
+  <div class="sub-h">// наивные · базовая линия</div>
+  <div class="strat-list">
+    <div class="strat-item" id="allc">
+      <span class="strat-num">9</span>
+      <div>
+        <div class="strat-name">всегда мир <span class="strat-meta">(ALLC)</span></div>
+        <div class="strat-desc">память 0</div>
+      </div>
+    </div>
+    <div class="strat-item" id="alld">
+      <span class="strat-num">10</span>
+      <div>
+        <div class="strat-name">всегда бей <span class="strat-meta">(ALLD)</span></div>
+        <div class="strat-desc">память 0</div>
+      </div>
+    </div>
+    <div class="strat-item" id="random">
+      <span class="strat-num">11</span>
+      <div>
+        <div class="strat-name">случайный <span class="strat-meta">(random)</span></div>
+        <div class="strat-desc">память 0</div>
+      </div>
+    </div>
+  </div>
+  <div class="sub-h">// прощупыватели · разведка и эксплуатация</div>
+  <div class="strat-list">
+    <div class="strat-item" id="prober">
+      <span class="strat-num">12</span>
+      <div>
+        <div class="strat-name">прощупыватель <span class="strat-meta">(prober)</span></div>
+        <div class="strat-desc">память 1+</div>
+      </div>
+    </div>
+    <div class="strat-item" id="joss">
+      <span class="strat-num">13</span>
+      <div>
+        <div class="strat-name">хитрое око за око <span class="strat-meta">(Joss)</span></div>
+        <div class="strat-desc">память 1 · Аксельрод, 1980</div>
+      </div>
+    </div>
+    <div class="strat-item" id="downing">
+      <span class="strat-num">14</span>
+      <div>
+        <div class="strat-name">моделирующий <span class="strat-meta">(Downing / outcome-maximization)</span></div>
+        <div class="strat-desc">полная история · Аксельрод, 1980</div>
+      </div>
+    </div>
+  </div>
+  <div class="sub-h">// скрытый слой · zero-determinant</div>
+  <div class="strat-list">
+    <div class="strat-item" id="zdgtft-2">
+      <span class="strat-num">15</span>
+      <div>
+        <div class="strat-name">великодушная ZD <span class="strat-meta">(ZDGTFT-2)</span></div>
+        <div class="strat-desc">память 1 · Стюарт–Плоткин, 2012</div>
+      </div>
+    </div>
+    <div class="strat-item" id="extort-2">
+      <span class="strat-num">16</span>
+      <div>
+        <div class="strat-name">вымогатель <span class="strat-meta">(Extort-2)</span></div>
+        <div class="strat-desc">память 1 · Пресс–Дайсон, 2012</div>
+      </div>
+    </div>
+  </div>
+  <div class="sub-h">// современные · выращенные</div>
+  <div class="strat-list">
+    <div class="strat-item" id="rl-trained">
+      <span class="strat-num">17</span>
+      <div>
+        <div class="strat-name">обученные RL/эволюцией <span class="strat-meta">· переменная память</span></div>
+        <div class="strat-desc">Харпер и др., 2017</div>
+      </div>
+    </div>
+    <div class="strat-item" id="omega-tft">
+      <span class="strat-num">18</span>
+      <div>
+        <div class="strat-name">омега-око-за-око <span class="strat-meta">(Omega TFT)</span></div>
+        <div class="strat-desc">память + счётчики</div>
+      </div>
+    </div>
+    <div class="strat-item" id="adaptive-tft">
+      <span class="strat-num">19</span>
+      <div>
+        <div class="strat-name">адаптивное око за око <span class="strat-meta">(adaptive TFT) · скользящая оценка · Дзафестас, 2000</span></div>
+        <div class="strat-desc">Держит непрерывную оценку «настроения» соперника и реагирует плавно, без резких качелей кооперация/предательство.</div>
+      </div>
+    </div>
+  </div>
+  <div class="sub-h">// вне правил · взлом турнира</div>
+  <div class="strat-list">
+    <div class="strat-item" id="southampton">
+      <span class="strat-num">20</span>
+      <div>
+        <div class="strat-name">господин/раб <span class="strat-meta">(Southampton handshake) · сговор · Кендалл/Дженнингс, 2004</span></div>
+        <div class="strat-desc">Десятки программ узнают своих по «рукопожатию», затем делятся на жертв и эксплуататоров. Формально свергли око за око — но обходом запрета на сговор, а не лучшей стратегией.</div>
+      </div>
+    </div>
+  </div>
+
+    <div class="fields">
+      <div class="sub-h" style="border:none;padding-top:0;margin-top:0;">на полях</div>
+      <p><em>эссе:</em> <a href="../../essays/evolution-of-cooperation.html">эволюция кооперации</a> · условия кооперации · <a href="../../essays/game-theory.html">математика предательства</a></p>
+      <p><em>объекты:</em> <a href="../ideas/problems/prisoners-dilemma.html">дилемма заключённого</a> · <a href="nash-equilibrium.html">равновесие нэша</a> · Pavlov · zero-determinant стратегии</p>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/evolution-of-cooperation.html">эволюция кооперации →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/game-theory.html">математика предательства →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../ideas/problems/prisoners-dilemma.html">дилемма заключённого →</a></div>
+      <div class="related-link"><span class="related-link-type">теория игр</span><a href="nash-equilibrium.html">равновесие Нэша →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/axelrod.html">турниры Аксельрода →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">математик</span><a href="/null/objects/mathematicians/rapoport.html">Анатоль Рапопорт →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="/null/objects/mathematicians/nowak.html">Мартин Новак →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/game-theory.html">математика предательства →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/evolution-of-cooperation.html">эволюция кооперации →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/game-theory/ipd-strategies-catalog.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

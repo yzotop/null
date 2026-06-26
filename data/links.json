@@ -724,7 +724,7 @@
     {
       "id": "es-game-theory",
       "type": "essay",
-      "title": "Математика предательства · теория игр",
+      "title": "математика предательства",
       "url": "/null/essays/game-theory.html",
       "glyph": "¶"
     },
@@ -1896,6 +1896,41 @@
       "title": "кризис воспроизводимости",
       "url": "/null/essays/replication-crisis.html",
       "glyph": "⊘"
+    },
+    {
+      "id": "es-evolution-cooperation",
+      "type": "essay",
+      "title": "эволюция кооперации",
+      "url": "/null/essays/evolution-of-cooperation.html",
+      "glyph": "⊞"
+    },
+    {
+      "id": "gt-ipd-catalog",
+      "type": "gametheory",
+      "title": "стратегии повторяющейся игры",
+      "url": "/null/objects/game-theory/ipd-strategies-catalog.html",
+      "glyph": "⊞"
+    },
+    {
+      "id": "math-rapoport",
+      "type": "mathematician",
+      "title": "Анатоль Рапопорт",
+      "url": "/null/objects/mathematicians/rapoport.html",
+      "glyph": "T"
+    },
+    {
+      "id": "math-axelrod",
+      "type": "mathematician",
+      "title": "Роберт Аксельрод",
+      "url": "/null/objects/mathematicians/axelrod.html",
+      "glyph": "A"
+    },
+    {
+      "id": "math-nowak",
+      "type": "mathematician",
+      "title": "Мартин Новак",
+      "url": "/null/objects/mathematicians/nowak.html",
+      "glyph": "N"
     }
   ],
   "edges": [
@@ -7038,6 +7073,94 @@
     {
       "from": "es-ab-testing",
       "to": "es-replication-crisis"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "gt-nash"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "gt-minimax"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "es-gamb-fall"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "es-games-train"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "math-rapoport"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "math-axelrod"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "math-nowak"
+    },
+    {
+      "from": "gt-ipd-catalog",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "gt-ipd-catalog",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "gt-ipd-catalog",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "gt-ipd-catalog",
+      "to": "gt-nash"
+    },
+    {
+      "from": "math-axelrod",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "math-rapoport",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "math-rapoport",
+      "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "math-nowak",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "math-nowak",
+      "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "gt-ipd-catalog"
     }
   ]
 }
