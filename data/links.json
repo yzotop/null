@@ -1973,6 +1973,13 @@
       "title": "дожить до следующего раунда",
       "url": "/null/essays/live-to-next-round.html",
       "glyph": "⊞"
+    },
+    {
+      "id": "math-taleb",
+      "type": "mathematician",
+      "title": "Нассим Талеб",
+      "url": "/null/objects/mathematicians/taleb.html",
+      "glyph": "T"
     }
   ],
   "edges": [
@@ -7487,6 +7494,82 @@
     {
       "from": "es-live-next-round",
       "to": "es-skin-in-the-game"
+    },
+    {
+      "from": "math-taleb",
+      "to": "es-live-next-round"
+    },
+    {
+      "from": "math-taleb",
+      "to": "es-antifragile"
+    },
+    {
+      "from": "math-taleb",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "math-taleb",
+      "to": "es-skin-in-the-game"
+    },
+    {
+      "from": "math-taleb",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "math-taleb",
+      "to": "es-black-swan"
+    },
+    {
+      "from": "math-taleb",
+      "to": "es-via-negativa"
+    },
+    {
+      "from": "math-taleb",
+      "to": "es-flaneur"
+    },
+    {
+      "from": "math-taleb",
+      "to": "es-optionality"
+    },
+    {
+      "from": "es-live-next-round",
+      "to": "math-taleb"
+    },
+    {
+      "from": "es-antifragile",
+      "to": "math-taleb"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "math-taleb"
+    },
+    {
+      "from": "es-skin-in-the-game",
+      "to": "math-taleb"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "math-taleb"
+    },
+    {
+      "from": "es-black-swan",
+      "to": "math-taleb"
+    },
+    {
+      "from": "es-via-negativa",
+      "to": "math-taleb"
+    },
+    {
+      "from": "es-flaneur",
+      "to": "math-taleb"
+    },
+    {
+      "from": "es-optionality",
+      "to": "math-taleb"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "math-taleb"
     }
   ]
 }
