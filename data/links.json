@@ -1987,6 +1987,34 @@
       "title": "честный сигнал",
       "url": "/null/essays/honest-signal.html",
       "glyph": "⊞"
+    },
+    {
+      "id": "es-hawks-doves",
+      "type": "essay",
+      "title": "ястребы и голуби",
+      "url": "/null/essays/hawks-and-doves.html",
+      "glyph": "⊞"
+    },
+    {
+      "id": "es-focal-point",
+      "type": "essay",
+      "title": "договориться без уговора",
+      "url": "/null/essays/focal-point.html",
+      "glyph": "⊞"
+    },
+    {
+      "id": "es-good-name",
+      "type": "essay",
+      "title": "доброе имя",
+      "url": "/null/essays/good-name.html",
+      "glyph": "⊞"
+    },
+    {
+      "id": "math-maynard-smith",
+      "type": "mathematician",
+      "title": "Джон Мейнард Смит",
+      "url": "/null/objects/mathematicians/maynard-smith.html",
+      "glyph": "M"
     }
   ],
   "edges": [
@@ -7620,6 +7648,102 @@
     },
     {
       "from": "es-live-next-round",
+      "to": "es-honest-signal"
+    },
+    {
+      "from": "es-hawks-doves",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "es-hawks-doves",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "es-hawks-doves",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-hawks-doves",
+      "to": "es-honest-signal"
+    },
+    {
+      "from": "es-hawks-doves",
+      "to": "gt-nash"
+    },
+    {
+      "from": "es-hawks-doves",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "es-hawks-doves",
+      "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "es-hawks-doves",
+      "to": "math-maynard-smith"
+    },
+    {
+      "from": "es-focal-point",
+      "to": "es-hawks-doves"
+    },
+    {
+      "from": "es-focal-point",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "es-focal-point",
+      "to": "es-gt-distance"
+    },
+    {
+      "from": "es-focal-point",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-focal-point",
+      "to": "gt-nash"
+    },
+    {
+      "from": "es-focal-point",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "es-good-name",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "es-good-name",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "es-good-name",
+      "to": "es-honest-signal"
+    },
+    {
+      "from": "es-good-name",
+      "to": "es-gt-distance"
+    },
+    {
+      "from": "es-good-name",
+      "to": "es-trust-verify"
+    },
+    {
+      "from": "es-good-name",
+      "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "es-good-name",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "es-good-name",
+      "to": "math-nowak"
+    },
+    {
+      "from": "math-maynard-smith",
+      "to": "es-hawks-doves"
+    },
+    {
+      "from": "math-maynard-smith",
       "to": "es-honest-signal"
     }
   ]
