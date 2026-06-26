@@ -1959,6 +1959,13 @@
       "title": "теория игр на дистанции",
       "url": "/null/essays/game-theory-distance.html",
       "glyph": "⊞"
+    },
+    {
+      "id": "es-trust-verify",
+      "type": "essay",
+      "title": "доверяй, но проверяй",
+      "url": "/null/essays/trust-but-verify.html",
+      "glyph": "⊞"
     }
   ],
   "edges": [
@@ -7365,6 +7372,58 @@
     {
       "from": "math-axelrod",
       "to": "es-gt-distance"
+    },
+    {
+      "from": "es-trust-verify",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "es-trust-verify",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "es-trust-verify",
+      "to": "es-gt-distance"
+    },
+    {
+      "from": "es-trust-verify",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-trust-verify",
+      "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "es-trust-verify",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "es-trust-verify",
+      "to": "math-axelrod"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "es-trust-verify"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "es-trust-verify"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "es-trust-verify"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "es-trust-verify"
+    },
+    {
+      "from": "gt-ipd-catalog",
+      "to": "es-trust-verify"
+    },
+    {
+      "from": "math-axelrod",
+      "to": "es-trust-verify"
     }
   ]
 }
