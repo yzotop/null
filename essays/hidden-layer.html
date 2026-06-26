@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>скрытый этаж — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .evo {
+    --paper: #f7f6f2; --ink: #1a1a1a; --dim: #8c8a83; --line: #dcd9d0; --accent: #c44a32;
+    --serif: 'IM Fell English', Georgia, serif; --sans: 'Inter', system-ui, sans-serif; --mono: 'JetBrains Mono', monospace;
+    width: 100%; max-width: 680px; margin-top: 8px; font-family: var(--sans); color: var(--ink); line-height: 1.72;
+  }
+  .evo .label { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: lowercase; color: var(--dim); margin-bottom: 18px; }
+  .evo h1 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 50px; line-height: 1.04; margin-bottom: 20px; }
+  .evo h1 em { color: var(--accent); }
+  .evo .lead { font-size: 19px; line-height: 1.55; color: #444; margin-bottom: 30px; font-style: italic; font-family: var(--serif); }
+  .evo h2 { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: lowercase; color: var(--accent); margin: 46px 0 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .evo p { font-size: 17px; margin-bottom: 18px; }
+  .evo p.first::first-letter { font-family: var(--serif); font-size: 62px; float: left; line-height: .82; padding: 6px 10px 0 0; color: var(--accent); }
+  .evo blockquote { font-family: var(--serif); font-style: italic; font-size: 18px; color: #444; line-height: 1.55; border-left: 2px solid var(--accent); padding-left: 18px; margin: 24px 0; }
+  .evo a { color: var(--accent); border-bottom: 1px solid rgba(196,74,50,.35); text-decoration: none; }
+  .evo a:hover { border-bottom-color: var(--accent); }
+  .evo sup { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+  .evo .margin { margin-top: 48px; border-top: 1px solid var(--ink); padding-top: 22px; }
+  .evo .margin .mh { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: lowercase; color: var(--dim); margin-bottom: 14px; }
+  .evo .margin .fn { font-size: 14px; color: #555; margin-bottom: 11px; line-height: 1.5; }
+  .evo .margin .fn .num { font-family: var(--mono); color: var(--accent); margin-right: 8px; }
+  .evo .fields { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / скрытый этаж</div>
+
+<main class="container">
+<article>
+
+  <div class="evo">
+    <div class="label">эссе · §10 · теория игр · открытие · ~13 минут · 2026.06</div>
+    <h1>скрытый <em>этаж</em></h1>
+    <div class="lead">как через тридцать лет в, казалось бы, добитой задаче нашли целый новый слой — и почему абсолютная власть в нём оборачивается щедростью</div>
+
+      <p class="first">К две тысячи двенадцатому году про повторяющуюся дилемму заключённого, казалось, было известно всё. Тридцать с лишним лет после турниров Аксельрода: сотни статей, десятки стратегий, учебники с готовой моралью — будь добр, отвечай, прощай. Око за око на пьедестале, история со счастливым концом. Задача выглядела закрытой, как теорема с поставленной точкой: красиво, исчерпывающе, добавить нечего.</p>
+      <p>А потом двое физиков нашли в ней целый этаж, которого никто не замечал.</p>
+      <h2>двое чужаков</h2>
+      <p>Звали их Уильям Пресс и Фримен Дайсон. Второе имя стоит того, чтобы остановиться: Дайсон — одна из легенд физики двадцатого века, человек, который ещё в молодости свёл воедино конкурирующие версии квантовой электродинамики, а к моменту этой работы разменял девятый десяток. В теорию игр он пришёл чужаком — и сделал ровно тот ход, который чаще удаётся чужакам: посмотрел на заезженную задачу под незнакомым углом.</p>
+      <p>Угол был — линейная алгебра. Вместо того чтобы, как все тридцать лет до них, гонять стратегии в симуляциях и смотреть, кто кого, Пресс и Дайсон записали повторяющуюся игру как простую систему уравнений и принялись её решать на бумаге. И заметили трюк, мимо которого прошли все: если подобрать свою стратегию особым образом, один определитель в этих уравнениях обращается в ноль<sup>[1]</sup>. От этого ноля и пошло название — zero-determinant, «нулевой определитель». А следствие из него оказалось ошеломляющим.</p>
+      <h2>власть вместо ответа</h2>
+      <p>Вот что они доказали. Игрок, помнящий всего один прошлый ход, может в одиночку навязать жёсткую связь между своим средним выигрышем и выигрышем соперника — линейную, заранее заданную, и соблюдаться она будет при любой игре соперника<sup>[2]</sup>.</p>
+      <p>Вдумайся, насколько это странно. Все предыдущие стратегии были реакциями: ты бьёшь — отвечу, ты миришься — помирюсь. Хорошая игра означала хорошо отвечать. А здесь игрок не отвечает — он диктует. Он не подстраивается под партию, он назначает уравнение, которому партия обязана подчиниться, что бы партнёр ни вытворял. Это не другая стратегия в прежнем смысле. Это другой смысл слова «стратегия»: не ход за ходом, а закон над итогом.</p>
+      <p>И сразу встаёт вопрос, который должен был встать: если можно диктовать связь между очками — нельзя ли продиктовать её в свою пользу?</p>
+      <h2>вымогатель</h2>
+      <p>Можно. Самое тёмное дитя нового класса — вымогательские стратегии (extortion).</p>
+      <p>Вымогатель навязывает такую связь: его перевес над выигрышем соперника всегда держится в заданной пропорции. Скажем, сколько бы очков ни набрал партнёр сверх нищенского минимума, вымогатель забирает себе вдвое больше сверх того же минимума. И вот в чём ловушка: партнёру, чтобы поднять собственный счёт, остаётся единственный путь — кооперировать, а кооперируя, он автоматически поднимает счёт вымогателю — ещё выше. Чем разумнее соперник, чем усерднее он тянет своё, тем жирнее кормит хозяина. Его собственная рациональность становится поводком.</p>
+      <p>На этом месте кажется, что вот он — наконец-то найденный убийца око за око. Стратегия, которая не отвечает на доброту, а доит её; которая обыгрывает любого рационального соперника не вничью, а с гарантированным перевесом. Пресс и Дайсон так и назвали свою статью — «стратегии, доминирующие над любым эволюционным противником». Тридцать лет искали правило сильнее взаимности — и вот оно, выведенное не из турнира, а из чистой алгебры.</p>
+      <p>Но дальше начинается самое красивое.</p>
+      <h2>контрреволюция</h2>
+      <p>Вымогательство непобедимо ровно в одном случае — в дуэли против одинокого соперника, который вынужден подстраиваться. Выпусти его в популяцию — и чары спадают.</p>
+      <p>Потому что доить вымогателю некого, кроме своих же. Против доброго мира он наживается, но мир добрых он сам же и выкашивает; а оставшись среди таких же вымогателей, он встречает зеркало — и обе стороны нищают на взаимной жадности. Когда Александр Стюарт и Джошуа Плоткин перепрогнали турнир Аксельрода, подмешав в поле ZD-стратегии, итог вышел почти издевательский: на вершину поднялась великодушная разновидность ZD — та, что гарантирует сопернику долю не меньше собственной, — а вымогательская осела почти у самого дна, рядом с тупым «всегда предавай»<sup>[3]</sup>. Год спустя те же авторы показали и общий закон: вымогательство эволюционно неустойчиво, а щедрость — устойчива<sup>[4]</sup>.</p>
+      <p>Картина повторяет всю историю кооперации, только на новом этаже. Игроку дали в руки рычаг абсолютной власти над чужими очками — и оптимальный способ им распорядиться оказался не «отними побольше», а «отдай не меньше, чем берёшь». Даже там, где математика впервые позволила законно грабить, она же выводит к тому, что грабёж себя не окупает. Щедрость живёт дольше жадности — теперь это доказано и сверху, со стороны власти, а не только снизу, со стороны турнирной таблицы.</p>
+      <h2>око за око всё это время было внутри</h2>
+      <p>И последний поворот, тихий, но самый изящный. Когда Пресс и Дайсон описали новый класс, выяснилось, что один его представитель был известен давно. Око за око — это тоже zero-determinant стратегия. Особая, пограничная: она навязывает связь, в которой перевес равен нулю, то есть попросту уравнивает очки обоих игроков<sup>[5]</sup>.</p>
+      <p>Тридцать лет чемпион взаимности стоял на пьедестале сам по себе, простой и понятный. И вдруг оказалось, что всё это время он был частным случаем класса, который откроют только через три десятилетия. Не исключение, а одна точка на только что найденной прямой — самая честная её точка, та, где никто никого не обгоняет. Старая разгадка не отменилась. Она просто заняла своё место внутри разгадки большей.</p>
+      <h2>ни одна задача не добита</h2>
+      <p>Что из этого стоит унести — помимо самих вымогателей и щедрых.</p>
+      <p>Первое и общее: даже задача, изученная до дыр, может прятать целый слой. Повторяющуюся дилемму перебрали вдоль и поперёк, написали по ней библиотеку — и всё равно простой вопрос, заданный поздно и со стороны, вскрыл в ней этаж, мимо которого прошли все. Математика снова наградила не того, кто усерднее считал, а того, кто иначе посмотрел. У «закрытых» задач это бывает чаще, чем принято думать; точка в конце теоремы — почти всегда чья-то лень или нехватка нового угла.</p>
+      <p>И второе, сквозное для всей этой темы. Сюжет кооперации устроен так, что сколько ни ищи способ обыграть взаимность, выводит к ней же. Турниры показали это снизу — победой доброго правила. Эволюция показала через шум — победой прощающего. А скрытый этаж показал сверху, с самой вершины возможной власти: даже умея диктовать исход, выгоднее диктовать его по-честному. Можно открыть в игре сколько угодно новых этажей — лестница всё равно ведёт туда же.</p>
+      <p>Око за око снова не сделало ничего особенного. Оно просто оказалось там, куда всё сходится.</p>
+
+    <div class="margin">
+      <div class="mh">на полях</div>
+      <p class="fields">эссе: <a href="evolution-of-cooperation.html">эволюция кооперации</a> · <a href="conditions-for-cooperation.html">условия кооперации</a> · <a href="game-theory.html">математика предательства</a> · <a href="decisions-distance.html">решения на дистанции</a></p>
+      <p class="fields">объекты: <a href="../objects/game-theory/zero-determinant-strategies.html">zero-determinant стратегии</a> · <a href="../objects/game-theory/ipd-strategies-catalog.html">стратегии повторяющейся игры</a> · <a href="../objects/ideas/problems/prisoners-dilemma.html">дилемма заключённого</a></p>
+      <p class="fields">фигуры: <a href="../objects/mathematicians/axelrod.html">Роберт Аксельрод</a></p>
+      <div class="fn"><span class="num">[1]</span>Название zero-determinant — от приёма линейной алгебры: стратегию подбирают так, чтобы определитель некоторой матрицы, составленной из выплат и вероятностей, обратился в ноль; тогда средние выигрыши обоих игроков ложатся на прямую, заданную одним из них.</div>
+      <div class="fn"><span class="num">[2]</span>W. Press, F. Dyson. «Iterated Prisoner&#x27;s Dilemma contains strategies that dominate any evolutionary opponent». PNAS (2012). Игрок с памятью на один ход может в одностороннем порядке навязать линейную связь между средними выигрышами обоих.</div>
+      <div class="fn"><span class="num">[3]</span>A. Stewart, J. Plotkin. «Extortion and cooperation in the Prisoner&#x27;s Dilemma». PNAS (2012). Переигровка турнира Аксельрода с ZD: великодушная ZDGTFT-2 — наивысший средний балл, вымогательская Extort-2 — почти худший.</div>
+      <div class="fn"><span class="num">[4]</span>A. Stewart, J. Plotkin. «From extortion to generosity, evolution in the Iterated Prisoner&#x27;s Dilemma». PNAS (2013). Вымогательские ZD эволюционно неустойчивы; великодушные — устойчивы. Близкий результат — Adami &amp; Hintze, Nature Communications (2013).</div>
+      <div class="fn"><span class="num">[5]</span>Око за око — пограничная ZD-стратегия, навязывающая равенство средних выигрышей обоих игроков (нулевой перевес).</div>
+    </div>
+  </div>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/game-theory/zero-determinant-strategies.html">zero-determinant стратегии →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="evolution-of-cooperation.html">эволюция кооперации →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="conditions-for-cooperation.html">условия кооперации →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/game-theory/ipd-strategies-catalog.html">стратегии повторяющейся игры →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/axelrod.html">Роберт Аксельрод →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">математик</span><a href="/null/objects/mathematicians/axelrod.html">Роберт Аксельрод →</a></div>
+      <div class="related-link"><span class="related-link-type">теория игр</span><a href="/null/objects/game-theory/ipd-strategies-catalog.html">стратегии повторяющейся игры →</a></div>
+      <div class="related-link"><span class="related-link-type">теория игр</span><a href="/null/objects/game-theory/zero-determinant-strategies.html">zero-determinant стратегии →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/game-theory.html">математика предательства →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/conditions-for-cooperation.html">условия кооперации →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/evolution-of-cooperation.html">эволюция кооперации →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/hidden-layer.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>zero-determinant стратегии — null/objects/game-theory</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .sub-h { font-family: var(--font-mono); font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; margin: 26px 0 10px 0; border-top: 1px solid #ddd; padding-top: 14px; }
+  .fields { font-family: var(--font-mono); font-size: 10px; color: #888; line-height: 1.8; margin-top: 24px; }
+  .fields a { color: #c44a32; }
+  .fn { font-family: var(--font-mono); font-size: 10px; color: #555; line-height: 1.6; margin-bottom: 10px; }
+  .fn .num { color: #c44a32; margin-right: 6px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / game-theory / zero-determinant стратегии</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header" id="zero-determinant-strategies">
+    <div class="obj-glyph" style="font-size:48px;"><em style="font-family:'Old Standard TT',Georgia,serif;font-style:italic;">ZD</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">объект · справка · §10</div>
+      <div class="obj-title">zero-determinant стратегии</div>
+      <div class="obj-subtitle">скрытый слой повторяющейся игры — и почему власть в ней оборачивается щедростью</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">тип</td><td class="v">zero-determinant · memory-one · линейная связь выигрышей</td></tr>
+    <tr><td class="k">открыли</td><td class="v">Уильям Пресс · Фримен Дайсон · PNAS, 2012</td></tr>
+    <tr><td class="k">связано</td><td class="v">эволюция кооперации · условия кооперации · каталог стратегий IPD</td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="essay">
+    <div class="essay-label">объект · справка · ~500 слов · 4 мин</div>
+    <div class="essay" style="margin-top: 20px;">
+      <div class="essay-body">
+  <div class="sub-h">// что это</div>
+        <p>Открыты Уильямом Прессом и Фрименом Дайсоном в 2012-м<sup>[1]</sup>. Главный результат неожиданный: игрок, помнящий всего один прошлый ход, способен в одиночку навязать жёсткую линейную связь между своим и чужим средним выигрышем — что бы соперник ни предпринимал. Не «переиграть» его ход за ходом, а заранее задать уравнение, которому подчинятся итоговые очки обоих. Сила не в реакции, а в навязанном законе.</p>
+  <div class="sub-h">// два лица</div>
+        <p><b>Вымогатель</b> (extortion). Фиксирует, что собственный выигрыш всегда превышает чужой в заданной пропорции. Рациональный соперник, повышая своё, поневоле повышает и твоё — и вынужден кооперировать, обогащая вымогателя сверх всякой взаимности.</p>
+        <p><b>Великодушная ZD</b> (generous). Зеркальна вымогателю: гарантирует сопернику долю не меньше твоей. Делится излишком там, где вымогатель его отнимает.</p>
+  <div class="sub-h">// эволюционный поворот</div>
+        <p>Вымогательство непобедимо в дуэли против одинокого рационального соперника — но в популяции разоряет само себя: вымогателю не с кого получать сверхприбыль, кроме других вымогателей, а друг на друге они лишь беднеют. Когда Стюарт и Плоткин перепрогнали турнир Аксельрода с добавлением ZD-стратегий, великодушная ZDGTFT-2 дала наивысший средний балл, а вымогательский Extort-2 оказался почти в самом низу<sup>[2]</sup>. Великодушные ZD эволюционно устойчивы, вымогательские — нет. Даже найдя в игре рычаг абсолютной власти, математика выводит к тому же, что и весь остальной сюжет кооперации: щедрость живёт дольше жадности.</p>
+  <div class="sub-h">// связь с око за око</div>
+        <p>Само око за око оказывается пограничным случаем ZD — стратегией, которая навязывает равенство выигрышей обоих игроков (нулевое «превосходство»). То есть классика взаимности всё это время сидела внутри более широкого класса, открытого лишь тридцать лет спустя.</p>
+      </div>
+    </div>
+
+    <div class="fields">
+      <div class="sub-h" style="border:none;padding-top:0;margin-top:0;">на полях</div>
+      <p class="fields"><em>эссе:</em> <a href="../../essays/evolution-of-cooperation.html">эволюция кооперации</a> · <a href="../../essays/conditions-for-cooperation.html">условия кооперации</a></p>
+      <p class="fields"><em>объекты:</em> <a href="ipd-strategies-catalog.html">стратегии повторяющейся игры</a> · <a href="../ideas/problems/prisoners-dilemma.html">дилемма заключённого</a> · <a href="nash-equilibrium.html">равновесие нэша</a></p>
+      <div class="fn"><span class="num">[1]</span>W. Press, F. Dyson. «Iterated Prisoner&#x27;s Dilemma contains strategies that dominate any evolutionary opponent». PNAS (2012). Введение класса zero-determinant (ZD) стратегий для memory-one игроков.</div>
+      <div class="fn"><span class="num">[2]</span>A. Stewart, J. Plotkin (2012): переигровка турнира Аксельрода с ZD-стратегиями. Великодушная ZDGTFT-2 — наивысший средний балл; вымогательский Extort-2 — почти худший. Эволюционная устойчивость великодушных ZD и неустойчивость вымогательских.</div>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/hidden-layer.html">скрытый этаж →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/evolution-of-cooperation.html">эволюция кооперации →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="ipd-strategies-catalog.html#zdgtft-2">каталог стратегий →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../ideas/problems/prisoners-dilemma.html">дилемма заключённого →</a></div>
+      <div class="related-link"><span class="related-link-type">теория игр</span><a href="nash-equilibrium.html">равновесие Нэша →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">теория игр</span><a href="/null/objects/game-theory/ipd-strategies-catalog.html">стратегии повторяющейся игры →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/hidden-layer.html">скрытый этаж →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/conditions-for-cooperation.html">условия кооперации →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/evolution-of-cooperation.html">эволюция кооперации →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/game-theory/zero-determinant-strategies.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

@@ -1938,6 +1938,20 @@
       "title": "условия кооперации",
       "url": "/null/essays/conditions-for-cooperation.html",
       "glyph": "⊞"
+    },
+    {
+      "id": "gt-zd",
+      "type": "gametheory",
+      "title": "zero-determinant стратегии",
+      "url": "/null/objects/game-theory/zero-determinant-strategies.html",
+      "glyph": "ZD"
+    },
+    {
+      "id": "es-hidden-layer",
+      "type": "essay",
+      "title": "скрытый этаж",
+      "url": "/null/essays/hidden-layer.html",
+      "glyph": "⊞"
     }
   ],
   "edges": [
@@ -7220,6 +7234,94 @@
     {
       "from": "gt-ipd-catalog",
       "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "gt-zd",
+      "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "gt-zd",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "gt-zd",
+      "to": "gt-nash"
+    },
+    {
+      "from": "gt-zd",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "gt-zd",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "gt-zd",
+      "to": "es-hidden-layer"
+    },
+    {
+      "from": "es-hidden-layer",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "es-hidden-layer",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "es-hidden-layer",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-hidden-layer",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-hidden-layer",
+      "to": "gt-zd"
+    },
+    {
+      "from": "es-hidden-layer",
+      "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "es-hidden-layer",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "es-hidden-layer",
+      "to": "math-axelrod"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "gt-zd"
+    },
+    {
+      "from": "gt-ipd-catalog",
+      "to": "gt-zd"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "es-hidden-layer"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "es-hidden-layer"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "gt-zd"
+    },
+    {
+      "from": "gt-ipd-catalog",
+      "to": "es-hidden-layer"
+    },
+    {
+      "from": "math-axelrod",
+      "to": "es-hidden-layer"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "es-hidden-layer"
     }
   ]
 }
