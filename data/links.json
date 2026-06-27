@@ -995,13 +995,6 @@
       "glyph": "¶"
     },
     {
-      "id": "es-two-systems",
-      "type": "essay",
-      "title": "Две системы",
-      "url": "/null/essays/two-systems.html",
-      "glyph": "¶"
-    },
-    {
       "id": "es-cog-biases",
       "type": "essay",
       "title": "Когнитивные искажения",
@@ -3887,22 +3880,6 @@
       "to": "st-effect"
     },
     {
-      "from": "es-two-systems",
-      "to": "es-eu"
-    },
-    {
-      "from": "es-two-systems",
-      "to": "es-nudge"
-    },
-    {
-      "from": "es-two-systems",
-      "to": "es-regression"
-    },
-    {
-      "from": "es-nudge",
-      "to": "es-two-systems"
-    },
-    {
       "from": "es-nudge",
       "to": "es-eu"
     },
@@ -3921,10 +3898,6 @@
     {
       "from": "es-prospect",
       "to": "es-ev"
-    },
-    {
-      "from": "es-prospect",
-      "to": "es-two-systems"
     },
     {
       "from": "es-prospect",
@@ -3956,10 +3929,6 @@
     },
     {
       "from": "st-anchor",
-      "to": "es-two-systems"
-    },
-    {
-      "from": "st-anchor",
       "to": "es-nudge"
     },
     {
@@ -3969,10 +3938,6 @@
     {
       "from": "st-anchor",
       "to": "st-avail"
-    },
-    {
-      "from": "st-avail",
-      "to": "es-two-systems"
     },
     {
       "from": "st-avail",
@@ -4285,10 +4250,6 @@
     {
       "from": "es-good-dec",
       "to": "es-ev"
-    },
-    {
-      "from": "es-good-dec",
-      "to": "es-two-systems"
     },
     {
       "from": "es-base-rate",
@@ -6109,14 +6070,6 @@
     {
       "from": "es-poker-glossary",
       "to": "es-decisions-distance"
-    },
-    {
-      "from": "es-oshibki-po-pravilam",
-      "to": "es-two-systems"
-    },
-    {
-      "from": "es-two-systems",
-      "to": "es-oshibki-po-pravilam"
     },
     {
       "from": "es-oshibki-po-pravilam",
