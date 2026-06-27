@@ -106,9 +106,6 @@ class BodySlicer(HTMLParser):
             self._quote_buf = []
         if tag == "sup":
             self._in_sup = True
-        elif not skip and not is_math and not is_code and not quote:
-            if tag in ("h2", "h3", "h4") or (tag == "div" and "sub-h" in cls):
-                self.prose_parts.append(" ")
 
     def handle_endtag(self, tag):
         if tag == "sup":
@@ -140,10 +137,13 @@ class BodySlicer(HTMLParser):
             self._quote_buf.append(data)
             return
         if data.strip():
+            if self.prose_parts and not self.prose_parts[-1].endswith(" "):
+                self.prose_parts.append(" ")
             self.prose_parts.append(data)
 
     def prose_text(self) -> str:
-        return re.sub(r"\s+", " ", "".join(self.prose_parts)).strip()
+        text = re.sub(r"\s+", " ", "".join(self.prose_parts)).strip()
+        return re.sub(r" {2,}", " ", text)
 
 
 def _extract_essay_body_classic(html: str) -> str:
