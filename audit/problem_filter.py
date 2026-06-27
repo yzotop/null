@@ -71,21 +71,41 @@ def apply_filters(
     pass_b: list[Finding],
     prose_bodies: dict[str, str],
 ) -> list[Finding]:
+    return apply_filters_with_stats(pass_a, pass_b, prose_bodies)[0]
+
+
+def apply_filters_with_stats(
+    pass_a: list[Finding],
+    pass_b: list[Finding],
+    prose_bodies: dict[str, str],
+) -> tuple[list[Finding], dict[str, int]]:
+    stats = {
+        "raw_a": len(pass_a),
+        "raw_b": len(pass_b),
+        "after_intersection": 0,
+        "dropped_span": 0,
+        "dropped_fix": 0,
+        "survived": 0,
+    }
     merged = two_pass_survivors(pass_a, pass_b)
+    stats["after_intersection"] = len(merged)
     out: list[Finding] = []
     seen: set[tuple[str, str, str]] = set()
     for f in merged:
         prose = prose_bodies.get(f.slug, "")
         if not span_verify(f, prose):
+            stats["dropped_span"] += 1
             continue
         if not fix_nonempty(f):
+            stats["dropped_fix"] += 1
             continue
         key = (f.slug, f.category, f.span)
         if key in seen:
             continue
         seen.add(key)
         out.append(f)
-    return out
+    stats["survived"] = len(out)
+    return out, stats
 
 
 def anchor_tripwire(
