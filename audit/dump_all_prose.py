@@ -14,8 +14,22 @@ OUT = AUDIT / "all-prose.md"
 if str(AUDIT) not in sys.path:
     sys.path.insert(0, str(AUDIT))
 
-from collect_metrics import load_categories, parse_meta
-from problem_html import parse_essay
+from collect_metrics import load_categories
+from problem_html import parse_essay, normalize_prose
+
+
+def essay_date(html: str) -> str:
+    for pat in (
+        r'class="essay-label"[^>]*>([^<]+)',
+        r'class="label"[^>]*>([^<]+)',
+        r'class="obj-subtitle"[^>]*>([^<]+)',
+    ):
+        m = re.search(pat, html)
+        if m:
+            dm = re.search(r"(\d{4}\.\d{2})", m.group(1))
+            if dm:
+                return dm.group(1)
+    return "—"
 
 
 def word_count(text: str) -> int:
@@ -31,9 +45,8 @@ def main() -> int:
             continue
         slug = path.stem
         html = path.read_text(encoding="utf-8")
-        meta = parse_meta(html)
         cat = categories.get(slug, ("", ""))[1] or "—"
-        date = meta.get("date") or "—"
+        date = essay_date(html)
         slice_ = parse_essay(path)
         words = word_count(slice_.prose_body)
         rows.append((date, slug, cat, slice_.prose_body, words))
