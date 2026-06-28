@@ -2008,6 +2008,13 @@
       "title": "Джон Мейнард Смит",
       "url": "/null/objects/mathematicians/maynard-smith.html",
       "glyph": "M"
+    },
+    {
+      "id": "es-mechanism-design",
+      "type": "essay",
+      "title": "честность по построению",
+      "url": "/null/essays/mechanism-design.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -7698,6 +7705,42 @@
     {
       "from": "math-maynard-smith",
       "to": "es-honest-signal"
+    },
+    {
+      "from": "es-mechanism-design",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-mechanism-design",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "es-mechanism-design",
+      "to": "es-honest-signal"
+    },
+    {
+      "from": "es-mechanism-design",
+      "to": "gt-nash"
+    },
+    {
+      "from": "es-mechanism-design",
+      "to": "es-auctions"
+    },
+    {
+      "from": "es-mechanism-design",
+      "to": "es-adtech"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "es-mechanism-design"
+    },
+    {
+      "from": "es-auctions",
+      "to": "es-mechanism-design"
+    },
+    {
+      "from": "es-adtech",
+      "to": "es-mechanism-design"
     }
   ]
 }
