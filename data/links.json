@@ -2022,6 +2022,20 @@
       "title": "Логарифм богатства",
       "url": "/null/essays/log-wealth.html",
       "glyph": "¶"
+    },
+    {
+      "id": "es-morality-reputation",
+      "type": "essay",
+      "title": "мораль и репутация",
+      "url": "/null/essays/morality-reputation.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-biology-cooperation",
+      "type": "essay",
+      "title": "биология кооперации",
+      "url": "/null/essays/biology-cooperation.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -7804,6 +7818,94 @@
     {
       "from": "es-expected-value",
       "to": "es-log-wealth"
+    },
+    {
+      "from": "es-morality-reputation",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "es-morality-reputation"
+    },
+    {
+      "from": "es-morality-reputation",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "es-morality-reputation"
+    },
+    {
+      "from": "es-morality-reputation",
+      "to": "es-good-name"
+    },
+    {
+      "from": "es-good-name",
+      "to": "es-morality-reputation"
+    },
+    {
+      "from": "es-morality-reputation",
+      "to": "es-honest-signal"
+    },
+    {
+      "from": "es-honest-signal",
+      "to": "es-morality-reputation"
+    },
+    {
+      "from": "es-morality-reputation",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "es-morality-reputation"
+    },
+    {
+      "from": "es-morality-reputation",
+      "to": "es-biology-cooperation"
+    },
+    {
+      "from": "es-biology-cooperation",
+      "to": "es-morality-reputation"
+    },
+    {
+      "from": "es-morality-reputation",
+      "to": "es-trust-verify"
+    },
+    {
+      "from": "es-trust-verify",
+      "to": "es-morality-reputation"
+    },
+    {
+      "from": "es-biology-cooperation",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "es-biology-cooperation"
+    },
+    {
+      "from": "es-biology-cooperation",
+      "to": "es-conditions-cooperation"
+    },
+    {
+      "from": "es-conditions-cooperation",
+      "to": "es-biology-cooperation"
+    },
+    {
+      "from": "es-biology-cooperation",
+      "to": "es-honest-signal"
+    },
+    {
+      "from": "es-honest-signal",
+      "to": "es-biology-cooperation"
+    },
+    {
+      "from": "es-biology-cooperation",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "es-biology-cooperation"
     }
   ]
 }
