@@ -2029,6 +2029,13 @@
       "title": "биология кооперации",
       "url": "/null/essays/biology-cooperation.html",
       "glyph": "¶"
+    },
+    {
+      "id": "gt-ipd-tournaments",
+      "type": "gametheory",
+      "title": "турниры повторяющейся игры",
+      "url": "/null/objects/game-theory/ipd-tournaments.html",
+      "glyph": "⊞"
     }
   ],
   "edges": [
@@ -7899,6 +7906,62 @@
     {
       "from": "es-game-theory",
       "to": "es-biology-cooperation"
+    },
+    {
+      "from": "gt-ipd-tournaments",
+      "to": "gt-ipd-catalog"
+    },
+    {
+      "from": "gt-ipd-catalog",
+      "to": "gt-ipd-tournaments"
+    },
+    {
+      "from": "gt-ipd-tournaments",
+      "to": "gt-zd"
+    },
+    {
+      "from": "gt-zd",
+      "to": "gt-ipd-tournaments"
+    },
+    {
+      "from": "gt-ipd-tournaments",
+      "to": "vi-axelrod"
+    },
+    {
+      "from": "vi-axelrod",
+      "to": "gt-ipd-tournaments"
+    },
+    {
+      "from": "gt-ipd-tournaments",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "gt-ipd-tournaments"
+    },
+    {
+      "from": "gt-ipd-tournaments",
+      "to": "es-hidden-layer"
+    },
+    {
+      "from": "es-hidden-layer",
+      "to": "gt-ipd-tournaments"
+    },
+    {
+      "from": "gt-ipd-tournaments",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "gt-ipd-tournaments"
+    },
+    {
+      "from": "gt-ipd-tournaments",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "pr-prisoners",
+      "to": "gt-ipd-tournaments"
     }
   ]
 }

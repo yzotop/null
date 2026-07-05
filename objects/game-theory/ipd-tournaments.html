@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>турниры повторяющейся игры — null/objects/game-theory</title>
+<link rel="stylesheet" href="../../styles/main.css">
+<style>
+  .sub-h { font-family: var(--font-mono); font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; margin: 26px 0 10px 0; border-top: 1px solid #ddd; padding-top: 14px; }
+  .fields { font-family: var(--font-mono); font-size: 10px; color: #888; line-height: 1.8; margin-top: 24px; }
+  .fields a { color: #c44a32; }
+  table.cat { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 10px; margin: 12px 0 24px; line-height: 1.55; }
+  table.cat th, table.cat td { border-bottom: 0.5px solid #e8e8e4; padding: 8px 10px; text-align: left; vertical-align: top; }
+  table.cat th { color: #888; font-weight: 500; letter-spacing: .06em; text-transform: lowercase; }
+  table.cat td { color: #333; }
+  table.cat tr:last-child td { border-bottom: none; }
+  .note { font-family: var(--font-mono); font-size: 10px; color: #888; line-height: 1.65; margin: 8px 0 16px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/null/">null</a>
+  <nav>
+    <a href="/null/objects/" class="active">объекты</a>
+    <a href="/null/essays/">эссе</a>
+    <a href="/null/visuals/">визуалы</a>
+    <a href="/null/music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / objects / game-theory / турниры повторяющейся игры</div>
+
+<main class="container">
+<article>
+
+  <header class="obj-header" id="ipd-tournaments">
+    <div class="obj-glyph" style="font-size:48px;"><em style="font-family:'Old Standard TT',Georgia,serif;font-style:italic;">⊞</em></div>
+    <div>
+      <div class="card-tag" style="margin-bottom:8px;">объект · справка · §10</div>
+      <div class="obj-title">турниры повторяющейся игры</div>
+      <div class="obj-subtitle">каталог · пять волн IPD · от Аксельрода до Axelrod-Python</div>
+    </div>
+  </header>
+
+  <table class="meta">
+    <tr><td class="k">тип</td><td class="v">каталог · 5 волн · повторяющаяся дилемма заключённого</td></tr>
+    <tr><td class="k">диапазон</td><td class="v">1980 — наши дни · Аксельрод · Саутгемптон · ZD · open-source</td></tr>
+    <tr><td class="k">связано</td><td class="v"><a href="ipd-strategies-catalog.html">стратегии IPD</a> · <a href="../../visuals/axelrod.html">визуал Аксельрода</a> · <a href="../../essays/evolution-of-cooperation.html">эволюция кооперации</a></td></tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <section id="catalog">
+    <div class="essay-label">объект · справка · каталог · ~1800 слов · 12 мин</div>
+
+    <div class="essay" style="margin-top: 20px;">
+      <div class="essay-body">
+        <p class="first">Повторяющаяся дилемма заключённого (IPD): каждый раунд — «сотрудничать (C) или предать (D)». Выплаты: взаимное C = 3·3, взаимное D = 1·1, предал сотрудничающего = 5, оказался предан = 0. Играют много раундов, счёт копится. Ниже — все известные турниры, их участники, команды, стратегии, типы, метрики и фан-факты. Определения стратегий — в <a href="ipd-strategies-catalog.html">каталоге стратегий</a>; хроника — в <a href="../../essays/evolution-of-cooperation.html">«эволюции кооперации»</a>.</p>
+      </div>
+    </div>
+
+    <div class="sub-h">// обзор: пять волн турниров</div>
+    <table class="cat">
+      <thead>
+        <tr><th>год</th><th>турнир</th><th>организатор(ы)</th><th>участников</th><th>формат</th><th>победитель</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1980</td><td>Первый турнир Аксельрода</td><td>Роберт Аксельрод (Мичиган)</td><td>14 + RANDOM</td><td>round-robin, 200 раундов, 5 повторов</td><td><strong>Tit-for-Tat</strong> (Рапопорт)</td></tr>
+        <tr><td>1980–81</td><td>Второй турнир Аксельрода</td><td>Аксельрод; эволюц. анализ с У. Д. Гамильтоном</td><td>62, из 6 стран</td><td>вероятностный конец игры</td><td><strong>Tit-for-Tat</strong> (Рапопорт)</td></tr>
+        <tr><td>2004</td><td>20-летие, конкурс</td><td>Кендалл, Яо, Чонг (Ноттингем/Бирмингем)</td><td>223 (лига 1)</td><td>несколько лиг, в т.ч. «шумная»</td><td><strong>Саутгемптон</strong> (сговор 60 ботов)</td></tr>
+        <tr><td>2005</td><td>20-летие, повтор</td><td>те же</td><td>192 (лига 1)</td><td>лиги: стандарт, шум, мультиигрок</td><td>стратегии-команды</td></tr>
+        <tr><td>2012</td><td>ZD-турнир</td><td>Стюарт, Плоткин (Пенсильвания)</td><td>~19</td><td>Аксельрод + zero-determinant</td><td><strong>ZDGTFT-2</strong> (по очкам)</td></tr>
+        <tr><td>2015+</td><td>Axelrod-Python</td><td>Найт, Кэмпбелл, Харпер и др. (open-source)</td><td>200+</td><td>много категорий, воспроизводимо</td><td><strong>обученные (ML) стратегии</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-h">// волна 1 — первый турнир Аксельрода (1980)</div>
+    <p class="note"><strong>Формат.</strong> Round-robin: каждая стратегия против каждой (и против своей копии, и против RANDOM), 200 раундов, 5 повторов, счёт — средняя выплата. Приглашены эксперты пяти дисциплин: психология, политология, экономика, социология, математика. Программы на FORTRAN.<br><strong>Метрики.</strong> Победитель Tit-for-Tat — средний счёт ≈ <strong>504.5</strong>. Разрыв со вторым местом — около 4 очков. <a href="../../visuals/axelrod.html">Визуал турнира →</a></p>
+    <table class="cat">
+      <thead>
+        <tr><th>#</th><th>стратегия</th><th>автор</th><th>дисциплина</th><th>описание</th><th>тип</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Tit-for-Tat</strong></td><td>Анатоль Рапопорт</td><td>математика/психология</td><td>C на первом ходу, дальше копирует прошлый ход соперника</td><td>отзеркаливающая</td></tr>
+        <tr><td>2</td><td>Tideman &amp; Chieruzzi</td><td>Т. Н. Тайдмен, П. Черуцци</td><td>экономика</td><td>TfT, но периодически «пробует» предать и наказывает по нарастающей</td><td>пробующая</td></tr>
+        <tr><td>3</td><td>Nydegger</td><td>Руди Найдеггер</td><td>психология</td><td>решает по исходам трёх последних ходов (сложная память)</td><td>моделирующая</td></tr>
+        <tr><td>4</td><td>Grofman</td><td>Бернард Грофман</td><td>политология</td><td>в основном взаимна, но с вероятностными послаблениями</td><td>отзеркаливающая</td></tr>
+        <tr><td>5</td><td>Shubik</td><td>Мартин Шубик</td><td>экономика/ТИ</td><td>TfT с нарастающим наказанием: каждая измена карается дольше</td><td>злопамятная</td></tr>
+        <tr><td>6</td><td>Stein &amp; Rapoport</td><td>У. Стайн, А. Рапопорт</td><td>математика/психология</td><td>TfT + статистический тест: не случаен ли соперник</td><td>отзеркаливающая</td></tr>
+        <tr><td>7</td><td><strong>Grudger (Friedman)</strong></td><td>Джеймс Фридман</td><td>экономика</td><td>«grim»: сотрудничает, пока не предали; одна измена — и мстит до конца</td><td>злопамятная</td></tr>
+        <tr><td>8</td><td>Davis</td><td>Мортон Дэвис</td><td>математика</td><td>10 ходов молча сотрудничает, при измене переходит в grim</td><td>злопамятная</td></tr>
+        <tr><td>9</td><td>Graaskamp</td><td>Джим Граскамп</td><td>недвижимость</td><td>TfT + пробные предательства, чтобы «прощупать» соперника</td><td>пробующая</td></tr>
+        <tr><td>10</td><td>Downing</td><td>Лесли Даунинг</td><td>психология</td><td>строит <strong>модель</strong> соперника и максимизирует ожидаемый выигрыш</td><td>моделирующая</td></tr>
+        <tr><td>11</td><td>Feld</td><td>Скотт Фелд</td><td>социология</td><td>TfT, но к концу игры всё чаще предаёт</td><td>пробующая</td></tr>
+        <tr><td>12</td><td>Joss</td><td>Иоганн Йосс</td><td>математика</td><td>«хитрый TfT»: изредка предаёт вместо копии</td><td>пробующая (sneaky)</td></tr>
+        <tr><td>13</td><td>Tullock</td><td>Гордон Таллок</td><td>экономика</td><td>кооперирует чуть реже среднего</td><td>случайно-смещённая</td></tr>
+        <tr><td>14</td><td>(без имени)</td><td>аноним</td><td>политология</td><td>заявка аспиранта-политолога</td><td>—</td></tr>
+        <tr><td>+</td><td><strong>RANDOM</strong></td><td>Аксельрод</td><td>—</td><td>эталон: 50/50 C/D</td><td>случайная</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Вывод турнира.</strong> Победили «добрые» (nice) стратегии — те, что никогда не предают первыми. Все восемь лучших были добрыми; все худшие — недобрыми.</p>
+    <p class="note"><strong>Фан-факты.</strong> Tit-for-Tat была <strong>самой короткой программой</strong> турнира — четыре строки. Простое обыграло сложное. Даунинг, пытавшийся моделировать соперников, проиграл — слишком пессимистично оценивал их и провоцировал конфликт. Граскамп был слепым профессором недвижимости из Висконсина.</p>
+
+    <div class="sub-h">// волна 2 — второй турнир Аксельрода (1980–81)</div>
+    <p><strong>Формат.</strong> После публикации результатов первого турнира Аксельрод позвал всех желающих. <strong>62 стратегии из 6 стран</strong>, от школьников-любителей до профессоров. Длина игры теперь <strong>вероятностная</strong> (в среднем ~151 раунд) — чтобы нельзя было «предать на последнем ходу».</p>
+    <p><strong>Результат.</strong> Все знали, что в первом турнире победил Tit-for-Tat, и слали стратегии, чтобы его обыграть. <strong>Tit-for-Tat Рапопорта победил снова.</strong></p>
+    <p><strong>Заметные участники.</strong> <strong>Джон Мэйнард Смит</strong> — биолог, отец концепции эволюционно устойчивой стратегии (ESS). Эволюционный анализ турнира Аксельрод опубликовал вместе с биологом <strong>У. Д. Гамильтоном</strong> («The Evolution of Cooperation», <em>Science</em>, 1981).</p>
+    <p><strong>Четыре свойства победителя</strong> (вывод Аксельрода, почему TfT так устойчив): <strong>добрая</strong> (не предаёт первой), <strong>злопамятная</strong> (сразу мстит), <strong>отходчивая</strong> (быстро прощает), <strong>понятная</strong> (предсказуема, с ней легко выстроить кооперацию).</p>
+    <p class="note"><strong>Фан-факты.</strong> Из всех знаменитых турниров только для второго доступен оригинальный исходный код — на FORTRAN. Первое место снова заняла <em>та же</em> программа от <em>того же</em> автора — редкий случай в истории соревнований.</p>
+
+    <div class="sub-h">// волна 3 — юбилейные конкурсы 20-летия (2004, 2005)</div>
+    <p><strong>Организаторы.</strong> Грэм Кендалл (Ноттингем), Синь Яо, Сян Ю Чонг. Книга «The Iterated Prisoners' Dilemma: 20 Years On» (2007). Первый конкурс — июль 2004, второй — апрель 2005.</p>
+    <p><strong>Формат.</strong> Несколько <strong>лиг</strong>: стандартная IPD (~192–223 стратегии), «шумная» (ходы иногда искажаются — league 2), мультиигроковая. Разрешалось присылать <strong>несколько стратегий от одного участника</strong> — эта лазейка и решила исход.</p>
+    <p><strong>Команда-победитель: Саутгемптон.</strong> Университет Саутгемптона, школа электроники и информатики (ECS); руководитель — <strong>проф. Ник Дженнингс</strong> (в команде — Гопал Рамчёрн и др.). Прислали <strong>60 программ</strong>, работавших как <strong>«хозяева» и «рабы»</strong>. По первым 5–10 ходам («рукопожатие») программа узнавала своих. Свой-«раб», встретив своего-«хозяина», всё время сотрудничал и давал тому безнаказанно предавать — сливал очки хозяину. Против чужих все саутгемптонцы просто предавали, топя чужой счёт. Три верхних места — саутгемптонские «хозяева» (и множество нижних — принесённые в жертву «рабы»). <strong>Тип:</strong> командная / сговорная (collusion).</p>
+    <p class="note"><strong>Метрики/нюанс.</strong> Победители имели <strong>меньше побед</strong> и <strong>больше поражений</strong> поштучно, но за счёт очков от «рабов» набрали максимум суммарно.<br><strong>Фан-факты.</strong> Кендалл: <em>«Это было почти как культ. Суперагенты, которые эксплуатировали всех своих друзей.»</em> Идея — прямая иллюстрация родственного отбора: «рабы» жертвуют собой ради «генов» команды.</p>
+
+    <div class="sub-h">// волна 4 — ZD-турнир Стюарта и Плоткина (2012)</div>
+    <p><strong>Повод.</strong> В 2012 Уильям Пресс и Фримен Дайсон открыли <strong>zero-determinant (ZD)</strong> стратегии — те, что односторонне навязывают линейную связь между своим счётом и счётом соперника. Александр Стюарт и Джошуа Плоткин перезапустили турнир Аксельрода, добавив ZD-стратегии (~19 участников). Подробнее о ZD — в <a href="zero-determinant-strategies.html">объекте про zero-determinant</a> и <a href="../../essays/hidden-layer.html">«скрытом этаже»</a>.</p>
+    <p><strong>Метрики.</strong> Считали два показателя: <strong>средняя выплата</strong> и <strong>число выигранных поединков</strong> — и они разошлись драматически.</p>
+    <table class="cat">
+      <thead>
+        <tr><th>стратегия</th><th>тип</th><th>средняя выплата</th><th>поединки</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>ZDGTFT-2</strong> (щедрая ZD)</td><td>щедрая / ZD</td><td><strong>1-е место</strong> (выше TfT и GTFT)</td><td>0 побед</td></tr>
+        <tr><td>Tit-for-Tat, Generous-TFT</td><td>отзеркаливающие / щедрые</td><td>высоко</td><td>0 побед</td></tr>
+        <tr><td><strong>Extort-2</strong> (вымогатель)</td><td>вымогатель / ZD</td><td>предпоследнее</td><td><strong>2-е по победам</strong></td></tr>
+        <tr><td>Always Defect (ALLD)</td><td>тотальный предатель</td><td>почти дно</td><td><strong>1-е по победам</strong></td></tr>
+      </tbody>
+    </table>
+    <p><strong>Ключевой вывод.</strong> Вымогатель <strong>выигрывает поединки, но проигрывает по очкам</strong>: доминировать в паре ≠ набрать больше всех. Щедрая ZD (ZDGTFT-2) обходит по очкам даже классический Tit-for-Tat. Без эволюционной популяции вымогателю некого доить — и он проваливается.</p>
+    <p class="note"><strong>Фан-факты.</strong> Про открытие ZD Американское математическое общество написало: <em>«мир теории игр сейчас в огне».</em> «Победы» ALLD и Extort-2 — пирровы: обыграв TfT на первом ходу (5 против 0), дальше оба сидят на 1·1. Позже Стюарт и Плоткин показали: в эволюции вымогательство вырождается в щедрость («From extortion to generosity», 2013).</p>
+
+    <div class="sub-h">// волна 5 — Axelrod-Python (2015 → наши дни)</div>
+    <p><strong>Что это.</strong> Открытая воспроизводимая библиотека (Винс Найт, Оуэн Кэмпбелл, Марк Харпер и десятки контрибьюторов). Впервые все стратегии в одном коде, с тестами, <strong>200+ стратегий</strong>. Журнал открытого ПО, 2016.</p>
+    <p><strong>Формат.</strong> Множество категорий-турниров: все «честные» стратегии, только детерминированные, только стохастические, только с конечной памятью, только memory-one, воспроизведение Стюарта–Плоткина, «шумные» и др.</p>
+    <p><strong>Победители — обученные стратегии.</strong> Верх крупных турниров берут не рукодельные правила, а <strong>обученные машинным перебором</strong>: конечные автоматы, таблицы-справочники и нейросети, натренированные эволюционным поиском (напр. семейства <em>Evolved LookerUp</em>, <em>Evolved FSM</em>, <em>Evolved ANN</em>). Но и они остаются «добрыми» — начинают с сотрудничества.</p>
+    <p><strong>Метрики.</strong> ~200 повторов на пару, тысячи раундов; ранжирование по средней выплате, отдельно — по числу побед, по кооперативности, по устойчивости к шуму.</p>
+    <p class="note"><strong>Фан-факты.</strong> Библиотека позволила впервые <strong>точно воспроизвести</strong> и Аксельрода, и Стюарта–Плоткина — раньше это было почти невозможно. Общий урок всех волн держится: чемпион меняется (TfT → обученные автоматы), но <strong>верхушка всегда «добрая»</strong> — начинает с C.</p>
+
+    <div class="sub-h">// типология стратегий (сводная)</div>
+    <p>Краткая сводка типов — полные определения и примеры в <a href="ipd-strategies-catalog.html">каталоге стратегий</a>.</p>
+    <table class="cat">
+      <thead>
+        <tr><th>тип</th><th>суть</th><th>примеры</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>отзеркаливающие</strong></td><td>копируют ход соперника</td><td>Tit-for-Tat, Generous-TFT, Tit-for-Two-Tats</td></tr>
+        <tr><td><strong>злопамятные (grim)</strong></td><td>одна измена → вечная месть</td><td>Grudger/Friedman, Davis, Shubik</td></tr>
+        <tr><td><strong>пробующие (sneaky)</strong></td><td>вставляют предательство «на пробу»</td><td>Joss, Tideman–Chieruzzi, Graaskamp</td></tr>
+        <tr><td><strong>моделирующие</strong></td><td>строят модель соперника</td><td>Downing, Nydegger</td></tr>
+        <tr><td><strong>щедрые</strong></td><td>иногда прощают просто так</td><td>Generous-TFT, ZDGTFT-2, Pavlov</td></tr>
+        <tr><td><strong>вымогатели (ZD)</strong></td><td>навязывают невыгодный размен силой</td><td>Extort-2, класс zero-determinant</td></tr>
+        <tr><td><strong>командные (сговор)</strong></td><td>узнают своих и жертвуют собой</td><td>Саутгемптон (master/slave)</td></tr>
+        <tr><td><strong>тотальные</strong></td><td>всегда C или всегда D</td><td>ALLC, ALLD</td></tr>
+        <tr><td><strong>случайные</strong></td><td>эталон 50/50</td><td>RANDOM</td></tr>
+        <tr><td><strong>обученные (ML)</strong></td><td>натренированы перебором/эволюцией</td><td>Evolved LookerUp / FSM / ANN</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-h">// сквозная мораль (по всем турнирам)</div>
+    <ol style="font-size:17px;line-height:1.72;padding-left:1.2em;margin-bottom:18px;">
+      <li><strong>Добрым быть выгодно.</strong> Во всех волнах верхние места держат стратегии, не предающие первыми.</li>
+      <li><strong>Простое обыгрывает сложное</strong> — в честном турнире (Tit-for-Tat из 4 строк).</li>
+      <li><strong>Обмануть можно только сменив правила</strong> — сговором (Саутгемптон) или найдя новый класс (ZD); но каждая такая победа рассыпается в реальной популяции.</li>
+      <li><strong>Поединок ≠ мир.</strong> Вымогатель и предатель выигрывают дуэли, но проигрывают по сумме — потому что кооперация окупается на дистанции и в толпе.</li>
+    </ol>
+    <p class="note"><em>Источники:</em> Axelrod (1984); Kendall, Yao &amp; Chong (2007); Stewart &amp; Plotkin, PNAS (2012); Knight et al., J. Open Research Software (2016); Wikipedia «Prisoner's dilemma»; арх. Axelrod-Python.</p>
+
+    <div class="fields">
+      <div class="sub-h" style="border:none;padding-top:0;margin-top:0;">на полях</div>
+      <p><em>эссе:</em> <a href="../../essays/evolution-of-cooperation.html">эволюция кооперации</a> · <a href="../../essays/hidden-layer.html">скрытый этаж</a> · <a href="../../essays/game-theory.html">математика предательства</a></p>
+      <p><em>объекты:</em> <a href="ipd-strategies-catalog.html">стратегии повторяющейся игры</a> · <a href="zero-determinant-strategies.html">zero-determinant стратегии</a> · <a href="../ideas/problems/prisoners-dilemma.html">дилемма заключённого</a></p>
+      <p><em>визуал:</em> <a href="../../visuals/axelrod.html">турниры Аксельрода</a></p>
+    </div>
+  </section>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="ipd-strategies-catalog.html">стратегии повторяющейся игры →</a></div>
+      <div class="related-link"><span class="related-link-type">объект</span><a href="zero-determinant-strategies.html">zero-determinant стратегии →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../../visuals/axelrod.html">турниры Аксельрода →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/evolution-of-cooperation.html">эволюция кооперации →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/hidden-layer.html">скрытый этаж →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="../../essays/game-theory.html">математика предательства →</a></div>
+      <div class="related-link"><span class="related-link-type">задача</span><a href="../ideas/problems/prisoners-dilemma.html">дилемма заключённого →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">задача</span><a href="/null/objects/ideas/problems/prisoners-dilemma.html">дилемма заключённого →</a></div>
+      <div class="related-link"><span class="related-link-type">теория игр</span><a href="/null/objects/game-theory/ipd-strategies-catalog.html">стратегии повторяющейся игры →</a></div>
+      <div class="related-link"><span class="related-link-type">теория игр</span><a href="/null/objects/game-theory/zero-determinant-strategies.html">zero-determinant стратегии →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/game-theory.html">математика предательства →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/hidden-layer.html">скрытый этаж →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/evolution-of-cooperation.html">эволюция кооперации →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="/null/visuals/axelrod.html">турниры Аксельрода →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/objects/game-theory/ipd-tournaments.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
