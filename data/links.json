@@ -2015,6 +2015,13 @@
       "title": "честность по построению",
       "url": "/null/essays/mechanism-design.html",
       "glyph": "¶"
+    },
+    {
+      "id": "es-log-wealth",
+      "type": "essay",
+      "title": "Логарифм богатства",
+      "url": "/null/essays/log-wealth.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -7741,6 +7748,62 @@
     {
       "from": "es-adtech",
       "to": "es-mechanism-design"
+    },
+    {
+      "from": "es-log-wealth",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "es-log-wealth"
+    },
+    {
+      "from": "es-log-wealth",
+      "to": "es-poker-kelly"
+    },
+    {
+      "from": "es-poker-kelly",
+      "to": "es-log-wealth"
+    },
+    {
+      "from": "es-log-wealth",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-log-wealth"
+    },
+    {
+      "from": "es-log-wealth",
+      "to": "es-antifragile"
+    },
+    {
+      "from": "es-antifragile",
+      "to": "es-log-wealth"
+    },
+    {
+      "from": "es-log-wealth",
+      "to": "es-eu"
+    },
+    {
+      "from": "es-eu",
+      "to": "es-log-wealth"
+    },
+    {
+      "from": "es-log-wealth",
+      "to": "st-kelly"
+    },
+    {
+      "from": "st-kelly",
+      "to": "es-log-wealth"
+    },
+    {
+      "from": "es-log-wealth",
+      "to": "es-expected-value"
+    },
+    {
+      "from": "es-expected-value",
+      "to": "es-log-wealth"
     }
   ]
 }

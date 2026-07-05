@@ -4,3 +4,4 @@ node_modules/
 
 # secrets — never commit (security.md)
 .env
+__pycache__/
