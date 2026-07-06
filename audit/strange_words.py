@@ -97,6 +97,7 @@ SURFACE_ALLOW = {
     "ужиматься", "уравновесятся", "усреднилась", "усредняет", "усредняешь",
     "усредняй", "усреднять", "усредняют", "ухватываешь", "фолжу",
     "шенноновском", "эргодическое", "эргодическом", "недиктаторская",
+    "переуровневаться",
 }
 
 # Основы имён собственных (ё-норм., нижний регистр) — матчим по началу слова,
@@ -108,6 +109,28 @@ NAME_STEMS = {
     "свиннертон", "кордемск", "сахамиес", "гэлфонд", "амоц", "гиппас",
     "адлеман", "ривест", "андердог", "апофатическ", "стратифиц", "покерист",
     "саттертуэйт",
+}
+
+# ── детектор 3: стоп-лист (реальные слова, забракованные по регистру) ──
+STOP_TERMS = [
+    (r"обнул\w*",            "обнул*"),
+    (r"масштабир\w*",        "масштабир*"),
+    (r"проседа\w*",          "проседа*"),
+    (r"несимметри\w*",       "несимметри*"),
+    (r"безразборн\w*",       "безразборн*"),
+    (r"проверяемост\w*",     "проверяемост*"),
+    (r"перебива\w+ порог",   "перебивает порог"),
+    (r"дефолт\w* мира",      "дефолт мира"),
+    (r"ставк\w+ дисконт\w*", "ставка дисконта"),
+    (r"в коридоре",          "в коридоре"),
+    (r"в новой одежде",      "в новой одежде"),
+    (r"доминируется",        "доминируется"),
+]
+STOP_ALLOW = {"масштабирование", "масштабированием"}   # геометрия (coord-complex)
+STOP_ALLOW_NODE = {                                     # легитимно в конкретном узле
+    ("princ-state-value", "обнул"),                    # смысл разорения (V→0)
+    ("state-value",       "обнул"),
+    ("coord-complex",     "масштабир"),
 }
 
 ALLOWLIST_N = {_norm(x) for x in ALLOWLIST}
@@ -167,19 +190,60 @@ def context(body: str, word: str, w: int = 55) -> str:
     return "…" + body[s:e].replace("\n", " ").strip() + "…"
 
 
-def main(path: str):
-    text = open(path, encoding="utf-8").read()
-    essays = split_essays(text)
-    seen = set()
-    rows = []
-    for slug, body in sorted(essays.items()):
-        if slug == "poker-glossary":          # английский в нём — формат, не дефект
+def scan_mixed(name, body):
+    """Детектор 2: латинская буква внутри кириллического слова (Менгoли, дuмаешь)."""
+    out = []
+    for m in re.finditer(r"[A-Za-zА-Яа-яёЁ]+", body):
+        w = m.group(0)
+        if (re.search(r"[а-яё]", w, re.I) and re.search(r"[A-Za-z]", w)
+                and re.search(r"[а-яё][A-Za-z]|[A-Za-z][а-яё]", w, re.I) and len(w) >= 3):
+            out.append((name, w, context(body, w)))
+    return out
+
+
+def scan_stop(name, body):
+    """Детектор 3: забракованные реальные слова (стоп-лист) с исключениями."""
+    out = []
+    low = body.lower()
+    for pat, label in STOP_TERMS:
+        for m in re.finditer(pat, low):
+            hit = m.group(0)
+            if hit in STOP_ALLOW:
+                continue
+            if (name, label.rstrip("*")) in STOP_ALLOW_NODE:
+                continue
+            out.append((name, label, context(body, hit)))
+    return out
+
+
+def load_bodies(path):
+    """{name: body}. path — дамп .md (эссе) ИЛИ папка с .html (объекты)."""
+    import os
+    if os.path.isdir(path):
+        out = {}
+        for root, _, files in os.walk(path):
+            for f in files:
+                if not f.endswith(".html"):
+                    continue
+                h = open(os.path.join(root, f), encoding="utf-8", errors="ignore").read()
+                h = re.sub(r"<(script|style|head).*?</\1>", " ", h, flags=re.S)
+                h = re.sub(r"<[^>]+>", " ", h)
+                h = re.sub(r"&[a-z]+;", " ", h)
+                out[f[:-5]] = re.sub(r"\s+", " ", h)
+        return out
+    return split_essays(open(path, encoding="utf-8").read())
+
+
+def main(path):
+    bodies = load_bodies(path)
+    # ── детектор 1: коинажи (как раньше) ──
+    seen, coin = set(), []
+    for name, body in sorted(bodies.items()):
+        if name == "poker-glossary":
             continue
         for w in re.findall(r"[а-яёА-ЯЁ]{%d,}" % MIN_LEN, body):
             wl = w.lower()
-            if wl in seen:
-                continue
-            if zipf(wl) > ZERO_THRESHOLD:
+            if wl in seen or zipf(wl) > ZERO_THRESHOLD:
                 continue
             nwl = _norm(wl)
             if nwl in SURFACE_ALLOW:
@@ -188,17 +252,26 @@ def main(path: str):
                 continue
             if any(nwl.startswith(st) for st in NAME_STEMS):
                 continue
-            if is_proper(wl):
-                continue
-            if is_merge(w):
+            if is_proper(wl) or is_merge(w):
                 continue
             seen.add(wl)
-            rows.append((slug, w, context(body, w)))
-    # вывод
-    print(f"# Кандидаты на «странное слово» (zipf=0, не имя, не жаргон, не склейка): {len(rows)}\n")
-    print("slug\tслово\tконтекст")
-    for slug, w, ctx in rows:
-        print(f"{slug}\t{w}\t{ctx}")
+            coin.append((name, w, context(body, w)))
+    # ── детекторы 2 и 3 ──
+    mixed, stop = [], []
+    for name, body in sorted(bodies.items()):
+        mixed += scan_mixed(name, body)
+        stop += scan_stop(name, body)
+
+    def dump(title, rows):
+        print(f"\n# {title}: {len(rows)}")
+        print("slug\tметка\tконтекст")
+        for r in rows:
+            print("%s\t%s\t%s" % r)
+
+    dump("[1] коинажи (zipf=0, не имя/жаргон/склейка)", coin)
+    dump("[2] латинско-кириллические склейки", mixed)
+    dump("[3] стоп-лист (забракованные слова, с исключениями)", stop)
+    sys.exit(1 if (coin or mixed or stop) else 0)
 
 
 if __name__ == "__main__":
