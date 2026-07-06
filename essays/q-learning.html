@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ценность без карты — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .evo {
+    --paper: #f7f6f2; --ink: #1a1a1a; --dim: #8c8a83; --line: #dcd9d0; --accent: #c44a32;
+    --serif: 'IM Fell English', Georgia, serif; --sans: 'Inter', system-ui, sans-serif; --mono: 'JetBrains Mono', monospace;
+    width: 100%; max-width: 680px; margin-top: 8px; font-family: var(--sans); color: var(--ink); line-height: 1.72;
+  }
+  .evo .label { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: lowercase; color: var(--dim); margin-bottom: 18px; }
+  .evo h1 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 50px; line-height: 1.04; margin-bottom: 20px; }
+  .evo h1 em { color: var(--accent); }
+  .evo .lead { font-size: 19px; line-height: 1.55; color: #444; margin-bottom: 30px; font-style: italic; font-family: var(--serif); }
+  .evo h2 { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: lowercase; color: var(--accent); margin: 46px 0 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .evo p { font-size: 17px; margin-bottom: 18px; }
+  .evo p.first::first-letter { font-family: var(--serif); font-size: 62px; float: left; line-height: .82; padding: 6px 10px 0 0; color: var(--accent); }
+  .evo a { color: var(--accent); border-bottom: 1px solid rgba(196,74,50,.35); text-decoration: none; }
+  .evo a:hover { border-bottom-color: var(--accent); }
+  .evo sup { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+  .evo .formula { font-family: var(--mono); font-size: 13px; color: #111; background: #f0ede8; padding: 12px 16px; margin: 12px 0; line-height: 1.6; border-left: 2px solid var(--accent); white-space: pre-wrap; }
+  .evo .margin { margin-top: 48px; border-top: 1px solid var(--ink); padding-top: 22px; }
+  .evo .margin .mh { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: lowercase; color: var(--dim); margin-bottom: 14px; }
+  .evo .margin .fn { font-size: 14px; color: #555; margin-bottom: 11px; line-height: 1.5; }
+  .evo .margin .fn .num { font-family: var(--mono); color: var(--accent); margin-right: 8px; }
+  .evo .fields { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / ценность без карты</div>
+
+<main class="container">
+<article>
+
+  <div class="evo">
+    <div class="label">эссе · §05 · обучение · ценность · ~13 минут · 2026.07</div>
+    <h1>ценность без <em>карты</em></h1>
+    <div class="lead">как машина учится действовать оптимально, не зная устройства мира — q-learning</div>
+
+      <p class="first">У всякого разумного действия есть скрытая опора — ценность. Прежде чем выбрать ход, ты, не всегда сознавая, прикидываешь: куда он ведёт, что там дальше, чем это в итоге обернётся. Ричард Беллман в 1957-м придал этой прикидке точную форму<sup>[1]</sup> — в объекте про <a href="../objects/ideas/principles/state-value.html">ценность состояния</a>. Ценность состояния — это не то, что оно даёт сейчас, а лучшее, что из него достижимо потом: сегодняшняя награда плюс — с поправкой на будущее — ценность того, куда ты попадёшь. Уравнение красиво и точно. Но у него есть цена входа, о которой обычно молчат.</p>
+      <p>Чтобы им пользоваться, нужно знать мир. Знать заранее, куда какое действие тебя приведёт и с какой вероятностью, какая награда где лежит. Нужна карта — полная модель среды. А теперь честный вопрос: у кого она есть? Ни у ребёнка, ни у зверя, ни у алгоритма, впервые открывшего глаза в незнакомой игре, карты нет. Есть только возможность действовать и смотреть, что вышло. Вопрос, на который отвечает q-learning, ровно такой: можно ли научиться действовать оптимально, <strong>не имея карты вообще</strong>?</p>
+
+      <h2>от ценности состояния к ценности хода</h2>
+      <p class="first">Первый шаг — сдвинуть точку зрения. Ценность состояния V(s) отвечает на вопрос «насколько хорошо здесь оказаться». Но чтобы по ней выбрать ход, всё равно нужна карта: надо знать, какое действие в какое состояние ведёт. Оценка есть, а что с ней делать — неясно без модели.</p>
+      <p>Уоткинс в 1989-м предложил хранить ценность иначе — не состояния, а <strong>пары «состояние плюс действие»</strong><sup>[2]</sup>. Величину назвали Q(s,a): сколько ты в итоге получишь, если из состояния s сделаешь именно ход a, а дальше будешь играть наилучшим образом. Сдвиг кажется мелким, но он снимает зависимость от карты. Если ты знаешь Q для всех ходов из текущего состояния, выбор очевиден без всякой модели: бери ход с наибольшим Q. Действие выпадает прямо из ценности, не спрашивая, как устроен мир. Осталась одна задача — где взять сами Q, если мир неизвестен.</p>
+
+      <h2>подтянуть оценку к самой себе</h2>
+      <p class="first">Здесь и прячется красивая идея, слегка идущая поперёк чутья, — ради неё стоит вся статья.</p>
+      <p>Ты не знаешь настоящих Q — так начни с любых, хоть с нулей. Они неверны, это неважно. Важно, что каждый прожитый шаг даёт возможность их чуть поправить. Сделал из s ход a, получил награду r, оказался в новом состоянии s′. И вот у тебя на руках более честная оценка того же самого Q(s,a): это r плюс — с дисконтом — лучшее из того, что теперь достижимо из s′. Разницу между старой оценкой и этой, новой, зовут временно́й разностью, TD-ошибкой<sup>[3]</sup>. На неё ты и сдвигаешь Q(s,a) — не целиком, маленьким шагом.</p>
+      <div class="formula">Q(s,a) ← Q(s,a) + α [ r + γ·max Q(s′,a′) − Q(s,a) ]</div>
+      <p>Вглядись, что здесь происходит. Ты улучшаешь оценку, подтягивая её к другой оценке — к своей же догадке о соседнем состоянии. Ты учишь ценность из ценности, поднимаешь себя за собственные шнурки. Звучит как жульничество: как из неверных чисел, подтянутых к неверным числам, может выйти истина? Но именно это Уоткинс и Дайан в 1992-м доказали строго<sup>[4]</sup>: если каждую пару «состояние — действие» пробовать снова и снова, без конца, оценки сходятся к настоящим. Мираж, подпёртый миражом, оседает в твёрдую землю.</p>
+
+      <h2>оптимальность без модели</h2>
+      <p class="first">Отступи на шаг и посмотри, что получилось. Агент, у которого не было ни карты мира, ни учителя, ни формулы среды, — просто бродил, действовал, получал награды и всякий раз подправлял свои Q на TD-ошибку. И этого хватило, чтобы прийти к оптимальному поведению. Не приблизительно — доказано, с вероятностью единица.</p>
+      <p>В этом и разрыв с Беллманом, и уплата его цены входа. Беллман считал ценность, зная мир. Q-learning <strong>выучивает</strong> её, не зная мира, — из одного лишь опыта. Модель среды больше не нужна: её роль берёт на себя бесконечное повторение проб. Поэтому метод и называют свободным от модели: карту заменяет протоптанная тропа. Ты не выводишь, как устроен лабиринт, — ты просто ходишь по нему достаточно долго, и стены сами проступают в твоих оценках. Среда при этом — <a href="markov-chains.html">марковский процесс</a>: будущее зависит только от настоящего, а не от всей истории.</p>
+
+      <h2>тень будущего, ставшая числом</h2>
+      <p class="first">В формуле сидит один скромный на вид коэффициент — γ, дисконт. Он решает, сколько будущая награда весит по сравнению с сегодняшней. И это не техническая деталь, а старый знакомый, принявший численную форму.</p>
+      <p>При γ близком к нулю агент близорук: хватает то, что даёт награду сейчас, и слеп к последствиям. При γ близком к единице он ценит далёкое почти как близкое — терпелив, готов пожертвовать сиюминутным ради того, что будет много ходов спустя. Это буквально тень будущего из теории игр и <a href="decisions-distance.html">решений на дистанции</a>, переведённая в один множитель. Кооперация держится, когда завтра весит достаточно; агент ведёт себя дальновидно ровно тогда, когда γ достаточно велик. Одно и то же условие — «цени будущее» — здесь не метафора, а параметр, который можно повернуть.</p>
+
+      <h2>чтобы узнать, надо рискнуть</h2>
+      <p class="first">Есть последняя тонкость, без которой всё рушится. Если всегда брать ход с наибольшим известным Q, ты застрянешь в первом же неплохом маршруте и никогда не узнаешь, нет ли за соседней дверью чего-то лучше. Оценки станут самосбывающимися: хвалишь то, что пробовал, не пробуешь то, что мог бы полюбить.</p>
+      <p>Поэтому агент обязан иногда действовать не лучшим известным образом, а наугад — просто чтобы попробовать неизведанное. Это называют дилеммой разведки и эксплуатации, и это та же <a href="optionality.html">опциональность</a>: держать открытой возможность, что где-то есть путь получше, стоит некоторой платы сейчас. Чистая жадность к известному — проигрышная стратегия познания. Чтобы выучить ценность мира, надо согласиться время от времени тратить ходы на то, что ценным пока не выглядит.</p>
+
+      <h2>кода</h2>
+      <p class="first">На этом стоит почти всё современное обучение с подкреплением — то, чем машина осваивает игру, не получив ни правил, ни примеров: даёшь ей действия, награду и время, и она сама выучивает, что чего стоит. Программы, обыгравшие человека в го и покер, — прямые потомки этой строчки с TD-ошибкой. Подробнее о том, как <a href="games-that-train-machines.html">игры тренируют машины</a>, — в одноимённом эссе.</p>
+      <p>Но за прикладным блеском — идея чистая и почти философская. Ценность, подтянутая к самой себе, сходится к правде. Действовать оптимально можно, не понимая мир, — достаточно долго в нём жить и честно поправлять свои оценки. И то, чему машина учится этим способом, — не что-то чуждое: это ровно то, чем живёт весь этот раздел. Ценить будущее. Держать опции открытыми. Решать на дистанции, а не на одном ходу. Просто теперь это делает алгоритм — без карты, без учителя, за одни лишь шнурки собственных догадок.</p>
+
+    <div class="margin">
+      <div class="mh">на полях</div>
+      <p class="fields">эссе: <a href="markov-chains.html">цепи Маркова</a> · <a href="markov-deep.html">Марков и «Евгений Онегин»</a> · <a href="games-that-train-machines.html">игры тренируют машины</a> · <a href="decisions-distance.html">решения на дистанции</a> · <a href="optionality.html">опциональность</a></p>
+      <p class="fields">объекты: <a href="../objects/ideas/principles/state-value.html">ценность состояния · V(s)</a></p>
+      <div class="fn"><span class="num">[1]</span>Р. Беллман, «Dynamic Programming» (1957). Принцип оптимальности: оптимальное решение состоит из оптимальных решений подзадач, откуда рекурсивное уравнение ценности V(s) = maxₐ [ r(s,a) + γ·Σ p(s′|s,a)·V(s′) ]. Требует известной модели среды — вероятностей переходов p и наград r.</div>
+      <div class="fn"><span class="num">[2]</span>К. Уоткинс, «Learning from Delayed Rewards», диссертация, Кембридж (1989). Ключевой сдвиг: хранить не V(s), а Q(s,a) — тогда оптимальная политика π*(s) = argmaxₐ Q*(s,a) извлекается без модели среды.</div>
+      <div class="fn"><span class="num">[3]</span>Метод временны́х разностей — Р. Саттон, «Learning to Predict by the Methods of Temporal Differences», Machine Learning 3 (1988). Оценка правится на разницу между прежним прогнозом и прогнозом, уточнённым одним прожитым шагом.</div>
+      <div class="fn"><span class="num">[4]</span>К. Уоткинс, П. Дайан, «Q-learning», Machine Learning 8 (1992): 279–292. Доказана сходимость Q к оптимуму с вероятностью 1 при условии, что каждая пара (s,a) пробуется бесконечно часто, а шаг обучения α убывает подходящим образом. Метод off-policy: сходится независимо от того, как выбираются ходы во время обучения, — лишь бы пробовалось всё.</div>
+    </div>
+  </div>
+
+  <a class="xref diad" href="../objects/ideas/principles/state-value.html"><span class="xref-label">// ценность состояния</span><span class="xref-title">Беллман придал ценности точную форму — q-learning учит её без карты мира.</span><span class="xref-arrow">→</span></a>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">объект</span><a href="../objects/ideas/principles/state-value.html">ценность состояния · V(s) →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="markov-chains.html">цепи Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="games-that-train-machines.html">игры тренируют машины →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="decisions-distance.html">решения на дистанции →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="optionality.html">опциональность →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">принцип</span><a href="/null/objects/ideas/principles/state-value.html">ценность состояния →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/markov-deep.html">Андрей Марков и Евгений Онегин →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/games-that-train-machines.html">Игры которые тренируют машины →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/optionality.html">Опциональность. Ценность открытых дверей →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/decisions-distance.html">Решения на дистанции →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/markov-chains.html">Цепи Маркова →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/q-learning.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

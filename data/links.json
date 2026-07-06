@@ -2036,6 +2036,13 @@
       "title": "турниры повторяющейся игры",
       "url": "/null/objects/game-theory/ipd-tournaments.html",
       "glyph": "⊞"
+    },
+    {
+      "id": "es-q-learning",
+      "type": "essay",
+      "title": "ценность без карты",
+      "url": "/null/essays/q-learning.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -7962,6 +7969,54 @@
     {
       "from": "pr-prisoners",
       "to": "gt-ipd-tournaments"
+    },
+    {
+      "from": "es-q-learning",
+      "to": "princ-state-value"
+    },
+    {
+      "from": "princ-state-value",
+      "to": "es-q-learning"
+    },
+    {
+      "from": "es-q-learning",
+      "to": "es-markov"
+    },
+    {
+      "from": "es-markov",
+      "to": "es-q-learning"
+    },
+    {
+      "from": "es-q-learning",
+      "to": "es-markov-deep"
+    },
+    {
+      "from": "es-markov-deep",
+      "to": "es-q-learning"
+    },
+    {
+      "from": "es-q-learning",
+      "to": "es-games-train"
+    },
+    {
+      "from": "es-games-train",
+      "to": "es-q-learning"
+    },
+    {
+      "from": "es-q-learning",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "es-decisions-distance",
+      "to": "es-q-learning"
+    },
+    {
+      "from": "es-q-learning",
+      "to": "es-optionality"
+    },
+    {
+      "from": "es-optionality",
+      "to": "es-q-learning"
     }
   ]
 }
