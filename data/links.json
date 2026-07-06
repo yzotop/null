@@ -2064,6 +2064,13 @@
       "title": "взлом награды",
       "url": "/null/essays/reward-hacking.html",
       "glyph": "¶"
+    },
+    {
+      "id": "es-learned-reward",
+      "type": "essay",
+      "title": "выученная награда",
+      "url": "/null/essays/learned-reward-rlhf.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -8118,6 +8125,38 @@
     {
       "from": "es-mechanism-design",
       "to": "es-reward-hacking"
+    },
+    {
+      "from": "es-learned-reward",
+      "to": "es-reward-hacking"
+    },
+    {
+      "from": "es-reward-hacking",
+      "to": "es-learned-reward"
+    },
+    {
+      "from": "es-learned-reward",
+      "to": "es-q-learning"
+    },
+    {
+      "from": "es-q-learning",
+      "to": "es-learned-reward"
+    },
+    {
+      "from": "es-learned-reward",
+      "to": "es-mechanism-design"
+    },
+    {
+      "from": "es-mechanism-design",
+      "to": "es-learned-reward"
+    },
+    {
+      "from": "es-learned-reward",
+      "to": "es-dopamine"
+    },
+    {
+      "from": "es-dopamine",
+      "to": "es-learned-reward"
     }
   ]
 }
