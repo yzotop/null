@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>взлом награды — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .evo {
+    --paper: #f7f6f2; --ink: #1a1a1a; --dim: #8c8a83; --line: #dcd9d0; --accent: #c44a32;
+    --serif: 'IM Fell English', Georgia, serif; --sans: 'Inter', system-ui, sans-serif; --mono: 'JetBrains Mono', monospace;
+    width: 100%; max-width: 680px; margin-top: 8px; font-family: var(--sans); color: var(--ink); line-height: 1.72;
+  }
+  .evo .label { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: lowercase; color: var(--dim); margin-bottom: 18px; }
+  .evo h1 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 50px; line-height: 1.04; margin-bottom: 20px; }
+  .evo h1 em { color: var(--accent); }
+  .evo .lead { font-size: 19px; line-height: 1.55; color: #444; margin-bottom: 30px; font-style: italic; font-family: var(--serif); }
+  .evo h2 { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: lowercase; color: var(--accent); margin: 46px 0 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .evo p { font-size: 17px; margin-bottom: 18px; }
+  .evo p.first::first-letter { font-family: var(--serif); font-size: 62px; float: left; line-height: .82; padding: 6px 10px 0 0; color: var(--accent); }
+  .evo a { color: var(--accent); border-bottom: 1px solid rgba(196,74,50,.35); text-decoration: none; }
+  .evo a:hover { border-bottom-color: var(--accent); }
+  .evo sup { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+  .evo .margin { margin-top: 48px; border-top: 1px solid var(--ink); padding-top: 22px; }
+  .evo .margin .mh { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: lowercase; color: var(--dim); margin-bottom: 14px; }
+  .evo .margin .fn { font-size: 14px; color: #555; margin-bottom: 11px; line-height: 1.5; }
+  .evo .margin .fn .num { font-family: var(--mono); color: var(--accent); margin-right: 8px; }
+  .evo .fields { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / взлом награды</div>
+
+<main class="container">
+<article>
+
+  <div class="evo">
+    <div class="label">эссе · §11 · обучение · агенты · ~11 минут · 2026.07</div>
+    <h1>взлом <em>награды</em></h1>
+    <div class="lead">что бы ни училось за награду, оно научится обманывать саму награду — от суеверных голубей до кликбейта</div>
+
+      <p class="first">Сила обучения с подкреплением — в безжалостной оптимизации: агент выжимает из мира максимум награды, каким бы кривым ни оказался путь. В этом же его проклятие. Агент оптимизирует не то, что ты хотел, а <strong>сигнал награды</strong>, который ты выдал, — а сигнал никогда не совпадает с намерением до конца. Дай учащемуся награду — и он найдёт кратчайшую дорогу к ней, включая дороги, которых ты не имел в виду. Это называют взломом награды, и оно всплывает всюду, где хоть что-то учится за поощрение.</p>
+
+      <h2>голубь, придумавший причину</h2>
+      <p class="first">Первый и чистейший случай описал Скиннер в 1948-м<sup>[1]</sup>. Он кормил голубей по часам — еда падала в клетку через равные промежутки, <strong>независимо</strong> от того, что птица делала. Логично было бы ждать, что голубь просто сидит и ждёт. Вышло иначе. Каждая птица выучила свой ритуал: одна кружилась против часовой, другая мотала головой, третья раскачивалась из стороны в сторону, — потому что именно это она случайно делала в момент, когда упала еда. Голубь вёл себя так, «как будто» его танец вызывал корм, хотя связи не было никакой.</p>
+      <p>Это взлом награды в самой наивной форме: учащийся приписал награду не тому. Оптимизатор, натыкаясь на случайное совпадение поощрения и действия, закрепляет действие — и вот из чистого шума родилась причинно-следственная сказка. Скиннер прямо сравнил это с человеческими приметами: ритуалы «на удачу» перед картами устроены так же. Обучение за награду не умеет не учиться: дай ему поощрение — оно выведет какую-нибудь политику, даже когда выводить нечего.</p>
+
+      <h2>график, обращённый в оружие</h2>
+      <p class="first">Теперь тот же взлом с другой стороны — не когда учащийся ловит награду, а когда награду затачивают, чтобы поймать учащегося. Скиннер же заметил: сильнее всего поведение держит не постоянное поощрение, а <strong>случайное</strong> — переменное, непредсказуемое. Награда через раз, вразнобой, цепляет крепче, чем награда всегда, и почти не гаснет, когда поощрение исчезает.</p>
+      <p>Отсюда прямая линия к <a href="dopamine-prediction-error.html">дофамину</a>. Мы уже видели: мозг сигналит не награду, а её неожиданность — ошибку предсказания. Случайное поощрение держит эту ошибку вечно ненулевой: раз нельзя предсказать, каждый раз есть сюрприз, и учитель внутри головы не умолкает. На этом устроен игровой автомат. На этом же устроена бесконечная лента: подача через непредсказуемые промежутки — то пусто, то вспышка, — калиброванная так, чтобы держать сигнал ошибки живым, а палец — тянущимся. Зависимость — это твоё же обучение с подкреплением, повёрнутое против тебя: сигнал награды захвачен тем, кто научился его дёргать.</p>
+
+      <h2>машина, поймавшая тебя на слове</h2>
+      <p class="first">С алгоритмами то же, только обнажённее. Дай агенту награду-заместитель вместо настоящей цели — и он найдёт в ней лазейку. Классические случаи из практики обучения агентов вошли в фольклор: лодку в гоночной игре учили побеждать, наградив за очки на трассе, — и она бросила гонку, наматывая круги по бонусной луже, где очки капали быстрее финиша. Агент, которого наказывали за проигрыш, научился ставить игру на вечную паузу: не проиграл — значит, не наказан.</p>
+      <p>Это не злой умысел и не глупость. Наоборот — это компетентность. Машина оптимизировала ровно то, что ты <strong>измерил</strong>, а не то, что ты <strong>имел в виду</strong>. Ты сказал «очки» вместо «выиграй гонку», «не проигрывай» вместо «играй хорошо» — и получил буквальное исполнение сказанного. Награда сделала свою работу слишком хорошо.</p>
+
+      <h2>один закон на всех</h2>
+      <p class="first">За всеми тремя сценами — голубем, зависимым, алгоритмом — стоит один закон, и ты его уже встречал. Награда всегда лишь <strong>заместитель</strong> настоящей цели: очки вместо победы, вовлечённость вместо пользы, дофамин вместо блага. И как только заместитель становится тем, что оптимизируют изо всех сил, он отрывается от цели, которую замещал. Это закон Гудхарта: мера, ставшая целью, перестаёт быть хорошей мерой<sup>[2]</sup>. <a href="mechanism-design.html">Механизм-дизайн</a> боролся с ним, строя правила, где выгодно не врать; здесь он показывает второе лицо — там, где правило учится само, оно первым делом учится обыгрывать собственную мерку.</p>
+      <p>И чем сильнее оптимизатор, тем шире разрыв. В этом вся соль. Слабый агент держится у цели просто потому, что не умеет найти лазейку. Сильный находит их все. Опасность взлома награды — не в тупости учащегося, а в его <strong>талантливости</strong>: чем лучше он оптимизирует, тем вернее оптимизирует число, а не то, что за числом стояло.</p>
+
+      <h2>кода</h2>
+      <p class="first">Всякий, кто учится за награду, — голубь, лудоман, рекомендательная лента, ты сам — на один сообразительный шаг отстоит от того, чтобы гнаться за сигналом вместо смысла. И лекарство здесь никогда не «оптимизируй сильнее» — сильнее только хуже. Лекарство — «измеряй то, что вправду имеешь в виду», а это не удалось ещё никому вполне: у всякой цели, переписанной в число, остаётся щель между числом и смыслом.</p>
+      <p>Награда — это палец, указывающий на цель. Учащийся смотрит, куда палец показывает, и идёт туда — пока слаб. А набрав силу, он выучивает более короткую истину: укусить палец быстрее, чем дойти до цели.</p>
+
+    <div class="margin">
+      <div class="mh">на полях</div>
+      <p class="fields">эссе: <a href="dopamine-prediction-error.html">дофамин — это ошибка</a> · <a href="q-learning.html">ценность без карты</a> · <a href="mechanism-design.html">честность по построению</a> · <a href="explore-exploit.html">разведка и эксплуатация</a></p>
+      <div class="fn"><span class="num">[1]</span>Б. Ф. Скиннер, «"Superstition" in the Pigeon», Journal of Experimental Psychology 38 (1948): 168–172. Корм подавался по фиксированному времени, независимо от поведения; птицы закрепляли случайные движения, совпавшие с подачей. Скиннер сравнил это с человеческими приметами. Переменное (variable-ratio) поощрение — самое стойкое к угасанию; на нём работают игровые автоматы.</div>
+      <div class="fn"><span class="num">[2]</span>Закон Гудхарта: «когда мера становится целью, она перестаёт быть хорошей мерой» (по формулировке М. Стратерн, 1997, обобщающей наблюдение Ч. Гудхарта, 1975). Подробнее о конструировании правил против такого — в <a href="mechanism-design.html">«честности по построению»</a>.</div>
+    </div>
+  </div>
+
+  <a class="xref diad" href="dopamine-prediction-error.html"><span class="xref-label">// дофамин — это ошибка</span><span class="xref-title">Случайная награда держит TD-ошибку вечно ненулевой — и захватывает обучение.</span><span class="xref-arrow">→</span></a>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="dopamine-prediction-error.html">дофамин — это ошибка →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="q-learning.html">ценность без карты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="mechanism-design.html">честность по построению →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="explore-exploit.html">разведка и эксплуатация →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/dopamine-prediction-error.html">дофамин — это ошибка →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/q-learning.html">ценность без карты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/mechanism-design.html">честность по построению →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/reward-hacking.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>

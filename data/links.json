@@ -2043,6 +2043,27 @@
       "title": "ценность без карты",
       "url": "/null/essays/q-learning.html",
       "glyph": "¶"
+    },
+    {
+      "id": "es-dopamine",
+      "type": "essay",
+      "title": "дофамин — это ошибка",
+      "url": "/null/essays/dopamine-prediction-error.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-explore-exploit",
+      "type": "essay",
+      "title": "разведка и эксплуатация",
+      "url": "/null/essays/explore-exploit.html",
+      "glyph": "¶"
+    },
+    {
+      "id": "es-reward-hacking",
+      "type": "essay",
+      "title": "взлом награды",
+      "url": "/null/essays/reward-hacking.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -8017,6 +8038,86 @@
     {
       "from": "es-optionality",
       "to": "es-q-learning"
+    },
+    {
+      "from": "es-q-learning",
+      "to": "es-dopamine"
+    },
+    {
+      "from": "es-dopamine",
+      "to": "es-q-learning"
+    },
+    {
+      "from": "es-q-learning",
+      "to": "es-explore-exploit"
+    },
+    {
+      "from": "es-explore-exploit",
+      "to": "es-q-learning"
+    },
+    {
+      "from": "es-q-learning",
+      "to": "es-reward-hacking"
+    },
+    {
+      "from": "es-reward-hacking",
+      "to": "es-q-learning"
+    },
+    {
+      "from": "es-dopamine",
+      "to": "es-games-train"
+    },
+    {
+      "from": "es-games-train",
+      "to": "es-dopamine"
+    },
+    {
+      "from": "es-dopamine",
+      "to": "es-reward-hacking"
+    },
+    {
+      "from": "es-reward-hacking",
+      "to": "es-dopamine"
+    },
+    {
+      "from": "es-dopamine",
+      "to": "es-explore-exploit"
+    },
+    {
+      "from": "es-explore-exploit",
+      "to": "es-dopamine"
+    },
+    {
+      "from": "es-explore-exploit",
+      "to": "es-optionality"
+    },
+    {
+      "from": "es-optionality",
+      "to": "es-explore-exploit"
+    },
+    {
+      "from": "es-explore-exploit",
+      "to": "pr-secretary"
+    },
+    {
+      "from": "pr-secretary",
+      "to": "es-explore-exploit"
+    },
+    {
+      "from": "es-explore-exploit",
+      "to": "es-log-wealth"
+    },
+    {
+      "from": "es-log-wealth",
+      "to": "es-explore-exploit"
+    },
+    {
+      "from": "es-reward-hacking",
+      "to": "es-mechanism-design"
+    },
+    {
+      "from": "es-mechanism-design",
+      "to": "es-reward-hacking"
     }
   ]
 }

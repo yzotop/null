@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>дофамин — это ошибка — null/essays</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .evo {
+    --paper: #f7f6f2; --ink: #1a1a1a; --dim: #8c8a83; --line: #dcd9d0; --accent: #c44a32;
+    --serif: 'IM Fell English', Georgia, serif; --sans: 'Inter', system-ui, sans-serif; --mono: 'JetBrains Mono', monospace;
+    width: 100%; max-width: 680px; margin-top: 8px; font-family: var(--sans); color: var(--ink); line-height: 1.72;
+  }
+  .evo .label { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: lowercase; color: var(--dim); margin-bottom: 18px; }
+  .evo h1 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 50px; line-height: 1.04; margin-bottom: 20px; }
+  .evo h1 em { color: var(--accent); }
+  .evo .lead { font-size: 19px; line-height: 1.55; color: #444; margin-bottom: 30px; font-style: italic; font-family: var(--serif); }
+  .evo h2 { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: lowercase; color: var(--accent); margin: 46px 0 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .evo p { font-size: 17px; margin-bottom: 18px; }
+  .evo p.first::first-letter { font-family: var(--serif); font-size: 62px; float: left; line-height: .82; padding: 6px 10px 0 0; color: var(--accent); }
+  .evo a { color: var(--accent); border-bottom: 1px solid rgba(196,74,50,.35); text-decoration: none; }
+  .evo a:hover { border-bottom-color: var(--accent); }
+  .evo sup { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+  .evo .mono { font-family: var(--mono); font-size: 15px; }
+  .evo .margin { margin-top: 48px; border-top: 1px solid var(--ink); padding-top: 22px; }
+  .evo .margin .mh { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: lowercase; color: var(--dim); margin-bottom: 14px; }
+  .evo .margin .fn { font-size: 14px; color: #555; margin-bottom: 11px; line-height: 1.5; }
+  .evo .margin .fn .num { font-family: var(--mono); color: var(--accent); margin-right: 8px; }
+  .evo .fields { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / дофамин — это ошибка</div>
+
+<main class="container">
+<article>
+
+  <div class="evo">
+    <div class="label">эссе · §11 · обучение · агенты · ~11 минут · 2026.07</div>
+    <h1>дофамин — это <em>ошибка</em></h1>
+    <div class="lead">мозг бежит тот же алгоритм, что и q-learning</div>
+
+      <p class="first">Во всём <a href="q-learning.html">q-learning</a> всё держалось на одной величине — на TD-ошибке, разнице между тем, что ты ожидал, и тем, что получил. Не на самой награде, а на её расхождении с прогнозом: именно на эту разницу агент подправлял свои оценки. Убери её — и учиться нечем. Так вот, у тебя в голове эту же величину кто-то считает. Химически, прямо сейчас. Её зовут дофамином.</p>
+      <p>Про дофамин ходит красивая и почти полностью неверная легенда: молекула удовольствия, гормон награды, то, что заливает мозг в миг кайфа. На этой легенде построена целая индустрия советов про «дофаминовые детоксы». Настоящий дофамин устроен и умнее, и холоднее. Он сигналит не награду. Он сигналит <strong>ошибку в её предсказании</strong>.</p>
+
+      <h2>обезьяна, сок и три случая</h2>
+      <p class="first">Показал это Вольфрам Шульц, десятилетиями вживлявший электроды в дофаминовые нейроны бодрствующих обезьян<sup>[1]</sup>. Картина сложилась из трёх случаев, и она переворачивает легенду.</p>
+      <p>Случай первый: обезьяне без предупреждения дают каплю сока. Дофаминовые нейроны выдают всплеск. Пока всё как в легенде — награда, вспышка.</p>
+      <p>Случай второй: перед соком начинают включать сигнал — тон. Раз за разом тон, потом сок. И происходит странное: всплеск <strong>уезжает назад во времени</strong>. Нейроны загораются теперь на тон — а в момент, когда приходит сам сок, молчат. Награда та же, сок тот же, но дофамина на нём больше нет.</p>
+      <p>Случай третий: тон прозвучал, обезьяна ждёт сок — а его не дают. И тут дофамин не просто молчит: его уровень <strong>проваливается ниже обычного</strong>, ровно в тот миг, когда сок должен был появиться<sup>[2]</sup>.</p>
+      <p>Сложи три случая. Дофамин отвечает не на награду, а на <strong>сюрприз</strong>: скачет вверх, когда вышло лучше ожидаемого; молчит, когда всё как ждали; падает вниз, когда вышло хуже. Это не детектор награды. Это детектор расхождения — насколько мир оказался лучше или хуже, чем ты про него думал.</p>
+
+      <h2>это буквально TD-ошибка</h2>
+      <p class="first">Тут в историю вошли не нейробиологи, а вычислители. Питер Дайан и Рид Монтегю посмотрели на данные Шульца глазами информатики — и узнали фигуру<sup>[3]</sup>. Три знака дофаминового сигнала (вверх на неожиданном, ноль на предсказанном, вниз на несбывшемся) — это в точности три знака <strong>ошибки предсказания награды</strong> из обучения с подкреплением. Той самой TD-ошибки Саттона и Барто. Той самой скобки <span class="mono">[ r + γ·V(s′) − V(s) ]</span>, на которую q-learning подправляет свои оценки.</p>
+      <p>И самая тонкая деталь сходится идеальнее всего — уезд сигнала на предвестник. В TD-обучении, когда состояние надёжно предсказывает будущую награду, ценность <strong>перетекает назад</strong>: сигнал ошибки смещается с награды на самый ранний намёк, который её предвещает. Обезьяний мозг сделал ровно это — перенёс вспышку с сока на тон. Не аналогия, не «похоже»: та же математика, шаг в шаг.</p>
+      <p>Вывод, от которого трудно отмахнуться: мозг — обучающийся с подкреплением. Он оценивает состояния, действует, ловит расхождение и правит оценки на эту ошибку. Дофамин — не радость и не приз, а <strong>та самая скобка</strong>, только из плоти: красный карандаш учителя, который говорит одно — «ты ошибся в прогнозе, подвинь оценку». Эволюция вписала TD-обучение в средний мозг за сотни миллионов лет до того, как Саттон записал его формулой.</p>
+
+      <h2>почему радость выцветает</h2>
+      <p class="first">У этого есть следствия, которые ты чувствовал на себе, не зная механизма.</p>
+      <p>Первое — почему счастье не держится. Новая машина, новая должность, новая любовь бьют дофамином, пока они <strong>неожиданны</strong>. Но мозг быстро учится их предсказывать — и, как сок после тона, предсказанное благо перестаёт давать сигнал. Радость не убывает от того, что вещь испортилась; она убывает от того, что вещь стала ожидаемой. Ты гонишься не за наградой, а за сюрпризом, а сюрприз по определению нельзя запасти. Беговая дорожка удовольствия — это не изъян характера, это устройство сигнала: он считает разницу, а к разнице привыкают.</p>
+      <p>Второе — почему учишься именно на неожиданном. Там, где всё пошло по прогнозу, ошибка ноль — и правится нечего: мозг проходит мимо. Учит тебя не то, что случилось, а то, что случилось <strong>не так, как ты ждал</strong>. Ровно как агент, который не трогает оценку, если TD-ошибка обратилась в ноль. Скучное подтверждение известного не двигает ничего; двигает промах прогноза.</p>
+
+      <h2>кода</h2>
+      <p class="first">Скобку, которую мы вывели для машины, — ожидаемое минус случившееся — твоя голова считает миллионы лет. Ты, на химическом уровне, и есть q-обучающийся агент, которого эволюция написала задолго до Уоткинса, и дофамин в тебе — не приз, а сигнал ошибки, велящий подвинуть оценку мира ближе к правде.</p>
+      <p>И в этом есть особая, почти суровая честность механизма. То, что ощущается как желание, как азарт, как беспокойный голод по следующему, — это не поломка и не жадность. Это учитель внутри, вечно считающий, насколько ты промахнулся. Он не обещает счастья. Он обещает обучение — и оплачивает его той самой валютой, которую нельзя накопить: удивлением. Когда этот сигнал захватывают извне — см. <a href="reward-hacking.html">взлом награды</a>.</p>
+
+    <div class="margin">
+      <div class="mh">на полях</div>
+      <p class="fields">эссе: <a href="q-learning.html">ценность без карты</a> · <a href="reward-hacking.html">взлом награды</a> · <a href="games-that-train-machines.html">игры тренируют машины</a> · <a href="explore-exploit.html">разведка и эксплуатация</a></p>
+      <div class="fn"><span class="num">[1]</span>В. Шульц, Университет Фрибурга: регистрация одиночных дофаминовых нейронов в среднем мозге бодрствующих макак (с 1980-х). Ключевая сводка — W. Schultz, P. Dayan, P. R. Montague, «A neural substrate of prediction and reward», Science 275 (1997): 1593–1599.</div>
+      <div class="fn"><span class="num">[2]</span>Три отклика одного нейрона: активация на непредсказанную награду (положительная ошибка), отсутствие отклика на полностью предсказанную (нулевая ошибка), угнетение ниже базовой частоты при пропуске ожидаемой награды (отрицательная ошибка).</div>
+      <div class="fn"><span class="num">[3]</span>П. Р. Монтегю, П. Дайан, Т. Сейновски, «A framework for mesencephalic dopamine systems based on predictive Hebbian learning», J. Neurosci. 16 (1996): 1936–1947. Отклик дофамина на предвещающий стимул — это TD-ошибка: намёк на будущую награду означает внезапный рост ожидаемой ценности. TD-обучение — Р. Саттон, Э. Барто.</div>
+    </div>
+  </div>
+
+  <a class="xref diad" href="q-learning.html"><span class="xref-label">// ценность без карты</span><span class="xref-title">TD-ошибка в q-learning — та же скобка, что дофамин в мозге.</span><span class="xref-arrow">→</span></a>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="q-learning.html">ценность без карты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="reward-hacking.html">взлом награды →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="explore-exploit.html">разведка и эксплуатация →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="games-that-train-machines.html">игры тренируют машины →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/reward-hacking.html">взлом награды →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/games-that-train-machines.html">Игры которые тренируют машины →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/explore-exploit.html">разведка и эксплуатация →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/q-learning.html">ценность без карты →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/dopamine-prediction-error.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+</footer>
+
+</body>
+</html>
