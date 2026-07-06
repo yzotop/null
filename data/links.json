@@ -2071,6 +2071,20 @@
       "title": "выученная награда",
       "url": "/null/essays/learned-reward-rlhf.html",
       "glyph": "¶"
+    },
+    {
+      "id": "es-evaluation",
+      "type": "essay",
+      "title": "оценка как эксперимент",
+      "url": "/null/essays/evaluation-as-experiment.html",
+      "glyph": "◎"
+    },
+    {
+      "id": "es-calibration",
+      "type": "essay",
+      "title": "калибровка",
+      "url": "/null/essays/calibration.html",
+      "glyph": "◎"
     }
   ],
   "edges": [
@@ -8157,6 +8171,86 @@
     {
       "from": "es-dopamine",
       "to": "es-learned-reward"
+    },
+    {
+      "from": "es-evaluation",
+      "to": "es-learned-reward"
+    },
+    {
+      "from": "es-learned-reward",
+      "to": "es-evaluation"
+    },
+    {
+      "from": "es-evaluation",
+      "to": "es-reward-hacking"
+    },
+    {
+      "from": "es-reward-hacking",
+      "to": "es-evaluation"
+    },
+    {
+      "from": "es-evaluation",
+      "to": "es-causality"
+    },
+    {
+      "from": "es-causality",
+      "to": "es-evaluation"
+    },
+    {
+      "from": "es-evaluation",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "es-evaluation"
+    },
+    {
+      "from": "es-evaluation",
+      "to": "es-forking-paths"
+    },
+    {
+      "from": "es-forking-paths",
+      "to": "es-evaluation"
+    },
+    {
+      "from": "es-evaluation",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-good-dec",
+      "to": "es-evaluation"
+    },
+    {
+      "from": "es-evaluation",
+      "to": "es-calibration"
+    },
+    {
+      "from": "es-calibration",
+      "to": "es-evaluation"
+    },
+    {
+      "from": "es-evaluation",
+      "to": "es-llm-eval"
+    },
+    {
+      "from": "es-llm-eval",
+      "to": "es-evaluation"
+    },
+    {
+      "from": "es-calibration",
+      "to": "es-is-forecast-right"
+    },
+    {
+      "from": "es-is-forecast-right",
+      "to": "es-calibration"
+    },
+    {
+      "from": "es-calibration",
+      "to": "es-base-rate"
+    },
+    {
+      "from": "es-base-rate",
+      "to": "es-calibration"
     }
   ]
 }
