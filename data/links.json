@@ -2085,6 +2085,41 @@
       "title": "калибровка",
       "url": "/null/essays/calibration.html",
       "glyph": "◎"
+    },
+    {
+      "id": "math-bayes",
+      "type": "mathematician",
+      "title": "Томас Байес",
+      "url": "/null/objects/mathematicians/bayes.html",
+      "glyph": "∝"
+    },
+    {
+      "id": "math-markov",
+      "type": "mathematician",
+      "title": "Андрей Марков",
+      "url": "/null/objects/mathematicians/markov.html",
+      "glyph": "→"
+    },
+    {
+      "id": "math-kolmogorov",
+      "type": "mathematician",
+      "title": "Андрей Колмогоров",
+      "url": "/null/objects/mathematicians/kolmogorov.html",
+      "glyph": "Ω"
+    },
+    {
+      "id": "math-efron",
+      "type": "mathematician",
+      "title": "Брэдли Эфрон",
+      "url": "/null/objects/mathematicians/efron.html",
+      "glyph": "↻"
+    },
+    {
+      "id": "math-gosset",
+      "type": "mathematician",
+      "title": "Уильям Госсет",
+      "url": "/null/objects/mathematicians/gosset.html",
+      "glyph": "t"
     }
   ],
   "edges": [
@@ -8251,6 +8286,126 @@
     {
       "from": "es-base-rate",
       "to": "es-calibration"
+    },
+    {
+      "from": "math-bayes",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "math-bayes",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "math-bayes",
+      "to": "vi-bayes"
+    },
+    {
+      "from": "math-bayes",
+      "to": "es-poker-bayes"
+    },
+    {
+      "from": "math-bayes",
+      "to": "es-bookmaker-bayes"
+    },
+    {
+      "from": "math-bayes",
+      "to": "math-laplace"
+    },
+    {
+      "from": "math-markov",
+      "to": "es-markov"
+    },
+    {
+      "from": "math-markov",
+      "to": "es-markov-deep"
+    },
+    {
+      "from": "math-markov",
+      "to": "vi-markov"
+    },
+    {
+      "from": "math-markov",
+      "to": "th-markov"
+    },
+    {
+      "from": "math-markov",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "math-markov",
+      "to": "es-live-next-round"
+    },
+    {
+      "from": "math-markov",
+      "to": "math-kolmogorov"
+    },
+    {
+      "from": "math-kolmogorov",
+      "to": "es-kolmogorov"
+    },
+    {
+      "from": "math-kolmogorov",
+      "to": "es-clt"
+    },
+    {
+      "from": "math-kolmogorov",
+      "to": "st-clt"
+    },
+    {
+      "from": "math-kolmogorov",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "math-kolmogorov",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "math-kolmogorov",
+      "to": "math-markov"
+    },
+    {
+      "from": "math-efron",
+      "to": "es-bootstrap"
+    },
+    {
+      "from": "math-efron",
+      "to": "es-why-simulation"
+    },
+    {
+      "from": "math-efron",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "math-efron",
+      "to": "es-clt"
+    },
+    {
+      "from": "math-efron",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "math-gosset",
+      "to": "es-clt"
+    },
+    {
+      "from": "math-gosset",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "math-gosset",
+      "to": "st-clt"
+    },
+    {
+      "from": "math-gosset",
+      "to": "math-gauss"
+    },
+    {
+      "from": "math-gosset",
+      "to": "math-pearson"
+    },
+    {
+      "from": "math-gosset",
+      "to": "math-fisher"
     }
   ]
 }
