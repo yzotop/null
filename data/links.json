@@ -2120,6 +2120,34 @@
       "title": "Уильям Госсет",
       "url": "/null/objects/mathematicians/gosset.html",
       "glyph": "t"
+    },
+    {
+      "id": "math-galton",
+      "type": "mathematician",
+      "title": "Фрэнсис Гальтон",
+      "url": "/null/objects/mathematicians/galton.html",
+      "glyph": "r"
+    },
+    {
+      "id": "math-neyman",
+      "type": "mathematician",
+      "title": "Ежи Нейман",
+      "url": "/null/objects/mathematicians/neyman.html",
+      "glyph": "α"
+    },
+    {
+      "id": "math-wald",
+      "type": "mathematician",
+      "title": "Абрахам Вальд",
+      "url": "/null/objects/mathematicians/wald.html",
+      "glyph": "Λ"
+    },
+    {
+      "id": "math-tukey",
+      "type": "mathematician",
+      "title": "Джон Тьюки",
+      "url": "/null/objects/mathematicians/tukey.html",
+      "glyph": "⊟"
     }
   ],
   "edges": [
@@ -8406,6 +8434,86 @@
     {
       "from": "math-gosset",
       "to": "math-fisher"
+    },
+    {
+      "from": "math-galton",
+      "to": "es-regression"
+    },
+    {
+      "from": "math-galton",
+      "to": "st-rtm"
+    },
+    {
+      "from": "math-galton",
+      "to": "st-corr"
+    },
+    {
+      "from": "math-galton",
+      "to": "vi-galton"
+    },
+    {
+      "from": "math-galton",
+      "to": "es-causality"
+    },
+    {
+      "from": "math-galton",
+      "to": "math-pearson"
+    },
+    {
+      "from": "math-neyman",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "math-neyman",
+      "to": "es-bootstrap"
+    },
+    {
+      "from": "math-neyman",
+      "to": "es-clt"
+    },
+    {
+      "from": "math-neyman",
+      "to": "math-pearson"
+    },
+    {
+      "from": "math-neyman",
+      "to": "math-fisher"
+    },
+    {
+      "from": "math-wald",
+      "to": "st-surv"
+    },
+    {
+      "from": "math-wald",
+      "to": "es-live-next-round"
+    },
+    {
+      "from": "math-wald",
+      "to": "es-black-swan"
+    },
+    {
+      "from": "math-wald",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "math-wald",
+      "to": "math-taleb"
+    },
+    {
+      "from": "math-tukey",
+      "to": "es-bootstrap"
+    },
+    {
+      "from": "math-tukey",
+      "to": "es-why-simulation"
+    },
+    {
+      "from": "math-tukey",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "math-tukey",
+      "to": "math-efron"
     }
   ]
 }
