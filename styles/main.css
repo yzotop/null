@@ -280,6 +280,24 @@ a { color: inherit; text-decoration: none; }
   line-height: 1;
   color: var(--ink);
 }
+.obj-portrait {
+  width: 140px;
+  height: auto;
+  image-rendering: pixelated;
+  background: #f7f6f2;
+  flex-shrink: 0;
+}
+.card-portrait {
+  width: 96px;
+  height: auto;
+  image-rendering: pixelated;
+  background: #f7f6f2;
+  display: block;
+  margin-bottom: 12px;
+}
+@media (max-width: 640px) {
+  .obj-portrait { width: 96px; }
+}
 .obj-title {
   font-family: var(--font-text);
   font-size: 30px;
