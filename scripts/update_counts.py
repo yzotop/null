@@ -35,20 +35,31 @@ import sys
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
 
+def is_redirect(path: str) -> bool:
+    """True for a redirect stub — a page whose only job is to forward.
+
+    null keeps a few of these after renames (essays/two-systems.html →
+    oshibki-po-pravilam.html). They carry a canonical to the real page and
+    must not be counted as content.
+    """
+    with open(path, encoding="utf-8") as f:
+        return 'http-equiv="refresh"' in f.read(1024)
+
+
 def count_pages(*parts: str, recursive: bool = False) -> int:
-    """Count .html pages at a path, excluding index.html."""
-    path = os.path.join(ROOT, *parts)
-    if recursive:
-        return sum(
-            1
-            for dp, _, fns in os.walk(path)
-            for fn in fns
-            if fn.endswith(".html") and fn != "index.html"
-        )
+    """Count content .html pages at a path — no index.html, no redirect stubs."""
+    root = os.path.join(ROOT, *parts)
+    walker = (
+        ((dp, fn) for dp, _, fns in os.walk(root) for fn in fns)
+        if recursive
+        else ((root, fn) for fn in os.listdir(root))
+    )
     return sum(
         1
-        for fn in os.listdir(path)
-        if fn.endswith(".html") and fn != "index.html"
+        for dp, fn in walker
+        if fn.endswith(".html")
+        and fn != "index.html"
+        and not is_redirect(os.path.join(dp, fn))
     )
 
 
