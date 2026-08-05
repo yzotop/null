@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Бумага null -->
+  <rect width="1200" height="630" fill="#f7f6f2"/>
+
+  <!-- Верхняя линейка, как у .topbar на сайте -->
+  <rect x="0" y="118" width="1200" height="1.5" fill="#111111"/>
+
+  <!-- Путь в левом верхнем углу — как в .breadcrumb -->
+  <text x="80" y="82"
+        font-family="Menlo, Monaco, 'JetBrains Mono', monospace"
+        font-size="20" fill="#999999" letter-spacing="1">/null</text>
+
+  <!-- Имя -->
+  <text x="80" y="360"
+        font-family="Menlo, Monaco, 'JetBrains Mono', monospace"
+        font-size="150" font-weight="500" fill="#111111"
+        letter-spacing="-4">null</text>
+
+  <!-- Акцентная черта -->
+  <rect x="80" y="404" width="96" height="4" fill="#c44a32"/>
+
+  <!-- Подпись -->
+  <text x="80" y="470"
+        font-family="Menlo, Monaco, 'JetBrains Mono', monospace"
+        font-size="30" fill="#111111">картотека математических объектов</text>
+
+  <!-- Нижняя строка -->
+  <text x="80" y="552"
+        font-family="Menlo, Monaco, 'JetBrains Mono', monospace"
+        font-size="20" fill="#999999" letter-spacing="1">математика как материя · 2025–2026</text>
+</svg>

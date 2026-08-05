@@ -29,7 +29,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from generate_sitemap import to_loc  # noqa: E402
+from generate_sitemap import SITE_ORIGIN, SITE_PREFIX, to_loc  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -54,17 +54,31 @@ def is_redirect(text: str) -> bool:
     return 'http-equiv="refresh"' in text[:1024]
 
 
+# Пути к иконкам и карточке — абсолютные от корня origin, а не
+# относительные: блок может однажды поехать на объекты, которые лежат
+# на три уровня глубже эссе.
+OG_IMAGE = SITE_ORIGIN + SITE_PREFIX + "assets/og.png"
+OG_W, OG_H = "1200", "630"
+FAVICON = SITE_PREFIX + "favicon.svg"
+TOUCH_ICON = SITE_PREFIX + "favicon-180.png"
+
+
 def meta_block(topic: str, url: str) -> str:
     lines = [
         MARK_OPEN,
         f'<link rel="canonical" href="{url}">',
+        f'<link rel="icon" href="{FAVICON}" type="image/svg+xml">',
+        f'<link rel="apple-touch-icon" href="{TOUCH_ICON}">',
         f'<meta name="author" content="{AUTHOR}">',
         '<meta property="og:type" content="article">',
         '<meta property="og:site_name" content="null">',
         '<meta property="og:locale" content="ru_RU">',
         f'<meta property="og:title" content="{topic}">',
         f'<meta property="og:url" content="{url}">',
-        # N4: сюда добавляются og:image и twitter:card, затем повторный прогон
+        f'<meta property="og:image" content="{OG_IMAGE}">',
+        f'<meta property="og:image:width" content="{OG_W}">',
+        f'<meta property="og:image:height" content="{OG_H}">',
+        '<meta name="twitter:card" content="summary_large_image">',
         MARK_CLOSE,
     ]
     return "\n".join(lines) + "\n"
