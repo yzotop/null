@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>null</title>
+<link rel="icon" href="/null/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/null/favicon-180.png">
 <link rel="stylesheet" href="styles/main.css">
 <style>
   .page { max-width: 760px; margin: 0 auto; padding: 40px 40px 80px; }
@@ -192,6 +194,11 @@
   }
   .footer-bar a { color: #bbb; text-decoration: none; }
   .footer-bar a:hover { color: #111; }
+  /* подпись автора — как в подвалах остальных страниц: чуть темнее
+     соседних ссылок. Правило нужно здесь: инлайн-блок идёт после
+     main.css и перебивает .footer-by a оттуда. */
+  .footer-bar .footer-by a { color: #999; }
+  .footer-bar .footer-by a:hover { color: #c44a32; }
 
   @media (max-width: 640px) {
     .page { padding: 24px 20px 56px; }
@@ -623,6 +630,7 @@
   <footer class="footer-bar">
     <span>/null · 2025–2026</span>
     <span><a href="man.html">about →</a> · <a href="map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a></span>
+    <span class="footer-by">Александр Давыдов · <a href="https://davydov.my/" rel="noopener">davydov.my</a></span>
   </footer>
 
 </div>
