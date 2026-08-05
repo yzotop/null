@@ -606,6 +606,12 @@ table.meta td.v.mono { font-family: var(--font-mono); font-size: 12px; }
   font-size: 10px;
   color: #bbb;
 }
+/* подпись автора в подвале: последний flex-элемент, садится
+   на правый край. Ссылка чуть темнее подвала (--dim против #bbb),
+   чтобы отличалась, но не кричала. */
+.footer-by a { color: var(--dim); }
+.footer-by a:hover { color: var(--accent-red); }
+
 
 /* ─────── section dividers / related ─────── */
 .section-divider {
