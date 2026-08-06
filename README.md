@@ -7,14 +7,22 @@ Status: active
 
 ```
 null/
-├── index.html              сетка карточек объектов
+├── index.html              сетка карточек разделов
 ├── styles/main.css         единственная таблица стилей
-├── objects/                страницы констант (π, e, φ)
-├── essays/                 прозаические заметки
-├── sketches/               sonic pi треки
+├── objects/                130 объектов: числа, идеи, нотация, статистика
+├── essays/                 108 эссе
+├── visuals/                36 интерактивных визуализаций
+├── books/                  16 книг
+├── music/                  10 альбомов
 ├── man.html                руководство в формате man-page
-└── feed.xml                RSS
+├── map.html                граф связей
+├── find.html               поиск
+├── sitemap.xml             карта сайта, генерируется
+└── scripts/                update_counts.py, generate_sitemap.py, update_meta.py
 ```
+
+Числа в `man.html` и `index.html` поддерживает `scripts/update_counts.py` —
+править их руками не нужно.
 
 ## Дизайн-система
 
