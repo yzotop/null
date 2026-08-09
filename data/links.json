@@ -2148,6 +2148,34 @@
       "title": "Джон Тьюки",
       "url": "/null/objects/mathematicians/tukey.html",
       "glyph": "⊟"
+    },
+    {
+      "id": "math-rubin",
+      "type": "mathematician",
+      "title": "Дональд Рубин",
+      "url": "/null/objects/mathematicians/rubin.html",
+      "glyph": "Δ"
+    },
+    {
+      "id": "math-pearl",
+      "type": "mathematician",
+      "title": "Джудея Перл",
+      "url": "/null/objects/mathematicians/pearl.html",
+      "glyph": "⇒"
+    },
+    {
+      "id": "math-cox",
+      "type": "mathematician",
+      "title": "Дэвид Кокс",
+      "url": "/null/objects/mathematicians/cox.html",
+      "glyph": "λ"
+    },
+    {
+      "id": "math-box",
+      "type": "mathematician",
+      "title": "Джордж Бокс",
+      "url": "/null/objects/mathematicians/box.html",
+      "glyph": "□"
     }
   ],
   "edges": [
@@ -8514,6 +8542,78 @@
     {
       "from": "math-tukey",
       "to": "math-efron"
+    },
+    {
+      "from": "math-rubin",
+      "to": "es-causality"
+    },
+    {
+      "from": "math-rubin",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "math-rubin",
+      "to": "math-fisher"
+    },
+    {
+      "from": "math-rubin",
+      "to": "math-neyman"
+    },
+    {
+      "from": "math-rubin",
+      "to": "math-pearl"
+    },
+    {
+      "from": "math-pearl",
+      "to": "es-causality"
+    },
+    {
+      "from": "math-pearl",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "math-pearl",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "math-pearl",
+      "to": "math-bayes"
+    },
+    {
+      "from": "math-pearl",
+      "to": "math-rubin"
+    },
+    {
+      "from": "math-cox",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "math-cox",
+      "to": "math-fisher"
+    },
+    {
+      "from": "math-cox",
+      "to": "math-efron"
+    },
+    {
+      "from": "math-cox",
+      "to": "math-box"
+    },
+    {
+      "from": "math-box",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "math-box",
+      "to": "math-fisher"
+    },
+    {
+      "from": "math-box",
+      "to": "math-tukey"
+    },
+    {
+      "from": "math-box",
+      "to": "math-cox"
     }
   ]
 }
