@@ -1,5 +1,5 @@
 {
-  "axelrod": null,
+  "axelrod": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Professor_RobertMAxelrod.png/960px-Professor_RobertMAxelrod.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   "bayes": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Thomas_Bayes.gif",
   "bernoulli": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Jakob_Bernoulli.jpg/960px-Jakob_Bernoulli.jpg",
   "cantor": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Georg_Cantor_%28Portr%C3%A4t%29.jpg/960px-Georg_Cantor_%28Portr%C3%A4t%29.jpg",
@@ -24,7 +24,7 @@
   "maynard-smith": "https://upload.wikimedia.org/wikipedia/commons/e/e2/John_Maynard_Smith.jpg",
   "newton": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Portrait_of_Sir_Isaac_Newton%2C_1689_%28brightened%29.jpg/960px-Portrait_of_Sir_Isaac_Newton%2C_1689_%28brightened%29.jpg",
   "neyman": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Jerzy_Neyman2.jpg",
-  "nowak": null,
+  "nowak": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Dr._Martin_Nowak_2014_%28cropped%29.jpg/960px-Dr._Martin_Nowak_2014_%28cropped%29.jpg",
   "pascal": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Blaise_Pascal_Versailles.JPG/960px-Blaise_Pascal_Versailles.JPG",
   "pearson": "https://upload.wikimedia.org/wikipedia/commons/2/29/Karl_Pearson%2C_1910_%28cropped%29.jpg",
   "perelman": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Grigori_Perelman%2C_1993_%28re-scanned%29_%28cropped%29.jpg/960px-Grigori_Perelman%2C_1993_%28re-scanned%29_%28cropped%29.jpg",
@@ -37,5 +37,8 @@
   "turing": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Alan_turing_header.jpg",
   "tversky": null,
   "wald": "https://upload.wikimedia.org/wikipedia/en/0/05/Abraham_Wald_in_his_youth.jpg",
-  "wentzel": null
+  "wentzel": null,
+  "box": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/GeorgeEPBox.jpg/960px-GeorgeEPBox.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "cox": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Nci-vol-8182-300_david_cox.jpg/960px-Nci-vol-8182-300_david_cox.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "pearl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Judea_Pearl_at_NIPS_2013_%2811781981594%29.jpg/960px-Judea_Pearl_at_NIPS_2013_%2811781981594%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
 }
