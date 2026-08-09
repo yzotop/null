@@ -7953,10 +7953,10 @@
     },
     {
       "from": "es-log-wealth",
-      "to": "es-expected-value"
+      "to": "st-ev"
     },
     {
-      "from": "es-expected-value",
+      "from": "st-ev",
       "to": "es-log-wealth"
     },
     {
@@ -8614,6 +8614,254 @@
     {
       "from": "math-box",
       "to": "math-cox"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "math-bayes"
+    },
+    {
+      "from": "es-bayesian",
+      "to": "math-bayes"
+    },
+    {
+      "from": "es-bookmaker-bayes",
+      "to": "math-bayes"
+    },
+    {
+      "from": "es-poker-bayes",
+      "to": "math-bayes"
+    },
+    {
+      "from": "math-laplace",
+      "to": "math-bayes"
+    },
+    {
+      "from": "vi-bayes",
+      "to": "math-bayes"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "math-box"
+    },
+    {
+      "from": "math-fisher",
+      "to": "math-box"
+    },
+    {
+      "from": "math-tukey",
+      "to": "math-box"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "math-cox"
+    },
+    {
+      "from": "math-efron",
+      "to": "math-cox"
+    },
+    {
+      "from": "math-fisher",
+      "to": "math-cox"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "math-efron"
+    },
+    {
+      "from": "es-bootstrap",
+      "to": "math-efron"
+    },
+    {
+      "from": "es-clt",
+      "to": "math-efron"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "math-efron"
+    },
+    {
+      "from": "es-why-simulation",
+      "to": "math-efron"
+    },
+    {
+      "from": "es-causality",
+      "to": "math-galton"
+    },
+    {
+      "from": "es-regression",
+      "to": "math-galton"
+    },
+    {
+      "from": "math-pearson",
+      "to": "math-galton"
+    },
+    {
+      "from": "st-corr",
+      "to": "math-galton"
+    },
+    {
+      "from": "st-rtm",
+      "to": "math-galton"
+    },
+    {
+      "from": "vi-galton",
+      "to": "math-galton"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "math-gosset"
+    },
+    {
+      "from": "es-clt",
+      "to": "math-gosset"
+    },
+    {
+      "from": "math-fisher",
+      "to": "math-gosset"
+    },
+    {
+      "from": "math-gauss",
+      "to": "math-gosset"
+    },
+    {
+      "from": "math-pearson",
+      "to": "math-gosset"
+    },
+    {
+      "from": "st-clt",
+      "to": "math-gosset"
+    },
+    {
+      "from": "es-clt",
+      "to": "math-kolmogorov"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "math-kolmogorov"
+    },
+    {
+      "from": "es-kolmogorov",
+      "to": "math-kolmogorov"
+    },
+    {
+      "from": "es-monte-carlo",
+      "to": "math-kolmogorov"
+    },
+    {
+      "from": "st-clt",
+      "to": "math-kolmogorov"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "math-markov"
+    },
+    {
+      "from": "es-live-next-round",
+      "to": "math-markov"
+    },
+    {
+      "from": "es-markov",
+      "to": "math-markov"
+    },
+    {
+      "from": "es-markov-deep",
+      "to": "math-markov"
+    },
+    {
+      "from": "th-markov",
+      "to": "math-markov"
+    },
+    {
+      "from": "vi-markov",
+      "to": "math-markov"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "math-neyman"
+    },
+    {
+      "from": "es-bootstrap",
+      "to": "math-neyman"
+    },
+    {
+      "from": "es-clt",
+      "to": "math-neyman"
+    },
+    {
+      "from": "math-fisher",
+      "to": "math-neyman"
+    },
+    {
+      "from": "math-pearson",
+      "to": "math-neyman"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "math-pearl"
+    },
+    {
+      "from": "es-bayesian",
+      "to": "math-pearl"
+    },
+    {
+      "from": "es-causality",
+      "to": "math-pearl"
+    },
+    {
+      "from": "math-bayes",
+      "to": "math-pearl"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "math-rubin"
+    },
+    {
+      "from": "es-causality",
+      "to": "math-rubin"
+    },
+    {
+      "from": "math-fisher",
+      "to": "math-rubin"
+    },
+    {
+      "from": "math-neyman",
+      "to": "math-rubin"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "math-tukey"
+    },
+    {
+      "from": "es-bootstrap",
+      "to": "math-tukey"
+    },
+    {
+      "from": "es-why-simulation",
+      "to": "math-tukey"
+    },
+    {
+      "from": "math-efron",
+      "to": "math-tukey"
+    },
+    {
+      "from": "es-black-swan",
+      "to": "math-wald"
+    },
+    {
+      "from": "es-ergodicity",
+      "to": "math-wald"
+    },
+    {
+      "from": "es-live-next-round",
+      "to": "math-wald"
+    },
+    {
+      "from": "math-taleb",
+      "to": "math-wald"
+    },
+    {
+      "from": "st-surv",
+      "to": "math-wald"
     }
   ]
 }
