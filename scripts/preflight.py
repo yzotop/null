@@ -73,6 +73,28 @@ def graph_stats(d: dict) -> tuple[int, int, int]:
     return len(d["nodes"]), len(d["edges"]), recip
 
 
+def indegree(d: dict) -> dict[str, int]:
+    """Входящие по узлам. Рёбра в несуществующие узлы не считаются —
+    иначе висячее ребро выглядело бы как «у узла кто-то есть»."""
+    ids = {n["id"] for n in d["nodes"]}
+    deg = {i: 0 for i in ids}
+    for e in d["edges"]:
+        if e["to"] in ids and e["from"] in ids:
+            deg[e["to"]] += 1
+    return deg
+
+
+def show_list(items: list[str], head: str, tail: str = "") -> None:
+    print(head)
+    shown = items if VERBOSE else items[:LIST_CAP]
+    for line in shown:
+        print(f"      {line}")
+    if len(shown) < len(items):
+        print(f"      … и ещё {len(items) - len(shown)} — полный список: --verbose")
+    if tail:
+        print(tail)
+
+
 # ── 1 · дельта графа против HEAD ────────────────────────────────────
 def check_graph_delta() -> None:
     head("1 · дельта графа против HEAD")
@@ -92,8 +114,20 @@ def check_graph_delta() -> None:
     print(f"   рёбра         {be} → {ce}   (Δ {de:+d})")
     print(f"   взаимных      {br} → {cr}   (Δ {dr:+d})")
 
+    # Имена печатаются до любых ранних выходов: патч, заменяющий одно
+    # ребро другим, даёт Δрёбер = 0 и при этом может уронить узел
+    # в ноль входящих.
+    name_changes(base, cur)
+
     if de == 0:
         print("   рёбра не менялись — отношение не считается.")
+        return
+    if de < 0:
+        # Отношение считается только на добавлении: при удалении обе
+        # дельты отрицательны, и −2/−1 = 2.00 читалось бы как
+        # «достраивает симметрию» — ровно наоборот смыслу.
+        print("   рёбра удалялись — отношение не расшифровывается.")
+        print("   [индикатор, не блокер]")
         return
     ratio = dr / de
     print(f"   Δвзаимных / Δрёбер = {ratio:.2f}")
@@ -108,6 +142,50 @@ def check_graph_delta() -> None:
         note = "смесь: часть рёбер достраивает симметрию, часть уходит наружу"
     print(f"   → {note}")
     print("   [индикатор, не блокер]")
+
+
+def name_changes(base: dict, cur: dict) -> None:
+    """Кто именно сдвинулся — а не только на сколько.
+
+    Счётчик «без входящих» в build-backlinks.js двигается ровно на этих
+    переходах, и без имён его сдвиг приходится объяснять догадками.
+    Один раз так и объяснили — неверным узлом.
+    """
+    nb, na = indegree(base), indegree(cur)
+    titles = {n["id"]: n.get("title", "") for n in cur["nodes"]}
+    titles.update({n["id"]: n.get("title", "") for n in base["nodes"]
+                   if n["id"] not in titles})
+    pairs_b = {(e["from"], e["to"]) for e in base["edges"]}
+    pairs_a = {(e["from"], e["to"]) for e in cur["edges"]}
+    added, removed = pairs_a - pairs_b, pairs_b - pairs_a
+
+    # ── появились входящие там, где их не было ──
+    gained = sorted(i for i in na if na[i] > 0 and nb.get(i, 0) == 0)
+    if gained:
+        rows = []
+        for i in gained:
+            src = sorted(a for a, b in added if b == i) or ["?"]
+            rows.append(f"{i} «{titles.get(i, '')[:34]}»  ← {', '.join(src)}")
+        show_list(rows, f"   появились входящие ({len(gained)}):",
+                  "   На столько же уменьшится «без входящих» у build-backlinks.js.")
+
+    # ── входящие пропали: узел выпал из блоков backlinks ──
+    lost = sorted(i for i in na if na[i] == 0 and nb.get(i, 0) > 0)
+    if lost:
+        rows = []
+        for i in lost:
+            src = sorted(a for a, b in removed if b == i) or ["?"]
+            rows.append(f"{i} «{titles.get(i, '')[:34]}»  ✗ {', '.join(src)}")
+        show_list(rows, f"   ВХОДЯЩИЕ ПРОПАЛИ ({len(lost)}):",
+                  "   Блок «упоминается в» у этих узлов генератор больше не тронет:\n"
+                  "   файл узла без входящих он не открывает. Снимать руками.")
+        warnings.append(f"узлы потеряли все входящие: {len(lost)}")
+
+    # ── новое ребро оказалось обратной стороной уже бывшего ──
+    mutual = sorted((a, b) for a, b in added if (b, a) in pairs_b)
+    if mutual:
+        show_list([f"{a} → {b}   (обратное {b} → {a} уже было)" for a, b in mutual],
+                  f"   стали взаимными к существовавшим рёбрам ({len(mutual)}):")
 
 
 # ── 2 · новые страницы без даты в git ───────────────────────────────
