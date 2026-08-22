@@ -37,6 +37,16 @@ except Exception as exc:  # pragma: no cover - диагностика, не ло
     COUNT_PAGES_OK = False
     COUNT_PAGES_ERR = exc
 
+# Даты и раскладку URL берёт сам generate_sitemap.py — второй реализации
+# быть не должно. git_lastmod() читает всю историю одним вызовом git:
+# 0.09 с против 2.4 с у 345 отдельных `git log -1` (мерено, не оценено).
+try:
+    from generate_sitemap import git_lastmod, to_loc, find_pages  # noqa: E402
+    SITEMAP_API_OK = True
+except Exception as exc:  # pragma: no cover
+    SITEMAP_API_OK = False
+    SITEMAP_API_ERR = exc
+
 # Списки длинных находок печатаются урезанными: preflight должен читаться
 # целиком, а не прокручиваться. Урезание всегда объявляется в выводе —
 # молча спрятанная находка хуже, чем её отсутствие.
@@ -147,6 +157,69 @@ def check_new_pages() -> None:
             print("   БЛОКЕР: есть незакоммиченные страницы, а sitemap.xml уже изменён —")
             print("   карту сгенерировали рано.")
             blockers.append("sitemap сгенерирован до коммита новых страниц")
+
+    check_lastmod_fresh()
+
+
+def check_lastmod_fresh() -> None:
+    """<lastmod> против даты последнего коммита, тронувшего страницу.
+
+    lastmod меняется от ЛЮБОЙ правки файла, включая машинную: прогон
+    build-backlinks.js сменил дату 57 страницам, ничего не добавив.
+    Правило «карта после коммита» шире, чем «карта после новой страницы».
+
+    Не блокер: в момент запуска preflight правки ещё не закоммичены, и
+    расхождение — нормальное рабочее состояние. Смысл в другом — увидеть
+    карту, отставшую от УЖЕ сделанных коммитов.
+    """
+    if not SITEMAP_API_OK:
+        print(f"   generate_sitemap не импортировался ({SITEMAP_API_ERR}) —")
+        print("   свежесть <lastmod> не проверена.")
+        warnings.append("свежесть lastmod не проверена")
+        return
+    sm = os.path.join(ROOT, "sitemap.xml")
+    if not os.path.isfile(sm):
+        return
+    with open(sm, encoding="utf-8") as f:
+        text = f.read()
+
+    dates = git_lastmod()
+    loc2rel = {to_loc(rel): rel for rel in find_pages()}
+
+    stale, orphan = [], []
+    for u in re.findall(r"<url>.*?</url>", text, re.S):
+        loc = re.search(r"<loc>(.*?)</loc>", u).group(1)
+        lm = re.search(r"<lastmod>(.*?)</lastmod>", u)
+        rel = loc2rel.get(loc)
+        if rel is None:
+            orphan.append(loc)
+            continue
+        actual = dates.get(rel)
+        if actual and lm and lm.group(1) != actual:
+            stale.append((rel, lm.group(1), actual))
+
+    if orphan:
+        print(f"   URL в карте без файла на диске: {len(orphan)}")
+        for loc in orphan[:LIST_CAP]:
+            print(f"      {loc}")
+        if len(orphan) > LIST_CAP:
+            print(f"      … и ещё {len(orphan) - LIST_CAP} — полный список: --verbose"
+                  if not VERBOSE else "")
+        warnings.append(f"URL в карте без файла: {len(orphan)}")
+
+    if not stale:
+        print("   <lastmod> совпадает с датами коммитов ✓")
+        return
+    print(f"   карта отстала от коммитов — страниц: {len(stale)}")
+    shown = stale if VERBOSE else stale[:LIST_CAP]
+    for rel, was, now in shown:
+        print(f"      {rel}  {was} → {now}")
+    if len(shown) < len(stale):
+        print(f"      … и ещё {len(stale) - len(shown)} — полный список: --verbose")
+    print("   Нужен прогон generate_sitemap.py ПОСЛЕ коммита: <lastmod>")
+    print("   меняется от любой правки файла, не только от новой страницы.")
+    print("   [предупреждение, не блокер]")
+    warnings.append(f"lastmod отстал: {len(stale)}")
 
 
 # ── 3 · согласованность essays/index.html ───────────────────────────
@@ -424,13 +497,18 @@ def summary() -> int:
         print("   блокеров нет ✓")
 
     print("""
-   Порядок при добавлении страницы:
+   Порядок при любой правке *.html:
 
       скрипты → commit → generate_sitemap.py → commit --amend → push
 
    update_meta.py и update_counts.py гоняются ДО коммита.
    generate_sitemap.py — ПОСЛЕ: он берёт lastmod из git, и у
    незакоммиченной страницы даты нет.
+
+   Карту надо перегенерировать после ЛЮБОГО коммита, меняющего *.html,
+   а не только после новой страницы: lastmod меняется от любой правки
+   файла, включая машинную (прогон build-backlinks.js).
+
    Счётчики в essays/index.html правятся руками, два числа на секцию.""")
     return 1 if blockers else 0
 
