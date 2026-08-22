@@ -58,6 +58,32 @@ null/
 не-редиректных файлов в `essays/`, а в каждой секции счётчик в заголовке
 равен числу в карточке категории. Оба проверяет `scripts/preflight.py`.
 
+### Кто правит файлы и кто это проверяет
+
+Заводя новый скрипт, дописывай сюда строку. Колонка «якорь» — то, за что
+скрипт цепляется в файле: если якорь уедет, скрипт либо промолчит, либо
+запишет не туда. Колонка «надзор» отвечает на вопрос, который иначе
+приходится задавать каждый раз заново.
+
+| скрипт | пишет | якорь | надзор |
+| --- | --- | --- | --- |
+| `scripts/update_counts.py` | `man.html`, `index.html` — цифры | 16 regex по контексту (`граф связей · `, `card-count-num`, …) | preflight 3 |
+| `scripts/update_meta.py` | `essays/*.html` — мета-блок | `<!-- meta: … -->` … `<!-- /meta -->`, вставка после `<title>` | preflight 8 |
+| `scripts/generate_sitemap.py` | `sitemap.xml` целиком | якоря нет, файл пересобирается | preflight 2 |
+| `data/build-backlinks.js` | страницы узлов — блок `backlinks` | `<section class="related">…</section>` | preflight 4 и 6 |
+| `scripts/related-edges.py --apply` | `data/links.json` — рёбра | `<section class="related">` + `<a …>…→</a>` | preflight 5 |
+| `scripts/prose-edges.py --apply` | `data/links.json` — рёбра | тело страницы за вычетом `related`, `backlinks`, `series`, `xref`, `offsite` | preflight 9 |
+| `audit/apply_mechanical_fixes.py` | `essays/*.html` | буквальные строки в коде | **нет — одноразовый, не идемпотентен** |
+
+Читают и ничего не пишут: `scripts/preflight.py`, `graph-health.py`,
+оба извлекателя без `--apply` и шестнадцать скриптов в `audit/`,
+которые кладут CSV рядом с собой.
+
+`audit/apply_mechanical_fixes.py` — разовая правка, своё отработала.
+Повторный прогон на чистом дереве дублирует сноску `[5]`
+в `essays/zero-history.html`, при этом печатает `fixed` для каждого
+слага независимо от того, изменилось ли что-нибудь. Не запускать.
+
 ### Порядок при правке страниц
 
 ```
