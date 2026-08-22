@@ -787,9 +787,61 @@ def check_prose_vs_graph() -> None:
     print("   [предупреждение, не блокер: ребро тут — авторское решение]")
 
 
-# ── 10 · итог ────────────────────────────────────────────────────────
+# ── 10 · якорь секции related ───────────────────────────────────────
+# ВНИМАНИЕ: здесь дублирование намеренное.
+# Проверки 5 и 9 импортируют scan() из скриптов — это правильно, пока
+# речь о правилах отбора. Но надзор, собранный из тех же деталей, не
+# увидит поломку детали: если якорь <section class="related"> уедет,
+# related-edges.py молча пропустит страницу, и проверка 5 ослепнет
+# ровно там же. Поэтому здесь своя, независимая разметка признаков.
+SIGNS = (
+    'class="related-links"',
+    'class="related-link"',
+    ">связанное<",
+)
+ANCHOR_RE = re.compile(r'<section class="related">.*?</section>', re.S)
+
+
+def check_related_anchor() -> None:
+    """Признаки секции «связанное» есть, а якорь не распознаётся.
+
+    Ловит класс поломок, невидимый для всего остального: страница
+    выглядит как имеющая связанное, но регулярка, на которую опираются
+    related-edges.py и build-backlinks.js, её не находит. Оба тогда
+    молча проходят мимо, а проверки 5 и 6 подтверждают, что всё чисто.
+    """
+    head("10 · якорь секции related")
+    signalled, recognised = [], []
+    for dp, dirnames, fns in os.walk(ROOT):
+        dirnames[:] = [d for d in dirnames if d != ".git"]
+        for fn in fns:
+            if not fn.endswith(".html"):
+                continue
+            rel = os.path.relpath(os.path.join(dp, fn), ROOT)
+            with open(os.path.join(dp, fn), encoding="utf-8") as f:
+                text = f.read()
+            if not any(sig in text for sig in SIGNS):
+                continue
+            signalled.append(rel)
+            if ANCHOR_RE.search(text):
+                recognised.append(rel)
+
+    broken = sorted(set(signalled) - set(recognised))
+    print(f"   страниц с признаками связанного: {len(signalled)}")
+    if not broken:
+        print("   якорь распознаётся на всех ✓")
+        return
+    show_list(broken, f"   БЛОКЕР: якорь не распознаётся — {len(broken)}:")
+    print("   На странице есть разметка связанного, но регулярка")
+    print('   <section class="related">…</section> её не находит.')
+    print("   related-edges.py и build-backlinks.js пройдут мимо молча,")
+    print("   а проверки 5 и 6 этого не заметят — они смотрят тем же глазом.")
+    blockers.append(f"якорь related не распознан: {len(broken)}")
+
+
+# ── 11 · итог ────────────────────────────────────────────────────────
 def summary() -> int:
-    head("10 · итог")
+    head("11 · итог")
     if warnings:
         print(f"   предупреждений: {len(warnings)}")
         for w in warnings:
@@ -830,6 +882,7 @@ def main() -> int:
     check_graph_health()
     check_meta()
     check_prose_vs_graph()
+    check_related_anchor()
     return summary()
 
 
