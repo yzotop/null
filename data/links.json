@@ -9032,6 +9032,14 @@
     {
       "from": "es-why-simulation",
       "to": "es-lln"
+    },
+    {
+      "from": "es-lln",
+      "to": "vi-lln"
+    },
+    {
+      "from": "vi-lln",
+      "to": "es-lln"
     }
   ]
 }
