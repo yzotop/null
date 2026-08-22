@@ -21,8 +21,10 @@ from __future__ import annotations
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 SITE_PREFIX = "/null/"
@@ -86,12 +88,14 @@ def check_graph_delta() -> None:
     ratio = dr / de
     print(f"   Δвзаимных / Δрёбер = {ratio:.2f}")
     if abs(ratio - 2.0) < 0.15:
-        note = "патч достраивает симметрию к существующим рёбрам"
+        note = "патч достраивает симметрию к уже существующим рёбрам"
+    elif abs(ratio - 1.0) < 0.15:
+        note = "добавляются взаимные пары там, где не было ни одной стороны"
     elif ratio == 0:
         note = ("рёбра идут в одну сторону — проверьте, не останется ли "
-                "чей-то блок backlinks без подтверждения (см. проверку 4)")
+                "чей-то блок backlinks без подтверждения (см. проверки 4 и 5)")
     else:
-        note = "заводится новый узел наружу"
+        note = "смесь: часть рёбер достраивает симметрию, часть уходит наружу"
     print(f"   → {note}")
     print("   [индикатор, не блокер]")
 
@@ -205,7 +209,7 @@ def check_backlinks() -> None:
             incoming[e["to"]].add(e["from"])
 
     block_re = re.compile(r'<section class="backlinks">.*?</section>', re.S)
-    stale, unbacked, absent = [], [], []
+    stale, absent = [], []
 
     for nid, n in by_id.items():
         url = n.get("url", "")
@@ -222,22 +226,16 @@ def check_backlinks() -> None:
 
         if m is None:
             if want:
-                absent.append((rel, len(want)))
+                # Генератор вставляет блок ПОСЛЕ <section class="related">.
+                # Нет якоря — нет вставки: [skip] no related section.
+                anchored = '<section class="related">' in html
+                absent.append((rel, len(want), anchored))
             continue
         got = set(re.findall(r'href="([^"]+)"', m.group(0)))
         if not want:
-            unbacked.append((rel, len(got)))
-        elif got != want:
+            continue  # разбирается в проверке 5: генератор такой файл не открывает
+        if got != want:
             stale.append((rel, sorted(got - want), sorted(want - got)))
-
-    if unbacked:
-        print(f"   блок есть, входящих рёбер нет — {len(unbacked)}:")
-        for rel, k in unbacked:
-            print(f"      {rel}  ({k} ссылок)")
-        print("   build-backlinks.js такой файл пропускает: блок остаётся,")
-        print("   но графом не подтверждён и синхронизироваться не будет.")
-        print("   Эти связи не видны на карте. Нужны входящие рёбра.")
-        warnings.append(f"backlinks без входящих рёбер: {len(unbacked)}")
 
     if stale:
         print(f"   набор ссылок разошёлся с графом — {len(stale)}:")
@@ -260,24 +258,143 @@ def check_backlinks() -> None:
         print("   Лечится прогоном: node data/build-backlinks.js")
         warnings.append(f"backlinks разошлись с графом: {len(stale)}")
 
-    if absent:
-        print(f"   входящие рёбра есть, блока нет — {len(absent)}:")
-        shown = absent if VERBOSE else absent[:LIST_CAP]
-        for rel, k in shown:
+    will = [a for a in absent if a[2]]
+    cant = [a for a in absent if not a[2]]
+    if will:
+        print(f"   входящие рёбра есть, блока нет — {len(will)}:")
+        shown = will if VERBOSE else will[:LIST_CAP]
+        for rel, k, _ in shown:
             print(f"      {rel}  (появится ссылок: {k})")
-        if len(shown) < len(absent):
-            print(f"      … и ещё {len(absent) - len(shown)} — полный список: --verbose")
+        if len(shown) < len(will):
+            print(f"      … и ещё {len(will) - len(shown)} — полный список: --verbose")
         print("   build-backlinks.js добавит блок. [информация, не блокер]")
+    if cant:
+        print(f"   входящие рёбра есть, но вставить блок некуда — {len(cant)}:")
+        shown = cant if VERBOSE else cant[:LIST_CAP]
+        for rel, k, _ in shown:
+            print(f"      {rel}  (потеряно ссылок: {k})")
+        if len(shown) < len(cant):
+            print(f"      … и ещё {len(cant) - len(shown)} — полный список: --verbose")
+        print("   На странице нет <section class=\"related\">, а генератор")
+        print("   вставляет блок только после неё — он их пропускает")
+        print("   ([skip] no related section). Эти связи на страницах не видны.")
+        warnings.append(f"backlinks некуда вставить: {len(cant)}")
 
-    if not (unbacked or stale or absent):
+    if not (stale or absent):
         print("   блоки совпадают с графом ✓")
     print("   Заголовки и порядок ссылок — дело генератора, здесь не сверяются:")
     print("   сравнивается только набор адресов.")
 
 
-# ── 5 · graph-health.py ─────────────────────────────────────────────
+# ── 5 · расхождение с генератором backlinks ─────────────────────────
+def node_pages() -> tuple[dict, dict[str, str]]:
+    """Граф и {repo-path: node-id} для узлов, чьи файлы существуют."""
+    with open(os.path.join(ROOT, "data", "links.json"), encoding="utf-8") as f:
+        d = json.load(f)
+    pages = {}
+    for n in d["nodes"]:
+        url = n.get("url", "")
+        if url.startswith(SITE_PREFIX):
+            rel = url[len(SITE_PREFIX):]
+            if os.path.isfile(os.path.join(ROOT, rel)):
+                pages[rel] = n["id"]
+    return d, pages
+
+
+def check_generator_drift() -> None:
+    head("5 · расхождение с генератором backlinks")
+    d, pages = node_pages()
+    block_re = re.compile(r'<section class="backlinks">.*?</section>', re.S)
+
+    # ── часть 2: блок при нуле входящих рёбер ──
+    # Считается без node: это чистый анализ графа и HTML, и потерять его
+    # из-за отсутствия node нельзя — генератор такие файлы не открывает
+    # вовсе (if (!block) continue стоит раньше удаления старого блока),
+    # значит больше это нигде не всплывёт.
+    by_id = {n["id"]: n for n in d["nodes"]}
+    indeg = {i: 0 for i in by_id}
+    for e in d["edges"]:
+        if e["to"] in indeg and e["from"] in by_id:
+            indeg[e["to"]] += 1
+    dead = []
+    for rel, nid in pages.items():
+        if indeg[nid]:
+            continue
+        with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
+            m = block_re.search(f.read())
+        if m:
+            dead.append((rel, len(re.findall(r'href="', m.group(0)))))
+    if dead:
+        print(f"   блок есть, входящих рёбер нет — {len(dead)}:")
+        for rel, k in dead:
+            print(f"      {rel}  (ссылок в блоке: {k})")
+        print("   Генератор такой файл не открывает: блок остаётся навсегда,")
+        print("   графом не подтверждён, на карте этих связей нет.")
+        print("   Прогон не лечит — снимать руками или заводить рёбра.")
+        warnings.append(f"backlinks при нуле входящих: {len(dead)}")
+    else:
+        print("   блоков при нуле входящих рёбер: 0 ✓")
+
+    # ── часть 1: что переписал бы прогон генератора ──
+    gen = os.path.join(ROOT, "data", "build-backlinks.js")
+    if not os.path.isfile(gen):
+        print("   data/build-backlinks.js не найден — сравнивать нечем.")
+        return
+    if shutil.which("node") is None:
+        print("   node в системе нет — расхождение с генератором не проверено.")
+        return
+
+    with tempfile.TemporaryDirectory(prefix="preflight-backlinks-") as tmp:
+        # Копируется только то, что генератор читает и пишет: сам скрипт,
+        # граф и страницы узлов. Портреты в objects/ весят больше всего
+        # остального вместе взятого и генератору не нужны.
+        os.makedirs(os.path.join(tmp, "data"), exist_ok=True)
+        shutil.copy2(gen, os.path.join(tmp, "data", "build-backlinks.js"))
+        shutil.copy2(os.path.join(ROOT, "data", "links.json"),
+                     os.path.join(tmp, "data", "links.json"))
+        for rel in pages:
+            dst = os.path.join(tmp, rel)
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            shutil.copy2(os.path.join(ROOT, rel), dst)
+
+        r = subprocess.run(
+            ["node", os.path.join(tmp, "data", "build-backlinks.js")],
+            cwd=tmp, capture_output=True, text=True,
+        )
+        if r.returncode != 0:
+            print("   прогон генератора в копии не удался:")
+            for line in (r.stderr or "").strip().split("\n")[:5]:
+                print(f"      {line}")
+            warnings.append("генератор не отработал в копии")
+            return
+
+        drift = []
+        for rel in sorted(pages):
+            with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
+                a = f.read()
+            with open(os.path.join(tmp, rel), encoding="utf-8") as f:
+                b = f.read()
+            if a != b:
+                drift.append(rel)
+
+    if not drift:
+        print("   дерево совпадает с выводом генератора ✓")
+        return
+    print(f"   генератор переписал бы файлов: {len(drift)}")
+    shown = drift if VERBOSE else drift[:LIST_CAP]
+    for rel in shown:
+        print(f"      {rel}")
+    if len(shown) < len(drift):
+        print(f"      … и ещё {len(drift) - len(shown)} — полный список: --verbose")
+    print("   Лечится прогоном: node data/build-backlinks.js")
+    print("   [предупреждение, не блокер: прогон — осознанное действие,")
+    print("    а не то, что делается перед каждым пушем]")
+    warnings.append(f"расхождение с генератором backlinks: {len(drift)}")
+
+
+# ── 6 · graph-health.py ─────────────────────────────────────────────
 def check_graph_health() -> int:
-    head("5 · graph-health.py")
+    head("6 · graph-health.py")
     gh = os.path.join(ROOT, "graph-health.py")
     if not os.path.isfile(gh):
         print("   graph-health.py не найден в корне.")
@@ -291,9 +408,9 @@ def check_graph_health() -> int:
     return p.returncode
 
 
-# ── 6 · итог ────────────────────────────────────────────────────────
+# ── 7 · итог ────────────────────────────────────────────────────────
 def summary() -> int:
-    head("6 · итог")
+    head("7 · итог")
     if warnings:
         print(f"   предупреждений: {len(warnings)}")
         for w in warnings:
@@ -324,6 +441,7 @@ def main() -> int:
     check_new_pages()
     check_essay_index()
     check_backlinks()
+    check_generator_drift()
     check_graph_health()
     return summary()
 
