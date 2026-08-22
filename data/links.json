@@ -2197,6 +2197,13 @@
       "title": "золотой набор",
       "url": "/null/essays/golden-set.html",
       "glyph": "¶"
+    },
+    {
+      "id": "es-effective-sample",
+      "type": "essay",
+      "title": "эффективная выборка",
+      "url": "/null/essays/effective-sample.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -10143,6 +10150,86 @@
     {
       "from": "es-llm-eval",
       "to": "es-golden-set"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "es-markov-deep"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "es-lln"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "es-markov"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "es-golden-set"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "es-bootstrap"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "es-clt"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "es-mcmc"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "es-forking-paths"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "math-markov"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "th-markov"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "vi-markov"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "st-corr"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "st-var"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "st-ci"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "st-clt"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-effective-sample"
+    },
+    {
+      "from": "es-markov-deep",
+      "to": "es-effective-sample"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-effective-sample"
     }
   ]
 }
