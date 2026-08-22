@@ -2190,6 +2190,13 @@
       "title": "Закон больших чисел",
       "url": "/null/essays/lln.html",
       "glyph": "¶"
+    },
+    {
+      "id": "es-golden-set",
+      "type": "essay",
+      "title": "золотой набор",
+      "url": "/null/essays/golden-set.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -10064,6 +10071,78 @@
     {
       "from": "math-maynard-smith",
       "to": "gt-nash"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-evaluation"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-llm-eval"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-lln"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-forking-paths"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-calibration"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-confusion-matrix"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-clt"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-is-forecast-right"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-reward-hacking"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-bootstrap"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "st-kappa"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "st-ci"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "st-effect"
+    },
+    {
+      "from": "es-evaluation",
+      "to": "es-golden-set"
+    },
+    {
+      "from": "es-llm-eval",
+      "to": "es-golden-set"
     }
   ]
 }
