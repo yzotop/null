@@ -2211,6 +2211,13 @@
       "title": "энтропия",
       "url": "/null/essays/entropy.html",
       "glyph": "¶"
+    },
+    {
+      "id": "es-collider",
+      "type": "essay",
+      "title": "лишний контроль",
+      "url": "/null/essays/collider.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -10313,6 +10320,74 @@
     {
       "from": "es-llm-eval",
       "to": "es-entropy"
+    },
+    {
+      "from": "es-collider",
+      "to": "es-causality"
+    },
+    {
+      "from": "es-collider",
+      "to": "es-simpson"
+    },
+    {
+      "from": "es-collider",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-collider",
+      "to": "es-evaluation"
+    },
+    {
+      "from": "es-collider",
+      "to": "es-forking-paths"
+    },
+    {
+      "from": "es-collider",
+      "to": "es-effective-sample"
+    },
+    {
+      "from": "es-collider",
+      "to": "es-replication-crisis"
+    },
+    {
+      "from": "es-collider",
+      "to": "es-two-sided"
+    },
+    {
+      "from": "es-collider",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-collider",
+      "to": "es-golden-set"
+    },
+    {
+      "from": "es-collider",
+      "to": "pr-simpson"
+    },
+    {
+      "from": "es-collider",
+      "to": "math-pearl"
+    },
+    {
+      "from": "es-collider",
+      "to": "st-corr"
+    },
+    {
+      "from": "es-collider",
+      "to": "st-surv"
+    },
+    {
+      "from": "es-collider",
+      "to": "st-effect"
+    },
+    {
+      "from": "es-causality",
+      "to": "es-collider"
+    },
+    {
+      "from": "es-simpson",
+      "to": "es-collider"
     }
   ]
 }
