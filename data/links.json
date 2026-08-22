@@ -9040,6 +9040,14 @@
     {
       "from": "vi-lln",
       "to": "es-lln"
+    },
+    {
+      "from": "es-evaluation",
+      "to": "es-is-forecast-right"
+    },
+    {
+      "from": "es-is-forecast-right",
+      "to": "es-evaluation"
     }
   ]
 }
