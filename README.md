@@ -73,16 +73,10 @@ null/
 | `data/build-backlinks.js` | страницы узлов — блок `backlinks` | `<section class="related">…</section>` | preflight 4 и 6 |
 | `scripts/related-edges.py --apply` | `data/links.json` — рёбра | `<section class="related">` + `<a …>…→</a>` | preflight 5 |
 | `scripts/prose-edges.py --apply` | `data/links.json` — рёбра | тело страницы за вычетом `related`, `backlinks`, `series`, `xref`, `offsite` | preflight 9 |
-| `audit/apply_mechanical_fixes.py` | `essays/*.html` | буквальные строки в коде | **нет — одноразовый, не идемпотентен** |
 
 Читают и ничего не пишут: `scripts/preflight.py`, `graph-health.py`,
 оба извлекателя без `--apply` и шестнадцать скриптов в `audit/`,
 которые кладут CSV рядом с собой.
-
-`audit/apply_mechanical_fixes.py` — разовая правка, своё отработала.
-Повторный прогон на чистом дереве дублирует сноску `[5]`
-в `essays/zero-history.html`, при этом печатает `fixed` для каждого
-слага независимо от того, изменилось ли что-нибудь. Не запускать.
 
 ### Порядок при правке страниц
 
