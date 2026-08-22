@@ -137,7 +137,7 @@ def check_graph_delta() -> None:
         note = "добавляются взаимные пары там, где не было ни одной стороны"
     elif ratio == 0:
         note = ("рёбра идут в одну сторону — проверьте, не останется ли "
-                "чей-то блок backlinks без подтверждения (см. проверки 4 и 5)")
+                "чей-то блок backlinks без подтверждения (см. проверки 4 и 6)")
     else:
         note = "смесь: часть рёбер достраивает симметрию, часть уходит наружу"
     print(f"   → {note}")
@@ -384,7 +384,7 @@ def check_backlinks() -> None:
             continue
         got = set(re.findall(r'href="([^"]+)"', m.group(0)))
         if not want:
-            continue  # разбирается в проверке 5: генератор такой файл не открывает
+            continue  # разбирается в проверке 6: генератор такой файл не открывает
         if got != want:
             stale.append((rel, sorted(got - want), sorted(want - got)))
 
@@ -437,7 +437,95 @@ def check_backlinks() -> None:
     print("   сравнивается только набор адресов.")
 
 
-# ── 5 · расхождение с генератором backlinks ─────────────────────────
+# ── 5 · related против исходящих рёбер ──────────────────────────────
+# Ссылки в related, ведущие не на узел графа. Это разделы и карта —
+# законные адресаты, но подтвердить ребром их нечем: узла нет.
+# Список явный, чтобы проверка сходилась в ноль, а не в «семь всегда».
+RELATED_NON_NODE = {
+    "objects/numbers/constants/",   # раздел констант
+    "music",                        # раздел музыки
+    "visuals",                      # раздел визуалов
+    "map.html",                     # карта связей
+}
+
+
+def check_related_vs_out() -> None:
+    """related ⊆ исходящие рёбра.
+
+    Зеркало проверки 4: та сверяет backlinks против входящих, эта —
+    related против исходящих. Асимметрия намеренная:
+      ссылка без ребра  — дефект (страница утверждает связь, которой
+                          нет на карте и не будет в чужих backlinks);
+      ребро без ссылки  — норма (секция курируется автором).
+
+    Ключ — пара (узел, полный href): #pavlov и #generous-tit-for-tat
+    ведут на один файл, но это разные адресаты, и склеивать их нельзя.
+
+    Предупреждение, не блокер: долг накоплен и разбирается порциями.
+    """
+    head("5 · related против исходящих рёбер")
+    with open(os.path.join(ROOT, "data", "links.json"), encoding="utf-8") as f:
+        d = json.load(f)
+    by_url = {n["url"]: n["id"] for n in d["nodes"]}
+    out: dict[str, set[str]] = {}
+    for e in d["edges"]:
+        out.setdefault(e["from"], set()).add(e["to"])
+    rel_re = re.compile(r'<section class="related">.*?</section>', re.S)
+    link_re = re.compile(r'<a href="([^"]+)">(.*?)\s*→</a>')
+
+    missing, stray = [], []
+    for n in d["nodes"]:
+        url = n.get("url", "")
+        if not url.startswith(SITE_PREFIX):
+            continue
+        rel = url[len(SITE_PREFIX):]
+        path = os.path.join(ROOT, rel)
+        if not os.path.isfile(path):
+            continue
+        with open(path, encoding="utf-8") as f:
+            m = rel_re.search(f.read())
+        if not m:
+            continue
+        base = os.path.dirname(rel)
+        seen = set()
+        for href, label in link_re.findall(m.group(0)):
+            p = (href[len(SITE_PREFIX):] if href.startswith(SITE_PREFIX)
+                 else os.path.normpath(os.path.join(base, href)))
+            p = p.split("#")[0]
+            target = by_url.get(SITE_PREFIX + p)
+            if target is None:
+                if p not in RELATED_NON_NODE:
+                    stray.append((rel, href))
+                continue
+            if (target, href) in seen:
+                continue
+            seen.add((target, href))
+            if target not in out.get(n["id"], set()):
+                missing.append((rel, n["id"], target, label))
+
+    if stray:
+        print(f"   ссылки не на узел и не в белом списке — {len(stray)}:")
+        for r, h in stray[:LIST_CAP]:
+            print(f"      {r}  →  {h}")
+        if len(stray) > LIST_CAP:
+            print(f"      … и ещё {len(stray) - LIST_CAP} — полный список: --verbose")
+        warnings.append(f"related: ссылки не на узел: {len(stray)}")
+    else:
+        print("   ссылки не на узел: все в белом списке ✓")
+
+    if not missing:
+        print("   каждая ссылка в related подтверждена ребром ✓")
+        return
+    pages = {x[0] for x in missing}
+    rows = [f"{r}  {a} → {b}  «{lab[:34]}»" for r, a, b, lab in sorted(missing)]
+    show_list(rows, f"   ссылок без ребра: {len(missing)} на {len(pages)} страницах:")
+    print("   Страница утверждает связь, которой нет на карте.")
+    print("   Обратное (ребро без ссылки) — норма: related курируется.")
+    print("   [предупреждение, не блокер]")
+    warnings.append(f"related без ребра: {len(missing)}")
+
+
+# ── 6 · расхождение с генератором backlinks ─────────────────────────
 def node_pages() -> tuple[dict, dict[str, str]]:
     """Граф и {repo-path: node-id} для узлов, чьи файлы существуют."""
     with open(os.path.join(ROOT, "data", "links.json"), encoding="utf-8") as f:
@@ -453,7 +541,7 @@ def node_pages() -> tuple[dict, dict[str, str]]:
 
 
 def check_generator_drift() -> None:
-    head("5 · расхождение с генератором backlinks")
+    head("6 · расхождение с генератором backlinks")
     d, pages = node_pages()
     block_re = re.compile(r'<section class="backlinks">.*?</section>', re.S)
 
@@ -543,9 +631,9 @@ def check_generator_drift() -> None:
     warnings.append(f"расхождение с генератором backlinks: {len(drift)}")
 
 
-# ── 6 · graph-health.py ─────────────────────────────────────────────
+# ── 7 · graph-health.py ─────────────────────────────────────────────
 def check_graph_health() -> int:
-    head("6 · graph-health.py")
+    head("7 · graph-health.py")
     gh = os.path.join(ROOT, "graph-health.py")
     if not os.path.isfile(gh):
         print("   graph-health.py не найден в корне.")
@@ -559,9 +647,9 @@ def check_graph_health() -> int:
     return p.returncode
 
 
-# ── 7 · итог ────────────────────────────────────────────────────────
+# ── 8 · итог ────────────────────────────────────────────────────────
 def summary() -> int:
-    head("7 · итог")
+    head("8 · итог")
     if warnings:
         print(f"   предупреждений: {len(warnings)}")
         for w in warnings:
@@ -597,6 +685,7 @@ def main() -> int:
     check_new_pages()
     check_essay_index()
     check_backlinks()
+    check_related_vs_out()
     check_generator_drift()
     check_graph_health()
     return summary()
