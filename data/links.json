@@ -8917,6 +8917,18 @@
     {
       "from": "es-martingale",
       "to": "es-good-dec"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "es-martingale"
+    },
+    {
+      "from": "es-bayesian",
+      "to": "es-martingale"
+    },
+    {
+      "from": "es-forking-paths",
+      "to": "es-martingale"
     }
   ]
 }
