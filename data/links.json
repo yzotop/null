@@ -9120,6 +9120,950 @@
     {
       "from": "vi-polar-roses",
       "to": "coord-polar"
+    },
+    {
+      "from": "pi",
+      "to": "euler"
+    },
+    {
+      "from": "euler",
+      "to": "pi"
+    },
+    {
+      "from": "euler",
+      "to": "pr-gamblers"
+    },
+    {
+      "from": "euler",
+      "to": "riemann"
+    },
+    {
+      "from": "phi",
+      "to": "pi"
+    },
+    {
+      "from": "gamma",
+      "to": "es-infinity"
+    },
+    {
+      "from": "sqrt2",
+      "to": "pi"
+    },
+    {
+      "from": "sqrt2",
+      "to": "phi"
+    },
+    {
+      "from": "sqrt2",
+      "to": "rational"
+    },
+    {
+      "from": "natural",
+      "to": "zero"
+    },
+    {
+      "from": "natural",
+      "to": "vi-ulam"
+    },
+    {
+      "from": "transcendental",
+      "to": "pi"
+    },
+    {
+      "from": "transcendental",
+      "to": "euler"
+    },
+    {
+      "from": "transcendental",
+      "to": "sqrt2"
+    },
+    {
+      "from": "complex",
+      "to": "imaginary"
+    },
+    {
+      "from": "complex",
+      "to": "euler"
+    },
+    {
+      "from": "complex",
+      "to": "pi"
+    },
+    {
+      "from": "zero",
+      "to": "euler"
+    },
+    {
+      "from": "zero",
+      "to": "ns-decimal"
+    },
+    {
+      "from": "zero",
+      "to": "ns-mayan"
+    },
+    {
+      "from": "one",
+      "to": "euler"
+    },
+    {
+      "from": "imaginary",
+      "to": "euler"
+    },
+    {
+      "from": "imaginary",
+      "to": "pi"
+    },
+    {
+      "from": "imaginary",
+      "to": "es-zfc"
+    },
+    {
+      "from": "godel",
+      "to": "cantor"
+    },
+    {
+      "from": "godel",
+      "to": "imaginary"
+    },
+    {
+      "from": "godel",
+      "to": "natural"
+    },
+    {
+      "from": "cantor",
+      "to": "godel"
+    },
+    {
+      "from": "cantor",
+      "to": "complex"
+    },
+    {
+      "from": "pythagoras",
+      "to": "vi-triangles"
+    },
+    {
+      "from": "riemann",
+      "to": "goldbach"
+    },
+    {
+      "from": "goldbach",
+      "to": "riemann"
+    },
+    {
+      "from": "twin-primes",
+      "to": "goldbach"
+    },
+    {
+      "from": "twin-primes",
+      "to": "vi-prime-field"
+    },
+    {
+      "from": "pvsnp",
+      "to": "natural"
+    },
+    {
+      "from": "pvsnp",
+      "to": "riemann"
+    },
+    {
+      "from": "op-mod",
+      "to": "op-factorial"
+    },
+    {
+      "from": "op-floor",
+      "to": "op-mod"
+    },
+    {
+      "from": "op-floor",
+      "to": "op-sum"
+    },
+    {
+      "from": "op-xor",
+      "to": "op-mod"
+    },
+    {
+      "from": "op-xor",
+      "to": "complex"
+    },
+    {
+      "from": "op-nabla",
+      "to": "op-integral"
+    },
+    {
+      "from": "op-nabla",
+      "to": "complex"
+    },
+    {
+      "from": "op-factorial",
+      "to": "op-mod"
+    },
+    {
+      "from": "op-factorial",
+      "to": "op-sum"
+    },
+    {
+      "from": "op-sum",
+      "to": "riemann"
+    },
+    {
+      "from": "op-integral",
+      "to": "op-sum"
+    },
+    {
+      "from": "op-partial",
+      "to": "op-nabla"
+    },
+    {
+      "from": "op-partial",
+      "to": "op-integral"
+    },
+    {
+      "from": "op-partial",
+      "to": "complex"
+    },
+    {
+      "from": "pr-secretary",
+      "to": "pr-monty"
+    },
+    {
+      "from": "pr-simpson",
+      "to": "op-sum"
+    },
+    {
+      "from": "pr-simpson",
+      "to": "pr-monty"
+    },
+    {
+      "from": "pr-simpson",
+      "to": "pr-birthday"
+    },
+    {
+      "from": "pr-monty",
+      "to": "pr-simpson"
+    },
+    {
+      "from": "pr-birthday",
+      "to": "op-sum"
+    },
+    {
+      "from": "pr-birthday",
+      "to": "pr-monty"
+    },
+    {
+      "from": "pr-gamblers",
+      "to": "pr-monty"
+    },
+    {
+      "from": "pr-gamblers",
+      "to": "es-pseudorandom"
+    },
+    {
+      "from": "es-zero-nine",
+      "to": "natural"
+    },
+    {
+      "from": "es-zero-nine",
+      "to": "transcendental"
+    },
+    {
+      "from": "es-zero-nine",
+      "to": "op-sum"
+    },
+    {
+      "from": "es-infinity",
+      "to": "complex"
+    },
+    {
+      "from": "es-infinity",
+      "to": "op-sum"
+    },
+    {
+      "from": "es-invented",
+      "to": "complex"
+    },
+    {
+      "from": "es-euler-formula",
+      "to": "zero"
+    },
+    {
+      "from": "es-euler-formula",
+      "to": "op-sum"
+    },
+    {
+      "from": "es-pi-gaussian",
+      "to": "es-euler-formula"
+    },
+    {
+      "from": "es-deck",
+      "to": "op-sum"
+    },
+    {
+      "from": "es-millennium",
+      "to": "godel"
+    },
+    {
+      "from": "es-millennium",
+      "to": "es-hilbert"
+    },
+    {
+      "from": "es-zfc",
+      "to": "es-hilbert"
+    },
+    {
+      "from": "es-rsa",
+      "to": "op-xor"
+    },
+    {
+      "from": "es-pseudorandom",
+      "to": "pvsnp"
+    },
+    {
+      "from": "es-pseudorandom",
+      "to": "pi"
+    },
+    {
+      "from": "vi-prime-field",
+      "to": "pi"
+    },
+    {
+      "from": "vi-prime-field",
+      "to": "vi-ulam"
+    },
+    {
+      "from": "vi-triangles",
+      "to": "phi"
+    },
+    {
+      "from": "vi-triangles",
+      "to": "vi-progress"
+    },
+    {
+      "from": "vi-progress",
+      "to": "pi"
+    },
+    {
+      "from": "vi-progress",
+      "to": "euler"
+    },
+    {
+      "from": "vi-ulam",
+      "to": "pi"
+    },
+    {
+      "from": "vi-ulam",
+      "to": "vi-prime-field"
+    },
+    {
+      "from": "vi-pascal",
+      "to": "vi-prime-field"
+    },
+    {
+      "from": "vi-plotter",
+      "to": "vi-ulam"
+    },
+    {
+      "from": "vi-collatz",
+      "to": "prime"
+    },
+    {
+      "from": "vi-collatz",
+      "to": "pvsnp"
+    },
+    {
+      "from": "mu-discrete",
+      "to": "vi-collatz"
+    },
+    {
+      "from": "mu-nullex",
+      "to": "op-xor"
+    },
+    {
+      "from": "mu-bitparade",
+      "to": "op-mod"
+    },
+    {
+      "from": "mu-bitparade",
+      "to": "vi-progress"
+    },
+    {
+      "from": "mu-bitparade",
+      "to": "vi-triangles"
+    },
+    {
+      "from": "mu-opstack",
+      "to": "mu-discrete"
+    },
+    {
+      "from": "cu-42",
+      "to": "cu-1729"
+    },
+    {
+      "from": "cu-1729",
+      "to": "cu-42"
+    },
+    {
+      "from": "cu-6174",
+      "to": "cu-1729"
+    },
+    {
+      "from": "cu-graham",
+      "to": "es-deck"
+    },
+    {
+      "from": "cu-minus12",
+      "to": "es-infinity"
+    },
+    {
+      "from": "cu-65536",
+      "to": "cu-graham"
+    },
+    {
+      "from": "ch-explorer",
+      "to": "phi"
+    },
+    {
+      "from": "ch-explorer",
+      "to": "vi-prime-field"
+    },
+    {
+      "from": "ch-ascii",
+      "to": "ch-explorer"
+    },
+    {
+      "from": "ch-ascii",
+      "to": "pi"
+    },
+    {
+      "from": "ch-history",
+      "to": "ch-bad"
+    },
+    {
+      "from": "ch-history",
+      "to": "ch-which"
+    },
+    {
+      "from": "ch-history",
+      "to": "pi"
+    },
+    {
+      "from": "ch-sound",
+      "to": "mu-discrete"
+    },
+    {
+      "from": "mu-8",
+      "to": "mu-opstack"
+    },
+    {
+      "from": "mu-hmn",
+      "to": "vi-progress"
+    },
+    {
+      "from": "mu-imc",
+      "to": "complex"
+    },
+    {
+      "from": "aleph0",
+      "to": "riemann"
+    },
+    {
+      "from": "alph-fraktur",
+      "to": "alph-greek"
+    },
+    {
+      "from": "ns-decimal",
+      "to": "ns-binary"
+    },
+    {
+      "from": "ns-decimal",
+      "to": "ns-roman"
+    },
+    {
+      "from": "ns-binary",
+      "to": "ns-hex"
+    },
+    {
+      "from": "ns-roman",
+      "to": "ns-decimal"
+    },
+    {
+      "from": "ns-babylon",
+      "to": "ns-decimal"
+    },
+    {
+      "from": "ns-babylon",
+      "to": "ns-mayan"
+    },
+    {
+      "from": "ns-mayan",
+      "to": "zero"
+    },
+    {
+      "from": "ns-mayan",
+      "to": "ns-babylon"
+    },
+    {
+      "from": "ns-hex",
+      "to": "ns-binary"
+    },
+    {
+      "from": "bk-descartes",
+      "to": "pi"
+    },
+    {
+      "from": "bk-descartes",
+      "to": "op-partial"
+    },
+    {
+      "from": "bk-descartes",
+      "to": "bk-euclid"
+    },
+    {
+      "from": "bk-newton",
+      "to": "euler"
+    },
+    {
+      "from": "bk-newton",
+      "to": "bk-euler"
+    },
+    {
+      "from": "bk-euler",
+      "to": "imaginary"
+    },
+    {
+      "from": "bk-euler",
+      "to": "es-euler-formula"
+    },
+    {
+      "from": "bk-euler",
+      "to": "bk-newton"
+    },
+    {
+      "from": "bk-gauss",
+      "to": "riemann"
+    },
+    {
+      "from": "bk-bourbaki",
+      "to": "cantor"
+    },
+    {
+      "from": "bk-bourbaki",
+      "to": "bk-euclid"
+    },
+    {
+      "from": "es-infinity-types",
+      "to": "es-zfc"
+    },
+    {
+      "from": "es-primes",
+      "to": "vi-prime-field"
+    },
+    {
+      "from": "es-primes",
+      "to": "vi-ulam"
+    },
+    {
+      "from": "vi-coordinates",
+      "to": "vi-polar-roses"
+    },
+    {
+      "from": "vi-coordinates",
+      "to": "vi-lorenz"
+    },
+    {
+      "from": "vi-benford",
+      "to": "euler"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "gt-zd"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "gt-minimax"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "es-poker-exploit"
+    },
+    {
+      "from": "es-game-theory",
+      "to": "vi-axelrod"
+    },
+    {
+      "from": "vi-markov",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "vi-prime-polar",
+      "to": "vi-prime-field"
+    },
+    {
+      "from": "vi-sorting",
+      "to": "vi-progress"
+    },
+    {
+      "from": "es-proof",
+      "to": "es-zfc"
+    },
+    {
+      "from": "es-math-music",
+      "to": "es-euler-formula"
+    },
+    {
+      "from": "es-math-music",
+      "to": "vi-polar-roses"
+    },
+    {
+      "from": "es-inf-paradox",
+      "to": "es-infinity-types"
+    },
+    {
+      "from": "es-causality",
+      "to": "vi-markov"
+    },
+    {
+      "from": "es-adtech",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-ev",
+      "to": "st-var"
+    },
+    {
+      "from": "vi-ab-calc",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "vi-ab-calc",
+      "to": "vi-benford"
+    },
+    {
+      "from": "vi-bayes",
+      "to": "st-ci"
+    },
+    {
+      "from": "math-riemann",
+      "to": "es-primes"
+    },
+    {
+      "from": "math-riemann",
+      "to": "vi-prime-polar"
+    },
+    {
+      "from": "math-riemann",
+      "to": "math-turing"
+    },
+    {
+      "from": "math-newton",
+      "to": "op-partial"
+    },
+    {
+      "from": "math-newton",
+      "to": "es-math-music"
+    },
+    {
+      "from": "math-hilbert",
+      "to": "math-newton"
+    },
+    {
+      "from": "vi-axelrod",
+      "to": "es-two-sided"
+    },
+    {
+      "from": "vi-lorenz",
+      "to": "es-pseudorandom"
+    },
+    {
+      "from": "vi-lorenz",
+      "to": "pvsnp"
+    },
+    {
+      "from": "vi-lorenz",
+      "to": "vi-collatz"
+    },
+    {
+      "from": "vi-mult-circle",
+      "to": "pi"
+    },
+    {
+      "from": "vi-mult-circle",
+      "to": "phi"
+    },
+    {
+      "from": "vi-mult-circle",
+      "to": "op-mod"
+    },
+    {
+      "from": "vi-mult-circle",
+      "to": "es-mult-table"
+    },
+    {
+      "from": "vi-mult-circle",
+      "to": "vi-plotter"
+    },
+    {
+      "from": "vi-prime-scatter",
+      "to": "riemann"
+    },
+    {
+      "from": "vi-prime-scatter",
+      "to": "vi-ulam"
+    },
+    {
+      "from": "es-markov-deep",
+      "to": "es-pseudorandom"
+    },
+    {
+      "from": "es-markov-deep",
+      "to": "math-poincare"
+    },
+    {
+      "from": "es-prob-paradox",
+      "to": "es-pseudorandom"
+    },
+    {
+      "from": "vi-lln",
+      "to": "vi-ab-calc"
+    },
+    {
+      "from": "st-condprob",
+      "to": "st-ev"
+    },
+    {
+      "from": "st-confirm",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "st-sunk",
+      "to": "es-oshibki-po-pravilam"
+    },
+    {
+      "from": "vi-gamblers",
+      "to": "es-ev"
+    },
+    {
+      "from": "math-lobachevsky",
+      "to": "godel"
+    },
+    {
+      "from": "math-pascal",
+      "to": "es-prob-paradox"
+    },
+    {
+      "from": "math-bernoulli",
+      "to": "st-ev"
+    },
+    {
+      "from": "math-laplace",
+      "to": "es-prob-paradox"
+    },
+    {
+      "from": "es-clt",
+      "to": "math-demoivre"
+    },
+    {
+      "from": "math-cantor",
+      "to": "es-infinity-types"
+    },
+    {
+      "from": "math-cantor",
+      "to": "bk-geb"
+    },
+    {
+      "from": "math-gauss",
+      "to": "vi-normal"
+    },
+    {
+      "from": "math-gauss",
+      "to": "math-cantor"
+    },
+    {
+      "from": "math-euler",
+      "to": "bk-euler"
+    },
+    {
+      "from": "math-euler",
+      "to": "es-math-music"
+    },
+    {
+      "from": "math-euler",
+      "to": "math-gauss"
+    },
+    {
+      "from": "math-ramanujan",
+      "to": "math-euler"
+    },
+    {
+      "from": "math-ramanujan",
+      "to": "math-cantor"
+    },
+    {
+      "from": "st-cuped",
+      "to": "st-effect"
+    },
+    {
+      "from": "vi-cuped",
+      "to": "vi-ab-calc"
+    },
+    {
+      "from": "vi-polar-roses",
+      "to": "pi"
+    },
+    {
+      "from": "vi-polar-roses",
+      "to": "phi"
+    },
+    {
+      "from": "vi-polar-roses",
+      "to": "op-mod"
+    },
+    {
+      "from": "vi-polar-roses",
+      "to": "vi-mult-circle"
+    },
+    {
+      "from": "vi-polar-roses",
+      "to": "vi-ulam"
+    },
+    {
+      "from": "vi-fibonacci",
+      "to": "es-fibonacci"
+    },
+    {
+      "from": "st-ci",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "st-effect",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "st-effect",
+      "to": "st-ci"
+    },
+    {
+      "from": "st-bleu",
+      "to": "st-effect"
+    },
+    {
+      "from": "st-kappa",
+      "to": "st-bleu"
+    },
+    {
+      "from": "st-elo",
+      "to": "st-bleu"
+    },
+    {
+      "from": "st-elo",
+      "to": "st-kappa"
+    },
+    {
+      "from": "st-var",
+      "to": "st-pvalue"
+    },
+    {
+      "from": "st-clt",
+      "to": "st-ci"
+    },
+    {
+      "from": "st-kelly",
+      "to": "es-auctions"
+    },
+    {
+      "from": "st-kelly",
+      "to": "es-game-theory"
+    },
+    {
+      "from": "coord-cart",
+      "to": "vi-lorenz"
+    },
+    {
+      "from": "coord-cart",
+      "to": "coord-polar"
+    },
+    {
+      "from": "coord-polar",
+      "to": "vi-polar-roses"
+    },
+    {
+      "from": "coord-polar",
+      "to": "coord-cart"
+    },
+    {
+      "from": "coord-polar",
+      "to": "coord-complex"
+    },
+    {
+      "from": "coord-complex",
+      "to": "coord-polar"
+    },
+    {
+      "from": "integer",
+      "to": "rational"
+    },
+    {
+      "from": "real",
+      "to": "alph-math"
+    },
+    {
+      "from": "es-bookshelf",
+      "to": "bk-perelman"
+    },
+    {
+      "from": "bk-wentzel",
+      "to": "bk-fikhtengolts"
+    },
+    {
+      "from": "math-kahneman",
+      "to": "es-decisions-distance"
+    },
+    {
+      "from": "math-tversky",
+      "to": "es-gamb-fall"
+    },
+    {
+      "from": "es-evolution-cooperation",
+      "to": "vi-axelrod"
+    },
+    {
+      "from": "gt-ipd-catalog",
+      "to": "vi-axelrod"
+    },
+    {
+      "from": "math-rapoport",
+      "to": "math-axelrod"
+    },
+    {
+      "from": "math-rapoport",
+      "to": "vi-axelrod"
+    },
+    {
+      "from": "math-axelrod",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "math-axelrod",
+      "to": "math-rapoport"
+    },
+    {
+      "from": "math-axelrod",
+      "to": "vi-axelrod"
+    },
+    {
+      "from": "math-nowak",
+      "to": "math-axelrod"
+    },
+    {
+      "from": "math-maynard-smith",
+      "to": "es-evolution-cooperation"
+    },
+    {
+      "from": "math-maynard-smith",
+      "to": "gt-nash"
     }
   ]
 }
