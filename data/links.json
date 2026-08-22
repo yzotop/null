@@ -2183,6 +2183,13 @@
       "title": "мартингал",
       "url": "/null/essays/martingale.html",
       "glyph": "¶"
+    },
+    {
+      "id": "es-lln",
+      "type": "essay",
+      "title": "Закон больших чисел",
+      "url": "/null/essays/lln.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -8929,6 +8936,102 @@
     {
       "from": "es-forking-paths",
       "to": "es-martingale"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-clt"
+    },
+    {
+      "from": "es-lln",
+      "to": "st-clt"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-gamb-fall"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-martingale"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-monte-carlo"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-why-simulation"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-buffon"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-markov-deep"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-black-swan"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-uncertainty-knight"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-poker-distance"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-value-betting"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-xg"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-small-num"
+    },
+    {
+      "from": "es-lln",
+      "to": "es-gambling"
+    },
+    {
+      "from": "es-lln",
+      "to": "math-bernoulli"
+    },
+    {
+      "from": "es-lln",
+      "to": "math-kolmogorov"
+    },
+    {
+      "from": "es-lln",
+      "to": "vi-monte-carlo-pi"
+    },
+    {
+      "from": "es-value-betting",
+      "to": "es-lln"
+    },
+    {
+      "from": "es-clt",
+      "to": "es-lln"
+    },
+    {
+      "from": "es-xg",
+      "to": "es-lln"
+    },
+    {
+      "from": "es-why-simulation",
+      "to": "es-lln"
     }
   ]
 }

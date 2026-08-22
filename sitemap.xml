@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yzotop.github.io/null/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-22</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/books/</loc>
@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-22</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/ab-testing.html</loc>
@@ -98,11 +98,11 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/bayes-four-faces.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-22</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/bayesian.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-22</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/benford.html</loc>
@@ -142,7 +142,7 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/clt.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-22</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/conditions-for-cooperation.html</loc>
@@ -214,7 +214,7 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/forking-paths.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-22</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/gamblers-fallacy.html</loc>
@@ -301,6 +301,10 @@
     <lastmod>2026-08-06</lastmod>
   </url>
   <url>
+    <loc>https://yzotop.github.io/null/essays/lln.html</loc>
+    <lastmod>2026-08-22</lastmod>
+  </url>
+  <url>
     <loc>https://yzotop.github.io/null/essays/log-wealth.html</loc>
     <lastmod>2026-08-05</lastmod>
   </url>
@@ -314,6 +318,7 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/martingale.html</loc>
+    <lastmod>2026-08-22</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/math-music.html</loc>
@@ -481,7 +486,7 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/value-betting.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-22</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/via-negativa.html</loc>
@@ -493,11 +498,11 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/why-simulation.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-22</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/xg.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-22</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/zero-history.html</loc>
@@ -517,7 +522,7 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/man.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-22</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/map.html</loc>

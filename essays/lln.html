@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>закон больших чисел — null/essays</title>
+<!-- meta: scripts/update_meta.py -->
+<link rel="canonical" href="https://yzotop.github.io/null/essays/lln.html">
+<link rel="icon" href="/null/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/null/favicon-180.png">
+<meta name="author" content="Александр Давыдов">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="null">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="закон больших чисел">
+<meta property="og:url" content="https://yzotop.github.io/null/essays/lln.html">
+<meta property="og:image" content="https://yzotop.github.io/null/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- /meta -->
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .evo {
+    --paper: #f7f6f2; --ink: #1a1a1a; --dim: #8c8a83; --line: #dcd9d0; --accent: #c44a32;
+    --serif: 'IM Fell English', Georgia, serif; --sans: 'Inter', system-ui, sans-serif; --mono: 'JetBrains Mono', monospace;
+    width: 100%; max-width: 680px; margin-top: 8px; font-family: var(--sans); color: var(--ink); line-height: 1.72;
+  }
+  .evo .label { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: lowercase; color: var(--dim); margin-bottom: 18px; }
+  .evo h1 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 50px; line-height: 1.04; margin-bottom: 20px; }
+  .evo h1 em { color: var(--accent); }
+  .evo .lead { font-size: 19px; line-height: 1.55; color: #444; margin-bottom: 30px; font-style: italic; font-family: var(--serif); }
+  .evo h2 { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: lowercase; color: var(--accent); margin: 46px 0 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .evo p { font-size: 17px; margin-bottom: 18px; }
+  .evo p.first::first-letter { font-family: var(--serif); font-size: 62px; float: left; line-height: .82; padding: 6px 10px 0 0; color: var(--accent); }
+  .evo a { color: var(--accent); border-bottom: 1px solid rgba(196,74,50,.35); text-decoration: none; }
+  .evo a:hover { border-bottom-color: var(--accent); }
+  .evo sup { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+  .evo .margin { margin-top: 48px; border-top: 1px solid var(--ink); padding-top: 22px; }
+  .evo .margin .mh { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: lowercase; color: var(--dim); margin-bottom: 14px; }
+  .evo .margin .fn { font-size: 14px; color: #555; margin-bottom: 11px; line-height: 1.5; }
+  .evo .margin .fn .num { font-family: var(--mono); color: var(--accent); margin-right: 8px; }
+  .evo .fields { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 8px; }
+
+  .evo figure { margin: 30px 0; border: 1px solid var(--line); padding: 22px 20px 16px; }
+  .evo figure svg { display: block; width: 100%; height: auto; }
+  .evo figcaption { font-family: var(--mono); font-size: 11px; line-height: 1.6; color: var(--dim); margin-top: 14px; letter-spacing: .02em; }
+  .evo .fml { font-family: var(--mono); font-size: 14px; color: var(--ink); background: rgba(196,74,50,.05); border-left: 2px solid var(--accent); padding: 12px 14px; margin: 22px 0; line-height: 1.7; }
+  .evo .fml span { color: var(--dim); }
+  .evo table.rate { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 13px; margin: 22px 0; }
+  .evo table.rate th { text-align: left; font-weight: 500; color: var(--dim); border-bottom: 1px solid var(--ink); padding: 8px 10px 8px 0; letter-spacing: .06em; }
+  .evo table.rate td { border-bottom: 1px solid var(--line); padding: 8px 10px 8px 0; }
+  .evo table.rate td.a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / закон больших чисел</div>
+
+<main class="container">
+<article>
+
+  <div class="evo">
+    <div class="label">эссе · §05 · случайность · симуляция · ~15 минут · 2026.08</div>
+    <h1>закон больших чисел</h1>
+    <div class="lead">сходится — но не выравнивает, не спешит и не обещает лично тебе</div>
+
+      <p class="first">На этот закон ссылаются чаще, чем на любую другую теорему: им объясняют, почему казино не разоряется, почему сезон честнее одного матча, почему покерист верит навыку вопреки результатам, почему Монте-Карло работает. Ссылаются, как правило, справедливо. Но почти всегда его читают щедрее, чем он написан. Он обещает ровно одну вещь и обещает её медленно, а три вещи, которые ему приписывают, не обещает вовсе. Разберём и то, и другое.</p>
+
+      <h2>что он говорит</h2>
+      <p class="first">Формулировка обманчиво скромная: среднее по многим независимым испытаниям сходится к математическому ожиданию. Бросай монету — доля орлов идёт к половине. Крути рулетку — доля выигрышей заведения идёт к заложенным в правила процентам. Тыкай случайными точками в квадрат — доля попавших в круг идёт к отношению площадей, и <a href="buffon.html">игла Бюффона</a> с <a href="monte-carlo.html">методом Монте-Карло</a> живут именно на этом.</p>
+      <div class="fml">(X₁ + X₂ + … + Xₙ) / n → μ &nbsp; при n → ∞<br><span>среднее по выборке идёт к среднему по распределению</span></div>
+      <p>Якоб Бернулли доказал первый случай — для долей — и назвал его золотой теоремой. Работал над ней около двадцати лет, умер в 1705-м, не закончив; «Ars Conjectandi» вышла посмертно в 1713-м<sup>[1]</sup>. Имя «закон больших чисел» появилось позже, у Пуассона<sup>[2]</sup>. Строгую и общую форму дали ещё через два века: Борель в 1909-м, Колмогоров в начале тридцатых<sup>[3]</sup>.</p>
+      <p>Между этими датами лежит не бюрократия, а содержание. Бернулли доказал слабую форму: при большом n вероятность заметно промахнуться мала. Сильная форма говорит жёстче: почти каждая отдельная бесконечная последовательность бросков сходится к своему среднему — не «вероятно близко», а действительно приходит и остаётся. Разница между «маловероятно ошибиться» и «сойдётся и не уйдёт» — и есть двести лет работы.</p>
+
+      <h2>чего он не говорит: выравнивания нет</h2>
+      <p class="first">Первое и самое частое искажение. Выпало десять орлов подряд — значит, решки «должны» пойти чаще, монета исправится. Не исправится. У монеты нет памяти, следующий бросок — та же половина, и никакая сила не следит за балансом. Это <a href="gamblers-fallacy.html">ошибка игрока</a>, и она держится именно на неправильно понятом законе больших чисел.</p>
+      <p>Механизм сходимости — не исправление, а разбавление. Перевес в десять орлов никуда не девается: он остаётся в выборке навсегда. Просто через десять тысяч бросков его делят на десять тысяч, и в доле он весит одну тысячную. Абсолютный перевес не сокращается — он в среднем даже растёт, примерно как корень из числа бросков. Тонет только его доля.</p>
+      <p>Разница практическая, а не терминологическая. Если ждёшь исправления — ждёшь, что рынок отыграет твою просадку, что серия неудачных раздач компенсируется удачными, что после плохого квартала придёт хороший в возмещение. Ничего этого не обещано. Обещано, что старое станет мелким на фоне нового, — но только если нового будет много и только если ты доживёшь.</p>
+
+      <h2>чего он не говорит: он не спешит</h2>
+      <p class="first">Второе искажение — про сроки. «На дистанции всё сойдётся» звучит как утешение, пока не спросишь, какая дистанция. Ответ считается: типичное отклонение среднего от истины падает как корень из n. Чтобы уменьшить ошибку вдвое, нужно вчетверо больше данных; в десять раз — в сто раз больше.</p>
+      <table class="rate">
+        <tr><th>наблюдений</th><th>во сколько точнее</th><th>цена</th></tr>
+        <tr><td>100</td><td class="a">×1</td><td>—</td></tr>
+        <tr><td>400</td><td class="a">×2</td><td>вчетверо больше данных</td></tr>
+        <tr><td>2 500</td><td class="a">×5</td><td>в двадцать пять раз</td></tr>
+        <tr><td>10 000</td><td class="a">×10</td><td>в сто раз</td></tr>
+      </table>
+      <p>Первым эту цену посчитал сам Бернулли — и, судя по всему, был ею обескуражен. Для своей урны он спросил: сколько испытаний нужно, чтобы быть морально уверенным, что оценка доли отличается от истинной не больше чем на одну пятидесятую? Вышло 25 550<sup>[4]</sup>. Для эпохи, где выборкой в тысячу гордились, это был приговор: теорема верна, но пользоваться ею почти нельзя. Человек, доказавший сходимость, первым увидел её счёт.</p>
+      <p>Отсюда всё, что в других эссе выглядит разрозненными наблюдениями. Три матча группового этапа — не дистанция, и фавориты вылетают закономерно; <a href="xg.html">xG за сезон</a> точнее счёта, а за матч не точнее. Покерист играет тысячи рук не из усердия, а потому что меньшая выборка не отличает навык от дисперсии; <a href="poker-distance.html">до дистанции ещё надо дожить</a>. Размер выборки в A/B считают заранее не из формализма, а потому что корень из n — жёсткий бюджет, и его нельзя выторговать усердием.</p>
+
+      <h2>чего он не говорит: он не про тебя</h2>
+      <p class="first">Третье искажение самое дорогое. Закон больших чисел — утверждение о множестве испытаний, а не об одном участнике. Он обещает, что среднее по многим сойдётся, и молчит о том, что случится с конкретной траекторией.</p>
+      <p>Казино на этом и стоит: у него много ставок, и <a href="uncertainty-knight.html">риск для него измерим</a>, море однотипных ставок превращается в предсказуемую реку. У игрока напротив ставок мало, и его судьба к среднему отношения не имеет. Одинаковая математика, противоположные положения — разница только в числе повторений.</p>
+      <p>Хуже того, повторения бывают недоступны в принципе. Если каждый проигрыш уменьшает то, чем ты играешь, среднее по ансамблю перестаёт быть твоей судьбой — это <a href="ergodicity.html">эргодичность</a>, и там разобрано, почему разорение отменяет любое матожидание. Закон больших чисел справедлив и тут, он просто описывает не тебя: усредняется толпа, в которой тебя уже нет.</p>
+
+      <h2>когда он не работает вовсе</h2>
+      <p class="first">У теоремы есть условие, о котором вспоминают редко: у величины должно существовать конечное среднее. Условие выглядит формальностью, но бывают распределения, где его нет, и там сходимости не будет никогда — не медленно, а никогда.</p>
+      <p>Канонический пример — распределение Коши. Возьми тысячу его значений, усредни; среднее тысячи распределено ровно так же, как одно значение<sup>[5]</sup>. Данные копятся, точность не растёт. Усреднение, главный инструмент статистики, здесь просто не делает ничего.</p>
+      <p>Коши — экзотика, но соседи у него живые. Чем тяжелее хвост распределения, тем медленнее работает закон и тем дольше выборка врёт: доход, размер компании, ущерб от катастрофы, отдача венчурной ставки. Там среднее по имеющимся данным годами держится ниже истины, а потом один <a href="black-swan.html">чёрный лебедь</a> переписывает его целиком. Формально сходимость есть; практически ты всё время живёшь до неё.</p>
+
+      <h2>и чем он не является</h2>
+      <p class="first">Осталось развести две теоремы, которые постоянно склеивают. Закон больших чисел говорит <em>куда</em> приходит среднее. <a href="clt.html">Центральная предельная теорема</a> — <em>как</em> оно колеблется по дороге: отклонения, поделённые на корень из n, ложатся в колокол независимо от того, из чего собраны. Первая теорема даёт точку, вторая — форму облака вокруг неё. Первая позволяет верить среднему, вторая — считать доверительный интервал. Без первой нет смысла мерить, без второй нет погрешности.</p>
+      <p>И ещё одно родство, менее очевидное. Про <a href="martingale.html">мартингал</a> сказано, что вера бредёт с нулевым сносом, а сходится за счёт растущего разброса — середина пустеет. Здесь картинка зеркальная: разброс среднего сжимается, и величина садится на своё ожидание. Одно и то же слово «сходится» описывает два разных движения, и путать их не стоит: вера уползает к краям, среднее — к центру.</p>
+      <p>Заметь ещё, что независимость — условие, а не закон природы. Некрасов считал, что без неё сходимости нет; Марков в ответ построил цепи и показал, что <a href="markov-deep.html">закон работает и на зависимых событиях</a>, если зависимость затухает. Так спор о законе больших чисел породил теорию случайных процессов.</p>
+
+      <h2>как этим пользоваться</h2>
+      <p class="first">Практика сводится к трём вопросам, которые стоит задавать всякий раз, когда кто-то говорит «на дистанции выровняется».</p>
+      <p>Сколько наблюдений уже есть и сколько нужно — не на глаз, а через корень из n. Хвост у величины тяжёлый или лёгкий: если тяжёлый, требуемая выборка растёт, а среднее по имеющимся данным систематически льстит. И третий, главный: усредняется ли здесь то же самое, что рискует, — много ли у тебя повторений или ты один участник в чужом ансамбле.</p>
+      <p>Закон больших чисел — не обещание справедливости и не гарантия, что всё наладится. Это утверждение о том, что случайность теряет вес, когда её много, — и ничего сверх этого. Она не отступает и не исправляется; её просто разбавляют, медленно и за деньги.</p>
+
+    <div class="margin">
+      <div class="mh">поля</div>
+      <div class="fn"><span class="num">[1]</span>Я. Бернулли, «Ars Conjectandi» (Базель, 1713, посмертно). Четвёртая часть содержит theorema aureum — слабый закон больших чисел для схемы независимых испытаний с двумя исходами.</div>
+      <div class="fn"><span class="num">[2]</span>С. Д. Пуассон, «Recherches sur la probabilité des jugements» (1837) — там появляется сам оборот «loi des grands nombres».</div>
+      <div class="fn"><span class="num">[3]</span>Э. Борель (1909) — усиленный закон для двоичных знаков, откуда понятие нормального числа. А. Н. Колмогоров — усиленный закон для независимых одинаково распределённых величин при одном условии: конечное математическое ожидание.</div>
+      <div class="fn"><span class="num">[4]</span>Оценка Бернулли для урны с долей 3/5: чтобы с шансами 1000 : 1 гарантировать отклонение не более 1/50, нужно 25 550 испытаний. Первый в истории расчёт необходимого размера выборки — и первое столкновение с его ценой.</div>
+      <div class="fn"><span class="num">[5]</span>Распределение Коши: математическое ожидание не существует, среднее n независимых значений распределено так же, как одно. Условие конечного среднего в законе больших чисел — не техническая оговорка, а суть.</div>
+    </div>
+  </div>
+
+  <a class="xref diad" href="clt.html"><span class="xref-label">// центральная предельная теорема</span><span class="xref-title">ЗБЧ даёт точку, ЦПТ — форму облака вокруг неё.</span><span class="xref-arrow">→</span></a>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="clt.html">центральная предельная теорема →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="gamblers-fallacy.html">ошибка игрока →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ergodicity.html">эргодичность →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="monte-carlo.html">монте-карло →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="martingale.html">мартингал →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="poker-distance.html">покер на дистанции →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="black-swan.html">чёрный лебедь →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/bernoulli.html">Якоб Бернулли →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/value-betting.html">плюсовое ожидание →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/clt.html">центральная предельная теорема →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/xg.html">xG →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/why-simulation.html">зачем симулировать →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/lln.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+  <span class="footer-by">Александр Давыдов · <a href="https://davydov.my/" rel="noopener">davydov.my</a></span>
+</footer>
+
+</body>
+</html>
