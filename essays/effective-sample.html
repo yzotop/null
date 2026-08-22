@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>эффективная выборка — null/essays</title>
+<!-- meta: scripts/update_meta.py -->
+<link rel="canonical" href="https://yzotop.github.io/null/essays/effective-sample.html">
+<link rel="icon" href="/null/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/null/favicon-180.png">
+<meta name="author" content="Александр Давыдов">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="null">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="эффективная выборка">
+<meta property="og:url" content="https://yzotop.github.io/null/essays/effective-sample.html">
+<meta property="og:image" content="https://yzotop.github.io/null/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- /meta -->
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .evo {
+    --paper: #f7f6f2; --ink: #1a1a1a; --dim: #8c8a83; --line: #dcd9d0; --accent: #c44a32;
+    --serif: 'IM Fell English', Georgia, serif; --sans: 'Inter', system-ui, sans-serif; --mono: 'JetBrains Mono', monospace;
+    width: 100%; max-width: 680px; margin-top: 8px; font-family: var(--sans); color: var(--ink); line-height: 1.72;
+  }
+  .evo .label { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: lowercase; color: var(--dim); margin-bottom: 18px; }
+  .evo h1 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 50px; line-height: 1.04; margin-bottom: 20px; }
+  .evo .lead { font-size: 19px; line-height: 1.55; color: #444; margin-bottom: 30px; font-style: italic; font-family: var(--serif); }
+  .evo h2 { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: lowercase; color: var(--accent); margin: 46px 0 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .evo p { font-size: 17px; margin-bottom: 18px; }
+  .evo p.first::first-letter { font-family: var(--serif); font-size: 62px; float: left; line-height: .82; padding: 6px 10px 0 0; color: var(--accent); }
+  .evo a { color: var(--accent); border-bottom: 1px solid rgba(196,74,50,.35); text-decoration: none; }
+  .evo a:hover { border-bottom-color: var(--accent); }
+  .evo sup { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+  .evo .margin { margin-top: 48px; border-top: 1px solid var(--ink); padding-top: 22px; }
+  .evo .margin .mh { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: lowercase; color: var(--dim); margin-bottom: 14px; }
+  .evo .margin .fn { font-size: 14px; color: #555; margin-bottom: 11px; line-height: 1.5; }
+  .evo .margin .fn .num { font-family: var(--mono); color: var(--accent); margin-right: 8px; }
+
+  .evo figure { margin: 30px 0; border: 1px solid var(--line); padding: 22px 20px 16px; }
+  .evo figure svg { display: block; width: 100%; height: auto; }
+  .evo figcaption { font-family: var(--mono); font-size: 11px; line-height: 1.6; color: var(--dim); margin-top: 14px; letter-spacing: .02em; }
+  .evo .fml { font-family: var(--mono); font-size: 14px; color: var(--ink); background: rgba(196,74,50,.05); border-left: 2px solid var(--accent); padding: 12px 14px; margin: 22px 0; line-height: 1.7; }
+  .evo .fml span { color: var(--dim); }
+  .evo table.rate { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 13px; margin: 22px 0; }
+  .evo table.rate th { text-align: left; font-weight: 500; color: var(--dim); border-bottom: 1px solid var(--ink); padding: 8px 10px 8px 0; letter-spacing: .06em; }
+  .evo table.rate td { border-bottom: 1px solid var(--line); padding: 8px 10px 8px 0; }
+  .evo table.rate td.a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / эффективная выборка</div>
+
+<main class="container">
+<article>
+
+  <div class="evo">
+    <div class="label">эссе · §05 · случайность · симуляция · ~12 минут · 2026.08</div>
+    <h1>эффективная выборка</h1>
+    <div class="lead">зависимость не отменяет сходимость — она меняет цену данных, и знак решает, в чью пользу</div>
+
+      <p class="first">В 1913 году Марков сел считать буквы «Евгения Онегина» — двадцать тысяч штук, вручную, гласные и согласные<sup>[1]</sup>. Зачем он это делал, <a href="markov-deep.html">разобрано отдельно</a>: он спорил с Некрасовым о том, обязателен ли для закона больших чисел независимый случай. Здесь другое. Опыт Маркова можно повторить, и это стоит сделать: сто лет спустя, на другом тексте, другого автора и другого века, машиной вместо руки. Взял «Золотого телёнка» — четыреста девяносто четыре тысячи букв против его двадцати тысяч.</p>
+
+      <h2>тот же счёт, другая книга</h2>
+      <p class="first">Считается одно и то же: доля гласных и две условные вероятности — гласная после гласной и гласная после согласной.</p>
+      <table class="rate">
+        <tr><th>текст</th><th>доля гласных</th><th>P(г|г)</th><th>P(г|с)</th></tr>
+        <tr><td>«Онегин», 20 000 букв</td><td class="a">0.432</td><td>0.128</td><td>0.663</td></tr>
+        <tr><td>«Золотой телёнок», 494 016</td><td class="a">0.419</td><td>0.100</td><td>0.650</td></tr>
+      </table>
+      <p>Стихи против прозы, 1833 против 1931, поэт против двух фельетонистов — а числа те же с точностью до второго знака. Это не про Пушкина и не про Ильфа с Петровым. Это свойство русского языка, и оно держится через век.</p>
+      <p>Сама возможность так проверить — уже кое-что. Столетний результат, полученный вручную на выборке в двадцать тысяч, воспроизводится на выборке в двадцать пять раз большей за секунду машинного времени. Повторяемость — единственное, что отличает измерение от впечатления, и здесь она предъявлена.</p>
+
+      <h2>зависимость никуда не делась</h2>
+      <p class="first">Теперь посмотри на две условные вероятности внимательно. Будь буквы независимы, обе равнялись бы доле гласных — 0.419 и там, и там. А на деле после гласной гласная приходит в одном случае из десяти, после согласной — в двух из трёх.</p>
+      <p>Это очень сильная связь. Корреляция соседних букв — минус ноль пятьдесят пять. Знак отрицательный: язык чередует, буквы отталкиваются. Произнести подряд четыре гласных трудно, и статистика это знает.</p>
+      <p>Именно про такой случай Некрасов говорил, что <a href="lln.html">закон больших чисел</a> неприменим. Проверим.</p>
+
+      <h2>и всё-таки сходится</h2>
+      <p class="first">Бегущее среднее — доля гласных в первых N буквах — ведёт себя послушно.</p>
+      <table class="rate">
+        <tr><th>первых букв</th><th>доля гласных</th><th>отклонение</th></tr>
+        <tr><td>1 000</td><td>—</td><td class="a">17 ‰</td></tr>
+        <tr><td>10 000</td><td>—</td><td class="a">1.5 ‰</td></tr>
+        <tr><td>50 000</td><td>—</td><td class="a">0.15 ‰</td></tr>
+        <tr><td>494 016</td><td>0.419</td><td class="a">—</td></tr>
+      </table>
+      <p>Садится на 0.419 и держится. Некрасов неправ, Марков прав, и это давно известно. Дальше начинается то, что известно меньше.</p>
+
+      <h2>сходится быстрее, чем положено</h2>
+      <p class="first">Разбей текст на блоки по сто букв и посмотри, насколько разбросаны доли гласных внутри блоков. Для независимых величин разброс считается по формуле и даёт 0.049. Фактический — 0.023. Вдвое меньше.</p>
+      <p>Прочти это ещё раз. Зависимые данные дали не худшую точность, а <strong>лучшую</strong>, чем дали бы независимые. Сто букв романа говорят о языке больше, чем сказали бы сто букв, вытянутых из шляпы по одной.</p>
+      <p>Причина в знаке корреляции. Отрицательная связь гасит колебания: стоит случиться перекосу в сторону гласных, как следующая буква почти наверняка окажется согласной и перекос выправится сам. Последовательность обладает встроенным механизмом возврата к среднему. Положительная связь работала бы наоборот — перекос тянул бы за собой такой же перекос, и колебания копились бы.</p>
+
+      <h2>сколько данных в данных</h2>
+      <p class="first">Величина, которая всё это описывает, называется эффективным размером выборки: сколько независимых наблюдений дало бы ту же точность, что твои зависимые.</p>
+      <div class="fml">n_эфф = n × (1 − ρ) / (1 + ρ)<br><span>ρ — корреляция соседних наблюдений</span></div>
+      <p>Для романа: ρ = −0.55, множитель 0.45 / 1.55 ≈ 0.29, и точность соответствует выборке в три с половиной раза большей. Триста букв работают как тысяча. При ρ = 0 множитель равен единице и формула исчезает — обычный случай независимости оказывается частным.</p>
+      <p>Обрати внимание, что происходит при положительной связи. При ρ = +0.55 множитель равен 1.55 / 0.45 ≈ 3.4 в другую сторону: тысяча наблюдений работает как триста. Та же величина связи, тот же множитель — и противоположный смысл.</p>
+      <table class="rate">
+        <tr><th>ρ</th><th>множитель</th><th>тысяча наблюдений равна</th></tr>
+        <tr><td>−0.55</td><td>0.29</td><td class="a">3 400 независимым</td></tr>
+        <tr><td>−0.20</td><td>0.67</td><td class="a">1 500</td></tr>
+        <tr><td>0</td><td>1.00</td><td class="a">1 000</td></tr>
+        <tr><td>+0.20</td><td>1.50</td><td class="a">670</td></tr>
+        <tr><td>+0.55</td><td>3.44</td><td class="a">290</td></tr>
+      </table>
+
+      <h2>где это встречается не в романах</h2>
+      <p class="first">Теперь неприятная часть. В тексте связь отрицательная и работает на тебя. Почти везде, где ты меряешь что-нибудь настоящее, связь положительная и работает против.</p>
+      <p>Пользователи в <a href="ab-testing.html">A/B-тесте</a> зависимы: у одного человека несколько сессий, друзья попадают в одну группу, коллеги сидят за общим адресом. Наблюдения внутри такой группы похожи между собой сильнее, чем на случайные. Это положительная связь, и она означает, что твоя тысяча наблюдений — не тысяча.</p>
+      <p>Последствие конкретное. Доверительный интервал, посчитанный по формуле для независимых, окажется <strong>уже</strong> настоящего ровно на корень из множителя. Статистическая значимость, полученная так, завышена. Ты не подтасовывал — ты применил формулу, у которой не выполнено условие, и она честно ответила не на тот вопрос.</p>
+      <p>Хорошая новость в том, что множитель измерим. Корреляция внутри групп считается по тем же данным, и поправка на неё — арифметика в одну строку. Плохая в том, что её почти никогда не считают, потому что формула для независимых выглядит применимой всегда.</p>
+      <p>Та же история в <a href="golden-set.html">наборе для оценки</a>: если примеры в нём собраны из одного источника, они похожи, эффективный размер меньше номинального, и двести примеров дают точность полусотни. И в <a href="bootstrap.html">бутстрапе</a> по временным рядам: перемешивать зависимые наблюдения как независимые — значит выбрасывать структуру, которая и определяет точность.</p>
+
+      <h2>что доказал Марков</h2>
+      <p class="first">Вернёмся к спору. Некрасов утверждал, что закон больших чисел требует независимости. Марков ответил теоремой<sup>[2]</sup> и подтвердил её счётом.</p>
+      <p>Но теперь видно, что ответ был точнее спора. Закон требует не независимости, а <strong>затухающей памяти</strong>: чтобы далёкие члены последовательности переставали влиять друг на друга. Буква через сто позиций ничего не знает о текущей — этого достаточно. Ровно поэтому работают цепи Маркова, MCMC, бутстрап по блокам и всё, что считается на связанных данных.</p>
+      <p>А независимость оказалась не условием сходимости, а точкой отсчёта на шкале — той, где множитель равен единице. По одну сторону данные дешевле, чем кажутся, по другую дороже. Считать, что ты стоишь ровно в нуле, потому что так удобнее, — самый обычный способ ошибиться в цене.</p>
+
+    <div class="margin">
+      <div class="mh">поля</div>
+      <div class="fn"><span class="num">[1]</span>А. А. Марков, «Пример статистического исследования над текстом „Евгения Онегина“, иллюстрирующий связь испытаний в цепь» (1913). Двадцать тысяч букв, размеченных и посчитанных вручную.</div>
+      <div class="fn"><span class="num">[2]</span>А. А. Марков, «Распространение закона больших чисел на величины, зависящие друг от друга» (1906) — теорема; подсчёт по «Онегину» появился семью годами позже как её иллюстрация.</div>
+      <div class="fn"><span class="num">[3]</span>Отношение фактической дисперсии среднего к дисперсии при независимой выборке того же объёма называют эффектом плана (design effect); понятие введено Лесли Кишем в работах по выборочным обследованиям, «Survey Sampling» (1965). Формула (1 + ρ)/(1 − ρ) — частный случай для последовательности с корреляцией только между соседями.</div>
+      <div class="fn"><span class="num">[4]</span>Счёт по «Золотому телёнку» (1931): 494 016 букв кириллицы после нормализации, гласными считались а, е, ё, и, о, у, ы, э, ю, я.</div>
+    </div>
+  </div>
+
+  <a class="xref diad" href="markov-deep.html"><span class="xref-label">// Андрей Марков и «Евгений Онегин»</span><span class="xref-title">Зачем он считал буквы и с кем спорил.</span><span class="xref-arrow">→</span></a>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="markov-deep.html">Андрей Марков и «Евгений Онегин» →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="lln.html">закон больших чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="markov-chains.html">цепи Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="golden-set.html">золотой набор →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">почему p &lt; 0.05 — плохой порог →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bootstrap.html">бутстрап →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="clt.html">центральная предельная теорема →</a></div>
+      <div class="related-link"><span class="related-link-type">математик</span><a href="../objects/mathematicians/markov.html">Андрей Марков →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/lln.html">закон больших чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/markov-deep.html">Андрей Марков и «Евгений Онегин» →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/golden-set.html">золотой набор →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/effective-sample.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+  <span class="footer-by">Александр Давыдов · <a href="https://davydov.my/" rel="noopener">davydov.my</a></span>
+</footer>
+
+</body>
+</html>
