@@ -65,6 +65,15 @@ STRIP = [
 # Не вырезается, но помечается: ссылки отсюда — отдельная группа.
 FIELDS = re.compile(r'<p class="fields">.*?</p>', re.S)
 
+# Разобранные вручную ложные срабатывания: ссылка стоит в теле страницы,
+# но утверждением не является. Держим списком, а не правкой регулярок —
+# случаи единичные и разнородные, обобщать не на чем.
+EXCLUDE = {
+    # Плитка active-tile в сетке греческих букв: «σ/Σ сигма · сумма» —
+    # элемент таблицы алфавита, а не фраза о том, куда идти дальше.
+    ("alph-greek", "op-sum"),
+}
+
 
 def load() -> tuple[dict, dict, set]:
     with open(os.path.join(ROOT, "data", "links.json"), encoding="utf-8") as f:
@@ -132,6 +141,8 @@ def scan(idx: dict, pairs: set, width: int) -> tuple[list, list]:
             seen.add(target)
             if (nid, target) in pairs:
                 continue          # уже в графе — молча
+            if (nid, target) in EXCLUDE:
+                continue
             kind = "поля" if any(a <= m.start() < b for a, b in field_spans) else "проза"
             found.append((nid, target, rel, context(body, m.start(), width), kind))
     return found, unknown

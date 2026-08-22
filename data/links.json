@@ -9048,6 +9048,74 @@
     {
       "from": "es-is-forecast-right",
       "to": "es-evaluation"
+    },
+    {
+      "from": "es-infinity",
+      "to": "es-inf-paradox"
+    },
+    {
+      "from": "vi-monty",
+      "to": "pr-secretary"
+    },
+    {
+      "from": "es-clt",
+      "to": "math-taleb"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "es-games-train"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "es-good-dec"
+    },
+    {
+      "from": "es-poker-glossary",
+      "to": "st-var"
+    },
+    {
+      "from": "st-kelly",
+      "to": "math-taleb"
+    },
+    {
+      "from": "princ-state-value",
+      "to": "math-taleb"
+    },
+    {
+      "from": "es-gt-distance",
+      "to": "es-hidden-layer"
+    },
+    {
+      "from": "es-honest-signal",
+      "to": "math-maynard-smith"
+    },
+    {
+      "from": "es-hawks-doves",
+      "to": "es-focal-point"
+    },
+    {
+      "from": "es-evaluation",
+      "to": "es-confusion-matrix"
+    },
+    {
+      "from": "es-evaluation",
+      "to": "es-mechanism-design"
+    },
+    {
+      "from": "es-mechanism-design",
+      "to": "pr-prisoners"
+    },
+    {
+      "from": "es-log-wealth",
+      "to": "math-bernoulli"
+    },
+    {
+      "from": "es-reward-hacking",
+      "to": "es-explore-exploit"
+    },
+    {
+      "from": "es-calibration",
+      "to": "es-good-dec"
     }
   ]
 }
