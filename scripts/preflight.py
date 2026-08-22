@@ -733,9 +733,63 @@ def check_meta() -> None:
         print("   все совпадают с тем, что записал бы update_meta.py ✓")
 
 
-# ── 9 · итог ────────────────────────────────────────────────────────
+# ── 9 · проза против графа ──────────────────────────────────────────
+def check_prose_vs_graph() -> None:
+    """Ссылки внутри абзацев, не подтверждённые ребром.
+
+    Зеркало проверки 5 на уровень ниже: та сверяет секцию related,
+    эта — ссылки в самом тексте. Автор пишет «об этом — в таком-то»,
+    граф об этом не знает, и связь не видна ни на карте, ни в чужих
+    блоках «упоминается в».
+
+    Предупреждение, не блокер: не всякая ссылка в тексте обязана стать
+    ребром — решение авторское, а prose-edges.py делит находки на прозу
+    и p.fields именно для того, чтобы их разбирали по отдельности.
+
+    Разбор и белый список импортируются из prose-edges.py.
+    """
+    head("9 · проза против графа")
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "prose_edges", os.path.join(ROOT, "scripts", "prose-edges.py"))
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+    except Exception as exc:  # pragma: no cover
+        print(f"   prose-edges.py не загрузился ({exc}) — проверка пропущена.")
+        warnings.append("проверка 9 не отработала")
+        return
+
+    _, idx, pairs = mod.load()
+    found, unknown = mod.scan(idx, pairs, 0)
+    prose = [f for f in found if f[4] == "проза"]
+    fields = [f for f in found if f[4] == "поля"]
+    broken = [(rel, href) for rel, href, exists in unknown if not exists]
+
+    if broken:
+        show_list([f"{r}  →  {h}" for r, h in broken],
+                  f"   БЛОКЕР: битых ссылок в тексте — {len(broken)}:")
+        blockers.append(f"проза: битых ссылок {len(broken)}")
+
+    if not prose and not fields:
+        print("   ссылок в тексте без ребра: 0 ✓")
+        return
+    # scan() отдаёт (nid, target, rel, ctx, kind) — порядок именно такой
+    if prose:
+        rows = [f"{rel}  {a} → {b}" for a, b, rel, _, _ in sorted(prose, key=lambda x: x[2])]
+        show_list(rows, f"   в прозе без ребра: {len(prose)}")
+        warnings.append(f"проза без ребра: {len(prose)}")
+    if fields:
+        rows = [f"{rel}  {a} → {b}" for a, b, rel, _, _ in sorted(fields, key=lambda x: x[2])]
+        show_list(rows, f"   в p.fields без ребра: {len(fields)}")
+        warnings.append(f"поля без ребра: {len(fields)}")
+    print("   Разбор: python3 scripts/prose-edges.py")
+    print("   [предупреждение, не блокер: ребро тут — авторское решение]")
+
+
+# ── 10 · итог ────────────────────────────────────────────────────────
 def summary() -> int:
-    head("9 · итог")
+    head("10 · итог")
     if warnings:
         print(f"   предупреждений: {len(warnings)}")
         for w in warnings:
@@ -775,6 +829,7 @@ def main() -> int:
     check_generator_drift()
     check_graph_health()
     check_meta()
+    check_prose_vs_graph()
     return summary()
 
 
