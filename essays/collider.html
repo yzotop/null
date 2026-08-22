@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>лишний контроль — null/essays</title>
+<!-- meta: scripts/update_meta.py -->
+<link rel="canonical" href="https://yzotop.github.io/null/essays/collider.html">
+<link rel="icon" href="/null/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/null/favicon-180.png">
+<meta name="author" content="Александр Давыдов">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="null">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="лишний контроль">
+<meta property="og:url" content="https://yzotop.github.io/null/essays/collider.html">
+<meta property="og:image" content="https://yzotop.github.io/null/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- /meta -->
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .evo {
+    --paper: #f7f6f2; --ink: #1a1a1a; --dim: #8c8a83; --line: #dcd9d0; --accent: #c44a32;
+    --serif: 'IM Fell English', Georgia, serif; --sans: 'Inter', system-ui, sans-serif; --mono: 'JetBrains Mono', monospace;
+    width: 100%; max-width: 680px; margin-top: 8px; font-family: var(--sans); color: var(--ink); line-height: 1.72;
+  }
+  .evo .label { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: lowercase; color: var(--dim); margin-bottom: 18px; }
+  .evo h1 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 50px; line-height: 1.04; margin-bottom: 20px; }
+  .evo .lead { font-size: 19px; line-height: 1.55; color: #444; margin-bottom: 30px; font-style: italic; font-family: var(--serif); }
+  .evo h2 { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: lowercase; color: var(--accent); margin: 46px 0 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .evo p { font-size: 17px; margin-bottom: 18px; }
+  .evo p.first::first-letter { font-family: var(--serif); font-size: 62px; float: left; line-height: .82; padding: 6px 10px 0 0; color: var(--accent); }
+  .evo a { color: var(--accent); border-bottom: 1px solid rgba(196,74,50,.35); text-decoration: none; }
+  .evo a:hover { border-bottom-color: var(--accent); }
+  .evo sup { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+  .evo .margin { margin-top: 48px; border-top: 1px solid var(--ink); padding-top: 22px; }
+  .evo .margin .mh { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: lowercase; color: var(--dim); margin-bottom: 14px; }
+  .evo .margin .fn { font-size: 14px; color: #555; margin-bottom: 11px; line-height: 1.5; }
+  .evo .margin .fn .num { font-family: var(--mono); color: var(--accent); margin-right: 8px; }
+
+  .evo figure { margin: 30px 0; border: 1px solid var(--line); padding: 22px 20px 16px; }
+  .evo figure svg { display: block; width: 100%; height: auto; }
+  .evo figcaption { font-family: var(--mono); font-size: 11px; line-height: 1.6; color: var(--dim); margin-top: 14px; letter-spacing: .02em; }
+  .evo .fml { font-family: var(--mono); font-size: 14px; color: var(--ink); background: rgba(196,74,50,.05); border-left: 2px solid var(--accent); padding: 12px 14px; margin: 22px 0; line-height: 1.7; }
+  .evo .fml span { color: var(--dim); }
+  .evo table.rate { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 13px; margin: 22px 0; }
+  .evo table.rate th { text-align: left; font-weight: 500; color: var(--dim); border-bottom: 1px solid var(--ink); padding: 8px 10px 8px 0; letter-spacing: .06em; }
+  .evo table.rate td { border-bottom: 1px solid var(--line); padding: 8px 10px 8px 0; vertical-align: top; }
+  .evo table.rate td.a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / лишний контроль</div>
+
+<main class="container">
+<article>
+
+  <div class="evo">
+    <div class="label">эссе · §06 · аналитика · платформы · ~15 минут · 2026.08</div>
+    <h1>лишний контроль</h1>
+    <div class="lead">переменная в модели может убрать смещение, а может его создать — и по таблице не отличить</div>
+
+      <p class="first">Есть привычка, которая выглядит как осторожность и таковой не является. Считаешь эффект фичи на выручку, добавляешь в модель возраст, регион, платформу, стаж — на всякий случай, чтобы «учесть всё». Логика понятна: чем больше учтено, тем чище оценка. Логика неверна. Часть переменных действительно чистит оценку, часть съедает ровно тот эффект, который ты меряешь, а часть создаёт связь там, где её не было. В сводной таблице все три выглядят одинаково — колонка и колонка.</p>
+
+      <h2>почему вообще нужен контроль</h2>
+      <p class="first">Начнём с того, чего нельзя сделать никогда. Чтобы точно узнать эффект, нужно увидеть одного и того же человека в двух версиях мира: с фичей и без. Этого не бывает — наблюдается ровно один исход. Второй остаётся навсегда невидимым, и это называют основной проблемой каузального вывода<sup>[1]</sup>.</p>
+      <p>Всё остальное — способы подставить вместо невидимого исхода кого-то другого. <a href="ab-testing.html">Рандомизация</a> подставляет случайно выбранную половину и работает не потому, что группы одинаковы, а потому, что причина их различия — монета, и она ни с чем не связана. Когда монету бросить нельзя, приходится подбирать похожих, и вот тут появляется контроль: уравнять группы по тому, чем они изначально отличались.</p>
+      <p>Отсюда и ошибка. Контроль кажется универсальной процедурой «сделать группы сопоставимыми», а на деле он работает только для одной роли переменной из трёх.</p>
+
+      <h2>три роли, одинаковые с виду</h2>
+      <p class="first">Различие не в самой переменной, а в том, как она включена в устройство мира. Три случая исчерпывают почти всё.</p>
+
+      <figure>
+        <svg viewBox="0 0 660 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Три схемы: конфаундер, медиатор, коллайдер">
+          <g font-family="'JetBrains Mono', monospace" font-size="12" fill="#1a1a1a">
+            <text x="8" y="16" fill="#8c8a83">конфаундер</text>
+            <text x="14" y="66">X</text><text x="94" y="66">Y</text><text x="54" y="34">Z</text>
+            <line x1="52" y1="40" x2="24" y2="56" stroke="#c44a32" stroke-width="1.3"/>
+            <line x1="60" y1="40" x2="92" y2="56" stroke="#c44a32" stroke-width="1.3"/>
+            <text x="8" y="94" fill="#8c8a83">общая причина</text>
+            <text x="8" y="112" fill="#c44a32">контролировать</text>
+
+            <text x="228" y="16" fill="#8c8a83">медиатор</text>
+            <text x="228" y="66">X</text><text x="308" y="66">Y</text><text x="268" y="34">Z</text>
+            <line x1="240" y1="58" x2="266" y2="42" stroke="#c44a32" stroke-width="1.3"/>
+            <line x1="276" y1="42" x2="304" y2="58" stroke="#c44a32" stroke-width="1.3"/>
+            <text x="228" y="94" fill="#8c8a83">звено пути</text>
+            <text x="228" y="112" fill="#c44a32">не контролировать</text>
+
+            <text x="450" y="16" fill="#8c8a83">коллайдер</text>
+            <text x="450" y="42">X</text><text x="530" y="42">Y</text><text x="490" y="76">Z</text>
+            <line x1="460" y1="48" x2="486" y2="66" stroke="#c44a32" stroke-width="1.3"/>
+            <line x1="526" y1="48" x2="500" y2="66" stroke="#c44a32" stroke-width="1.3"/>
+            <text x="450" y="102" fill="#8c8a83">общее следствие</text>
+            <text x="450" y="120" fill="#c44a32">не контролировать</text>
+          </g>
+        </svg>
+        <figcaption>стрелка — направление влияния. одна и та же переменная Z занимает три разных положения, и решение о контроле в каждом своё. по данным положение не определяется.</figcaption>
+      </figure>
+
+      <p><strong>Конфаундер</strong> — общая причина обеих величин. Жара вызывает и продажи мороженого, и утопления; не учтя её, получишь связь там, где её нет. Этот случай <a href="causality.html">разобран отдельно</a> и известен всем. Его контролировать нужно.</p>
+      <p><strong>Медиатор</strong> — звено на пути от причины к следствию. Новый онбординг повышает выручку, потому что поднимает долю дошедших до первого заказа. Добавь «дошёл до первого заказа» в модель — и увидишь, что онбординг «не влияет на выручку». Правда: он влияет через то, что ты только что зафиксировал. Контроль медиатора не убирает смещение, а вычитает часть искомого эффекта.</p>
+      <p><strong>Коллайдер</strong> — общее следствие. Вот здесь начинается неинтуитивное.</p>
+
+      <h2>как контроль создаёт связь из ничего</h2>
+      <p class="first">Возьми две вещи, между которыми связи нет вовсе. Пусть талант и удача независимы, и пусть в фонд берут тех, у кого сумма таланта и удачи выше порога.</p>
+      <p>Теперь смотри только на принятых. Среди них появляется отрицательная связь: если человек прошёл при среднем таланте, значит ему повезло; если прошёл при среднем везении, значит талантлив. Ни талант не влияет на удачу, ни удача на талант — но внутри принятых они спорят за одно место в сумме.</p>
+      <p>Связи не было. Она возникла в тот момент, когда ты ограничил взгляд общим следствием. Отбор по коллайдеру — тот же контроль, только сделанный не в модели, а на входе в данные, и именно поэтому его не замечают<sup>[2]</sup>.</p>
+      <p>В продуктовой аналитике это происходит буквально каждый день. Меряешь, влияет ли фича на выручку, и ограничиваешь выборку теми, кто сделал хотя бы одну покупку, — «чтобы убрать шум». Покупка — следствие и фичи, и платёжеспособности. Обусловившись на неё, ты связал фичу с платёжеспособностью и получил эффект, которого нет. Или наоборот, стёр настоящий.</p>
+      <p>То же с любым «активные пользователи», «дошедшие до конца воронки», «оставившие отзыв». Каждый такой фильтр — обусловливание на следствии, и каждый может породить корреляцию из воздуха.</p>
+
+      <h2>чем это опасно на практике</h2>
+      <p class="first">Свести к таблице.</p>
+      <table class="rate">
+        <tr><th>роль Z</th><th>что делает контроль</th><th>решение</th></tr>
+        <tr><td>конфаундер</td><td>убирает смещение</td><td class="a">контролировать</td></tr>
+        <tr><td>медиатор</td><td>вычитает часть эффекта</td><td class="a">не контролировать</td></tr>
+        <tr><td>коллайдер</td><td>создаёт ложную связь</td><td class="a">не контролировать</td></tr>
+        <tr><td>следствие Y</td><td>стирает эффект целиком</td><td class="a">не контролировать</td></tr>
+        <tr><td>ни при чём</td><td>ничего, кроме потери точности</td><td class="a">можно опустить</td></tr>
+      </table>
+      <p>Отсюда главное следствие. Правило «добавь побольше контролей, так безопаснее» ложно не в деталях, а в основании: две трети возможных ролей делают оценку хуже. Осторожность здесь состоит не в количестве переменных, а в способности назвать роль каждой.</p>
+      <p>И проверить это по данным нельзя. Схема с конфаундером и схема с коллайдером дают разные истинные ответы при <strong>одинаковых</strong> таблицах корреляций. Направление стрелок в данных не записано — оно приходит из знания о том, как устроен предмет. Формальный критерий, отделяющий допустимые наборы контролей от недопустимых, называют критерием заднего входа<sup>[3]</sup>, и он оперирует именно стрелками, а не числами.</p>
+
+      <h2>и что тогда делать с Симпсоном</h2>
+      <p class="first">Теперь можно вернуться к <a href="simpson.html">парадоксу Симпсона</a> и договорить то, что обычно остаётся недоговорённым.</p>
+      <p>Совет «всегда сегментируй» звучит разумно и в общем случае неверен. Разбиение по подгруппам — это и есть контроль, и оно подчиняется тем же правилам. Разбил по конфаундеру — увидел правду. Разбил по медиатору или коллайдеру — испортил оценку ровно тем же действием.</p>
+      <p>В примере с камнями в почках разбивать нужно: размер камня — причина и выбора метода, и исхода, чистый конфаундер. А если бы подгруппой оказался, скажем, побочный эффект лечения, разбивка по нему исказила бы всё. Таблицы в обоих случаях выглядят одинаково парадоксально.</p>
+      <p>Вот почему у парадокса Симпсона нет статистического решения. Данные не сообщают, какой ответ верен — агрегированный или разбитый. Ответ следует из устройства предмета, и любая попытка получить его из одних чисел упирается в то, что обе схемы порождают одну и ту же таблицу.</p>
+
+      <h2>практика</h2>
+      <p class="first">Правило, заменяющее «добавь на всякий случай», простое и неудобное: перед тем как включить переменную, назови её роль вслух.</p>
+      <p>Влияет ли она на обе величины сразу — тогда это конфаундер, включай. Лежит ли она между причиной и следствием — тогда медиатор, оставь снаружи или считай отдельно, если тебя интересует именно механизм. Не является ли она следствием обеих — тогда коллайдер, руки прочь. Не знаешь — значит не знаешь, включаешь ли ты поправку или ошибку, и это само по себе результат, который стоит записать.</p>
+      <p>Тот же вопрос задай каждому фильтру выборки. «Оставили только активных» — почему они активны, не связано ли это с тем, что меряешь. Фильтры кажутся гигиеной данных, а работают как контроль, только молча.</p>
+      <p>И последнее, ради чего всё это. Рандомизация ценна не тем, что даёт большие выборки или красивые интервалы. Она ценна тем, что снимает вопрос о ролях: когда причина распределения — монета, ни конфаундеров, ни коллайдеров на входе нет по построению. Всё, что делает наблюдательный анализ, — пытается восстановить это свойство рассуждением. Иногда получается. Но платой всегда служит допущение, которое нельзя проверить теми же данными, — и честный анализ отличается от нечестного тем, что называет это допущение прямо.</p>
+
+    <div class="margin">
+      <div class="mh">поля</div>
+      <div class="fn"><span class="num">[1]</span>Формулировка «основная проблема каузального вывода» принадлежит Полу Холланду, «Statistics and Causal Inference» (JASA, 1986), в рамках подхода потенциальных исходов Неймана—Рубина: у каждого объекта есть исход при воздействии и без него, наблюдается ровно один.</div>
+      <div class="fn"><span class="num">[2]</span>Смещение отбора через общее следствие описал Джозеф Берксон (1946) на больничных данных: две независимые болезни оказываются связанными среди госпитализированных, потому что каждая повышает шанс попасть в больницу.</div>
+      <div class="fn"><span class="num">[3]</span>Критерий заднего входа (back-door criterion) — Джудея Пёрл, «Causality» (2000): набор переменных допустим для контроля, если он перекрывает все пути, идущие в причину, и не открывает путей через коллайдеры.</div>
+      <div class="fn"><span class="num">[4]</span>Пятая строка таблицы — переменная, не связанная ни с чем: её включение не смещает оценку, но расходует степени свободы и расширяет интервал. Безвредна для правильности, не бесплатна для точности.</div>
+    </div>
+  </div>
+
+  <a class="xref diad" href="simpson.html"><span class="xref-label">// парадокс Симпсона</span><span class="xref-title">Почему у парадокса нет статистического решения — только причинное.</span><span class="xref-arrow">→</span></a>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="causality.html">корреляция — не причинность →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="simpson.html">парадокс Симпсона →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">почему p &lt; 0.05 — плохой порог →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="evaluation-as-experiment.html">оценка как эксперимент →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="forking-paths.html">сад расходящихся троп →</a></div>
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="../objects/statistics/biases/survivorship-bias.html">ошибка выжившего →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="effective-sample.html">эффективная выборка →</a></div>
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="../objects/statistics/measures/correlation.html">корреляция →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/causality.html">корреляция — не причинность →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/simpson.html">парадокс Симпсона →</a></div>
+</div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/collider.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+  <span class="footer-by">Александр Давыдов · <a href="https://davydov.my/" rel="noopener">davydov.my</a></span>
+</footer>
+
+</body>
+</html>
