@@ -438,17 +438,6 @@ def check_backlinks() -> None:
 
 
 # ── 5 · related против исходящих рёбер ──────────────────────────────
-# Ссылки в related, ведущие не на узел графа. Это разделы и карта —
-# законные адресаты, но подтвердить ребром их нечем: узла нет.
-# Список явный, чтобы проверка сходилась в ноль, а не в «семь всегда».
-RELATED_NON_NODE = {
-    "objects/numbers/constants/",   # раздел констант
-    "music",                        # раздел музыки
-    "visuals",                      # раздел визуалов
-    "map.html",                     # карта связей
-}
-
-
 def check_related_vs_out() -> None:
     """related ⊆ исходящие рёбра.
 
@@ -458,71 +447,54 @@ def check_related_vs_out() -> None:
                           нет на карте и не будет в чужих backlinks);
       ребро без ссылки  — норма (секция курируется автором).
 
-    Ключ — пара (узел, полный href): #pavlov и #generous-tit-for-tat
-    ведут на один файл, но это разные адресаты, и склеивать их нельзя.
-
-    Предупреждение, не блокер: долг накоплен и разбирается порциями.
+    Правило отбора и белый список не дублируются: и то и другое
+    импортируется из scripts/related-edges.py. Придержанное по правилу
+    считается отдельной строкой — это принятое решение, а не долг,
+    и основное число обязано сходиться в ноль. Проверка, которая
+    навсегда застыла на ненулевом остатке, перестаёт читаться.
     """
     head("5 · related против исходящих рёбер")
-    with open(os.path.join(ROOT, "data", "links.json"), encoding="utf-8") as f:
-        d = json.load(f)
-    by_url = {n["url"]: n["id"] for n in d["nodes"]}
-    out: dict[str, set[str]] = {}
-    for e in d["edges"]:
-        out.setdefault(e["from"], set()).add(e["to"])
-    rel_re = re.compile(r'<section class="related">.*?</section>', re.S)
-    link_re = re.compile(r'<a href="([^"]+)">(.*?)\s*→</a>')
+    try:
+        import importlib.util
+        # Имя файла с дефисом не импортируется обычным import.
+        spec = importlib.util.spec_from_file_location(
+            "related_edges", os.path.join(ROOT, "scripts", "related-edges.py"))
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+    except Exception as exc:  # pragma: no cover
+        print(f"   related-edges.py не загрузился ({exc}) — проверка пропущена.")
+        warnings.append("проверка 5 не отработала")
+        return
 
-    missing, stray = [], []
-    for n in d["nodes"]:
-        url = n.get("url", "")
-        if not url.startswith(SITE_PREFIX):
-            continue
-        rel = url[len(SITE_PREFIX):]
-        path = os.path.join(ROOT, rel)
-        if not os.path.isfile(path):
-            continue
-        with open(path, encoding="utf-8") as f:
-            m = rel_re.search(f.read())
-        if not m:
-            continue
-        base = os.path.dirname(rel)
-        seen = set()
-        for href, label in link_re.findall(m.group(0)):
-            p = (href[len(SITE_PREFIX):] if href.startswith(SITE_PREFIX)
-                 else os.path.normpath(os.path.join(base, href)))
-            p = p.split("#")[0]
-            target = by_url.get(SITE_PREFIX + p)
-            if target is None:
-                if p not in RELATED_NON_NODE:
-                    stray.append((rel, href))
-                continue
-            if (target, href) in seen:
-                continue
-            seen.add((target, href))
-            if target not in out.get(n["id"], set()):
-                missing.append((rel, n["id"], target, label))
+    cand, stray, g = mod.scan()
+    take, held, _ = mod.classify(cand, g["by_id"], mod.MIN_FREQ_DEFAULT)
 
     if stray:
         print(f"   ссылки не на узел и не в белом списке — {len(stray)}:")
-        for r, h in stray[:LIST_CAP]:
-            print(f"      {r}  →  {h}")
-        if len(stray) > LIST_CAP:
+        for rel, href in (stray if VERBOSE else stray[:LIST_CAP]):
+            print(f"      {rel}  →  {href}")
+        if not VERBOSE and len(stray) > LIST_CAP:
             print(f"      … и ещё {len(stray) - LIST_CAP} — полный список: --verbose")
         warnings.append(f"related: ссылки не на узел: {len(stray)}")
     else:
         print("   ссылки не на узел: все в белом списке ✓")
 
-    if not missing:
-        print("   каждая ссылка в related подтверждена ребром ✓")
+    if held:
+        pairs = mod.held_pairs(held)
+        print(f"   придержано по правилу: {len(held)} рёбер в {len(pairs)} парах")
+        print("      цель широкая, подпись равна названию узла без пояснения")
+        print("      список с частотой и страницами — held.txt")
+        if VERBOSE:
+            for (t, lab), pages in sorted(pairs.items(), key=lambda x: -len(x[1])):
+                print(f"      ×{len(pages):<3} {t:20} «{lab}»")
+
+    if not take:
+        print("   ссылок без ребра, не покрытых правилом: 0 ✓")
         return
-    pages = {x[0] for x in missing}
-    rows = [f"{r}  {a} → {b}  «{lab[:34]}»" for r, a, b, lab in sorted(missing)]
-    show_list(rows, f"   ссылок без ребра: {len(missing)} на {len(pages)} страницах:")
-    print("   Страница утверждает связь, которой нет на карте.")
-    print("   Обратное (ребро без ссылки) — норма: related курируется.")
-    print("   [предупреждение, не блокер]")
-    warnings.append(f"related без ребра: {len(missing)}")
+    rows = [f"{r}  {a} → {b}  «{lab[:34]}»" for r, a, b, _, lab in sorted(take)]
+    show_list(rows, f"   ссылок без ребра: {len(take)} — новые, правилом не покрыты:")
+    print("   Лечится прогоном: python3 scripts/related-edges.py --apply")
+    warnings.append(f"related без ребра: {len(take)}")
 
 
 # ── 6 · расхождение с генератором backlinks ─────────────────────────
