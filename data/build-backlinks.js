@@ -74,7 +74,7 @@ ${links}
 </section>`;
 };
 
-let updated = 0, skipped = 0, missing = 0;
+let updated = 0, noIncoming = 0, noAnchor = 0, missing = 0;
 
 for (const n of data.nodes) {
   const fsPath = urlToFs(n.url);
@@ -83,9 +83,12 @@ for (const n of data.nodes) {
     missing++;
     continue;
   }
+  // Нет входящих рёбер — показывать нечего, файл не открывается вовсе.
+  // Следствие: выписанный руками блок у такого узла не будет ни обновлён,
+  // ни снят. Это ловит scripts/preflight.py, здесь только счёт.
   const block = renderBacklinks(incoming[n.id]);
   if (!block) {
-    skipped++;
+    noIncoming++;
     continue;
   }
 
@@ -99,8 +102,11 @@ for (const n of data.nodes) {
   // Match: <section class="related"> ... </section>
   const relatedRe = /(<section class="related">[\s\S]*?<\/section>)/;
   if (!relatedRe.test(html)) {
-    console.warn(`[skip] no related section in ${n.url}`);
-    skipped++;
+    // Вставлять блок некуда: якоря нет. Это не «делать нечего» —
+    // у узла есть входящие рёбра, и они не будут показаны на странице.
+    console.warn(`[skip] no related section in ${n.url}` +
+      ` — ${incoming[n.id].size} входящих не будут показаны`);
+    noAnchor++;
     continue;
   }
   html = html.replace(relatedRe, (m) => `${m}\n\n${block}`);
@@ -109,4 +115,13 @@ for (const n of data.nodes) {
   updated++;
 }
 
-console.log(`done: ${updated} updated, ${skipped} skipped, ${missing} missing.`);
+console.log(
+  `done: ${updated} updated, ${noIncoming} без входящих, ` +
+  `${noAnchor} без якоря, ${missing} missing.`
+);
+if (noAnchor > 0) {
+  console.warn(
+    `ВНИМАНИЕ: ${noAnchor} страниц с входящими рёбрами не получили блок — ` +
+    `на них нет <section class="related">, вставлять некуда.`
+  );
+}
