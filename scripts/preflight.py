@@ -669,9 +669,73 @@ def check_graph_health() -> int:
     return p.returncode
 
 
-# ── 8 · итог ────────────────────────────────────────────────────────
+# ── 8 · мета-блоки эссе ─────────────────────────────────────────────
+def check_meta() -> None:
+    """Гонялся ли update_meta.py.
+
+    Скрипт надёжен сам по себе: валидирует все файлы до записи и падает
+    с точным диагнозом при кривых маркерах или заголовке. Но его результат
+    не сверял никто — страница, добавленная без прогона, тихо остаётся
+    без canonical и og-разметки. В браузере это не видно, в выдаче — да.
+
+    Правила импортируются из update_meta.py: своей копии meta_block()
+    тут быть не должно, иначе разойдутся именно они.
+    """
+    head("8 · мета-блоки эссе")
+    try:
+        import update_meta as um
+    except Exception as exc:  # pragma: no cover
+        print(f"   update_meta не импортировался ({exc}) — проверка пропущена.")
+        warnings.append("мета-блоки не сверены")
+        return
+
+    src = os.path.join(ROOT, um.TARGET_DIR)
+    files = []
+    for fn in sorted(os.listdir(src)):
+        if not fn.endswith(".html") or fn == "index.html":
+            continue
+        with open(os.path.join(src, fn), encoding="utf-8") as f:
+            text = f.read()
+        if um.is_redirect(text):
+            continue
+        files.append((f"{um.TARGET_DIR}/{fn}", text))
+
+    # ── якорь не найден: структура файла не та, что скрипт ожидает ──
+    broken = []
+    for rel, text in files:
+        for e in um.validate(rel, text):
+            broken.append(f"{rel}: {e}")
+    if broken:
+        n = len({b.split(":")[0] for b in broken})
+        show_list(broken, f"   БЛОКЕР: страниц с непредвиденной структурой — {n}:")
+        print("   update_meta.py на таком дереве не запишет ничего.")
+        blockers.append("update_meta: структура страниц не та")
+        return
+
+    # ── результат отстал: скрипт не гонялся ──
+    stale = []
+    for rel, text in files:
+        title = um.TITLE_RE.search(text).group(1).strip()
+        topic = title[: -len(um.TITLE_SUFFIX)]
+        block = um.meta_block(topic, um.to_loc(rel))
+        if um.BLOCK_RE.search(text):
+            if um.BLOCK_RE.sub(lambda _: block, text, count=1) != text:
+                stale.append(f"{rel} — блок устарел")
+        else:
+            stale.append(f"{rel} — блока нет")
+
+    print(f"   эссе с мета-блоком: {len(files)}")
+    if stale:
+        show_list(stale, f"   БЛОКЕР: страниц не в актуальном состоянии — {len(stale)}:")
+        print("   Лечится прогоном: python3 scripts/update_meta.py")
+        blockers.append(f"update_meta: отстало страниц {len(stale)}")
+    else:
+        print("   все совпадают с тем, что записал бы update_meta.py ✓")
+
+
+# ── 9 · итог ────────────────────────────────────────────────────────
 def summary() -> int:
-    head("8 · итог")
+    head("9 · итог")
     if warnings:
         print(f"   предупреждений: {len(warnings)}")
         for w in warnings:
@@ -710,6 +774,7 @@ def main() -> int:
     check_related_vs_out()
     check_generator_drift()
     check_graph_health()
+    check_meta()
     return summary()
 
 
