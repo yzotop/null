@@ -2204,6 +2204,13 @@
       "title": "эффективная выборка",
       "url": "/null/essays/effective-sample.html",
       "glyph": "¶"
+    },
+    {
+      "id": "es-entropy",
+      "type": "essay",
+      "title": "энтропия",
+      "url": "/null/essays/entropy.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -10230,6 +10237,82 @@
     {
       "from": "es-golden-set",
       "to": "es-effective-sample"
+    },
+    {
+      "from": "es-entropy",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-entropy",
+      "to": "es-kolmogorov"
+    },
+    {
+      "from": "es-entropy",
+      "to": "es-effective-sample"
+    },
+    {
+      "from": "es-entropy",
+      "to": "es-golden-set"
+    },
+    {
+      "from": "es-entropy",
+      "to": "es-llm-eval"
+    },
+    {
+      "from": "es-entropy",
+      "to": "es-martingale"
+    },
+    {
+      "from": "es-entropy",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-entropy",
+      "to": "es-pseudorandom"
+    },
+    {
+      "from": "es-entropy",
+      "to": "es-evaluation"
+    },
+    {
+      "from": "es-entropy",
+      "to": "es-markov"
+    },
+    {
+      "from": "es-entropy",
+      "to": "es-two-alphabets"
+    },
+    {
+      "from": "es-entropy",
+      "to": "math-kolmogorov"
+    },
+    {
+      "from": "es-entropy",
+      "to": "math-turing"
+    },
+    {
+      "from": "es-entropy",
+      "to": "st-bleu"
+    },
+    {
+      "from": "es-entropy",
+      "to": "st-condprob"
+    },
+    {
+      "from": "es-entropy",
+      "to": "op-sum"
+    },
+    {
+      "from": "es-bayes-faces",
+      "to": "es-entropy"
+    },
+    {
+      "from": "es-kolmogorov",
+      "to": "es-entropy"
+    },
+    {
+      "from": "es-llm-eval",
+      "to": "es-entropy"
     }
   ]
 }
