@@ -31,7 +31,8 @@ SITE_PREFIX = "/null/"
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
-    from update_counts import count_pages  # noqa: E402
+    from update_counts import (  # noqa: E402
+        count_pages, collect_counts, build_rules, plural)
     COUNT_PAGES_OK = True
 except Exception as exc:  # pragma: no cover - диагностика, не логика
     COUNT_PAGES_OK = False
@@ -302,7 +303,8 @@ def check_lastmod_fresh() -> None:
 
 # ── 3 · согласованность essays/index.html ───────────────────────────
 def check_essay_index() -> None:
-    head("3 · счётчики essays/index.html")
+    head("3 · счётчики на страницах")
+    print("   ── essays/index.html: правятся руками ──")
     path = os.path.join(ROOT, "essays", "index.html")
     with open(path, encoding="utf-8") as f:
         s = f.read()
@@ -346,6 +348,54 @@ def check_essay_index() -> None:
         print("   в essays/. Записи, ведущие в objects/, в счётчик не входят —")
         print("   если расхождение равно их числу, поправьте счётчик секции.")
         blockers.append("essays/index.html: сумма счётчиков ≠ числу эссе")
+    check_script_counts()
+
+
+def check_script_counts() -> None:
+    """Позиции, за которые отвечает update_counts.py.
+
+    Расхождение значит одно: скрипт не гонялся после правки, и страница
+    показывает вчерашнее число. Именно так index.html и man.html
+    продержали 1710 рёбер при 1968 в графе.
+
+    Правила и подсчёт импортируются из update_counts.py — второй
+    реализации быть не должно, иначе разойдутся именно они.
+    """
+    print("   ── index.html и man.html: считает update_counts.py ──")
+    if not COUNT_PAGES_OK:
+        print("   update_counts не импортировался — позиции не сверены.")
+        warnings.append("позиции update_counts не сверены")
+        return
+    counts = collect_counts()
+    files: dict[str, str] = {}
+    stale, missing = [], []
+    for fname, label, pattern, key, forms in build_rules(counts):
+        if fname not in files:
+            with open(os.path.join(ROOT, fname), encoding="utf-8") as f:
+                files[fname] = f.read()
+        m = re.compile(pattern, re.S).search(files[fname])
+        if not m:
+            missing.append(label)
+            continue
+        was, now = int(m.group(2)), counts[key]
+        tail_was = m.group(3)
+        tail_now = (" " + plural(now, forms)) if forms else tail_was
+        if was != now or tail_was != tail_now:
+            stale.append((label, f"{was}{tail_was}", f"{now}{tail_now}"))
+
+    if missing:
+        print(f"   БЛОКЕР: шаблонов не найдено — {len(missing)}: {', '.join(missing)}")
+        blockers.append("update_counts: шаблоны не найдены")
+    if stale:
+        print(f"   БЛОКЕР: позиций отстало — {len(stale)}:")
+        for label, was, now in (stale if VERBOSE else stale[:LIST_CAP]):
+            print(f"      {label:<22} {was} → должно быть {now}")
+        if not VERBOSE and len(stale) > LIST_CAP:
+            print(f"      … и ещё {len(stale) - LIST_CAP} — полный список: --verbose")
+        print("   Лечится прогоном: python3 scripts/update_counts.py")
+        blockers.append(f"update_counts: отстало позиций {len(stale)}")
+    if not stale and not missing:
+        print(f"   все {len(build_rules(counts))} позиций совпадают с фактом ✓")
 
 
 # ── 4 · блок backlinks против графа ─────────────────────────────────
