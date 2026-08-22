@@ -13,6 +13,11 @@ Idempotent: same commit history in, byte-identical file out.
 mtime. mtime is wrong after a fresh clone, and a scripted pass over many
 files would stamp them all with the day the script ran.
 
+Consequence: a page that is not committed yet has no date at all, and an
+entry without <lastmod> is a defect that already shipped once. So the
+script refuses to write while any page lacks a date and exits non-zero.
+Run it AFTER the commit, then amend — never before.
+
 Scope: null is served from https://yzotop.github.io/null/ — a project
 page, not the domain root. A sitemap at /null/sitemap.xml is only valid
 for URLs under /null/, so every generated <loc> is asserted to stay
@@ -145,6 +150,10 @@ def main() -> int:
     print(f"URL в карте:       {len(locs)}")
     if no_date:
         print(f"без даты в git:    {len(no_date)} — {', '.join(no_date[:5])}")
+        print("ОШИБКА: карта была бы неполной — у этих страниц нет коммита,")
+        print("        а <lastmod> берётся из git. Закоммитьте их и прогоните")
+        print("        скрипт снова. Ничего не записано.")
+        return 1
 
     out_path = os.path.join(ROOT, "sitemap.xml")
     old = ""

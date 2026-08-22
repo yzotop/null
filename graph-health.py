@@ -53,6 +53,18 @@ if comps != 1: problems += 1
 recip = sum(1 for a, b in pairs if (b, a) in pairs)
 print(f"взаимность:           {recip}/{len(pairs)}  ({100*recip//max(len(pairs),1)}%)")
 
+# 4b. узлы, на которые никто не ссылается (мягкое предупреждение)
+# build-backlinks.js такой узел пропускает целиком: блок "упоминается в"
+# не появится, а выписанный руками останется неподтверждённым графом.
+indeg = defaultdict(int); outdeg = defaultdict(int)
+for a, b in pairs:
+    if a in N and b in N:
+        outdeg[a] += 1; indeg[b] += 1
+noinc = sorted(i for i in N if indeg[i] == 0 and outdeg[i] > 0)
+print(f"нет входящих рёбер:   {len(noinc)}  [ручная триажировка, не блокер]")
+for i in noinc:
+    print(f"   {N[i]['type']:<10} {i:<20} исходящих: {outdeg[i]}")
+
 # 5. degree-1 (мягкое предупреждение, не критично)
 deg1 = sorted(i for i in N if len(und[i]) == 1)
 print(f"на одном ребре (deg=1): {len(deg1)}  [ручная триажировка, не блокер]")
