@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>мартингал — null/essays</title>
+<!-- meta: scripts/update_meta.py -->
+<link rel="canonical" href="https://yzotop.github.io/null/essays/martingale.html">
+<link rel="icon" href="/null/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/null/favicon-180.png">
+<meta name="author" content="Александр Давыдов">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="null">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="мартингал">
+<meta property="og:url" content="https://yzotop.github.io/null/essays/martingale.html">
+<meta property="og:image" content="https://yzotop.github.io/null/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- /meta -->
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .evo {
+    --paper: #f7f6f2; --ink: #1a1a1a; --dim: #8c8a83; --line: #dcd9d0; --accent: #c44a32;
+    --serif: 'IM Fell English', Georgia, serif; --sans: 'Inter', system-ui, sans-serif; --mono: 'JetBrains Mono', monospace;
+    width: 100%; max-width: 680px; margin-top: 8px; font-family: var(--sans); color: var(--ink); line-height: 1.72;
+  }
+  .evo .label { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: lowercase; color: var(--dim); margin-bottom: 18px; }
+  .evo h1 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 50px; line-height: 1.04; margin-bottom: 20px; }
+  .evo h1 em { color: var(--accent); }
+  .evo .lead { font-size: 19px; line-height: 1.55; color: #444; margin-bottom: 30px; font-style: italic; font-family: var(--serif); }
+  .evo h2 { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: lowercase; color: var(--accent); margin: 46px 0 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .evo p { font-size: 17px; margin-bottom: 18px; }
+  .evo p.first::first-letter { font-family: var(--serif); font-size: 62px; float: left; line-height: .82; padding: 6px 10px 0 0; color: var(--accent); }
+  .evo a { color: var(--accent); border-bottom: 1px solid rgba(196,74,50,.35); text-decoration: none; }
+  .evo a:hover { border-bottom-color: var(--accent); }
+  .evo sup { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+  .evo .margin { margin-top: 48px; border-top: 1px solid var(--ink); padding-top: 22px; }
+  .evo .margin .mh { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: lowercase; color: var(--dim); margin-bottom: 14px; }
+  .evo .margin .fn { font-size: 14px; color: #555; margin-bottom: 11px; line-height: 1.5; }
+  .evo .margin .fn .num { font-family: var(--mono); color: var(--accent); margin-right: 8px; }
+  .evo .fields { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 8px; }
+
+  .evo figure { margin: 30px 0; border: 1px solid var(--line); padding: 22px 20px 16px; }
+  .evo figure svg { display: block; width: 100%; height: auto; }
+  .evo figcaption { font-family: var(--mono); font-size: 11px; line-height: 1.6; color: var(--dim); margin-top: 14px; letter-spacing: .02em; }
+  .evo .fml { font-family: var(--mono); font-size: 14px; color: var(--ink); background: rgba(196,74,50,.05); border-left: 2px solid var(--accent); padding: 12px 14px; margin: 22px 0; line-height: 1.7; }
+  .evo .fml span { color: var(--dim); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / мартингал</div>
+
+<main class="container">
+<article>
+
+  <div class="evo">
+    <div class="label">эссе · §06 · аналитика · платформы · ~17 минут · 2026.08</div>
+    <h1>мартингал</h1>
+    <div class="lead">нельзя поставить опыт, который заведомо тебя укрепит</div>
+
+      <p class="first">Есть простая проверка на честность мысли, и почти никто её не проходит. Прежде чем посмотреть на данные, спроси себя: куда меня сдвинет то, что я увижу? Если ты знаешь ответ — ты не ставишь опыт, ты ищешь подтверждения. Настоящая проверка отличается тем, что перед ней ты не знаешь направления. И это не совет по гигиене ума, а теорема: у честного обновления ожидаемый сдвиг равен нулю. Не мал, не почти — ровно нулю. Отсюда растёт вся эта заметка, и отсюда же выясняется, почему подглядывание в незаконченный тест ворует значимость, а знание при этом всё-таки копится.</p>
+
+      <h2>пятьдесят из тысячи</h2>
+      <p class="first">Начнём со счёта, потому что здесь всё видно руками. Коллега утром прошёл мимо и не поздоровался. Обиделся? Дуется он редко — пусть один день из двадцати. Возьми тысячу утр: обиженных пятьдесят, обычных девятьсот пятьдесят. Обиженный проходит мимо почти всегда, девять раз из десяти; обычный тоже проходит, но реже — два раза из десяти, задумался или невыспался.</p>
+      <p>Считай пачки. Прошёл мимо — таких утр 45 из обиженных и 190 из обычных, всего 235; обиженных среди них 45, то есть 19%. Поздоровался — 5 из обиженных и 760 из обычных, всего 765; обиженных среди них пятеро, то есть 0.65%.</p>
+      <p>Теперь фокус. Сложи оба исхода с их весами: 235 утр по 19% и 765 утр по 0.65%. Получишь 45 плюс 5 из тысячи — ровно пятьдесят. Твой исходный априор, ни на волос не сдвинувшийся. Он и не мог сдвинуться: обе комнаты собраны из тех же самых утр, просто пересчитанных по другому признаку. Знаменатели сокращаются, остаётся та же дробь.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Априор 5% расщепляется на два апостериора — 19% и 0.65% — и остаётся их средневзвешенным">
+          <g font-family="'JetBrains Mono', monospace" font-size="12">
+            <line x1="120" y1="110" x2="330" y2="52" stroke="#c44a32" stroke-width="1.4"/>
+            <line x1="120" y1="110" x2="330" y2="168" stroke="#c44a32" stroke-width="1.4"/>
+            <circle cx="112" cy="110" r="5" fill="#c44a32"/>
+            <text x="18" y="98" fill="#1a1a1a">априор</text>
+            <text x="18" y="116" fill="#c44a32">5%</text>
+            <text x="30" y="134" fill="#8c8a83">1000 утр</text>
+            <text x="192" y="66" fill="#8c8a83">прошёл мимо</text>
+            <text x="192" y="82" fill="#8c8a83">вес 235</text>
+            <text x="192" y="152" fill="#8c8a83">поздоровался</text>
+            <text x="192" y="168" fill="#8c8a83">вес 765</text>
+            <circle cx="338" cy="50" r="5" fill="#c44a32"/>
+            <text x="356" y="46" fill="#1a1a1a">апостериор</text>
+            <text x="356" y="64" fill="#c44a32">19%</text>
+            <circle cx="338" cy="170" r="5" fill="#c44a32"/>
+            <text x="356" y="166" fill="#1a1a1a">апостериор</text>
+            <text x="356" y="184" fill="#c44a32">0.65%</text>
+            <line x1="500" y1="50" x2="500" y2="170" stroke="#dcd9d0" stroke-width="1"/>
+            <line x1="494" y1="110" x2="580" y2="110" stroke="#c44a32" stroke-width="1.4" stroke-dasharray="3 3"/>
+            <text x="512" y="106" fill="#8c8a83">центр тяжести</text>
+            <text x="512" y="124" fill="#c44a32">5%</text>
+          </g>
+        </svg>
+        <figcaption>априор не уточняется данными — он расщепляется на возможные апостериоры и остаётся их средневзвешенным. вес ветки равен вероятности увидеть именно этот исход.</figcaption>
+      </figure>
+
+      <h2>закон полного ожидания</h2>
+      <p class="first">У этого сокращения есть имя. Если усреднить апостериоры по всем исходам, которые могли случиться, получится априор — тождество, известное как закон полного ожидания<sup>[1]</sup>. Записывается неприлично коротко.</p>
+      <div class="fml">E[ P(H | E) ] = P(H)<br><span>среднее по всем возможным E — то, во что ты верил до всякого E</span></div>
+      <p>Читать это стоит не как формулу, а как смену картинки. Кажется, что данные уточняют априор: было грубое пять процентов, стало честное девятнадцать. На деле данные ничего не уточняют. Они выбирают ветку. Априор уже содержит в себе оба ответа вместе с их весами, как бухгалтерская сумма содержит слагаемые, — наблюдение лишь сообщает, в котором из слагаемых ты оказался.</p>
+      <p>Отсюда ответ на вопрос, законно ли сравнивать пять процентов с девятнадцатью, раз первое утверждение будто бы общее, а второе частное. Оба одинаково частные. Оба меряют одно: какую долю живых вариантов занимает гипотеза. Меняется не величина, меняется объём знания, из которого смотришь. Числа лежат на одной оси именно потому, что одно есть среднее другого.</p>
+
+      <h2>честная игра</h2>
+      <p class="first">Величину, ожидание которой завтра равно её значению сегодня, называют мартингалом. Термин ввёл Жан Виль в 1939 году, разбирая, что вообще значит «случайность»<sup>[2]</sup>; слово он взял у игроков — так звалась разорительная система удвоения ставки после каждого проигрыша. Джозеф Дуб через полтора десятилетия построил на этом целую теорию, и с тех пор мартингал — математическое имя честной игры<sup>[3]</sup>.</p>
+      <p>Твоя вера — мартингал. Не метафорически: буквально, по построению, ровно из того сокращения знаменателей. Сегодня пять процентов; завтра будет либо девятнадцать, либо две трети процента; среднее завтрашнего — сегодняшнее. Послезавтра то же самое, только стартовать будешь с новой точки. Девятнадцать процентов — уже полноценный априор, и он тоже центр тяжести своих будущих веток.</p>
+      <p>Заметь, что тут нет памяти. Пришёл ты к девятнадцати процентам одной сильной уликой или тремя слабыми — дальше всё считается одинаково, история сворачивается в число. Тот же принцип, что держит <a href="markov-chains.html">цепи Маркова</a>: следующее состояние зависит от текущего, а не от дороги к нему.</p>
+      <p>И вот главное следствие, ради которого всё затевалось. Раз ожидание завтрашней веры равно сегодняшней, ты <strong>не можешь знать заранее, куда тебя сдвинут данные</strong>. Не «трудно догадаться» — не можешь в принципе. Если бы знал, что улика поднимет уверенность, ты обязан был бы поднять её уже сейчас, не дожидаясь улики; а тогда твой сегодняшний априор был бы другим, и всё сошлось бы снова. Ожидаемый сдвиг равен нулю не потому, что мир добр, а потому, что иначе арифметика не сходится.</p>
+
+      <h2>у улики есть обратная сторона</h2>
+      <p class="first">Теперь переведи это в рабочее правило. Если наблюдение при попадании поднимает твою уверенность, его отсутствие обязано её опустить. Две комнаты, дающие в сумме пять процентов, не могут обе давать больше пяти — это запрещено сложением, а не хорошим тоном.</p>
+      <p>Значит, теста, любой исход которого укрепляет твою версию, не существует. Такой замысел не «нечестен» — он невыполним, как невыполним вечный двигатель: нельзя построить процесс, у которого среднее строго больше собственного среднего. И когда кажется, что ты такой тест придумал, происходит одно из двух. Либо ты заранее решил не считать один из исходов уликой — тогда ты просто отвернулся от ветки, а её вес никуда не делся. Либо твоя версия объясняет оба исхода одинаково хорошо, отношение правдоподобий равно единице, и тест не тест: он ничего не делит.</p>
+      <p>Это же и есть строгая форма старой претензии к теориям, объясняющим всё. Претензия не в том, что такая теория плоха эстетически. Она в том, что теория, совместимая с любым исходом, имеет нулевой ожидаемый сдвиг при любом наблюдении — то есть непроверяема арифметически, независимо от того, насколько убедительно звучит.</p>
+
+      <h2>почему знание всё-таки копится</h2>
+      <p class="first">Возникает законное недоумение. Если ожидаемый сдвиг нулевой, чем вообще занят исследователь? Ответ: разбросом. Ожидание стоит на месте, а расстояние от середины растёт. Вера не идёт к правде — она бредёт, и правда просто стоит на одном из краёв.</p>
+      <p>Дуб доказал, что ограниченный мартингал сходится почти наверное<sup>[4]</sup>. Вера ограничена нулём и единицей по построению, значит сходится. Но сходится не к своему стартовому значению и не к красивой середине — она уползает к краю. Середина пустеет: побыть в неопределённости можно долго, остаться в ней навсегда нельзя. Именно это и называют накоплением знания, хотя выглядит оно совсем не как ровное приближение к цели, которое рисует школьная картинка.</p>
+      <p>Практический вывод неприятен для планирования. Ты не можешь обещать, что через квартал исследований будешь увереннее, — можешь обещать только, что будешь дальше от пятидесяти процентов. В какую сторону, решит не усердие.</p>
+
+      <h2>где ломается: подглядывание</h2>
+      <p class="first">Если честную игру нельзя обыграть, почему <a href="forking-paths.html">подглядывание в незаконченный тест</a> всё-таки работает и вытаскивает значимость из пустоты? Здесь тонкое место, и оно того стоит.</p>
+      <p>Дуб доказал и вторую вещь — теорему об остановке: никакое правило «когда мне выйти из игры» не меняет ожидания честной игры<sup>[3]</sup>. Но у теоремы есть условие: величина должна быть ограничена, или момент остановки — конечен наперёд. Вера в условие укладывается: она живёт между нулём и единицей, выше единицы не прыгнет. Поэтому подстроить собственную уверенность выбором момента нельзя — сколько ни жди удобной минуты, среднее не сдвинешь.</p>
+      <p>А вот система удвоения ставки — тот самый исторический мартингал — условия не выполняет: там ставка растёт без потолка, и время до выигрыша не ограничено ничем. Потому она и выглядит выигрышной на бумаге, и потому же разоряет: выигрыш почти наверняка есть, но цена ожидания не ограничена.</p>
+      <p>P-value устроено ближе ко второму случаю. Его пятипроцентная защита выписана ровно на одну заранее назначенную проверку. Смотришь каждый день — превращаешь один взгляд в неограниченную последовательность взглядов, и блуждающая величина рано или поздно ныряет под порог сама. Ты дожидаешься не правды, а удобной флуктуации.</p>
+      <p>Лечится это возвращением к мартингалу. Отношение правдоподобий при верной нуль-гипотезе — честная игра с ожиданием единица, и на такие величины есть неравенство Виля: вероятность того, что улика хоть когда-нибудь превысит порог 1/α, не больше самого α<sup>[2]</sup>. Гарантия сразу на все моменты времени, а не на один назначенный. На этом стоит последовательная проверка — e-values и всегда-верные p-значения<sup>[5]</sup>: смотри хоть каждый час, останавливайся когда захочешь, защита держит. Честная игра не запрещает выиграть. Она запрещает выигрывать по плану.</p>
+
+      <h2>что с этим делать</h2>
+      <p class="first">Из всего этого остаётся одна привычка, дешёвая и почти безотказная. Перед тем как посмотреть на данные, выпиши обе ветки: что я увижу, если прав, и что — если нет; насколько каждый исход сдвинет меня и в какую сторону. Займёт это минуту.</p>
+      <p>Если обе ветки двигают в одну сторону — опыт не поставлен, и лучше узнать это до, а не после. Если одна из веток тебе неинтересна — ты уже знаешь ответ и занимаешься его оформлением. Если ты вообще не можешь назвать исход, который тебя переубедил бы, — у тебя не гипотеза, а привязанность.</p>
+      <p>Байес не обещает истину. Он ведёт бухгалтерию соотношений и следит, чтобы сумма сходилась. Всё, чему он учит, помещается в одну фразу: мнение можно менять только настолько, насколько весит улика, — и никакой хитростью нельзя устроить так, чтобы улики всегда весили в твою пользу.</p>
+
+    <div class="margin">
+      <div class="mh">поля</div>
+      <div class="fn"><span class="num">[1]</span>Закон полного ожидания (tower property): E[E[X | Y]] = E[X]. Для веры это и значит «априор есть средневзвешенное всех возможных апостериоров»; веса — вероятности соответствующих исходов.</div>
+      <div class="fn"><span class="num">[2]</span>Ж. Виль, «Étude critique de la notion de collectif» (1939) — введение термина martingale и неравенство Виля: для неотрицательного мартингала с единичным ожиданием P(sup ≥ 1/α) ≤ α.</div>
+      <div class="fn"><span class="num">[3]</span>Дж. Дуб, «Stochastic Processes» (1953) — теория мартингалов; теорема об остановке (optional stopping) и условия, при которых она перестаёт работать.</div>
+      <div class="fn"><span class="num">[4]</span>Теорема Дуба о сходимости: мартингал, ограниченный в L¹, сходится почти наверное. Вера ограничена отрезком [0, 1] и потому сходится — к нулю или к единице, но не по расписанию.</div>
+      <div class="fn"><span class="num">[5]</span>Игровая статистика: Шейфер и Вовк, «Game-Theoretic Foundations for Probability and Finance» (2019); Грюнвальд и др., «Safe Testing»; Рамдас и др. — всегда-верные доверительные последовательности. Проверка, которую можно смотреть непрерывно и останавливать когда угодно.</div>
+    </div>
+  </div>
+
+  <a class="xref diad" href="forking-paths.html"><span class="xref-label">// сад расходящихся троп</span><span class="xref-title">Подглядывание ворует значимость там, где у величины нет потолка.</span><span class="xref-arrow">→</span></a>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">как обновлять убеждения →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="forking-paths.html">сад расходящихся троп →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="ab-testing.html">почему p &lt; 0.05 — плохой порог →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="markov-chains.html">цепи Маркова →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="calibration.html">калибровка →</a></div>
+      <div class="related-link"><span class="related-link-type">визуал</span><a href="../visuals/random-walk.html">случайное блуждание →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/bayesian.html">как обновлять убеждения →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/forking-paths.html">сад расходящихся троп →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/martingale.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+  <span class="footer-by">Александр Давыдов · <a href="https://davydov.my/" rel="noopener">davydov.my</a></span>
+</footer>
+
+</body>
+</html>

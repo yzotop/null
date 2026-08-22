@@ -2176,6 +2176,13 @@
       "title": "Джордж Бокс",
       "url": "/null/objects/mathematicians/box.html",
       "glyph": "□"
+    },
+    {
+      "id": "es-martingale",
+      "type": "essay",
+      "title": "мартингал",
+      "url": "/null/essays/martingale.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -8862,6 +8869,54 @@
     {
       "from": "st-surv",
       "to": "math-wald"
+    },
+    {
+      "from": "es-martingale",
+      "to": "es-bayes-faces"
+    },
+    {
+      "from": "es-martingale",
+      "to": "es-bayesian"
+    },
+    {
+      "from": "es-martingale",
+      "to": "es-forking-paths"
+    },
+    {
+      "from": "es-martingale",
+      "to": "es-ab-testing"
+    },
+    {
+      "from": "es-martingale",
+      "to": "es-markov"
+    },
+    {
+      "from": "es-martingale",
+      "to": "es-calibration"
+    },
+    {
+      "from": "es-martingale",
+      "to": "es-confusion-matrix"
+    },
+    {
+      "from": "es-martingale",
+      "to": "vi-random-walk"
+    },
+    {
+      "from": "es-martingale",
+      "to": "st-condprob"
+    },
+    {
+      "from": "es-martingale",
+      "to": "math-bayes"
+    },
+    {
+      "from": "es-martingale",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "es-martingale",
+      "to": "es-good-dec"
     }
   ]
 }
