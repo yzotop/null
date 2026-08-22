@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>энтропия — null/essays</title>
+<!-- meta: scripts/update_meta.py -->
+<link rel="canonical" href="https://yzotop.github.io/null/essays/entropy.html">
+<link rel="icon" href="/null/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/null/favicon-180.png">
+<meta name="author" content="Александр Давыдов">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="null">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="энтропия">
+<meta property="og:url" content="https://yzotop.github.io/null/essays/entropy.html">
+<meta property="og:image" content="https://yzotop.github.io/null/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- /meta -->
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .evo {
+    --paper: #f7f6f2; --ink: #1a1a1a; --dim: #8c8a83; --line: #dcd9d0; --accent: #c44a32;
+    --serif: 'IM Fell English', Georgia, serif; --sans: 'Inter', system-ui, sans-serif; --mono: 'JetBrains Mono', monospace;
+    width: 100%; max-width: 680px; margin-top: 8px; font-family: var(--sans); color: var(--ink); line-height: 1.72;
+  }
+  .evo .label { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: lowercase; color: var(--dim); margin-bottom: 18px; }
+  .evo h1 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 50px; line-height: 1.04; margin-bottom: 20px; }
+  .evo .lead { font-size: 19px; line-height: 1.55; color: #444; margin-bottom: 30px; font-style: italic; font-family: var(--serif); }
+  .evo h2 { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: lowercase; color: var(--accent); margin: 46px 0 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .evo p { font-size: 17px; margin-bottom: 18px; }
+  .evo p.first::first-letter { font-family: var(--serif); font-size: 62px; float: left; line-height: .82; padding: 6px 10px 0 0; color: var(--accent); }
+  .evo a { color: var(--accent); border-bottom: 1px solid rgba(196,74,50,.35); text-decoration: none; }
+  .evo a:hover { border-bottom-color: var(--accent); }
+  .evo sup { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+  .evo .margin { margin-top: 48px; border-top: 1px solid var(--ink); padding-top: 22px; }
+  .evo .margin .mh { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: lowercase; color: var(--dim); margin-bottom: 14px; }
+  .evo .margin .fn { font-size: 14px; color: #555; margin-bottom: 11px; line-height: 1.5; }
+  .evo .margin .fn .num { font-family: var(--mono); color: var(--accent); margin-right: 8px; }
+
+  .evo .fml { font-family: var(--mono); font-size: 14px; color: var(--ink); background: rgba(196,74,50,.05); border-left: 2px solid var(--accent); padding: 12px 14px; margin: 22px 0; line-height: 1.7; }
+  .evo .fml span { color: var(--dim); }
+  .evo table.rate { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 13px; margin: 22px 0; }
+  .evo table.rate th { text-align: left; font-weight: 500; color: var(--dim); border-bottom: 1px solid var(--ink); padding: 8px 10px 8px 0; letter-spacing: .06em; }
+  .evo table.rate td { border-bottom: 1px solid var(--line); padding: 8px 10px 8px 0; }
+  .evo table.rate td.a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / энтропия</div>
+
+<main class="container">
+<article>
+
+  <div class="evo">
+    <div class="label">эссе · §05 · случайность · симуляция · ~14 минут · 2026.08</div>
+    <h1>энтропия</h1>
+    <div class="lead">удивление, у которого есть единица измерения</div>
+
+      <p class="first">В <a href="bayes-four-faces.html">четырёх лицах теоремы Байеса</a> последнее лицо — про вес новости: скучное событие ничего не сообщает, сенсация разворачивает мнение. Там же сказано, что вес меряют в битах, и обещан мост к энтропии. Пройдём по нему. Оказывается, что «сколько информации в сообщении» — не оборот речи, а величина с единицей, и что единица эта не выбрана из удобства, а выведена из трёх требований, которые трудно оспорить.</p>
+
+      <h2>откуда берётся логарифм</h2>
+      <p class="first">Начнём с одного события. Хочется величины, которая скажет, насколько оно неожиданно. Три требования, каждое очевидно.</p>
+      <p>Событие вероятности единица не удивляет вовсе — неожиданность нулевая. Чем событие реже, тем неожиданность больше. И третье, решающее: если случились два независимых события, общая неожиданность равна сумме двух — узнать две новости значит узнать первую и вторую, ни больше ни меньше.</p>
+      <p>Третье требование почти всё и решает. Вероятности независимых событий перемножаются, а неожиданности должны складываться. Функция, превращающая произведение в сумму, ровно одна — логарифм. Остаётся только знак, чтобы редкое давало много, а не мало.</p>
+      <div class="fml">неожиданность события = −log₂ P<br><span>P = 1/2 → один бит · P = 1/1024 → десять бит · P = 1 → ноль</span></div>
+      <p>Бит — это ответ на один вопрос «да или нет», заданный так, чтобы оба ответа были равновероятны. Не метафора: если нужно угадать число от одного до тысячи двадцати четырёх, при удачных вопросах хватит ровно десяти, и −log₂(1/1024) равно десяти. Основание логарифма — это просто выбор единицы; возьмёшь натуральный — получишь наты, десятичный — децибелы, и суть не изменится.</p>
+
+      <h2>энтропия — средняя неожиданность</h2>
+      <p class="first">Одно событие — неожиданность. Источник, выдающий события по какому-то распределению, характеризуют средним: сколько удивления он производит в среднем на одно сообщение. Это и есть энтропия.</p>
+      <div class="fml">H = −Σ pᵢ · log₂ pᵢ<br><span>математическое ожидание неожиданности</span></div>
+      <p>Считать её удобно на монетах. Честная монета: два исхода по половине, каждый на один бит, среднее — один бит. Монета с перекосом девять к одному: орёл почти не удивляет, решка удивляет сильно, но случается редко, и в среднем выходит около половины бита. Монета, всегда падающая орлом, не сообщает ничего — ноль.</p>
+      <table class="rate">
+        <tr><th>источник</th><th>энтропия</th><th>смысл</th></tr>
+        <tr><td>честная монета</td><td class="a">1.00 бита</td><td>один вопрос на исход</td></tr>
+        <tr><td>монета 9 : 1</td><td class="a">0.47</td><td>меньше половины вопроса</td></tr>
+        <tr><td>монета 99 : 1</td><td class="a">0.08</td><td>почти ничего</td></tr>
+        <tr><td>кубик</td><td class="a">2.58</td><td>между двумя и тремя вопросами</td></tr>
+        <tr><td>буква русского текста</td><td class="a">≈ 1.5</td><td>язык избыточен на две трети</td></tr>
+      </table>
+      <p>Последняя строка стоит того, чтобы задержаться. В алфавите тридцать три буквы, и будь они равновероятны и независимы, каждая несла бы больше пяти бит. На деле — около полутора: буквы разной частоты и, как <a href="effective-sample.html">показал счёт по «Золотому телёнку»</a>, ещё и сцеплены между собой. Избыточность языка — не изъян, а защита: пропущенную букву восстанавливаешь, не заметив.</p>
+
+      <h2>биты — это буквально длина сообщения</h2>
+      <p class="first">Тут теория перестаёт быть метафорой. Шеннон в 1948 году доказал: энтропия источника — это нижняя граница средней длины сообщения, которым его можно закодировать<sup>[1]</sup>. Не «примерно столько», а точно: короче нельзя, и сколь угодно близко подойти можно.</p>
+      <p>Отсюда практическое правило, которое работает в обе стороны. Частому событию нужен короткий код, редкому — длинный, и это единственный способ уложиться в границу. Так устроена азбука Морзе, где «е» — одна точка, а «щ» — четыре знака. Так устроены все архиваторы. И так же объясняется, почему уже сжатый файл не сжимается второй раз: избыточность вынута, энтропия достигнута, резерва нет.</p>
+
+      <h2>чем это не сложность по Колмогорову</h2>
+      <p class="first">Две величины постоянно путают, а меряют они разное, и разница принципиальная.</p>
+      <p><a href="kolmogorov.html">Сложность по Колмогорову</a> — свойство <strong>отдельного объекта</strong>: длина кратчайшей программы, которая его печатает. Она ничего не знает о вероятностях и о том, откуда объект взялся.</p>
+      <p>Энтропия — свойство <strong>источника</strong>: сколько в среднем он выдаёт на сообщение. Об отдельном сообщении она молчит.</p>
+      <p>Практическая разница такая. Строка из миллиона нулей имеет крошечную колмогоровскую сложность — программа в одну строку. Но если она пришла от честной монеты, источник имел энтропию в бит на знак, и эта конкретная строка — просто крайне маловероятный его выход. Одна величина говорит «этот объект прост», другая — «этот источник богат». Оба утверждения верны одновременно.</p>
+
+      <h2>кросс-энтропия: плата за неверную модель</h2>
+      <p class="first">Дальше начинается место, ради которого всё это стоит знать не только из любопытства.</p>
+      <p>Допустим, ты кодируешь сообщения источника p, но веришь, что источник — q. Коды назначены по вере, а события приходят по правде. Средняя длина получится больше минимальной, и превышение считается точно.</p>
+      <div class="fml">H(p, q) = H(p) + D(p ‖ q)<br><span>заплатил = минимум + штраф за ошибку модели</span></div>
+      <p>Первое слагаемое — неустранимое: столько неопределённости в самом источнике. Второе — расстояние Кульбака—Лейблера, цена твоего заблуждения<sup>[2]</sup>. Оно всегда неотрицательно и равно нулю ровно тогда, когда ты угадал распределение.</p>
+      <p>Вот почему языковые модели учат на кросс-энтропии: это буквально средняя неожиданность модели при виде настоящего текста. Модель, назначившая правильному слову вероятность 0.5, удивляется на один бит; назначившая 0.001 — на десять. Обучение сводится к «удивляйся меньше», а перплексия, о которой говорят как об отдельной метрике, — это та же величина в другой шкале: два в степени кросс-энтропии, то есть «между сколькими вариантами модель фактически колеблется».</p>
+      <p>Заметь, что разложение объясняет и потолок. Часть кросс-энтропии — энтропия самого языка, и её не убрать никаким обучением: текст не предопределён. Модель может свести к нулю только второе слагаемое. Метрика, у которой есть неустранимая часть, ведёт себя как <a href="golden-set.html">пол разметки в оценке</a> — ниже него улучшать нечего, и путать приближение к полу с исчерпанием задачи легко.</p>
+
+      <h2>назад к Байесу</h2>
+      <p class="first">Круг замыкается там, откуда начали. В четвёртом лице теоремы улики копились сложением логарифмов шансов, и в Блетчли-Парке эти лог-единицы называли банами и децибанами.</p>
+      <p>Теперь видно, что это была за величина. Логарифм отношения правдоподобий — информация, которую улика несёт в пользу одной гипотезы против другой, и складывается она именно потому, что логарифм превращает умножение в сложение. Байесовское обновление и есть накопление информации, а сила улики измеряется в тех же битах, что и вес новости.</p>
+      <p>И вопрос «сколько мне даст этот эксперимент» получает точный смысл: насколько ожидаемо уменьшится моя энтропия. Вопрос, на который все отвечают одинаково, не даёт ни бита — распределение ответов вырождено, удивления нет. Тот же довод, что запрещает <a href="martingale.html">тест, любой исход которого тебя укрепляет</a>, и тот же, по которому в наборе для оценки работают лишь примеры, где модели расходятся.</p>
+
+      <h2>что с этим делать</h2>
+      <p class="first">Три вещи стоит унести.</p>
+      <p>Мера информации не выбрана, а выведена: сложение неожиданностей для независимых событий не оставляет вариантов, кроме логарифма. Когда величина возникает из требований, а не из удобства, ей можно доверять за пределами примеров, на которых её показывали.</p>
+      <p>Энтропия — свойство источника, а не сообщения. Спрашивать, сколько бит в конкретной строке, бессмысленно, пока не сказано, из какого распределения она пришла.</p>
+      <p>И всякая разность между «что я думал» и «что оказалось» имеет цену в битах — одну и ту же для модели языка, для эксперимента и для собственного мнения. Заблуждаться, оказывается, дорого в точном смысле слова.</p>
+
+    <div class="margin">
+      <div class="mh">поля</div>
+      <div class="fn"><span class="num">[1]</span>C. E. Shannon, «A Mathematical Theory of Communication», Bell System Technical Journal, 1948. Там же — теорема о кодировании источника: средняя длина кода не может быть меньше энтропии, и к ней можно подойти сколь угодно близко.</div>
+      <div class="fn"><span class="num">[2]</span>S. Kullback, R. Leibler (1951) — расстояние, которое сейчас зовут их именами. Не метрика в строгом смысле: несимметрично, D(p‖q) ≠ D(q‖p), и неравенство треугольника не выполняется.</div>
+      <div class="fn"><span class="num">[3]</span>Оценка энтропии русской буквы около 1.5 бита — порядок величины; Шеннон получал для английского от 0.6 до 1.3 бита с учётом длинных зависимостей, и метод оценки сильно влияет на число.</div>
+      <div class="fn"><span class="num">[4]</span>Слово «энтропия» Шеннону, по известному рассказу, подсказал фон Нейман — отчасти из-за сходства формулы с больцмановской, отчасти потому, что о смысле энтропии всё равно никто толком не спорит.</div>
+    </div>
+  </div>
+
+  <a class="xref diad" href="bayes-four-faces.html"><span class="xref-label">// четыре лица теоремы Байеса</span><span class="xref-title">Четвёртое лицо обещало мост к энтропии — вот он.</span><span class="xref-arrow">→</span></a>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="kolmogorov.html">Колмогоров и случайность →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="effective-sample.html">эффективная выборка →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="golden-set.html">золотой набор →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="llm-eval.html">как измерить то, чего нет →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="martingale.html">мартингал →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="bayesian.html">как обновлять убеждения →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="pseudorandom.html">случайность, которой нет →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/bayes-four-faces.html">четыре лица теоремы Байеса →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/kolmogorov.html">Колмогоров и случайность →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/llm-eval.html">как измерить то, чего нет →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/entropy.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+  <span class="footer-by">Александр Давыдов · <a href="https://davydov.my/" rel="noopener">davydov.my</a></span>
+</footer>
+
+</body>
+</html>
