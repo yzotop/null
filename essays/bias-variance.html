@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>смещение и разброс — null/essays</title>
+<!-- meta: scripts/update_meta.py -->
+<link rel="canonical" href="https://yzotop.github.io/null/essays/bias-variance.html">
+<link rel="icon" href="/null/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/null/favicon-180.png">
+<meta name="author" content="Александр Давыдов">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="null">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="смещение и разброс">
+<meta property="og:url" content="https://yzotop.github.io/null/essays/bias-variance.html">
+<meta property="og:image" content="https://yzotop.github.io/null/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- /meta -->
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .evo {
+    --paper: #f7f6f2; --ink: #1a1a1a; --dim: #8c8a83; --line: #dcd9d0; --accent: #c44a32;
+    --serif: 'IM Fell English', Georgia, serif; --sans: 'Inter', system-ui, sans-serif; --mono: 'JetBrains Mono', monospace;
+    width: 100%; max-width: 680px; margin-top: 8px; font-family: var(--sans); color: var(--ink); line-height: 1.72;
+  }
+  .evo .label { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: lowercase; color: var(--dim); margin-bottom: 18px; }
+  .evo h1 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 50px; line-height: 1.04; margin-bottom: 20px; }
+  .evo .lead { font-size: 19px; line-height: 1.55; color: #444; margin-bottom: 30px; font-style: italic; font-family: var(--serif); }
+  .evo h2 { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: lowercase; color: var(--accent); margin: 46px 0 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .evo p { font-size: 17px; margin-bottom: 18px; }
+  .evo p.first::first-letter { font-family: var(--serif); font-size: 62px; float: left; line-height: .82; padding: 6px 10px 0 0; color: var(--accent); }
+  .evo a { color: var(--accent); border-bottom: 1px solid rgba(196,74,50,.35); text-decoration: none; }
+  .evo a:hover { border-bottom-color: var(--accent); }
+  .evo sup { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+  .evo .margin { margin-top: 48px; border-top: 1px solid var(--ink); padding-top: 22px; }
+  .evo .margin .mh { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: lowercase; color: var(--dim); margin-bottom: 14px; }
+  .evo .margin .fn { font-size: 14px; color: #555; margin-bottom: 11px; line-height: 1.5; }
+  .evo .margin .fn .num { font-family: var(--mono); color: var(--accent); margin-right: 8px; }
+
+  .evo figure { margin: 30px 0; border: 1px solid var(--line); padding: 22px 20px 16px; }
+  .evo figure svg { display: block; width: 100%; height: auto; }
+  .evo figcaption { font-family: var(--mono); font-size: 11px; line-height: 1.6; color: var(--dim); margin-top: 14px; letter-spacing: .02em; }
+  .evo .fml { font-family: var(--mono); font-size: 14px; color: var(--ink); background: rgba(196,74,50,.05); border-left: 2px solid var(--accent); padding: 12px 14px; margin: 22px 0; line-height: 1.7; }
+  .evo .fml span { color: var(--dim); }
+  .evo table.rate { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 13px; margin: 22px 0; }
+  .evo table.rate th { text-align: left; font-weight: 500; color: var(--dim); border-bottom: 1px solid var(--ink); padding: 8px 10px 8px 0; letter-spacing: .06em; }
+  .evo table.rate td { border-bottom: 1px solid var(--line); padding: 8px 10px 8px 0; vertical-align: top; }
+  .evo table.rate td.a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../">null</a>
+  <nav>
+    <a href="../objects/">объекты</a>
+    <a href="./" class="active">эссе</a>
+    <a href="../visuals/">визуалы</a>
+    <a href="../music/">музыка</a>
+    <a href="/null/map.html">карта</a>
+    <a href="/null/find.html">find</a>
+  </nav>
+</header>
+<div class="breadcrumb">/null / essays / смещение и разброс</div>
+
+<main class="container">
+<article>
+
+  <div class="evo">
+    <div class="label">эссе · §11 · обучение · агенты · ~14 минут · 2026.08</div>
+    <h1>смещение и разброс</h1>
+    <div class="lead">ошибка делится на три части, и данными лечится только одна</div>
+
+      <p class="first">Модель ошиблась. Вопрос, который решает всё дальнейшее: ошиблась она потому, что слишком проста, потому что слишком чувствительна к тому, какие данные ей достались, или потому, что задача в принципе не предсказуема до конца. Три причины требуют трёх разных действий, а по одному числу ошибки они неразличимы. Разложение, которое их разделяет, — самое полезное, что есть в статистике обучения.</p>
+
+      <h2>три слагаемых</h2>
+      <p class="first">Возьми процедуру, которая по обучающим данным строит предсказание, и представь, что данные можно было бы вытянуть заново много раз. Каждый раз получалась бы чуть другая модель. Усредни ошибку по всем таким мирам — она распадается на три части, и распад точный, а не приблизительный<sup>[1]</sup>.</p>
+      <div class="fml">ошибка = смещение² + разброс + шум<br><span>систематический промах · чувствительность к выборке · непредсказуемое</span></div>
+      <p><strong>Смещение</strong> — насколько твой способ предсказывать промахивается систематически, даже получив бесконечно много данных. Прямая, проведённая через дугу, будет мимо всегда, сколько точек ни добавь: класс моделей просто не содержит правильной формы.</p>
+      <p><strong>Разброс</strong> — насколько предсказание пляшет от того, какая именно выборка попалась. Многочлен десятой степени проходит через все точки, но подставь другие двадцать точек того же процесса — и кривая будет другой. Она подгоняется не под закон, а под конкретный шум.</p>
+      <p><strong>Шум</strong> — то, что не предсказуемо ни при каком количестве данных и ни при какой модели. Он не уменьшается, не устраняется и не является ошибкой в обычном смысле. Это свойство задачи.</p>
+
+      <h2>почему это компромисс, а не сумма</h2>
+      <p class="first">Слагаемые не независимы: то, что уменьшает одно, обычно увеличивает другое, и в этом вся трудность.</p>
+      <p>Простая модель почти не реагирует на смену выборки — разброс мал, смещение велико. Гибкая ловит любую форму — смещение мало, разброс велик. Между ними лежит середина, где сумма меньше всего.</p>
+      <figure>
+        <svg viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Кривые смещения и разброса против сложности модели">
+          <g font-family="'JetBrains Mono', monospace" font-size="11">
+            <line x1="60" y1="190" x2="600" y2="190" stroke="#1a1a1a" stroke-width="1"/>
+            <line x1="60" y1="20" x2="60" y2="190" stroke="#1a1a1a" stroke-width="1"/>
+            <text x="500" y="208" fill="#8c8a83">сложность модели →</text>
+            <text x="8" y="30" fill="#8c8a83">ошибка</text>
+            <path d="M70,40 C160,120 260,168 590,182" fill="none" stroke="#8c8a83" stroke-width="1.5"/>
+            <text x="120" y="60" fill="#8c8a83">смещение²</text>
+            <path d="M70,184 C300,178 430,120 590,32" fill="none" stroke="#8c8a83" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <text x="470" y="70" fill="#8c8a83">разброс</text>
+            <path d="M70,52 C200,120 260,128 340,124 C430,120 520,66 590,26" fill="none" stroke="#c44a32" stroke-width="2"/>
+            <text x="300" y="108" fill="#c44a32">сумма</text>
+            <line x1="330" y1="124" x2="330" y2="190" stroke="#c44a32" stroke-width="1" stroke-dasharray="2 3"/>
+            <text x="290" y="206" fill="#c44a32">оптимум</text>
+            <line x1="60" y1="170" x2="600" y2="170" stroke="#dcd9d0" stroke-width="1"/>
+            <text x="480" y="165" fill="#8c8a83">шум — пол, ниже нельзя</text>
+          </g>
+        </svg>
+        <figcaption>смещение падает со сложностью, разброс растёт, сумма имеет минимум. шум лежит горизонтальной чертой: он не зависит от модели вовсе.</figcaption>
+      </figure>
+
+      <h2>как их различить на практике</h2>
+      <p class="first">По одной обученной модели различить нельзя — и это главная причина, по которой разложение знают, но не применяют. Нужен взгляд поперёк выборок.</p>
+      <table class="rate">
+        <tr><th>что видишь</th><th>диагноз</th><th>что делать</th></tr>
+        <tr><td>плохо и на обучении, и на проверке</td><td class="a">смещение</td><td>сложнее модель, больше признаков</td></tr>
+        <tr><td>хорошо на обучении, плохо на проверке</td><td class="a">разброс</td><td>больше данных, проще модель, регуляризация</td></tr>
+        <tr><td>плохо у всех подходов одинаково</td><td class="a">шум</td><td>ничего; сменить задачу или разметку</td></tr>
+      </table>
+      <p>Отсюда правило, которое экономит месяцы. Данные лечат разброс и <strong>не лечат смещение</strong>: если модель систематически не той формы, миллион примеров оставит её такой же. И наоборот, усложнение лечит смещение и оплачивается разбросом. Прежде чем просить ещё данных или ещё признаков, стоит понять, за что именно ты платишь.</p>
+
+      <h2>шум — это тот же пол, что и везде</h2>
+      <p class="first">Третье слагаемое стоит отдельного разговора, потому что оно уже встречалось на этом сайте под другими именами.</p>
+      <p>В <a href="golden-set.html">наборе для оценки</a> есть пол, заданный согласием разметчиков: разницу меньше, чем расхождение между двумя людьми, не поймать никаким объёмом. Это шум.</p>
+      <p>В <a href="entropy.html">кросс-энтропии</a> есть неустранимое слагаемое — энтропия самого источника; обучением сводится к нулю только штраф за неверную модель. Это тот же шум.</p>
+      <p>В <a href="regression-to-mean.html">регрессии к среднему</a> результат раскладывается на сигнал и шум, и именно шумовая часть не воспроизводится в следующем измерении. Снова он.</p>
+      <p>Три эссе, три разных сюжета, одно слагаемое. Практический вывод из этого совпадения простой: у всякой задачи есть потолок качества, и он определяется не твоим умением, а тем, сколько в задаче непредсказуемого. Приближение к потолку легко спутать с исчерпанием возможностей — а разница в том, что во втором случае мешает модель, а в первом уже нет.</p>
+
+      <h2>иногда смещение выгодно</h2>
+      <p class="first">Из разложения следует вещь, противоречащая обычному инстинкту: несмещённая оценка не обязательно лучшая.</p>
+      <p>Если чуть-чуть сдвинуть оценку в сторону — например, притянуть все предсказания к общему среднему, — появится смещение, но разброс упадёт сильнее. Сумма уменьшится. Так работает регуляризация, так работает усадка оценок к среднему, и так же устроен всякий байесовский приор: он вносит систематический сдвиг и платит за это устойчивостью<sup>[2]</sup>.</p>
+      <p>На этом фоне видно, чем замечателен <a href="../objects/statistics/inference/cuped.html">CUPED</a>. Он снижает разброс, <strong>не создавая смещения вовсе</strong>: поправка строится на данных, собранных до воздействия, и потому не может протащить в оценку эффект. Обычно за уменьшение разброса платят смещением; здесь не платят — и именно это делает приём стандартом, а не одним из вариантов.</p>
+
+      <h2>оговорка про большие модели</h2>
+      <p class="first">Картинка с минимумом посередине верна для классических моделей и перестаёт быть полной для очень больших.</p>
+      <p>Начиная с некоторого размера ошибка на новых данных, дойдя до пика в точке точной подгонки, снова начинает падать — явление назвали двойным спуском<sup>[3]</sup>. Разложение при этом не отменяется, но простое «сложнее — значит больше разброс» перестаёт работать: у огромных переопределённых моделей разброс ведёт себя иначе, чем предсказывает классическая кривая.</p>
+      <p>Практический вывод осторожный. Диагностика по таблице выше остаётся верной, а вот правило «упрости модель, чтобы снизить разброс» на больших моделях требует проверки, а не веры.</p>
+
+      <h2>что унести</h2>
+      <p class="first">Ошибка — не одно число, а три, и они требуют противоположных действий. Спрашивать «как улучшить модель» бессмысленно, пока не сказано, какое из слагаемых сейчас главное.</p>
+      <p>Данные лечат разброс. Сложность лечит смещение. Шум не лечится ничем, и умение его признать отличает работающего аналитика от бесконечно оптимизирующего.</p>
+      <p>И последнее. Разложение объясняет, почему <a href="q-learning.html">обучение вообще возможно</a>, но не бесконечно: любая процедура балансирует между тем, чтобы вспомнить закон, и тем, чтобы запомнить выборку. Слишком хорошая память — это уже не знание.</p>
+
+    <div class="margin">
+      <div class="mh">поля</div>
+      <div class="fn"><span class="num">[1]</span>Разложение среднеквадратичной ошибки на смещение, разброс и неустранимый шум: Geman, Bienenstock, Doursat, «Neural Networks and the Bias/Variance Dilemma» (1992). Для квадратичной функции потерь разложение точное; для других — приближённое или требует иной формулировки.</div>
+      <div class="fn"><span class="num">[2]</span>Классический пример полезного смещения — оценка Джеймса—Стайна (1961): усадка к общему среднему даёт меньшую суммарную ошибку, чем несмещённая оценка по каждому измерению отдельно, начиная с трёх измерений.</div>
+      <div class="fn"><span class="num">[3]</span>Belkin, Hsu, Ma, Mandal, «Reconciling modern machine-learning practice and the classical bias-variance trade-off» (PNAS, 2019) — описание двойного спуска.</div>
+      <div class="fn"><span class="num">[4]</span>Строго говоря, «разброс» здесь — дисперсия предсказания по повторным выборкам того же размера, а не дисперсия данных. Смешение этих двух величин — обычный источник путаницы при чтении формулы.</div>
+    </div>
+  </div>
+
+  <a class="xref diad" href="golden-set.html"><span class="xref-label">// золотой набор</span><span class="xref-title">Тот же шум, только в оценке: пол, заданный разметкой.</span><span class="xref-arrow">→</span></a>
+
+  <hr class="section-divider-soft">
+
+  <section class="related">
+    <div class="related-label">связанное</div>
+    <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="golden-set.html">золотой набор →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="entropy.html">энтропия →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="regression-to-mean.html">регрессия к среднему →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="q-learning.html">ценность без карты →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="small-numbers.html">закон малых чисел →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="effective-sample.html">эффективная выборка →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="llm-eval.html">как измерить то, чего нет →</a></div>
+      <div class="related-link"><span class="related-link-type">статистика</span><a href="../objects/statistics/inference/cuped.html">CUPED →</a></div>
+    </div>
+  </section>
+
+<section class="backlinks">
+  <hr class="section-divider-soft">
+  <div class="related-label">упоминается в</div>
+  <div class="related-links">
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/golden-set.html">золотой набор →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/entropy.html">энтропия →</a></div>
+      <div class="related-link"><span class="related-link-type">эссе</span><a href="/null/essays/q-learning.html">ценность без карты →</a></div>
+  </div>
+</section>
+
+</article>
+</main>
+
+<footer class="footer">
+  <span>/null/essays/bias-variance.html</span>
+  <a href="/null/man.html">about →</a> · <a href="/null/map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a>
+  <span class="footer-by">Александр Давыдов · <a href="https://davydov.my/" rel="noopener">davydov.my</a></span>
+</footer>
+
+</body>
+</html>
