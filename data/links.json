@@ -2218,6 +2218,13 @@
       "title": "лишний контроль",
       "url": "/null/essays/collider.html",
       "glyph": "¶"
+    },
+    {
+      "id": "es-bias-variance",
+      "type": "essay",
+      "title": "смещение и разброс",
+      "url": "/null/essays/bias-variance.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -10404,6 +10411,82 @@
     {
       "from": "st-cuped",
       "to": "es-collider"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "es-golden-set"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "es-entropy"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "es-regression"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "es-q-learning"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "es-small-num"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "es-effective-sample"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "es-llm-eval"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "es-evaluation"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "es-explore-exploit"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "es-reward-hacking"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "es-calibration"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "es-bootstrap"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "st-cuped"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "st-rtm"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "st-var"
+    },
+    {
+      "from": "es-bias-variance",
+      "to": "st-effect"
+    },
+    {
+      "from": "es-golden-set",
+      "to": "es-bias-variance"
+    },
+    {
+      "from": "es-entropy",
+      "to": "es-bias-variance"
+    },
+    {
+      "from": "es-q-learning",
+      "to": "es-bias-variance"
     }
   ]
 }
