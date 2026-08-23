@@ -10400,6 +10400,10 @@
     {
       "from": "es-collider",
       "to": "st-cuped"
+    },
+    {
+      "from": "st-cuped",
+      "to": "es-collider"
     }
   ]
 }
