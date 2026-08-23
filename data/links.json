@@ -10388,6 +10388,18 @@
     {
       "from": "es-simpson",
       "to": "es-collider"
+    },
+    {
+      "from": "es-ab-testing",
+      "to": "st-cuped"
+    },
+    {
+      "from": "es-effective-sample",
+      "to": "st-cuped"
+    },
+    {
+      "from": "es-collider",
+      "to": "st-cuped"
     }
   ]
 }
