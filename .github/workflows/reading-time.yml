@@ -1,0 +1,28 @@
+name: reading-time
+
+# Метка "N слов · M мин" разъезжается молча: текст правят, число остаётся.
+# Этот гейт ловит расхождение на PR, пока оно не уехало в прод.
+
+on:
+  pull_request:
+    paths:
+      - 'objects/**/*.html'
+      - 'essays/**/*.html'
+      - 'scripts/update_reading_time.py'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: метки слов и минут
+        run: python3 scripts/update_reading_time.py --check
+
+      - name: preflight
+        run: python3 scripts/preflight.py

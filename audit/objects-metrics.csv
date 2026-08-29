@@ -1,0 +1,135 @@
+slug,path,title,category,words,read_min_calc,words_declared,read_min_declared,flag_readtime,antithesis,antithesis_per_1k,antithesis_pct,vague_refs,punchlines,triples,footnotes,footnotes_without_source,links_out,broken_links_count,broken_links,inbound
+game-theory/ipd-strategies-catalog,objects/game-theory/ipd-strategies-catalog.html,стратегии повторяющейся игры,game-theory,421,4,420,4,,1,2.4,73,0,0,0,0,0,33,0,,14
+game-theory/ipd-tournaments,objects/game-theory/ipd-tournaments.html,турниры повторяющейся игры,game-theory,1485,12,1480,12,,1,0.7,58,0,1,3,0,0,35,0,,3
+game-theory/minimax,objects/game-theory/minimax.html,max−min,game-theory,609,5,610,5,,3,4.9,90,0,0,1,3,1,16,0,,5
+game-theory/nash-equilibrium,objects/game-theory/nash-equilibrium.html,σ*,game-theory,553,5,480,4,,1,1.8,63,0,0,0,3,0,26,0,,10
+game-theory/zero-determinant-strategies,objects/game-theory/zero-determinant-strategies.html,zero-determinant стратегии,game-theory,372,3,370,3,,2,5.4,93,0,0,1,0,0,22,0,,9
+ideas/hypotheses/goldbach,objects/ideas/hypotheses/goldbach.html,гипотеза Гольдбаха,ideas,474,4,410,4,,1,2.1,67,0,0,1,3,1,13,0,,5
+ideas/hypotheses/pvsnp,objects/ideas/hypotheses/pvsnp.html,P vs NP,ideas,514,5,460,5,,0,0.0,57,0,0,2,3,1,20,0,,5
+ideas/hypotheses/riemann,objects/ideas/hypotheses/riemann.html,гипотеза Римана,ideas,509,5,460,5,,0,0.0,57,0,0,0,3,2,25,0,,19
+ideas/hypotheses/twin-primes,objects/ideas/hypotheses/twin-primes.html,простые близнецы,ideas,477,4,480,4,,0,0.0,57,0,0,1,3,2,12,0,,4
+ideas/principles/reversibility,objects/ideas/principles/reversibility.html,⇄,ideas,474,4,480,5,,1,2.1,67,0,1,0,2,1,13,0,,2
+ideas/principles/state-value,objects/ideas/principles/state-value.html,V,ideas,462,4,490,5,,2,4.3,87,0,0,0,3,1,14,0,,3
+ideas/problems/birthday,objects/ideas/problems/birthday.html,парадокс дней рождения,ideas,535,5,480,4,,3,5.6,93,0,0,0,3,3,13,0,,4
+ideas/problems/gamblers-ruin,objects/ideas/problems/gamblers-ruin.html,разорение игрока,ideas,553,5,500,5,,1,1.8,63,0,0,1,3,2,23,0,,8
+ideas/problems/monty-hall,objects/ideas/problems/monty-hall.html,парадокс Монти Холла,ideas,555,5,540,5,,3,5.4,93,0,1,0,3,1,20,0,,8
+ideas/problems/prisoners-dilemma,objects/ideas/problems/prisoners-dilemma.html,дилемма заключённого,ideas,570,5,570,5,,1,1.8,63,0,1,1,2,0,29,0,,12
+ideas/problems/secretary,objects/ideas/problems/secretary.html,задача о невесте,ideas,496,4,500,4,,0,0.0,57,0,0,0,3,2,14,0,,5
+ideas/problems/simpson,objects/ideas/problems/simpson.html,парадокс Симпсона,ideas,555,5,580,5,,1,1.8,63,0,0,0,3,1,12,0,,4
+ideas/theorems/cantor,objects/ideas/theorems/cantor.html,теорема Кантора,ideas,420,4,420,4,,1,2.4,73,0,0,0,3,2,17,0,,7
+ideas/theorems/fundamental,objects/ideas/theorems/fundamental.html,основная теорема арифметики,ideas,465,4,460,4,,2,4.3,87,0,0,0,3,2,11,0,,5
+ideas/theorems/godel,objects/ideas/theorems/godel.html,теорема Гёделя,ideas,421,4,420,4,,1,2.4,73,0,0,1,3,0,21,0,,10
+ideas/theorems/markov,objects/ideas/theorems/markov.html,цепь Маркова,ideas,450,4,500,4,,0,0.0,57,0,0,0,4,1,21,0,,3
+ideas/theorems/pythagoras,objects/ideas/theorems/pythagoras.html,теорема Пифагора,ideas,427,4,380,4,,0,0.0,57,0,0,1,3,3,10,0,,3
+mathematicians/axelrod,objects/mathematicians/axelrod.html,Роберт Аксельрод,mathematicians,182,2,180,2,,0,0.0,57,0,0,2,0,0,16,0,,3
+mathematicians/bayes,objects/mathematicians/bayes.html,Томас Байес,mathematicians,264,3,300,3,,0,0.0,57,0,0,0,1,1,19,0,,3
+mathematicians/bernoulli,objects/mathematicians/bernoulli.html,Якоб Бернулли,mathematicians,395,4,400,4,,0,0.0,57,0,0,0,4,4,21,0,,9
+mathematicians/box,objects/mathematicians/box.html,Джордж Бокс,mathematicians,241,2,240,2,,1,4.1,84,0,0,0,2,1,13,0,,4
+mathematicians/cantor,objects/mathematicians/cantor.html,Георг Кантор,mathematicians,406,4,410,4,,0,0.0,57,0,1,0,3,2,16,0,,9
+mathematicians/cox,objects/mathematicians/cox.html,Дэвид Кокс,mathematicians,252,3,250,2,,6,23.8,100,0,0,0,2,1,13,0,,4
+mathematicians/demidovich,objects/mathematicians/demidovich.html,Борис Демидович,mathematicians,117,1,120,1,,0,0.0,57,0,0,0,0,0,11,0,,2
+mathematicians/demoivre,objects/mathematicians/demoivre.html,Абрахам де Муавр,mathematicians,499,4,500,4,,0,0.0,57,0,0,1,4,3,15,0,,5
+mathematicians/efron,objects/mathematicians/efron.html,Брэдли Эфрон,mathematicians,285,3,300,3,,0,0.0,57,0,0,0,2,1,17,0,,4
+mathematicians/euler,objects/mathematicians/euler.html,Леонард Эйлер,mathematicians,380,4,380,4,,0,0.0,57,0,0,0,3,2,19,0,,12
+mathematicians/fermat,objects/mathematicians/fermat.html,Пьер де Ферма,mathematicians,526,5,500,4,,0,0.0,57,0,0,1,4,2,13,0,,4
+mathematicians/fikhtengolts,objects/mathematicians/fikhtengolts.html,Григорий Фихтенгольц,mathematicians,130,2,130,2,,0,0.0,57,0,0,0,0,0,13,0,,4
+mathematicians/fisher,objects/mathematicians/fisher.html,Рональд Фишер,mathematicians,396,4,440,4,,0,0.0,57,0,0,0,5,1,20,0,,14
+mathematicians/galton,objects/mathematicians/galton.html,Фрэнсис Гальтон,mathematicians,318,3,320,3,,1,3.1,77,0,0,1,2,2,17,0,,3
+mathematicians/gauss,objects/mathematicians/gauss.html,Карл Фридрих Гаусс,mathematicians,376,4,380,4,,0,0.0,57,0,1,0,3,2,20,0,,11
+mathematicians/gosset,objects/mathematicians/gosset.html,Уильям Госсет,mathematicians,271,3,300,3,,2,7.4,97,0,0,0,2,1,17,0,,4
+mathematicians/hilbert,objects/mathematicians/hilbert.html,Давид Гильберт,mathematicians,444,4,500,4,,1,2.3,70,0,1,1,4,1,17,0,,8
+mathematicians/huygens,objects/mathematicians/huygens.html,Христиан Гюйгенс,mathematicians,483,4,500,4,,0,0.0,57,0,1,0,4,4,14,0,,5
+mathematicians/kahneman,objects/mathematicians/kahneman.html,Дэниел Канеман,mathematicians,249,2,280,3,,4,16.1,99,0,0,1,0,0,10,0,,2
+mathematicians/kiselyov,objects/mathematicians/kiselyov.html,Андрей Киселёв,mathematicians,117,1,120,1,,0,0.0,57,0,0,0,0,0,9,0,,0
+mathematicians/kolmogorov,objects/mathematicians/kolmogorov.html,Андрей Колмогоров,mathematicians,260,3,260,3,,0,0.0,57,0,0,1,2,1,19,0,,2
+mathematicians/laplace,objects/mathematicians/laplace.html,Пьер-Симон Лаплас,mathematicians,401,4,400,4,,0,0.0,57,0,0,2,4,4,19,0,,10
+mathematicians/lobachevsky,objects/mathematicians/lobachevsky.html,Николай Лобачевский,mathematicians,377,4,380,4,,1,2.7,76,0,1,0,4,4,11,0,,5
+mathematicians/markov,objects/mathematicians/markov.html,Андрей Марков,mathematicians,295,3,320,3,,0,0.0,57,0,0,0,2,1,19,0,,3
+mathematicians/maynard-smith,objects/mathematicians/maynard-smith.html,Джон Мейнард Смит,mathematicians,251,3,220,2,,1,4.0,84,0,0,0,0,0,11,0,,1
+mathematicians/newton,objects/mathematicians/newton.html,Исаак Ньютон,mathematicians,466,4,500,4,,0,0.0,57,0,0,0,4,4,12,0,,5
+mathematicians/neyman,objects/mathematicians/neyman.html,Ежи Нейман,mathematicians,277,3,300,3,,2,7.2,96,0,0,0,2,1,16,0,,4
+mathematicians/nowak,objects/mathematicians/nowak.html,Мартин Новак,mathematicians,176,2,180,2,,1,5.7,95,0,0,0,0,0,13,0,,2
+mathematicians/pascal,objects/mathematicians/pascal.html,Блез Паскаль,mathematicians,398,4,400,4,,0,0.0,57,0,0,0,4,4,18,0,,7
+mathematicians/pearl,objects/mathematicians/pearl.html,Джудея Перл,mathematicians,257,3,260,3,,1,3.9,82,0,0,0,2,1,16,0,,3
+mathematicians/pearson,objects/mathematicians/pearson.html,Карл Пирсон,mathematicians,335,3,340,3,,0,0.0,57,0,0,0,4,0,16,0,,9
+mathematicians/perelman,objects/mathematicians/perelman.html,Григорий Перельман,mathematicians,456,4,500,4,,0,0.0,57,0,1,0,4,0,10,0,,3
+mathematicians/poincare,objects/mathematicians/poincare.html,Анри Пуанкаре,mathematicians,471,4,500,4,,2,4.2,85,0,0,0,4,1,17,0,,8
+mathematicians/ramanujan,objects/mathematicians/ramanujan.html,Сриниваса Рамануджан,mathematicians,383,4,380,4,,0,0.0,57,0,0,0,3,1,12,0,,5
+mathematicians/rapoport,objects/mathematicians/rapoport.html,Анатоль Рапопорт,mathematicians,189,2,200,2,,1,5.3,90,0,0,1,0,0,11,0,,3
+mathematicians/riemann,objects/mathematicians/riemann.html,Бернхард Риман,mathematicians,439,4,500,4,,1,2.3,70,0,1,0,4,2,17,0,,10
+mathematicians/rubin,objects/mathematicians/rubin.html,Дональд Рубин,mathematicians,258,3,260,3,,0,0.0,57,0,0,0,2,1,15,0,,4
+mathematicians/taleb,objects/mathematicians/taleb.html,Нассим Талеб,mathematicians,254,3,240,2,,0,0.0,57,0,1,1,0,0,25,0,,4
+mathematicians/tukey,objects/mathematicians/tukey.html,Джон Тьюки,mathematicians,252,3,250,2,,1,4.0,84,0,0,0,2,1,14,0,,3
+mathematicians/turing,objects/mathematicians/turing.html,Алан Тьюринг,mathematicians,475,4,500,4,,0,0.0,57,0,0,0,4,1,14,0,,6
+mathematicians/tversky,objects/mathematicians/tversky.html,Амос Тверски,mathematicians,228,2,260,3,,2,8.8,99,0,0,0,0,0,10,0,,2
+mathematicians/wald,objects/mathematicians/wald.html,Абрахам Вальд,mathematicians,292,3,300,3,,2,6.8,96,0,0,0,2,1,15,0,,2
+mathematicians/wentzel,objects/mathematicians/wentzel.html,Елена Вентцель,mathematicians,138,2,140,2,,0,0.0,57,0,0,1,0,0,13,0,,3
+notation/alphabets/fraktur,objects/notation/alphabets/fraktur.html,готический алфавит,notation,237,2,,,,0,0.0,57,0,1,0,0,0,10,0,,5
+notation/alphabets/greek,objects/notation/alphabets/greek.html,греческий алфавит,notation,88,1,,,,0,0.0,57,0,0,0,0,0,18,0,,5
+notation/alphabets/hebrew,objects/notation/alphabets/hebrew.html,еврейский алфавит,notation,324,3,,,,0,0.0,57,0,0,1,0,0,11,0,,2
+notation/alphabets/latin,objects/notation/alphabets/latin.html,латинский алфавит,notation,130,2,,,,1,7.7,98,0,0,0,0,0,14,0,,6
+notation/alphabets/math-symbols,objects/notation/alphabets/math-symbols.html,математические символы,notation,33,1,,,,0,0.0,57,0,0,0,0,0,14,0,,8
+notation/coordinates/cartesian,objects/notation/coordinates/cartesian.html,декартовы координаты,notation,398,4,400,4,,0,0.0,57,0,0,0,4,4,11,0,,3
+notation/coordinates/complex-plane,objects/notation/coordinates/complex-plane.html,комплексная плоскость,notation,420,4,420,4,,0,0.0,57,0,0,0,4,4,11,0,,3
+notation/coordinates/polar,objects/notation/coordinates/polar.html,полярные координаты,notation,407,4,410,4,,0,0.0,57,0,0,0,4,4,14,0,,5
+notation/operators/factorial,objects/notation/operators/factorial.html,! факториал,notation,441,4,440,4,,1,2.3,70,0,1,0,3,3,15,0,,8
+notation/operators/floor-ceiling,objects/notation/operators/floor-ceiling.html,floor &amp; ceiling,notation,422,4,360,3,,1,2.4,73,0,0,0,3,3,9,0,,3
+notation/operators/integral,objects/notation/operators/integral.html,∫ интеграл,notation,409,4,360,3,,0,0.0,57,0,0,1,3,3,19,0,,10
+notation/operators/mod,objects/notation/operators/mod.html,mod,notation,440,4,440,4,,0,0.0,57,0,0,0,3,2,24,0,,11
+notation/operators/nabla,objects/notation/operators/nabla.html,∇ набла,notation,365,3,360,3,,0,0.0,57,0,1,0,3,3,9,0,,4
+notation/operators/partial,objects/notation/operators/partial.html,∂ частная производная,notation,416,4,360,3,,0,0.0,57,0,0,0,3,2,16,0,,7
+notation/operators/sum,objects/notation/operators/sum.html,∑ сумма,notation,427,4,430,4,,0,0.0,57,0,0,0,3,3,29,0,,16
+notation/operators/xor,objects/notation/operators/xor.html,XOR,notation,419,4,360,3,,2,4.8,89,0,1,0,3,3,17,0,,6
+numbers/constants/euler,objects/numbers/constants/euler.html,e,numbers,536,5,600,5,,0,0.0,57,0,1,0,4,4,31,0,,20
+numbers/constants/gamma,objects/numbers/constants/gamma.html,γ,numbers,609,5,600,5,,0,0.0,57,0,0,0,4,3,13,0,,7
+numbers/constants/phi,objects/numbers/constants/phi.html,φ,numbers,482,4,420,4,,1,2.1,67,0,0,0,3,2,15,0,,5
+numbers/constants/pi,objects/numbers/constants/pi.html,π,numbers,443,4,440,4,,1,2.3,70,0,0,0,3,2,40,0,,19
+numbers/constants/sqrt2,objects/numbers/constants/sqrt2.html,√2,numbers,486,4,490,4,,0,0.0,57,0,0,0,4,4,16,0,,9
+numbers/curious/1729,objects/numbers/curious/1729.html,1729,numbers,479,4,480,4,,1,2.1,67,0,0,0,3,1,13,0,,6
+numbers/curious/37,objects/numbers/curious/37.html,37,numbers,519,5,480,4,,2,3.9,82,0,0,0,3,2,8,0,,3
+numbers/curious/42,objects/numbers/curious/42.html,42,numbers,474,4,480,4,,0,0.0,57,0,0,2,3,1,10,0,,4
+numbers/curious/6174,objects/numbers/curious/6174.html,6174,numbers,492,4,480,4,,0,0.0,57,0,0,0,3,1,8,0,,3
+numbers/curious/65536,objects/numbers/curious/65536.html,65536,numbers,380,4,380,4,,0,0.0,57,0,1,0,3,3,12,0,,5
+numbers/curious/graham,objects/numbers/curious/graham.html,число Грэма,numbers,558,5,580,5,,2,3.6,80,0,0,0,3,2,9,0,,3
+numbers/curious/minus-one-twelfth,objects/numbers/curious/minus-one-twelfth.html,−1/12,numbers,647,6,580,5,,3,4.6,87,0,0,0,3,0,9,0,,3
+numbers/numeral-systems/babylonian,objects/numbers/numeral-systems/babylonian.html,вавилонская система,numbers,206,2,,,,0,0.0,57,0,0,0,0,0,12,0,,4
+numbers/numeral-systems/binary,objects/numbers/numeral-systems/binary.html,двоичная система,numbers,216,2,,,,0,0.0,57,0,0,0,0,0,11,0,,5
+numbers/numeral-systems/decimal,objects/numbers/numeral-systems/decimal.html,десятичная система,numbers,175,2,,,,1,5.7,95,0,1,0,0,0,13,0,,6
+numbers/numeral-systems/hexadecimal,objects/numbers/numeral-systems/hexadecimal.html,шестнадцатеричная,numbers,279,3,,,,0,0.0,57,0,0,0,0,0,9,0,,4
+numbers/numeral-systems/mayan,objects/numbers/numeral-systems/mayan.html,система майя,numbers,250,2,,,,0,0.0,57,0,0,0,0,0,12,0,,5
+numbers/numeral-systems/roman,objects/numbers/numeral-systems/roman.html,римские цифры,numbers,230,2,,,,0,0.0,57,0,1,0,0,0,8,0,,3
+numbers/special/aleph,objects/numbers/special/aleph.html,ℵ₀,numbers,521,5,520,5,,0,0.0,57,0,0,1,4,3,16,0,,8
+numbers/special/imaginary,objects/numbers/special/imaginary.html,i,numbers,554,5,600,5,,3,5.4,93,0,0,0,4,4,20,0,,8
+numbers/special/one,objects/numbers/special/one.html,1,numbers,657,6,600,5,,0,0.0,57,0,0,0,4,3,13,0,,7
+numbers/special/zero,objects/numbers/special/zero.html,0,numbers,583,5,600,5,,2,3.4,78,0,0,0,4,4,16,0,,8
+numbers/types/complex,objects/numbers/types/complex.html,ℂ,numbers,418,4,380,4,,2,4.8,89,0,0,0,3,3,21,0,,13
+numbers/types/integer,objects/numbers/types/integer.html,ℤ,numbers,366,3,370,3,,0,0.0,57,0,1,1,4,4,12,0,,6
+numbers/types/natural,objects/numbers/types/natural.html,ℕ,numbers,400,4,360,4,,1,2.5,75,0,0,0,3,3,41,0,,26
+numbers/types/prime,objects/numbers/types/prime.html,ℙ,numbers,426,4,380,4,,0,0.0,57,0,0,0,3,2,39,0,,18
+numbers/types/rational,objects/numbers/types/rational.html,ℚ,numbers,331,3,330,3,,0,0.0,57,0,0,0,4,4,13,0,,6
+numbers/types/real,objects/numbers/types/real.html,ℝ,numbers,328,3,330,3,,0,0.0,57,0,1,0,4,4,14,0,,7
+numbers/types/transcendental,objects/numbers/types/transcendental.html,𝕋,numbers,397,4,400,4,,1,2.5,75,0,0,0,3,3,13,0,,5
+statistics/biases/anchoring,objects/statistics/biases/anchoring.html,anchoring effect,statistics,388,4,400,3,,0,0.0,57,0,0,0,3,0,12,0,,5
+statistics/biases/availability,objects/statistics/biases/availability.html,availability heuristic,statistics,381,4,400,3,,0,0.0,57,0,0,0,3,1,13,0,,6
+statistics/biases/base-rate-neglect,objects/statistics/biases/base-rate-neglect.html,P(H),statistics,575,5,580,5,,0,0.0,57,0,1,2,3,2,17,0,,4
+statistics/biases/confirmation-bias,objects/statistics/biases/confirmation-bias.html,✓,statistics,548,5,550,5,,2,3.6,80,0,0,1,2,1,11,0,,3
+statistics/biases/framing-effect,objects/statistics/biases/framing-effect.html,[ ],statistics,550,5,550,5,,2,3.6,80,0,0,0,2,1,10,0,,5
+statistics/biases/gamblers-fallacy,objects/statistics/biases/gamblers-fallacy.html,½,statistics,592,5,590,5,,1,1.7,60,0,1,0,3,1,11,0,,4
+statistics/biases/hindsight-bias,objects/statistics/biases/hindsight-bias.html,⟲,statistics,519,5,450,4,,1,1.9,63,0,0,0,2,1,9,0,,2
+statistics/biases/loss-aversion,objects/statistics/biases/loss-aversion.html,loss aversion,statistics,400,4,400,3,,1,2.5,75,0,0,0,3,0,17,0,,7
+statistics/biases/sunk-cost,objects/statistics/biases/sunk-cost.html,⊗,statistics,505,5,450,4,,1,2.0,64,0,0,1,1,1,12,0,,4
+statistics/biases/survivorship-bias,objects/statistics/biases/survivorship-bias.html,▣,statistics,523,5,450,4,,2,3.8,81,0,0,1,1,0,14,0,,8
+statistics/inference/confidence-interval,objects/statistics/inference/confidence-interval.html,доверительный интервал,statistics,293,3,290,3,,0,0.0,57,0,1,0,2,1,15,0,,5
+statistics/inference/cuped,objects/statistics/inference/cuped.html,CUPED,statistics,456,4,500,3,,0,0.0,57,0,0,0,3,2,17,0,,3
+statistics/inference/effect-size,objects/statistics/inference/effect-size.html,размер эффекта,statistics,311,3,310,3,,0,0.0,57,0,0,0,2,1,20,0,,9
+statistics/inference/p-value,objects/statistics/inference/p-value.html,p-value,statistics,296,3,300,3,,0,0.0,57,0,1,0,2,0,24,0,,11
+statistics/measures/bleu,objects/statistics/measures/bleu.html,BLEU,statistics,345,3,340,3,,0,0.0,57,0,0,1,3,0,12,0,,5
+statistics/measures/cohens-kappa,objects/statistics/measures/cohens-kappa.html,каппа Коэна,statistics,339,3,340,3,,0,0.0,57,0,0,0,2,0,11,0,,4
+statistics/measures/correlation,objects/statistics/measures/correlation.html,r,statistics,605,5,600,5,,0,0.0,57,0,0,0,3,2,18,0,,9
+statistics/measures/elo,objects/statistics/measures/elo.html,рейтинг Elo,statistics,367,3,400,3,,0,0.0,57,0,0,0,4,0,10,0,,3
+statistics/measures/regression-to-mean,objects/statistics/measures/regression-to-mean.html,→x̄,statistics,586,5,590,5,,1,1.7,60,0,0,0,2,1,14,0,,7
+statistics/probability/clt,objects/statistics/probability/clt.html,CLT,statistics,326,3,330,3,,0,0.0,57,0,0,0,3,2,29,0,,13
+statistics/probability/conditional-probability,objects/statistics/probability/conditional-probability.html,условная вероятность,statistics,339,3,340,3,,0,0.0,57,0,0,0,3,1,23,0,,9
+statistics/probability/ev,objects/statistics/probability/ev.html,E[X],statistics,354,3,400,3,,0,0.0,57,0,1,0,3,3,43,0,,18
+statistics/probability/kelly,objects/statistics/probability/kelly.html,критерий Келли,statistics,357,3,400,3,,0,0.0,57,0,0,0,3,2,19,0,,5
+statistics/probability/variance,objects/statistics/probability/variance.html,σ²,statistics,292,3,290,3,,0,0.0,57,0,0,0,3,2,31,0,,12
