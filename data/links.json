@@ -2232,6 +2232,13 @@
       "title": "Даниил Бернулли",
       "url": "/null/objects/mathematicians/bernoulli-daniel.html",
       "glyph": "U"
+    },
+    {
+      "id": "es-bernoulli-clan",
+      "type": "essay",
+      "title": "восемь математиков, одна очередь задач",
+      "url": "/null/essays/bernoulli-clan.html",
+      "glyph": "¶"
     }
   ],
   "edges": [
@@ -10530,6 +10537,50 @@
     {
       "from": "math-bernoulli",
       "to": "math-bernoulli-daniel"
+    },
+    {
+      "from": "es-bernoulli-clan",
+      "to": "math-bernoulli"
+    },
+    {
+      "from": "es-bernoulli-clan",
+      "to": "math-bernoulli-daniel"
+    },
+    {
+      "from": "es-bernoulli-clan",
+      "to": "math-euler"
+    },
+    {
+      "from": "es-bernoulli-clan",
+      "to": "es-log-wealth"
+    },
+    {
+      "from": "es-bernoulli-clan",
+      "to": "es-eu"
+    },
+    {
+      "from": "es-bernoulli-clan",
+      "to": "es-lln"
+    },
+    {
+      "from": "es-bernoulli-clan",
+      "to": "st-ev"
+    },
+    {
+      "from": "math-bernoulli",
+      "to": "es-bernoulli-clan"
+    },
+    {
+      "from": "math-bernoulli-daniel",
+      "to": "es-bernoulli-clan"
+    },
+    {
+      "from": "es-log-wealth",
+      "to": "es-bernoulli-clan"
+    },
+    {
+      "from": "es-gambling",
+      "to": "es-bernoulli-clan"
     }
   ]
 }
