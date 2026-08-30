@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yzotop.github.io/null/</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-08-30</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/books/</loc>
@@ -186,7 +186,7 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/ergodicity.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-08-30</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/euler-formula.html</loc>
@@ -202,7 +202,7 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/expected-utility.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-08-30</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/expected-value.html</loc>
@@ -326,7 +326,7 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/log-wealth.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-08-30</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/essays/markov-chains.html</loc>
@@ -542,7 +542,7 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/man.html</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-08-30</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/map.html</loc>
@@ -710,7 +710,7 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/objects/mathematicians/</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-30</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/objects/mathematicians/axelrod.html</loc>
@@ -721,8 +721,12 @@
     <lastmod>2026-08-22</lastmod>
   </url>
   <url>
+    <loc>https://yzotop.github.io/null/objects/mathematicians/bernoulli-daniel.html</loc>
+    <lastmod>2026-08-30</lastmod>
+  </url>
+  <url>
     <loc>https://yzotop.github.io/null/objects/mathematicians/bernoulli.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-08-30</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/objects/mathematicians/box.html</loc>
@@ -750,7 +754,7 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/objects/mathematicians/euler.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-08-30</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/objects/mathematicians/fermat.html</loc>
@@ -1210,7 +1214,7 @@
   </url>
   <url>
     <loc>https://yzotop.github.io/null/objects/statistics/probability/ev.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-08-30</lastmod>
   </url>
   <url>
     <loc>https://yzotop.github.io/null/objects/statistics/probability/kelly.html</loc>
