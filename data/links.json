@@ -2225,6 +2225,13 @@
       "title": "смещение и разброс",
       "url": "/null/essays/bias-variance.html",
       "glyph": "¶"
+    },
+    {
+      "id": "math-bernoulli-daniel",
+      "type": "mathematician",
+      "title": "Даниил Бернулли",
+      "url": "/null/objects/mathematicians/bernoulli-daniel.html",
+      "glyph": "U"
     }
   ],
   "edges": [
@@ -10487,6 +10494,42 @@
     {
       "from": "es-q-learning",
       "to": "es-bias-variance"
+    },
+    {
+      "from": "math-bernoulli-daniel",
+      "to": "math-bernoulli"
+    },
+    {
+      "from": "math-bernoulli-daniel",
+      "to": "math-euler"
+    },
+    {
+      "from": "math-bernoulli-daniel",
+      "to": "es-log-wealth"
+    },
+    {
+      "from": "math-bernoulli-daniel",
+      "to": "es-eu"
+    },
+    {
+      "from": "math-bernoulli-daniel",
+      "to": "es-ergodicity"
+    },
+    {
+      "from": "math-bernoulli-daniel",
+      "to": "st-ev"
+    },
+    {
+      "from": "es-log-wealth",
+      "to": "math-bernoulli-daniel"
+    },
+    {
+      "from": "es-eu",
+      "to": "math-bernoulli-daniel"
+    },
+    {
+      "from": "math-bernoulli",
+      "to": "math-bernoulli-daniel"
     }
   ]
 }
