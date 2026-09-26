@@ -27,7 +27,19 @@ import sys
 import tempfile
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SITE_PREFIX = "/null/"
+SITE_PREFIX = "/"
+
+# Раньше SITE_PREFIX был "/null/", и проверка url.startswith(SITE_PREFIX)
+# заодно отсеивала чужие адреса. На поддомене префикс — один слеш, и такая
+# проверка пропускает что угодно, начинающееся со слеша. Поэтому сторож
+# теперь явный: адрес считается нашим, если ведёт в один из корневых
+# каталогов картотеки.
+SITE_DIRS = ("objects/", "essays/", "visuals/", "books/", "music/", "charts/")
+
+
+def is_site_url(url: str) -> bool:
+    """Наш внутренний адрес: /objects/..., /essays/... и так далее."""
+    return url.startswith(SITE_PREFIX) and url[len(SITE_PREFIX):].startswith(SITE_DIRS)
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
@@ -414,7 +426,7 @@ def check_backlinks() -> None:
 
     for nid, n in by_id.items():
         url = n.get("url", "")
-        if not url.startswith(SITE_PREFIX):
+        if not is_site_url(url):
             continue
         rel = url[len(SITE_PREFIX):]
         path = os.path.join(ROOT, rel)
@@ -555,7 +567,7 @@ def node_pages() -> tuple[dict, dict[str, str]]:
     pages = {}
     for n in d["nodes"]:
         url = n.get("url", "")
-        if url.startswith(SITE_PREFIX):
+        if is_site_url(url):
             rel = url[len(SITE_PREFIX):]
             if os.path.isfile(os.path.join(ROOT, rel)):
                 pages[rel] = n["id"]

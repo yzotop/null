@@ -4,2240 +4,2240 @@
       "id": "pi",
       "type": "constant",
       "title": "число π",
-      "url": "/null/objects/numbers/constants/pi.html",
+      "url": "/objects/numbers/constants/pi.html",
       "glyph": "π"
     },
     {
       "id": "euler",
       "type": "constant",
       "title": "число e",
-      "url": "/null/objects/numbers/constants/euler.html",
+      "url": "/objects/numbers/constants/euler.html",
       "glyph": "e"
     },
     {
       "id": "phi",
       "type": "constant",
       "title": "золотое сечение",
-      "url": "/null/objects/numbers/constants/phi.html",
+      "url": "/objects/numbers/constants/phi.html",
       "glyph": "φ"
     },
     {
       "id": "gamma",
       "type": "constant",
       "title": "постоянная γ",
-      "url": "/null/objects/numbers/constants/gamma.html",
+      "url": "/objects/numbers/constants/gamma.html",
       "glyph": "γ"
     },
     {
       "id": "sqrt2",
       "type": "constant",
       "title": "корень из двух",
-      "url": "/null/objects/numbers/constants/sqrt2.html",
+      "url": "/objects/numbers/constants/sqrt2.html",
       "glyph": "√"
     },
     {
       "id": "natural",
       "type": "type",
       "title": "натуральные числа",
-      "url": "/null/objects/numbers/types/natural.html",
+      "url": "/objects/numbers/types/natural.html",
       "glyph": "ℕ"
     },
     {
       "id": "prime",
       "type": "type",
       "title": "простые числа",
-      "url": "/null/objects/numbers/types/prime.html",
+      "url": "/objects/numbers/types/prime.html",
       "glyph": "ℙ"
     },
     {
       "id": "transcendental",
       "type": "type",
       "title": "трансцендентные",
-      "url": "/null/objects/numbers/types/transcendental.html",
+      "url": "/objects/numbers/types/transcendental.html",
       "glyph": "𝕋"
     },
     {
       "id": "complex",
       "type": "type",
       "title": "комплексные числа",
-      "url": "/null/objects/numbers/types/complex.html",
+      "url": "/objects/numbers/types/complex.html",
       "glyph": "ℂ"
     },
     {
       "id": "zero",
       "type": "special",
       "title": "ноль",
-      "url": "/null/objects/numbers/special/zero.html",
+      "url": "/objects/numbers/special/zero.html",
       "glyph": "0"
     },
     {
       "id": "one",
       "type": "special",
       "title": "единица",
-      "url": "/null/objects/numbers/special/one.html",
+      "url": "/objects/numbers/special/one.html",
       "glyph": "1"
     },
     {
       "id": "imaginary",
       "type": "special",
       "title": "мнимая единица",
-      "url": "/null/objects/numbers/special/imaginary.html",
+      "url": "/objects/numbers/special/imaginary.html",
       "glyph": "i"
     },
     {
       "id": "godel",
       "type": "theorem",
       "title": "теорема Гёделя",
-      "url": "/null/objects/ideas/theorems/godel.html",
+      "url": "/objects/ideas/theorems/godel.html",
       "glyph": "⊬"
     },
     {
       "id": "cantor",
       "type": "theorem",
       "title": "теорема Кантора",
-      "url": "/null/objects/ideas/theorems/cantor.html",
+      "url": "/objects/ideas/theorems/cantor.html",
       "glyph": "∞"
     },
     {
       "id": "pythagoras",
       "type": "theorem",
       "title": "теорема Пифагора",
-      "url": "/null/objects/ideas/theorems/pythagoras.html",
+      "url": "/objects/ideas/theorems/pythagoras.html",
       "glyph": "△"
     },
     {
       "id": "fundamental",
       "type": "theorem",
       "title": "основная теорема арифметики",
-      "url": "/null/objects/ideas/theorems/fundamental.html",
+      "url": "/objects/ideas/theorems/fundamental.html",
       "glyph": "ℙ"
     },
     {
       "id": "riemann",
       "type": "hypothesis",
       "title": "гипотеза Римана",
-      "url": "/null/objects/ideas/hypotheses/riemann.html",
+      "url": "/objects/ideas/hypotheses/riemann.html",
       "glyph": "ζ"
     },
     {
       "id": "goldbach",
       "type": "hypothesis",
       "title": "гипотеза Гольдбаха",
-      "url": "/null/objects/ideas/hypotheses/goldbach.html",
+      "url": "/objects/ideas/hypotheses/goldbach.html",
       "glyph": "+"
     },
     {
       "id": "twin-primes",
       "type": "hypothesis",
       "title": "простые близнецы",
-      "url": "/null/objects/ideas/hypotheses/twin-primes.html",
+      "url": "/objects/ideas/hypotheses/twin-primes.html",
       "glyph": "∥"
     },
     {
       "id": "pvsnp",
       "type": "hypothesis",
       "title": "P vs NP",
-      "url": "/null/objects/ideas/hypotheses/pvsnp.html",
+      "url": "/objects/ideas/hypotheses/pvsnp.html",
       "glyph": "?"
     },
     {
       "id": "op-mod",
       "type": "operator",
       "title": "mod",
-      "url": "/null/objects/notation/operators/mod.html",
+      "url": "/objects/notation/operators/mod.html",
       "glyph": "mod"
     },
     {
       "id": "op-floor",
       "type": "operator",
       "title": "floor и ceiling",
-      "url": "/null/objects/notation/operators/floor-ceiling.html",
+      "url": "/objects/notation/operators/floor-ceiling.html",
       "glyph": "⌊⌋"
     },
     {
       "id": "op-xor",
       "type": "operator",
       "title": "XOR",
-      "url": "/null/objects/notation/operators/xor.html",
+      "url": "/objects/notation/operators/xor.html",
       "glyph": "⊕"
     },
     {
       "id": "op-nabla",
       "type": "operator",
       "title": "набла",
-      "url": "/null/objects/notation/operators/nabla.html",
+      "url": "/objects/notation/operators/nabla.html",
       "glyph": "∇"
     },
     {
       "id": "op-factorial",
       "type": "operator",
       "title": "факториал",
-      "url": "/null/objects/notation/operators/factorial.html",
+      "url": "/objects/notation/operators/factorial.html",
       "glyph": "!"
     },
     {
       "id": "op-sum",
       "type": "operator",
       "title": "сумма",
-      "url": "/null/objects/notation/operators/sum.html",
+      "url": "/objects/notation/operators/sum.html",
       "glyph": "∑"
     },
     {
       "id": "op-integral",
       "type": "operator",
       "title": "интеграл",
-      "url": "/null/objects/notation/operators/integral.html",
+      "url": "/objects/notation/operators/integral.html",
       "glyph": "∫"
     },
     {
       "id": "op-partial",
       "type": "operator",
       "title": "частная производная",
-      "url": "/null/objects/notation/operators/partial.html",
+      "url": "/objects/notation/operators/partial.html",
       "glyph": "∂"
     },
     {
       "id": "pr-secretary",
       "type": "problem",
       "title": "задача о невесте",
-      "url": "/null/objects/ideas/problems/secretary.html",
+      "url": "/objects/ideas/problems/secretary.html",
       "glyph": "37"
     },
     {
       "id": "pr-simpson",
       "type": "problem",
       "title": "парадокс Симпсона",
-      "url": "/null/objects/ideas/problems/simpson.html",
+      "url": "/objects/ideas/problems/simpson.html",
       "glyph": "∩"
     },
     {
       "id": "pr-monty",
       "type": "problem",
       "title": "парадокс Монти Холла",
-      "url": "/null/objects/ideas/problems/monty-hall.html",
+      "url": "/objects/ideas/problems/monty-hall.html",
       "glyph": "♟"
     },
     {
       "id": "pr-birthday",
       "type": "problem",
       "title": "парадокс дней рождения",
-      "url": "/null/objects/ideas/problems/birthday.html",
+      "url": "/objects/ideas/problems/birthday.html",
       "glyph": "∩"
     },
     {
       "id": "pr-gamblers",
       "type": "problem",
       "title": "разорение игрока",
-      "url": "/null/objects/ideas/problems/gamblers-ruin.html",
+      "url": "/objects/ideas/problems/gamblers-ruin.html",
       "glyph": "∅"
     },
     {
       "id": "pr-prisoners",
       "type": "problem",
       "title": "дилемма заключённого",
-      "url": "/null/objects/ideas/problems/prisoners-dilemma.html",
+      "url": "/objects/ideas/problems/prisoners-dilemma.html",
       "glyph": "(D,D)"
     },
     {
       "id": "es-zero-nine",
       "type": "essay",
       "title": "0.999… = 1",
-      "url": "/null/essays/zero-point-nine.html",
+      "url": "/essays/zero-point-nine.html",
       "glyph": "¶"
     },
     {
       "id": "es-infinity",
       "type": "essay",
       "title": "Бесконечность — не число",
-      "url": "/null/essays/infinity.html",
+      "url": "/essays/infinity.html",
       "glyph": "¶"
     },
     {
       "id": "es-invented",
       "type": "essay",
       "title": "Изобретена или открыта",
-      "url": "/null/essays/invented-or-discovered.html",
+      "url": "/essays/invented-or-discovered.html",
       "glyph": "¶"
     },
     {
       "id": "es-euler-formula",
       "type": "essay",
       "title": "Формула Эйлера",
-      "url": "/null/essays/euler-formula.html",
+      "url": "/essays/euler-formula.html",
       "glyph": "¶"
     },
     {
       "id": "es-pi-gaussian",
       "type": "essay",
       "title": "π в колоколе Гаусса",
-      "url": "/null/essays/pi-in-gaussian.html",
+      "url": "/essays/pi-in-gaussian.html",
       "glyph": "ℼ"
     },
     {
       "id": "es-deck",
       "type": "essay",
       "title": "Колода которой не было",
-      "url": "/null/essays/deck-of-cards.html",
+      "url": "/essays/deck-of-cards.html",
       "glyph": "¶"
     },
     {
       "id": "es-hilbert",
       "type": "essay",
       "title": "Гёдель и Гильберт",
-      "url": "/null/essays/hilbert-godel.html",
+      "url": "/essays/hilbert-godel.html",
       "glyph": "¶"
     },
     {
       "id": "es-millennium",
       "type": "essay",
       "title": "Проблемы тысячелетия",
-      "url": "/null/essays/millennium-problems.html",
+      "url": "/essays/millennium-problems.html",
       "glyph": "¶"
     },
     {
       "id": "es-zfc",
       "type": "essay",
       "title": "Математика которую нельзя доказать",
-      "url": "/null/essays/zfc-independence.html",
+      "url": "/essays/zfc-independence.html",
       "glyph": "¶"
     },
     {
       "id": "es-rsa",
       "type": "essay",
       "title": "Замок из простых чисел",
-      "url": "/null/essays/rsa-primes.html",
+      "url": "/essays/rsa-primes.html",
       "glyph": "¶"
     },
     {
       "id": "es-fibonacci",
       "type": "essay",
       "title": "Фибоначчи в природе",
-      "url": "/null/essays/fibonacci-nature.html",
+      "url": "/essays/fibonacci-nature.html",
       "glyph": "¶"
     },
     {
       "id": "es-pseudorandom",
       "type": "essay",
       "title": "Случайность которой нет",
-      "url": "/null/essays/pseudorandom.html",
+      "url": "/essays/pseudorandom.html",
       "glyph": "⚄"
     },
     {
       "id": "vi-prime-field",
       "type": "visual",
       "title": "поле простых",
-      "url": "/null/visuals/prime-field.html",
+      "url": "/visuals/prime-field.html",
       "glyph": "⊞"
     },
     {
       "id": "vi-triangles",
       "type": "visual",
       "title": "матрица треугольников",
-      "url": "/null/visuals/triangles.html",
+      "url": "/visuals/triangles.html",
       "glyph": "△"
     },
     {
       "id": "vi-progress",
       "type": "visual",
       "title": "прогресс null",
-      "url": "/null/visuals/progress.html",
+      "url": "/visuals/progress.html",
       "glyph": "░"
     },
     {
       "id": "vi-ulam",
       "type": "visual",
       "title": "спираль улама",
-      "url": "/null/visuals/ulam.html",
+      "url": "/visuals/ulam.html",
       "glyph": "◯"
     },
     {
       "id": "vi-pascal",
       "type": "visual",
       "title": "треугольник паскаля",
-      "url": "/null/visuals/pascal.html",
+      "url": "/visuals/pascal.html",
       "glyph": "△"
     },
     {
       "id": "vi-plotter",
       "type": "visual",
       "title": "плоттер функций",
-      "url": "/null/visuals/plotter.html",
+      "url": "/visuals/plotter.html",
       "glyph": "ƒ"
     },
     {
       "id": "vi-collatz",
       "type": "visual",
       "title": "коллатц",
-      "url": "/null/visuals/collatz.html",
+      "url": "/visuals/collatz.html",
       "glyph": "↯"
     },
     {
       "id": "vi-monty",
       "type": "visual",
       "title": "монти холл — козы vs машины",
-      "url": "/null/visuals/monty-hall.html",
+      "url": "/visuals/monty-hall.html",
       "glyph": "♟"
     },
     {
       "id": "mu-discrete",
       "type": "music",
       "title": "DISCRETE",
-      "url": "/null/music/discrete.html",
+      "url": "/music/discrete.html",
       "glyph": "◼"
     },
     {
       "id": "mu-nullex",
       "type": "music",
       "title": "NULL EXECUTION",
-      "url": "/null/music/null-execution.html",
+      "url": "/music/null-execution.html",
       "glyph": "⚙"
     },
     {
       "id": "mu-bitparade",
       "type": "music",
       "title": "BIT PARADE",
-      "url": "/null/music/bit-parade.html",
+      "url": "/music/bit-parade.html",
       "glyph": "▓"
     },
     {
       "id": "mu-constants",
       "type": "music",
       "title": "CONSTANTS",
-      "url": "/null/music/constants.html",
+      "url": "/music/constants.html",
       "glyph": "K"
     },
     {
       "id": "mu-quad",
       "type": "music",
       "title": "QUAD",
-      "url": "/null/music/quad.html",
+      "url": "/music/quad.html",
       "glyph": "◈"
     },
     {
       "id": "mu-opstack",
       "type": "music",
       "title": "OPERATOR STACK",
-      "url": "/null/music/operator-stack.html",
+      "url": "/music/operator-stack.html",
       "glyph": "∑"
     },
     {
       "id": "cu-37",
       "type": "curious",
       "title": "37",
-      "url": "/null/objects/numbers/curious/37.html",
+      "url": "/objects/numbers/curious/37.html",
       "glyph": "37"
     },
     {
       "id": "cu-42",
       "type": "curious",
       "title": "42",
-      "url": "/null/objects/numbers/curious/42.html",
+      "url": "/objects/numbers/curious/42.html",
       "glyph": "42"
     },
     {
       "id": "cu-1729",
       "type": "curious",
       "title": "1729",
-      "url": "/null/objects/numbers/curious/1729.html",
+      "url": "/objects/numbers/curious/1729.html",
       "glyph": "⊞"
     },
     {
       "id": "cu-6174",
       "type": "curious",
       "title": "6174",
-      "url": "/null/objects/numbers/curious/6174.html",
+      "url": "/objects/numbers/curious/6174.html",
       "glyph": "6174"
     },
     {
       "id": "cu-graham",
       "type": "curious",
       "title": "число Грэма",
-      "url": "/null/objects/numbers/curious/graham.html",
+      "url": "/objects/numbers/curious/graham.html",
       "glyph": "G"
     },
     {
       "id": "cu-minus12",
       "type": "curious",
       "title": "−1/12",
-      "url": "/null/objects/numbers/curious/minus-one-twelfth.html",
+      "url": "/objects/numbers/curious/minus-one-twelfth.html",
       "glyph": "−¹⁄₁₂"
     },
     {
       "id": "cu-65536",
       "type": "curious",
       "title": "65536",
-      "url": "/null/objects/numbers/curious/65536.html",
+      "url": "/objects/numbers/curious/65536.html",
       "glyph": "2¹⁶"
     },
     {
       "id": "ch-explorer",
       "type": "chart",
       "title": "explorer",
-      "url": "/null/visuals/charts/explorer.html",
+      "url": "/visuals/charts/explorer.html",
       "glyph": "ƒ"
     },
     {
       "id": "ch-ascii",
       "type": "chart",
       "title": "ascii графики",
-      "url": "/null/visuals/charts/ascii.html",
+      "url": "/visuals/charts/ascii.html",
       "glyph": "░"
     },
     {
       "id": "ch-types",
       "type": "chart",
       "title": "типы графиков",
-      "url": "/null/visuals/charts/types.html",
+      "url": "/visuals/charts/types.html",
       "glyph": "☰"
     },
     {
       "id": "ch-which",
       "type": "chart",
       "title": "какой график?",
-      "url": "/null/visuals/charts/which.html",
+      "url": "/visuals/charts/which.html",
       "glyph": "?"
     },
     {
       "id": "ch-bad",
       "type": "chart",
       "title": "плохие графики",
-      "url": "/null/visuals/charts/bad.html",
+      "url": "/visuals/charts/bad.html",
       "glyph": "✗"
     },
     {
       "id": "ch-history",
       "type": "chart",
       "title": "история визуализации",
-      "url": "/null/visuals/charts/history.html",
+      "url": "/visuals/charts/history.html",
       "glyph": "∿"
     },
     {
       "id": "ch-sound",
       "type": "chart",
       "title": "звук чисел",
-      "url": "/null/visuals/charts/sound.html",
+      "url": "/visuals/charts/sound.html",
       "glyph": "♩"
     },
     {
       "id": "mu-dip",
       "type": "music",
       "title": "Delta Initiation Protocol",
-      "url": "/null/music/delta-initiation-protocol.html",
+      "url": "/music/delta-initiation-protocol.html",
       "glyph": "δ"
     },
     {
       "id": "mu-8",
       "type": "music",
       "title": "8",
-      "url": "/null/music/8.html",
+      "url": "/music/8.html",
       "glyph": "8"
     },
     {
       "id": "mu-hmn",
       "type": "music",
       "title": "Happy Machine Noises",
-      "url": "/null/music/happy-machine-noises.html",
+      "url": "/music/happy-machine-noises.html",
       "glyph": "♪"
     },
     {
       "id": "mu-imc",
       "type": "music",
       "title": "Instantaneous Momentary Calculations",
-      "url": "/null/music/instantaneous.html",
+      "url": "/music/instantaneous.html",
       "glyph": "∂"
     },
     {
       "id": "aleph0",
       "type": "special",
       "title": "ℵ₀ алеф-ноль",
-      "url": "/null/objects/numbers/special/aleph.html",
+      "url": "/objects/numbers/special/aleph.html",
       "glyph": "ℵ₀"
     },
     {
       "id": "alph-greek",
       "type": "alphabet",
       "title": "греческий алфавит",
-      "url": "/null/objects/notation/alphabets/greek.html",
+      "url": "/objects/notation/alphabets/greek.html",
       "glyph": "Ω"
     },
     {
       "id": "alph-math",
       "type": "alphabet",
       "title": "математические символы",
-      "url": "/null/objects/notation/alphabets/math-symbols.html",
+      "url": "/objects/notation/alphabets/math-symbols.html",
       "glyph": "ℕ"
     },
     {
       "id": "alph-latin",
       "type": "alphabet",
       "title": "латинский алфавит",
-      "url": "/null/objects/notation/alphabets/latin.html",
+      "url": "/objects/notation/alphabets/latin.html",
       "glyph": "x"
     },
     {
       "id": "alph-hebrew",
       "type": "alphabet",
       "title": "еврейский алфавит",
-      "url": "/null/objects/notation/alphabets/hebrew.html",
+      "url": "/objects/notation/alphabets/hebrew.html",
       "glyph": "ℵ"
     },
     {
       "id": "alph-fraktur",
       "type": "alphabet",
       "title": "готический алфавит",
-      "url": "/null/objects/notation/alphabets/fraktur.html",
+      "url": "/objects/notation/alphabets/fraktur.html",
       "glyph": "𝔄"
     },
     {
       "id": "ns-decimal",
       "type": "numeral",
       "title": "десятичная система счисления",
-      "url": "/null/objects/numbers/numeral-systems/decimal.html",
+      "url": "/objects/numbers/numeral-systems/decimal.html",
       "glyph": "10"
     },
     {
       "id": "ns-binary",
       "type": "numeral",
       "title": "двоичная система счисления",
-      "url": "/null/objects/numbers/numeral-systems/binary.html",
+      "url": "/objects/numbers/numeral-systems/binary.html",
       "glyph": "01"
     },
     {
       "id": "ns-roman",
       "type": "numeral",
       "title": "римские цифры",
-      "url": "/null/objects/numbers/numeral-systems/roman.html",
+      "url": "/objects/numbers/numeral-systems/roman.html",
       "glyph": "XIV"
     },
     {
       "id": "ns-babylon",
       "type": "numeral",
       "title": "вавилонская система",
-      "url": "/null/objects/numbers/numeral-systems/babylonian.html",
+      "url": "/objects/numbers/numeral-systems/babylonian.html",
       "glyph": "▽"
     },
     {
       "id": "ns-mayan",
       "type": "numeral",
       "title": "система майя",
-      "url": "/null/objects/numbers/numeral-systems/mayan.html",
+      "url": "/objects/numbers/numeral-systems/mayan.html",
       "glyph": "●"
     },
     {
       "id": "ns-hex",
       "type": "numeral",
       "title": "шестнадцатеричная",
-      "url": "/null/objects/numbers/numeral-systems/hexadecimal.html",
+      "url": "/objects/numbers/numeral-systems/hexadecimal.html",
       "glyph": "FF"
     },
     {
       "id": "bk-euclid",
       "type": "book",
       "title": "Начала · Евклид",
-      "url": "/null/books/euclid-elements.html",
+      "url": "/books/euclid-elements.html",
       "glyph": "Ε"
     },
     {
       "id": "bk-geb",
       "type": "book",
       "title": "Гёдель Эшер Бах",
-      "url": "/null/books/godel-escher-bach.html",
+      "url": "/books/godel-escher-bach.html",
       "glyph": "∞"
     },
     {
       "id": "bk-hardy",
       "type": "book",
       "title": "Апология математика · Харди",
-      "url": "/null/books/hardy-apology.html",
+      "url": "/books/hardy-apology.html",
       "glyph": "∫"
     },
     {
       "id": "bk-descartes",
       "type": "book",
       "title": "Геометрия · Декарт",
-      "url": "/null/books/descartes-geometry.html",
+      "url": "/books/descartes-geometry.html",
       "glyph": "⟡"
     },
     {
       "id": "bk-newton",
       "type": "book",
       "title": "Principia · Ньютон",
-      "url": "/null/books/newton-principia.html",
+      "url": "/books/newton-principia.html",
       "glyph": "ℕ"
     },
     {
       "id": "bk-euler",
       "type": "book",
       "title": "Introductio · Эйлер",
-      "url": "/null/books/euler-introductio.html",
+      "url": "/books/euler-introductio.html",
       "glyph": "e"
     },
     {
       "id": "bk-gauss",
       "type": "book",
       "title": "Disquisitiones · Гаусс",
-      "url": "/null/books/gauss-disquisitiones.html",
+      "url": "/books/gauss-disquisitiones.html",
       "glyph": "ℤ"
     },
     {
       "id": "bk-bourbaki",
       "type": "book",
       "title": "Элементы математики · Бурбаки",
-      "url": "/null/books/bourbaki.html",
+      "url": "/books/bourbaki.html",
       "glyph": "ℬ"
     },
     {
       "id": "es-zero-history",
       "type": "essay",
       "title": "История нуля",
-      "url": "/null/essays/zero-history.html",
+      "url": "/essays/zero-history.html",
       "glyph": "¶"
     },
     {
       "id": "es-infinity-types",
       "type": "essay",
       "title": "Бесконечностей много",
-      "url": "/null/essays/infinity-types.html",
+      "url": "/essays/infinity-types.html",
       "glyph": "¶"
     },
     {
       "id": "es-primes",
       "type": "essay",
       "title": "Тайна простых чисел",
-      "url": "/null/essays/primes-mystery.html",
+      "url": "/essays/primes-mystery.html",
       "glyph": "¶"
     },
     {
       "id": "vi-coordinates",
       "type": "visual",
       "title": "системы координат",
-      "url": "/null/visuals/coordinates.html",
+      "url": "/visuals/coordinates.html",
       "glyph": "⊕"
     },
     {
       "id": "vi-benford",
       "type": "visual",
       "title": "закон Бенфорда",
-      "url": "/null/visuals/benford.html",
+      "url": "/visuals/benford.html",
       "glyph": "log"
     },
     {
       "id": "es-game-theory",
       "type": "essay",
       "title": "математика предательства",
-      "url": "/null/essays/game-theory.html",
+      "url": "/essays/game-theory.html",
       "glyph": "¶"
     },
     {
       "id": "es-markov",
       "type": "essay",
       "title": "Цепи Маркова",
-      "url": "/null/essays/markov-chains.html",
+      "url": "/essays/markov-chains.html",
       "glyph": "⇢"
     },
     {
       "id": "vi-markov",
       "type": "visual",
       "title": "цепи Маркова",
-      "url": "/null/visuals/markov.html",
+      "url": "/visuals/markov.html",
       "glyph": "→"
     },
     {
       "id": "vi-prime-polar",
       "type": "visual",
       "title": "простые в полярных координатах",
-      "url": "/null/visuals/prime-polar.html",
+      "url": "/visuals/prime-polar.html",
       "glyph": "⊙"
     },
     {
       "id": "vi-sorting",
       "type": "visual",
       "title": "алгоритмы сортировки",
-      "url": "/null/visuals/sorting.html",
+      "url": "/visuals/sorting.html",
       "glyph": "↕"
     },
     {
       "id": "vi-fourier",
       "type": "visual",
       "title": "разложение Фурье",
-      "url": "/null/visuals/fourier.html",
+      "url": "/visuals/fourier.html",
       "glyph": "∿"
     },
     {
       "id": "es-proof",
       "type": "essay",
       "title": "Что такое доказательство",
-      "url": "/null/essays/proof.html",
+      "url": "/essays/proof.html",
       "glyph": "¶"
     },
     {
       "id": "es-math-music",
       "type": "essay",
       "title": "Математика звука",
-      "url": "/null/essays/math-music.html",
+      "url": "/essays/math-music.html",
       "glyph": "¶"
     },
     {
       "id": "es-inf-paradox",
       "type": "essay",
       "title": "Парадоксы бесконечности",
-      "url": "/null/essays/infinity-paradoxes.html",
+      "url": "/essays/infinity-paradoxes.html",
       "glyph": "¶"
     },
     {
       "id": "es-ab-testing",
       "type": "essay",
       "title": "Почему p < 0.05 — плохой порог",
-      "url": "/null/essays/ab-testing.html",
+      "url": "/essays/ab-testing.html",
       "glyph": "¶"
     },
     {
       "id": "es-auctions",
       "type": "essay",
       "title": "Математика аукционов",
-      "url": "/null/essays/auctions.html",
+      "url": "/essays/auctions.html",
       "glyph": "¶"
     },
     {
       "id": "es-bayesian",
       "type": "essay",
       "title": "Как обновлять убеждения · байесовский вывод",
-      "url": "/null/essays/bayesian.html",
+      "url": "/essays/bayesian.html",
       "glyph": "¶"
     },
     {
       "id": "es-llm-eval",
       "type": "essay",
       "title": "Как измерить то чего нет · оценка LLM",
-      "url": "/null/essays/llm-eval.html",
+      "url": "/essays/llm-eval.html",
       "glyph": "¶"
     },
     {
       "id": "es-two-sided",
       "type": "essay",
       "title": "Математика двусторонних рынков",
-      "url": "/null/essays/two-sided-markets.html",
+      "url": "/essays/two-sided-markets.html",
       "glyph": "¶"
     },
     {
       "id": "es-causality",
       "type": "essay",
       "title": "Корреляция — не причинность",
-      "url": "/null/essays/causality.html",
+      "url": "/essays/causality.html",
       "glyph": "¶"
     },
     {
       "id": "es-adtech",
       "type": "essay",
       "title": "Математика рекламного аукциона",
-      "url": "/null/essays/adtech.html",
+      "url": "/essays/adtech.html",
       "glyph": "¶"
     },
     {
       "id": "es-ev",
       "type": "essay",
       "title": "Математика решений · EV",
-      "url": "/null/essays/expected-value.html",
+      "url": "/essays/expected-value.html",
       "glyph": "¶"
     },
     {
       "id": "es-eu",
       "type": "essay",
       "title": "Почему люди не максимизируют EV · expected utility",
-      "url": "/null/essays/expected-utility.html",
+      "url": "/essays/expected-utility.html",
       "glyph": "¶"
     },
     {
       "id": "es-unit-econ",
       "type": "essay",
       "title": "Юнит-экономика",
-      "url": "/null/essays/unit-economics.html",
+      "url": "/essays/unit-economics.html",
       "glyph": "¶"
     },
     {
       "id": "vi-ab-calc",
       "type": "visual",
       "title": "A/B калькулятор",
-      "url": "/null/visuals/ab-calculator.html",
+      "url": "/visuals/ab-calculator.html",
       "glyph": "α"
     },
     {
       "id": "vi-ev-calc",
       "type": "visual",
       "title": "калькулятор EV",
-      "url": "/null/visuals/ev-calculator.html",
+      "url": "/visuals/ev-calculator.html",
       "glyph": "E[X]"
     },
     {
       "id": "vi-bayes",
       "type": "visual",
       "title": "теорема Байеса",
-      "url": "/null/visuals/bayes.html",
+      "url": "/visuals/bayes.html",
       "glyph": "P"
     },
     {
       "id": "math-turing",
       "type": "mathematician",
       "title": "Алан Тьюринг",
-      "url": "/null/objects/mathematicians/turing.html",
+      "url": "/objects/mathematicians/turing.html",
       "glyph": "01"
     },
     {
       "id": "math-riemann",
       "type": "mathematician",
       "title": "Бернхард Риман",
-      "url": "/null/objects/mathematicians/riemann.html",
+      "url": "/objects/mathematicians/riemann.html",
       "glyph": "ζ"
     },
     {
       "id": "math-newton",
       "type": "mathematician",
       "title": "Исаак Ньютон",
-      "url": "/null/objects/mathematicians/newton.html",
+      "url": "/objects/mathematicians/newton.html",
       "glyph": "∫"
     },
     {
       "id": "math-hilbert",
       "type": "mathematician",
       "title": "Давид Гильберт",
-      "url": "/null/objects/mathematicians/hilbert.html",
+      "url": "/objects/mathematicians/hilbert.html",
       "glyph": "?"
     },
     {
       "id": "math-poincare",
       "type": "mathematician",
       "title": "Анри Пуанкаре",
-      "url": "/null/objects/mathematicians/poincare.html",
+      "url": "/objects/mathematicians/poincare.html",
       "glyph": "∞"
     },
     {
       "id": "vi-axelrod",
       "type": "visual",
       "title": "турниры Аксельрода",
-      "url": "/null/visuals/axelrod.html",
+      "url": "/visuals/axelrod.html",
       "glyph": "↔"
     },
     {
       "id": "vi-lorenz",
       "type": "visual",
       "title": "аттрактор Лоренца",
-      "url": "/null/visuals/lorenz.html",
+      "url": "/visuals/lorenz.html",
       "glyph": "∞"
     },
     {
       "id": "vi-mult-circle",
       "type": "visual",
       "title": "умножение на окружности",
-      "url": "/null/visuals/multiplication-circle.html",
+      "url": "/visuals/multiplication-circle.html",
       "glyph": "⊙"
     },
     {
       "id": "vi-prime-scatter",
       "type": "visual",
       "title": "простые в координатах остатков",
-      "url": "/null/visuals/prime-scatter.html",
+      "url": "/visuals/prime-scatter.html",
       "glyph": "ℙ"
     },
     {
       "id": "vi-symbols",
       "type": "visual",
       "title": "символы математики",
-      "url": "/null/visuals/symbols.html",
+      "url": "/visuals/symbols.html",
       "glyph": "∑"
     },
     {
       "id": "th-markov",
       "type": "theorem",
       "title": "цепь Маркова",
-      "url": "/null/objects/ideas/theorems/markov.html",
+      "url": "/objects/ideas/theorems/markov.html",
       "glyph": "P"
     },
     {
       "id": "es-markov-deep",
       "type": "essay",
       "title": "Андрей Марков и Евгений Онегин",
-      "url": "/null/essays/markov-deep.html",
+      "url": "/essays/markov-deep.html",
       "glyph": "✍"
     },
     {
       "id": "es-prob-paradox",
       "type": "essay",
       "title": "Парадоксы вероятности",
-      "url": "/null/essays/probability-paradoxes.html",
+      "url": "/essays/probability-paradoxes.html",
       "glyph": "⁇"
     },
     {
       "id": "es-kolmogorov",
       "type": "essay",
       "title": "Колмогоров и случайность",
-      "url": "/null/essays/kolmogorov.html",
+      "url": "/essays/kolmogorov.html",
       "glyph": "∁"
     },
     {
       "id": "vi-lln",
       "type": "visual",
       "title": "закон больших чисел",
-      "url": "/null/visuals/law-of-large-numbers.html",
+      "url": "/visuals/law-of-large-numbers.html",
       "glyph": "x̄"
     },
     {
       "id": "st-condprob",
       "type": "statistic",
       "title": "условная вероятность P(A|B)",
-      "url": "/null/objects/statistics/probability/conditional-probability.html",
+      "url": "/objects/statistics/probability/conditional-probability.html",
       "glyph": "P(A|B)"
     },
     {
       "id": "es-regression",
       "type": "essay",
       "title": "Регрессия к среднему",
-      "url": "/null/essays/regression-to-mean.html",
+      "url": "/essays/regression-to-mean.html",
       "glyph": "¶"
     },
     {
       "id": "es-nudge",
       "type": "essay",
       "title": "Nudge",
-      "url": "/null/essays/nudge.html",
+      "url": "/essays/nudge.html",
       "glyph": "¶"
     },
     {
       "id": "es-prospect",
       "type": "essay",
       "title": "Prospect Theory",
-      "url": "/null/essays/prospect-theory.html",
+      "url": "/essays/prospect-theory.html",
       "glyph": "¶"
     },
     {
       "id": "st-loss-av",
       "type": "statistic",
       "title": "loss aversion",
-      "url": "/null/objects/statistics/biases/loss-aversion.html",
+      "url": "/objects/statistics/biases/loss-aversion.html",
       "glyph": "λ"
     },
     {
       "id": "st-anchor",
       "type": "statistic",
       "title": "anchoring effect",
-      "url": "/null/objects/statistics/biases/anchoring.html",
+      "url": "/objects/statistics/biases/anchoring.html",
       "glyph": "⚓"
     },
     {
       "id": "st-avail",
       "type": "statistic",
       "title": "availability heuristic",
-      "url": "/null/objects/statistics/biases/availability.html",
+      "url": "/objects/statistics/biases/availability.html",
       "glyph": "?"
     },
     {
       "id": "st-corr",
       "type": "statistic",
       "title": "корреляция",
-      "url": "/null/objects/statistics/measures/correlation.html",
+      "url": "/objects/statistics/measures/correlation.html",
       "glyph": "r"
     },
     {
       "id": "st-rtm",
       "type": "statistic",
       "title": "регрессия к среднему",
-      "url": "/null/objects/statistics/measures/regression-to-mean.html",
+      "url": "/objects/statistics/measures/regression-to-mean.html",
       "glyph": "→x̄"
     },
     {
       "id": "st-brn",
       "type": "statistic",
       "title": "ошибка базовой частоты",
-      "url": "/null/objects/statistics/biases/base-rate-neglect.html",
+      "url": "/objects/statistics/biases/base-rate-neglect.html",
       "glyph": "P(H)"
     },
     {
       "id": "st-gf",
       "type": "statistic",
       "title": "ошибка игрока",
-      "url": "/null/objects/statistics/biases/gamblers-fallacy.html",
+      "url": "/objects/statistics/biases/gamblers-fallacy.html",
       "glyph": "½"
     },
     {
       "id": "st-surv",
       "type": "statistic",
       "title": "ошибка выжившего",
-      "url": "/null/objects/statistics/biases/survivorship-bias.html",
+      "url": "/objects/statistics/biases/survivorship-bias.html",
       "glyph": "▣"
     },
     {
       "id": "st-confirm",
       "type": "statistic",
       "title": "склонность к подтверждению",
-      "url": "/null/objects/statistics/biases/confirmation-bias.html",
+      "url": "/objects/statistics/biases/confirmation-bias.html",
       "glyph": "✓"
     },
     {
       "id": "st-sunk",
       "type": "statistic",
       "title": "невозвратные затраты",
-      "url": "/null/objects/statistics/biases/sunk-cost.html",
+      "url": "/objects/statistics/biases/sunk-cost.html",
       "glyph": "⊗"
     },
     {
       "id": "st-hind",
       "type": "statistic",
       "title": "ретроспективное искажение",
-      "url": "/null/objects/statistics/biases/hindsight-bias.html",
+      "url": "/objects/statistics/biases/hindsight-bias.html",
       "glyph": "⟲"
     },
     {
       "id": "st-frame",
       "type": "statistic",
       "title": "эффект формулировки",
-      "url": "/null/objects/statistics/biases/framing-effect.html",
+      "url": "/objects/statistics/biases/framing-effect.html",
       "glyph": "[ ]"
     },
     {
       "id": "vi-gamblers",
       "type": "visual",
       "title": "лудоманы и математика",
-      "url": "/null/visuals/probability-gamblers.html",
+      "url": "/visuals/probability-gamblers.html",
       "glyph": "⚀"
     },
     {
       "id": "math-lobachevsky",
       "type": "mathematician",
       "title": "Николай Лобачевский",
-      "url": "/null/objects/mathematicians/lobachevsky.html",
+      "url": "/objects/mathematicians/lobachevsky.html",
       "glyph": "∦"
     },
     {
       "id": "math-perelman",
       "type": "mathematician",
       "title": "Григорий Перельман",
-      "url": "/null/objects/mathematicians/perelman.html",
+      "url": "/objects/mathematicians/perelman.html",
       "glyph": "∞"
     },
     {
       "id": "math-pascal",
       "type": "mathematician",
       "title": "Блез Паскаль",
-      "url": "/null/objects/mathematicians/pascal.html",
+      "url": "/objects/mathematicians/pascal.html",
       "glyph": "Δ"
     },
     {
       "id": "math-bernoulli",
       "type": "mathematician",
       "title": "Якоб Бернулли",
-      "url": "/null/objects/mathematicians/bernoulli.html",
+      "url": "/objects/mathematicians/bernoulli.html",
       "glyph": "e"
     },
     {
       "id": "math-laplace",
       "type": "mathematician",
       "title": "Пьер-Симон Лаплас",
-      "url": "/null/objects/mathematicians/laplace.html",
+      "url": "/objects/mathematicians/laplace.html",
       "glyph": "P"
     },
     {
       "id": "es-gambling",
       "type": "essay",
       "title": "Как азартные игры породили математику",
-      "url": "/null/essays/gambling-math.html",
+      "url": "/essays/gambling-math.html",
       "glyph": "¶"
     },
     {
       "id": "es-five-lett",
       "type": "essay",
       "title": "Пять писем 1654 года",
-      "url": "/null/essays/five-letters.html",
+      "url": "/essays/five-letters.html",
       "glyph": "¶"
     },
     {
       "id": "es-monte-carlo",
       "type": "essay",
       "title": "От пасьянса к атомной бомбе",
-      "url": "/null/essays/monte-carlo.html",
+      "url": "/essays/monte-carlo.html",
       "glyph": "¶"
     },
     {
       "id": "math-fermat",
       "type": "mathematician",
       "title": "Пьер де Ферма",
-      "url": "/null/objects/mathematicians/fermat.html",
+      "url": "/objects/mathematicians/fermat.html",
       "glyph": "xⁿ"
     },
     {
       "id": "es-games-math",
       "type": "essay",
       "title": "Игры которые построили математику",
-      "url": "/null/essays/games-and-math.html",
+      "url": "/essays/games-and-math.html",
       "glyph": "¶"
     },
     {
       "id": "es-good-dec",
       "type": "essay",
       "title": "Хорошие решения с плохими исходами",
-      "url": "/null/essays/good-decisions.html",
+      "url": "/essays/good-decisions.html",
       "glyph": "¶"
     },
     {
       "id": "es-base-rate",
       "type": "essay",
       "title": "Ошибка базовой частоты",
-      "url": "/null/essays/base-rate.html",
+      "url": "/essays/base-rate.html",
       "glyph": "¶"
     },
     {
       "id": "es-gamb-fall",
       "type": "essay",
       "title": "Ошибка игрока",
-      "url": "/null/essays/gamblers-fallacy.html",
+      "url": "/essays/gamblers-fallacy.html",
       "glyph": "¶"
     },
     {
       "id": "es-small-num",
       "type": "essay",
       "title": "Закон малых чисел",
-      "url": "/null/essays/small-numbers.html",
+      "url": "/essays/small-numbers.html",
       "glyph": "¶"
     },
     {
       "id": "es-benford",
       "type": "essay",
       "title": "Закон Бенфорда",
-      "url": "/null/essays/benford.html",
+      "url": "/essays/benford.html",
       "glyph": "¶"
     },
     {
       "id": "es-clt",
       "type": "essay",
       "title": "Центральная предельная теорема",
-      "url": "/null/essays/clt.html",
+      "url": "/essays/clt.html",
       "glyph": "◠"
     },
     {
       "id": "es-simpson",
       "type": "essay",
       "title": "Парадокс Симпсона",
-      "url": "/null/essays/simpson.html",
+      "url": "/essays/simpson.html",
       "glyph": "¶"
     },
     {
       "id": "math-demoivre",
       "type": "mathematician",
       "title": "Абрахам де Муавр",
-      "url": "/null/objects/mathematicians/demoivre.html",
+      "url": "/objects/mathematicians/demoivre.html",
       "glyph": "∫"
     },
     {
       "id": "math-huygens",
       "type": "mathematician",
       "title": "Христиан Гюйгенс",
-      "url": "/null/objects/mathematicians/huygens.html",
+      "url": "/objects/mathematicians/huygens.html",
       "glyph": "E[X]"
     },
     {
       "id": "es-poker-basics",
       "type": "essay",
       "title": "Покер. Как профи считают в голове",
-      "url": "/null/essays/poker-basics.html",
+      "url": "/essays/poker-basics.html",
       "glyph": "¶"
     },
     {
       "id": "es-poker-kelly",
       "type": "essay",
       "title": "Критерий Келли. Сколько ставить",
-      "url": "/null/essays/poker-kelly.html",
+      "url": "/essays/poker-kelly.html",
       "glyph": "¶"
     },
     {
       "id": "es-poker-bayes",
       "type": "essay",
       "title": "Байес за столом",
-      "url": "/null/essays/poker-bayes.html",
+      "url": "/essays/poker-bayes.html",
       "glyph": "¶"
     },
     {
       "id": "es-poker-exploit",
       "type": "essay",
       "title": "Эксплойт против равновесия",
-      "url": "/null/essays/poker-exploit.html",
+      "url": "/essays/poker-exploit.html",
       "glyph": "¶"
     },
     {
       "id": "es-poker-solvers",
       "type": "essay",
       "title": "До солверов. Что мы потеряли",
-      "url": "/null/essays/poker-solvers.html",
+      "url": "/essays/poker-solvers.html",
       "glyph": "¶"
     },
     {
       "id": "es-poker-glossary",
       "type": "essay",
       "title": "Глоссарий покера и его математики",
-      "url": "/null/essays/poker-glossary.html",
+      "url": "/essays/poker-glossary.html",
       "glyph": "♠"
     },
     {
       "id": "es-games-train",
       "type": "essay",
       "title": "Игры которые тренируют машины",
-      "url": "/null/essays/games-that-train-machines.html",
+      "url": "/essays/games-that-train-machines.html",
       "glyph": "¶"
     },
     {
       "id": "es-uncertainty-knight",
       "type": "essay",
       "title": "Риск против неизвестности",
-      "url": "/null/essays/uncertainty-knight.html",
+      "url": "/essays/uncertainty-knight.html",
       "glyph": "¶"
     },
     {
       "id": "es-ergodicity",
       "type": "essay",
       "title": "Эргодичность. Почему среднее вам не достанется",
-      "url": "/null/essays/ergodicity.html",
+      "url": "/essays/ergodicity.html",
       "glyph": "¶"
     },
     {
       "id": "es-black-swan",
       "type": "essay",
       "title": "Чёрный лебедь. Почему редкое решает",
-      "url": "/null/essays/black-swan.html",
+      "url": "/essays/black-swan.html",
       "glyph": "¶"
     },
     {
       "id": "es-antifragile",
       "type": "essay",
       "title": "Антихрупкость. Что делать с тем, чего не знаешь",
-      "url": "/null/essays/antifragile.html",
+      "url": "/essays/antifragile.html",
       "glyph": "¶"
     },
     {
       "id": "es-decisions-distance",
       "type": "essay",
       "title": "Решения на дистанции",
-      "url": "/null/essays/decisions-distance.html",
+      "url": "/essays/decisions-distance.html",
       "glyph": "¶"
     },
     {
       "id": "es-optionality",
       "type": "essay",
       "title": "Опциональность. Ценность открытых дверей",
-      "url": "/null/essays/optionality.html",
+      "url": "/essays/optionality.html",
       "glyph": "¶"
     },
     {
       "id": "es-skin-in-the-game",
       "type": "essay",
       "title": "Шкура на кону. Почему рискующий знает больше",
-      "url": "/null/essays/skin-in-the-game.html",
+      "url": "/essays/skin-in-the-game.html",
       "glyph": "¶"
     },
     {
       "id": "es-via-negativa",
       "type": "essay",
       "title": "Via negativa. Сила вычитания",
-      "url": "/null/essays/via-negativa.html",
+      "url": "/essays/via-negativa.html",
       "glyph": "¶"
     },
     {
       "id": "es-flaneur",
       "type": "essay",
       "title": "Фланёр. Как жить, не зная будущего",
-      "url": "/null/essays/flaneur.html",
+      "url": "/essays/flaneur.html",
       "glyph": "¶"
     },
     {
       "id": "gt-nash",
       "type": "gametheory",
       "title": "равновесие Нэша",
-      "url": "/null/objects/game-theory/nash-equilibrium.html",
+      "url": "/objects/game-theory/nash-equilibrium.html",
       "glyph": "σ*"
     },
     {
       "id": "gt-minimax",
       "type": "gametheory",
       "title": "теорема о минимаксе",
-      "url": "/null/objects/game-theory/minimax.html",
+      "url": "/objects/game-theory/minimax.html",
       "glyph": "max−min"
     },
     {
       "id": "math-cantor",
       "type": "mathematician",
       "title": "Георг Кантор",
-      "url": "/null/objects/mathematicians/cantor.html",
+      "url": "/objects/mathematicians/cantor.html",
       "glyph": "ℵ"
     },
     {
       "id": "math-gauss",
       "type": "mathematician",
       "title": "Карл Фридрих Гаусс",
-      "url": "/null/objects/mathematicians/gauss.html",
+      "url": "/objects/mathematicians/gauss.html",
       "glyph": "ℤ"
     },
     {
       "id": "math-euler",
       "type": "mathematician",
       "title": "Леонард Эйлер",
-      "url": "/null/objects/mathematicians/euler.html",
+      "url": "/objects/mathematicians/euler.html",
       "glyph": "e"
     },
     {
       "id": "math-ramanujan",
       "type": "mathematician",
       "title": "Сриниваса Рамануджан",
-      "url": "/null/objects/mathematicians/ramanujan.html",
+      "url": "/objects/mathematicians/ramanujan.html",
       "glyph": "∞"
     },
     {
       "id": "st-cuped",
       "type": "statistic",
       "title": "CUPED",
-      "url": "/null/objects/statistics/inference/cuped.html",
+      "url": "/objects/statistics/inference/cuped.html",
       "glyph": "θ"
     },
     {
       "id": "vi-cuped",
       "type": "visual",
       "title": "CUPED визуал",
-      "url": "/null/visuals/cuped.html",
+      "url": "/visuals/cuped.html",
       "glyph": "θ"
     },
     {
       "id": "vi-polar-roses",
       "type": "visual",
       "title": "полярные розы",
-      "url": "/null/visuals/polar-roses.html",
+      "url": "/visuals/polar-roses.html",
       "glyph": "✿"
     },
     {
       "id": "vi-fibonacci",
       "type": "visual",
       "title": "спираль Фибоначчи",
-      "url": "/null/visuals/fibonacci-spiral.html",
+      "url": "/visuals/fibonacci-spiral.html",
       "glyph": "φ"
     },
     {
       "id": "vi-normal",
       "type": "visual",
       "title": "нормальное распределение",
-      "url": "/null/visuals/normal-distribution.html",
+      "url": "/visuals/normal-distribution.html",
       "glyph": "N"
     },
     {
       "id": "st-pvalue",
       "type": "statistic",
       "title": "p-value",
-      "url": "/null/objects/statistics/inference/p-value.html",
+      "url": "/objects/statistics/inference/p-value.html",
       "glyph": "p"
     },
     {
       "id": "st-ci",
       "type": "statistic",
       "title": "доверительный интервал",
-      "url": "/null/objects/statistics/inference/confidence-interval.html",
+      "url": "/objects/statistics/inference/confidence-interval.html",
       "glyph": "[─]"
     },
     {
       "id": "st-effect",
       "type": "statistic",
       "title": "размер эффекта",
-      "url": "/null/objects/statistics/inference/effect-size.html",
+      "url": "/objects/statistics/inference/effect-size.html",
       "glyph": "d"
     },
     {
       "id": "st-bleu",
       "type": "statistic",
       "title": "BLEU score",
-      "url": "/null/objects/statistics/measures/bleu.html",
+      "url": "/objects/statistics/measures/bleu.html",
       "glyph": "BLEU"
     },
     {
       "id": "st-kappa",
       "type": "statistic",
       "title": "каппа Коэна",
-      "url": "/null/objects/statistics/measures/cohens-kappa.html",
+      "url": "/objects/statistics/measures/cohens-kappa.html",
       "glyph": "κ"
     },
     {
       "id": "st-elo",
       "type": "statistic",
       "title": "рейтинг Elo",
-      "url": "/null/objects/statistics/measures/elo.html",
+      "url": "/objects/statistics/measures/elo.html",
       "glyph": "Elo"
     },
     {
       "id": "st-ev",
       "type": "statistic",
       "title": "математическое ожидание E[X]",
-      "url": "/null/objects/statistics/probability/ev.html",
+      "url": "/objects/statistics/probability/ev.html",
       "glyph": "E[X]"
     },
     {
       "id": "st-var",
       "type": "statistic",
       "title": "дисперсия σ²",
-      "url": "/null/objects/statistics/probability/variance.html",
+      "url": "/objects/statistics/probability/variance.html",
       "glyph": "σ²"
     },
     {
       "id": "st-clt",
       "type": "statistic",
       "title": "центральная предельная теорема",
-      "url": "/null/objects/statistics/probability/clt.html",
+      "url": "/objects/statistics/probability/clt.html",
       "glyph": "N"
     },
     {
       "id": "st-kelly",
       "type": "statistic",
       "title": "критерий Келли",
-      "url": "/null/objects/statistics/probability/kelly.html",
+      "url": "/objects/statistics/probability/kelly.html",
       "glyph": "f*"
     },
     {
       "id": "coord-cart",
       "type": "coordinate",
       "title": "декартовы координаты",
-      "url": "/null/objects/notation/coordinates/cartesian.html",
+      "url": "/objects/notation/coordinates/cartesian.html",
       "glyph": "(x,y)"
     },
     {
       "id": "coord-polar",
       "type": "coordinate",
       "title": "полярные координаты",
-      "url": "/null/objects/notation/coordinates/polar.html",
+      "url": "/objects/notation/coordinates/polar.html",
       "glyph": "(r,θ)"
     },
     {
       "id": "coord-complex",
       "type": "coordinate",
       "title": "комплексная плоскость",
-      "url": "/null/objects/notation/coordinates/complex-plane.html",
+      "url": "/objects/notation/coordinates/complex-plane.html",
       "glyph": "x+yi"
     },
     {
       "id": "integer",
       "type": "type",
       "title": "целые числа ℤ",
-      "url": "/null/objects/numbers/types/integer.html",
+      "url": "/objects/numbers/types/integer.html",
       "glyph": "ℤ"
     },
     {
       "id": "rational",
       "type": "type",
       "title": "рациональные числа ℚ",
-      "url": "/null/objects/numbers/types/rational.html",
+      "url": "/objects/numbers/types/rational.html",
       "glyph": "ℚ"
     },
     {
       "id": "real",
       "type": "type",
       "title": "вещественные числа ℝ",
-      "url": "/null/objects/numbers/types/real.html",
+      "url": "/objects/numbers/types/real.html",
       "glyph": "ℝ"
     },
     {
       "id": "princ-reversibility",
       "type": "principle",
       "title": "обратимость",
-      "url": "/null/objects/ideas/principles/reversibility.html",
+      "url": "/objects/ideas/principles/reversibility.html",
       "glyph": "⇄"
     },
     {
       "id": "princ-state-value",
       "type": "principle",
       "title": "ценность состояния",
-      "url": "/null/objects/ideas/principles/state-value.html",
+      "url": "/objects/ideas/principles/state-value.html",
       "glyph": "V"
     },
     {
       "id": "es-two-alphabets",
       "type": "essay",
       "title": "два алфавита",
-      "url": "/null/essays/two-alphabets.html",
+      "url": "/essays/two-alphabets.html",
       "glyph": "αa"
     },
     {
       "id": "math-pearson",
       "type": "mathematician",
       "title": "Карл Пирсон",
-      "url": "/null/objects/mathematicians/pearson.html",
+      "url": "/objects/mathematicians/pearson.html",
       "glyph": "r"
     },
     {
       "id": "math-fisher",
       "type": "mathematician",
       "title": "Рональд Фишер",
-      "url": "/null/objects/mathematicians/fisher.html",
+      "url": "/objects/mathematicians/fisher.html",
       "glyph": "F"
     },
     {
       "id": "es-popularizers",
       "type": "essay",
       "title": "те, кто открыл числа",
-      "url": "/null/essays/popularizers.html",
+      "url": "/essays/popularizers.html",
       "glyph": "‽"
     },
     {
       "id": "bk-perelman",
       "type": "book",
       "title": "Занимательная математика",
-      "url": "/null/books/perelman-zanimatelnaya.html",
+      "url": "/books/perelman-zanimatelnaya.html",
       "glyph": "?"
     },
     {
       "id": "bk-gardner",
       "type": "book",
       "title": "Mathematical Games",
-      "url": "/null/books/gardner-mathematical-games.html",
+      "url": "/books/gardner-mathematical-games.html",
       "glyph": "⬡"
     },
     {
       "id": "bk-kordemsky",
       "type": "book",
       "title": "Математическая смекалка",
-      "url": "/null/books/kordemsky-smekalka.html",
+      "url": "/books/kordemsky-smekalka.html",
       "glyph": "⊞"
     },
     {
       "id": "bk-huff",
       "type": "book",
       "title": "How to Lie with Statistics",
-      "url": "/null/books/huff-lie-with-statistics.html",
+      "url": "/books/huff-lie-with-statistics.html",
       "glyph": "%"
     },
     {
       "id": "es-bookshelf",
       "type": "essay",
       "title": "книжная полка",
-      "url": "/null/essays/bookshelf.html",
+      "url": "/essays/bookshelf.html",
       "glyph": "∫"
     },
     {
       "id": "bk-kiselyov",
       "type": "book",
       "title": "Элементарная геометрия",
-      "url": "/null/books/kiselyov.html",
+      "url": "/books/kiselyov.html",
       "glyph": "△"
     },
     {
       "id": "bk-fikhtengolts",
       "type": "book",
       "title": "Курс Фихтенгольца",
-      "url": "/null/books/fikhtengolts.html",
+      "url": "/books/fikhtengolts.html",
       "glyph": "∂∫"
     },
     {
       "id": "bk-demidovich",
       "type": "book",
       "title": "Сборник Демидовича",
-      "url": "/null/books/demidovich.html",
+      "url": "/books/demidovich.html",
       "glyph": "Σ"
     },
     {
       "id": "bk-wentzel",
       "type": "book",
       "title": "Теория вероятностей · Вентцель",
-      "url": "/null/books/wentzel.html",
+      "url": "/books/wentzel.html",
       "glyph": "ℙ"
     },
     {
       "id": "math-kiselyov",
       "type": "mathematician",
       "title": "Андрей Киселёв",
-      "url": "/null/objects/mathematicians/kiselyov.html",
+      "url": "/objects/mathematicians/kiselyov.html",
       "glyph": "К"
     },
     {
       "id": "math-fikhtengolts",
       "type": "mathematician",
       "title": "Григорий Фихтенгольц",
-      "url": "/null/objects/mathematicians/fikhtengolts.html",
+      "url": "/objects/mathematicians/fikhtengolts.html",
       "glyph": "Ф"
     },
     {
       "id": "math-demidovich",
       "type": "mathematician",
       "title": "Борис Демидович",
-      "url": "/null/objects/mathematicians/demidovich.html",
+      "url": "/objects/mathematicians/demidovich.html",
       "glyph": "Д"
     },
     {
       "id": "math-wentzel",
       "type": "mathematician",
       "title": "Елена Вентцель",
-      "url": "/null/objects/mathematicians/wentzel.html",
+      "url": "/objects/mathematicians/wentzel.html",
       "glyph": "В"
     },
     {
       "id": "es-poker-distance",
       "type": "essay",
       "title": "Тренажёр дистанции",
-      "url": "/null/essays/poker-distance.html",
+      "url": "/essays/poker-distance.html",
       "glyph": "♠"
     },
     {
       "id": "es-mult-table",
       "type": "essay",
       "title": "Таблица умножения",
-      "url": "/null/essays/multiplication-table.html",
+      "url": "/essays/multiplication-table.html",
       "glyph": "×"
     },
     {
       "id": "es-terminal",
       "type": "essay",
       "title": "терминал",
-      "url": "/null/essays/terminal.html",
+      "url": "/essays/terminal.html",
       "glyph": "▮"
     },
     {
       "id": "cu-terminal",
       "type": "curious",
       "title": "терминал",
-      "url": "/null/visuals/terminal.html",
+      "url": "/visuals/terminal.html",
       "glyph": "▮"
     },
     {
       "id": "vi-pythagoras",
       "type": "visual",
       "title": "сетка пифагора",
-      "url": "/null/visuals/pythagoras-grid.html",
+      "url": "/visuals/pythagoras-grid.html",
       "glyph": "⊞"
     },
     {
       "id": "vi-napier",
       "type": "visual",
       "title": "палочки непера",
-      "url": "/null/visuals/napier-bones.html",
+      "url": "/visuals/napier-bones.html",
       "glyph": "▦"
     },
     {
       "id": "es-oshibki-po-pravilam",
       "type": "essay",
       "title": "Ошибки по правилам",
-      "url": "/null/essays/oshibki-po-pravilam.html",
+      "url": "/essays/oshibki-po-pravilam.html",
       "glyph": "ƒ"
     },
     {
       "id": "math-kahneman",
       "type": "mathematician",
       "title": "Дэниел Канеман",
-      "url": "/null/objects/mathematicians/kahneman.html",
+      "url": "/objects/mathematicians/kahneman.html",
       "glyph": "K"
     },
     {
       "id": "math-tversky",
       "type": "mathematician",
       "title": "Амос Тверски",
-      "url": "/null/objects/mathematicians/tversky.html",
+      "url": "/objects/mathematicians/tversky.html",
       "glyph": "T"
     },
     {
       "id": "es-underdogs",
       "type": "essay",
       "title": "Почему побеждают слабые",
-      "url": "/null/essays/underdogs.html",
+      "url": "/essays/underdogs.html",
       "glyph": "λ"
     },
     {
       "id": "es-xg",
       "type": "essay",
       "title": "xG, или счёт врёт",
-      "url": "/null/essays/xg.html",
+      "url": "/essays/xg.html",
       "glyph": "xG"
     },
     {
       "id": "es-penalty",
       "type": "essay",
       "title": "Пенальти",
-      "url": "/null/essays/penalty.html",
+      "url": "/essays/penalty.html",
       "glyph": "⇄"
     },
     {
       "id": "es-simulation",
       "type": "essay",
       "title": "Десять тысяч турниров",
-      "url": "/null/essays/simulation.html",
+      "url": "/essays/simulation.html",
       "glyph": "≈"
     },
     {
       "id": "es-why-simulation",
       "type": "essay",
       "title": "почему симуляция, а не формула",
-      "url": "/null/essays/why-simulation.html",
+      "url": "/essays/why-simulation.html",
       "glyph": "⁂"
     },
     {
       "id": "es-elo",
       "type": "essay",
       "title": "Одно число",
-      "url": "/null/essays/elo.html",
+      "url": "/essays/elo.html",
       "glyph": "Δ"
     },
     {
       "id": "es-buffon",
       "type": "essay",
       "title": "Игла Бюффона",
-      "url": "/null/essays/buffon.html",
+      "url": "/essays/buffon.html",
       "glyph": "✚"
     },
     {
       "id": "vi-monte-carlo-pi",
       "type": "visual",
       "title": "π из случайных точек",
-      "url": "/null/visuals/monte-carlo-pi.html",
+      "url": "/visuals/monte-carlo-pi.html",
       "glyph": "≈"
     },
     {
       "id": "vi-galton",
       "type": "visual",
       "title": "доска Гальтона",
-      "url": "/null/visuals/galton-board.html",
+      "url": "/visuals/galton-board.html",
       "glyph": "∿"
     },
     {
       "id": "vi-champion-prob",
       "type": "visual",
       "title": "вероятность чемпиона",
-      "url": "/null/visuals/champion-probability.html",
+      "url": "/visuals/champion-probability.html",
       "glyph": "◇"
     },
     {
       "id": "vi-random-walk",
       "type": "visual",
       "title": "случайное блуждание",
-      "url": "/null/visuals/random-walk.html",
+      "url": "/visuals/random-walk.html",
       "glyph": "∿"
     },
     {
       "id": "es-bootstrap",
       "type": "essay",
       "title": "бутстрэп",
-      "url": "/null/essays/bootstrap.html",
+      "url": "/essays/bootstrap.html",
       "glyph": "↻"
     },
     {
       "id": "es-mcmc",
       "type": "essay",
       "title": "MCMC",
-      "url": "/null/essays/mcmc.html",
+      "url": "/essays/mcmc.html",
       "glyph": "⇌"
     },
     {
       "id": "es-confusion-matrix",
       "type": "essay",
       "title": "матрица ошибок",
-      "url": "/null/essays/confusion-matrix.html",
+      "url": "/essays/confusion-matrix.html",
       "glyph": "⊠"
     },
     {
       "id": "es-bayes-faces",
       "type": "essay",
       "title": "четыре лица теоремы Байеса",
-      "url": "/null/essays/bayes-four-faces.html",
+      "url": "/essays/bayes-four-faces.html",
       "glyph": "✦"
     },
     {
       "id": "es-bookmaker-bayes",
       "type": "essay",
       "title": "букмекер думает по Байесу",
-      "url": "/null/essays/bookmaker-bayes.html",
+      "url": "/essays/bookmaker-bayes.html",
       "glyph": "÷"
     },
     {
       "id": "es-who-sets-odds",
       "type": "essay",
       "title": "кто назначает коэффициент",
-      "url": "/null/essays/who-sets-odds.html",
+      "url": "/essays/who-sets-odds.html",
       "glyph": "⇅"
     },
     {
       "id": "es-value-betting",
       "type": "essay",
       "title": "плюсовое ожидание",
-      "url": "/null/essays/value-betting.html",
+      "url": "/essays/value-betting.html",
       "glyph": "↗"
     },
     {
       "id": "es-is-forecast-right",
       "type": "essay",
       "title": "прав ли прогноз",
-      "url": "/null/essays/is-forecast-right.html",
+      "url": "/essays/is-forecast-right.html",
       "glyph": "◎"
     },
     {
       "id": "vi-p-hacking",
       "type": "visual",
       "title": "песочница p-hacking",
-      "url": "/null/visuals/p-hacking.html",
+      "url": "/visuals/p-hacking.html",
       "glyph": "⚗"
     },
     {
       "id": "es-forking-paths",
       "type": "essay",
       "title": "сад расходящихся троп",
-      "url": "/null/essays/forking-paths.html",
+      "url": "/essays/forking-paths.html",
       "glyph": "⑃"
     },
     {
       "id": "es-replication-crisis",
       "type": "essay",
       "title": "кризис воспроизводимости",
-      "url": "/null/essays/replication-crisis.html",
+      "url": "/essays/replication-crisis.html",
       "glyph": "⊘"
     },
     {
       "id": "es-evolution-cooperation",
       "type": "essay",
       "title": "эволюция кооперации",
-      "url": "/null/essays/evolution-of-cooperation.html",
+      "url": "/essays/evolution-of-cooperation.html",
       "glyph": "⊞"
     },
     {
       "id": "gt-ipd-catalog",
       "type": "gametheory",
       "title": "стратегии повторяющейся игры",
-      "url": "/null/objects/game-theory/ipd-strategies-catalog.html",
+      "url": "/objects/game-theory/ipd-strategies-catalog.html",
       "glyph": "⊞"
     },
     {
       "id": "math-rapoport",
       "type": "mathematician",
       "title": "Анатоль Рапопорт",
-      "url": "/null/objects/mathematicians/rapoport.html",
+      "url": "/objects/mathematicians/rapoport.html",
       "glyph": "T"
     },
     {
       "id": "math-axelrod",
       "type": "mathematician",
       "title": "Роберт Аксельрод",
-      "url": "/null/objects/mathematicians/axelrod.html",
+      "url": "/objects/mathematicians/axelrod.html",
       "glyph": "A"
     },
     {
       "id": "math-nowak",
       "type": "mathematician",
       "title": "Мартин Новак",
-      "url": "/null/objects/mathematicians/nowak.html",
+      "url": "/objects/mathematicians/nowak.html",
       "glyph": "N"
     },
     {
       "id": "es-conditions-cooperation",
       "type": "essay",
       "title": "условия кооперации",
-      "url": "/null/essays/conditions-for-cooperation.html",
+      "url": "/essays/conditions-for-cooperation.html",
       "glyph": "⊞"
     },
     {
       "id": "gt-zd",
       "type": "gametheory",
       "title": "zero-determinant стратегии",
-      "url": "/null/objects/game-theory/zero-determinant-strategies.html",
+      "url": "/objects/game-theory/zero-determinant-strategies.html",
       "glyph": "ZD"
     },
     {
       "id": "es-hidden-layer",
       "type": "essay",
       "title": "скрытый этаж",
-      "url": "/null/essays/hidden-layer.html",
+      "url": "/essays/hidden-layer.html",
       "glyph": "⊞"
     },
     {
       "id": "es-gt-distance",
       "type": "essay",
       "title": "теория игр на дистанции",
-      "url": "/null/essays/game-theory-distance.html",
+      "url": "/essays/game-theory-distance.html",
       "glyph": "⊞"
     },
     {
       "id": "es-trust-verify",
       "type": "essay",
       "title": "доверяй, но проверяй",
-      "url": "/null/essays/trust-but-verify.html",
+      "url": "/essays/trust-but-verify.html",
       "glyph": "⊞"
     },
     {
       "id": "es-live-next-round",
       "type": "essay",
       "title": "дожить до следующего раунда",
-      "url": "/null/essays/live-to-next-round.html",
+      "url": "/essays/live-to-next-round.html",
       "glyph": "⊞"
     },
     {
       "id": "math-taleb",
       "type": "mathematician",
       "title": "Нассим Талеб",
-      "url": "/null/objects/mathematicians/taleb.html",
+      "url": "/objects/mathematicians/taleb.html",
       "glyph": "T"
     },
     {
       "id": "es-honest-signal",
       "type": "essay",
       "title": "честный сигнал",
-      "url": "/null/essays/honest-signal.html",
+      "url": "/essays/honest-signal.html",
       "glyph": "⊞"
     },
     {
       "id": "es-hawks-doves",
       "type": "essay",
       "title": "ястребы и голуби",
-      "url": "/null/essays/hawks-and-doves.html",
+      "url": "/essays/hawks-and-doves.html",
       "glyph": "⊞"
     },
     {
       "id": "es-focal-point",
       "type": "essay",
       "title": "договориться без уговора",
-      "url": "/null/essays/focal-point.html",
+      "url": "/essays/focal-point.html",
       "glyph": "⊞"
     },
     {
       "id": "es-good-name",
       "type": "essay",
       "title": "доброе имя",
-      "url": "/null/essays/good-name.html",
+      "url": "/essays/good-name.html",
       "glyph": "⊞"
     },
     {
       "id": "math-maynard-smith",
       "type": "mathematician",
       "title": "Джон Мейнард Смит",
-      "url": "/null/objects/mathematicians/maynard-smith.html",
+      "url": "/objects/mathematicians/maynard-smith.html",
       "glyph": "M"
     },
     {
       "id": "es-mechanism-design",
       "type": "essay",
       "title": "честность по построению",
-      "url": "/null/essays/mechanism-design.html",
+      "url": "/essays/mechanism-design.html",
       "glyph": "¶"
     },
     {
       "id": "es-log-wealth",
       "type": "essay",
       "title": "Логарифм богатства",
-      "url": "/null/essays/log-wealth.html",
+      "url": "/essays/log-wealth.html",
       "glyph": "¶"
     },
     {
       "id": "es-morality-reputation",
       "type": "essay",
       "title": "мораль и репутация",
-      "url": "/null/essays/morality-reputation.html",
+      "url": "/essays/morality-reputation.html",
       "glyph": "¶"
     },
     {
       "id": "es-biology-cooperation",
       "type": "essay",
       "title": "биология кооперации",
-      "url": "/null/essays/biology-cooperation.html",
+      "url": "/essays/biology-cooperation.html",
       "glyph": "¶"
     },
     {
       "id": "gt-ipd-tournaments",
       "type": "gametheory",
       "title": "турниры повторяющейся игры",
-      "url": "/null/objects/game-theory/ipd-tournaments.html",
+      "url": "/objects/game-theory/ipd-tournaments.html",
       "glyph": "⊞"
     },
     {
       "id": "es-q-learning",
       "type": "essay",
       "title": "ценность без карты",
-      "url": "/null/essays/q-learning.html",
+      "url": "/essays/q-learning.html",
       "glyph": "¶"
     },
     {
       "id": "es-dopamine",
       "type": "essay",
       "title": "дофамин — это ошибка",
-      "url": "/null/essays/dopamine-prediction-error.html",
+      "url": "/essays/dopamine-prediction-error.html",
       "glyph": "¶"
     },
     {
       "id": "es-explore-exploit",
       "type": "essay",
       "title": "разведка и эксплуатация",
-      "url": "/null/essays/explore-exploit.html",
+      "url": "/essays/explore-exploit.html",
       "glyph": "¶"
     },
     {
       "id": "es-reward-hacking",
       "type": "essay",
       "title": "взлом награды",
-      "url": "/null/essays/reward-hacking.html",
+      "url": "/essays/reward-hacking.html",
       "glyph": "¶"
     },
     {
       "id": "es-learned-reward",
       "type": "essay",
       "title": "выученная награда",
-      "url": "/null/essays/learned-reward-rlhf.html",
+      "url": "/essays/learned-reward-rlhf.html",
       "glyph": "¶"
     },
     {
       "id": "es-evaluation",
       "type": "essay",
       "title": "оценка как эксперимент",
-      "url": "/null/essays/evaluation-as-experiment.html",
+      "url": "/essays/evaluation-as-experiment.html",
       "glyph": "◎"
     },
     {
       "id": "es-calibration",
       "type": "essay",
       "title": "калибровка",
-      "url": "/null/essays/calibration.html",
+      "url": "/essays/calibration.html",
       "glyph": "◎"
     },
     {
       "id": "math-bayes",
       "type": "mathematician",
       "title": "Томас Байес",
-      "url": "/null/objects/mathematicians/bayes.html",
+      "url": "/objects/mathematicians/bayes.html",
       "glyph": "∝"
     },
     {
       "id": "math-markov",
       "type": "mathematician",
       "title": "Андрей Марков",
-      "url": "/null/objects/mathematicians/markov.html",
+      "url": "/objects/mathematicians/markov.html",
       "glyph": "→"
     },
     {
       "id": "math-kolmogorov",
       "type": "mathematician",
       "title": "Андрей Колмогоров",
-      "url": "/null/objects/mathematicians/kolmogorov.html",
+      "url": "/objects/mathematicians/kolmogorov.html",
       "glyph": "Ω"
     },
     {
       "id": "math-efron",
       "type": "mathematician",
       "title": "Брэдли Эфрон",
-      "url": "/null/objects/mathematicians/efron.html",
+      "url": "/objects/mathematicians/efron.html",
       "glyph": "↻"
     },
     {
       "id": "math-gosset",
       "type": "mathematician",
       "title": "Уильям Госсет",
-      "url": "/null/objects/mathematicians/gosset.html",
+      "url": "/objects/mathematicians/gosset.html",
       "glyph": "t"
     },
     {
       "id": "math-galton",
       "type": "mathematician",
       "title": "Фрэнсис Гальтон",
-      "url": "/null/objects/mathematicians/galton.html",
+      "url": "/objects/mathematicians/galton.html",
       "glyph": "r"
     },
     {
       "id": "math-neyman",
       "type": "mathematician",
       "title": "Ежи Нейман",
-      "url": "/null/objects/mathematicians/neyman.html",
+      "url": "/objects/mathematicians/neyman.html",
       "glyph": "α"
     },
     {
       "id": "math-wald",
       "type": "mathematician",
       "title": "Абрахам Вальд",
-      "url": "/null/objects/mathematicians/wald.html",
+      "url": "/objects/mathematicians/wald.html",
       "glyph": "Λ"
     },
     {
       "id": "math-tukey",
       "type": "mathematician",
       "title": "Джон Тьюки",
-      "url": "/null/objects/mathematicians/tukey.html",
+      "url": "/objects/mathematicians/tukey.html",
       "glyph": "⊟"
     },
     {
       "id": "math-rubin",
       "type": "mathematician",
       "title": "Дональд Рубин",
-      "url": "/null/objects/mathematicians/rubin.html",
+      "url": "/objects/mathematicians/rubin.html",
       "glyph": "Δ"
     },
     {
       "id": "math-pearl",
       "type": "mathematician",
       "title": "Джудея Перл",
-      "url": "/null/objects/mathematicians/pearl.html",
+      "url": "/objects/mathematicians/pearl.html",
       "glyph": "⇒"
     },
     {
       "id": "math-cox",
       "type": "mathematician",
       "title": "Дэвид Кокс",
-      "url": "/null/objects/mathematicians/cox.html",
+      "url": "/objects/mathematicians/cox.html",
       "glyph": "λ"
     },
     {
       "id": "math-box",
       "type": "mathematician",
       "title": "Джордж Бокс",
-      "url": "/null/objects/mathematicians/box.html",
+      "url": "/objects/mathematicians/box.html",
       "glyph": "□"
     },
     {
       "id": "es-martingale",
       "type": "essay",
       "title": "мартингал",
-      "url": "/null/essays/martingale.html",
+      "url": "/essays/martingale.html",
       "glyph": "¶"
     },
     {
       "id": "es-lln",
       "type": "essay",
       "title": "Закон больших чисел",
-      "url": "/null/essays/lln.html",
+      "url": "/essays/lln.html",
       "glyph": "¶"
     },
     {
       "id": "es-golden-set",
       "type": "essay",
       "title": "золотой набор",
-      "url": "/null/essays/golden-set.html",
+      "url": "/essays/golden-set.html",
       "glyph": "¶"
     },
     {
       "id": "es-effective-sample",
       "type": "essay",
       "title": "эффективная выборка",
-      "url": "/null/essays/effective-sample.html",
+      "url": "/essays/effective-sample.html",
       "glyph": "¶"
     },
     {
       "id": "es-entropy",
       "type": "essay",
       "title": "энтропия",
-      "url": "/null/essays/entropy.html",
+      "url": "/essays/entropy.html",
       "glyph": "¶"
     },
     {
       "id": "es-collider",
       "type": "essay",
       "title": "лишний контроль",
-      "url": "/null/essays/collider.html",
+      "url": "/essays/collider.html",
       "glyph": "¶"
     },
     {
       "id": "es-bias-variance",
       "type": "essay",
       "title": "смещение и разброс",
-      "url": "/null/essays/bias-variance.html",
+      "url": "/essays/bias-variance.html",
       "glyph": "¶"
     },
     {
       "id": "math-bernoulli-daniel",
       "type": "mathematician",
       "title": "Даниил Бернулли",
-      "url": "/null/objects/mathematicians/bernoulli-daniel.html",
+      "url": "/objects/mathematicians/bernoulli-daniel.html",
       "glyph": "U"
     },
     {
       "id": "es-bernoulli-clan",
       "type": "essay",
       "title": "восемь математиков, одна очередь задач",
-      "url": "/null/essays/bernoulli-clan.html",
+      "url": "/essays/bernoulli-clan.html",
       "glyph": "¶"
     }
   ],

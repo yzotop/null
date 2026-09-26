@@ -120,12 +120,12 @@ def build_rules(c: dict[str, int]) -> list[tuple]:
 
     return [
         # ─── man.html · CONTENTS ───
-        (man, "man · objects",  r'(/null/objects/</td><td class="v">)(\d+)( ' + alt(OBJ) + r')', "objects", OBJ),
-        (man, "man · essays",   r'(/null/essays/</td><td class="v">)(\d+)( эссе)', "essays", None),
-        (man, "man · visuals",  r'(/null/visuals/</td><td class="v">)(\d+)( ' + alt(VIS) + r')', "visuals", VIS),
-        (man, "man · charts",   r'(/null/visuals/charts/</td><td class="v">)(\d+)( ' + alt(TOOL) + r')', "charts", TOOL),
-        (man, "man · books",    r'(/null/books/</td><td class="v">)(\d+)( ' + alt(BOOK) + r')', "books", BOOK),
-        (man, "man · music",    r'(/null/music/</td><td class="v">)(\d+)( ' + alt(ALBUM) + r')', "music", ALBUM),
+        (man, "man · objects",  r'(/objects/</td><td class="v">)(\d+)( ' + alt(OBJ) + r')', "objects", OBJ),
+        (man, "man · essays",   r'(/essays/</td><td class="v">)(\d+)( эссе)', "essays", None),
+        (man, "man · visuals",  r'(/visuals/</td><td class="v">)(\d+)( ' + alt(VIS) + r')', "visuals", VIS),
+        (man, "man · charts",   r'(/visuals/charts/</td><td class="v">)(\d+)( ' + alt(TOOL) + r')', "charts", TOOL),
+        (man, "man · books",    r'(/books/</td><td class="v">)(\d+)( ' + alt(BOOK) + r')', "books", BOOK),
+        (man, "man · music",    r'(/music/</td><td class="v">)(\d+)( ' + alt(ALBUM) + r')', "music", ALBUM),
         (man, "man · nodes",    r'(граф связей · )(\d+)( ' + alt(NODE) + r')', "nodes", NODE),
         (man, "man · edges",    r'(граф связей · \d+ \S+ · )(\d+)( ' + alt(EDGE) + r')', "edges", EDGE),
         # ─── index.html · карточки разделов ───

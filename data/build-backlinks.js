@@ -11,7 +11,13 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const SITE_PREFIX = '/null/';
+const SITE_PREFIX = '/';
+// Раньше префикс был '/null/' и сам работал сторожем. На поддомене это один
+// слеш, и проверка ниже пропускала бы любой абсолютный адрес, поэтому список
+// корневых каталогов задан явно.
+const SITE_DIRS = ['objects/', 'essays/', 'visuals/', 'books/', 'music/', 'charts/'];
+const isSiteUrl = (url) =>
+  url.startsWith(SITE_PREFIX) && SITE_DIRS.some((d) => url.slice(SITE_PREFIX.length).startsWith(d));
 
 const TYPE_RU = {
   constant:   'константа',
@@ -47,7 +53,7 @@ for (const e of data.edges) {
 }
 
 const urlToFs = (url) => {
-  if (!url.startsWith(SITE_PREFIX)) throw new Error(`bad url: ${url}`);
+  if (!isSiteUrl(url)) throw new Error(`bad url: ${url}`);
   return path.join(ROOT, url.slice(SITE_PREFIX.length));
 };
 
