@@ -79,7 +79,7 @@ def punchlines(html: str) -> int:
 
 def resolve(rel: str, href: str) -> str:
     if href.startswith("/"):
-        return re.sub(r"^/null/", "", os.path.normpath(href)).replace(os.sep, "/")
+        return re.sub(r"^/", "", os.path.normpath(href)).replace(os.sep, "/")
     return os.path.normpath(os.path.join(os.path.dirname(rel), href)).replace(os.sep, "/")
 
 

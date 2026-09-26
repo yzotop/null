@@ -129,14 +129,14 @@ def load_valid_targets() -> set[str]:
                 valid.add(v)
     # known site sections (not graph nodes but valid targets)
     for extra in (
-        "/null/books/", "/null/visuals/charts/", "/null/map.html", "/null/find.html",
-        "/null/man.html", "books/", "visuals/charts/",
+        "/books/", "/visuals/charts/", "/map.html", "/find.html",
+        "/man.html", "books/", "visuals/charts/",
     ):
         valid.add(extra)
     for p in ROOT.rglob("*.html"):
         rel = p.relative_to(ROOT)
         valid.add(str(rel))
-        valid.add("/null/" + str(rel).replace("\\", "/"))
+        valid.add("/" + str(rel).replace("\\", "/"))
         valid.add(p.name)
         valid.add(p.stem)
         valid.add("../" + str(rel).replace("\\", "/"))
@@ -204,7 +204,7 @@ def extract_links(html: str) -> list[str]:
     for h in hrefs:
         if h.startswith("http") or h.startswith("mailto:"):
             continue
-        if h.endswith((".html", "/")) or "/null/" in h or h.startswith("../"):
+        if h.endswith((".html", "/")) or "/" in h or h.startswith("../"):
             out.append(h)
     return out
 
@@ -216,7 +216,7 @@ def link_broken(href: str, valid: set[str]) -> bool:
     stem = Path(href.split("?")[0]).stem
     if name in valid or stem in valid:
         return False
-    # normalize /null/ prefix
+    # normalize leading slash
     h = href.lstrip("/")
     if h in valid:
         return False

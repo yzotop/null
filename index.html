@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>null</title>
-<link rel="icon" href="/null/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/null/favicon-180.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon-180.png">
 <link rel="stylesheet" href="styles/main.css">
 <style>
   .page { max-width: 760px; margin: 0 auto; padding: 40px 40px 80px; }
@@ -213,7 +213,7 @@
 <div class="page">
 
   <nav class="nav-bar">
-    <a class="brand" href="/null/">null</a>
+    <a class="brand" href="/">null</a>
     <div class="links">
       <a href="objects/">объекты</a>
       <a href="essays/">эссе</a>
@@ -629,7 +629,7 @@
 
   <footer class="footer-bar">
     <span>/null · 2025–2026</span>
-    <span><a href="man.html">about →</a> · <a href="map.html">map →</a> · <a href="/null/visuals/charts/">charts →</a> · <a href="/null/books/">books →</a> · <a href="/null/find.html">find →</a></span>
+    <span><a href="man.html">about →</a> · <a href="map.html">map →</a> · <a href="/visuals/charts/">charts →</a> · <a href="/books/">books →</a> · <a href="/find.html">find →</a></span>
     <span class="footer-by">Александр Давыдов · <a href="https://davydov.my/" rel="noopener">davydov.my</a></span>
   </footer>
 
@@ -642,9 +642,9 @@ async function goRandom() {
     const d = await r.json();
     window._nullNodes = d.nodes.filter(n =>
       n.url && (
-        n.url.includes('/null/objects/') ||
-        n.url.includes('/null/essays/') ||
-        n.url.includes('/null/visuals/')
+        n.url.includes('/objects/') ||
+        n.url.includes('/essays/') ||
+        n.url.includes('/visuals/')
       )
     );
   }

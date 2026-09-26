@@ -170,9 +170,9 @@ null/
 
 ## `google9b84a06f40ea405c.html` — не удалять, не менять
 
-Файл подтверждения владения ресурсом `https://yzotop.github.io/null/`
+Файл подтверждения владения ресурсом `https://null.davydov.my/`
 в Google Search Console. Лежит в корне репозитория, отдаётся по
-`https://yzotop.github.io/null/google9b84a06f40ea405c.html`.
+`https://null.davydov.my/google9b84a06f40ea405c.html`.
 
 Google перепроверяет подтверждение периодически, а не однократно при
 добавлении ресурса. Пропадёт файл — слетит подтверждение, а вместе

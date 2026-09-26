@@ -18,11 +18,12 @@ entry without <lastmod> is a defect that already shipped once. So the
 script refuses to write while any page lacks a date and exits non-zero.
 Run it AFTER the commit, then amend — never before.
 
-Scope: null is served from https://yzotop.github.io/null/ — a project
-page, not the domain root. A sitemap at /null/sitemap.xml is only valid
-for URLs under /null/, so every generated <loc> is asserted to stay
-inside that prefix. (robots.txt cannot help here at all: it is only read
-at the origin root, which this repo does not control.)
+Scope: null is served from https://null.davydov.my/ — its own subdomain,
+at the root. Until 2026-09 it lived at yzotop.github.io/null/, a project
+page, and every <loc> had to carry the /null/ prefix. Now the origin is
+ours, so the assertion below checks the origin instead: a <loc> pointing
+anywhere else is a defect. robots.txt is finally possible here — it is
+read at the origin root, which this repo now controls.
 """
 from __future__ import annotations
 
@@ -31,8 +32,8 @@ import subprocess
 import sys
 from xml.sax.saxutils import escape
 
-SITE_ORIGIN = "https://yzotop.github.io"
-SITE_PREFIX = "/null/"
+SITE_ORIGIN = "https://null.davydov.my"
+SITE_PREFIX = "/"
 
 # Страницы, которые есть на диске, но не должны попадать в карту сайта.
 # Путь относительно корня репозитория.

@@ -5,3 +5,8 @@ node_modules/
 # secrets — never commit (security.md)
 .env
 __pycache__/
+
+# Локальная обвязка Claude Code. launch.json содержит абсолютный путь
+# к каталогу на машине автора, а репозиторий публичный: такой путь
+# раскрывает имя пользователя и раскладку диска.
+.claude/
